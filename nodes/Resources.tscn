@@ -1,0 +1,117 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://sprites/UI/Icons/20.png" type="Texture" id=1]
+[ext_resource path="res://scripts/Resources.gd" type="Script" id=2]
+[ext_resource path="res://nodes/ItemCount.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/Icons/32x32px/branch.png" type="Texture" id=4]
+[ext_resource path="res://sprites/Icons/32x32px/wood.png" type="Texture" id=5]
+[ext_resource path="res://sprites/Icons/32x32px/rock.png" type="Texture" id=6]
+[ext_resource path="res://sprites/Icons/32x32px/rope.png" type="Texture" id=7]
+[ext_resource path="res://sprites/Icons/32x32px/leaf.png" type="Texture" id=8]
+
+[node name="Resources" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="List" type="Control" parent="."]
+self_modulate = Color( 1, 0.556863, 0.0392157, 1 )
+anchor_bottom = 1.0
+margin_right = 94.0
+rect_min_size = Vector2( 128, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="List"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.709804, 0.509804, 0.0784314, 1 )
+
+[node name="Items" type="VBoxContainer" parent="List"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Leaf" parent="List/Items" instance=ExtResource( 3 )]
+margin_bottom = 41.0
+
+[node name="TextureRect" parent="List/Items/Leaf" index="0"]
+margin_right = 32.0
+texture = ExtResource( 8 )
+
+[node name="Count" parent="List/Items/Leaf" index="1"]
+margin_left = 36.0
+
+[node name="Stick" parent="List/Items" instance=ExtResource( 3 )]
+margin_top = 45.0
+margin_bottom = 86.0
+
+[node name="TextureRect" parent="List/Items/Stick" index="0"]
+margin_right = 32.0
+texture = ExtResource( 4 )
+
+[node name="Count" parent="List/Items/Stick" index="1"]
+margin_left = 36.0
+
+[node name="Wood" parent="List/Items" instance=ExtResource( 3 )]
+margin_top = 90.0
+margin_bottom = 131.0
+
+[node name="TextureRect" parent="List/Items/Wood" index="0"]
+margin_right = 32.0
+texture = ExtResource( 5 )
+
+[node name="Count" parent="List/Items/Wood" index="1"]
+margin_left = 36.0
+
+[node name="Rope" parent="List/Items" instance=ExtResource( 3 )]
+margin_top = 135.0
+margin_bottom = 176.0
+
+[node name="TextureRect" parent="List/Items/Rope" index="0"]
+margin_right = 32.0
+texture = ExtResource( 7 )
+
+[node name="Count" parent="List/Items/Rope" index="1"]
+margin_left = 36.0
+
+[node name="Rock" parent="List/Items" instance=ExtResource( 3 )]
+margin_top = 180.0
+margin_bottom = 221.0
+
+[node name="TextureRect" parent="List/Items/Rock" index="0"]
+margin_right = 32.0
+texture = ExtResource( 6 )
+
+[node name="Count" parent="List/Items/Rock" index="1"]
+margin_left = 36.0
+
+[node name="Button" type="Button" parent="."]
+margin_left = -65.0
+margin_top = 1.0
+margin_right = -1.0
+margin_bottom = 65.0
+icon = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+
+[editable path="List/Items/Leaf"]
+[editable path="List/Items/Stick"]
+[editable path="List/Items/Wood"]
+[editable path="List/Items/Rope"]
+[editable path="List/Items/Rock"]
