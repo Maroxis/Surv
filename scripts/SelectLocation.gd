@@ -1,9 +1,9 @@
 extends Node2D
 
 onready var buttonsNode = get_parent()
+onready var mission = get_node("../../Missions/"+self.name)
 
 func _on_TouchScreenButton_pressed() -> void:
-	var mission = get_node("../../Missions/"+self.name)
 	if(mission):
 		mission.show()
 		buttonsNode.hide()
