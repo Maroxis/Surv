@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://sprites/BG/MainMap.png" type="Texture" id=1]
 [ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://sprites/Icons/128x128px/Wenrexa Special magic.png" type="Texture" id=11]
 [ext_resource path="res://nodes/MissionSelect.tscn" type="PackedScene" id=12]
 [ext_resource path="res://sprites/Icons/32x32px/wood.png" type="Texture" id=13]
+[ext_resource path="res://sprites/Icons/128x128px/arrow.png" type="Texture" id=14]
 [ext_resource path="res://scripts/WoodsMission.gd" type="Script" id=15]
 [ext_resource path="res://sprites/Icons/64x64px/Wenrexa Drop Water or Blood.png" type="Texture" id=16]
 [ext_resource path="res://sprites/Icons/64x64px/food.png" type="Texture" id=17]
@@ -649,7 +650,6 @@ __meta__ = {
 }
 
 [node name="Build" type="Control" parent="Canvas/GameWindow/BaseActivities"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 20 )
@@ -678,7 +678,7 @@ __meta__ = {
 }
 
 [node name="HBox" type="HBoxContainer" parent="Canvas/GameWindow/BaseActivities/Build/ScrollContainer"]
-margin_right = 1036.0
+margin_right = 1372.0
 margin_bottom = 576.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -686,53 +686,52 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Margin" type="Control" parent="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox"]
+visible = false
+margin_right = 160.0
+margin_bottom = 576.0
+rect_min_size = Vector2( 160, 0 )
+
 [node name="House" parent="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox" instance=ExtResource( 21 )]
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 0.0
-margin_right = 256.0
-margin_bottom = 576.0
+margin_right = 340.0
+margin_bottom = 0.0
 
-[node name="Name" parent="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox/House/VBox/BG/VBoxContainer" index="1"]
-text = "House"
-
-[node name="WaterCollector" parent="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox" instance=ExtResource( 21 )]
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="Collector" parent="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox" instance=ExtResource( 21 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 260.0
-margin_right = 516.0
-margin_bottom = 576.0
-
-[node name="Name" parent="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox/WaterCollector/VBox/BG/VBoxContainer" index="1"]
-text = "Water Tank"
+margin_left = 344.0
+margin_right = 684.0
+margin_bottom = 0.0
 
 [node name="Furnace" parent="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox" instance=ExtResource( 21 )]
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 520.0
-margin_right = 776.0
-margin_bottom = 576.0
-
-[node name="Name" parent="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox/Furnace/VBox/BG/VBoxContainer" index="1"]
-text = "Furnace"
+margin_left = 688.0
+margin_right = 1028.0
+margin_bottom = 0.0
 
 [node name="Wall" parent="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox" instance=ExtResource( 21 )]
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 780.0
-margin_right = 1036.0
-margin_bottom = 576.0
+margin_left = 1032.0
+margin_right = 1372.0
+margin_bottom = 0.0
 
-[node name="Name" parent="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox/Wall/VBox/BG/VBoxContainer" index="1"]
-text = "Wall"
+[node name="TextureRect" type="TextureRect" parent="Canvas/GameWindow/BaseActivities/Build"]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -64.0
+margin_bottom = 64.0
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Close" type="Control" parent="Canvas/GameWindow/BaseActivities/Build"]
 anchor_left = 1.0
@@ -782,10 +781,6 @@ __meta__ = {
 [connection signal="pressed" from="Canvas/GameWindow/Missions/Home/VBoxContainer/HBox2/Sleep/VBox/Button/Button" to="Canvas/GameWindow/Missions/Home" method="_on_Sleep_Button_pressed"]
 [connection signal="pressed" from="Canvas/GameWindow/Missions/Home/VBoxContainer/HBox2/Drink/VBox/Button/Button" to="Canvas/GameWindow/Missions/Home" method="_on_Drink_Button_pressed"]
 [connection signal="pressed" from="Canvas/GameWindow/Missions/Home/Close/Button" to="Canvas/GameWindow/Missions/Home" method="_on_Close_Button_pressed"]
-[connection signal="pressed" from="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox/House/VBox/BG/VBoxContainer/Button" to="Canvas/GameWindow/BaseActivities/Build" method="_on_House_Button_pressed"]
-[connection signal="pressed" from="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox/WaterCollector/VBox/BG/VBoxContainer/Button" to="Canvas/GameWindow/BaseActivities/Build" method="_on_WaterTank_Button_pressed"]
-[connection signal="pressed" from="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox/Furnace/VBox/BG/VBoxContainer/Button" to="Canvas/GameWindow/BaseActivities/Build" method="_on_Furnace_Button_pressed"]
-[connection signal="pressed" from="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox/Wall/VBox/BG/VBoxContainer/Button" to="Canvas/GameWindow/BaseActivities/Build" method="_on_Wall_Button_pressed"]
 [connection signal="pressed" from="Canvas/GameWindow/BaseActivities/Build/Close/Button" to="Canvas/GameWindow/BaseActivities/Build" method="_on_Close_Button_pressed"]
 
 [editable path="Canvas/UI/Status/Health"]
@@ -806,6 +801,6 @@ __meta__ = {
 [editable path="Canvas/GameWindow/Missions/Home/VBoxContainer/HBox2/Sleep"]
 [editable path="Canvas/GameWindow/Missions/Home/VBoxContainer/HBox2/Drink"]
 [editable path="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox/House"]
-[editable path="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox/WaterCollector"]
+[editable path="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox/Collector"]
 [editable path="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox/Furnace"]
 [editable path="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox/Wall"]

@@ -35,7 +35,7 @@ onready var Structure = {
 			}
 		}
 	},
-	"WaterCollector": {
+	"Collector": {
 		"currentTier": 0,
 		"tier1" : {
 			"cost": {
@@ -76,6 +76,15 @@ onready var Structure = {
 				"Stone": 6
 			},
 			"benefits":{
+				"smeltable": "Copper"
+			}
+		},
+		"tier2" : {
+			"cost": {
+				"Stone": 36
+			},
+			"benefits":{
+				"smeltable": "Iron"
 			}
 		}
 	},

@@ -1,31 +1,57 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://sprites/Icons/64x64px/build.png" type="Texture" id=1]
 [ext_resource path="res://sprites/Icons/256x256px/house.png" type="Texture" id=2]
-[ext_resource path="res://fonts/ResourcesTheme.tres" type="Theme" id=3]
+[ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=3]
 [ext_resource path="res://sprites/BG/BuildingPanel.png" type="Texture" id=4]
+[ext_resource path="res://nodes/Building.gd" type="Script" id=5]
+[ext_resource path="res://fonts/UIBonusTheme.tres" type="Theme" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="Building" type="Control"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -128.0
-margin_right = 128.0
-rect_min_size = Vector2( 256, 0 )
-mouse_filter = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -960.0
+margin_bottom = -720.0
+rect_min_size = Vector2( 340, 0 )
+mouse_filter = 1
+size_flags_horizontal = 2
+size_flags_vertical = 2
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBox" type="VBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -96.0
-margin_right = 96.0
-margin_bottom = 423.0
+margin_right = 287.0
+margin_bottom = 333.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hbox" type="HBoxContainer" parent="VBox"]
+margin_right = 316.0
+margin_bottom = 288.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="VBox/Hbox"]
+margin_right = 192.0
+margin_bottom = 288.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -33,7 +59,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BG" type="TextureRect" parent="VBox"]
+[node name="BG" type="TextureRect" parent="VBox/Hbox/VBox"]
 margin_right = 192.0
 margin_bottom = 288.0
 texture = ExtResource( 4 )
@@ -41,18 +67,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBox/BG"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_top = -144.0
+[node name="VBox" type="VBoxContainer" parent="VBox/Hbox/VBox/BG"]
 margin_right = 192.0
-margin_bottom = 144.0
+margin_bottom = 288.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Building" type="TextureRect" parent="VBox/BG/VBoxContainer"]
+[node name="Building" type="TextureRect" parent="VBox/Hbox/VBox/BG/VBox"]
 margin_right = 192.0
 margin_bottom = 143.0
 size_flags_vertical = 3
@@ -64,11 +87,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="Label" parent="VBox/BG/VBoxContainer"]
+[node name="Name" type="Label" parent="VBox/Hbox/VBox/BG/VBox"]
 margin_top = 147.0
 margin_right = 192.0
 margin_bottom = 188.0
-theme = ExtResource( 3 )
+theme = ExtResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Building"
 align = 1
@@ -76,7 +99,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="TextureButton" parent="VBox/BG/VBoxContainer"]
+[node name="Button" type="TextureButton" parent="VBox/Hbox/VBox/BG/VBox"]
 margin_top = 192.0
 margin_right = 192.0
 margin_bottom = 288.0
@@ -89,91 +112,87 @@ texture_normal = ExtResource( 1 )
 expand = true
 stretch_mode = 5
 
-[node name="Vbox" type="VBoxContainer" parent="VBox"]
+[node name="VBox2" type="VBoxContainer" parent="VBox/Hbox"]
+margin_left = 196.0
+margin_right = 316.0
+margin_bottom = 288.0
+rect_min_size = Vector2( 120, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tier" type="HBoxContainer" parent="VBox/Hbox/VBox2"]
+margin_right = 120.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+
+[node name="Current" type="Label" parent="VBox/Hbox/VBox2/Tier"]
+margin_right = 30.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+theme = ExtResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer" type="Label" parent="VBox/Hbox/VBox2/Tier"]
+margin_left = 34.0
+margin_right = 85.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+theme = ExtResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = " --> "
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Next" type="Label" parent="VBox/Hbox/VBox2/Tier"]
+margin_left = 89.0
+margin_right = 120.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+theme = ExtResource( 6 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cost" type="ItemList" parent="VBox/Hbox/VBox2"]
+margin_top = 45.0
+margin_right = 120.0
+margin_bottom = 90.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme = ExtResource( 3 )
+custom_colors/guide_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_styles/cursor = SubResource( 2 )
+custom_styles/selected_focus = SubResource( 3 )
+custom_styles/bg_focus = SubResource( 4 )
+custom_styles/cursor_unfocused = SubResource( 5 )
+custom_styles/selected = SubResource( 6 )
+custom_styles/bg = SubResource( 1 )
+items = [ "Cost", null, false ]
+auto_height = true
+
+[node name="Benefits" type="ItemList" parent="VBox"]
 margin_top = 292.0
-margin_right = 192.0
-margin_bottom = 423.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Tier" type="Label" parent="VBox/Vbox"]
-margin_right = 192.0
-margin_bottom = 41.0
-theme = ExtResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Tier"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBox2" type="VBoxContainer" parent="VBox/Vbox"]
-margin_top = 45.0
-margin_right = 192.0
-margin_bottom = 86.0
+margin_right = 316.0
+margin_bottom = 337.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Benefits" type="Label" parent="VBox/Vbox/VBox2"]
-margin_right = 192.0
-margin_bottom = 41.0
 theme = ExtResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Benefits"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Time" type="Label" parent="VBox/Vbox/VBox2"]
-visible = false
-margin_top = 45.0
-margin_right = 192.0
-margin_bottom = 86.0
-theme = ExtResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "1:30"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBox" type="VBoxContainer" parent="VBox/Vbox"]
-margin_top = 90.0
-margin_right = 192.0
-margin_bottom = 131.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Cost" type="Label" parent="VBox/Vbox/VBox"]
-margin_right = 192.0
-margin_bottom = 41.0
-theme = ExtResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Cost"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Time" type="Label" parent="VBox/Vbox/VBox"]
-visible = false
-margin_top = 45.0
-margin_right = 72.0
-margin_bottom = 86.0
-theme = ExtResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "1:30"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+items = [ "Benefits", null, false ]
+auto_height = true
