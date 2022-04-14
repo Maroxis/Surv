@@ -2,6 +2,7 @@ extends Control
 
 onready var buttonsNode = get_node("../../Buttons")
 
-func close():
-	buttonsNode.show()
+func close(showNode = true):
+	if(showNode):
+		buttonsNode.show()
 	self.hide()

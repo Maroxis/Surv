@@ -5,9 +5,6 @@ var hungerRate = 0.02 #per minute
 var regenRate = 0.01 #per minute
 var exhaustRate = 0.1 #per minute
 
-var sleepMult = 0.8
-var sleepRegenMult= 1.2
-
 var water = 40.0
 var food = 80.0
 var health = 100.0
@@ -68,6 +65,10 @@ func change_energy(amm, set = false):
 
 func sleep():
 	var sleepTime = 360
+	var ctier = Buildings.Structure["House"]["currentTier"]
+	var houseb = Buildings.Structure["House"]["tier"+str(ctier)]["benefits"]
+	var sleepMult = houseb["sleepMult"]
+	var sleepRegenMult= houseb["sleepRegenMult"]
 	change_water(-(sleepTime*thirstRate*sleepMult))
 	change_food(-(sleepTime*hungerRate*sleepMult))
 	change_energy(100,true)

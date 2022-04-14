@@ -12,7 +12,7 @@ func _on_Sleep_Button_pressed() -> void:
 func _on_Build_Button_pressed() -> void:
 	buildScreen.show()
 	buildScreen.refresh()
-	close()
+	close(false)
 
 func _on_Craft_Button_pressed() -> void:
 	close()
@@ -22,3 +22,8 @@ func _on_Status_Button_pressed() -> void:
 
 func _on_Drink_Button_pressed() -> void:
 	close()
+
+func activateDrink():
+	var drinkNode = get_node("VBoxContainer/HBox2/Drink")
+	drinkNode.modulate = Color(1,1,1,1)
+	drinkNode.get_node("VBox/Button/Button").disabled = false

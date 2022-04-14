@@ -4,7 +4,7 @@
 [ext_resource path="res://sprites/Icons/256x256px/house.png" type="Texture" id=2]
 [ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=3]
 [ext_resource path="res://sprites/BG/BuildingPanel.png" type="Texture" id=4]
-[ext_resource path="res://nodes/Building.gd" type="Script" id=5]
+[ext_resource path="res://scripts/Building.gd" type="Script" id=5]
 [ext_resource path="res://fonts/UIBonusTheme.tres" type="Theme" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=2]
@@ -196,3 +196,5 @@ size_flags_stretch_ratio = 2.0
 theme = ExtResource( 3 )
 items = [ "Benefits", null, false ]
 auto_height = true
+
+[connection signal="pressed" from="VBox/Hbox/VBox/BG/VBox/Button" to="." method="_on_Construct_Button_pressed"]
