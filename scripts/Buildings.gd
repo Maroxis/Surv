@@ -42,6 +42,7 @@ onready var Structure = {
 		}
 	},
 	"Collector": {
+		"waterLevel" : 0,
 		"currentTier": 0,
 		"tier0" : {
 			"benefits":{
@@ -55,7 +56,7 @@ onready var Structure = {
 				"Leaf": 24
 			},
 			"benefits":{
-				"collectRate": 0.00015,
+				"collectRate": 0.015,
 				"tankSize": 30
 			}
 		},
@@ -65,7 +66,7 @@ onready var Structure = {
 				"Leaf": 32
 			},
 			"benefits":{
-				"collectRate": 0.0002,
+				"collectRate": 0.02,
 				"tankSize": 50
 			}
 		},
@@ -76,7 +77,7 @@ onready var Structure = {
 				"Leaf": 24
 			},
 			"benefits":{
-				"collectRate": 0.0003,
+				"collectRate": 0.03,
 				"tankSize": 100
 			}
 		}
@@ -121,7 +122,6 @@ onready var Structure = {
 	}
 	
 }
-
 func checkCost(building) -> bool:
 	var ctier = Structure[building]["currentTier"]
 	for mat in Structure[building]["tier"+str(ctier+1)]["cost"]:
@@ -141,3 +141,18 @@ func removeResources(building):
 	for mat in Structure[building]["tier"+str(ctier+1)]["cost"]:
 		var amm = Structure[building]["tier"+str(ctier+1)]["cost"][mat]
 		Inventory.add_resource(mat,-amm)
+
+func runCollector(time):
+	var ctier = Structure["Collector"]["currentTier"]
+	var collectRate = Structure["Collector"]["tier"+str(ctier)]["benefits"]["collectRate"]
+	changeWaterLevel(time*collectRate)
+	
+func changeWaterLevel(amm,set = false):
+	if(set):
+		Structure["Collector"]["waterLevel"] = amm
+	else:
+		Structure["Collector"]["waterLevel"] += amm
+	var ctier = Structure["Collector"]["currentTier"]
+	var tankSize = Structure["Collector"]["tier"+str(ctier)]["benefits"]["tankSize"]
+	Structure["Collector"]["waterLevel"] = clamp(Structure["Collector"]["waterLevel"],0,tankSize)
+	Global.Missions.get_node("Home").drinkNodeAmm.text = str(round(Structure["Collector"]["waterLevel"]))

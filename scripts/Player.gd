@@ -5,6 +5,11 @@ var hungerRate = 0.02 #per minute
 var regenRate = 0.01 #per minute
 var exhaustRate = 0.1 #per minute
 
+var maxWater = 100
+var maxFood = 100
+var maxHealth = 100
+var maxEnergy = 100
+
 var water = 40.0
 var food = 80.0
 var health = 100.0
@@ -27,7 +32,7 @@ func change_water(amm, set = false):
 		water = amm
 	else:
 		water += amm
-	water = clamp(water,0,100)
+	water = clamp(water,0,maxWater)
 	Global.UI.get_node("Status/Water/TextureProgress").value = ceil(water)
 	Global.UI.get_node("Status/Water/TextureProgress/Value").text= str(ceil(water))
 
@@ -39,7 +44,7 @@ func change_food(amm, set = false):
 		food = amm
 	else:
 		food += amm
-	food = clamp(food,0,100)
+	food = clamp(food,0,maxFood)
 	Global.UI.get_node("Status/Food/TextureProgress").value = ceil(food)
 	Global.UI.get_node("Status/Food/TextureProgress/Value").text= str(ceil(food))
 	
@@ -48,7 +53,7 @@ func change_health(amm, set = false):
 		health = amm
 	else:
 		health += amm
-	health = clamp(health,0,100)
+	health = clamp(health,0,maxHealth)
 	Global.UI.get_node("Status/Health/TextureProgress").value = ceil(health)
 	Global.UI.get_node("Status/Health/TextureProgress/Value").text= str(ceil(health))
 
@@ -59,25 +64,26 @@ func change_energy(amm, set = false):
 		energy = amm
 	else:
 		energy += amm
-	energy = clamp(energy,0,100)
+	energy = clamp(energy,0,maxEnergy)
 	Global.UI.get_node("Status/Energy/TextureProgress").value = ceil(energy)
 	Global.UI.get_node("Status/Energy/TextureProgress/Value").text= str(ceil(energy))
 
 func sleep():
 	var sleepTime = 360
-	var ctier = Buildings.Structure["House"]["currentTier"]
-	var houseb = Buildings.Structure["House"]["tier"+str(ctier)]["benefits"]
-	var sleepMult = houseb["sleepMult"]
-	var sleepRegenMult= houseb["sleepRegenMult"]
-	change_water(-(sleepTime*thirstRate*sleepMult))
-	change_food(-(sleepTime*hungerRate*sleepMult))
-	change_energy(100,true)
+	pass_time(sleepTime,true)
+func pass_time(time,sleep=false):
+	var sleepMult = 1
+	var sleepRegenMult = 1
+	if(sleep):
+		var ctier = Buildings.Structure["House"]["currentTier"]
+		var houseb = Buildings.Structure["House"]["tier"+str(ctier)]["benefits"]
+		sleepMult = houseb["sleepMult"]
+		sleepRegenMult= houseb["sleepRegenMult"]
+		change_energy(maxEnergy,true)
+	else:
+		change_energy(-(time*exhaustRate))
 	if(food > 60 && water > 40):
-		change_health(sleepTime*regenRate*sleepRegenMult)
-
-func pass_time(time):
-	change_water(-(time*thirstRate))
-	change_food(-(time*hungerRate))
-	change_energy(-(time*exhaustRate))
-	if(food > 60 && water > 40):
-		change_health(time*regenRate)
+		change_health(time*regenRate*sleepRegenMult)
+	change_water(-(time*thirstRate*sleepMult))
+	change_food(-(time*hungerRate*sleepMult))
+	Buildings.runCollector(time)

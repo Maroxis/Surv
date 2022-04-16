@@ -1,6 +1,8 @@
 extends "res://scripts/Misson.gd"
 
 onready var buildScreen = get_node("../../BaseActivities/Build")
+onready var drinkNode = get_node("VBoxContainer/HBox2/Drink")
+onready var drinkNodeAmm = drinkNode.get_node("VBox/Ammount")
 
 func _on_Close_Button_pressed() -> void:
 	close()
@@ -21,9 +23,13 @@ func _on_Status_Button_pressed() -> void:
 	close()
 
 func _on_Drink_Button_pressed() -> void:
-	close()
+	if(Player.water + Buildings.Structure["Collector"]["waterLevel"] > Player.maxWater):
+		Buildings.changeWaterLevel(-(Player.maxWater - Player.water))
+		Player.change_water(Player.maxWater,true)
+	else:
+		Player.change_water(Buildings.Structure["Collector"]["waterLevel"])
+		Buildings.changeWaterLevel(0,true) 
 
 func activateDrink():
-	var drinkNode = get_node("VBoxContainer/HBox2/Drink")
 	drinkNode.modulate = Color(1,1,1,1)
 	drinkNode.get_node("VBox/Button/Button").disabled = false
