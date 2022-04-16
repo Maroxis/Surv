@@ -1,6 +1,8 @@
 extends "res://scripts/Misson.gd"
 
 onready var buildScreen = get_node("../../BaseActivities/Build")
+onready var statusScreen = get_node("../../BaseActivities/Status")
+onready var craftScreen = get_node("../../BaseActivities/Craft")
 onready var drinkNode = get_node("VBoxContainer/HBox2/Drink")
 onready var drinkNodeAmm = drinkNode.get_node("VBox/Ammount")
 
@@ -17,10 +19,13 @@ func _on_Build_Button_pressed() -> void:
 	close(false)
 
 func _on_Craft_Button_pressed() -> void:
-	close()
+	craftScreen.show()
+	close(false)
 
 func _on_Status_Button_pressed() -> void:
-	close()
+	statusScreen.show()
+	statusScreen.refresh()
+	close(false)
 
 func _on_Drink_Button_pressed() -> void:
 	if(Player.water + Buildings.Structure["Collector"]["waterLevel"] > Player.maxWater):

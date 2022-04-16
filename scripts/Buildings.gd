@@ -94,12 +94,20 @@ onready var Structure = {
 				"Stone": 6
 			},
 			"benefits":{
-				"smeltable": "Copper"
+				"smeltable": "Clay"
 			}
 		},
 		"tier2" : {
 			"cost": {
-				"Stone": 36
+				"Stone": 8
+			},
+			"benefits":{
+				"smeltable": "Copper"
+			}
+		},
+		"tier3" : {
+			"cost": {
+				"Stone": 12
 			},
 			"benefits":{
 				"smeltable": "Iron"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://sprites/BG/MainMap.png" type="Texture" id=1]
 [ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
@@ -13,7 +13,7 @@
 [ext_resource path="res://sprites/Icons/128x128px/Wenrexa Special magic.png" type="Texture" id=11]
 [ext_resource path="res://nodes/MissionSelect.tscn" type="PackedScene" id=12]
 [ext_resource path="res://sprites/Icons/32x32px/wood.png" type="Texture" id=13]
-[ext_resource path="res://sprites/Icons/128x128px/arrow.png" type="Texture" id=14]
+[ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=14]
 [ext_resource path="res://scripts/WoodsMission.gd" type="Script" id=15]
 [ext_resource path="res://sprites/Icons/64x64px/Wenrexa Drop Water or Blood.png" type="Texture" id=16]
 [ext_resource path="res://sprites/Icons/64x64px/food.png" type="Texture" id=17]
@@ -23,8 +23,9 @@
 [ext_resource path="res://nodes/Building.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scripts/Status.gd" type="Script" id=22]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=23]
-[ext_resource path="res://nodes/Missions.gd" type="Script" id=24]
+[ext_resource path="res://scripts/Missions.gd" type="Script" id=24]
 [ext_resource path="res://fonts/ResourcesTheme.tres" type="Theme" id=25]
+[ext_resource path="res://scripts/Craft.gd" type="Script" id=26]
 [ext_resource path="res://scripts/PlainsMission.gd" type="Script" id=27]
 [ext_resource path="res://sprites/BG/IconDisc.png" type="Texture" id=28]
 [ext_resource path="res://scripts/Base.gd" type="Script" id=29]
@@ -97,7 +98,6 @@ __meta__ = {
 [node name="Status" type="Control" parent="Canvas/UI"]
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 22 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -758,20 +758,6 @@ items = [ "Cost", null, false ]
 [node name="Benefits" parent="Canvas/GameWindow/BaseActivities/Build/ScrollContainer/HBox/Wall/VBox" index="1"]
 items = [ "Benefits", null, false ]
 
-[node name="TextureRect" type="TextureRect" parent="Canvas/GameWindow/BaseActivities/Build"]
-visible = false
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -128.0
-margin_top = -64.0
-margin_bottom = 64.0
-texture = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Close" type="Control" parent="Canvas/GameWindow/BaseActivities/Build"]
 anchor_left = 1.0
 anchor_right = 1.0
@@ -791,18 +777,95 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Craft" type="Control" parent="Canvas/GameWindow/BaseActivities"]
+[node name="Status" type="Control" parent="Canvas/GameWindow/BaseActivities"]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 22 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Status" type="Control" parent="Canvas/GameWindow/BaseActivities"]
+[node name="BG" type="ColorRect" parent="Canvas/GameWindow/BaseActivities/Status"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.454902, 0.109804, 0.109804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Canvas/GameWindow/BaseActivities/Status"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_top = 64.0
+margin_right = -128.0
+margin_bottom = -64.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="ItemList" parent="Canvas/GameWindow/BaseActivities/Status/ScrollContainer"]
+margin_right = 832.0
+margin_bottom = 464.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 14 )
+auto_height = true
+max_columns = 2
+
+[node name="Close" type="Control" parent="Canvas/GameWindow/BaseActivities/Status"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_top = 8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Canvas/GameWindow/BaseActivities/Status/Close"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -76.0
+margin_bottom = 70.0
+icon = ExtResource( 34 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Craft" type="Control" parent="Canvas/GameWindow/BaseActivities"]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="ColorRect" parent="Canvas/GameWindow/BaseActivities/Craft"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.454902, 0.109804, 0.109804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="Control" parent="Canvas/GameWindow/BaseActivities/Craft"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_top = 8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Canvas/GameWindow/BaseActivities/Craft/Close"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -76.0
+margin_bottom = 70.0
+icon = ExtResource( 34 )
+flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -821,6 +884,8 @@ __meta__ = {
 [connection signal="pressed" from="Canvas/GameWindow/Missions/Home/VBoxContainer/HBox2/Drink/VBox/Button/Button" to="Canvas/GameWindow/Missions/Home" method="_on_Drink_Button_pressed"]
 [connection signal="pressed" from="Canvas/GameWindow/Missions/Home/Close/Button" to="Canvas/GameWindow/Missions/Home" method="_on_Close_Button_pressed"]
 [connection signal="pressed" from="Canvas/GameWindow/BaseActivities/Build/Close/Button" to="Canvas/GameWindow/BaseActivities/Build" method="_on_Close_Button_pressed"]
+[connection signal="pressed" from="Canvas/GameWindow/BaseActivities/Status/Close/Button" to="Canvas/GameWindow/BaseActivities/Status" method="_on_Close_Button_pressed"]
+[connection signal="pressed" from="Canvas/GameWindow/BaseActivities/Craft/Close/Button" to="Canvas/GameWindow/BaseActivities/Craft" method="_on_Close_Button_pressed"]
 
 [editable path="Canvas/UI/Status/Health"]
 [editable path="Canvas/UI/Status/Food"]
