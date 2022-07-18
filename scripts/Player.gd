@@ -1,7 +1,7 @@
 extends Node
 
-var thirstRate = 0.08 #per minute
-var hungerRate = 0.02 #per minute
+var thirstRate = 0.09 #per minute
+var hungerRate = 0.03 #per minute
 var regenRate = 0.01 #per minute
 var exhaustRate = 0.1 #per minute
 
@@ -87,3 +87,4 @@ func pass_time(time,sleep=false):
 	change_water(-(time*thirstRate*sleepMult))
 	change_food(-(time*hungerRate*sleepMult))
 	Buildings.runCollector(time)
+	Global.Date.changeTime(time)

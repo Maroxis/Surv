@@ -1,13 +1,46 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://sprites/BG/IconDisc.png" type="Texture" id=1]
 [ext_resource path="res://scripts/SelectLocation.gd" type="Script" id=2]
+[ext_resource path="res://fonts/ResourcesTheme.tres" type="Theme" id=3]
+[ext_resource path="res://sprites/BG/IconRect.png" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 64.0
 
 [node name="SelectLocationBT" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="PlateBG" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -64.0
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 104 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PlateBG"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -37.0
+margin_top = -41.0
+margin_right = 37.0
+theme = ExtResource( 3 )
+text = "00:20"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BG" type="Sprite" parent="."]
 texture = ExtResource( 1 )

@@ -46,15 +46,18 @@ alignment = 1
 margin_top = 3.0
 margin_right = 84.0
 margin_bottom = 44.0
-custom_constants/separation = 20
+custom_constants/separation = 12
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Icon" type="TextureRect" parent="BG/HBoxContainer/Inv/Hbox"]
 self_modulate = Color( 0, 0, 0, 1 )
+margin_top = 4.0
 margin_right = 30.0
-margin_bottom = 41.0
+margin_bottom = 36.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -62,8 +65,8 @@ __meta__ = {
 
 [node name="MaxWeight" type="Label" parent="BG/HBoxContainer/Inv/Hbox"]
 self_modulate = Color( 0, 0, 0, 1 )
-margin_left = 50.0
-margin_right = 82.0
+margin_left = 42.0
+margin_right = 74.0
 margin_bottom = 41.0
 theme = ExtResource( 6 )
 text = "10"
