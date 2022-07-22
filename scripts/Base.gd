@@ -6,7 +6,10 @@ onready var craftScreen = get_node("../../BaseActivities/Craft")
 onready var drinkNode = get_node("VBoxContainer/HBox2/Drink")
 onready var drinkNodeAmm = drinkNode.get_node("VBox/Ammount")
 
-func _on_Close_Button_pressed() -> void:
+func updateGatherTime():
+	return
+
+func _on_Return_Button_pressed() -> void:
 	close()
 
 func _on_Sleep_Button_pressed() -> void:
@@ -20,6 +23,7 @@ func _on_Build_Button_pressed() -> void:
 
 func _on_Craft_Button_pressed() -> void:
 	craftScreen.show()
+	craftScreen.refresh()
 	close(false)
 
 func _on_Status_Button_pressed() -> void:

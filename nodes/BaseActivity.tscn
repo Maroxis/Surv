@@ -93,3 +93,16 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Time" type="Label" parent="VBox"]
+visible = false
+margin_top = 177.0
+margin_right = 128.0
+margin_bottom = 218.0
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Name"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

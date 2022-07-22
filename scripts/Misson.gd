@@ -2,6 +2,7 @@ extends Control
 
 onready var buttonsNode = get_node("../../Buttons")
 onready var missionTravelTime = 0
+onready var gatherTime = {}
 
 func close(showNode = true):
 	if(showNode):
@@ -13,5 +14,4 @@ func updateTravelTime():
 
 func _on_Return_Button_pressed() -> void:
 	Inventory.empty_bag()
-	#Player.pass_time(missionTravelTime)
 	close()

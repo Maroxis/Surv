@@ -163,4 +163,4 @@ func changeWaterLevel(amm,set = false):
 	var ctier = Structure["Collector"]["currentTier"]
 	var tankSize = Structure["Collector"]["tier"+str(ctier)]["benefits"]["tankSize"]
 	Structure["Collector"]["waterLevel"] = clamp(Structure["Collector"]["waterLevel"],0,tankSize)
-	Global.Missions.get_node("Home").drinkNodeAmm.text = str(round(Structure["Collector"]["waterLevel"]))
+	Global.Missions.get_node("Home").drinkNodeAmm.text = str(round(Structure["Collector"]["waterLevel"])) + "W"

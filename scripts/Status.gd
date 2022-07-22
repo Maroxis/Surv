@@ -2,9 +2,6 @@ extends "res://scripts/BaseActivity.gd"
 
 onready var list = get_node("ScrollContainer/ItemList")
 
-func _on_Close_Button_pressed() -> void:
-	close()
-	
 func refresh():
 	list.clear()
 	for structure in Buildings.Structure:
@@ -14,3 +11,7 @@ func refresh():
 				list.add_item(str(bene),null,false)
 				list.add_item(str(cbamm),null,false)
 				list.set_item_custom_fg_color(list.get_item_count()-1,Color(0, 1, 0, 1))
+
+
+func _on_Return_Button_pressed() -> void:
+	close()

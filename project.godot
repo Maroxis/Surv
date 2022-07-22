@@ -20,6 +20,7 @@ Global="*res://scripts/Global.gd"
 Inventory="*res://scripts/Inventory.gd"
 Player="*res://scripts/Player.gd"
 Buildings="*res://scripts/Buildings.gd"
+Tools="*res://scripts/tools.gd"
 
 [display]
 

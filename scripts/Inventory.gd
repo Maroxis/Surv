@@ -27,31 +27,28 @@ onready var resources = {
 		"ammount" : 0,
 		"bagAmmount":0,
 		"weight" : 4.8
+	  },
+	"Clay": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 3.6
+	  },
+	"CopperOre": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 5.2
 	  }
 }
-onready var tools = {
-	"Pickaxe": {
-		"tier" : 0,
-	  },
-	"Axe": {
-		"tier" : 0,
-	  },
-	"Knife": {
-		"tier" : 0,
-	  }
-}
-onready var resPanel = get_node("/root/Game/Canvas/UI/Resources")
-onready var bagNode = get_node("/root/Game/Canvas/UI/Status/TopBar/HBoxContainer/Bag")
-onready var bagNodeTex = bagNode.get_node("TextureProgress")
-
 func _ready() -> void:
 	pass
 
 func empty_bag():
 	for res in resources:
 		resources[res]["ammount"] += resources[res]["bagAmmount"]
+		if resources[res]["ammount"] > 99:
+			resources[res]["ammount"] = 99
 		resources[res]["bagAmmount"] = 0
-		resPanel.update_resource(res,resources[res]["ammount"])
+		Global.ResourcesUI.update_resource(res,resources[res]["ammount"])
 	bagSpaceLeft = bagSize
 	update_bag()
 
@@ -70,5 +67,11 @@ func add_resource_to_bag(res,amm):
 	return true
 
 func update_bag():
-	bagNode.get_node("TextureProgress").value = (1 - bagSpaceLeft / bagSize)*100
-	bagNode.get_node("TextureProgress/Value").text = str(bagSpaceLeft)
+	Global.BagUI.updateBag(bagSpaceLeft,bagSize)
+
+func add_resource(res,amm):
+	if amm < 0 and resources[res]["ammount"] < abs(amm):
+		return false
+	else:
+		resources[res]["ammount"] += amm
+		return true

@@ -10,7 +10,7 @@ func _ready() -> void:
 	Global.Date = self
 
 func changeTime(amm) -> void:
-	time += amm
+	time += int(amm)
 	if(time > 1440):
 		day += floor(time/1440)
 		time = time % 1440
@@ -18,5 +18,4 @@ func changeTime(amm) -> void:
 
 func updateLabels() -> void:
 	dayLabel.text = "Day " + str(day)
-	timeLabel.text = str(floor(time/60)) + ":"
-	timeLabel.text += "00" if(time % 60 == 0) else str(time % 60)
+	timeLabel.text = Global.timeGetFullFormat(time,true)

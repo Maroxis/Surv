@@ -41,7 +41,7 @@ __meta__ = {
 }
 
 [node name="Hbox" type="HBoxContainer" parent="VBox"]
-margin_right = 316.0
+margin_right = 324.0
 margin_bottom = 288.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -68,6 +68,7 @@ __meta__ = {
 }
 
 [node name="VBox" type="VBoxContainer" parent="VBox/Hbox/VBox/BG"]
+margin_top = 16.0
 margin_right = 192.0
 margin_bottom = 288.0
 mouse_filter = 2
@@ -77,20 +78,20 @@ __meta__ = {
 
 [node name="Building" type="TextureRect" parent="VBox/Hbox/VBox/BG/VBox"]
 margin_right = 192.0
-margin_bottom = 143.0
+margin_bottom = 133.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 texture = ExtResource( 2 )
 expand = true
-stretch_mode = 1
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Name" type="Label" parent="VBox/Hbox/VBox/BG/VBox"]
-margin_top = 147.0
+margin_top = 137.0
 margin_right = 192.0
-margin_bottom = 188.0
+margin_bottom = 178.0
 theme = ExtResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Building"
@@ -100,9 +101,9 @@ __meta__ = {
 }
 
 [node name="Button" type="TextureButton" parent="VBox/Hbox/VBox/BG/VBox"]
-margin_top = 192.0
+margin_top = 182.0
 margin_right = 192.0
-margin_bottom = 288.0
+margin_bottom = 272.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
@@ -114,9 +115,9 @@ stretch_mode = 5
 
 [node name="VBox2" type="VBoxContainer" parent="VBox/Hbox"]
 margin_left = 196.0
-margin_right = 316.0
+margin_right = 324.0
 margin_bottom = 288.0
-rect_min_size = Vector2( 120, 0 )
+rect_min_size = Vector2( 128, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -124,12 +125,12 @@ __meta__ = {
 }
 
 [node name="Tier" type="HBoxContainer" parent="VBox/Hbox/VBox2"]
-margin_right = 120.0
+margin_right = 128.0
 margin_bottom = 41.0
 size_flags_horizontal = 3
 
 [node name="Current" type="Label" parent="VBox/Hbox/VBox2/Tier"]
-margin_right = 30.0
+margin_right = 34.0
 margin_bottom = 41.0
 size_flags_horizontal = 3
 theme = ExtResource( 6 )
@@ -141,8 +142,8 @@ __meta__ = {
 }
 
 [node name="Spacer" type="Label" parent="VBox/Hbox/VBox2/Tier"]
-margin_left = 34.0
-margin_right = 85.0
+margin_left = 38.0
+margin_right = 89.0
 margin_bottom = 41.0
 size_flags_horizontal = 3
 theme = ExtResource( 6 )
@@ -154,8 +155,8 @@ __meta__ = {
 }
 
 [node name="Next" type="Label" parent="VBox/Hbox/VBox2/Tier"]
-margin_left = 89.0
-margin_right = 120.0
+margin_left = 93.0
+margin_right = 128.0
 margin_bottom = 41.0
 size_flags_horizontal = 3
 theme = ExtResource( 6 )
@@ -167,7 +168,7 @@ __meta__ = {
 
 [node name="Cost" type="ItemList" parent="VBox/Hbox/VBox2"]
 margin_top = 45.0
-margin_right = 120.0
+margin_right = 128.0
 margin_bottom = 90.0
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -187,7 +188,7 @@ auto_height = true
 
 [node name="Benefits" type="ItemList" parent="VBox"]
 margin_top = 292.0
-margin_right = 316.0
+margin_right = 324.0
 margin_bottom = 337.0
 mouse_filter = 2
 size_flags_horizontal = 3
