@@ -33,9 +33,12 @@ func change_water(amm, set = false):
 	else:
 		water += amm
 	water = clamp(water,0,maxWater)
-	Global.UI.get_node("Status/Water/TextureProgress").value = ceil(water)
-	Global.UI.get_node("Status/Water/TextureProgress/Value").text= str(ceil(water))
+	_upd_water()
 
+func _upd_water():
+	Global.UI.get_node("Status/Water/TextureProgress").value = ceil(water)
+	Global.UI.get_node("Status/Water/TextureProgress").max_value = maxWater
+	Global.UI.get_node("Status/Water/TextureProgress/Value").text= str(ceil(water))
 
 func change_food(amm, set = false):
 	if(food == 0 && amm < 0):

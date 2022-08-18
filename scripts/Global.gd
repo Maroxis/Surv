@@ -4,6 +4,7 @@ var UI
 var Missions
 var Date
 var ResourcesUI
+var ToolsUI
 var BagUI
 
 func timeGetFullFormat(time,lzero = false):

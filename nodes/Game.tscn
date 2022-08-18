@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://sprites/BG/MainMap.png" type="Texture" id=1]
 [ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
@@ -61,6 +61,10 @@
 [ext_resource path="res://sprites/Icons/32x32px/metalBar.png" type="Texture" id=59]
 [ext_resource path="res://sprites/Icons/256x256px/water collector.png" type="Texture" id=60]
 [ext_resource path="res://sprites/Icons/256x256px/wall.png" type="Texture" id=61]
+[ext_resource path="res://nodes/Material.tscn" type="PackedScene" id=62]
+[ext_resource path="res://scripts/ToolsUI.gd" type="Script" id=63]
+[ext_resource path="res://nodes/invExpand.tscn" type="PackedScene" id=64]
+[ext_resource path="res://nodes/playerExpand.tscn" type="PackedScene" id=65]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -113,9 +117,6 @@ margin_right = 1280.0
 margin_bottom = 360.0
 mouse_filter = 2
 texture = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Canvas"]
 layer = 10
@@ -793,6 +794,7 @@ items = [ "Benefits", null, false ]
 [node name="Margin2" type="Control" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Build/ScrollContainer/HBox"]
 margin_left = 1356.0
 margin_right = 1484.0
+margin_bottom = 480.0
 rect_min_size = Vector2( 128, 0 )
 
 [node name="Return" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Build" instance=ExtResource( 40 )]
@@ -877,7 +879,7 @@ theme = ExtResource( 34 )
 scroll_vertical_enabled = false
 
 [node name="HBox" type="HBoxContainer" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft"]
-margin_right = 1960.0
+margin_right = 3112.0
 margin_bottom = 501.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -890,9 +892,13 @@ rect_min_size = Vector2( 312, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Axe" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox" instance=ExtResource( 36 )]
+[node name="Rope" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox" instance=ExtResource( 62 )]
 margin_left = 360.0
 margin_right = 696.0
+
+[node name="Axe" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox" instance=ExtResource( 36 )]
+margin_left = 744.0
+margin_right = 1080.0
 margin_bottom = 501.0
 
 [node name="TextureRect" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Axe/HBoxContainer/VBoxContainer2" index="0"]
@@ -903,64 +909,60 @@ expand = true
 [node name="Name" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Axe/HBoxContainer/VBoxContainer2" index="1"]
 text = "Axe"
 
-[node name="Cost" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Axe/HBoxContainer/VBoxContainer" index="2"]
-items = [ "Cost", null, false ]
-
 [node name="Benefits" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Axe" index="3"]
 margin_bottom = 501.0
-items = [ "Benefits", null, false ]
 
 [node name="Knife" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox" instance=ExtResource( 36 )]
-margin_left = 744.0
-margin_right = 1080.0
+margin_left = 1128.0
+margin_right = 1464.0
 margin_bottom = 501.0
 
 [node name="TextureRect" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Knife/HBoxContainer/VBoxContainer2" index="0"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 45 )
 
-[node name="Cost" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Knife/HBoxContainer/VBoxContainer" index="2"]
-items = [ "Cost", null, false ]
-
 [node name="Benefits" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Knife" index="3"]
 margin_bottom = 501.0
-items = [ "Benefits", null, false ]
 
 [node name="Pickaxe" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox" instance=ExtResource( 36 )]
-margin_left = 1128.0
-margin_right = 1464.0
+margin_left = 1512.0
+margin_right = 1848.0
 margin_bottom = 501.0
 
 [node name="TextureRect" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Pickaxe/HBoxContainer/VBoxContainer2" index="0"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 44 )
 
-[node name="Cost" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Pickaxe/HBoxContainer/VBoxContainer" index="2"]
-items = [ "Cost", null, false ]
-
 [node name="Benefits" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Pickaxe" index="3"]
 margin_bottom = 501.0
-items = [ "Benefits", null, false ]
 
 [node name="Shovel" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox" instance=ExtResource( 36 )]
-margin_left = 1512.0
-margin_right = 1848.0
+margin_left = 1896.0
+margin_right = 2232.0
 margin_bottom = 501.0
 
 [node name="TextureRect" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Shovel/HBoxContainer/VBoxContainer2" index="0"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 19 )
 
-[node name="Cost" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Shovel/HBoxContainer/VBoxContainer" index="2"]
-items = [ "Cost", null, false ]
-
 [node name="Benefits" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Shovel" index="3"]
 margin_bottom = 501.0
-items = [ "Benefits", null, false ]
+
+[node name="Bag" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox" instance=ExtResource( 64 )]
+margin_left = 2280.0
+margin_right = 2616.0
+margin_bottom = 501.0
+
+[node name="Flask" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox" instance=ExtResource( 65 )]
+margin_left = 2664.0
+margin_right = 3000.0
+
+[node name="TextureRect" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Flask/HBoxContainer/VBoxContainer2" index="0"]
+texture = ExtResource( 48 )
 
 [node name="Margin2" type="Control" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox"]
-margin_left = 1896.0
-margin_right = 1960.0
+margin_left = 3048.0
+margin_right = 3112.0
 margin_bottom = 501.0
 rect_min_size = Vector2( 64, 0 )
 size_flags_horizontal = 3
@@ -1200,6 +1202,7 @@ margin_left = 264.0
 margin_right = 340.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 76, 0 )
+script = ExtResource( 63 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1214,27 +1217,27 @@ __meta__ = {
 }
 
 [node name="Axe" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
-self_modulate = Color( 0, 0, 0, 0.25098 )
+modulate = Color( 0, 0, 0, 0.25098 )
 margin_right = 32.0
 margin_bottom = 32.0
 texture = ExtResource( 46 )
 
 [node name="Pickaxe" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
-self_modulate = Color( 0, 0, 0, 0.25098 )
+modulate = Color( 0, 0, 0, 0.25098 )
 margin_left = 36.0
 margin_right = 68.0
 margin_bottom = 32.0
 texture = ExtResource( 44 )
 
 [node name="Knife" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
-self_modulate = Color( 0, 0, 0, 0.25098 )
+modulate = Color( 0, 0, 0, 0.25098 )
 margin_top = 36.0
 margin_right = 32.0
 margin_bottom = 68.0
 texture = ExtResource( 45 )
 
 [node name="Water" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
-self_modulate = Color( 0, 0, 0, 0.25098 )
+modulate = Color( 0, 0, 0, 0.25098 )
 margin_left = 36.0
 margin_top = 36.0
 margin_right = 68.0
@@ -1242,7 +1245,7 @@ margin_bottom = 68.0
 texture = ExtResource( 48 )
 
 [node name="Shovel" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
-self_modulate = Color( 0, 0, 0, 0.25098 )
+modulate = Color( 0, 0, 0, 0.25098 )
 margin_top = 72.0
 margin_right = 32.0
 margin_bottom = 104.0
@@ -1338,6 +1341,7 @@ texture = ExtResource( 57 )
 margin_right = 68.0
 
 [node name="CopperOre" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Resources/GridContainer" instance=ExtResource( 53 )]
+visible = false
 margin_left = 144.0
 margin_top = 39.0
 margin_right = 212.0
@@ -1350,6 +1354,7 @@ texture = ExtResource( 58 )
 margin_right = 68.0
 
 [node name="CopperBar" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Resources/GridContainer" instance=ExtResource( 53 )]
+visible = false
 margin_left = 216.0
 margin_top = 39.0
 margin_right = 284.0
@@ -1422,6 +1427,8 @@ margin_right = 68.0
 [editable path="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Knife"]
 [editable path="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Pickaxe"]
 [editable path="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Shovel"]
+[editable path="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Bag"]
+[editable path="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Flask"]
 [editable path="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/Return"]
 [editable path="Canvas/UI/Status/Health"]
 [editable path="Canvas/UI/Status/Food"]

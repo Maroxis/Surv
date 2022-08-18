@@ -9,6 +9,7 @@ onready var tools = {
 			}
 		},
 		"tier1" : {
+			"craftTime": 20,
 			"cost": {
 				"Stick": 1,
 				"Rock": 2
@@ -26,6 +27,7 @@ onready var tools = {
 			}
 		},
 		"tier1" : {
+			"craftTime": 30,
 			"cost": {
 				"Stick": 1,
 				"Rock": 2
@@ -43,6 +45,7 @@ onready var tools = {
 			}
 		},
 		"tier1" : {
+			"craftTime": 30,
 			"cost": {
 				"Stick": 1,
 				"Rock": 2
@@ -60,6 +63,7 @@ onready var tools = {
 			}
 		},
 		"tier1" : {
+			"craftTime": 30,
 			"cost": {
 				"Stick": 1,
 				"Rock": 2
@@ -73,12 +77,15 @@ onready var tools = {
 
 
 func craftTool(name):
+	removeRes(name)
+	var ctier = tools[name]["currentTier"]
+	Player.pass_time(tools[name]["tier"+str(ctier+1)]["craftTime"])
 	tools[name]["currentTier"] += 1
 	if(name == "Axe" && tools[name]["currentTier"] == 1):
 		Global.Missions.get_node("Woods").active_wood()
 	for mission in Global.Missions.get_children():
 		mission.updateGatherTime()
-	
+	Global.ToolsUI.updateTool(name, tools[name]["currentTier"])	
 
 func checkCost(name):
 	var ctier = tools[name]["currentTier"]
