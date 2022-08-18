@@ -5,27 +5,23 @@ func _ready() -> void:
 	updateTravelTime()
 	
 	gatherTime = {
-	"Water": 10,
-	"Clay": 35
+		"Water": 10,
+		"Clay": 35
 	}
-
+	gatherTimeWBonus = gatherTime
+	
 func updateGatherTime():
-	var ctier = Tools.tools["Shovel"]["currentTier"]
-	var bonus = Tools.tools["Shovel"]["tier"+str(ctier)]["benefits"]["actionMult"]
-	get_node("HBox/Clay/VBox/Time").text = Global.timeGetFullFormat(floor(gatherTime["Clay"]/bonus))
+	var bonus = getToolBonus("Shovel")
+	gatherTimeWBonus["Clay"] = floor(gatherTime["Clay"]/bonus)
+	get_node("HBox/Clay/VBox/Time").text = Global.timeGetFullFormat(gatherTimeWBonus["Clay"])
 
 func _on_Water_Button_pressed() -> void:
 	Player.change_water(Player.maxWater, true)
 	Player.pass_time(floor(gatherTime["Water"]))
 	close()
 
-
 func _on_Close_Button_pressed() -> void:
 	close()
 
-
 func _on_Clay_Button_pressed() -> void:
-	if Inventory.add_resource_to_bag("Clay",2):
-		var ctier = Tools.tools["Shovel"]["currentTier"]
-		var bonus = Tools.tools["Shovel"]["tier"+str(ctier)]["benefits"]["actionMult"]
-		Player.pass_time(floor(gatherTime["Clay"]/bonus))
+	addRes("Clay",2)

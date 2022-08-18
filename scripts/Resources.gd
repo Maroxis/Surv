@@ -8,3 +8,6 @@ func update_resource(res,amm):
 	var count = node.get_node("Count")
 	node.shake()
 	count.text = str(amm)
+
+func shake(name):
+	get_node("GridContainer/"+name).shake(5,true)

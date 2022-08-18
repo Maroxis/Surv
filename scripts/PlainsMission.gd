@@ -5,18 +5,18 @@ func _ready() -> void:
 	updateTravelTime()
 	
 	gatherTime = {
-	"Food": 150
+		"Food": 150
 	}
-
+	gatherTimeWBonus = gatherTime
+	
 func updateGatherTime():
-	return
+	var bonus = getToolBonus("Knife")
+	gatherTimeWBonus["Food"] = floor(gatherTime["Food"]/bonus)
 
 func _on_Food_Button_pressed() -> void:
-	Player.pass_time(floor(gatherTime["Food"]))
+	Player.pass_time(gatherTimeWBonus["Food"])
 	Player.change_food(100, true)
 	close()
-
-
 
 func _on_Close_Button_pressed() -> void:
 	close()

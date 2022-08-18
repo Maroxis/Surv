@@ -49,11 +49,9 @@ __meta__ = {
 margin_bottom = 41.0
 
 [node name="TextureRect" parent="List/Items/Leaf" index="0"]
-margin_right = 32.0
 texture = ExtResource( 8 )
 
 [node name="Count" parent="List/Items/Leaf" index="1"]
-margin_left = 36.0
 text = "327"
 
 [node name="Stick" parent="List/Items" instance=ExtResource( 3 )]
@@ -61,44 +59,28 @@ margin_top = 45.0
 margin_bottom = 86.0
 
 [node name="TextureRect" parent="List/Items/Stick" index="0"]
-margin_right = 32.0
 texture = ExtResource( 4 )
-
-[node name="Count" parent="List/Items/Stick" index="1"]
-margin_left = 36.0
 
 [node name="Wood" parent="List/Items" instance=ExtResource( 3 )]
 margin_top = 90.0
 margin_bottom = 131.0
 
 [node name="TextureRect" parent="List/Items/Wood" index="0"]
-margin_right = 32.0
 texture = ExtResource( 5 )
-
-[node name="Count" parent="List/Items/Wood" index="1"]
-margin_left = 36.0
 
 [node name="Rope" parent="List/Items" instance=ExtResource( 3 )]
 margin_top = 135.0
 margin_bottom = 176.0
 
 [node name="TextureRect" parent="List/Items/Rope" index="0"]
-margin_right = 32.0
 texture = ExtResource( 7 )
-
-[node name="Count" parent="List/Items/Rope" index="1"]
-margin_left = 36.0
 
 [node name="Rock" parent="List/Items" instance=ExtResource( 3 )]
 margin_top = 180.0
 margin_bottom = 221.0
 
 [node name="TextureRect" parent="List/Items/Rock" index="0"]
-margin_right = 32.0
 texture = ExtResource( 6 )
-
-[node name="Count" parent="List/Items/Rock" index="1"]
-margin_left = 36.0
 
 [node name="Button" type="Button" parent="."]
 margin_left = -65.0

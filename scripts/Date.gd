@@ -13,6 +13,7 @@ func changeTime(amm) -> void:
 	time += int(amm)
 	if(time > 1440):
 		day += floor(time/1440)
+		Events.check_date(day)
 		time = time % 1440
 	updateLabels()
 

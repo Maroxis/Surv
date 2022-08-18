@@ -11,3 +11,6 @@ func updateBag(emp,mx):
 	if(emp != mx):
 		texProg.shake()
 	texVal.text = str(emp)
+
+func shake():
+	texProg.shake(5,0.05,true)

@@ -5,24 +5,21 @@ func _ready() -> void:
 	updateTravelTime()
 	
 	gatherTime = {
-	"Rocks": 30,
-	"CopperOre": 50
+		"Rock": 30,
+		"CopperOre": 50
 	}
-
+	gatherTimeWBonus = gatherTime
+	
 func updateGatherTime():
-	var ctier = Tools.tools["Pickaxe"]["currentTier"]
-	var bonus = Tools.tools["Pickaxe"]["tier"+str(ctier)]["benefits"]["actionMult"]
-	get_node("HBox/Rocks/VBox/Time").text = Global.timeGetFullFormat(floor(gatherTime["Rocks"]/bonus))
-	get_node("HBox/CopperOre/VBox/Time").text = Global.timeGetFullFormat(floor(gatherTime["CopperOre"]/bonus))
+	var bonus = getToolBonus("Pickaxe")
+	gatherTimeWBonus["Rock"] = floor(gatherTime["Rock"]/bonus)
+	gatherTimeWBonus["CopperOre"] = floor(gatherTime["CopperOre"]/bonus)
+	
+	get_node("HBox/Rocks/VBox/Time").text = Global.timeGetFullFormat(gatherTimeWBonus["Rock"])
+	get_node("HBox/CopperOre/VBox/Time").text = Global.timeGetFullFormat(gatherTimeWBonus["CopperOre"])
 
 func _on_Rocks_Button_pressed() -> void:
-	if Inventory.add_resource_to_bag("Rock",10):
-		var ctier = Tools.tools["Pickaxe"]["currentTier"]
-		var bonus = Tools.tools["Pickaxe"]["tier"+str(ctier)]["benefits"]["actionMult"]
-		Player.pass_time(floor(gatherTime["Rocks"]/bonus))
+	addRes("Rock",10)
 
 func _on_CopperOre_Button_pressed() -> void:
-	if Inventory.add_resource_to_bag("CopperOre",3):
-		var ctier = Tools.tools["Pickaxe"]["currentTier"]
-		var bonus = Tools.tools["Pickaxe"]["tier"+str(ctier)]["benefits"]["actionMult"]
-		Player.pass_time(floor(gatherTime["CopperOre"]/bonus))
+	addRes("CopperOre",3)
