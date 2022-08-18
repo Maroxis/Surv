@@ -10,19 +10,21 @@ var maxFood = 100
 var maxHealth = 100
 var maxEnergy = 100
 
+var lowWarning = 10
+
 var water = 40.0
 var food = 80.0
 var health = 100.0
 var energy = 100.0
 
 func refresh_status():
-	Global.UI.get_node("Status/Water/TextureProgress").value = ceil(water)
+	Global.UI.get_node("Status/Water/TextureProgress").animateValue(ceil(water))
 	Global.UI.get_node("Status/Water/TextureProgress/Value").text= str(ceil(water))
-	Global.UI.get_node("Status/Food/TextureProgress").value = ceil(food)
+	Global.UI.get_node("Status/Food/TextureProgress").animateValue(ceil(food))
 	Global.UI.get_node("Status/Food/TextureProgress/Value").text= str(ceil(food))
-	Global.UI.get_node("Status/Health/TextureProgress").value = ceil(health)
+	Global.UI.get_node("Status/Health/TextureProgress").animateValue(ceil(health))
 	Global.UI.get_node("Status/Health/TextureProgress/Value").text= str(ceil(health))
-	Global.UI.get_node("Status/Energy/TextureProgress").value = ceil(energy)
+	Global.UI.get_node("Status/Energy/TextureProgress").animateValue(ceil(energy))
 	Global.UI.get_node("Status/Energy/TextureProgress/Value").text= str(ceil(energy))
 
 func change_water(amm, set = false):
@@ -33,13 +35,18 @@ func change_water(amm, set = false):
 	else:
 		water += amm
 	water = clamp(water,0,maxWater)
-	_upd_water()
+	_upd_water(amm)
 
-func _upd_water():
-	Global.UI.get_node("Status/Water/TextureProgress").value = ceil(water)
-	Global.UI.get_node("Status/Water/TextureProgress").max_value = maxWater
+func _upd_water(amm):
+	Global.UI.get_node("Status/Water/TextureProgress").animateValue(ceil(water))
+	if(water < lowWarning && amm < 0):
+		Global.UI.get_node("Status/Water/TextureProgress").shake()
 	Global.UI.get_node("Status/Water/TextureProgress/Value").text= str(ceil(water))
-
+	
+func upd_max_water(mx):
+	maxWater += mx
+	Global.UI.get_node("Status/Water/TextureProgress").max_value += mx
+	
 func change_food(amm, set = false):
 	if(food == 0 && amm < 0):
 		change_health(amm*2)
@@ -48,7 +55,9 @@ func change_food(amm, set = false):
 	else:
 		food += amm
 	food = clamp(food,0,maxFood)
-	Global.UI.get_node("Status/Food/TextureProgress").value = ceil(food)
+	Global.UI.get_node("Status/Food/TextureProgress").animateValue(ceil(food))
+	if(food < lowWarning && amm < 0):
+		Global.UI.get_node("Status/Food/TextureProgress").shake()
 	Global.UI.get_node("Status/Food/TextureProgress/Value").text= str(ceil(food))
 	
 func change_health(amm, set = false):
@@ -57,7 +66,9 @@ func change_health(amm, set = false):
 	else:
 		health += amm
 	health = clamp(health,0,maxHealth)
-	Global.UI.get_node("Status/Health/TextureProgress").value = ceil(health)
+	Global.UI.get_node("Status/Health/TextureProgress").animateValue(ceil(health))
+	if(health < lowWarning && amm < 0):
+		Global.UI.get_node("Status/Health/TextureProgress").shake()
 	Global.UI.get_node("Status/Health/TextureProgress/Value").text= str(ceil(health))
 
 func change_energy(amm, set = false):
@@ -68,7 +79,9 @@ func change_energy(amm, set = false):
 	else:
 		energy += amm
 	energy = clamp(energy,0,maxEnergy)
-	Global.UI.get_node("Status/Energy/TextureProgress").value = ceil(energy)
+	Global.UI.get_node("Status/Energy/TextureProgress").animateValue(ceil(energy))
+	if(energy < lowWarning && amm < 0):
+		Global.UI.get_node("Status/Energy/TextureProgress").shake()
 	Global.UI.get_node("Status/Energy/TextureProgress/Value").text= str(ceil(energy))
 
 func sleep():

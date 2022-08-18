@@ -7,5 +7,7 @@ func _ready() -> void:
 	Global.BagUI = self
 
 func updateBag(emp,mx):
-	texProg.value = (1 - emp / mx)*100
+	texProg.animateValue(float((1 - emp / mx)*100))
+	if(emp != mx):
+		texProg.shake()
 	texVal.text = str(emp)

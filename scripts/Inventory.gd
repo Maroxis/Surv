@@ -76,9 +76,12 @@ func _ready() -> void:
 	pass
 
 func empty_bag():
+	var amm
 	for res in resources:
-		add_resource(res,resources[res]["bagAmmount"])
-		resources[res]["bagAmmount"] = 0
+		amm = resources[res]["bagAmmount"]
+		if(amm > 0):
+			add_resource(res,amm)
+			resources[res]["bagAmmount"] = 0
 	bagSpaceLeft = bagSize
 	update_bag()
 
@@ -140,6 +143,6 @@ func expand_water(item):
 	for mat in upgrades[item]["cost"]:
 		add_resource(mat, -(upgrades[item]["cost"][mat]))
 	upgrades[item]["obtained"] = true
-	Player.maxWater += upgrades[item]["size"]
+	Player.upd_max_water(upgrades[item]["size"]) 
 	Player.pass_time(upgrades[item]["craftTime"])
 	return true
