@@ -52,13 +52,22 @@ valign = 1
 [node name="Desc" type="Label" parent="NinePatchRect/HBoxContainer/VBoxContainer"]
 margin_top = 165.0
 margin_right = 260.0
-margin_bottom = 426.0
+margin_bottom = 382.0
 theme = ExtResource( 2 )
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tristique non est at aliquam."
+text = "Desc
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+autowrap = true
+
+[node name="Result" type="Label" parent="NinePatchRect/HBoxContainer/VBoxContainer"]
+margin_top = 386.0
+margin_right = 260.0
+margin_bottom = 427.0
+theme = ExtResource( 2 )
+text = "Result"
 autowrap = true
 
 [node name="Control" type="Control" parent="NinePatchRect/HBoxContainer/VBoxContainer"]
-margin_top = 430.0
+margin_top = 431.0
 margin_right = 260.0
 margin_bottom = 492.0
 size_flags_vertical = 3

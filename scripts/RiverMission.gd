@@ -8,7 +8,7 @@ func _ready() -> void:
 		"Water": 10,
 		"Clay": 35
 	}
-	gatherTimeWBonus = gatherTime
+	gatherTimeWBonus = gatherTime.duplicate()
 	
 func updateGatherTime():
 	var bonus = getToolBonus("Shovel")

@@ -210,9 +210,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 128.0
 script = ExtResource( 24 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Woods" type="Control" parent="Canvas/CanvasLayer/GameWindow/Missions"]
 visible = false
@@ -237,9 +234,6 @@ anchor_bottom = 1.0
 margin_left = 192.0
 margin_right = -128.0
 margin_bottom = -128.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Wood" parent="Canvas/CanvasLayer/GameWindow/Missions/Woods/HBox" instance=ExtResource( 12 )]
 anchor_right = 0.0
@@ -255,7 +249,7 @@ custom_colors/font_color = Color( 1, 1, 0, 1 )
 text = "Axe Required"
 
 [node name="Button" parent="Canvas/CanvasLayer/GameWindow/Missions/Woods/HBox/Wood/VBox" index="1"]
-modulate = Color( 1, 1, 1, 0.376471 )
+modulate = Color( 1, 1, 1, 0.4 )
 
 [node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Missions/Woods/HBox/Wood/VBox/Button" index="1"]
 texture = ExtResource( 13 )

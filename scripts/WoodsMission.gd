@@ -10,14 +10,14 @@ func _ready() -> void:
 		"Leaf": 20,
 		"Rock": 40
 	}
-	gatherTimeWBonus = gatherTime
+	gatherTimeWBonus = gatherTime.duplicate()
 
 func updateGatherTime():
 	var bonus
 	bonus = getToolBonus("Axe")
 	gatherTimeWBonus["Wood"] = floor(gatherTime["Wood"]/bonus)
 	gatherTimeWBonus["Sticks"] = floor(gatherTime["Stick"]/bonus)
-	
+
 	bonus = getToolBonus("Knife")
 	gatherTimeWBonus["Leaves"] = floor(gatherTime["Leaf"]/bonus)
 	
@@ -42,3 +42,9 @@ func active_wood():
 	bt.modulate = Color(1,1,1,1)
 	bt.get_node("Button").disabled = false
 	get_node("HBox/Wood/VBox/ToolReq").visible = false
+	
+func deactive_wood():
+	var bt = get_node("HBox/Wood/VBox/Button")
+	bt.modulate = Color(1,1,1,0.4)
+	bt.get_node("Button").disabled = true
+	get_node("HBox/Wood/VBox/ToolReq").visible = true

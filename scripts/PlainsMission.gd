@@ -7,7 +7,7 @@ func _ready() -> void:
 	gatherTime = {
 		"Food": 150
 	}
-	gatherTimeWBonus = gatherTime
+	gatherTimeWBonus = gatherTime.duplicate()
 	
 func updateGatherTime():
 	var bonus = getToolBonus("Knife")

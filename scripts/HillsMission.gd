@@ -8,7 +8,7 @@ func _ready() -> void:
 		"Rock": 30,
 		"CopperOre": 50
 	}
-	gatherTimeWBonus = gatherTime
+	gatherTimeWBonus = gatherTime.duplicate()
 	
 func updateGatherTime():
 	var bonus = getToolBonus("Pickaxe")
