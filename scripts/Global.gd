@@ -6,6 +6,7 @@ var Date
 var ResourcesUI
 var ToolsUI
 var BagUI
+var EventPopup
 
 func timeGetFullFormat(time,lzero = false):
 	time = int(time)

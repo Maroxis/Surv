@@ -17,6 +17,16 @@ onready var tools = {
 			"benefits":{
 				"actionMult": 1.2
 			}
+		},
+		"tier2" : {
+			"craftTime": 30,
+			"cost": {
+				"Stick": 4,
+				"Rock": 2
+			},
+			"benefits":{
+				"actionMult": 1.4
+			}
 		}
 	},
 	"Knife": {

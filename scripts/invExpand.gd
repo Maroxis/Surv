@@ -1,10 +1,11 @@
-extends VBoxContainer
+extends Craftable
 
 onready var benefitNr = $"%Benefit"
 onready var cost = $"%Cost"
 onready var timeLb = $"%Time"
 onready var expAmm = Inventory.upgrades[self.name]["size"]
 onready var nameLb = $"%Name"
+onready var button = $HBoxContainer2/CraftButton
 
 func refresh():
 	benefitNr.text = "+" + str(expAmm)
@@ -24,4 +25,5 @@ func _updateTime():
 
 func _on_CraftButton_pressed() -> void:
 	if(Inventory.expand_bag(self.name)):
-		self.visible = false
+		button.disabled = true
+		fade()

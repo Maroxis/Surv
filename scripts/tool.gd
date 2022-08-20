@@ -1,10 +1,11 @@
-extends Control
+extends Craftable
 
 onready var tName = get_node("HBoxContainer/VBoxContainer2/Name")
 onready var tier = $HBoxContainer/VBoxContainer2/Tier
 onready var cost = get_node("HBoxContainer/VBoxContainer/Cost")
 onready var benefits = get_node("Benefits")
 onready var button = get_node("HBoxContainer2/CraftButton")
+#onready var btOrgPos = button.rect_position
 onready var timeLb = $"%Time"
 
 func refresh():
@@ -15,15 +16,16 @@ func refresh():
 		_updateBene(ctier,false)
 		_updateTime()
 		self.tier.get_node("Next").text = str(ctier+1)
+		self.tier.get_node("Current").text = str(ctier)
 	else:
-		_updateBene(ctier,true)
-		self.tier.get_node("Next").visible = false
-		self.tier.get_node("Spacer").visible = false
-		self.timeLb.text = ""
-		self.button.disabled = true
-		self.button.self_modulate = Color( 1, 1, 1, 0.2 )
-	self.tier.get_node("Current").text = str(ctier)
-	
+		button.disabled = true
+		fade()
+#		_updateBene(ctier,true)
+#		self.tier.get_node("Next").visible = false
+#		self.tier.get_node("Spacer").visible = false
+#		self.timeLb.text = ""
+#		self.button.disabled = true
+#		self.button.self_modulate = Color( 1, 1, 1, 0.2 )
 
 func _updateCost(ctier):
 	self.cost.clear()
@@ -51,6 +53,7 @@ func _updateBene(ctier,lastTier):
 func _on_CraftButton_pressed() -> void:
 	if(Tools.checkCost(self.name)):
 		Tools.craftTool(self.name)
+#		craftBtAnim(button,btOrgPos)
 		refresh()
 
 func _updateTime():

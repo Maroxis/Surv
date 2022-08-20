@@ -5,16 +5,20 @@ onready var time = 720
 onready var dayLabel = get_node("TextureRect/VBoxContainer/Day")
 onready var timeLabel = get_node("TextureRect/VBoxContainer/Time")
 
+signal newDay 
+
 func _ready() -> void:
 	updateLabels()
 	Global.Date = self
+	connect("newDay", Events, "check_event")
+	
 
 func changeTime(amm) -> void:
 	time += int(amm)
 	if(time > 1440):
 		day += floor(time/1440)
-		Events.check_date(day)
 		time = time % 1440
+		emit_signal("newDay", day)
 	updateLabels()
 
 func updateLabels() -> void:

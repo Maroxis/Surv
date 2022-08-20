@@ -1,9 +1,9 @@
-extends VBoxContainer
+extends Craftable
 
 onready var tName = get_node("HBoxContainer/VBoxContainer2/Name")
 onready var cost = get_node("HBoxContainer/VBoxContainer/Cost")
 onready var button = get_node("HBoxContainer2/CraftButton")
-onready var timeLb = $"%Time"
+onready var timeLb = $HBoxContainer2/Time
 
 func refresh():
 	self.tName.text = self.name
@@ -16,6 +16,7 @@ func refresh():
 	
 func _on_CraftButton_pressed() -> void:
 	if Inventory.check_cost(self.name):
+#		craftBtAnim(button,btOrgPos)
 		Inventory.craft_item(self.name)
 
 func _updateTime():

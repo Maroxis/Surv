@@ -128,7 +128,6 @@ __meta__ = {
 }
 
 [node name="Time" type="Label" parent="HBoxContainer2"]
-unique_name_in_owner = true
 margin_left = 225.0
 margin_top = 11.0
 margin_right = 336.0

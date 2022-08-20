@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://sprites/BG/MainMap.png" type="Texture" id=1]
 [ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
@@ -53,6 +53,7 @@
 [ext_resource path="res://sprites/Icons/32x32px/rope.png" type="Texture" id=51]
 [ext_resource path="res://sprites/Icons/32x32px/branch.png" type="Texture" id=52]
 [ext_resource path="res://nodes/ItemCount.tscn" type="PackedScene" id=53]
+[ext_resource path="res://sprites/BG/IconRect.png" type="Texture" id=54]
 [ext_resource path="res://sprites/Icons/128x128px/Wenrexa Pickaxe.png" type="Texture" id=55]
 [ext_resource path="res://sprites/Icons/64x64px/clay.png" type="Texture" id=56]
 [ext_resource path="res://sprites/Icons/32x32px/clay.png" type="Texture" id=57]
@@ -64,6 +65,8 @@
 [ext_resource path="res://scripts/ToolsUI.gd" type="Script" id=63]
 [ext_resource path="res://nodes/invExpand.tscn" type="PackedScene" id=64]
 [ext_resource path="res://nodes/playerExpand.tscn" type="PackedScene" id=65]
+[ext_resource path="res://scripts/NodeAnimated.gd" type="Script" id=66]
+[ext_resource path="res://nodes/EventPopup.tscn" type="PackedScene" id=67]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -90,6 +93,36 @@ HScrollBar/styles/scroll_focus = SubResource( 5 )
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.454902, 0.109804, 0.109804, 1 )
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "btClick"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.217638, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.14902, 1, 0, 1 ) ]
+}
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 23 )
@@ -899,6 +932,9 @@ margin_right = 696.0
 margin_left = 744.0
 margin_right = 1080.0
 margin_bottom = 501.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Axe/HBoxContainer/VBoxContainer2" index="0"]
 modulate = Color( 0, 0, 0, 1 )
@@ -908,49 +944,91 @@ expand = true
 [node name="Name" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Axe/HBoxContainer/VBoxContainer2" index="1"]
 text = "Axe"
 
+[node name="Cost" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Axe/HBoxContainer/VBoxContainer" index="1"]
+items = [ "Cost", null, false ]
+
 [node name="Benefits" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Axe" index="3"]
 margin_bottom = 501.0
+items = [ "Benefits", null, false ]
 
 [node name="Knife" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox" instance=ExtResource( 36 )]
 margin_left = 1128.0
 margin_right = 1464.0
 margin_bottom = 501.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Knife/HBoxContainer/VBoxContainer2" index="0"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 45 )
 
+[node name="Cost" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Knife/HBoxContainer/VBoxContainer" index="1"]
+items = [ "Cost", null, false ]
+
 [node name="Benefits" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Knife" index="3"]
 margin_bottom = 501.0
+items = [ "Benefits", null, false ]
 
 [node name="Pickaxe" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox" instance=ExtResource( 36 )]
 margin_left = 1512.0
 margin_right = 1848.0
 margin_bottom = 501.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Pickaxe/HBoxContainer/VBoxContainer2" index="0"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 44 )
 
+[node name="Cost" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Pickaxe/HBoxContainer/VBoxContainer" index="1"]
+items = [ "Cost", null, false ]
+
+[node name="BG" type="TextureRect" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Pickaxe/HBoxContainer2/CraftButton" index="0"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 54 )
+expand = true
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Pickaxe/HBoxContainer2/CraftButton" index="1"]
+anims/RESET = SubResource( 8 )
+anims/btClick = SubResource( 9 )
+
 [node name="Benefits" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Pickaxe" index="3"]
 margin_bottom = 501.0
+items = [ "Benefits", null, false ]
 
 [node name="Shovel" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox" instance=ExtResource( 36 )]
 margin_left = 1896.0
 margin_right = 2232.0
 margin_bottom = 501.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Shovel/HBoxContainer/VBoxContainer2" index="0"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 19 )
 
+[node name="Cost" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Shovel/HBoxContainer/VBoxContainer" index="1"]
+items = [ "Cost", null, false ]
+
 [node name="Benefits" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Shovel" index="3"]
 margin_bottom = 501.0
+items = [ "Benefits", null, false ]
 
 [node name="Bag" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox" instance=ExtResource( 64 )]
 margin_left = 2280.0
 margin_right = 2616.0
 margin_bottom = 501.0
+
+[node name="Cost" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Bag/HBoxContainer" index="1"]
+items = [ "Cost", null, false ]
 
 [node name="Flask" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox" instance=ExtResource( 65 )]
 margin_left = 2664.0
@@ -958,6 +1036,9 @@ margin_right = 3000.0
 
 [node name="TextureRect" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Flask/HBoxContainer/VBoxContainer2" index="0"]
 texture = ExtResource( 48 )
+
+[node name="Cost" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Flask/HBoxContainer" index="1"]
+items = [ "Cost", null, false ]
 
 [node name="Margin2" type="Control" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox"]
 margin_left = 3048.0
@@ -984,9 +1065,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Status" type="CanvasLayer" parent="Canvas/UI"]
 layer = 100
@@ -1000,64 +1078,61 @@ margin_right = 300.0
 rect_min_size = Vector2( 300, 300 )
 texture = ExtResource( 41 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Health" parent="Canvas/UI/Status" instance=ExtResource( 6 )]
+[node name="Health" parent="Canvas/UI/Status/TextureRect" instance=ExtResource( 6 )]
 margin_left = 72.0
-margin_top = 624.0
+margin_top = 204.0
 margin_right = 72.0
-margin_bottom = 624.0
+margin_bottom = 204.0
 mouse_filter = 2
 
-[node name="TextureProgress" parent="Canvas/UI/Status/Health" index="0"]
+[node name="TextureProgress" parent="Canvas/UI/Status/TextureRect/Health" index="0"]
 value = 100.0
 texture_under = ExtResource( 28 )
 texture_progress = ExtResource( 28 )
 
-[node name="TextureRect" parent="Canvas/UI/Status/Health/TextureProgress" index="0"]
+[node name="TextureRect" parent="Canvas/UI/Status/TextureRect/Health/TextureProgress" index="0"]
 margin_left = -31.0
 margin_top = -33.0
 margin_right = 97.0
 margin_bottom = 95.0
 texture = ExtResource( 18 )
 
-[node name="Food" parent="Canvas/UI/Status" instance=ExtResource( 6 )]
+[node name="Food" parent="Canvas/UI/Status/TextureRect" instance=ExtResource( 6 )]
 margin_left = 168.0
-margin_top = 555.0
+margin_top = 135.0
 margin_right = 168.0
-margin_bottom = 555.0
+margin_bottom = 135.0
 
-[node name="TextureProgress" parent="Canvas/UI/Status/Food" index="0"]
+[node name="TextureProgress" parent="Canvas/UI/Status/TextureRect/Food" index="0"]
 value = 100.0
 
-[node name="TextureRect" parent="Canvas/UI/Status/Food/TextureProgress" index="0"]
+[node name="TextureRect" parent="Canvas/UI/Status/TextureRect/Food/TextureProgress" index="0"]
 margin_left = -32.0
 margin_top = -31.0
 margin_right = 96.0
 margin_bottom = 97.0
 texture = ExtResource( 7 )
 
-[node name="Water" parent="Canvas/UI/Status" instance=ExtResource( 6 )]
+[node name="Water" parent="Canvas/UI/Status/TextureRect" instance=ExtResource( 6 )]
 margin_left = 68.0
-margin_top = 523.0
+margin_top = 103.0
 margin_right = 68.0
-margin_bottom = 523.0
+margin_bottom = 103.0
 
-[node name="TextureProgress" parent="Canvas/UI/Status/Water" index="0"]
+[node name="TextureProgress" parent="Canvas/UI/Status/TextureRect/Water" index="0"]
 value = 100.0
 
-[node name="Energy" parent="Canvas/UI/Status" instance=ExtResource( 6 )]
+[node name="Energy" parent="Canvas/UI/Status/TextureRect" instance=ExtResource( 6 )]
 margin_left = 206.0
-margin_top = 653.0
+margin_top = 233.0
 margin_right = 206.0
-margin_bottom = 653.0
+margin_bottom = 233.0
 
-[node name="TextureProgress" parent="Canvas/UI/Status/Energy" index="0"]
+[node name="TextureProgress" parent="Canvas/UI/Status/TextureRect/Energy" index="0"]
 value = 100.0
 
-[node name="TextureRect" parent="Canvas/UI/Status/Energy/TextureProgress" index="0"]
+[node name="TextureRect" parent="Canvas/UI/Status/TextureRect/Energy/TextureProgress" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -1170,44 +1245,46 @@ margin_top = 10.0
 margin_right = 40.0
 margin_bottom = 40.0
 columns = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Axe" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
-modulate = Color( 0, 0, 0, 0.25098 )
+modulate = Color( 0, 0, 0, 0.188235 )
 margin_right = 32.0
 margin_bottom = 32.0
 texture = ExtResource( 46 )
+script = ExtResource( 66 )
 
 [node name="Pickaxe" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
-modulate = Color( 0, 0, 0, 0.25098 )
+modulate = Color( 0, 0, 0, 0.188235 )
 margin_left = 36.0
 margin_right = 68.0
 margin_bottom = 32.0
 texture = ExtResource( 44 )
+script = ExtResource( 66 )
 
 [node name="Knife" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
-modulate = Color( 0, 0, 0, 0.25098 )
+modulate = Color( 0, 0, 0, 0.188235 )
 margin_top = 36.0
 margin_right = 32.0
 margin_bottom = 68.0
 texture = ExtResource( 45 )
+script = ExtResource( 66 )
 
 [node name="Water" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
-modulate = Color( 0, 0, 0, 0.25098 )
+modulate = Color( 0, 0, 0, 0.188235 )
 margin_left = 36.0
 margin_top = 36.0
 margin_right = 68.0
 margin_bottom = 68.0
 texture = ExtResource( 48 )
+script = ExtResource( 66 )
 
 [node name="Shovel" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
-modulate = Color( 0, 0, 0, 0.25098 )
+modulate = Color( 0, 0, 0, 0.188235 )
 margin_top = 72.0
 margin_right = 32.0
 margin_bottom = 104.0
 texture = ExtResource( 19 )
+script = ExtResource( 66 )
 
 [node name="Control" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
 margin_left = 344.0
@@ -1324,6 +1401,9 @@ texture = ExtResource( 59 )
 [node name="Count" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Resources/GridContainer/CopperBar" index="1"]
 margin_right = 68.0
 
+[node name="EventPopup" parent="Canvas/UI/Status" instance=ExtResource( 67 )]
+unique_name_in_owner = true
+
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Woods/HBox/Wood/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Woods" method="_on_Wood_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Woods/HBox/Sticks/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Woods" method="_on_Sticks_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Woods/HBox/Leaves/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Woods" method="_on_Leaves_Button_pressed"]
@@ -1388,10 +1468,10 @@ margin_right = 68.0
 [editable path="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Bag"]
 [editable path="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/TabContainer/Hand Craft/HBox/Flask"]
 [editable path="Canvas/CanvasLayer/GameWindow/BaseActivities/Craft/Return"]
-[editable path="Canvas/UI/Status/Health"]
-[editable path="Canvas/UI/Status/Food"]
-[editable path="Canvas/UI/Status/Water"]
-[editable path="Canvas/UI/Status/Energy"]
+[editable path="Canvas/UI/Status/TextureRect/Health"]
+[editable path="Canvas/UI/Status/TextureRect/Food"]
+[editable path="Canvas/UI/Status/TextureRect/Water"]
+[editable path="Canvas/UI/Status/TextureRect/Energy"]
 [editable path="Canvas/UI/Status/TopBar/Control/HBoxContainer/Resources/GridContainer/Leaf"]
 [editable path="Canvas/UI/Status/TopBar/Control/HBoxContainer/Resources/GridContainer/Stick"]
 [editable path="Canvas/UI/Status/TopBar/Control/HBoxContainer/Resources/GridContainer/Wood"]

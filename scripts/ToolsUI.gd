@@ -12,3 +12,4 @@ func updateTool(tl,tier):
 			node.modulate = Color(1,0.5,0,1)
 		3:
 			node.modulate = Color(1,1,1,1)
+	node.shake(5)
