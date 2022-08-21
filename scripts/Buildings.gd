@@ -122,7 +122,7 @@ onready var Structure = {
 		},
 		"tier1" : {
 			"cost": {
-				"Wood": 12
+				"Stick": 12
 			},
 			"benefits":{
 			}
@@ -144,6 +144,11 @@ func build(building):
 	removeResources(building)
 	Structure[building]["currentTier"] += 1
 
+func demolish(building):
+	if(building == "Collector"):
+		Global.Missions.get_node("Home").activateDrink()
+	Structure[building]["currentTier"] -= 1
+	
 func removeResources(building):
 	var ctier = Structure[building]["currentTier"]
 	for mat in Structure[building]["tier"+str(ctier+1)]["cost"]:

@@ -42,3 +42,7 @@ func _on_Drink_Button_pressed() -> void:
 func activateDrink():
 	drinkNode.modulate = Color(1,1,1,1)
 	drinkNode.get_node("VBox/Button/Button").disabled = false
+	
+func deactivateDrink():
+	drinkNode.modulate = Color(1,1,1,0.4)
+	drinkNode.get_node("VBox/Button/Button").disabled = true

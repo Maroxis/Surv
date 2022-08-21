@@ -4,6 +4,7 @@ var thirstRate = 0.09 #per minute
 var hungerRate = 0.03 #per minute
 var regenRate = 0.01 #per minute
 var exhaustRate = 0.1 #per minute
+var sickRate = 0.002 #per minute
 
 var maxWater = 100
 var maxFood = 100
@@ -16,6 +17,8 @@ var water = 40.0
 var food = 80.0
 var health = 100.0
 var energy = 100.0
+
+var sick = 0
 
 func refresh_status():
 	Global.UI.water.get_node("TextureProgress").animateValue(ceil(water))
@@ -87,20 +90,37 @@ func change_energy(amm, set = false):
 func sleep():
 	var sleepTime = 360
 	pass_time(sleepTime,true)
+	
 func pass_time(time,sleep=false):
 	var sleepMult = 1
 	var sleepRegenMult = 1
+	var sickPenaltyMlt = 1.0 if sick < 20 else 0.8
 	if(sleep):
 		var ctier = Buildings.Structure["House"]["currentTier"]
 		var houseb = Buildings.Structure["House"]["tier"+str(ctier)]["benefits"]
 		sleepMult = houseb["sleepMult"]
 		sleepRegenMult= houseb["sleepRegenMult"]
-		change_energy(maxEnergy,true)
+		change_energy(maxEnergy-sick)
 	else:
 		change_energy(-(time*exhaustRate))
-	if(food > 60 && water > 40):
-		change_health(time*regenRate*sleepRegenMult)
-	change_water(-(time*thirstRate*sleepMult))
-	change_food(-(time*hungerRate*sleepMult))
+		
+	if(food > 50 && water > 30 && sick < 50):
+		change_health(time*regenRate*sleepRegenMult*sickPenaltyMlt)
+	elif(sick > 80):
+		change_health(-(time*regenRate))
+	
+	change_water(-(time*thirstRate*sleepMult*sickPenaltyMlt*sickPenaltyMlt))
+	change_food(-(time*hungerRate*sleepMult*sickPenaltyMlt))
+	
+	if(sick > 0):
+		var fullBonus = 2 if food > 50 and water > 50 else 1
+		change_sick(-(sickRate*time*sleepRegenMult*fullBonus))
+
 	Buildings.runCollector(time)
 	Global.Date.changeTime(time)
+	
+func change_sick(amm):
+	sick += amm
+	sick = clamp(sick,0,100)
+	Global.UI.health.get_node("SickProgress").animateValue(ceil(sick))
+	

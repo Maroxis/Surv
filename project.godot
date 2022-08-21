@@ -9,15 +9,15 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Control",
+"base": "Node",
 "class": "Craftable",
 "language": "GDScript",
-"path": "res://scripts/Craftable.gd"
+"path": "res://scripts/crafting/Craftable.gd"
 }, {
 "base": "Node",
 "class": "NodeAnimated",
 "language": "GDScript",
-"path": "res://scripts/NodeAnimated.gd"
+"path": "res://scripts/animate/NodeAnimated.gd"
 } ]
 _global_script_class_icons={
 "Craftable": "",

@@ -25,5 +25,6 @@ func _updateTime():
 
 func _on_CraftButton_pressed() -> void:
 	if(Inventory.expand_water(self.name)):
+		Global.ToolsUI.updateTool("Water", 1)
 		button.disabled = true
 		fade()

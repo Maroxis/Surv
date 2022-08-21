@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://sprites/Icons/64x64px/build.png" type="Texture" id=1]
 [ext_resource path="res://sprites/Icons/256x256px/house.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://sprites/BG/BuildingPanel.png" type="Texture" id=4]
 [ext_resource path="res://scripts/Building.gd" type="Script" id=5]
 [ext_resource path="res://fonts/UIBonusTheme.tres" type="Theme" id=6]
+[ext_resource path="res://scripts/animate/NodeAnimated.gd" type="Script" id=7]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -36,9 +37,6 @@ __meta__ = {
 [node name="VBox" type="VBoxContainer" parent="."]
 margin_right = 287.0
 margin_bottom = 333.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Hbox" type="HBoxContainer" parent="VBox"]
 margin_right = 324.0
@@ -55,6 +53,7 @@ margin_bottom = 288.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -72,9 +71,6 @@ margin_top = 16.0
 margin_right = 192.0
 margin_bottom = 288.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Building" type="TextureRect" parent="VBox/Hbox/VBox/BG/VBox"]
 margin_right = 192.0

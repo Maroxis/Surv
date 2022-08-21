@@ -5,7 +5,7 @@ onready var cost = get_node("VBox/Hbox/VBox2/Cost")
 onready var benefits = get_node("VBox/Benefits")
 onready var bName = get_node("VBox/Hbox/VBox/BG/VBox/Name")
 onready var button = get_node("VBox/Hbox/VBox/BG/VBox/Button")
-
+onready var buildingPanel = $VBox/Hbox/VBox
 
 func refresh():
 	self.bName.text = self.name
@@ -40,3 +40,5 @@ func _on_Construct_Button_pressed() -> void:
 	if(Buildings.checkCost(self.name)):
 		Buildings.build(self.name)
 		refresh()
+	else:
+		buildingPanel.shake(5,0.05,true)

@@ -16,7 +16,7 @@ func updateGatherTime():
 	var bonus
 	bonus = getToolBonus("Axe")
 	gatherTimeWBonus["Wood"] = floor(gatherTime["Wood"]/bonus)
-	gatherTimeWBonus["Sticks"] = floor(gatherTime["Stick"]/bonus)
+	gatherTimeWBonus["Stick"] = floor(gatherTime["Stick"]/bonus)
 
 	bonus = getToolBonus("Knife")
 	gatherTimeWBonus["Leaves"] = floor(gatherTime["Leaf"]/bonus)

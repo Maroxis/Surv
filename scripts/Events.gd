@@ -2,14 +2,12 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
+onready var forceEvent = null
+
 onready var damageToolMlt = 0.8
+onready var waterDryAddTime = 15
 
 onready var plannedEvent = {
-	"event0":{
-		"title":"Event 0",
-		"desc": "event description",
-		"function": "damageTool"
-	}
 }
 onready var randomEvent = {
 	"event0":{
@@ -20,25 +18,47 @@ onready var randomEvent = {
 		"title":"Nature Hardens",
 		"desc": "Your tools will be easier to brake from now on",
 		"function": "hardenNature"
+	},
+	"event2":{
+		"title":"Hot Weather",
+		"desc": "Nearby stream dried out. Now it takes more time to search for water",
+		"function": "driedStream"
+	},
+	"event3":{
+		"title":"Forest has overgrown",
+		"desc": "It will take more time to travel to the forest",
+		"function": "forestOvergrown"
+	},
+	"event4":{
+		"title":"Illness",
+		"desc": "Illness will decrease your bonus energy from sleeping, make you loose food and water faster and in worst case will reduce your health",
+		"function": "playerIll"
+	},
+	"event5":{
+		"title":"Animal Attack",
+		"desc": "Pack of animals attacked your camp",
+		"function": "animalAttack"
 	}
 }
 onready var defaultEvent = {
-	"title":"Sunny Day",
+	"title":"Calm Day",
 	"desc": "Nothing happened"
 }
-onready var eventDates = [2,3,4,5,6,8]
+onready var eventDates = [2,3,4,5,6,7,8,9]
 onready var eventIndex = 0
 
 func _ready() -> void:
 	rng.randomize()
 
 func check_event(day):
+	if(eventIndex+1 > eventDates.size()):
+		return
 	if(eventDates[eventIndex] == day):
 		var ev
 		if(plannedEvent.size() > eventIndex):
 			ev = plannedEvent["event"+str(eventIndex)]
 		else:
-			var r = rng.randi_range(0, randomEvent.size()-1)
+			var r = forceEvent if forceEvent else rng.randi_range(0, randomEvent.size()-1)
 			ev = randomEvent["event"+str(r)]
 		
 		var res
@@ -52,14 +72,20 @@ func check_event(day):
 		eventIndex += 1
 
 func showPopup(ev,res):
-	if res["error"]:
-		print(res["error"])
-		Global.EventPopup.populate(defaultEvent["title"],defaultEvent["desc"],"")
-	else:
-		var title = res["title"] if res.has("title")else ev["title"]
-		var desc = res["desc"] if res.has("desc") else ev["desc"]
-		var txRes = res["res"] if res.has("res") else ""
-		Global.EventPopup.populate(title,desc,txRes)
+	var title = ev["title"] if ev.has("title") else ""
+	var desc =  ev["desc"] if ev.has("desc") else ""
+	var txRes = ""
+	if res:
+		if res["error"]:
+			print(res["error"])
+			Global.EventPopup.populate(defaultEvent["title"],defaultEvent["desc"],"")
+			Global.EventPopup.show()
+			return
+		else:
+			title = res["title"] if res.has("title") else title
+			desc = res["desc"] if res.has("desc") else desc
+			txRes = res["res"] if res.has("res") else txRes
+	Global.EventPopup.populate(title,desc,txRes)
 	Global.EventPopup.show()
 	return
 	
@@ -97,9 +123,61 @@ func damageTool():
 	if(Tools.tools[chTl]["tier"+str(ctier)]["curDurability"]) < 1:
 		Tools.tools[chTl]["currentTier"] -= 1
 		Tools.updateTool(chTl,true)
-		return {"error":null,"desc":"Your "+str(chTl)+"got damaged and...","res":"broke"}
-	return {"error":null,"desc":"Your "+str(chTl)+"got damaged and...","res":"held"}
+		return {"error":null,"desc":"Your "+str(chTl)+" got damaged and...","res":"broke"}
+	return {"error":null,"desc":"Your "+str(chTl)+" got damaged and...","res":"held"}
 
 func hardenNature():
 	damageToolMlt += 0.4
 	return {"error":null}
+
+func driedStream():
+	Global.Missions.river.gatherTime["Water"] += waterDryAddTime
+	Global.Missions.river.updateGatherTime()
+	var time = Global.timeGetFullFormat(Global.Missions.river.gatherTimeWBonus["Water"])
+	return {"error":null,"res":"It now takes "+time+" to search for water"}
+
+func forestOvergrown():
+	Global.Missions.woods.missionTravelTime += 20
+	Global.Missions.woods.updateTravelTime()
+	var time = Global.timeGetFullFormat(Global.Missions.woods.missionTravelTime)
+	return {"error":null,"res":"It now takes "+time+" to travel"}
+
+func playerIll():
+	var sickMlt = clamp(Global.Date.day/20,1.0,5.0)
+	var sick = rng.randi_range(5, 20)*sickMlt
+	var descLv
+	Player.change_sick(sick)
+	if(Player.sick < 20):
+		descLv = "slightly" #reduces energy gain from sleep (maxEnergy - sick)
+	elif(Player.sick < 50):
+		descLv = "moderatly" #increases water and food consumption, reduces healing rate
+	elif(Player.sick < 80):
+		descLv = "very" #stops natural healing
+	else:
+		descLv = "dangerously" #drains health
+	return {"error":null,"res":"You are "+descLv+" sick"}
+
+func animalAttack():
+	var level = floor(clamp(Global.Date.day/20,1.0,5.0))
+	var damage = level-Buildings.Structure["Wall"]["currentTier"]
+	if(damage <= 0):
+		return {"error":null,"res":"Your wall has stopped the attack"}
+	else:
+		var buildings = []
+		for b in Buildings.Structure:
+			if Buildings.Structure[b]["currentTier"] > 0:
+				buildings.push_back(b)
+		var rs
+		if(buildings.size() == 0):
+			rs = "There were no buildings to destroy"
+		else:
+			rs = "Following buildings were damaged: \n"
+		for n in damage:
+			if(buildings.size() < 1):
+				break
+			var r = rng.randi_range(0, buildings.size()-1)
+			var nm = buildings[r]
+			Buildings.demolish(nm)
+			rs += nm + "\n"
+			buildings.remove(r)
+		return {"error":null,"res": rs}
