@@ -1,103 +1,169 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://sprites/UI/Icons/20.png" type="Texture" id=1]
+[ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/Resources.gd" type="Script" id=2]
 [ext_resource path="res://nodes/ItemCount.tscn" type="PackedScene" id=3]
 [ext_resource path="res://sprites/Icons/32x32px/branch.png" type="Texture" id=4]
 [ext_resource path="res://sprites/Icons/32x32px/wood.png" type="Texture" id=5]
 [ext_resource path="res://sprites/Icons/32x32px/rock.png" type="Texture" id=6]
-[ext_resource path="res://sprites/Icons/32x32px/rope.png" type="Texture" id=7]
+[ext_resource path="res://sprites/Icons/resources/rope.png" type="Texture" id=7]
 [ext_resource path="res://sprites/Icons/32x32px/leaf.png" type="Texture" id=8]
+[ext_resource path="res://sprites/Icons/resources/clay.png" type="Texture" id=9]
+[ext_resource path="res://sprites/Icons/resources/copperore.png" type="Texture" id=10]
 
 [node name="Resources" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 128.0
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="List" type="Control" parent="."]
-self_modulate = Color( 1, 0.556863, 0.0392157, 1 )
-anchor_bottom = 1.0
-margin_right = 94.0
-rect_min_size = Vector2( 128, 0 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="List"]
+[node name="Border" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.709804, 0.509804, 0.0784314, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color( 0, 0, 0, 1 )
 
-[node name="Items" type="VBoxContainer" parent="List"]
+[node name="Bg" type="ColorRect" parent="Border"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
+margin_left = 16.0
 margin_top = 16.0
 margin_right = -16.0
 margin_bottom = -16.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color( 0.454902, 0.109804, 0.109804, 1 )
 
-[node name="Leaf" parent="List/Items" instance=ExtResource( 3 )]
+[node name="Resources" type="HBoxContainer" parent="Border/Bg"]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_top = 64.0
+margin_right = -64.0
+margin_bottom = -64.0
+
+[node name="Raw" type="VBoxContainer" parent="Border/Bg/Resources"]
+margin_right = 492.0
+margin_bottom = 432.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Border/Bg/Resources/Raw"]
+margin_right = 492.0
+margin_bottom = 41.0
+theme = ExtResource( 1 )
+text = "Raw"
+align = 1
+
+[node name="List" type="HFlowContainer" parent="Border/Bg/Resources/Raw"]
+margin_top = 45.0
+margin_right = 492.0
+margin_bottom = 131.0
+size_flags_horizontal = 3
+custom_constants/hseparation = 32
+
+[node name="Leaf" parent="Border/Bg/Resources/Raw/List" instance=ExtResource( 3 )]
+margin_right = 68.0
 margin_bottom = 41.0
 
-[node name="TextureRect" parent="List/Items/Leaf" index="0"]
+[node name="TextureRect" parent="Border/Bg/Resources/Raw/List/Leaf" index="0"]
 texture = ExtResource( 8 )
 
-[node name="Count" parent="List/Items/Leaf" index="1"]
-text = "327"
+[node name="Count" parent="Border/Bg/Resources/Raw/List/Leaf" index="1"]
+margin_right = 68.0
 
-[node name="Stick" parent="List/Items" instance=ExtResource( 3 )]
-margin_top = 45.0
-margin_bottom = 86.0
+[node name="Stick" parent="Border/Bg/Resources/Raw/List" instance=ExtResource( 3 )]
+margin_left = 100.0
+margin_right = 168.0
+margin_bottom = 41.0
 
-[node name="TextureRect" parent="List/Items/Stick" index="0"]
+[node name="TextureRect" parent="Border/Bg/Resources/Raw/List/Stick" index="0"]
 texture = ExtResource( 4 )
 
-[node name="Wood" parent="List/Items" instance=ExtResource( 3 )]
-margin_top = 90.0
-margin_bottom = 131.0
+[node name="Count" parent="Border/Bg/Resources/Raw/List/Stick" index="1"]
+margin_right = 68.0
 
-[node name="TextureRect" parent="List/Items/Wood" index="0"]
+[node name="Wood" parent="Border/Bg/Resources/Raw/List" instance=ExtResource( 3 )]
+margin_left = 200.0
+margin_right = 268.0
+margin_bottom = 41.0
+
+[node name="TextureRect" parent="Border/Bg/Resources/Raw/List/Wood" index="0"]
 texture = ExtResource( 5 )
 
-[node name="Rope" parent="List/Items" instance=ExtResource( 3 )]
-margin_top = 135.0
-margin_bottom = 176.0
+[node name="Count" parent="Border/Bg/Resources/Raw/List/Wood" index="1"]
+margin_right = 68.0
 
-[node name="TextureRect" parent="List/Items/Rope" index="0"]
-texture = ExtResource( 7 )
+[node name="Rock" parent="Border/Bg/Resources/Raw/List" instance=ExtResource( 3 )]
+margin_left = 300.0
+margin_right = 368.0
+margin_bottom = 41.0
 
-[node name="Rock" parent="List/Items" instance=ExtResource( 3 )]
-margin_top = 180.0
-margin_bottom = 221.0
-
-[node name="TextureRect" parent="List/Items/Rock" index="0"]
+[node name="TextureRect" parent="Border/Bg/Resources/Raw/List/Rock" index="0"]
 texture = ExtResource( 6 )
 
-[node name="Button" type="Button" parent="."]
-margin_left = -65.0
-margin_top = 1.0
-margin_right = -1.0
-margin_bottom = 65.0
-icon = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Count" parent="Border/Bg/Resources/Raw/List/Rock" index="1"]
+margin_right = 68.0
 
-[node name="Tween" type="Tween" parent="."]
+[node name="CopperOre" parent="Border/Bg/Resources/Raw/List" instance=ExtResource( 3 )]
+margin_left = 400.0
+margin_right = 468.0
+margin_bottom = 41.0
 
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[node name="TextureRect" parent="Border/Bg/Resources/Raw/List/CopperOre" index="0"]
+texture = ExtResource( 10 )
 
-[editable path="List/Items/Leaf"]
-[editable path="List/Items/Stick"]
-[editable path="List/Items/Wood"]
-[editable path="List/Items/Rope"]
-[editable path="List/Items/Rock"]
+[node name="Count" parent="Border/Bg/Resources/Raw/List/CopperOre" index="1"]
+margin_right = 68.0
+
+[node name="Clay" parent="Border/Bg/Resources/Raw/List" instance=ExtResource( 3 )]
+margin_top = 45.0
+margin_right = 68.0
+margin_bottom = 86.0
+
+[node name="TextureRect" parent="Border/Bg/Resources/Raw/List/Clay" index="0"]
+texture = ExtResource( 9 )
+
+[node name="Count" parent="Border/Bg/Resources/Raw/List/Clay" index="1"]
+margin_right = 68.0
+
+[node name="Control" type="Control" parent="Border/Bg/Resources"]
+margin_left = 496.0
+margin_right = 624.0
+margin_bottom = 432.0
+rect_min_size = Vector2( 128, 0 )
+
+[node name="Crafted" type="VBoxContainer" parent="Border/Bg/Resources"]
+margin_left = 628.0
+margin_right = 1120.0
+margin_bottom = 432.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Border/Bg/Resources/Crafted"]
+margin_right = 492.0
+margin_bottom = 41.0
+theme = ExtResource( 1 )
+text = "Crafted"
+align = 1
+
+[node name="List" type="HFlowContainer" parent="Border/Bg/Resources/Crafted"]
+margin_top = 45.0
+margin_right = 492.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+custom_constants/hseparation = 32
+
+[node name="Rope" parent="Border/Bg/Resources/Crafted/List" instance=ExtResource( 3 )]
+margin_right = 68.0
+margin_bottom = 41.0
+
+[node name="TextureRect" parent="Border/Bg/Resources/Crafted/List/Rope" index="0"]
+texture = ExtResource( 7 )
+
+[node name="Count" parent="Border/Bg/Resources/Crafted/List/Rope" index="1"]
+margin_right = 68.0
+
+[editable path="Border/Bg/Resources/Raw/List/Leaf"]
+[editable path="Border/Bg/Resources/Raw/List/Stick"]
+[editable path="Border/Bg/Resources/Raw/List/Wood"]
+[editable path="Border/Bg/Resources/Raw/List/Rock"]
+[editable path="Border/Bg/Resources/Raw/List/CopperOre"]
+[editable path="Border/Bg/Resources/Raw/List/Clay"]
+[editable path="Border/Bg/Resources/Crafted/List/Rope"]

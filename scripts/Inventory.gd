@@ -6,17 +6,20 @@ onready var resources = {
 	"Leaf": {
 		"ammount" : 0,
 		"bagAmmount":0,
-		"weight" : 0.6
+		"weight" : 0.6,
+		"crafted": false
 	  },
 	"Stick": {
 		"ammount" : 0,
 		"bagAmmount":0,
-		"weight" : 1.2
+		"weight" : 1.2,
+		"crafted": false
 	  },
 	"Wood": {
 		"ammount" : 0,
 		"bagAmmount":0,
-		"weight" : 3.2
+		"weight" : 3.2,
+		"crafted": false
 	  },
 	"Rope": {
 		"ammount" : 0,
@@ -25,22 +28,26 @@ onready var resources = {
 		"cost" : {
 			"Leaf" : 3
 		},
-		"craftTime": 10
+		"craftTime": 10,
+		"crafted": true
 	  },
 	"Rock": {
 		"ammount" : 0,
 		"bagAmmount":0,
-		"weight" : 4.8
+		"weight" : 4.8,
+		"crafted": false
 	  },
 	"Clay": {
 		"ammount" : 0,
 		"bagAmmount":0,
-		"weight" : 3.6
+		"weight" : 3.6,
+		"crafted": false
 	  },
 	"CopperOre": {
 		"ammount" : 0,
 		"bagAmmount":0,
-		"weight" : 5.2
+		"weight" : 5.2,
+		"crafted": false
 	  }
 }
 onready var upgrades = {
@@ -109,7 +116,7 @@ func add_resource(res,amm):
 		resources[res]["ammount"] += amm
 		if resources[res]["ammount"] > 99:
 			resources[res]["ammount"] = 99
-		Global.ResourcesUI.update_resource(res,resources[res]["ammount"])
+		Global.ResourcesUI.addRes(res,resources[res]["ammount"],resources[res]["crafted"])
 		return true
 
 func check_cost(item, amm = 1, upg = false):

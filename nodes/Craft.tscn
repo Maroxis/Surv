@@ -1,0 +1,193 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://resources/tabFG.tres" type="StyleBox" id=1]
+[ext_resource path="res://fonts/CraftTabsFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://resources/tabBG.tres" type="StyleBox" id=3]
+[ext_resource path="res://nodes/Material.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/playerExpand.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/invExpand.tscn" type="PackedScene" id=6]
+[ext_resource path="res://nodes/CraftItem.tscn" type="PackedScene" id=7]
+[ext_resource path="res://nodes/ReturnButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=9]
+[ext_resource path="res://resources/HbarNoScroll.tres" type="Theme" id=10]
+[ext_resource path="res://scripts/Craft.gd" type="Script" id=13]
+[ext_resource path="res://sprites/Icons/128x128px/arrow.png" type="Texture" id=16]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.454902, 0.109804, 0.109804, 1 )
+
+[node name="Craft" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 13 )
+
+[node name="BG" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 128.0
+color = Color( 0.454902, 0.109804, 0.109804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Category" type="Control" parent="."]
+anchor_right = 1.0
+margin_left = 256.0
+margin_top = 16.0
+margin_right = -456.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 112 )
+
+[node name="BG" type="ColorRect" parent="Category"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.454902, 0.109804, 0.109804, 1 )
+
+[node name="Control" type="Control" parent="Category/BG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_right = -32.0
+
+[node name="Prev" type="TextureButton" parent="Category/BG/Control"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -48.0
+margin_right = 56.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 56, 96 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 16 )
+expand = true
+flip_h = true
+
+[node name="Label" type="Label" parent="Category/BG/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -78.0
+margin_top = -20.5
+margin_right = 78.0
+margin_bottom = 20.5
+theme = ExtResource( 9 )
+text = "Hand Craft"
+
+[node name="Next" type="TextureButton" parent="Category/BG/Control"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -56.0
+margin_top = -48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 56, 96 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 16 )
+expand = true
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 128.0
+margin_bottom = -96.0
+custom_fonts/font = ExtResource( 2 )
+custom_styles/tab_fg = ExtResource( 1 )
+custom_styles/tab_bg = ExtResource( 3 )
+custom_styles/panel = SubResource( 7 )
+tab_align = 0
+tabs_visible = false
+
+[node name="Hand Craft" type="ScrollContainer" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 10 )
+scroll_vertical_enabled = false
+
+[node name="HBox" type="HBoxContainer" parent="TabContainer/Hand Craft"]
+margin_right = 3112.0
+margin_bottom = 496.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 48
+
+[node name="Margin" type="Control" parent="TabContainer/Hand Craft/HBox"]
+margin_right = 312.0
+margin_bottom = 496.0
+rect_min_size = Vector2( 312, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Rope" parent="TabContainer/Hand Craft/HBox" instance=ExtResource( 4 )]
+margin_left = 360.0
+margin_right = 696.0
+margin_bottom = 496.0
+
+[node name="Axe" parent="TabContainer/Hand Craft/HBox" instance=ExtResource( 7 )]
+margin_left = 744.0
+margin_right = 1080.0
+margin_bottom = 496.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knife" parent="TabContainer/Hand Craft/HBox" instance=ExtResource( 7 )]
+margin_left = 1128.0
+margin_right = 1464.0
+margin_bottom = 496.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pickaxe" parent="TabContainer/Hand Craft/HBox" instance=ExtResource( 7 )]
+margin_left = 1512.0
+margin_right = 1848.0
+margin_bottom = 496.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shovel" parent="TabContainer/Hand Craft/HBox" instance=ExtResource( 7 )]
+margin_left = 1896.0
+margin_right = 2232.0
+margin_bottom = 496.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bag" parent="TabContainer/Hand Craft/HBox" instance=ExtResource( 6 )]
+margin_left = 2280.0
+margin_right = 2616.0
+margin_bottom = 496.0
+
+[node name="Flask" parent="TabContainer/Hand Craft/HBox" instance=ExtResource( 5 )]
+margin_left = 2664.0
+margin_right = 3000.0
+margin_bottom = 496.0
+
+[node name="Margin2" type="Control" parent="TabContainer/Hand Craft/HBox"]
+margin_left = 3048.0
+margin_right = 3112.0
+margin_bottom = 496.0
+rect_min_size = Vector2( 64, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Smelting" type="ScrollContainer" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 10 )
+scroll_vertical_enabled = false
+
+[node name="HBox" type="HBoxContainer" parent="TabContainer/Smelting"]
+
+[node name="Return" parent="." instance=ExtResource( 8 )]
+
+[connection signal="pressed" from="Category/BG/Control/Prev" to="." method="_on_Prev_pressed"]
+[connection signal="pressed" from="Category/BG/Control/Next" to="." method="_on_Next_pressed"]
+[connection signal="pressed" from="Return/Button" to="." method="_on_Return_Button_pressed"]
+
+[editable path="Return"]

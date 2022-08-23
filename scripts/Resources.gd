@@ -1,13 +1,18 @@
 extends Control
 
-func _ready() -> void:
-	Global.ResourcesUI = self
+onready var resources: HBoxContainer = $"%Resources"
 
-func update_resource(res,amm):
-	var node = get_node("GridContainer/"+res)
+func _ready() -> void:
+	Global.ChestResources = self
+
+func update_resource(res,amm,crafted):
+	var node
+	if(crafted):
+		node = resources.get_node("Crafted/List/"+res)
+	else:
+		node = resources.get_node("Raw/List/"+res)
 	var count = node.get_node("Count")
-	node.shake()
 	count.text = str(amm)
 
-func shake(name):
-	get_node("GridContainer/"+name).shake(5,true)
+func toggle():
+	visible = !visible

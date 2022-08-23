@@ -44,7 +44,8 @@ onready var defaultEvent = {
 	"title":"Calm Day",
 	"desc": "Nothing happened"
 }
-onready var eventDates = [2,3,4,5,6,7,8,9]
+#onready var eventDates = [2,3,4,5,6,7,8,9]
+onready var eventDates = [5]
 onready var eventIndex = 0
 
 func _ready() -> void:
@@ -139,11 +140,11 @@ func driedStream():
 func forestOvergrown():
 	Global.Missions.woods.missionTravelTime += 20
 	Global.Missions.woods.updateTravelTime()
-	var time = Global.timeGetFullFormat(Global.Missions.woods.missionTravelTime)
+	var time = Global.timeGetFullFormat(Global.Missions.woods.missionTravelTime,false,true)
 	return {"error":null,"res":"It now takes "+time+" to travel"}
 
 func playerIll():
-	var sickMlt = clamp(Global.Date.day/20,1.0,5.0)
+	var sickMlt = clamp(Global.Date.day/10,1.0,5.0)
 	var sick = rng.randi_range(5, 20)*sickMlt
 	var descLv
 	Player.change_sick(sick)
@@ -158,7 +159,7 @@ func playerIll():
 	return {"error":null,"res":"You are "+descLv+" sick"}
 
 func animalAttack():
-	var level = floor(clamp(Global.Date.day/20,1.0,5.0))
+	var level = floor(clamp(Global.Date.day/10,1.0,5.0))
 	var damage = level-Buildings.Structure["Wall"]["currentTier"]
 	if(damage <= 0):
 		return {"error":null,"res":"Your wall has stopped the attack"}
