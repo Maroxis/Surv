@@ -21,7 +21,7 @@ func _on_Prev_pressed() -> void:
 		tab_label.text = tab_container.get_children()[tab_container.current_tab].name
 
 func _on_Next_pressed() -> void:
-	if(tab_container.current_tab < tabAmm):
+	if(tab_container.current_tab < tabAmm-1):
 		tab_container.current_tab += 1
 		tab_label.text = tab_container.get_children()[tab_container.current_tab].name
 		

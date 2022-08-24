@@ -13,3 +13,8 @@ func hide():
 func craftBtAnim(_button,_btpos):
 #	var tween = create_tween().set_ease(Tween.EASE_IN_OUT)
 	pass
+
+func loadTex(item):
+	item.texture = load("res://sprites/Icons/craftable/"+self.name+".png")
+	item.modulate = Color(0.0,0.0,0.0,1.0)
+	

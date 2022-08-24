@@ -981,9 +981,6 @@ anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = -8
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Control" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/TextureRect/VBoxContainer"]
 margin_right = 128.0
@@ -1011,11 +1008,28 @@ size_flags_horizontal = 4
 theme = ExtResource( 25 )
 text = "24:00"
 
-[node name="Tools" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
+[node name="Control" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
 margin_left = 132.0
-margin_right = 208.0
+margin_right = 752.0
 margin_bottom = 128.0
-rect_min_size = Vector2( 76, 0 )
+size_flags_horizontal = 3
+
+[node name="Inventory" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer" instance=ExtResource( 70 )]
+margin_left = 756.0
+margin_right = 1166.0
+margin_bottom = 128.0
+
+[node name="Control2" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
+margin_left = 1170.0
+margin_right = 1186.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 16, 0 )
+
+[node name="Tools" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
+margin_left = 1190.0
+margin_right = 1280.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 90, 0 )
 script = ExtResource( 63 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1066,17 +1080,6 @@ margin_right = 32.0
 margin_bottom = 104.0
 texture = ExtResource( 19 )
 script = ExtResource( 66 )
-
-[node name="Control" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
-margin_left = 212.0
-margin_right = 866.0
-margin_bottom = 128.0
-size_flags_horizontal = 3
-
-[node name="Inventory" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer" instance=ExtResource( 70 )]
-margin_left = 870.0
-margin_right = 1280.0
-margin_bottom = 128.0
 
 [node name="EventPopup" parent="Canvas/UI/Status" instance=ExtResource( 67 )]
 unique_name_in_owner = true

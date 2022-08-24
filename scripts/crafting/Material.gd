@@ -5,6 +5,10 @@ onready var cost = get_node("HBoxContainer/VBoxContainer/Cost")
 onready var button = get_node("HBoxContainer2/CraftButton")
 onready var timeLb = $HBoxContainer2/Time
 
+func _ready() -> void:
+	var item = $HBoxContainer/VBoxContainer2/TextureRect
+	loadTex(item)
+
 func refresh():
 	self.tName.text = self.name
 	self.cost.clear ( )

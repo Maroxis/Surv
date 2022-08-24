@@ -8,6 +8,10 @@ onready var button = get_node("HBoxContainer2/CraftButton")
 #onready var btOrgPos = button.rect_position
 onready var timeLb = $"%Time"
 
+func _ready() -> void:
+	var item = $HBoxContainer/VBoxContainer2/TextureRect
+	loadTex(item)
+
 func refresh():
 	self.tName.text = self.name
 	var ctier = Tools.tools[self.name]["currentTier"]

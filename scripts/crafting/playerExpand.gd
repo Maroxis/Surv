@@ -7,6 +7,10 @@ onready var expAmm = Inventory.upgrades[self.name]["size"]
 onready var nameLb = $"%Name"
 onready var button = $HBoxContainer2/CraftButton
 
+func _ready() -> void:
+	var item = $HBoxContainer/VBoxContainer2/TextureRect
+	loadTex(item)
+
 func refresh():
 	benefitNr.text = "+" + str(expAmm)
 	nameLb.text = self.name
