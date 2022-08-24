@@ -225,3 +225,5 @@ size_flags_stretch_ratio = 2.0
 theme = ExtResource( 7 )
 items = [ "Benefits", null, false ]
 auto_height = true
+
+[connection signal="pressed" from="HBoxContainer2/CraftButton" to="." method="_on_CraftButton_pressed"]

@@ -1,15 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/Resources.gd" type="Script" id=2]
-[ext_resource path="res://nodes/ItemCount.tscn" type="PackedScene" id=3]
-[ext_resource path="res://sprites/Icons/32x32px/branch.png" type="Texture" id=4]
-[ext_resource path="res://sprites/Icons/32x32px/wood.png" type="Texture" id=5]
-[ext_resource path="res://sprites/Icons/32x32px/rock.png" type="Texture" id=6]
-[ext_resource path="res://sprites/Icons/resources/rope.png" type="Texture" id=7]
-[ext_resource path="res://sprites/Icons/32x32px/leaf.png" type="Texture" id=8]
-[ext_resource path="res://sprites/Icons/resources/clay.png" type="Texture" id=9]
-[ext_resource path="res://sprites/Icons/resources/copperore.png" type="Texture" id=10]
 
 [node name="Resources" type="Control"]
 anchor_right = 1.0
@@ -55,74 +47,9 @@ align = 1
 [node name="List" type="HFlowContainer" parent="Border/Bg/Resources/Raw"]
 margin_top = 45.0
 margin_right = 492.0
-margin_bottom = 131.0
+margin_bottom = 45.0
 size_flags_horizontal = 3
 custom_constants/hseparation = 32
-
-[node name="Leaf" parent="Border/Bg/Resources/Raw/List" instance=ExtResource( 3 )]
-margin_right = 68.0
-margin_bottom = 41.0
-
-[node name="TextureRect" parent="Border/Bg/Resources/Raw/List/Leaf" index="0"]
-texture = ExtResource( 8 )
-
-[node name="Count" parent="Border/Bg/Resources/Raw/List/Leaf" index="1"]
-margin_right = 68.0
-
-[node name="Stick" parent="Border/Bg/Resources/Raw/List" instance=ExtResource( 3 )]
-margin_left = 100.0
-margin_right = 168.0
-margin_bottom = 41.0
-
-[node name="TextureRect" parent="Border/Bg/Resources/Raw/List/Stick" index="0"]
-texture = ExtResource( 4 )
-
-[node name="Count" parent="Border/Bg/Resources/Raw/List/Stick" index="1"]
-margin_right = 68.0
-
-[node name="Wood" parent="Border/Bg/Resources/Raw/List" instance=ExtResource( 3 )]
-margin_left = 200.0
-margin_right = 268.0
-margin_bottom = 41.0
-
-[node name="TextureRect" parent="Border/Bg/Resources/Raw/List/Wood" index="0"]
-texture = ExtResource( 5 )
-
-[node name="Count" parent="Border/Bg/Resources/Raw/List/Wood" index="1"]
-margin_right = 68.0
-
-[node name="Rock" parent="Border/Bg/Resources/Raw/List" instance=ExtResource( 3 )]
-margin_left = 300.0
-margin_right = 368.0
-margin_bottom = 41.0
-
-[node name="TextureRect" parent="Border/Bg/Resources/Raw/List/Rock" index="0"]
-texture = ExtResource( 6 )
-
-[node name="Count" parent="Border/Bg/Resources/Raw/List/Rock" index="1"]
-margin_right = 68.0
-
-[node name="CopperOre" parent="Border/Bg/Resources/Raw/List" instance=ExtResource( 3 )]
-margin_left = 400.0
-margin_right = 468.0
-margin_bottom = 41.0
-
-[node name="TextureRect" parent="Border/Bg/Resources/Raw/List/CopperOre" index="0"]
-texture = ExtResource( 10 )
-
-[node name="Count" parent="Border/Bg/Resources/Raw/List/CopperOre" index="1"]
-margin_right = 68.0
-
-[node name="Clay" parent="Border/Bg/Resources/Raw/List" instance=ExtResource( 3 )]
-margin_top = 45.0
-margin_right = 68.0
-margin_bottom = 86.0
-
-[node name="TextureRect" parent="Border/Bg/Resources/Raw/List/Clay" index="0"]
-texture = ExtResource( 9 )
-
-[node name="Count" parent="Border/Bg/Resources/Raw/List/Clay" index="1"]
-margin_right = 68.0
 
 [node name="Control" type="Control" parent="Border/Bg/Resources"]
 margin_left = 496.0
@@ -146,24 +73,6 @@ align = 1
 [node name="List" type="HFlowContainer" parent="Border/Bg/Resources/Crafted"]
 margin_top = 45.0
 margin_right = 492.0
-margin_bottom = 86.0
+margin_bottom = 45.0
 size_flags_horizontal = 3
 custom_constants/hseparation = 32
-
-[node name="Rope" parent="Border/Bg/Resources/Crafted/List" instance=ExtResource( 3 )]
-margin_right = 68.0
-margin_bottom = 41.0
-
-[node name="TextureRect" parent="Border/Bg/Resources/Crafted/List/Rope" index="0"]
-texture = ExtResource( 7 )
-
-[node name="Count" parent="Border/Bg/Resources/Crafted/List/Rope" index="1"]
-margin_right = 68.0
-
-[editable path="Border/Bg/Resources/Raw/List/Leaf"]
-[editable path="Border/Bg/Resources/Raw/List/Stick"]
-[editable path="Border/Bg/Resources/Raw/List/Wood"]
-[editable path="Border/Bg/Resources/Raw/List/Rock"]
-[editable path="Border/Bg/Resources/Raw/List/CopperOre"]
-[editable path="Border/Bg/Resources/Raw/List/Clay"]
-[editable path="Border/Bg/Resources/Crafted/List/Rope"]

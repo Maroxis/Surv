@@ -9,10 +9,14 @@ func _ready() -> void:
 	refresh()
 
 func refresh():
-	var items = tab_container.get_node("Hand Craft/HBox").get_children()
-	for item in items:
-		if(item.name != "Margin" and item.name != "Margin2"):
-			item.refresh()
+	var tabs = tab_container.get_children()
+	for tab in tabs:
+		if(tab.has_node("Items")):
+			var items = tab.get_node("Items").get_children()
+			for item in items:
+				if(item.name != "Margin" and item.name != "Margin2"):
+					item.refresh()
+	tab_label.text = tab_container.get_children()[tab_container.current_tab].name
 
 
 func _on_Prev_pressed() -> void:

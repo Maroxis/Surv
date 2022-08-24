@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://sprites/BG/MainMap.png" type="Texture" id=1]
 [ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://sprites/Icons/64x64px/craft.png" type="Texture" id=31]
 [ext_resource path="res://sprites/Icons/64x64px/status.png" type="Texture" id=32]
 [ext_resource path="res://sprites/Icons/64x64px/sleep.png" type="Texture" id=33]
+[ext_resource path="res://sprites/Icons/craftable/pinned/Saw.png" type="Texture" id=34]
 [ext_resource path="res://sprites/Icons/128x128px/calendar.png" type="Texture" id=37]
 [ext_resource path="res://scripts/Date.gd" type="Script" id=38]
 [ext_resource path="res://nodes/ReturnButton.tscn" type="PackedScene" id=40]
@@ -1064,21 +1065,30 @@ margin_bottom = 68.0
 texture = ExtResource( 45 )
 script = ExtResource( 66 )
 
-[node name="Water" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
+[node name="Shovel" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
 modulate = Color( 0, 0, 0, 0.188235 )
 margin_left = 36.0
 margin_top = 36.0
 margin_right = 68.0
 margin_bottom = 68.0
-texture = ExtResource( 48 )
+texture = ExtResource( 19 )
 script = ExtResource( 66 )
 
-[node name="Shovel" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
+[node name="Saw" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
 modulate = Color( 0, 0, 0, 0.188235 )
 margin_top = 72.0
 margin_right = 32.0
 margin_bottom = 104.0
-texture = ExtResource( 19 )
+texture = ExtResource( 34 )
+script = ExtResource( 66 )
+
+[node name="Water" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
+modulate = Color( 0, 0, 0, 0.188235 )
+margin_left = 36.0
+margin_top = 72.0
+margin_right = 68.0
+margin_bottom = 104.0
+texture = ExtResource( 48 )
 script = ExtResource( 66 )
 
 [node name="EventPopup" parent="Canvas/UI/Status" instance=ExtResource( 67 )]

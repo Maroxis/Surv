@@ -31,6 +31,20 @@ onready var resources = {
 		"craftTime": 10,
 		"crafted": true
 	  },
+	"Plank": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 4.0,
+		"cost" : {
+			"Wood" : 3
+		},
+		"requirement": {
+			"tool" : "Saw",
+			"tier" : 1
+		},
+		"craftTime": 40,
+		"crafted": true
+	  },
 	"Rock": {
 		"ammount" : 0,
 		"bagAmmount":0,
@@ -48,6 +62,16 @@ onready var resources = {
 		"bagAmmount":0,
 		"weight" : 5.2,
 		"crafted": false
+	  },
+	"CopperIngot": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 10.8,
+		"cost" : {
+			"CopperOre" : 3
+		},
+		"craftTime": 10,
+		"crafted": true
 	  }
 }
 onready var upgrades = {
@@ -58,6 +82,7 @@ onready var upgrades = {
 			"Leaf" : 3,
 			"Rope" : 2
 		},
+		
 		"craftTime": 40
 	},
 	"Backpack" : {

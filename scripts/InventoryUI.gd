@@ -45,6 +45,7 @@ func update_resource():
 func showNext():
 	items[hidden_items].fadeIn(0.8)
 	hidden_items -= 1
+	chest.shake()
 
 func swipeNext():
 	inProgress = items.size()

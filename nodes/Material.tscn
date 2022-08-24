@@ -27,9 +27,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 16
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Control" type="Control" parent="."]
 margin_right = 336.0
@@ -123,9 +120,6 @@ size_flags_vertical = 3
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Time" type="Label" parent="HBoxContainer2"]
 margin_left = 225.0
@@ -139,5 +133,15 @@ theme = ExtResource( 5 )
 text = "00:30"
 align = 1
 valign = 1
+
+[node name="Requirement" type="Label" parent="."]
+visible = false
+margin_top = 340.0
+margin_right = 336.0
+margin_bottom = 381.0
+theme = ExtResource( 6 )
+theme_type_variation = "toolRequired"
+custom_colors/font_color = Color( 1, 0.968627, 0, 1 )
+text = "Requires Tools"
 
 [connection signal="pressed" from="HBoxContainer2/CraftButton" to="." method="_on_CraftButton_pressed"]

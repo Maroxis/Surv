@@ -3,6 +3,7 @@ extends Node
 onready var tools = {
 	"Axe": {
 		"currentTier": 0,
+		"pinned": true,
 		"tier0" : {
 			"benefits":{
 				"actionMult": 1
@@ -35,6 +36,7 @@ onready var tools = {
 	},
 	"Knife": {
 		"currentTier": 0,
+		"pinned": true,
 		"tier0" : {
 			"benefits":{
 				"actionMult": 1
@@ -55,6 +57,7 @@ onready var tools = {
 	},
 	"Pickaxe": {
 		"currentTier": 0,
+		"pinned": true,
 		"tier0" : {
 			"benefits":{
 				"actionMult": 1
@@ -75,6 +78,7 @@ onready var tools = {
 	},
 	"Shovel": {
 		"currentTier": 0,
+		"pinned": true,
 		"tier0" : {
 			"maxDurability": 1,
 			"curDurability": 1,
@@ -92,6 +96,27 @@ onready var tools = {
 			},
 			"benefits":{
 				"actionMult": 1.2
+			}
+		}
+	},
+	"Saw": {
+		"currentTier": 0,
+		"pinned": true,
+		"tier0" : {
+			"benefits":{
+				"actionMult": 1
+			}
+		},
+		"tier1" : {
+			"craftTime": 30,
+			"maxDurability": 1,
+			"curDurability": 1,
+			"cost": {
+				"Stick": 1,
+				"Rock": 2
+			},
+			"benefits":{
+				"actionMult": 1
 			}
 		}
 	}
@@ -113,7 +138,8 @@ func updateTool(name,downgrade = false):
 			Global.Missions.get_node("Woods").deactive_wood()
 	for mission in Global.Missions.get_children():
 		mission.updateGatherTime()
-	Global.ToolsUI.updateTool(name, tools[name]["currentTier"], downgrade)
+	if(tools[name]["pinned"]):
+		Global.ToolsUI.updateTool(name, tools[name]["currentTier"], downgrade)
 	
 func checkCost(name):
 	var ctier = tools[name]["currentTier"]
