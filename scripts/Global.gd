@@ -9,6 +9,7 @@ var BagUI
 var EventPopup
 var ChestResources
 var Smelt
+var Weather
 
 func timeGetFullFormat(time,lzero = false,labeled = false):
 	time = int(time)

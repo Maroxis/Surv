@@ -34,12 +34,12 @@ func _updateTime():
 	timeLb.text = Global.timeGetFullFormat(Inventory.resources[self.name]["craftTime"],true)
 	
 func disable(req):
-	self.modulate.a = 0.4
+	button.modulate.a = 0.4
 	button.disabled = true
 	requirement.visible = true
 	requirement.text = "Requires " + req
 
 func enable():
-	self.modulate.a = 1.0
+	button.modulate.a = 1.0
 	button.disabled = false
 	requirement.visible = false
