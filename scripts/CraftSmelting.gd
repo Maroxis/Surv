@@ -120,10 +120,10 @@ func checkErrors():
 		showError("Fuel temp to low")
 		return
 	if(selected["Ore"]["amm"] > Inventory.resources[selected["Ore"]["name"]]["ammount"]):
-		showError("Not enough ore")
+		showError("Not enough\n"+selected["Ore"]["name"])
 		return
 	if(selected["Ore2"]["amm"] != 0 and selected["Ore2"]["amm"] > Inventory.resources[selected["Ore2"]["name"]]["ammount"]):
-		showError("Not enough ore2")
+		showError("Not enough\n"+selected["Ore2"]["name"])
 		return
 	if(selected["Fuel"]["amm"] > Inventory.resources[selected["Fuel"]["name"]]["ammount"]):
 		showError("Not enough fuel")
@@ -159,6 +159,7 @@ func run(time):
 
 func finish():
 	Inventory.add_resource(smeltingInProgress,1)
+	furnaceProgress.material.set_shader_param("on",0.0)
 	enableStart()
 
 func start(time):
@@ -169,6 +170,7 @@ func start(time):
 	timeLeft = time
 	timeRemainingLabel.text = Global.timeGetFullFormat(time,false,true) 
 	furnaceProgress.value = 100
+	furnaceProgress.material.set_shader_param("on",1.0)
 
 func removeRes():
 	Inventory.add_resource(selected["Ore"]["name"],-selected["Ore"]["amm"])

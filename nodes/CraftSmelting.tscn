@@ -1,14 +1,15 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://sprites/UI/plus.png" type="Texture" id=1]
 [ext_resource path="res://sprites/Icons/furnace.png" type="Texture" id=2]
 [ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=3]
-[ext_resource path="res://sprites/Icons/furnaceFlame.png" type="Texture" id=4]
+[ext_resource path="res://shaders/flame.tres" type="Shader" id=4]
 [ext_resource path="res://scripts/CraftSmelting.gd" type="Script" id=5]
 [ext_resource path="res://nodes/ItemSelect.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/PanelButton.tres" type="Theme" id=7]
 [ext_resource path="res://sprites/Icons/128x128px/arrow.png" type="Texture" id=8]
 [ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://sprites/Icons/furnaceFlameFull.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
@@ -39,6 +40,10 @@ Label/colors/font_color = Color( 1, 1, 0, 1 )
 size = 28
 use_filter = true
 font_data = ExtResource( 9 )
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 4 )
+shader_param/on = 0.0
 
 [node name="Smelting" type="Control"]
 anchor_top = 1.0
@@ -241,6 +246,7 @@ stretch_mode = 1
 
 [node name="Progress" type="TextureProgress" parent="HBoxContainer/Furnace/Texture"]
 unique_name_in_owner = true
+material = SubResource( 7 )
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -250,8 +256,8 @@ margin_top = -150.0
 margin_right = -24.0
 margin_bottom = -55.0
 rect_scale = Vector2( 4.96287, 1.32689 )
-texture_under = ExtResource( 4 )
-texture_progress = ExtResource( 4 )
+texture_under = ExtResource( 10 )
+texture_progress = ExtResource( 10 )
 fill_mode = 3
 tint_under = Color( 0, 0, 0, 0.407843 )
 tint_progress = Color( 1, 0.47451, 0, 1 )

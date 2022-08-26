@@ -1,0 +1,10 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform float on = 0.0;
+
+void vertex() {
+	VERTEX += vec2(cos(TIME)*(VERTEX.y - 80.0)/80.0*on, sin(TIME)*(VERTEX.y - 80.0)/10.0)*on;
+}"
