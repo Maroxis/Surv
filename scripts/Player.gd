@@ -117,6 +117,7 @@ func pass_time(time,sleep=false):
 		change_sick(-(sickRate*time*sleepRegenMult*fullBonus))
 
 	Buildings.runCollector(time)
+	Global.Smelt.run(time)
 	Global.Date.changeTime(time)
 	
 func change_sick(amm):

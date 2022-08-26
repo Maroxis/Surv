@@ -19,7 +19,11 @@ onready var resources = {
 		"ammount" : 0,
 		"bagAmmount":0,
 		"weight" : 3.2,
-		"crafted": false
+		"crafted": false,
+		"burining":{
+			"temp": 1200,
+			"time": 20
+		}
 	  },
 	"Rope": {
 		"ammount" : 0,
@@ -48,7 +52,7 @@ onready var resources = {
 	"Rock": {
 		"ammount" : 0,
 		"bagAmmount":0,
-		"weight" : 4.8,
+		"weight" : 2.8,
 		"crafted": false
 	  },
 	"Clay": {
@@ -57,20 +61,69 @@ onready var resources = {
 		"weight" : 3.6,
 		"crafted": false
 	  },
+	"Coal": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 3.2,
+		"crafted": false,
+		"burining":{
+			"temp": 2000,
+			"time": 60
+		}
+	  },
 	"CopperOre": {
 		"ammount" : 0,
 		"bagAmmount":0,
-		"weight" : 5.2,
-		"crafted": false
+		"weight" : 1.2,
+		"crafted": false,
+	  },
+	"TinOre": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 1.2,
+		"crafted": false,
+	  },
+	"IronOre": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 1.2,
+		"crafted": false,
 	  },
 	"CopperIngot": {
 		"ammount" : 0,
 		"bagAmmount":0,
 		"weight" : 10.8,
 		"cost" : {
-			"CopperOre" : 3
+			"CopperOre" : 10
 		},
-		"craftTime": 10,
+		"meltingTemp" : 1000,
+		"craftTime": 260,
+		"furnaceTier": 1,
+		"crafted": true
+	  },
+	"BronzeIngot": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 10.8,
+		"cost" : {
+			"CopperOre" : 9,
+			"TinOre" : 1
+		},
+		"meltingTemp" : 1000,
+		"craftTime": 180,
+		"furnaceTier": 1,
+		"crafted": true
+	  },
+	"IronIngot": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 10.8,
+		"cost" : {
+			"IronOre" : 10
+		},
+		"meltingTemp" : 1800,
+		"craftTime": 420,
+		"furnaceTier": 2,
 		"crafted": true
 	  }
 }

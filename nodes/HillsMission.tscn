@@ -1,0 +1,130 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://nodes/MissionSelect.tscn" type="PackedScene" id=1]
+[ext_resource path="res://nodes/ReturnButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/HillsMission.gd" type="Script" id=3]
+
+[node name="Hills" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="BG" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.454902, 0.109804, 0.109804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resources" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 128.0
+margin_right = -128.0
+margin_bottom = -128.0
+custom_constants/separation = -256
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Rock" parent="Resources" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 224.0
+margin_top = 296.0
+margin_right = 224.0
+margin_bottom = 296.0
+
+[node name="BG" parent="Resources/Rock/VBox/Button" index="0"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" parent="Resources/Rock/VBox/Button" index="1"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" parent="Resources/Rock/VBox/Button" index="2"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CopperOre" parent="Resources" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 416.0
+margin_top = 296.0
+margin_right = 416.0
+margin_bottom = 296.0
+
+[node name="BG" parent="Resources/CopperOre/VBox/Button" index="0"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" parent="Resources/CopperOre/VBox/Button" index="1"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" parent="Resources/CopperOre/VBox/Button" index="2"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TinOre" parent="Resources" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 608.0
+margin_top = 296.0
+margin_right = 608.0
+margin_bottom = 296.0
+
+[node name="BG" parent="Resources/TinOre/VBox/Button" index="0"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" parent="Resources/TinOre/VBox/Button" index="1"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coal" parent="Resources" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 800.0
+margin_top = 296.0
+margin_right = 800.0
+margin_bottom = 296.0
+
+[node name="BG" parent="Resources/Coal/VBox/Button" index="0"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" parent="Resources/Coal/VBox/Button" index="1"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" parent="Resources/Coal/VBox/Button" index="2"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Return" parent="." instance=ExtResource( 2 )]
+
+[connection signal="pressed" from="Resources/Rock/VBox/Button/Button" to="." method="_on_Rocks_Button_pressed"]
+[connection signal="pressed" from="Resources/CopperOre/VBox/Button/Button" to="." method="_on_CopperOre_Button_pressed"]
+[connection signal="pressed" from="Resources/TinOre/VBox/Button/Button" to="." method="_on_TinOre_Button_pressed"]
+[connection signal="pressed" from="Resources/Coal/VBox/Button/Button" to="." method="_on_Coal_Button_pressed"]
+[connection signal="pressed" from="Return/Button" to="." method="_on_Return_Button_pressed"]
+
+[editable path="Resources/Rock"]
+[editable path="Resources/CopperOre"]
+[editable path="Resources/TinOre"]
+[editable path="Resources/Coal"]
+[editable path="Return"]

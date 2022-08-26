@@ -6,12 +6,12 @@ onready var dayLabel = get_node("TextureRect/VBoxContainer/Day")
 onready var timeLabel = get_node("TextureRect/VBoxContainer/Time")
 
 signal newDay 
+#signal timePassed
 
 func _ready() -> void:
 	updateLabels()
 	Global.Date = self
 	connect("newDay", Events, "check_event")
-	
 
 func changeTime(amm) -> void:
 	time += int(amm)

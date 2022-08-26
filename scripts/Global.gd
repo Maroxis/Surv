@@ -8,6 +8,7 @@ var ToolsUI
 var BagUI
 var EventPopup
 var ChestResources
+var Smelt
 
 func timeGetFullFormat(time,lzero = false,labeled = false):
 	time = int(time)

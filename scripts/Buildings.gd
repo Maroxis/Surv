@@ -91,23 +91,15 @@ onready var Structure = {
 		},
 		"tier1" : {
 			"cost": {
-				"Stone": 6
+				"Rock": 2
 			},
 			"benefits":{
-				"smeltable": "Clay"
+				"smeltable": "Copper &\n Bronze"
 			}
 		},
 		"tier2" : {
 			"cost": {
-				"Stone": 8
-			},
-			"benefits":{
-				"smeltable": "Copper"
-			}
-		},
-		"tier3" : {
-			"cost": {
-				"Stone": 12
+				"Rock": 8
 			},
 			"benefits":{
 				"smeltable": "Iron"
@@ -118,6 +110,7 @@ onready var Structure = {
 		"currentTier": 0,
 		"tier0" : {
 			"benefits":{
+				"Protection" : "none"
 			}
 		},
 		"tier1" : {
@@ -125,6 +118,15 @@ onready var Structure = {
 				"Stick": 12
 			},
 			"benefits":{
+				"Protection" : "small"
+			}
+		},
+		"tier2" : {
+			"cost": {
+				"Wood": 12
+			},
+			"benefits":{
+				"Protection" : "medium"
 			}
 		}
 	}

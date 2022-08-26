@@ -35,9 +35,6 @@ margin_right = 37.0
 theme = ExtResource( 3 )
 text = "00:20"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BG" type="Sprite" parent="."]
 texture = ExtResource( 1 )

@@ -1,5 +1,7 @@
 extends Node
 
+signal toolChanged
+
 onready var tools = {
 	"Axe": {
 		"currentTier": 0,
@@ -26,8 +28,20 @@ onready var tools = {
 			"maxDurability": 2,
 			"curDurability": 2,
 			"cost": {
-				"Stick": 4,
-				"Rock": 2
+				"Stick": 1,
+				"CopperIngot": 1
+			},
+			"benefits":{
+				"actionMult": 1.4
+			}
+		},
+		"tier3" : {
+			"craftTime": 30,
+			"maxDurability": 3,
+			"curDurability": 3,
+			"cost": {
+				"Stick": 1,
+				"BronzeIngot": 1
 			},
 			"benefits":{
 				"actionMult": 1.4
@@ -53,6 +67,30 @@ onready var tools = {
 			"benefits":{
 				"actionMult": 1.2
 			}
+		},
+		"tier2" : {
+			"craftTime": 30,
+			"maxDurability": 2,
+			"curDurability": 2,
+			"cost": {
+				"Stick": 1,
+				"CopperIngot": 1
+			},
+			"benefits":{
+				"actionMult": 1.4
+			}
+		},
+		"tier3" : {
+			"craftTime": 30,
+			"maxDurability": 3,
+			"curDurability": 3,
+			"cost": {
+				"Stick": 1,
+				"BronzeIngot": 1
+			},
+			"benefits":{
+				"actionMult": 1.4
+			}
 		}
 	},
 	"Pickaxe": {
@@ -74,14 +112,36 @@ onready var tools = {
 			"benefits":{
 				"actionMult": 1.2
 			}
+		},
+		"tier2" : {
+			"craftTime": 30,
+			"maxDurability": 2,
+			"curDurability": 2,
+			"cost": {
+				"Stick": 1,
+				"CopperIngot": 1
+			},
+			"benefits":{
+				"actionMult": 1.4
+			}
+		},
+		"tier3" : {
+			"craftTime": 30,
+			"maxDurability": 3,
+			"curDurability": 3,
+			"cost": {
+				"Stick": 1,
+				"BronzeIngot": 1
+			},
+			"benefits":{
+				"actionMult": 1.4
+			}
 		}
 	},
 	"Shovel": {
 		"currentTier": 0,
 		"pinned": true,
 		"tier0" : {
-			"maxDurability": 1,
-			"curDurability": 1,
 			"benefits":{
 				"actionMult": 1
 			}
@@ -96,6 +156,30 @@ onready var tools = {
 			},
 			"benefits":{
 				"actionMult": 1.2
+			}
+		},
+		"tier2" : {
+			"craftTime": 30,
+			"maxDurability": 2,
+			"curDurability": 2,
+			"cost": {
+				"Stick": 1,
+				"CopperIngot": 1
+			},
+			"benefits":{
+				"actionMult": 1.4
+			}
+		},
+		"tier3" : {
+			"craftTime": 30,
+			"maxDurability": 3,
+			"curDurability": 3,
+			"cost": {
+				"Stick": 1,
+				"BronzeIngot": 1
+			},
+			"benefits":{
+				"actionMult": 1.4
 			}
 		}
 	},
@@ -131,6 +215,7 @@ func craftTool(name):
 	updateTool(name)
 
 func updateTool(name,downgrade = false):
+	emit_signal("toolChanged",name,downgrade,tools[name]["currentTier"])
 	if(name == "Axe"):
 		if(tools[name]["currentTier"] == 1):
 			Global.Missions.get_node("Woods").active_wood()

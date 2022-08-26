@@ -105,9 +105,8 @@ tabs_visible = false
 
 [node name="Smelting" parent="TabContainer" instance=ExtResource( 6 )]
 visible = false
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 12.0
+anchor_top = 0.0
+margin_top = 0.0
 
 [node name="Return" parent="." instance=ExtResource( 8 )]
 
