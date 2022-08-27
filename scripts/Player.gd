@@ -5,6 +5,7 @@ var hungerRate = 0.03 #per minute
 var regenRate = 0.01 #per minute
 var exhaustRate = 0.1 #per minute
 var sickRate = 0.002 #per minute
+var dryRate = 0.4 #per minute
 
 var maxWater = 100
 var maxFood = 100
@@ -19,6 +20,7 @@ var health = 100.0
 var energy = 100.0
 
 var sick = 0
+var soaked = 0
 
 func refresh_status():
 	Global.UI.water.get_node("TextureProgress").animateValue(ceil(water))
@@ -29,6 +31,22 @@ func refresh_status():
 	Global.UI.health.get_node("TextureProgress/Value").text = str(ceil(health))
 	Global.UI.energy.get_node("TextureProgress").animateValue(ceil(energy))
 	Global.UI.energy.get_node("TextureProgress/Value").text = str(ceil(energy))
+
+func soak(amm):
+	soaked += amm
+	if(soaked > 100):
+		change_sick(ceil((soaked-100) / 10))
+		soaked = 100
+	Global.Debug.soak_meter.value = soaked
+
+func dry(time):
+	if(Global.Weather.current == Global.Weather.type.Sunny):
+		soaked -= dryRate*time*2
+	else:
+		soaked -= dryRate*time
+	if(soaked < 0):
+		soaked = 0
+	Global.Debug.soak_meter.value = soaked
 
 func change_water(amm, set = false):
 	if(water == 0 && amm < 0):
@@ -91,10 +109,16 @@ func sleep():
 	var sleepTime = 360
 	pass_time(sleepTime,true)
 	
-func pass_time(time,sleep=false):
+func pass_time(time,sleep=false,wet = false):
 	var sleepMult = 1
 	var sleepRegenMult = 1
 	var sickPenaltyMlt = 1.0 if sick < 20 else 0.8
+	var weatherPenalty = 1.2 if(Global.Weather.current == Global.Weather.type.Sunny) else 1.0
+	var soakMult = Global.Weather.getRainInt()
+	if(wet and soakMult > 0):
+		soak(time*soakMult)
+	elif(soaked > 0):
+		dry(time)
 	if(sleep):
 		var ctier = Buildings.Structure["House"]["currentTier"]
 		var houseb = Buildings.Structure["House"]["tier"+str(ctier)]["benefits"]
@@ -102,14 +126,13 @@ func pass_time(time,sleep=false):
 		sleepRegenMult= houseb["sleepRegenMult"]
 		change_energy(maxEnergy-sick)
 	else:
-		change_energy(-(time*exhaustRate))
+		change_energy(-(time*exhaustRate*weatherPenalty))
 		
 	if(food > 50 && water > 30 && sick < 50):
 		change_health(time*regenRate*sleepRegenMult*sickPenaltyMlt)
 	elif(sick > 80):
 		change_health(-(time*regenRate))
-	
-	change_water(-(time*thirstRate*sleepMult*sickPenaltyMlt*sickPenaltyMlt))
+	change_water(-(time*thirstRate*sleepMult*sickPenaltyMlt*sickPenaltyMlt*weatherPenalty))
 	change_food(-(time*hungerRate*sleepMult*sickPenaltyMlt))
 	
 	if(sick > 0):

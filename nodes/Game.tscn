@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://sprites/BG/MainMap.png" type="Texture" id=1]
 [ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
@@ -41,6 +41,8 @@
 [ext_resource path="res://shaders/Weather.tres" type="Shader" id=39]
 [ext_resource path="res://nodes/ReturnButton.tscn" type="PackedScene" id=40]
 [ext_resource path="res://sprites/BG/IconHalfDisc_512px.png" type="Texture" id=41]
+[ext_resource path="res://noise/clouds.tres" type="Texture" id=42]
+[ext_resource path="res://shaders/Clouds.tres" type="Shader" id=43]
 [ext_resource path="res://sprites/Icons/32x32px/pickaxe.png" type="Texture" id=44]
 [ext_resource path="res://sprites/Icons/32x32px/knife.png" type="Texture" id=45]
 [ext_resource path="res://sprites/Icons/32x32px/axe.png" type="Texture" id=46]
@@ -48,6 +50,9 @@
 [ext_resource path="res://sprites/Icons/32x32px/water flask.png" type="Texture" id=48]
 [ext_resource path="res://nodes/Resources.tscn" type="PackedScene" id=49]
 [ext_resource path="res://sprites/Icons/32x32px/rock.png" type="Texture" id=50]
+[ext_resource path="res://shaders/Rain.tres" type="Shader" id=51]
+[ext_resource path="res://scripts/MissionButtons.gd" type="Script" id=52]
+[ext_resource path="res://scripts/Debug.gd" type="Script" id=53]
 [ext_resource path="res://sprites/Icons/128x128px/Wenrexa Pickaxe.png" type="Texture" id=55]
 [ext_resource path="res://sprites/Icons/64x64px/clay.png" type="Texture" id=56]
 [ext_resource path="res://sprites/Icons/256x256px/water collector.png" type="Texture" id=60]
@@ -59,17 +64,24 @@
 [ext_resource path="res://scripts/animate/TextureProgressAnimated.gd" type="Script" id=69]
 [ext_resource path="res://nodes/Inventory.tscn" type="PackedScene" id=70]
 
-[sub_resource type="OpenSimplexNoise" id=11]
-
-[sub_resource type="NoiseTexture" id=12]
-noise = SubResource( 11 )
-
 [sub_resource type="ShaderMaterial" id=10]
 shader = ExtResource( 39 )
 shader_param/cloudStrength = 0.0
-shader_param/darken = 0.0
+shader_param/darken = 1.0
 shader_param/lightning = 0.0
-shader_param/clouds = SubResource( 12 )
+shader_param/sunny = null
+shader_param/clouds = ExtResource( 42 )
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = ExtResource( 43 )
+shader_param/cloudStrength = 0.0
+shader_param/speed = 0.2
+shader_param/color = Vector3( 0.95, 0.95, 0.9 )
+shader_param/light = 1.0
+shader_param/OCTAVES = 3
+
+[sub_resource type="ShaderMaterial" id=12]
+shader = ExtResource( 51 )
 
 [sub_resource type="ParticlesMaterial" id=7]
 lifetime_randomness = 0.4
@@ -131,9 +143,20 @@ anchor_bottom = 0.5
 margin_left = -1280.0
 margin_top = -376.0
 margin_right = 1280.0
-margin_bottom = 424.0
+margin_bottom = 344.0
 mouse_filter = 2
 texture = ExtResource( 1 )
+
+[node name="Clouds" type="ColorRect" parent="Canvas/Weather/Background"]
+material = SubResource( 11 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Rain" type="ColorRect" parent="Canvas/Weather/Background"]
+visible = false
+material = SubResource( 12 )
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="Rain" type="Control" parent="Canvas/Weather"]
 visible = false
@@ -168,9 +191,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 size_flags_horizontal = 4
 size_flags_vertical = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource( 52 )
 
 [node name="Woods" parent="Canvas/CanvasLayer/GameWindow/Buttons" instance=ExtResource( 2 )]
 position = Vector2( 86, -151 )
@@ -802,12 +823,25 @@ script = ExtResource( 5 )
 [node name="TopLayer" type="CanvasLayer" parent="Canvas/UI"]
 layer = 128
 
-[node name="TestButton" type="Button" parent="Canvas/UI/TopLayer"]
-visible = false
+[node name="Debug" type="Control" parent="Canvas/UI/TopLayer"]
+unique_name_in_owner = true
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 53 )
+
+[node name="TestButton" type="Button" parent="Canvas/UI/TopLayer/Debug"]
+unique_name_in_owner = true
 margin_left = 128.0
 margin_right = 256.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
+
+[node name="SoakMeter" type="ProgressBar" parent="Canvas/UI/TopLayer/Debug"]
+margin_left = 259.0
+margin_top = 4.0
+margin_right = 387.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 128, 32 )
 
 [node name="Resources" parent="Canvas/UI/TopLayer" instance=ExtResource( 49 )]
 visible = false
@@ -1090,7 +1124,7 @@ unique_name_in_owner = true
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/Return/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Return_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/BaseActivities/Build/Return/Button" to="Canvas/CanvasLayer/GameWindow/BaseActivities/Build" method="_on_Return_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/BaseActivities/Status/Return/Button" to="Canvas/CanvasLayer/GameWindow/BaseActivities/Status" method="_on_Return_Button_pressed"]
-[connection signal="pressed" from="Canvas/UI/TopLayer/TestButton" to="." method="_on_TestButton_pressed"]
+[connection signal="pressed" from="Canvas/UI/TopLayer/Debug/TestButton" to="." method="_on_TestButton_pressed"]
 
 [editable path="Canvas/CanvasLayer/GameWindow/Buttons/Woods"]
 [editable path="Canvas/CanvasLayer/GameWindow/Buttons/River"]

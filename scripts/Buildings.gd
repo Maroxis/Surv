@@ -52,8 +52,8 @@ onready var Structure = {
 		},
 		"tier1" : {
 			"cost": {
-				"Stick": 6,
-				"Leaf": 24
+				"Stick": 1,
+				"Leaf": 2
 			},
 			"benefits":{
 				"collectRate": 0.003,
@@ -62,8 +62,8 @@ onready var Structure = {
 		},
 		"tier2" : {
 			"cost": {
-				"Stick": 12,
-				"Leaf": 32
+				"Stick": 2,
+				"Leaf": 3
 			},
 			"benefits":{
 				"collectRate": 0.004,
@@ -72,9 +72,9 @@ onready var Structure = {
 		},
 		"tier3" : {
 			"cost": {
-				"Wood": 6,
-				"Stick": 12,
-				"Leaf": 24
+				"Wood": 1,
+				"Stick": 3,
+				"Leaf": 4
 			},
 			"benefits":{
 				"collectRate": 0.005,
@@ -160,7 +160,7 @@ func removeResources(building):
 func runCollector(time):
 	var ctier = Structure["Collector"]["currentTier"]
 	var collectRate = Structure["Collector"]["tier"+str(ctier)]["benefits"]["collectRate"]
-	var weatherBonus = clamp(Global.Weather.current * 2 - 2,0,8)
+	var weatherBonus = max(Global.Weather.current-1,0) * max(Global.Weather.current-1,0)
 	changeWaterLevel(time*collectRate*weatherBonus)
 	
 func changeWaterLevel(amm,set = false):

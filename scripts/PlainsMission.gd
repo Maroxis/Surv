@@ -14,7 +14,7 @@ func updateGatherTime():
 	gatherTimeWBonus["Food"] = floor(gatherTime["Food"]/bonus)
 
 func _on_Food_Button_pressed() -> void:
-	Player.pass_time(gatherTimeWBonus["Food"])
+	Player.pass_time(gatherTimeWBonus["Food"],false,true)
 	Player.change_food(100, true)
 	close()
 

@@ -19,7 +19,7 @@ func updateGatherTime():
 	get_node("HBox/Water/VBox/Time").text = Global.timeGetFullFormat(gatherTimeWBonus["Water"])
 
 func _on_Water_Button_pressed() -> void:
-	Player.pass_time(floor(gatherTimeWBonus["Water"]))
+	Player.pass_time(floor(gatherTimeWBonus["Water"]),false,true)
 	Player.change_water(Player.maxWater, true)
 	close()
 

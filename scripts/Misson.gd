@@ -1,6 +1,5 @@
 extends Control
 
-onready var buttonsNode = get_node("../../Buttons")
 onready var missionTravelTime = 0
 onready var gatherTime = {}
 onready var gatherAmm = {}
@@ -9,13 +8,35 @@ onready var toolBonus= {}
 onready var gatherTimeWBonus = {}
 var resources
 
+func _ready() -> void:
+	Global.Weather.connect("weatherChanged",self,"updateTravelTime")
+
 func close(showNode = true):
 	if(showNode):
-		buttonsNode.show()
+		Global.MissionButtons.show()
 	self.hide()
 
 func updateTravelTime():
-	buttonsNode.get_node(self.name).updateMissionTime()
+	Global.MissionButtons.updateMissionTime(self.name,getTravelTime())
+
+func getTravelTime():
+	var travelTime = missionTravelTime
+	var weatherDifficulty
+	match(Global.Weather.current):
+		Global.Weather.type.HeavyRain:
+			weatherDifficulty = 1.4
+		Global.Weather.type.Storm:
+			weatherDifficulty = 2.0
+		_:
+			weatherDifficulty = 1.0
+	travelTime = floor(travelTime*weatherDifficulty)
+	return travelTime
+
+func travel():
+	var travelTime = getTravelTime()
+	Player.pass_time(travelTime,false,true)
+	show()
+	Global.MissionButtons.hide()
 
 func _on_Return_Button_pressed() -> void:
 	Inventory.empty_bag()
@@ -28,7 +49,7 @@ func getToolBonus(name):
 
 func addRes(name,amm):
 	if Inventory.add_resource_to_bag(name,amm):
-		Player.pass_time(gatherTimeWBonus[name])
+		Player.pass_time(gatherTimeWBonus[name],false,true)
 	else:
 		Global.BagUI.shake()
 		

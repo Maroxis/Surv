@@ -10,6 +10,8 @@ var EventPopup
 var ChestResources
 var Smelt
 var Weather
+var MissionButtons
+var Debug
 
 func timeGetFullFormat(time,lzero = false,labeled = false):
 	time = int(time)
