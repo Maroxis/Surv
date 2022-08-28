@@ -2,10 +2,17 @@ extends Node
 
 
 enum type {Sunny = 0, Calm = 1, Cloudy = 2, Rain = 3, HeavyRain = 4, Storm = 5}
-var current = type.Calm
+onready var current = type.Calm
+
 onready var rain: Control = $Rain
 onready var background: TextureRect = $Background
 onready var clouds: ColorRect = $Background/Clouds
+onready var rng = RandomNumberGenerator.new()
+
+onready var weatherChangeRate = 0.002 #permin
+onready var progress = 0
+onready var changeHelper = 1
+onready var calmSustain = 1
 
 signal weatherChanged
 
@@ -15,8 +22,26 @@ func _ready() -> void:
 func getRainInt():
 	return max(current - 2,0)
 
+func simWeather(time):
+	if(current == type.Calm and rng.randi_range(0, calmSustain)):
+		return
+	var r = rng.randi_range(0, type.size()-1)
+	r -= current
+	progress += float(r) * weatherChangeRate * time * changeHelper
+	if progress > 1:
+		setWeather(current+1)
+		progress = max(fmod(progress-2,10),0)
+		changeHelper = 1
+	elif progress < -1:
+		setWeather(current-1)
+		progress = min(fmod(progress+2,10),0)
+		changeHelper = 1
+	else:
+		changeHelper += weatherChangeRate * time
+
+
 func setWeather(wthr):
-	current = wthr
+	current = clamp(wthr,0,type.size()-1)
 	emit_signal("weatherChanged")
 	if(current == type.Sunny):
 		activateSunny()

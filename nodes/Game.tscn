@@ -831,12 +831,14 @@ script = ExtResource( 53 )
 
 [node name="TestButton" type="Button" parent="Canvas/UI/TopLayer/Debug"]
 unique_name_in_owner = true
+visible = false
 margin_left = 128.0
 margin_right = 256.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 
 [node name="SoakMeter" type="ProgressBar" parent="Canvas/UI/TopLayer/Debug"]
+visible = false
 margin_left = 259.0
 margin_top = 4.0
 margin_right = 387.0

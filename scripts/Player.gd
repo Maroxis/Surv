@@ -35,7 +35,7 @@ func refresh_status():
 func soak(amm):
 	soaked += amm
 	if(soaked > 100):
-		change_sick(ceil((soaked-100) / 10))
+		change_sick(ceil((soaked-100) / 20))
 		soaked = 100
 	Global.Debug.soak_meter.value = soaked
 
@@ -142,6 +142,7 @@ func pass_time(time,sleep=false,wet = false):
 	Buildings.runCollector(time)
 	Global.Smelt.run(time)
 	Global.Date.changeTime(time)
+	Global.Weather.simWeather(time)
 	
 func change_sick(amm):
 	sick += amm

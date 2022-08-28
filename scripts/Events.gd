@@ -38,6 +38,21 @@ onready var randomEvent = {
 		"title":"Animal Attack",
 		"desc": "Pack of animals attacked your camp",
 		"function": "animalAttack"
+	},
+	"event6":{
+		"title":"Unstable Weather",
+		"desc": "Weather changes more frequently",
+		"function": "unstableWeather"
+	},
+	"event7":{
+		"title":"Harsh Weather",
+		"desc": "Weather is less likely to be calm",
+		"function": "harshWeather"
+	},
+	"event87":{
+		"title":"Flash Storm",
+		"desc": "Sudden storm",
+		"function": "flashStorm"
 	}
 }
 onready var defaultEvent = {
@@ -45,7 +60,7 @@ onready var defaultEvent = {
 	"desc": "Nothing happened"
 }
 #onready var eventDates = [2,3,4,5,6,7,8,9]
-onready var eventDates = [5]
+onready var eventDates = [3]
 onready var eventIndex = 0
 
 func _ready() -> void:
@@ -182,3 +197,10 @@ func animalAttack():
 			rs += nm + "\n"
 			buildings.remove(r)
 		return {"error":null,"res": rs}
+
+func unstableWeather():
+	Global.Weather.weatherChangeRate += 0.01
+func harshWeather():
+	Global.Weather.calmSustain += 1
+func flashStorm():
+	Global.Weather.setWeather(Global.Weather.type.Storm)
