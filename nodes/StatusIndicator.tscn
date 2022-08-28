@@ -1,14 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://sprites/BG/IconDisc_96px.png" type="Texture" id=1]
+[ext_resource path="res://sprites/UI/Status/IconDiscBW_96px.png" type="Texture" id=1]
 [ext_resource path="res://fonts/StatusIndicatorFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://sprites/Icons/128x128px/Wenrexa Drop Water or Blood.png" type="Texture" id=3]
 [ext_resource path="res://scripts/animate/TextureProgressAnimated.gd" type="Script" id=4]
+[ext_resource path="res://scripts/animate/NodeAnimated.gd" type="Script" id=5]
 
 [sub_resource type="Theme" id=2]
 default_font = ExtResource( 2 )
 
 [node name="StatusIndicator" type="Control"]
+script = ExtResource( 5 )
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
 anchor_left = 0.5
@@ -23,7 +25,7 @@ value = 30.0
 texture_under = ExtResource( 1 )
 texture_progress = ExtResource( 1 )
 fill_mode = 3
-tint_under = Color( 1, 1, 1, 0.305882 )
+tint_under = Color( 0.25098, 0.25098, 0.25098, 1 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -41,9 +43,6 @@ margin_right = 51.0
 margin_bottom = 96.0
 rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Value" type="Label" parent="TextureProgress"]
 anchor_left = 0.5
@@ -60,6 +59,3 @@ custom_colors/font_outline_modulate = Color( 0, 0, 0, 0.501961 )
 text = "100"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}

@@ -29,6 +29,7 @@ func refresh_status():
 	Global.UI.food.get_node("TextureProgress/Value").text = str(ceil(food))
 	Global.UI.health.get_node("TextureProgress").animateValue(ceil(health))
 	Global.UI.health.get_node("TextureProgress/Value").text = str(ceil(health))
+	Global.UI.health.get_node("SickProgress").animateValue(ceil(sick))
 	Global.UI.energy.get_node("TextureProgress").animateValue(ceil(energy))
 	Global.UI.energy.get_node("TextureProgress/Value").text = str(ceil(energy))
 
@@ -61,7 +62,7 @@ func change_water(amm, set = false):
 func _upd_water(amm):
 	Global.UI.water.get_node("TextureProgress").animateValue(ceil(water))
 	if(water < lowWarning && amm < 0):
-		Global.UI.water.get_node("TextureProgress").shake()
+		Global.UI.water.shake()
 	Global.UI.water.get_node("TextureProgress/Value").text = str(ceil(water))
 	
 func upd_max_water(mx):
@@ -78,7 +79,7 @@ func change_food(amm, set = false):
 	food = clamp(food,0,maxFood)
 	Global.UI.food.get_node("TextureProgress").animateValue(ceil(food))
 	if(food < lowWarning && amm < 0):
-		Global.UI.food.get_node("TextureProgress").shake()
+		Global.UI.food.shake()
 	Global.UI.food.get_node("TextureProgress/Value").text = str(ceil(food))
 	
 func change_health(amm, set = false):
@@ -89,7 +90,7 @@ func change_health(amm, set = false):
 	health = clamp(health,0,maxHealth)
 	Global.UI.health.get_node("TextureProgress").animateValue(ceil(health))
 	if(health < lowWarning && amm < 0):
-		Global.UI.health.get_node("TextureProgress").shake()
+		Global.UI.health.shake()
 	Global.UI.health.get_node("TextureProgress/Value").text = str(ceil(health))
 
 func change_energy(amm, set = false):
@@ -102,7 +103,7 @@ func change_energy(amm, set = false):
 	energy = clamp(energy,0,maxEnergy)
 	Global.UI.energy.get_node("TextureProgress").animateValue(ceil(energy))
 	if(energy < lowWarning && amm < 0):
-		Global.UI.energy.get_node("TextureProgress").shake()
+		Global.UI.energy.shake()
 	Global.UI.energy.get_node("TextureProgress/Value").text = str(ceil(energy))
 
 func sleep():
@@ -148,4 +149,4 @@ func change_sick(amm):
 	sick += amm
 	sick = clamp(sick,0,100)
 	Global.UI.health.get_node("SickProgress").animateValue(ceil(sick))
-	
+	Global.UI.health.get_node("SickProgress").flashBar(sick > 80)

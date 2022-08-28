@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var debug: Control = $"%Debug"
-onready var dev = true
+onready var dev = false
 
 func _ready() -> void:
 	Player.refresh_status()

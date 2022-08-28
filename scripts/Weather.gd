@@ -59,7 +59,6 @@ func setWeather(wthr):
 		activeLightning()
 	else:
 		deactiveLightning()
-	print("Current Weather: ",type.keys()[current])
 
 func activeRain():
 	rain.changeDensity(current)

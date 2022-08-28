@@ -30,6 +30,8 @@ func update_resource():
 		onDisplay.changeCount(buff["amm"])
 		onDisplay.shake()
 		chest.shake()
+		if(not buffer.empty()):
+				update_resource()
 	else:
 		var newItem = items[hidden_items]
 		newItem.changeTexture(buff["res"])
@@ -50,6 +52,7 @@ func showNext():
 func swipeNext():
 	inProgress = items.size()
 	var hurry = 0.5 if not buffer.empty() else 1.0
+#	var hurry = 1.0
 	for n in range(inProgress-1,-1,-1):
 		var tween = create_tween().set_ease(Tween.EASE_OUT)
 		tween.connect("finished", self, "pr")

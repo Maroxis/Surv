@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://sprites/BG/MainMap.png" type="Texture" id=1]
 [ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
@@ -27,7 +27,7 @@
 [ext_resource path="res://fonts/ResourcesTheme.tres" type="Theme" id=25]
 [ext_resource path="res://nodes/Craft.tscn" type="PackedScene" id=26]
 [ext_resource path="res://scripts/PlainsMission.gd" type="Script" id=27]
-[ext_resource path="res://sprites/BG/IconDisc.png" type="Texture" id=28]
+[ext_resource path="res://sprites/UI/Status/IconDiscBW.png" type="Texture" id=28]
 [ext_resource path="res://scripts/Base.gd" type="Script" id=29]
 [ext_resource path="res://nodes/BaseActivity.tscn" type="PackedScene" id=30]
 [ext_resource path="res://sprites/Icons/64x64px/craft.png" type="Texture" id=31]
@@ -40,7 +40,7 @@
 [ext_resource path="res://scripts/Date.gd" type="Script" id=38]
 [ext_resource path="res://shaders/Weather.tres" type="Shader" id=39]
 [ext_resource path="res://nodes/ReturnButton.tscn" type="PackedScene" id=40]
-[ext_resource path="res://sprites/BG/IconHalfDisc_512px.png" type="Texture" id=41]
+[ext_resource path="res://sprites/UI/Status/background.png" type="Texture" id=41]
 [ext_resource path="res://noise/clouds.tres" type="Texture" id=42]
 [ext_resource path="res://shaders/Clouds.tres" type="Shader" id=43]
 [ext_resource path="res://sprites/Icons/32x32px/pickaxe.png" type="Texture" id=44]
@@ -60,7 +60,6 @@
 [ext_resource path="res://scripts/ToolsUI.gd" type="Script" id=63]
 [ext_resource path="res://scripts/animate/NodeAnimated.gd" type="Script" id=66]
 [ext_resource path="res://nodes/EventPopup.tscn" type="PackedScene" id=67]
-[ext_resource path="res://sprites/BG/DiscBorder.png" type="Texture" id=68]
 [ext_resource path="res://scripts/animate/TextureProgressAnimated.gd" type="Script" id=69]
 [ext_resource path="res://nodes/Inventory.tscn" type="PackedScene" id=70]
 
@@ -831,7 +830,6 @@ script = ExtResource( 53 )
 
 [node name="TestButton" type="Button" parent="Canvas/UI/TopLayer/Debug"]
 unique_name_in_owner = true
-visible = false
 margin_left = 128.0
 margin_right = 256.0
 margin_bottom = 128.0
@@ -851,47 +849,63 @@ visible = false
 [node name="Status" type="CanvasLayer" parent="Canvas/UI"]
 layer = 100
 
-[node name="TextureRect" type="TextureRect" parent="Canvas/UI/Status"]
-self_modulate = Color( 0.14902, 0.14902, 0.14902, 1 )
+[node name="Corner" type="Control" parent="Canvas/UI/Status"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -300.0
-margin_right = 300.0
-rect_min_size = Vector2( 300, 300 )
+margin_top = -40.0
+margin_right = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Canvas/UI/Status/Corner"]
+self_modulate = Color( 0.207843, 0.105882, 0.0588235, 1 )
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -264.0
+margin_right = 264.0
+rect_min_size = Vector2( 264, 264 )
 texture = ExtResource( 41 )
 expand = true
 
-[node name="Health" parent="Canvas/UI/Status/TextureRect" instance=ExtResource( 6 )]
-margin_left = 64.0
-margin_top = 210.0
-margin_right = 64.0
-margin_bottom = 210.0
+[node name="Health" parent="Canvas/UI/Status/Corner" instance=ExtResource( 6 )]
+unique_name_in_owner = true
+margin_left = 57.0
+margin_top = -49.0
+margin_right = 57.0
+margin_bottom = -49.0
 mouse_filter = 2
 
-[node name="TextureProgress" parent="Canvas/UI/Status/TextureRect/Health" index="0"]
+[node name="TextureProgress" parent="Canvas/UI/Status/Corner/Health" index="0"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_right = 80.0
+margin_bottom = 80.0
 value = 100.0
 texture_under = ExtResource( 28 )
 texture_progress = ExtResource( 28 )
 
-[node name="TextureRect" parent="Canvas/UI/Status/TextureRect/Health/TextureProgress" index="0"]
+[node name="TextureRect" parent="Canvas/UI/Status/Corner/Health/TextureProgress" index="0"]
+self_modulate = Color( 0, 0, 0, 0.501961 )
 margin_left = -31.0
 margin_top = -33.0
 margin_right = 97.0
 margin_bottom = 95.0
 texture = ExtResource( 18 )
 
-[node name="SickProgress" type="TextureProgress" parent="Canvas/UI/Status/TextureRect/Health"]
+[node name="SickProgress" type="TextureProgress" parent="Canvas/UI/Status/Corner/Health"]
+show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -58.0
 margin_top = -58.0
 margin_right = 90.0
 margin_bottom = 90.0
-texture_under = ExtResource( 68 )
-texture_progress = ExtResource( 68 )
-fill_mode = 4
+rect_min_size = Vector2( 148, 148 )
+value = 30.0
+texture_under = ExtResource( 28 )
+texture_progress = ExtResource( 28 )
+fill_mode = 8
 tint_under = Color( 0.0352941, 0.172549, 0, 1 )
 tint_progress = Color( 0.54902, 1, 0, 1 )
+radial_initial_angle = 180.0
+nine_patch_stretch = true
 stretch_margin_left = 48
 stretch_margin_top = 48
 stretch_margin_right = 48
@@ -901,41 +915,48 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Food" parent="Canvas/UI/Status/TextureRect" instance=ExtResource( 6 )]
-margin_left = 168.0
-margin_top = 135.0
-margin_right = 168.0
-margin_bottom = 135.0
+[node name="Food" parent="Canvas/UI/Status/Corner" instance=ExtResource( 6 )]
+unique_name_in_owner = true
+self_modulate = Color( 1, 0.577148, 0, 1 )
+margin_left = 163.0
+margin_top = -121.0
+margin_right = 163.0
+margin_bottom = -121.0
 
-[node name="TextureProgress" parent="Canvas/UI/Status/TextureRect/Food" index="0"]
+[node name="TextureProgress" parent="Canvas/UI/Status/Corner/Food" index="0"]
+self_modulate = Color( 1, 0.541176, 0, 1 )
 value = 100.0
 
-[node name="TextureRect" parent="Canvas/UI/Status/TextureRect/Food/TextureProgress" index="0"]
+[node name="TextureRect" parent="Canvas/UI/Status/Corner/Food/TextureProgress" index="0"]
 margin_left = -32.0
 margin_top = -31.0
 margin_right = 96.0
 margin_bottom = 97.0
 texture = ExtResource( 7 )
 
-[node name="Water" parent="Canvas/UI/Status/TextureRect" instance=ExtResource( 6 )]
-margin_left = 68.0
-margin_top = 103.0
-margin_right = 68.0
-margin_bottom = 103.0
+[node name="Water" parent="Canvas/UI/Status/Corner" instance=ExtResource( 6 )]
+unique_name_in_owner = true
+margin_left = 59.0
+margin_top = -160.0
+margin_right = 59.0
+margin_bottom = -160.0
 
-[node name="TextureProgress" parent="Canvas/UI/Status/TextureRect/Water" index="0"]
+[node name="TextureProgress" parent="Canvas/UI/Status/Corner/Water" index="0"]
+self_modulate = Color( 0, 1, 1, 1 )
 value = 100.0
 
-[node name="Energy" parent="Canvas/UI/Status/TextureRect" instance=ExtResource( 6 )]
-margin_left = 206.0
-margin_top = 233.0
-margin_right = 206.0
-margin_bottom = 233.0
+[node name="Energy" parent="Canvas/UI/Status/Corner" instance=ExtResource( 6 )]
+unique_name_in_owner = true
+margin_left = 200.0
+margin_top = -20.0
+margin_right = 200.0
+margin_bottom = -20.0
 
-[node name="TextureProgress" parent="Canvas/UI/Status/TextureRect/Energy" index="0"]
+[node name="TextureProgress" parent="Canvas/UI/Status/Corner/Energy" index="0"]
+self_modulate = Color( 1, 0.890196, 0, 1 )
 value = 100.0
 
-[node name="TextureRect" parent="Canvas/UI/Status/TextureRect/Energy/TextureProgress" index="0"]
+[node name="TextureRect" parent="Canvas/UI/Status/Corner/Energy/TextureProgress" index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -959,9 +980,6 @@ size_flags_vertical = 4
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.709804, 0.509804, 0.0784314, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Canvas/UI/Status/TopBar/Control"]
 anchor_right = 1.0
@@ -1155,7 +1173,7 @@ unique_name_in_owner = true
 [editable path="Canvas/CanvasLayer/GameWindow/BaseActivities/Build/ScrollContainer/HBox/Wall"]
 [editable path="Canvas/CanvasLayer/GameWindow/BaseActivities/Build/Return"]
 [editable path="Canvas/CanvasLayer/GameWindow/BaseActivities/Status/Return"]
-[editable path="Canvas/UI/Status/TextureRect/Health"]
-[editable path="Canvas/UI/Status/TextureRect/Food"]
-[editable path="Canvas/UI/Status/TextureRect/Water"]
-[editable path="Canvas/UI/Status/TextureRect/Energy"]
+[editable path="Canvas/UI/Status/Corner/Health"]
+[editable path="Canvas/UI/Status/Corner/Food"]
+[editable path="Canvas/UI/Status/Corner/Water"]
+[editable path="Canvas/UI/Status/Corner/Energy"]
