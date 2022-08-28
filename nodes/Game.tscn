@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://sprites/BG/MainMap.png" type="Texture" id=1]
 [ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
@@ -10,7 +10,7 @@
 [ext_resource path="res://nodes/HillsMission.tscn" type="PackedScene" id=8]
 [ext_resource path="res://sprites/Icons/128x128px/Wenrexa Axe.png" type="Texture" id=9]
 [ext_resource path="res://sprites/Icons/128x128px/Wenrexa Chest.png" type="Texture" id=10]
-[ext_resource path="res://sprites/Icons/128x128px/Wenrexa Special magic.png" type="Texture" id=11]
+[ext_resource path="res://sprites/Icons/128x128px/calendarB.png" type="Texture" id=11]
 [ext_resource path="res://nodes/MissionSelect.tscn" type="PackedScene" id=12]
 [ext_resource path="res://sprites/Icons/32x32px/wood.png" type="Texture" id=13]
 [ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=14]
@@ -36,7 +36,7 @@
 [ext_resource path="res://sprites/Icons/craftable/pinned/Saw.png" type="Texture" id=34]
 [ext_resource path="res://scripts/Rain.gd" type="Script" id=35]
 [ext_resource path="res://scripts/Weather.gd" type="Script" id=36]
-[ext_resource path="res://sprites/Icons/128x128px/calendar.png" type="Texture" id=37]
+[ext_resource path="res://sprites/UI/Topbar/calendar/sun-cloud.png" type="Texture" id=37]
 [ext_resource path="res://scripts/Date.gd" type="Script" id=38]
 [ext_resource path="res://shaders/Weather.tres" type="Shader" id=39]
 [ext_resource path="res://nodes/ReturnButton.tscn" type="PackedScene" id=40]
@@ -53,11 +53,17 @@
 [ext_resource path="res://shaders/Rain.tres" type="Shader" id=51]
 [ext_resource path="res://scripts/MissionButtons.gd" type="Script" id=52]
 [ext_resource path="res://scripts/Debug.gd" type="Script" id=53]
+[ext_resource path="res://sprites/Icons/128x128px/hog-head.png" type="Texture" id=54]
 [ext_resource path="res://sprites/Icons/128x128px/Wenrexa Pickaxe.png" type="Texture" id=55]
 [ext_resource path="res://sprites/Icons/64x64px/clay.png" type="Texture" id=56]
+[ext_resource path="res://sprites/UI/Topbar/calendar/cloud.png" type="Texture" id=57]
+[ext_resource path="res://sprites/UI/Topbar/calendar/thunder-cloud.png" type="Texture" id=58]
+[ext_resource path="res://sprites/UI/Topbar/calendar/sun.png" type="Texture" id=59]
 [ext_resource path="res://sprites/Icons/256x256px/water collector.png" type="Texture" id=60]
 [ext_resource path="res://sprites/Icons/256x256px/wall.png" type="Texture" id=61]
+[ext_resource path="res://sprites/UI/Topbar/calendar/rain-cloud.png" type="Texture" id=62]
 [ext_resource path="res://scripts/ToolsUI.gd" type="Script" id=63]
+[ext_resource path="res://scripts/WeatherUI.gd" type="Script" id=64]
 [ext_resource path="res://scripts/animate/NodeAnimated.gd" type="Script" id=66]
 [ext_resource path="res://nodes/EventPopup.tscn" type="PackedScene" id=67]
 [ext_resource path="res://scripts/animate/TextureProgressAnimated.gd" type="Script" id=69]
@@ -217,7 +223,7 @@ texture = ExtResource( 10 )
 position = Vector2( 419, 46 )
 
 [node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Buttons/Plains" index="2"]
-texture = ExtResource( 11 )
+texture = ExtResource( 54 )
 
 [node name="Hills" parent="Canvas/CanvasLayer/GameWindow/Buttons" instance=ExtResource( 2 )]
 position = Vector2( 138, 223 )
@@ -882,7 +888,6 @@ texture_under = ExtResource( 28 )
 texture_progress = ExtResource( 28 )
 
 [node name="TextureRect" parent="Canvas/UI/Status/Corner/Health/TextureProgress" index="0"]
-self_modulate = Color( 0, 0, 0, 0.501961 )
 margin_left = -31.0
 margin_top = -33.0
 margin_right = 97.0
@@ -996,50 +1001,113 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date"]
+[node name="Calendar" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 128, 128 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource( 37 )
+texture = ExtResource( 11 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/TextureRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = -8
 
-[node name="Control" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/TextureRect/VBoxContainer"]
+[node name="Control" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/VBoxContainer"]
 margin_right = 128.0
-margin_bottom = 56.0
-rect_min_size = Vector2( 0, 56 )
+margin_bottom = 60.0
+rect_min_size = Vector2( 0, 60 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Day" type="Label" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/TextureRect/VBoxContainer"]
+[node name="Day" type="Label" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/VBoxContainer"]
 margin_left = 36.0
-margin_top = 48.0
+margin_top = 52.0
 margin_right = 91.0
-margin_bottom = 89.0
+margin_bottom = 93.0
 size_flags_horizontal = 4
 theme = ExtResource( 25 )
 text = "28D"
 
-[node name="Time" type="Label" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/TextureRect/VBoxContainer"]
+[node name="Time" type="Label" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/VBoxContainer"]
 margin_left = 27.0
-margin_top = 81.0
+margin_top = 85.0
 margin_right = 101.0
-margin_bottom = 122.0
+margin_bottom = 126.0
 size_flags_horizontal = 4
 theme = ExtResource( 25 )
 text = "24:00"
+
+[node name="WeatherUI" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_top = 16.0
+margin_right = 120.0
+margin_bottom = 56.0
+script = ExtResource( 64 )
+
+[node name="Sunny" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI"]
+visible = false
+margin_left = 41.0
+margin_top = -2.0
+margin_right = 73.0
+margin_bottom = 30.0
+texture = ExtResource( 59 )
+
+[node name="Calm" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI"]
+margin_left = 41.0
+margin_top = -2.0
+margin_right = 73.0
+margin_bottom = 30.0
+texture = ExtResource( 37 )
+
+[node name="Cloudy" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI"]
+visible = false
+margin_left = 41.0
+margin_top = -2.0
+margin_right = 73.0
+margin_bottom = 30.0
+texture = ExtResource( 57 )
+
+[node name="Rain" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI"]
+visible = false
+margin_left = 41.0
+margin_top = -2.0
+margin_right = 73.0
+margin_bottom = 30.0
+texture = ExtResource( 62 )
+
+[node name="HeavyRain" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI"]
+visible = false
+margin_left = 41.0
+margin_top = -2.0
+margin_right = 81.0
+margin_bottom = 38.0
+
+[node name="Rain" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI/HeavyRain"]
+margin_left = -20.0
+margin_right = 12.0
+margin_bottom = 32.0
+texture = ExtResource( 62 )
+
+[node name="Rain2" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI/HeavyRain"]
+margin_left = 22.0
+margin_right = 54.0
+margin_bottom = 32.0
+texture = ExtResource( 62 )
+
+[node name="Storm" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI"]
+visible = false
+margin_left = 41.0
+margin_top = -2.0
+margin_right = 73.0
+margin_bottom = 30.0
+texture = ExtResource( 58 )
 
 [node name="Control" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
 margin_left = 132.0
