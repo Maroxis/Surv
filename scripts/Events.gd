@@ -49,7 +49,7 @@ onready var randomEvent = {
 		"desc": "Weather is less likely to be calm",
 		"function": "harshWeather"
 	},
-	"event87":{
+	"event8":{
 		"title":"Flash Storm",
 		"desc": "Sudden storm",
 		"function": "flashStorm"

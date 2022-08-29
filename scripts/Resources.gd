@@ -3,6 +3,7 @@ extends Control
 onready var resources: HBoxContainer = $"%Resources"
 onready var rawList = resources.get_node("Raw/List")
 onready var craftedList = resources.get_node("Crafted/List")
+onready var foodList = resources.get_node("Food/List")
 
 func _ready() -> void:
 	Global.ChestResources = self
@@ -12,20 +13,25 @@ func loadRes():
 	var scene = load("res://nodes/ItemCount.tscn")
 	for res in Inventory.resources:
 		var scene_instance = scene.instance()
-		if(Inventory.resources[res]["crafted"]):
+		if(Inventory.resources[res].has("food")):
+			foodList.add_child(scene_instance)
+		elif(Inventory.resources[res]["crafted"]):
 			craftedList.add_child(scene_instance)
 		else:
 			rawList.add_child(scene_instance)
 		scene_instance.set_name(res)
 		scene_instance.changeTexture(res.to_lower())
+		scene_instance.changeSize(48)
 		
 
 func update_resource(res,amm,crafted):
 	var node
-	if(crafted):
-		node = resources.get_node("Crafted/List/"+res)
+	if(Inventory.resources[res].has("food")):
+		node = foodList.get_node(res)
+	elif(crafted):
+		node = craftedList.get_node(res)
 	else:
-		node = resources.get_node("Raw/List/"+res)
+		node = rawList.get_node(res)
 	var count = node.get_node("Count")
 	count.text = str(amm)
 

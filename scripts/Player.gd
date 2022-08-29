@@ -141,6 +141,7 @@ func pass_time(time,sleep=false,wet = false):
 		change_sick(-(sickRate*time*sleepRegenMult*fullBonus))
 
 	Buildings.runCollector(time)
+	Inventory.spoil_food(time)
 	Global.Smelt.run(time)
 	Global.Date.changeTime(time)
 	Global.Weather.simWeather(time)

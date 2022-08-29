@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=81 format=2]
 
 [ext_resource path="res://sprites/BG/MainMap.png" type="Texture" id=1]
 [ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
@@ -64,8 +64,10 @@
 [ext_resource path="res://sprites/UI/Topbar/calendar/rain-cloud.png" type="Texture" id=62]
 [ext_resource path="res://scripts/ToolsUI.gd" type="Script" id=63]
 [ext_resource path="res://scripts/WeatherUI.gd" type="Script" id=64]
+[ext_resource path="res://sprites/Icons/resources/64p/rawmeat.png" type="Texture" id=65]
 [ext_resource path="res://scripts/animate/NodeAnimated.gd" type="Script" id=66]
 [ext_resource path="res://nodes/EventPopup.tscn" type="PackedScene" id=67]
+[ext_resource path="res://sprites/Icons/furnace.png" type="Texture" id=68]
 [ext_resource path="res://scripts/animate/TextureProgressAnimated.gd" type="Script" id=69]
 [ext_resource path="res://nodes/Inventory.tscn" type="PackedScene" id=70]
 
@@ -425,9 +427,6 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 27 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BG" type="ColorRect" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains"]
 anchor_right = 1.0
@@ -450,9 +449,9 @@ __meta__ = {
 [node name="Food" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox" instance=ExtResource( 12 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 512.0
+margin_left = 255.0
 margin_top = 232.0
-margin_right = 512.0
+margin_right = 255.0
 margin_bottom = 232.0
 
 [node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Food/VBox/Button" index="1"]
@@ -465,6 +464,26 @@ text = "Food"
 text = "100%"
 
 [node name="Time" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Food/VBox" index="4"]
+text = "2:30"
+
+[node name="Meat" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox" instance=ExtResource( 12 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 769.0
+margin_top = 232.0
+margin_right = 769.0
+margin_bottom = 232.0
+
+[node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Meat/VBox/Button" index="1"]
+texture = ExtResource( 65 )
+
+[node name="Name" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Meat/VBox" index="2"]
+text = "Meat"
+
+[node name="Ammount" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Meat/VBox" index="3"]
+text = "6x"
+
+[node name="Time" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Meat/VBox" index="4"]
 text = "2:30"
 
 [node name="Return" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains" instance=ExtResource( 40 )]
@@ -744,6 +763,10 @@ anchor_bottom = 0.0
 margin_left = 1012.0
 margin_right = 1352.0
 margin_bottom = 0.0
+
+[node name="Building" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Build/ScrollContainer/HBox/Furnace/VBox/Hbox/VBox/BG/VBox" index="0"]
+self_modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 68 )
 
 [node name="Cost" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Build/ScrollContainer/HBox/Furnace/VBox/Hbox/VBox2" index="1"]
 items = [ "Cost", null, false ]
@@ -1203,6 +1226,7 @@ unique_name_in_owner = true
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/River/HBox/Clay/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/River" method="_on_Clay_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/River/Return/Button" to="Canvas/CanvasLayer/GameWindow/Missions/River" method="_on_Return_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Food/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Plains" method="_on_Food_Button_pressed"]
+[connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Meat/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Plains" method="_on_Meat_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Plains/Return/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Plains" method="_on_Return_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Build/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Build_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Craft/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Craft_Button_pressed"]
@@ -1228,6 +1252,7 @@ unique_name_in_owner = true
 [editable path="Canvas/CanvasLayer/GameWindow/Missions/River/HBox/Clay"]
 [editable path="Canvas/CanvasLayer/GameWindow/Missions/River/Return"]
 [editable path="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Food"]
+[editable path="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Meat"]
 [editable path="Canvas/CanvasLayer/GameWindow/Missions/Plains/Return"]
 [editable path="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Build"]
 [editable path="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Craft"]

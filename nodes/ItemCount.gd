@@ -13,3 +13,6 @@ func changeTexture(tex):
 func changeCount(amm):
 	count.text = str(amm)
 	currentCount = amm
+
+func changeSize(size):
+	texture_rect.rect_min_size = Vector2(size,size)

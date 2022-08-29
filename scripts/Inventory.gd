@@ -125,6 +125,39 @@ onready var resources = {
 		"craftTime": 420,
 		"furnaceTier": 2,
 		"crafted": true
+	  },
+	"RawMeat": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 2.8,
+		"crafted": false,
+		"food": true,
+		"calories": 80,
+		"sick": 40,
+		"spoil":[],
+		"spoilTime": 2160
+	  },
+	"WildBerry": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 1.2,
+		"crafted": false,
+		"food": true,
+		"calories": 10,
+		"water": 5,
+		"sick": 5,
+		"spoil":[],
+		"spoilTime": 960
+	  },
+	"CookedMeat": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 2.2,
+		"crafted": true,
+		"food": true,
+		"calories": 80,
+		"spoil":[],
+		"spoilTime": 4320
 	  }
 }
 onready var upgrades = {
@@ -194,6 +227,12 @@ func add_resource(res,amm):
 		resources[res]["ammount"] += amm
 		if resources[res]["ammount"] > 99:
 			resources[res]["ammount"] = 99
+		if(resources[res].has("food") and amm > 0):
+			var sp = {
+				"amm": amm,
+				"time": resources[res]["spoilTime"]
+			}
+			resources[res]["spoil"].push_back(sp)
 		Global.ResourcesUI.addRes(res,resources[res]["ammount"],resources[res]["crafted"])
 		return true
 
@@ -231,3 +270,15 @@ func expand_water(item):
 	Player.upd_max_water(upgrades[item]["size"]) 
 	Player.pass_time(upgrades[item]["craftTime"])
 	return true
+
+func spoil_food(time):
+	for res in resources:
+		if resources[res].has("food") and not resources[res]["spoil"].empty():
+			print(resources[res]["spoil"])
+			var removed = 0
+			for n in range(resources[res]["spoil"].size()-1,-1,-1):
+				resources[res]["spoil"][n]["time"] -= time
+				if(resources[res]["spoil"][n]["time"] < 0):
+					add_resource(res,-resources[res]["spoil"][n]["amm"])
+					resources[res]["spoil"].remove(n)
+

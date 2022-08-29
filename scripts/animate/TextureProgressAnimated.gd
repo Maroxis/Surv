@@ -7,9 +7,6 @@ func animateValue(val):
 	tween.tween_property(self, "value", val, 0.3)
 	
 func flashBar(start):
-	print(start)
-	print(flashTween == null)
-	print(start and flashTween == null)
 	if(start and flashTween == null):
 		flashTween = create_tween()
 		flashTween.set_loops()

@@ -5,7 +5,8 @@ func _ready() -> void:
 	updateTravelTime()
 	
 	gatherTime = {
-		"Food": 150
+		"Food": 150,
+		"RawMeat": 150
 	}
 	gatherTimeWBonus = gatherTime.duplicate()
 	
@@ -20,3 +21,7 @@ func _on_Food_Button_pressed() -> void:
 
 func _on_Close_Button_pressed() -> void:
 	close()
+
+
+func _on_Meat_Button_pressed() -> void:
+	addRes("RawMeat",6)
