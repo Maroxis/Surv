@@ -1,8 +1,5 @@
 extends "res://scripts/Misson.gd"
 
-onready var buildScreen = get_node("../../BaseActivities/Build")
-onready var statusScreen = get_node("../../BaseActivities/Status")
-onready var craftScreen = get_node("../../BaseActivities/Craft")
 onready var drinkNode = get_node("VBoxContainer/HBox2/Drink")
 onready var drinkNodeAmm = drinkNode.get_node("VBox/Ammount")
 
@@ -17,18 +14,18 @@ func _on_Sleep_Button_pressed() -> void:
 	close()
 
 func _on_Build_Button_pressed() -> void:
-	buildScreen.show()
-	buildScreen.refresh()
+	Global.BaseAct.build.show()
+	Global.BaseAct.build.refresh()
 	close(false)
 
 func _on_Craft_Button_pressed() -> void:
-	craftScreen.show()
-	craftScreen.refresh()
+	Global.BaseAct.craft.show()
+	Global.BaseAct.craft.refresh()
 	close(false)
 
 func _on_Status_Button_pressed() -> void:
-	statusScreen.show()
-	statusScreen.refresh()
+	Global.BaseAct.status.show()
+	Global.BaseAct.status.refresh()
 	close(false)
 
 func _on_Drink_Button_pressed() -> void:
@@ -46,3 +43,9 @@ func activateDrink():
 func deactivateDrink():
 	drinkNode.modulate = Color(1,1,1,0.4)
 	drinkNode.get_node("VBox/Button/Button").disabled = true
+
+
+func _on_Cook_Button_pressed() -> void:
+	Global.BaseAct.cook.show()
+	Global.BaseAct.cook.refresh()
+	close(false)

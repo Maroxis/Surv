@@ -50,6 +50,8 @@ func dry(time):
 	Global.Debug.soak_meter.value = soaked
 
 func change_water(amm, set = false):
+	if(amm == 0 and not set):
+		return
 	if(water == 0 && amm < 0):
 		change_health(amm*2)
 	if(set):
@@ -69,20 +71,26 @@ func upd_max_water(mx):
 	maxWater += mx
 	Global.UI.water.get_node("TextureProgress").max_value += mx
 	
-func change_food(amm, set = false):
+func change_food(amm, set = false, over = false):
+	print("change Food amm: ", amm)
+	if(amm == 0 and not set):
+		return
 	if(food == 0 && amm < 0):
 		change_health(amm*2)
 	if(set):
 		food = amm
 	else:
 		food += amm
-	food = clamp(food,0,maxFood)
+	if not over:
+		food = clamp(food,0,maxFood)
 	Global.UI.food.get_node("TextureProgress").animateValue(ceil(food))
 	if(food < lowWarning && amm < 0):
 		Global.UI.food.shake()
 	Global.UI.food.get_node("TextureProgress/Value").text = str(ceil(food))
 	
 func change_health(amm, set = false):
+	if(amm == 0 and not set):
+		return
 	if(set):
 		health = amm
 	else:
@@ -143,6 +151,7 @@ func pass_time(time,sleep=false,wet = false):
 	Buildings.runCollector(time)
 	Inventory.spoil_food(time)
 	Global.Smelt.run(time)
+	Global.Cook.run(time)
 	Global.Date.changeTime(time)
 	Global.Weather.simWeather(time)
 	
@@ -151,3 +160,32 @@ func change_sick(amm):
 	sick = clamp(sick,0,100)
 	Global.UI.health.get_node("SickProgress").animateValue(ceil(sick))
 	Global.UI.health.get_node("SickProgress").flashBar(sick > 80)
+
+func eat(food, amm, over = false):
+	var bonus = 1 if over else 0
+	print("bonus: ",bonus)
+	var cal = Inventory.resources[food]["calories"]
+	var wtr = 0
+	if(Inventory.resources[food].has("water")):
+		wtr = Inventory.resources[food]["calories"]
+	var space = self.maxFood - self.food + cal*bonus
+	print("food: ",self.food+ cal*bonus)
+	print("space: ",space)
+	var ate = 0
+	if(cal * amm <= space):
+		print("first IF")
+		ate = amm
+		change_food(cal*amm,false,over)
+		change_water(wtr*amm)
+	else:
+		print("else if")
+		while space > cal:
+			space -= cal
+			ate += 1
+		change_food(cal*ate,false,over)
+		change_water(wtr*amm)
+	print("ate: ",ate)
+	print("cal: ",cal)
+	print("total: ",cal*ate)
+	print("amm: ",amm)
+	return amm-ate

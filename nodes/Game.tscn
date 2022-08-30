@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=2]
+[gd_scene load_steps=82 format=2]
 
 [ext_resource path="res://sprites/BG/MainMap.png" type="Texture" id=1]
 [ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
@@ -16,7 +16,7 @@
 [ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=14]
 [ext_resource path="res://scripts/WoodsMission.gd" type="Script" id=15]
 [ext_resource path="res://sprites/Icons/64x64px/Wenrexa Drop Water or Blood.png" type="Texture" id=16]
-[ext_resource path="res://sprites/Icons/64x64px/food.png" type="Texture" id=17]
+[ext_resource path="res://nodes/Plains.tscn" type="PackedScene" id=17]
 [ext_resource path="res://sprites/Icons/128x128px/Wenrexa Healing magic.png" type="Texture" id=18]
 [ext_resource path="res://sprites/Icons/32x32px/shovel.png" type="Texture" id=19]
 [ext_resource path="res://scripts/Build.gd" type="Script" id=20]
@@ -26,7 +26,6 @@
 [ext_resource path="res://scripts/Missions.gd" type="Script" id=24]
 [ext_resource path="res://fonts/ResourcesTheme.tres" type="Theme" id=25]
 [ext_resource path="res://nodes/Craft.tscn" type="PackedScene" id=26]
-[ext_resource path="res://scripts/PlainsMission.gd" type="Script" id=27]
 [ext_resource path="res://sprites/UI/Status/IconDiscBW.png" type="Texture" id=28]
 [ext_resource path="res://scripts/Base.gd" type="Script" id=29]
 [ext_resource path="res://nodes/BaseActivity.tscn" type="PackedScene" id=30]
@@ -64,12 +63,14 @@
 [ext_resource path="res://sprites/UI/Topbar/calendar/rain-cloud.png" type="Texture" id=62]
 [ext_resource path="res://scripts/ToolsUI.gd" type="Script" id=63]
 [ext_resource path="res://scripts/WeatherUI.gd" type="Script" id=64]
-[ext_resource path="res://sprites/Icons/resources/64p/rawmeat.png" type="Texture" id=65]
 [ext_resource path="res://scripts/animate/NodeAnimated.gd" type="Script" id=66]
 [ext_resource path="res://nodes/EventPopup.tscn" type="PackedScene" id=67]
 [ext_resource path="res://sprites/Icons/furnace.png" type="Texture" id=68]
 [ext_resource path="res://scripts/animate/TextureProgressAnimated.gd" type="Script" id=69]
 [ext_resource path="res://nodes/Inventory.tscn" type="PackedScene" id=70]
+[ext_resource path="res://sprites/Icons/64x64px/campfire.png" type="Texture" id=71]
+[ext_resource path="res://scripts/BaseActivities.gd" type="Script" id=72]
+[ext_resource path="res://nodes/Cook.tscn" type="PackedScene" id=73]
 
 [sub_resource type="ShaderMaterial" id=10]
 shader = ExtResource( 39 )
@@ -422,71 +423,7 @@ text = "0:35"
 
 [node name="Return" parent="Canvas/CanvasLayer/GameWindow/Missions/River" instance=ExtResource( 40 )]
 
-[node name="Plains" type="Control" parent="Canvas/CanvasLayer/GameWindow/Missions"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 27 )
-
-[node name="BG" type="ColorRect" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.454902, 0.109804, 0.109804, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBox" type="HBoxContainer" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 128.0
-margin_right = -128.0
-margin_bottom = -128.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Food" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox" instance=ExtResource( 12 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 255.0
-margin_top = 232.0
-margin_right = 255.0
-margin_bottom = 232.0
-
-[node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Food/VBox/Button" index="1"]
-texture = ExtResource( 17 )
-
-[node name="Name" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Food/VBox" index="2"]
-text = "Food"
-
-[node name="Ammount" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Food/VBox" index="3"]
-text = "100%"
-
-[node name="Time" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Food/VBox" index="4"]
-text = "2:30"
-
-[node name="Meat" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox" instance=ExtResource( 12 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 769.0
-margin_top = 232.0
-margin_right = 769.0
-margin_bottom = 232.0
-
-[node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Meat/VBox/Button" index="1"]
-texture = ExtResource( 65 )
-
-[node name="Name" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Meat/VBox" index="2"]
-text = "Meat"
-
-[node name="Ammount" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Meat/VBox" index="3"]
-text = "6x"
-
-[node name="Time" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Meat/VBox" index="4"]
-text = "2:30"
-
-[node name="Return" parent="Canvas/CanvasLayer/GameWindow/Missions/Plains" instance=ExtResource( 40 )]
+[node name="Plains" parent="Canvas/CanvasLayer/GameWindow/Missions" instance=ExtResource( 17 )]
 
 [node name="Hills" parent="Canvas/CanvasLayer/GameWindow/Missions" instance=ExtResource( 8 )]
 visible = false
@@ -524,34 +461,23 @@ __meta__ = {
 }
 
 [node name="Spacer" type="Control" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox"]
-margin_left = 89.0
-margin_top = 196.0
-margin_right = 89.0
-margin_bottom = 196.0
-size_flags_horizontal = 6
-size_flags_vertical = 6
+margin_right = 64.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 64, 0 )
 
 [node name="Build" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox" instance=ExtResource( 30 )]
-margin_left = 272.0
+margin_left = 68.0
 margin_top = 196.0
-margin_right = 272.0
+margin_right = 446.0
 margin_bottom = 196.0
 
 [node name="Name" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Build/VBox" index="1"]
 text = "Build"
 
-[node name="Spacer3" type="Control" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox"]
-margin_left = 456.0
-margin_top = 196.0
-margin_right = 456.0
-margin_bottom = 196.0
-size_flags_horizontal = 6
-size_flags_vertical = 6
-
 [node name="Craft" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox" instance=ExtResource( 30 )]
-margin_left = 639.0
+margin_left = 450.0
 margin_top = 196.0
-margin_right = 639.0
+margin_right = 829.0
 margin_bottom = 196.0
 
 [node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Craft/VBox/Button" index="1"]
@@ -560,18 +486,24 @@ texture = ExtResource( 31 )
 [node name="Name" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Craft/VBox" index="1"]
 text = "Craft"
 
-[node name="Spacer2" type="Control" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox"]
-margin_left = 823.0
+[node name="Cook" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox" instance=ExtResource( 30 )]
+margin_left = 833.0
 margin_top = 196.0
-margin_right = 823.0
+margin_right = 1211.0
 margin_bottom = 196.0
-size_flags_horizontal = 6
-size_flags_vertical = 6
+
+[node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Cook/VBox/Button" index="1"]
+texture = ExtResource( 71 )
+
+[node name="Name" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Cook/VBox" index="1"]
+text = "Cook"
 
 [node name="Status" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox" instance=ExtResource( 30 )]
-margin_left = 1006.0
+unique_name_in_owner = true
+visible = false
+margin_left = 929.0
 margin_top = 196.0
-margin_right = 1006.0
+margin_right = 1212.0
 margin_bottom = 196.0
 
 [node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Status/VBox/Button" index="1"]
@@ -580,13 +512,11 @@ texture = ExtResource( 32 )
 [node name="Name" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Status/VBox" index="1"]
 text = "Status"
 
-[node name="Spacer4" type="Control" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox"]
-margin_left = 1190.0
-margin_top = 196.0
-margin_right = 1190.0
-margin_bottom = 196.0
-size_flags_horizontal = 6
-size_flags_vertical = 6
+[node name="Spacer2" type="Control" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox"]
+margin_left = 1215.0
+margin_right = 1279.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 64, 0 )
 
 [node name="HBox2" type="HBoxContainer" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer"]
 margin_top = 200.0
@@ -600,26 +530,15 @@ __meta__ = {
 }
 
 [node name="Spacer" type="Control" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2"]
-margin_left = 89.0
-margin_top = 196.0
-margin_right = 89.0
-margin_bottom = 196.0
-size_flags_horizontal = 6
-size_flags_vertical = 6
-
-[node name="Spacer4" type="Control" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2"]
-margin_left = 272.0
-margin_top = 196.0
-margin_right = 272.0
-margin_bottom = 196.0
-size_flags_horizontal = 6
-size_flags_vertical = 6
+margin_right = 256.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 256, 0 )
 
 [node name="Drink" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2" instance=ExtResource( 30 )]
 modulate = Color( 1, 1, 1, 0.4 )
-margin_left = 456.0
+margin_left = 260.0
 margin_top = 196.0
-margin_right = 456.0
+margin_right = 638.0
 margin_bottom = 196.0
 
 [node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Drink/VBox/Button" index="1"]
@@ -638,18 +557,10 @@ margin_bottom = 218.0
 theme = ExtResource( 25 )
 align = 1
 
-[node name="Spacer3" type="Control" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2"]
-margin_left = 639.0
-margin_top = 196.0
-margin_right = 639.0
-margin_bottom = 196.0
-size_flags_horizontal = 6
-size_flags_vertical = 6
-
 [node name="Sleep" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2" instance=ExtResource( 30 )]
-margin_left = 823.0
+margin_left = 642.0
 margin_top = 196.0
-margin_right = 823.0
+margin_right = 1020.0
 margin_bottom = 196.0
 
 [node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Sleep/VBox/Button" index="1"]
@@ -663,20 +574,10 @@ visible = true
 text = "6:00"
 
 [node name="Spacer2" type="Control" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2"]
-margin_left = 1006.0
-margin_top = 196.0
-margin_right = 1006.0
-margin_bottom = 196.0
-size_flags_horizontal = 6
-size_flags_vertical = 6
-
-[node name="Spacer5" type="Control" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2"]
-margin_left = 1190.0
-margin_top = 196.0
-margin_right = 1190.0
-margin_bottom = 196.0
-size_flags_horizontal = 6
-size_flags_vertical = 6
+margin_left = 1024.0
+margin_right = 1280.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 256, 0 )
 
 [node name="Return" parent="Canvas/CanvasLayer/GameWindow/Missions/Home" instance=ExtResource( 40 )]
 
@@ -684,6 +585,7 @@ size_flags_vertical = 6
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+script = ExtResource( 72 )
 
 [node name="Build" type="Control" parent="Canvas/CanvasLayer/GameWindow/BaseActivities"]
 visible = false
@@ -838,6 +740,9 @@ auto_height = true
 max_columns = 2
 
 [node name="Return" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Status" instance=ExtResource( 40 )]
+
+[node name="Cook" parent="Canvas/CanvasLayer/GameWindow/BaseActivities" instance=ExtResource( 73 )]
+visible = false
 
 [node name="Craft" parent="Canvas/CanvasLayer/GameWindow/BaseActivities" instance=ExtResource( 26 )]
 visible = false
@@ -1225,11 +1130,9 @@ unique_name_in_owner = true
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/River/HBox/Water/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/River" method="_on_Water_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/River/HBox/Clay/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/River" method="_on_Clay_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/River/Return/Button" to="Canvas/CanvasLayer/GameWindow/Missions/River" method="_on_Return_Button_pressed"]
-[connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Food/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Plains" method="_on_Food_Button_pressed"]
-[connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Meat/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Plains" method="_on_Meat_Button_pressed"]
-[connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Plains/Return/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Plains" method="_on_Return_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Build/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Build_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Craft/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Craft_Button_pressed"]
+[connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Cook/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Cook_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Status/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Status_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Drink/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Drink_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Sleep/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Sleep_Button_pressed"]
@@ -1251,11 +1154,9 @@ unique_name_in_owner = true
 [editable path="Canvas/CanvasLayer/GameWindow/Missions/River/HBox/Water"]
 [editable path="Canvas/CanvasLayer/GameWindow/Missions/River/HBox/Clay"]
 [editable path="Canvas/CanvasLayer/GameWindow/Missions/River/Return"]
-[editable path="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Food"]
-[editable path="Canvas/CanvasLayer/GameWindow/Missions/Plains/HBox/Meat"]
-[editable path="Canvas/CanvasLayer/GameWindow/Missions/Plains/Return"]
 [editable path="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Build"]
 [editable path="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Craft"]
+[editable path="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Cook"]
 [editable path="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Status"]
 [editable path="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Drink"]
 [editable path="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Sleep"]

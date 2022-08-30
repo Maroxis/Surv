@@ -1,0 +1,219 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://nodes/ReturnButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/Cook.gd" type="Script" id=2]
+[ext_resource path="res://nodes/ItemSelectWAmm.tscn" type="PackedScene" id=3]
+[ext_resource path="res://fonts/ResourcesTheme.tres" type="Theme" id=4]
+[ext_resource path="res://sprites/Icons/campfire.png" type="Texture" id=5]
+[ext_resource path="res://sprites/Icons/resources/wood.png" type="Texture" id=6]
+[ext_resource path="res://sprites/UI/plus.png" type="Texture" id=7]
+[ext_resource path="res://sprites/Icons/furnaceFlameFull.png" type="Texture" id=8]
+[ext_resource path="res://resources/PanelButton.tres" type="Theme" id=9]
+[ext_resource path="res://sprites/Icons/128x128px/arrow.png" type="Texture" id=10]
+[ext_resource path="res://shaders/flame.tres" type="Shader" id=11]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.541176, 0.0196078, 1 )
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 11 )
+shader_param/on = 0.0
+
+[node name="Cook" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 128.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.454902, 0.109804, 0.109804, 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 256.0
+margin_top = 64.0
+margin_right = -64.0
+margin_bottom = -128.0
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+margin_right = 101.0
+margin_bottom = 400.0
+size_flags_horizontal = 3
+
+[node name="FoodSelect" type="Control" parent="HBoxContainer"]
+margin_left = 105.0
+margin_top = 28.0
+margin_right = 233.0
+margin_bottom = 372.0
+rect_min_size = Vector2( 128, 344 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ItemSelectWAmm" parent="HBoxContainer/FoodSelect" instance=ExtResource( 3 )]
+
+[node name="Info" type="Control" parent="HBoxContainer"]
+margin_left = 237.0
+margin_top = 89.0
+margin_right = 594.0
+margin_bottom = 311.0
+rect_min_size = Vector2( 357, 222 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Info"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -178.5
+margin_top = -111.0
+margin_right = 178.5
+margin_bottom = 49.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/separation = 40
+alignment = 1
+
+[node name="Plus" type="TextureRect" parent="HBoxContainer/Info/HBoxContainer"]
+margin_top = 48.0
+margin_right = 64.0
+margin_bottom = 112.0
+size_flags_vertical = 4
+texture = ExtResource( 7 )
+
+[node name="Fuel" type="VBoxContainer" parent="HBoxContainer/Info/HBoxContainer"]
+margin_left = 104.0
+margin_top = 3.0
+margin_right = 189.0
+margin_bottom = 157.0
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/Info/HBoxContainer/Fuel"]
+margin_right = 85.0
+margin_bottom = 41.0
+text = "Wood"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Info/HBoxContainer/Fuel"]
+margin_top = 45.0
+margin_right = 85.0
+margin_bottom = 109.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 1
+
+[node name="Ammount" type="Label" parent="HBoxContainer/Info/HBoxContainer/Fuel"]
+margin_top = 113.0
+margin_right = 85.0
+margin_bottom = 154.0
+text = "0x"
+align = 1
+
+[node name="Control" type="Control" parent="HBoxContainer/Info/HBoxContainer"]
+margin_left = 229.0
+margin_right = 357.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 128, 160 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BG" type="ColorRect" parent="HBoxContainer/Info/HBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="StartButton" type="Button" parent="HBoxContainer/Info/HBoxContainer/Control"]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+theme = ExtResource( 9 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/disabled = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Info/HBoxContainer/Control/StartButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -32.0
+margin_bottom = -32.0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="Progress" type="Control" parent="HBoxContainer"]
+margin_left = 598.0
+margin_top = 72.0
+margin_right = 854.0
+margin_bottom = 328.0
+rect_min_size = Vector2( 256, 256 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Progress"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Flame" type="TextureProgress" parent="HBoxContainer/Progress/VBoxContainer"]
+material = SubResource( 2 )
+margin_left = 24.0
+margin_right = 168.0
+margin_bottom = 179.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 60.0
+texture_under = ExtResource( 8 )
+texture_progress = ExtResource( 8 )
+fill_mode = 3
+tint_under = Color( 0, 0, 0, 1 )
+tint_over = Color( 0, 0, 0, 1 )
+tint_progress = Color( 1, 0.768627, 0, 1 )
+
+[node name="Wood" type="TextureRect" parent="HBoxContainer/Progress/VBoxContainer"]
+margin_top = 183.0
+margin_right = 192.0
+margin_bottom = 272.0
+texture = ExtResource( 5 )
+
+[node name="TimeRemaining" type="Label" parent="HBoxContainer/Progress/VBoxContainer"]
+margin_top = 276.0
+margin_right = 192.0
+margin_bottom = 317.0
+text = "0h:20m"
+align = 1
+
+[node name="Control2" type="Control" parent="HBoxContainer"]
+margin_left = 858.0
+margin_right = 960.0
+margin_bottom = 400.0
+size_flags_horizontal = 3
+
+[node name="Return" parent="." instance=ExtResource( 1 )]
+
+[connection signal="pressed" from="HBoxContainer/Info/HBoxContainer/Control/StartButton" to="." method="_on_Start_Button_pressed"]
+[connection signal="pressed" from="Return/Button" to="." method="_on_Return_Button_pressed"]
+
+[editable path="Return"]

@@ -5,6 +5,3 @@ func refresh():
 	for building in buildings:
 		if(building.name != "Margin" and building.name != "Margin2"):
 			building.refresh()
-
-func _on_Return_Button_pressed() -> void:
-	close()

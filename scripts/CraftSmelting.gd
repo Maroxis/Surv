@@ -37,7 +37,8 @@ func _ready() -> void:
 	fuel_item_select.connect("itemSelected",self,"selectItem")
 	addItems()
 	checkRecipes()
-	disableStart()
+	checkFuel()
+	checkErrors()
 
 func unlockItem(nm, ore):
 	if(ore):

@@ -16,7 +16,7 @@ onready var resources = {
 		"crafted": false
 	  },
 	"Wood": {
-		"ammount" : 0,
+		"ammount" : 5,
 		"bagAmmount":0,
 		"weight" : 3.2,
 		"crafted": false,
@@ -135,7 +135,9 @@ onready var resources = {
 		"calories": 80,
 		"sick": 40,
 		"spoil":[],
-		"spoilTime": 2160
+		"spoilTime": 2160,
+		"cookTime": 10,
+		"cooksInto" : "CookedMeat"
 	  },
 	"WildBerry": {
 		"ammount" : 0,
@@ -144,7 +146,7 @@ onready var resources = {
 		"crafted": false,
 		"food": true,
 		"calories": 10,
-		"water": 5,
+		"water": 3,
 		"sick": 5,
 		"spoil":[],
 		"spoilTime": 960
@@ -220,19 +222,35 @@ func add_resource_to_bag(res,amm):
 func update_bag():
 	Global.BagUI.updateBag(bagSpaceLeft,bagSize)
 
-func add_resource(res,amm):
+func add_resource(res,amm,cook = false):
 	if amm < 0 and resources[res]["ammount"] < abs(amm):
 		return false
 	else:
 		resources[res]["ammount"] += amm
 		if resources[res]["ammount"] > 99:
 			resources[res]["ammount"] = 99
-		if(resources[res].has("food") and amm > 0):
-			var sp = {
-				"amm": amm,
-				"time": resources[res]["spoilTime"]
-			}
-			resources[res]["spoil"].push_back(sp)
+		if(resources[res].has("food")):
+			if(amm > 0):
+				var sp = {
+					"amm": amm,
+					"time": resources[res]["spoilTime"]
+				}
+				resources[res]["spoil"].push_back(sp)
+			elif(cook):
+				var i = abs(amm)
+				print("removeSpoil: ",i)
+				while i > 0:
+					print("While I: ", i)
+					for n in resources[res]["spoil"].size():
+						var spAmm = resources[res]["spoil"][n]["amm"]
+						if i >= spAmm:
+							i -= spAmm
+							resources[res]["spoil"][n]["amm"] = 0
+						else:
+							resources[res]["spoil"][n]["amm"] -= i
+							i = 0
+						if(i == 0):
+							break
 		Global.ResourcesUI.addRes(res,resources[res]["ammount"],resources[res]["crafted"])
 		return true
 

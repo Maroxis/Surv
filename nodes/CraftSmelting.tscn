@@ -60,14 +60,14 @@ anchor_bottom = 1.0
 alignment = 1
 
 [node name="Control" type="Control" parent="HBoxContainer"]
-margin_right = 215.0
+margin_right = 263.0
 margin_bottom = 465.0
 rect_min_size = Vector2( 208, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="OreContainer" type="HBoxContainer" parent="HBoxContainer"]
-margin_left = 219.0
+margin_left = 267.0
 margin_right = 787.0
 margin_bottom = 465.0
 size_flags_horizontal = 5
@@ -76,35 +76,31 @@ theme = ExtResource( 3 )
 alignment = 1
 
 [node name="HBox" type="HBoxContainer" parent="HBoxContainer/OreContainer"]
-margin_top = 114.0
-margin_right = 568.0
-margin_bottom = 350.0
+margin_top = 78.0
+margin_right = 520.0
+margin_bottom = 386.0
 size_flags_horizontal = 0
 size_flags_vertical = 4
 alignment = 1
 
 [node name="Control2" type="Control" parent="HBoxContainer/OreContainer/HBox"]
-margin_bottom = 236.0
+margin_bottom = 308.0
 size_flags_horizontal = 3
 
 [node name="Ore" type="VBoxContainer" parent="HBoxContainer/OreContainer/HBox"]
 margin_left = 4.0
-margin_right = 148.0
-margin_bottom = 236.0
+margin_right = 132.0
+margin_bottom = 308.0
 
 [node name="Ore" parent="HBoxContainer/OreContainer/HBox/Ore" instance=ExtResource( 6 )]
 unique_name_in_owner = true
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 144.0
-margin_bottom = 236.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Plus" type="VBoxContainer" parent="HBoxContainer/OreContainer/HBox"]
-margin_left = 152.0
-margin_right = 216.0
-margin_bottom = 236.0
+margin_left = 136.0
+margin_right = 200.0
+margin_bottom = 308.0
 rect_min_size = Vector2( 64, 64 )
 
 [node name="Control" type="Control" parent="HBoxContainer/OreContainer/HBox/Plus"]
@@ -115,51 +111,43 @@ rect_min_size = Vector2( 0, 41 )
 [node name="Texture" type="TextureRect" parent="HBoxContainer/OreContainer/HBox/Plus"]
 margin_top = 45.0
 margin_right = 64.0
-margin_bottom = 236.0
+margin_bottom = 308.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 1 )
 stretch_mode = 4
 
 [node name="Ore2" type="VBoxContainer" parent="HBoxContainer/OreContainer/HBox"]
-margin_left = 220.0
-margin_right = 364.0
-margin_bottom = 236.0
+margin_left = 204.0
+margin_right = 332.0
+margin_bottom = 308.0
 
 [node name="Ore2" parent="HBoxContainer/OreContainer/HBox/Ore2" instance=ExtResource( 6 )]
 unique_name_in_owner = true
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 144.0
-margin_bottom = 236.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Control" type="Control" parent="HBoxContainer/OreContainer/HBox"]
-margin_left = 368.0
-margin_right = 416.0
-margin_bottom = 236.0
+margin_left = 336.0
+margin_right = 384.0
+margin_bottom = 308.0
 rect_min_size = Vector2( 48, 0 )
 size_flags_horizontal = 3
 
 [node name="Fuel" type="VBoxContainer" parent="HBoxContainer/OreContainer/HBox"]
-margin_left = 420.0
-margin_right = 564.0
-margin_bottom = 236.0
+margin_left = 388.0
+margin_right = 516.0
+margin_bottom = 308.0
 
 [node name="Fuel" parent="HBoxContainer/OreContainer/HBox/Fuel" instance=ExtResource( 6 )]
 unique_name_in_owner = true
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 144.0
-margin_bottom = 236.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Control3" type="Control" parent="HBoxContainer/OreContainer/HBox"]
-margin_left = 568.0
-margin_right = 568.0
-margin_bottom = 236.0
+margin_left = 520.0
+margin_right = 520.0
+margin_bottom = 308.0
 size_flags_horizontal = 3
 
 [node name="Start" type="VBoxContainer" parent="HBoxContainer"]

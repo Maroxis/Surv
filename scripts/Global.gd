@@ -12,6 +12,9 @@ var Smelt
 var Weather
 var MissionButtons
 var Debug
+var BaseAct
+var Cook
+
 
 func timeGetFullFormat(time,lzero = false,labeled = false):
 	time = int(time)
