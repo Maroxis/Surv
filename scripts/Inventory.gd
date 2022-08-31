@@ -16,7 +16,7 @@ onready var resources = {
 		"crafted": false
 	  },
 	"Wood": {
-		"ammount" : 5,
+		"ammount" : 0,
 		"bagAmmount":0,
 		"weight" : 3.2,
 		"crafted": false,
@@ -238,9 +238,7 @@ func add_resource(res,amm,cook = false):
 				resources[res]["spoil"].push_back(sp)
 			elif(cook):
 				var i = abs(amm)
-				print("removeSpoil: ",i)
 				while i > 0:
-					print("While I: ", i)
 					for n in resources[res]["spoil"].size():
 						var spAmm = resources[res]["spoil"][n]["amm"]
 						if i >= spAmm:
@@ -292,7 +290,6 @@ func expand_water(item):
 func spoil_food(time):
 	for res in resources:
 		if resources[res].has("food") and not resources[res]["spoil"].empty():
-			print(resources[res]["spoil"])
 			var removed = 0
 			for n in range(resources[res]["spoil"].size()-1,-1,-1):
 				resources[res]["spoil"][n]["time"] -= time

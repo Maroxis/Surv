@@ -22,7 +22,7 @@ func loadRes():
 		scene_instance.set_name(res)
 		scene_instance.changeTexture(res.to_lower())
 		scene_instance.changeSize(48)
-		
+		scene_instance.changeCount(Inventory.resources[res]["ammount"])
 
 func update_resource(res,amm,crafted):
 	var node

@@ -93,7 +93,7 @@ func showPopup(ev,res):
 	var txRes = ""
 	if res:
 		if res["error"]:
-			print(res["error"])
+			print(res["error"]) #dont remove
 			Global.EventPopup.populate(defaultEvent["title"],defaultEvent["desc"],"")
 			Global.EventPopup.show()
 			return

@@ -14,6 +14,7 @@ var MissionButtons
 var Debug
 var BaseAct
 var Cook
+var FoodEat
 
 
 func timeGetFullFormat(time,lzero = false,labeled = false):

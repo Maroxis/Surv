@@ -1,7 +1,7 @@
 extends Node
 
 var thirstRate = 0.09 #per minute
-var hungerRate = 0.03 #per minute
+var hungerRate = 0.04 #per minute
 var regenRate = 0.01 #per minute
 var exhaustRate = 0.1 #per minute
 var sickRate = 0.002 #per minute
@@ -12,7 +12,7 @@ var maxFood = 100
 var maxHealth = 100
 var maxEnergy = 100
 
-var lowWarning = 10
+var lowWarning = 15
 
 var water = 40.0
 var food = 80.0
@@ -72,7 +72,6 @@ func upd_max_water(mx):
 	Global.UI.water.get_node("TextureProgress").max_value += mx
 	
 func change_food(amm, set = false, over = false):
-	print("change Food amm: ", amm)
 	if(amm == 0 and not set):
 		return
 	if(food == 0 && amm < 0):
@@ -162,30 +161,24 @@ func change_sick(amm):
 	Global.UI.health.get_node("SickProgress").flashBar(sick > 80)
 
 func eat(food, amm, over = false):
-	var bonus = 1 if over else 0
-	print("bonus: ",bonus)
 	var cal = Inventory.resources[food]["calories"]
+	var bonus = cal if over else 0
+	var space = self.maxFood - self.food + bonus
+	if(space < cal):
+		return amm
 	var wtr = 0
 	if(Inventory.resources[food].has("water")):
 		wtr = Inventory.resources[food]["calories"]
-	var space = self.maxFood - self.food + cal*bonus
-	print("food: ",self.food+ cal*bonus)
-	print("space: ",space)
 	var ate = 0
 	if(cal * amm <= space):
-		print("first IF")
 		ate = amm
 		change_food(cal*amm,false,over)
 		change_water(wtr*amm)
 	else:
-		print("else if")
 		while space > cal:
 			space -= cal
 			ate += 1
 		change_food(cal*ate,false,over)
 		change_water(wtr*amm)
-	print("ate: ",ate)
-	print("cal: ",cal)
-	print("total: ",cal*ate)
-	print("amm: ",amm)
+	Inventory.add_resource(food,-ate)
 	return amm-ate

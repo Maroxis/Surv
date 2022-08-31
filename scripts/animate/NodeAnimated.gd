@@ -16,6 +16,9 @@ func shake(distance = 10, del = 0.1, sideways = false):
 		tween.tween_property(self, "rect_position:y", curPos.y - distance, del*2)
 		tween.tween_property(self, "rect_position:y", curPos.y, del)
 		
+func shakeSide():
+	shake(5,0.05,true)
+
 func fadeIn(time):
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, "modulate:a", 1.0, time)
