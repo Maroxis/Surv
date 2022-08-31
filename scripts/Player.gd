@@ -162,9 +162,8 @@ func change_sick(amm):
 
 func eat(food, amm, over = false):
 	var cal = Inventory.resources[food]["calories"]
-	var bonus = cal if over else 0
-	var space = self.maxFood - self.food + bonus
-	if(space < cal):
+	var space = self.maxFood - self.food
+	if (space < cal and not over) or space == 0:
 		return amm
 	var wtr = 0
 	if(Inventory.resources[food].has("water")):
@@ -172,13 +171,14 @@ func eat(food, amm, over = false):
 	var ate = 0
 	if(cal * amm <= space):
 		ate = amm
-		change_food(cal*amm,false,over)
+		change_food(cal*amm,false)
 		change_water(wtr*amm)
 	else:
-		while space > cal:
+		var limit = 0 if over else cal
+		while space > limit:
 			space -= cal
 			ate += 1
-		change_food(cal*ate,false,over)
+		change_food(cal*ate,false)
 		change_water(wtr*amm)
 	Inventory.add_resource(food,-ate)
 	return amm-ate

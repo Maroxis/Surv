@@ -6,6 +6,7 @@
 [node name="Resources" type="ScrollContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_horizontal = 4
 theme = ExtResource( 3 )
 scroll_vertical_enabled = false
 

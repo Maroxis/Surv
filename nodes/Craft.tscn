@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://resources/tabFG.tres" type="StyleBox" id=1]
 [ext_resource path="res://fonts/CraftTabsFont.tres" type="DynamicFont" id=2]
@@ -6,8 +6,12 @@
 [ext_resource path="res://nodes/CraftTools.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/CraftResources.tscn" type="PackedScene" id=5]
 [ext_resource path="res://nodes/CraftSmelting.tscn" type="PackedScene" id=6]
+[ext_resource path="res://nodes/TabSwithcerTab.tscn" type="PackedScene" id=7]
 [ext_resource path="res://nodes/ReturnButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=9]
+[ext_resource path="res://sprites/Icons/furnace.png" type="Texture" id=10]
+[ext_resource path="res://sprites/Icons/32x32px/pickaxe.png" type="Texture" id=11]
+[ext_resource path="res://sprites/BG/DiscBorder.png" type="Texture" id=12]
 [ext_resource path="res://scripts/Craft.gd" type="Script" id=13]
 [ext_resource path="res://sprites/Icons/128x128px/arrow.png" type="Texture" id=16]
 
@@ -25,11 +29,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 128.0
 color = Color( 0.454902, 0.109804, 0.109804, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Category" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 margin_left = 160.0
 margin_top = 16.0
@@ -102,11 +104,78 @@ tabs_visible = false
 [node name="Resources" parent="TabContainer" instance=ExtResource( 5 )]
 
 [node name="Tools" parent="TabContainer" instance=ExtResource( 4 )]
+visible = false
 
 [node name="Smelting" parent="TabContainer" instance=ExtResource( 6 )]
 visible = false
 anchor_top = 0.0
 margin_top = 0.0
+
+[node name="TabSwitcher" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -96.0
+rect_min_size = Vector2( 96, 0 )
+
+[node name="TextureRect" type="ColorRect" parent="TabSwitcher"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.454902, 0.109804, 0.109804, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabSwitcher"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -104.0
+margin_right = 32.0
+margin_bottom = 104.0
+custom_constants/separation = 8
+
+[node name="Resources" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 7 )]
+
+[node name="Tools" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 7 )]
+margin_top = 72.0
+margin_bottom = 136.0
+
+[node name="Icon" parent="TabSwitcher/VBoxContainer/Tools" index="1"]
+texture = ExtResource( 11 )
+
+[node name="Smelting" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 7 )]
+margin_top = 144.0
+margin_bottom = 208.0
+
+[node name="Icon" parent="TabSwitcher/VBoxContainer/Smelting" index="1"]
+texture = ExtResource( 10 )
+
+[node name="Control" type="Control" parent="TabSwitcher"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+mouse_filter = 2
+
+[node name="Selected" type="TextureRect" parent="TabSwitcher/Control"]
+self_modulate = Color( 0.286275, 1, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 64, 64 )
+mouse_filter = 2
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 1
 
 [node name="Return" parent="." instance=ExtResource( 8 )]
 
@@ -114,4 +183,7 @@ margin_top = 0.0
 [connection signal="pressed" from="Category/BG/Control/Next" to="." method="_on_Next_pressed"]
 [connection signal="pressed" from="Return/Button" to="." method="_on_Return_Button_pressed"]
 
+[editable path="TabSwitcher/VBoxContainer/Resources"]
+[editable path="TabSwitcher/VBoxContainer/Tools"]
+[editable path="TabSwitcher/VBoxContainer/Smelting"]
 [editable path="Return"]

@@ -27,7 +27,7 @@ func populateItems():
 			scene_instance.connect("foodClicked",self,"eatFood")
 
 func eatFood(food,node):
-	var left = Player.eat(food,1)
+	var left = Player.eat(food,1,true)
 	if left == 0:
 		node.shake()
 	else:
