@@ -6,15 +6,20 @@ onready var gatherAmm = {}
 onready var toolReq = {}
 onready var toolBonus= {}
 onready var gatherTimeWBonus = {}
+onready var pos = self.rect_position
 var resources
 
 func _ready() -> void:
 	Global.Weather.connect("weatherChanged",self,"updateTravelTime")
+	self.rect_position.y + self.rect_size.y
 
 func close(showNode = true):
-	if(showNode):
-		Global.MissionButtons.show()
-	self.hide()
+#	if(showNode):
+#		Global.MissionButtons.show()
+	var tween = create_tween().set_ease(Tween.EASE_IN)
+	tween.tween_property(self, "rect_position:y", pos.y + rect_size.y, 0.4)
+#	tween.tween_property(self, "modulate:a", 1.0, 0.1)
+	tween.tween_callback(self, "hide")
 
 func updateTravelTime():
 	Global.MissionButtons.updateMissionTime(self.name,getTravelTime())
@@ -35,8 +40,13 @@ func getTravelTime():
 func travel():
 	var travelTime = getTravelTime()
 	Player.pass_time(travelTime,false,true)
+	self.rect_position.y = pos.y + self.rect_size.y
 	show()
-	Global.MissionButtons.hide()
+	var tween = create_tween().set_ease(Tween.EASE_IN)
+#	tween.tween_property(self, "modulate:a", 1.0, 0.1)
+	tween.tween_property(self, "rect_position:y", pos.y, 0.4)
+#	show()
+#	Global.MissionButtons.hide()
 
 func _on_Return_Button_pressed() -> void:
 	Inventory.empty_bag()

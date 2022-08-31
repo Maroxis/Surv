@@ -53,6 +53,7 @@ tracks/0/keys = {
 [node name="CraftItem" type="VBoxContainer"]
 margin_right = 335.0
 margin_bottom = 260.0
+rect_min_size = Vector2( 420, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 16
@@ -60,13 +61,13 @@ alignment = 1
 script = ExtResource( 5 )
 
 [node name="Control" type="Control" parent="."]
-margin_right = 336.0
+margin_right = 420.0
 margin_bottom = 8.0
 rect_min_size = Vector2( 0, 8 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_top = 24.0
-margin_right = 336.0
+margin_right = 420.0
 margin_bottom = 244.0
 rect_min_size = Vector2( 0, 220 )
 custom_constants/separation = 16
@@ -173,12 +174,12 @@ auto_height = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 margin_top = 260.0
-margin_right = 336.0
+margin_right = 420.0
 margin_bottom = 324.0
 alignment = 1
 
 [node name="CraftButton" type="TextureButton" parent="HBoxContainer2"]
-margin_right = 221.0
+margin_right = 277.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 0, 64 )
 size_flags_horizontal = 3
@@ -202,9 +203,9 @@ anims/btClick = SubResource( 9 )
 
 [node name="Time" type="Label" parent="HBoxContainer2"]
 unique_name_in_owner = true
-margin_left = 225.0
+margin_left = 281.0
 margin_top = 11.0
-margin_right = 336.0
+margin_right = 420.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -216,7 +217,7 @@ valign = 1
 
 [node name="Benefits" type="ItemList" parent="."]
 margin_top = 340.0
-margin_right = 336.0
+margin_right = 420.0
 margin_bottom = 385.0
 mouse_filter = 2
 size_flags_horizontal = 3
