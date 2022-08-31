@@ -8,6 +8,7 @@
 [ext_resource path="res://nodes/StatusIndicator.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sprites/Icons/128x128px/food.png" type="Texture" id=7]
 [ext_resource path="res://nodes/HillsMission.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sprites/Particles/rain.png" type="Texture" id=9]
 [ext_resource path="res://sprites/Icons/128x128px/Wenrexa Chest.png" type="Texture" id=10]
 [ext_resource path="res://sprites/Icons/128x128px/calendarB.png" type="Texture" id=11]
 [ext_resource path="res://nodes/MissionSelect.tscn" type="PackedScene" id=12]
@@ -92,22 +93,15 @@ shader_param/OCTAVES = 3
 
 [sub_resource type="ShaderMaterial" id=12]
 shader = ExtResource( 51 )
-
-[sub_resource type="ParticlesMaterial" id=7]
-lifetime_randomness = 0.4
-emission_shape = 2
-emission_box_extents = Vector3( 640, 10, 1 )
-flag_disable_z = true
-gravity = Vector3( -40, 98, 0 )
-angular_velocity = 270.0
-angular_velocity_random = 0.5
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 4.0
-scale_random = 0.5
-color = Color( 0, 0.384314, 1, 1 )
-hue_variation = 0.02
-hue_variation_random = 1.0
+shader_param/direction = Vector2( 0.2, -1 )
+shader_param/speed = 0.15
+shader_param/scale = 3.2
+shader_param/color = Plane( 0.2, 0.4, 1, 1 )
+shader_param/light = 1.0
+shader_param/offset = Vector2( 0.2, 0.6 )
+shader_param/on1 = 0.0
+shader_param/on2 = 0.0
+shader_param/on3 = 0.0
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -164,27 +158,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Rain" type="ColorRect" parent="Canvas/Weather/Background"]
-visible = false
+[node name="Rain" type="TextureRect" parent="Canvas/Weather/Background"]
 material = SubResource( 12 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-
-[node name="Rain" type="Control" parent="Canvas/Weather"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 2
 script = ExtResource( 35 )
-
-[node name="RainParticles" type="Particles2D" parent="Canvas/Weather/Rain"]
-unique_name_in_owner = true
-position = Vector2( 640, -20 )
-amount = 1000
-lifetime = 3.6
-preprocess = 5.0
-process_material = SubResource( 7 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Canvas"]
 layer = 20

@@ -4,7 +4,7 @@ extends Node
 enum type {Sunny = 0, Calm = 1, Cloudy = 2, Rain = 3, HeavyRain = 4, Storm = 5}
 onready var current = type.Calm
 
-onready var rain: Control = $Rain
+onready var rain: Control = $Background/Rain
 onready var background: TextureRect = $Background
 onready var clouds: ColorRect = $Background/Clouds
 onready var rng = RandomNumberGenerator.new()
@@ -62,8 +62,6 @@ func setWeather(wthr):
 
 func activeRain():
 	rain.changeDensity(current)
-	rain.modulate.b = 1.6 - 0.2*current
-	rain.modulate.g = 1.6 - 0.2*current
 	rain.show()
 func deactiveRain():
 	rain.changeDensity(current)
