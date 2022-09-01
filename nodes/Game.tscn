@@ -10,7 +10,7 @@
 [ext_resource path="res://nodes/HillsMission.tscn" type="PackedScene" id=8]
 [ext_resource path="res://sprites/Particles/rain.png" type="Texture" id=9]
 [ext_resource path="res://sprites/Icons/128x128px/hut.png" type="Texture" id=10]
-[ext_resource path="res://sprites/Icons/128x128px/calendarB.png" type="Texture" id=11]
+[ext_resource path="res://sprites/Icons/128x128px/calendarC.png" type="Texture" id=11]
 [ext_resource path="res://nodes/MissionSelect.tscn" type="PackedScene" id=12]
 [ext_resource path="res://sprites/Icons/32x32px/wood.png" type="Texture" id=13]
 [ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=14]
@@ -83,6 +83,9 @@ shader_param/cloudStrength = 0.0
 shader_param/darken = 1.0
 shader_param/lightning = 0.0
 shader_param/sunny = null
+shader_param/r = 1.0
+shader_param/g = 1.0
+shader_param/b = 1.0
 shader_param/clouds = ExtResource( 42 )
 
 [sub_resource type="ShaderMaterial" id=11]
@@ -983,11 +986,15 @@ __meta__ = {
 [node name="Calendar" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 128, 128 )
+margin_top = 4.0
+margin_right = -8.0
+margin_bottom = -8.0
+rect_min_size = Vector2( 120, 120 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource( 11 )
 expand = true
+stretch_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar"]
 anchor_right = 1.0
@@ -997,37 +1004,41 @@ size_flags_vertical = 3
 custom_constants/separation = -8
 
 [node name="Control" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/VBoxContainer"]
-margin_right = 128.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 0, 60 )
+margin_right = 120.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 52 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Day" type="Label" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/VBoxContainer"]
-margin_left = 36.0
-margin_top = 52.0
-margin_right = 91.0
-margin_bottom = 93.0
+margin_left = 32.0
+margin_top = 44.0
+margin_right = 87.0
+margin_bottom = 85.0
 size_flags_horizontal = 4
 theme = ExtResource( 25 )
 text = "28D"
 
 [node name="Time" type="Label" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/VBoxContainer"]
-margin_left = 27.0
-margin_top = 85.0
-margin_right = 101.0
-margin_bottom = 126.0
+margin_left = 23.0
+margin_top = 77.0
+margin_right = 97.0
+margin_bottom = 118.0
 size_flags_horizontal = 4
 theme = ExtResource( 25 )
 text = "24:00"
 
 [node name="WeatherUI" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar"]
 self_modulate = Color( 0, 0, 0, 1 )
-margin_left = 8.0
-margin_top = 16.0
-margin_right = 120.0
-margin_bottom = 56.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -56.0
+margin_top = -44.0
+margin_right = 56.0
+margin_bottom = -8.0
 script = ExtResource( 64 )
 
 [node name="Sunny" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI"]

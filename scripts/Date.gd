@@ -6,12 +6,14 @@ onready var dayLabel = get_node("Calendar/VBoxContainer/Day")
 onready var timeLabel = get_node("Calendar/VBoxContainer/Time")
 
 signal newDay 
+signal timeChanged 
 #signal timePassed
 
 func _ready() -> void:
 	updateLabels()
 	Global.Date = self
 	connect("newDay", Events, "check_event")
+	connect("timeChanged",Global.Weather,"setTime")
 
 func changeTime(amm) -> void:
 	time += int(amm)
@@ -20,6 +22,7 @@ func changeTime(amm) -> void:
 		time = time % 1440
 		emit_signal("newDay", day)
 	updateLabels()
+	emit_signal("timeChanged",time)
 
 func updateLabels() -> void:
 	dayLabel.text = "Day " + str(day)

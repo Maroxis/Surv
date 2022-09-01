@@ -9,6 +9,10 @@ uniform float darken;
 uniform float lightning;
 uniform float sunny;
 
+uniform float r = 1.0;
+uniform float g = 1.0;
+uniform float b = 1.0;
+
 void fragment() {
 	vec4 t1 = texture(TEXTURE, UV).rgba;
 	vec4 t2 = texture(clouds, UV).rgba;
@@ -19,5 +23,10 @@ void fragment() {
 	t1.rgb *= clamp(-0.2*tan(TIME/2.0),0.0,1.0)*lightning*5.0 +1.0;
 	t2.b *= 0.7;
 	float height = 1.0-UV.y;
-	COLOR = mix( t1 , t2, cloudStrength*height); 
-}"
+	vec4 col = mix( t1 , t2, cloudStrength*height); 
+	col.r *= r;
+	col.g *= g;
+	col.b *= b;
+	COLOR = col;
+}
+"

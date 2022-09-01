@@ -18,6 +18,7 @@ signal weatherChanged
 
 func _ready() -> void:
 	Global.Weather = self
+	
 
 func getRainInt():
 	return max(current - 2,0)
@@ -84,3 +85,34 @@ func activateSunny():
 	background.material.set_shader_param("sunny",1.0)
 func deactivateSunny():
 	background.material.set_shader_param("sunny",0.0)
+
+func setTime(time):
+	time = time / 60
+	if(time >= 22 or time <= 4):
+		background.material.set_shader_param("r",0.4)
+		background.material.set_shader_param("g",0.4)
+		background.material.set_shader_param("b",1.0)
+	elif(time >= 20):
+		time -= 19
+		background.material.set_shader_param("r",1.0-0.3*time)
+		background.material.set_shader_param("g",0.6-0.1*time)
+		background.material.set_shader_param("b",0.4+0.3*time)
+	elif(time <= 6):
+		time -=4
+		background.material.set_shader_param("r",0.4+0.3*time)
+		background.material.set_shader_param("g",0.4+0.1*time)
+		background.material.set_shader_param("b",1.0-0.3*time)
+	elif(time >= 18):
+		time -= 17
+		background.material.set_shader_param("r",1.0)
+		background.material.set_shader_param("g",1.0-0.2*time)
+		background.material.set_shader_param("b",1.0-0.3*time)
+	elif(time <= 8):
+		time -= 6
+		background.material.set_shader_param("r",1.0)
+		background.material.set_shader_param("g",0.6+0.2*time)
+		background.material.set_shader_param("b",0.4+0.3*time)
+	else:
+		background.material.set_shader_param("r",1.0)
+		background.material.set_shader_param("g",1.0)
+		background.material.set_shader_param("b",1.0)

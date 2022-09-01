@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var debug: Control = $"%Debug"
-onready var dev = false
+onready var dev = true
 onready var status: Control = $"%Status"
 
 func _ready() -> void:
