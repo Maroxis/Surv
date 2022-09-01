@@ -8,15 +8,14 @@
 [ext_resource path="res://nodes/CraftSmelting.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/TabSwithcerTab.tscn" type="PackedScene" id=7]
 [ext_resource path="res://nodes/ReturnButton.tscn" type="PackedScene" id=8]
-[ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=9]
+[ext_resource path="res://sprites/textiletex.jpg" type="Texture" id=9]
 [ext_resource path="res://sprites/Icons/furnace.png" type="Texture" id=10]
 [ext_resource path="res://sprites/Icons/32x32px/pickaxe.png" type="Texture" id=11]
 [ext_resource path="res://sprites/BG/DiscBorder.png" type="Texture" id=12]
 [ext_resource path="res://scripts/Craft.gd" type="Script" id=13]
-[ext_resource path="res://sprites/Icons/128x128px/arrow.png" type="Texture" id=16]
+[ext_resource path="res://sprites/woodtex.jpg" type="Texture" id=14]
 
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.454902, 0.109804, 0.109804, 1 )
+[sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="Craft" type="Control"]
 anchor_right = 1.0
@@ -24,70 +23,16 @@ anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 13 )
 
-[node name="BG" type="ColorRect" parent="."]
+[node name="BG" type="TextureRect" parent="."]
+self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 128.0
-color = Color( 0.454902, 0.109804, 0.109804, 1 )
-
-[node name="Category" type="Control" parent="."]
-visible = false
-anchor_right = 1.0
-margin_left = 160.0
-margin_top = 16.0
-margin_right = -552.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 0, 112 )
-
-[node name="BG" type="ColorRect" parent="Category"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.454902, 0.109804, 0.109804, 1 )
-
-[node name="Control" type="Control" parent="Category/BG"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 32.0
-margin_right = -32.0
-
-[node name="Prev" type="TextureButton" parent="Category/BG/Control"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_top = -48.0
-margin_right = 56.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 56, 96 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource( 16 )
-expand = true
-flip_h = true
-
-[node name="Label" type="Label" parent="Category/BG/Control"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -78.0
-margin_top = -20.5
-margin_right = 78.0
-margin_bottom = 20.5
-theme = ExtResource( 9 )
-text = "Hand Craft"
-
-[node name="Next" type="TextureButton" parent="Category/BG/Control"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -56.0
-margin_top = -48.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 56, 96 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource( 16 )
-expand = true
+mouse_filter = 0
+texture = ExtResource( 9 )
+stretch_mode = 1
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="TabContainer" type="TabContainer" parent="."]
 anchor_right = 1.0
@@ -97,7 +42,7 @@ margin_bottom = -96.0
 custom_fonts/font = ExtResource( 2 )
 custom_styles/tab_fg = ExtResource( 1 )
 custom_styles/tab_bg = ExtResource( 3 )
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 1 )
 tab_align = 0
 tabs_visible = false
 
@@ -118,10 +63,13 @@ anchor_bottom = 1.0
 margin_left = -96.0
 rect_min_size = Vector2( 96, 0 )
 
-[node name="TextureRect" type="ColorRect" parent="TabSwitcher"]
+[node name="TextureRect" type="TextureRect" parent="TabSwitcher"]
+self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.454902, 0.109804, 0.109804, 1 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 7
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabSwitcher"]
 anchor_left = 0.5
@@ -179,8 +127,6 @@ stretch_mode = 1
 
 [node name="Return" parent="." instance=ExtResource( 8 )]
 
-[connection signal="pressed" from="Category/BG/Control/Prev" to="." method="_on_Prev_pressed"]
-[connection signal="pressed" from="Category/BG/Control/Next" to="." method="_on_Next_pressed"]
 [connection signal="pressed" from="Return/Button" to="." method="_on_Return_Button_pressed"]
 
 [editable path="TabSwitcher/VBoxContainer/Resources"]

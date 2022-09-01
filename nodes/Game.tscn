@@ -1,6 +1,6 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=86 format=2]
 
-[ext_resource path="res://sprites/BG/MainMap.png" type="Texture" id=1]
+[ext_resource path="res://sprites/BG/Map.jpg" type="Texture" id=1]
 [ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/RiverMission.gd" type="Script" id=3]
 [ext_resource path="res://sprites/Icons/128x128px/Wenrexa Drop Water or Blood.png" type="Texture" id=4]
@@ -9,7 +9,7 @@
 [ext_resource path="res://sprites/Icons/128x128px/food.png" type="Texture" id=7]
 [ext_resource path="res://nodes/HillsMission.tscn" type="PackedScene" id=8]
 [ext_resource path="res://sprites/Particles/rain.png" type="Texture" id=9]
-[ext_resource path="res://sprites/Icons/128x128px/Wenrexa Chest.png" type="Texture" id=10]
+[ext_resource path="res://sprites/Icons/128x128px/hut.png" type="Texture" id=10]
 [ext_resource path="res://sprites/Icons/128x128px/calendarB.png" type="Texture" id=11]
 [ext_resource path="res://nodes/MissionSelect.tscn" type="PackedScene" id=12]
 [ext_resource path="res://sprites/Icons/32x32px/wood.png" type="Texture" id=13]
@@ -40,7 +40,7 @@
 [ext_resource path="res://scripts/Date.gd" type="Script" id=38]
 [ext_resource path="res://shaders/Weather.tres" type="Shader" id=39]
 [ext_resource path="res://nodes/ReturnButton.tscn" type="PackedScene" id=40]
-[ext_resource path="res://sprites/UI/Status/background.png" type="Texture" id=41]
+[ext_resource path="res://sprites/UI/Status/backgroundTex.png" type="Texture" id=41]
 [ext_resource path="res://noise/clouds.tres" type="Texture" id=42]
 [ext_resource path="res://shaders/Clouds.tres" type="Shader" id=43]
 [ext_resource path="res://sprites/Icons/32x32px/pickaxe.png" type="Texture" id=44]
@@ -74,6 +74,8 @@
 [ext_resource path="res://scripts/BaseActivities.gd" type="Script" id=72]
 [ext_resource path="res://nodes/Cook.tscn" type="PackedScene" id=73]
 [ext_resource path="res://scripts/FoodIcon.gd" type="Script" id=74]
+[ext_resource path="res://sprites/UI/Topbar/BG.png" type="Texture" id=75]
+[ext_resource path="res://sprites/textiletex.jpg" type="Texture" id=76]
 
 [sub_resource type="ShaderMaterial" id=10]
 shader = ExtResource( 39 )
@@ -145,12 +147,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -1280.0
-margin_top = -376.0
-margin_right = 1280.0
-margin_bottom = 344.0
+margin_left = -840.0
+margin_top = -360.0
+margin_right = 840.0
+margin_bottom = 240.0
 mouse_filter = 2
 texture = ExtResource( 1 )
+expand = true
+stretch_mode = 1
 
 [node name="Clouds" type="ColorRect" parent="Canvas/Weather/Background"]
 material = SubResource( 11 )
@@ -187,43 +191,46 @@ size_flags_vertical = 4
 script = ExtResource( 52 )
 
 [node name="Woods" parent="Canvas/CanvasLayer/GameWindow/Buttons" instance=ExtResource( 2 )]
-margin_left = 120.0
-margin_top = -149.0
-margin_right = 120.0
-margin_bottom = -149.0
+margin_left = 75.0
+margin_top = -156.0
+margin_right = 75.0
+margin_bottom = -156.0
 
 [node name="River" parent="Canvas/CanvasLayer/GameWindow/Buttons" instance=ExtResource( 2 )]
-margin_left = -402.0
-margin_top = -79.0
-margin_right = -402.0
-margin_bottom = -79.0
+margin_left = -409.0
+margin_top = -57.0
+margin_right = -409.0
+margin_bottom = -57.0
 
 [node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Buttons/River" index="2"]
 texture = ExtResource( 4 )
 
 [node name="Home" parent="Canvas/CanvasLayer/GameWindow/Buttons" instance=ExtResource( 2 )]
-margin_left = -3.0
-margin_top = 97.0
-margin_right = -3.0
-margin_bottom = 97.0
+margin_left = -95.0
+margin_top = 53.0
+margin_right = -95.0
+margin_bottom = 53.0
+
+[node name="PlateBG" parent="Canvas/CanvasLayer/GameWindow/Buttons/Home" index="0"]
+visible = false
 
 [node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Buttons/Home" index="2"]
 texture = ExtResource( 10 )
 
 [node name="Plains" parent="Canvas/CanvasLayer/GameWindow/Buttons" instance=ExtResource( 2 )]
-margin_left = 414.0
-margin_top = 85.0
-margin_right = 414.0
-margin_bottom = 85.0
+margin_left = 409.0
+margin_top = -29.0
+margin_right = 409.0
+margin_bottom = -29.0
 
 [node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Buttons/Plains" index="2"]
 texture = ExtResource( 54 )
 
 [node name="Hills" parent="Canvas/CanvasLayer/GameWindow/Buttons" instance=ExtResource( 2 )]
-margin_left = 139.0
-margin_top = 238.0
-margin_right = 139.0
-margin_bottom = 238.0
+margin_left = 174.0
+margin_top = 161.0
+margin_right = 174.0
+margin_bottom = 161.0
 
 [node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Buttons/Hills" index="2"]
 texture = ExtResource( 55 )
@@ -244,12 +251,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BG" type="ColorRect" parent="Canvas/CanvasLayer/GameWindow/Missions/Woods"]
+[node name="BG" type="TextureRect" parent="Canvas/CanvasLayer/GameWindow/Missions/Woods"]
+self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.454902, 0.109804, 0.109804, 1 )
+mouse_filter = 0
+texture = ExtResource( 76 )
+stretch_mode = 1
 __meta__ = {
-"_edit_use_anchors_": false
+"_editor_description_": ""
 }
 
 [node name="HBox" type="HBoxContainer" parent="Canvas/CanvasLayer/GameWindow/Missions/Woods"]
@@ -357,12 +367,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BG" type="ColorRect" parent="Canvas/CanvasLayer/GameWindow/Missions/River"]
+[node name="BG" type="TextureRect" parent="Canvas/CanvasLayer/GameWindow/Missions/River"]
+self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.454902, 0.109804, 0.109804, 1 )
+mouse_filter = 0
+texture = ExtResource( 76 )
+stretch_mode = 1
 __meta__ = {
-"_edit_use_anchors_": false
+"_editor_description_": ""
 }
 
 [node name="HBox" type="HBoxContainer" parent="Canvas/CanvasLayer/GameWindow/Missions/River"]
@@ -429,12 +442,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 29 )
 
-[node name="BG" type="ColorRect" parent="Canvas/CanvasLayer/GameWindow/Missions/Home"]
+[node name="BG" type="TextureRect" parent="Canvas/CanvasLayer/GameWindow/Missions/Home"]
+self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.454902, 0.109804, 0.109804, 1 )
+mouse_filter = 0
+texture = ExtResource( 76 )
+stretch_mode = 1
 __meta__ = {
-"_edit_use_anchors_": false
+"_editor_description_": ""
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Canvas/CanvasLayer/GameWindow/Missions/Home"]
@@ -592,12 +608,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BG" type="ColorRect" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Build"]
+[node name="BG" type="TextureRect" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Build"]
+self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.454902, 0.109804, 0.109804, 1 )
+mouse_filter = 0
+texture = ExtResource( 76 )
+stretch_mode = 1
 __meta__ = {
-"_edit_use_anchors_": false
+"_editor_description_": ""
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Build"]
@@ -705,12 +724,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BG" type="ColorRect" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Status"]
+[node name="BG" type="TextureRect" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Status"]
+self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.454902, 0.109804, 0.109804, 1 )
+mouse_filter = 0
+texture = ExtResource( 76 )
+stretch_mode = 1
 __meta__ = {
-"_edit_use_anchors_": false
+"_editor_description_": ""
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Status"]
@@ -753,22 +775,22 @@ layer = 128
 
 [node name="Debug" type="Control" parent="Canvas/UI/TopLayer"]
 unique_name_in_owner = true
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 53 )
 
 [node name="TestButton" type="Button" parent="Canvas/UI/TopLayer/Debug"]
 unique_name_in_owner = true
-margin_left = 128.0
-margin_right = 256.0
+margin_left = 163.0
+margin_right = 291.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 
 [node name="SoakMeter" type="ProgressBar" parent="Canvas/UI/TopLayer/Debug"]
-visible = false
-margin_left = 259.0
+margin_left = 297.0
 margin_top = 4.0
-margin_right = 387.0
+margin_right = 425.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 128, 32 )
 
@@ -791,7 +813,7 @@ margin_top = -40.0
 margin_right = 40.0
 
 [node name="BG" type="TextureRect" parent="Canvas/UI/Status/Corner"]
-self_modulate = Color( 0.207843, 0.105882, 0.0588235, 1 )
+self_modulate = Color( 0.466667, 0.227451, 0, 1 )
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -264.0
@@ -802,10 +824,10 @@ expand = true
 
 [node name="Health" parent="Canvas/UI/Status/Corner" instance=ExtResource( 6 )]
 unique_name_in_owner = true
-margin_left = 57.0
-margin_top = -49.0
-margin_right = 57.0
-margin_bottom = -49.0
+margin_left = 59.0
+margin_top = -51.0
+margin_right = 59.0
+margin_bottom = -51.0
 mouse_filter = 2
 
 [node name="TextureProgress" parent="Canvas/UI/Status/Corner/Health" index="0"]
@@ -923,17 +945,32 @@ rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="BG" type="ColorRect" parent="Canvas/UI/Status/TopBar/Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.709804, 0.509804, 0.0784314, 1 )
+[node name="BG" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control"]
+self_modulate = Color( 1, 0.701961, 0.282353, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -840.0
+margin_top = -64.0
+margin_right = 840.0
+margin_bottom = 64.0
+texture = ExtResource( 75 )
+expand = true
+stretch_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Canvas/UI/Status/TopBar/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+[node name="Control3" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
+margin_right = 8.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 8, 0 )
+
 [node name="Date" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
-margin_right = 128.0
+margin_left = 12.0
+margin_right = 140.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 size_flags_horizontal = 4
@@ -1052,7 +1089,7 @@ margin_bottom = 30.0
 texture = ExtResource( 58 )
 
 [node name="Control" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
-margin_left = 132.0
+margin_left = 144.0
 margin_right = 752.0
 margin_bottom = 128.0
 size_flags_horizontal = 3

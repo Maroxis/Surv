@@ -12,7 +12,7 @@ theme = ExtResource( 7 )
 scroll_vertical_enabled = false
 
 [node name="Items" type="HBoxContainer" parent="."]
-margin_right = 3112.0
+margin_right = 3532.0
 margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -27,57 +27,57 @@ size_flags_vertical = 3
 
 [node name="Axe" parent="Items" instance=ExtResource( 1 )]
 margin_left = 360.0
-margin_right = 696.0
+margin_right = 780.0
 margin_bottom = 720.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Knife" parent="Items" instance=ExtResource( 1 )]
-margin_left = 744.0
-margin_right = 1080.0
+margin_left = 828.0
+margin_right = 1248.0
 margin_bottom = 720.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Pickaxe" parent="Items" instance=ExtResource( 1 )]
-margin_left = 1128.0
-margin_right = 1464.0
+margin_left = 1296.0
+margin_right = 1716.0
 margin_bottom = 720.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Shovel" parent="Items" instance=ExtResource( 1 )]
-margin_left = 1512.0
-margin_right = 1848.0
+margin_left = 1764.0
+margin_right = 2184.0
 margin_bottom = 720.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Saw" parent="Items" instance=ExtResource( 1 )]
-margin_left = 1896.0
-margin_right = 2232.0
+margin_left = 2232.0
+margin_right = 2652.0
 margin_bottom = 720.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Bag" parent="Items" instance=ExtResource( 3 )]
-margin_left = 2280.0
-margin_right = 2616.0
+margin_left = 2700.0
+margin_right = 3036.0
 margin_bottom = 720.0
 
 [node name="Flask" parent="Items" instance=ExtResource( 2 )]
-margin_left = 2664.0
-margin_right = 3000.0
+margin_left = 3084.0
+margin_right = 3420.0
 margin_bottom = 720.0
 
 [node name="Margin2" type="Control" parent="Items"]
-margin_left = 3048.0
-margin_right = 3112.0
+margin_left = 3468.0
+margin_right = 3532.0
 margin_bottom = 720.0
 rect_min_size = Vector2( 64, 0 )
 size_flags_horizontal = 3
