@@ -25,7 +25,7 @@ func populate(rsNam,amm,tm,tlReq):
 	resName.text = rsNam
 	ammount.text = str(amm)+"x"
 	time.text = Global.timeGetFullFormat(tm)
-	icon.texture =  load("res://sprites/Icons/resources/"+rsNam.to_lower()+".png")
+	icon.texture =  load("res://sprites/Icons/64x64px/"+rsNam.to_lower()+".png")
 	if(tlReq):
 		toolReq.text = tlReq["tool"] + str(tlReq["tier"]) + "\nRequired"
 		disable()

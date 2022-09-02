@@ -7,6 +7,10 @@ onready var Structure = {
 			"benefits":{
 				"sleepMult": 0.8,
 				"sleepRegenMult": 1.2
+			},
+			"benefitsText":{
+				"sleepMult": "Food/Water consumption multiplayer during sleep",
+				"sleepRegenMult": "Energy recovery multiplayer during sleep"
 			}
 		},
 		"tier1" : {
@@ -48,6 +52,10 @@ onready var Structure = {
 			"benefits":{
 				"collectRate": 0,
 				"tankSize": 0
+			},
+			"benefitsText":{
+				"collectRate": "Water collection rate per minute",
+				"tankSize": "Water storage tank"
 			}
 		},
 		"tier1" : {
@@ -86,7 +94,10 @@ onready var Structure = {
 		"currentTier": 0,
 		"tier0" : {
 			"benefits":{
-				"smeltable": "None"
+				"smeltable": ""
+			},
+			"benefitsText":{
+				"smeltable": "Allows to smelt more metals"
 			}
 		},
 		"tier1" : {
@@ -94,7 +105,7 @@ onready var Structure = {
 				"Rock": 2
 			},
 			"benefits":{
-				"smeltable": "Copper &\n Bronze"
+				"smeltable": "Copper and Bronze"
 			}
 		},
 		"tier2" : {
@@ -110,7 +121,10 @@ onready var Structure = {
 		"currentTier": 0,
 		"tier0" : {
 			"benefits":{
-				"Protection" : "none"
+				"Protection" : 0
+			},
+			"benefitsText":{
+				"Protection": "Increases protection"
 			}
 		},
 		"tier1" : {
@@ -118,7 +132,7 @@ onready var Structure = {
 				"Stick": 12
 			},
 			"benefits":{
-				"Protection" : "small"
+				"Protection" : 1
 			}
 		},
 		"tier2" : {
@@ -126,7 +140,7 @@ onready var Structure = {
 				"Wood": 12
 			},
 			"benefits":{
-				"Protection" : "medium"
+				"Protection" : 2
 			}
 		}
 	}

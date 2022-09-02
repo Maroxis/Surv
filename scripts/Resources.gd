@@ -20,7 +20,7 @@ func loadRes():
 		else:
 			rawList.add_child(scene_instance)
 		scene_instance.set_name(res)
-		scene_instance.changeTexture(res.to_lower())
+		scene_instance.changeTexture(res,"64x64px")
 		scene_instance.changeSize(48)
 		scene_instance.changeCount(Inventory.resources[res]["ammount"])
 

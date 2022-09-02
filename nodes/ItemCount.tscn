@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://fonts/ResourcesTheme.tres" type="Theme" id=1]
-[ext_resource path="res://sprites/Icons/32x32px/Wenrexa Cargo Bag.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Icons/32x32px/bag.png" type="Texture" id=2]
 [ext_resource path="res://nodes/ItemCount.gd" type="Script" id=3]
 
 [node name="ItemCount" type="HBoxContainer"]

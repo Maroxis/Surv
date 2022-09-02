@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=89 format=2]
 
 [ext_resource path="res://sprites/BG/Map.jpg" type="Texture" id=1]
 [ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
@@ -12,7 +12,7 @@
 [ext_resource path="res://sprites/Icons/128x128px/hut.png" type="Texture" id=10]
 [ext_resource path="res://sprites/Icons/128x128px/calendarC.png" type="Texture" id=11]
 [ext_resource path="res://nodes/MissionSelect.tscn" type="PackedScene" id=12]
-[ext_resource path="res://sprites/Icons/32x32px/wood.png" type="Texture" id=13]
+[ext_resource path="res://sprites/Icons/64x64px/wood.png" type="Texture" id=13]
 [ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=14]
 [ext_resource path="res://scripts/WoodsMission.gd" type="Script" id=15]
 [ext_resource path="res://sprites/Icons/64x64px/Wenrexa Drop Water or Blood.png" type="Texture" id=16]
@@ -33,7 +33,7 @@
 [ext_resource path="res://sprites/Icons/64x64px/craft.png" type="Texture" id=31]
 [ext_resource path="res://sprites/Icons/64x64px/status.png" type="Texture" id=32]
 [ext_resource path="res://sprites/Icons/64x64px/sleep.png" type="Texture" id=33]
-[ext_resource path="res://sprites/Icons/craftable/pinned/Saw.png" type="Texture" id=34]
+[ext_resource path="res://sprites/Icons/32x32px/saw.png" type="Texture" id=34]
 [ext_resource path="res://scripts/Rain.gd" type="Script" id=35]
 [ext_resource path="res://scripts/Weather.gd" type="Script" id=36]
 [ext_resource path="res://sprites/UI/Topbar/calendar/sun-cloud.png" type="Texture" id=37]
@@ -46,10 +46,10 @@
 [ext_resource path="res://sprites/Icons/32x32px/pickaxe.png" type="Texture" id=44]
 [ext_resource path="res://sprites/Icons/32x32px/knife.png" type="Texture" id=45]
 [ext_resource path="res://sprites/Icons/32x32px/axe.png" type="Texture" id=46]
-[ext_resource path="res://sprites/Icons/32x32px/leaf.png" type="Texture" id=47]
-[ext_resource path="res://sprites/Icons/32x32px/water flask.png" type="Texture" id=48]
+[ext_resource path="res://sprites/Icons/64x64px/stick.png" type="Texture" id=47]
+[ext_resource path="res://sprites/Icons/32x32px/flask.png" type="Texture" id=48]
 [ext_resource path="res://nodes/Resources.tscn" type="PackedScene" id=49]
-[ext_resource path="res://sprites/Icons/32x32px/rock.png" type="Texture" id=50]
+[ext_resource path="res://sprites/Icons/64x64px/rock.png" type="Texture" id=50]
 [ext_resource path="res://shaders/Rain.tres" type="Shader" id=51]
 [ext_resource path="res://scripts/MissionButtons.gd" type="Script" id=52]
 [ext_resource path="res://scripts/Debug.gd" type="Script" id=53]
@@ -76,6 +76,8 @@
 [ext_resource path="res://scripts/FoodIcon.gd" type="Script" id=74]
 [ext_resource path="res://sprites/UI/Topbar/BG.png" type="Texture" id=75]
 [ext_resource path="res://sprites/textiletex.jpg" type="Texture" id=76]
+[ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=77]
+[ext_resource path="res://sprites/Icons/64x64px/leaf.png" type="Texture" id=78]
 
 [sub_resource type="ShaderMaterial" id=10]
 shader = ExtResource( 39 )
@@ -100,7 +102,7 @@ shader_param/OCTAVES = 3
 shader = ExtResource( 51 )
 shader_param/direction = Vector2( 0.2, -1 )
 shader_param/speed = 0.15
-shader_param/scale = 3.2
+shader_param/scale = 3.4
 shader_param/color = Plane( 0.2, 0.4, 1, 1 )
 shader_param/light = 1.0
 shader_param/offset = Vector2( 0.2, 0.6 )
@@ -131,10 +133,22 @@ HScrollBar/styles/grabber_pressed = SubResource( 3 )
 HScrollBar/styles/scroll = SubResource( 4 )
 HScrollBar/styles/scroll_focus = SubResource( 5 )
 
+[sub_resource type="DynamicFont" id=13]
+size = 30
+use_filter = true
+font_data = ExtResource( 77 )
+
 [node name="Game" type="Node2D"]
 script = ExtResource( 23 )
 
 [node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="WideScreenBG" type="TextureRect" parent="Canvas"]
+self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 76 )
+expand = true
 
 [node name="Weather" type="Control" parent="Canvas"]
 anchor_right = 1.0
@@ -153,7 +167,7 @@ anchor_bottom = 0.5
 margin_left = -840.0
 margin_top = -360.0
 margin_right = 840.0
-margin_bottom = 240.0
+margin_bottom = 232.0
 mouse_filter = 2
 texture = ExtResource( 1 )
 expand = true
@@ -310,6 +324,9 @@ margin_top = 232.0
 margin_right = 359.0
 margin_bottom = 232.0
 
+[node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Missions/Woods/HBox/Sticks/VBox/Button" index="1"]
+texture = ExtResource( 47 )
+
 [node name="Name" parent="Canvas/CanvasLayer/GameWindow/Missions/Woods/HBox/Sticks/VBox" index="2"]
 text = "Sticks"
 
@@ -328,7 +345,7 @@ margin_right = 600.0
 margin_bottom = 232.0
 
 [node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Missions/Woods/HBox/Leaves/VBox/Button" index="1"]
-texture = ExtResource( 47 )
+texture = ExtResource( 78 )
 
 [node name="Name" parent="Canvas/CanvasLayer/GameWindow/Missions/Woods/HBox/Leaves/VBox" index="2"]
 text = "Leaves"
@@ -634,7 +651,7 @@ __meta__ = {
 }
 
 [node name="HBox" type="HBoxContainer" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Build/ScrollContainer"]
-margin_right = 1828.0
+margin_right = 2548.0
 margin_bottom = 480.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -651,7 +668,7 @@ rect_min_size = Vector2( 320, 0 )
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 324.0
-margin_right = 664.0
+margin_right = 844.0
 margin_bottom = 0.0
 
 [node name="Cost" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Build/ScrollContainer/HBox/House/VBox/Hbox/VBox2" index="1"]
@@ -663,8 +680,8 @@ items = [ "Benefits", null, false ]
 [node name="Collector" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Build/ScrollContainer/HBox" instance=ExtResource( 21 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 668.0
-margin_right = 1008.0
+margin_left = 848.0
+margin_right = 1368.0
 margin_bottom = 0.0
 
 [node name="Building" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Build/ScrollContainer/HBox/Collector/VBox/Hbox/VBox/BG/VBox" index="0"]
@@ -679,8 +696,8 @@ items = [ "Benefits", null, false ]
 [node name="Furnace" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Build/ScrollContainer/HBox" instance=ExtResource( 21 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1012.0
-margin_right = 1352.0
+margin_left = 1372.0
+margin_right = 1892.0
 margin_bottom = 0.0
 
 [node name="Building" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Build/ScrollContainer/HBox/Furnace/VBox/Hbox/VBox/BG/VBox" index="0"]
@@ -696,8 +713,8 @@ items = [ "Benefits", null, false ]
 [node name="Wall" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Build/ScrollContainer/HBox" instance=ExtResource( 21 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1356.0
-margin_right = 1696.0
+margin_left = 1896.0
+margin_right = 2416.0
 margin_bottom = 0.0
 
 [node name="Building" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Build/ScrollContainer/HBox/Wall/VBox/Hbox/VBox/BG/VBox" index="0"]
@@ -710,8 +727,8 @@ items = [ "Cost", null, false ]
 items = [ "Benefits", null, false ]
 
 [node name="Margin2" type="Control" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Build/ScrollContainer/HBox"]
-margin_left = 1700.0
-margin_right = 1828.0
+margin_left = 2420.0
+margin_right = 2548.0
 margin_bottom = 480.0
 rect_min_size = Vector2( 128, 0 )
 
@@ -954,9 +971,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -840.0
+margin_left = -1680.0
 margin_top = -64.0
-margin_right = 840.0
+margin_right = 1680.0
 margin_bottom = 64.0
 texture = ExtResource( 75 )
 expand = true
@@ -1012,19 +1029,23 @@ __meta__ = {
 }
 
 [node name="Day" type="Label" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/VBoxContainer"]
-margin_left = 32.0
+margin_left = 6.0
 margin_top = 44.0
-margin_right = 87.0
-margin_bottom = 85.0
+margin_right = 114.0
+margin_bottom = 83.0
+rect_min_size = Vector2( 108, 0 )
 size_flags_horizontal = 4
 theme = ExtResource( 25 )
-text = "28D"
+custom_fonts/font = SubResource( 13 )
+text = "Day 23"
+align = 1
+clip_text = true
 
 [node name="Time" type="Label" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/VBoxContainer"]
 margin_left = 23.0
-margin_top = 77.0
+margin_top = 75.0
 margin_right = 97.0
-margin_bottom = 118.0
+margin_bottom = 116.0
 size_flags_horizontal = 4
 theme = ExtResource( 25 )
 text = "24:00"

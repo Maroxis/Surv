@@ -15,6 +15,7 @@ func craftBtAnim(_button,_btpos):
 	pass
 
 func loadTex(item):
-	item.texture = load("res://sprites/Icons/craftable/"+self.name+".png")
+	var tex = self.name.to_lower()
+	item.texture = load("res://sprites/Icons/128x128px/"+tex+".png")
 	item.modulate = Color(0.0,0.0,0.0,1.0)
 	

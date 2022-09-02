@@ -19,4 +19,4 @@ func changeLabel(nm):
 
 func changeTex(tex):
 	tex = tex.to_lower()
-	icon.texture = load("res://sprites/Icons/resources/64p/"+tex+".png")
+	icon.texture = load("res://sprites/Icons/64x64px/"+tex+".png")

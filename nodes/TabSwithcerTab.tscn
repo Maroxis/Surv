@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/TabSwitcherTab.gd" type="Script" id=1]
 [ext_resource path="res://sprites/BG/IconRect.png" type="Texture" id=2]
-[ext_resource path="res://sprites/Icons/craftable/Rope.png" type="Texture" id=3]
+[ext_resource path="res://sprites/Icons/32x32px/rope.png" type="Texture" id=3]
 
 [node name="Tab" type="Control"]
 margin_right = 64.0

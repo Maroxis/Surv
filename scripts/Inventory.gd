@@ -290,7 +290,6 @@ func expand_water(item):
 func spoil_food(time):
 	for res in resources:
 		if resources[res].has("food") and not resources[res]["spoil"].empty():
-			var removed = 0
 			for n in range(resources[res]["spoil"].size()-1,-1,-1):
 				resources[res]["spoil"][n]["time"] -= time
 				if(resources[res]["spoil"][n]["time"] < 0):

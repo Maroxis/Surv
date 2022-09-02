@@ -13,29 +13,38 @@ func refresh():
 	self.benefits.clear ( )
 	var ctier = Buildings.Structure[self.name]["currentTier"]
 	if(Buildings.Structure[self.name].has("tier"+str(ctier+1))):
-		self.cost.add_item("Cost")
-		for mat in Buildings.Structure[self.name]["tier"+str(ctier+1)]["cost"]:
-			var amm = Buildings.Structure[self.name]["tier"+str(ctier+1)]["cost"][mat]
-			self.cost.add_item(str(mat)+" "+str(amm),null,false)
-		for bene in Buildings.Structure[self.name]["tier"+str(ctier+1)]["benefits"]:
-			var bamm = Buildings.Structure[self.name]["tier"+str(ctier+1)]["benefits"][bene]
-			var cbamm = Buildings.Structure[self.name]["tier"+str(ctier)]["benefits"][bene]
-			self.benefits.add_item(str(bene),null,false)
-			self.benefits.add_item(str(cbamm)+" -> "+str(bamm),null,false)
-			self.benefits.set_item_custom_fg_color(self.benefits.get_item_count()-1,Color(0, 1, 0, 1))
+		addCost(ctier)
+		addBene(ctier)
 		self.tier.get_node("Next").text = str(ctier+1)
 	else:
-		for bene in Buildings.Structure[self.name]["tier"+str(ctier)]["benefits"]:
-			var cbamm = Buildings.Structure[self.name]["tier"+str(ctier)]["benefits"][bene]
-			self.benefits.add_item(str(bene),null,false)
-			self.benefits.add_item(str(cbamm),null,false)
-			self.benefits.set_item_custom_fg_color(self.benefits.get_item_count()-1,Color(0, 1, 0, 1))
+		addBene(ctier)
 		self.tier.get_node("Next").text = ""
 		self.tier.get_node("Spacer").text = ""
 		self.button.disabled = true
 		self.button.self_modulate = Color( 1, 1, 1, 0.2 )
 	self.tier.get_node("Current").text = str(ctier)
 	
+func addCost(ctier):
+	self.cost.add_item("Cost")
+	for mat in Buildings.Structure[self.name]["tier"+str(ctier+1)]["cost"]:
+			var amm = Buildings.Structure[self.name]["tier"+str(ctier+1)]["cost"][mat]
+			self.cost.add_item(str(mat)+" "+str(amm),null,false)
+
+func addBene(ctier):
+	var struct = Buildings.Structure[self.name]
+	for bene in struct["tier"+str(ctier)]["benefits"]:
+		var bamm = null
+		if(struct.has("tier"+str(ctier+1))):
+			bamm = struct["tier"+str(ctier+1)]["benefits"][bene]
+		var cbamm = struct["tier"+str(ctier)]["benefits"][bene]
+		var btext = struct["tier0"]["benefitsText"][bene]
+		self.benefits.add_item(btext,null,false)
+		if(bamm):
+			self.benefits.add_item(str(cbamm)+" -> "+str(bamm),null,false)
+		else:
+			self.benefits.add_item(str(cbamm),null,false)
+		self.benefits.set_item_custom_fg_color(self.benefits.get_item_count()-1,Color(0, 1, 0, 1))
+			
 func _on_Construct_Button_pressed() -> void:
 	if(Buildings.checkCost(self.name)):
 		Buildings.build(self.name)

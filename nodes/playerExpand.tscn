@@ -6,7 +6,7 @@
 [ext_resource path="res://fonts/UIBonusTheme.tres" type="Theme" id=4]
 [ext_resource path="res://fonts/ResourcesTheme.tres" type="Theme" id=5]
 [ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=6]
-[ext_resource path="res://sprites/Icons/64x64px/Wenrexa Cargo Bag.png" type="Texture" id=7]
+[ext_resource path="res://sprites/Icons/64x64px/bag.png" type="Texture" id=7]
 [ext_resource path="res://sprites/Icons/64x64px/Wenrexa Drop Water or Blood.png" type="Texture" id=8]
 
 [sub_resource type="StyleBoxEmpty" id=1]

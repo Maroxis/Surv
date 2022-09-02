@@ -160,14 +160,14 @@ func change_sick(amm):
 	Global.UI.health.get_node("SickProgress").animateValue(ceil(sick))
 	Global.UI.health.get_node("SickProgress").flashBar(sick > 80)
 
-func eat(food, amm, over = false):
-	var cal = Inventory.resources[food]["calories"]
+func eat(fd, amm, over = false):
+	var cal = Inventory.resources[fd]["calories"]
 	var space = self.maxFood - self.food
 	if (space < cal and not over) or space == 0:
 		return amm
 	var wtr = 0
-	if(Inventory.resources[food].has("water")):
-		wtr = Inventory.resources[food]["calories"]
+	if(Inventory.resources[fd].has("water")):
+		wtr = Inventory.resources[fd]["calories"]
 	var ate = 0
 	if(cal * amm <= space):
 		ate = amm
@@ -180,5 +180,5 @@ func eat(food, amm, over = false):
 			ate += 1
 		change_food(cal*ate,false)
 		change_water(wtr*amm)
-	Inventory.add_resource(food,-ate)
+	Inventory.add_resource(fd,-ate)
 	return amm-ate
