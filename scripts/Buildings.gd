@@ -2,46 +2,27 @@ extends Node
 
 onready var Structure = {
 	"House": {
-		"currentTier": 0,
-		"tier0" : {
-			"benefits":{
-				"sleepMult": 0.8,
-				"sleepRegenMult": 1.2
-			},
+		"Bed":{
+			"currentTier": 0,
 			"benefitsText":{
 				"sleepMult": "Food/Water consumption multiplayer during sleep",
 				"sleepRegenMult": "Energy recovery multiplayer during sleep"
-			}
-		},
-		"tier1" : {
-			"cost": {
-				"Stick": 5,
-				"Leaf": 7
 			},
-			"benefits":{
-				"sleepMult": 0.7,
-				"sleepRegenMult": 1.3
-			}
-		},
-		"tier2" : {
-			"cost": {
-				"Stick": 4,
-				"Leaf": 16
+			"tier0" : {
+				"benefits":{
+					"sleepConsumeMult": 0.9,
+					"sleepRegenMult": 1.1
+				}
 			},
-			"benefits":{
-				"sleepMult": 0.6,
-				"sleepRegenMult": 1.5
-			}
-		},
-		"tier3" : {
-			"cost": {
-				"Wood": 6,
-				"Stick": 12,
-				"Leaf": 24
-			},
-			"benefits":{
-				"sleepMult": 0.5,
-				"sleepRegenMult": 1.8
+			"tier1" : {
+				"cost": {
+					"Stick": 5,
+					"Leaf": 7
+				},
+				"benefits":{
+					"sleepConsumeMult": 0.8,
+					"sleepRegenMult": 1.2
+				}
 			}
 		}
 	},
@@ -146,6 +127,7 @@ onready var Structure = {
 	}
 	
 }
+
 func checkCost(building) -> bool:
 	var ctier = Structure[building]["currentTier"]
 	for mat in Structure[building]["tier"+str(ctier+1)]["cost"]:

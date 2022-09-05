@@ -128,9 +128,9 @@ func pass_time(time,sleep=false,wet = false):
 	elif(soaked > 0):
 		dry(time)
 	if(sleep):
-		var ctier = Buildings.Structure["House"]["currentTier"]
-		var houseb = Buildings.Structure["House"]["tier"+str(ctier)]["benefits"]
-		sleepMult = houseb["sleepMult"]
+		var ctier = Buildings.Structure["House"]["Bed"]["currentTier"]
+		var houseb = Buildings.Structure["House"]["Bed"]["tier"+str(ctier)]["benefits"]
+		sleepMult = houseb["sleepConsumeMult"]
 		sleepRegenMult= houseb["sleepRegenMult"]
 		change_energy(maxEnergy-sick)
 	else:

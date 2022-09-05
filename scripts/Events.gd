@@ -174,6 +174,7 @@ func playerIll():
 	return {"error":null,"res":"You are "+descLv+" sick"}
 
 func animalAttack():
+	return {"error":"disabled event"}
 	var level = floor(clamp(Global.Date.day/10,1.0,5.0))
 	var damage = level-Buildings.Structure["Wall"]["currentTier"]
 	if(damage <= 0):

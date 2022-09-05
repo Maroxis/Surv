@@ -14,3 +14,4 @@
 <a href="https://www.flaticon.com/free-icons/shovel" title="shovel icons">Shovel icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/handsaw" title="handsaw icons">Handsaw icons created by Graphix's Art - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/water" title="water icons">Water icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/bed" title="bed icons">Bed icons created by Cursor Creative - Flaticon</a>

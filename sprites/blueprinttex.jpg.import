@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/water collector.png-d2969276274120cb3cdc34045a35735a.stex"
+path="res://.import/blueprinttex.jpg-6748820536956e42119f5519496d006b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Icons/256x256px/water collector.png"
-dest_files=[ "res://.import/water collector.png-d2969276274120cb3cdc34045a35735a.stex" ]
+source_file="res://sprites/blueprinttex.jpg"
+dest_files=[ "res://.import/blueprinttex.jpg-6748820536956e42119f5519496d006b.stex" ]
 
 [params]
 

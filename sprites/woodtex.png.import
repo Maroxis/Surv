@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/furnace.png-7620b13f6b41d9b1f46bd8a416a4731b.stex"
+path="res://.import/woodtex.png-4792b8eb590b9dbfa3faafd8a0f3520c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Icons/furnace.png"
-dest_files=[ "res://.import/furnace.png-7620b13f6b41d9b1f46bd8a416a4731b.stex" ]
+source_file="res://sprites/woodtex.png"
+dest_files=[ "res://.import/woodtex.png-4792b8eb590b9dbfa3faafd8a0f3520c.stex" ]
 
 [params]
 
