@@ -8,7 +8,6 @@ var currentCount
 
 func changeTexture(tex,res = "32x32px"):
 	var size = int(res.left(2))
-	print(size)
 	tex = tex.to_lower()
 	texture_rect.texture = load("res://sprites/Icons/"+res+"/"+tex+".png")
 	texture_rect.rect_min_size = Vector2(size,size)

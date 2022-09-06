@@ -118,7 +118,6 @@ func sleep():
 	pass_time(sleepTime,true)
 	
 func pass_time(time,sleep=false,wet = false):
-	var sleepMult = 1
 	var sleepRegenMult = 1
 	var sickPenaltyMlt = 1.0 if sick < 20 else 0.8
 	var weatherPenalty = 1.2 if(Global.Weather.current == Global.Weather.type.Sunny) else 1.0
@@ -128,9 +127,7 @@ func pass_time(time,sleep=false,wet = false):
 	elif(soaked > 0):
 		dry(time)
 	if(sleep):
-		var ctier = Buildings.Structure["House"]["Bed"]["currentTier"]
-		var houseb = Buildings.Structure["House"]["Bed"]["tier"+str(ctier)]["benefits"]
-		sleepMult = houseb["sleepConsumeMult"]
+		var houseb = Buildings.getCurrentModule("House","Bed")["benefits"]
 		sleepRegenMult= houseb["sleepRegenMult"]
 		change_energy(maxEnergy-sick)
 	else:
@@ -140,8 +137,8 @@ func pass_time(time,sleep=false,wet = false):
 		change_health(time*regenRate*sleepRegenMult*sickPenaltyMlt)
 	elif(sick > 80):
 		change_health(-(time*regenRate))
-	change_water(-(time*thirstRate*sleepMult*sickPenaltyMlt*sickPenaltyMlt*weatherPenalty))
-	change_food(-(time*hungerRate*sleepMult*sickPenaltyMlt))
+	change_water(-(time*thirstRate*sickPenaltyMlt*sickPenaltyMlt*weatherPenalty))
+	change_food(-(time*hungerRate*sickPenaltyMlt))
 	
 	if(sick > 0):
 		var fullBonus = 2 if food > 50 and water > 50 else 1

@@ -113,7 +113,7 @@ func checkErrors():
 	if(selected["Fuel"]["name"] == "Blank"):
 		showError("No fuel")
 		return
-	if(Inventory.resources[selected["Recipe"]]["furnaceTier"] > Buildings.Structure["Furnace"]["currentTier"]):
+	if(Inventory.resources[selected["Recipe"]]["furnaceTier"] > Buildings.Structure["Furnace"]["Oven"]["currentTier"]):
 		showError("Furnace tier \nto low")
 		return
 	if(Inventory.resources[selected["Recipe"]]["meltingTemp"] > Inventory.resources[selected["Fuel"]["name"]]["burining"]["temp"]):

@@ -14,4 +14,13 @@
 <a href="https://www.flaticon.com/free-icons/shovel" title="shovel icons">Shovel icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/handsaw" title="handsaw icons">Handsaw icons created by Graphix's Art - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/water" title="water icons">Water icons created by Freepik - Flaticon</a>
+
 <a href="https://www.flaticon.com/free-icons/bed" title="bed icons">Bed icons created by Cursor Creative - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/facade" title="facade icons">Facade icons created by Peerapak Takpho - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/floor" title="floor icons">Floor icons created by Made by Made Premium - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/architechture" title="architechture icons">Architechture icons created by Rean-me - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/hammer" title="hammer icons">Hammer icons created by Stockio - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/furnace" title="furnace icons">Furnace icons created by M Karruly - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/defence" title="defence icons">Defence icons created by Hilmy Abiyyu A. - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/barrel" title="barrel icons">Barrel icons created by Triangle Squad - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/filter" title="filter icons">Filter icons created by Pixel perfect - Flaticon</a>

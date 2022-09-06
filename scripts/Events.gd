@@ -2,7 +2,7 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
-onready var forceEvent = null
+onready var forceEvent = 5
 
 onready var damageToolMlt = 0.8
 onready var waterDryAddTime = 15
@@ -176,14 +176,15 @@ func playerIll():
 func animalAttack():
 	return {"error":"disabled event"}
 	var level = floor(clamp(Global.Date.day/10,1.0,5.0))
-	var damage = level-Buildings.Structure["Wall"]["currentTier"]
+	var damage = level-Buildings.calcDefence()
 	if(damage <= 0):
 		return {"error":null,"res":"Your wall has stopped the attack"}
 	else:
 		var buildings = []
 		for b in Buildings.Structure:
-			if Buildings.Structure[b]["currentTier"] > 0:
-				buildings.push_back(b)
+			for m in Buildings.Structure[b]:
+				if Buildings.Structure[b][m]["currentTier"] > 0:
+					buildings.push_back([b,m])
 		var rs
 		if(buildings.size() == 0):
 			rs = "There were no buildings to destroy"
@@ -193,9 +194,8 @@ func animalAttack():
 			if(buildings.size() < 1):
 				break
 			var r = rng.randi_range(0, buildings.size()-1)
-			var nm = buildings[r]
-			Buildings.demolish(nm)
-			rs += nm + "\n"
+			Buildings.demolish(buildings[r][0],buildings[r][1])
+			rs += buildings[r][0] + " " + buildings[r][1] + "\n"
 			buildings.remove(r)
 		return {"error":null,"res": rs}
 

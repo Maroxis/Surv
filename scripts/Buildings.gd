@@ -5,157 +5,288 @@ onready var Structure = {
 		"Bed":{
 			"currentTier": 0,
 			"benefitsText":{
-				"sleepMult": "Food/Water consumption multiplayer during sleep",
 				"sleepRegenMult": "Energy recovery multiplayer during sleep"
 			},
 			"tier0" : {
 				"benefits":{
-					"sleepConsumeMult": 0.9,
 					"sleepRegenMult": 1.1
 				}
 			},
 			"tier1" : {
 				"cost": {
-					"Stick": 5,
-					"Leaf": 7
+					"Stick": 2,
+					"Leaf": 1
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
 				},
 				"benefits":{
-					"sleepConsumeMult": 0.8,
 					"sleepRegenMult": 1.2
+				}
+			},
+			"tier2" : {
+				"cost": {
+					"Stick": 2,
+					"Leaf": 1
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"sleepRegenMult": 1.3
+				}
+			},
+		},
+		"Frame":{
+			"currentTier": 0,
+			"benefitsText":{
+				"enable": "Enables building other modules"
+			},
+			"tier0" : {
+				"benefits":{
+					"enable": null
+				}
+			},
+			"tier1" : {
+				"cost": {
+					"Stick": 2,
+					"Leaf": 3
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"enable": ["Wall","Roof"]
+				}
+			}
+		},
+		"Wall":{
+			"currentTier": 0,
+			"benefitsText":{
+				"defence": "Increases defence"
+			},
+			"tier0" : {
+				"benefits":{
+					"defence": 0
+				}
+			},
+			"tier1" : {
+				"cost": {
+					"Stick": 2,
+					"Leaf": 3
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"defence": 1
+				},
+				"required":{
+					"Frame": 1
+				}
+			}
+		},
+		"Roof":{
+			"currentTier": 0,
+			"benefitsText":{
+				"defence": "Increases defence"
+			},
+			"tier0" : {
+				"benefits":{
+					"defence": 0
+				}
+			},
+			"tier1" : {
+				"cost": {
+					"Stick": 2,
+					"Leaf": 3
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"defence": 1
+				},
+				"required":{
+					"Frame": 1
+				}
+			}
+		},
+	},
+	"Collector": {
+		"waterLevel" : 0,
+		"Catcher" : {
+			"currentTier": 0,
+			"benefitsText":{
+				"collectRate": "Increases water collect rate"
+			},
+			"tier0" : {
+				"benefits":{
+					"collectRate": 0.001
+				}
+			},
+			"tier1" : {
+				"cost": {
+					"Stick": 2,
+					"Leaf": 3
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"collectRate": 0.003
+				},
+				"required":{
+					"Tank": 1
+				}
+			}
+		},
+		"Tank" : {
+			"currentTier": 0,
+			"benefitsText":{
+				"tankSize": "Increases water tank size"
+			},
+			"tier0" : {
+				"benefits":{
+					"tankSize": 0
+				}
+			},
+			"tier1" : {
+				"cost": {
+					"Stick": 2,
+					"Leaf": 3
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"tankSize": 30
 				}
 			}
 		}
 	},
-	"Collector": {
-		"waterLevel" : 0,
-		"currentTier": 0,
-		"tier0" : {
-			"benefits":{
-				"collectRate": 0,
-				"tankSize": 0
-			},
-			"benefitsText":{
-				"collectRate": "Water collection rate per minute",
-				"tankSize": "Water storage tank"
-			}
-		},
-		"tier1" : {
-			"cost": {
-				"Stick": 1,
-				"Leaf": 2
-			},
-			"benefits":{
-				"collectRate": 0.003,
-				"tankSize": 30
-			}
-		},
-		"tier2" : {
-			"cost": {
-				"Stick": 2,
-				"Leaf": 3
-			},
-			"benefits":{
-				"collectRate": 0.004,
-				"tankSize": 50
-			}
-		},
-		"tier3" : {
-			"cost": {
-				"Wood": 1,
-				"Stick": 3,
-				"Leaf": 4
-			},
-			"benefits":{
-				"collectRate": 0.005,
-				"tankSize": 100
-			}
-		}
-	},
 	"Furnace": {
-		"currentTier": 0,
-		"tier0" : {
-			"benefits":{
-				"smeltable": ""
-			},
+		"Oven":{
+			"currentTier": 0,
 			"benefitsText":{
-				"smeltable": "Allows to smelt more metals"
-			}
-		},
-		"tier1" : {
-			"cost": {
-				"Rock": 2
+				"smeltable": "Allows smelting new metals"
 			},
-			"benefits":{
-				"smeltable": "Copper and Bronze"
-			}
-		},
-		"tier2" : {
-			"cost": {
-				"Rock": 8
+			"tier0" : {
+				"benefits":{
+					"smeltable": null
+				}
 			},
-			"benefits":{
-				"smeltable": "Iron"
+			"tier1" : {
+				"cost": {
+					"Stick": 2,
+					"Leaf": 3
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"smeltable": "Copper and Bronze"
+				}
 			}
 		}
 	},
-	"Wall": {
-		"currentTier": 0,
-		"tier0" : {
-			"benefits":{
-				"Protection" : 0
-			},
+	"Perimeter": {
+		"Fence":{
+			"currentTier": 0,
 			"benefitsText":{
-				"Protection": "Increases protection"
-			}
-		},
-		"tier1" : {
-			"cost": {
-				"Stick": 12
+				"defence": "Increses camp defence"
 			},
-			"benefits":{
-				"Protection" : 1
-			}
-		},
-		"tier2" : {
-			"cost": {
-				"Wood": 12
+			"tier0" : {
+				"benefits":{
+					"defence": 0
+				}
 			},
-			"benefits":{
-				"Protection" : 2
+			"tier1" : {
+				"cost": {
+					"Stick": 2,
+					"Leaf": 3
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"defence": 1
+				}
 			}
 		}
 	}
-	
 }
+	
+func calcDefence():
+	var defence = 0
+	defence += getCurrentModule("Perimeter","Fence")["benefits"]["defence"]
+	defence += getCurrentModule("House","Wall")["benefits"]["defence"]
+	return defence
+	
 
-func checkCost(building) -> bool:
-	var ctier = Structure[building]["currentTier"]
-	for mat in Structure[building]["tier"+str(ctier+1)]["cost"]:
-		var amm = Structure[building]["tier"+str(ctier+1)]["cost"][mat]
+func checkCost(building,module) -> bool:
+	var ntier = getTier(building,module,true)
+	for mat in Structure[building][module][ntier]["cost"]:
+		var amm = Structure[building][module][ntier]["cost"][mat]
 		if(Inventory.resources[mat]["ammount"] < amm):
 			return false
 	return true
 
-func build(building):
-	if(building == "Collector"):
-		Global.Missions.get_node("Home").activateDrink()
-	removeResources(building)
-	Structure[building]["currentTier"] += 1
+#func build(building):
+#	if(building == "Collector"):
+#		Global.Missions.get_node("Home").activateDrink()
+#	removeResources(building)
+#	Structure[building]["currentTier"] += 1
 
-func demolish(building):
-	if(building == "Collector"):
-		Global.Missions.get_node("Home").activateDrink()
-	Structure[building]["currentTier"] -= 1
+func buildModule(building,module):
+	Structure[building][module]["currentTier"] += 1
+
+func buyModule(building,module):
+	var ntier = getTier(building,module,true)
+	for res in Structure[building][module][ntier]["cost"]:
+		var amm = Structure[building][module][ntier]["cost"][res]
+		Inventory.add_resource(res,-amm)
+		
+func getTier(building,module,next = false):
+	var tier = "tier"+str(Structure[building][module]["currentTier"] + (1 if next else 0))
+	if(next and not Structure[building][module].has(tier)):
+		return null
+	else:
+		return tier
+
+func getCurrentModule(building,module):
+	var tier = getTier(building,module)
+	return Structure[building][module][tier]
+
+func demolish(building,module):
+	Structure[building][module]["currentTier"] -= 1
 	
-func removeResources(building):
-	var ctier = Structure[building]["currentTier"]
-	for mat in Structure[building]["tier"+str(ctier+1)]["cost"]:
-		var amm = Structure[building]["tier"+str(ctier+1)]["cost"][mat]
-		Inventory.add_resource(mat,-amm)
+#func removeResources(building):
+#	var ctier = Structure[building]["currentTier"]
+#	for mat in Structure[building]["tier"+str(ctier+1)]["cost"]:
+#		var amm = Structure[building]["tier"+str(ctier+1)]["cost"][mat]
+#		Inventory.add_resource(mat,-amm)
 
 func runCollector(time):
-	var ctier = Structure["Collector"]["currentTier"]
-	var collectRate = Structure["Collector"]["tier"+str(ctier)]["benefits"]["collectRate"]
+	var collectRate = getCurrentModule("Collector","Catcher")["benefits"]["collectRate"]
 	var weatherBonus = max(Global.Weather.current-1,0) * max(Global.Weather.current-1,0)
 	changeWaterLevel(time*collectRate*weatherBonus)
 	
@@ -164,7 +295,6 @@ func changeWaterLevel(amm,set = false):
 		Structure["Collector"]["waterLevel"] = amm
 	else:
 		Structure["Collector"]["waterLevel"] += amm
-	var ctier = Structure["Collector"]["currentTier"]
-	var tankSize = Structure["Collector"]["tier"+str(ctier)]["benefits"]["tankSize"]
+	var tankSize = getCurrentModule("Collector","Tank")["benefits"]["tankSize"]
 	Structure["Collector"]["waterLevel"] = clamp(Structure["Collector"]["waterLevel"],0,tankSize)
 	Global.Missions.get_node("Home").drinkNodeAmm.text = str(round(Structure["Collector"]["waterLevel"])) + "W"

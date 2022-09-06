@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://resources/HbarNoScroll.tres" type="Theme" id=1]
-[ext_resource path="res://sprites/Icons/256x256px/furnace.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Icons/256x256px/furnaceBase.png" type="Texture" id=2]
 
 [node name="Smelting" type="ScrollContainer"]
 anchor_right = 1.0

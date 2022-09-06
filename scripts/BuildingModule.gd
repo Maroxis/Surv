@@ -5,11 +5,18 @@ var module
 onready var selected = false
 onready var icon: TextureRect = $Icon
 onready var bg: TextureRect = $BG
+onready var button: Button = $Button
 
-func init(mod):
+func init(mod,disabled):
 	module = mod
-	icon.texture = load("res://sprites/Icons/64x64px/"+mod+".png")
+	icon.texture = load("res://sprites/Icons/64x64px/"+mod.to_lower()+".png")
+	if disabled:
+		disable()
 
+func disable():
+	button.disabled = true
+	bg.self_modulate.a = 0.4
+	
 func select():
 	selected = true
 	bg.self_modulate.r8 = 158
