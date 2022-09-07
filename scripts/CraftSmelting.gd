@@ -164,6 +164,7 @@ func finish():
 	enableStart()
 
 func start(time):
+	time *= Buildings.getCurrentModule("Furnace","Bellows")["benefits"]["timeMult"]
 	disableStart()
 	removeRes()
 	smeltingInProgress = selected["Recipe"]

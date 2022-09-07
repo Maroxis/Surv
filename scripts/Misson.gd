@@ -43,10 +43,7 @@ func travel():
 	self.rect_position.y = pos.y + self.rect_size.y
 	show()
 	var tween = create_tween().set_ease(Tween.EASE_IN)
-#	tween.tween_property(self, "modulate:a", 1.0, 0.1)
 	tween.tween_property(self, "rect_position:y", pos.y, 0.4)
-#	show()
-#	Global.MissionButtons.hide()
 
 func _on_Return_Button_pressed() -> void:
 	Inventory.empty_bag()

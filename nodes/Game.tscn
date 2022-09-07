@@ -679,6 +679,7 @@ visible = false
 
 [node name="EventPopup" parent="Canvas/UI/TopLayer" instance=ExtResource( 67 )]
 unique_name_in_owner = true
+visible = false
 
 [node name="Status" type="CanvasLayer" parent="Canvas/UI"]
 layer = 90
@@ -1070,6 +1071,7 @@ script = ExtResource( 66 )
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/River/HBox/Water/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/River" method="_on_Water_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/River/HBox/Clay/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/River" method="_on_Clay_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/River/Return/Button" to="Canvas/CanvasLayer/GameWindow/Missions/River" method="_on_Return_Button_pressed"]
+[connection signal="visibility_changed" from="Canvas/CanvasLayer/GameWindow/Missions/Home" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Home_visibility_changed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Build/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Build_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Craft/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Craft_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Cook/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Cook_Button_pressed"]

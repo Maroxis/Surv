@@ -118,6 +118,7 @@ func sleep():
 	pass_time(sleepTime,true)
 	
 func pass_time(time,sleep=false,wet = false):
+	time = int(time)
 	var sleepRegenMult = 1
 	var sickPenaltyMlt = 1.0 if sick < 20 else 0.8
 	var weatherPenalty = 1.2 if(Global.Weather.current == Global.Weather.type.Sunny) else 1.0

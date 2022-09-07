@@ -90,17 +90,40 @@ onready var Structure = {
 					"defence": 1
 				},
 				"required":{
-					"Frame": 1
+					"module":{
+						"Frame": 1
+					}
+				}
+			},
+			"tier2" : {
+				"cost": {
+					"Stick": 2,
+					"Leaf": 3
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"defence": 2
+				},
+				"required":{
+					"module":{
+						"Frame": 1
+					}
 				}
 			}
 		},
 		"Roof":{
 			"currentTier": 0,
 			"benefitsText":{
-				"defence": "Increases defence"
+				"roofed": "Keeps fire lit while raining",
+				"defence": "Improves defence"
 			},
 			"tier0" : {
 				"benefits":{
+					"roofed": false,
 					"defence": 0
 				}
 			},
@@ -115,10 +138,33 @@ onready var Structure = {
 					"ammount": 120
 				},
 				"benefits":{
+					"roofed": true,
+					"defence": 0
+				},
+				"required":{
+					"module":{
+						"Frame": 1
+					}
+				}
+			},
+			"tier2" : {
+				"cost": {
+					"Stick": 2,
+					"Leaf": 3
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"roofed": true,
 					"defence": 1
 				},
 				"required":{
-					"Frame": 1
+					"module":{
+						"Frame": 1
+					}
 				}
 			}
 		},
@@ -149,7 +195,47 @@ onready var Structure = {
 					"collectRate": 0.003
 				},
 				"required":{
-					"Tank": 1
+					"module":{
+						"Tank": 1
+					}
+				}
+			},
+			"tier2" : {
+				"cost": {
+					"Stick": 2,
+					"Leaf": 3
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"collectRate": 0.004
+				},
+				"required":{
+					"module":{
+						"Tank": 1
+					}
+				}
+			},
+			"tier3" : {
+				"cost": {
+					"Stick": 2,
+					"Leaf": 3
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"collectRate": 0.005
+				},
+				"required":{
+					"module":{
+						"Tank": 1
+					}
 				}
 			}
 		},
@@ -175,6 +261,102 @@ onready var Structure = {
 				},
 				"benefits":{
 					"tankSize": 30
+				}
+			},
+			"tier2" : {
+				"cost": {
+					"Stick": 2,
+					"Leaf": 3
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"tankSize": 80
+				}
+			},
+			"tier3" : {
+				"cost": {
+					"Stick": 2,
+					"Leaf": 3
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"tankSize": 200
+				}
+			}
+		},
+		"Filter" : {
+			"currentTier": 0,
+			"benefitsText":{
+				"filter": "Reduces polution, making water safer to drink"
+			},
+			"tier0" : {
+				"benefits":{
+					"filter": 0
+				}
+			},
+			"tier1" : {
+				"cost": {
+					"Stick": 2,
+					"Leaf": 3
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"filter": 0.2
+				},
+				"required":{
+					"module":{
+						"Tank": 1
+					}
+				}
+			},
+			"tier2" : {
+				"cost": {
+					"Stick": 2,
+					"Leaf": 3
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"filter": 0.6
+				},
+				"required":{
+					"module":{
+						"Tank": 1
+					}
+				}
+			},
+			"tier3" : {
+				"cost": {
+					"Stick": 2,
+					"Leaf": 3
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"filter": 1.4
+				},
+				"required":{
+					"module":{
+						"Tank": 1
+					}
 				}
 			}
 		}
@@ -204,6 +386,36 @@ onready var Structure = {
 					"smeltable": "Copper and Bronze"
 				}
 			}
+		},
+		"Bellows":{
+			"currentTier": 0,
+			"benefitsText":{
+				"timeMult": "Smelting time multiplayer"
+			},
+			"tier0" : {
+				"benefits":{
+					"timeMult": 1
+				}
+			},
+			"tier1" : {
+				"cost": {
+					"Stick": 2,
+					"Leaf": 3
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"timeMult": 0.8
+				},
+				"required":{
+					"module":{
+						"Oven": 1
+					}
+				}
+			}
 		}
 	},
 	"Perimeter": {
@@ -231,6 +443,32 @@ onready var Structure = {
 					"defence": 1
 				}
 			}
+		},
+		"Trench":{
+			"currentTier": 0,
+			"benefitsText":{
+				"defence": "Increses camp defence"
+			},
+			"tier0" : {
+				"benefits":{
+					"defence": 0
+				}
+			},
+			"tier1" : {
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"defence": 1
+				},
+				"required":{
+					"tool":{
+						"Shovel": 1
+					}
+				}
+			}
 		}
 	}
 }
@@ -239,6 +477,7 @@ func calcDefence():
 	var defence = 0
 	defence += getCurrentModule("Perimeter","Fence")["benefits"]["defence"]
 	defence += getCurrentModule("House","Wall")["benefits"]["defence"]
+	defence += getCurrentModule("House","Roof")["benefits"]["defence"]
 	return defence
 	
 
@@ -266,8 +505,15 @@ func buyModule(building,module):
 		Inventory.add_resource(res,-amm)
 		
 func getTier(building,module,next = false):
-	var tier = "tier"+str(Structure[building][module]["currentTier"] + (1 if next else 0))
-	if(next and not Structure[building][module].has(tier)):
+	
+	var tier = getTierInt(building,module,next)
+	if(tier == null):
+		return null
+	else:
+		return "tier"+str(tier)
+func getTierInt(building,module,next = false):
+	var tier = Structure[building][module]["currentTier"] + (1 if next else 0)
+	if(next and not Structure[building][module].has("tier"+str(tier))):
 		return null
 	else:
 		return tier

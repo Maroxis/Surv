@@ -14,6 +14,8 @@ onready var progress = 0
 onready var changeHelper = 1
 onready var calmSustain = 1
 
+onready var rainToxic = 0.1 # sick per unit
+
 signal weatherChanged
 
 func _ready() -> void:
@@ -24,7 +26,7 @@ func getRainInt():
 	return max(current - 2,0)
 
 func simWeather(time):
-	if(current == type.Calm and rng.randi_range(0, calmSustain)):
+	if(current == type.Calm and rng.randi_range(0, calmSustain) == 0):
 		return
 	var r = rng.randi_range(0, type.size()-1)
 	r -= current

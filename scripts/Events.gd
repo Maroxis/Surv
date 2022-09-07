@@ -45,21 +45,21 @@ onready var randomEvent = {
 		"function": "unstableWeather"
 	},
 	"event7":{
-		"title":"Harsh Weather",
-		"desc": "Weather is less likely to be calm",
-		"function": "harshWeather"
-	},
-	"event8":{
 		"title":"Flash Storm",
 		"desc": "Sudden storm",
 		"function": "flashStorm"
+	},
+	"event8":{
+		"title":"Toxic Rain",
+		"desc": "Rain becomes more toxic, causes illnes when drinking without filtering",
+		"function": "toxicRain"
 	}
 }
 onready var defaultEvent = {
 	"title":"Calm Day",
 	"desc": "Nothing happened"
 }
-#onready var eventDates = [2,3,4,5,6,7,8,9]
+#onready var eventDates = [3,5,6,7,8,9,10]
 onready var eventDates = [3]
 onready var eventIndex = 0
 
@@ -67,9 +67,7 @@ func _ready() -> void:
 	rng.randomize()
 
 func check_event(day):
-	if(eventIndex+1 > eventDates.size()):
-		return
-	if(eventDates[eventIndex] == day):
+	if(eventIndex+1 > eventDates.size() or eventDates[eventIndex] == day):
 		var ev
 		if(plannedEvent.size() > eventIndex):
 			ev = plannedEvent["event"+str(eventIndex)]
@@ -201,7 +199,8 @@ func animalAttack():
 
 func unstableWeather():
 	Global.Weather.weatherChangeRate += 0.01
-func harshWeather():
 	Global.Weather.calmSustain += 1
 func flashStorm():
 	Global.Weather.setWeather(Global.Weather.type.Storm)
+func toxicRain():
+	Global.Weather.rainToxic += 0.5

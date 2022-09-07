@@ -50,13 +50,18 @@ func disableStart():
 
 func run(time):
 	if(timeLeft > 0):
-		timeLeft -= time
-		if(timeLeft <= 0):
-			timeLeft = 0
-		time_remaining.text = Global.timeGetFullFormat(timeLeft,false,true) 
-		flame.value = float(timeLeft)/float(timeTotal) * 100
-		if(timeLeft == 0):
-			finish()
+		var roofed = Buildings.getCurrentModule("House","Roof")["benefits"]["roofed"]
+		var raining = true if Global.Weather.getRainInt() > 0 else false
+		if(raining and not roofed):
+			return
+		else:
+			timeLeft -= time
+			if(timeLeft <= 0):
+				timeLeft = 0
+			time_remaining.text = Global.timeGetFullFormat(timeLeft,false,true) 
+			flame.value = float(timeLeft)/float(timeTotal) * 100
+			if(timeLeft == 0):
+				finish()
 
 func finish():
 	Inventory.add_resource(cookingItem,cookAmm)
