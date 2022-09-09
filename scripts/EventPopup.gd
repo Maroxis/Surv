@@ -1,8 +1,8 @@
 extends Popup
-onready var texture_button: TextureButton = $NinePatchRect/HBoxContainer/VBoxContainer/TextureButton
-onready var title: Label = $NinePatchRect/HBoxContainer/VBoxContainer/Title
-onready var desc: Label = $NinePatchRect/HBoxContainer/VBoxContainer/Desc
-onready var result: Label = $NinePatchRect/HBoxContainer/VBoxContainer/Result
+onready var texture_button: TextureButton = $"%TextureButton"
+onready var title: Label = $"%Title"
+onready var desc: Label = $"%Desc"
+onready var result: Label = $"%Result"
 
 
 func _ready() -> void:

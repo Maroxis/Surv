@@ -2,7 +2,7 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
-onready var forceEvent = 5
+onready var forceEvent = null
 
 onready var damageToolMlt = 0.8
 onready var waterDryAddTime = 15
@@ -172,16 +172,16 @@ func playerIll():
 	return {"error":null,"res":"You are "+descLv+" sick"}
 
 func animalAttack():
-	return {"error":"disabled event"}
-	var level = floor(clamp(Global.Date.day/10,1.0,5.0))
+#	var level = floor(clamp(Global.Date.day/10,1.0,5.0))
+	var level = 20
 	var damage = level-Buildings.calcDefence()
 	if(damage <= 0):
-		return {"error":null,"res":"Your wall has stopped the attack"}
+		return {"error":null,"res":"Your defence was enough to stop the attack"}
 	else:
 		var buildings = []
 		for b in Buildings.Structure:
 			for m in Buildings.Structure[b]:
-				if Buildings.Structure[b][m]["currentTier"] > 0:
+				if typeof(Buildings.Structure[b][m]) == TYPE_DICTIONARY and Buildings.Structure[b][m]["currentTier"] > 0:
 					buildings.push_back([b,m])
 		var rs
 		if(buildings.size() == 0):

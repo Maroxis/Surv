@@ -679,7 +679,6 @@ visible = false
 
 [node name="EventPopup" parent="Canvas/UI/TopLayer" instance=ExtResource( 67 )]
 unique_name_in_owner = true
-visible = false
 
 [node name="Status" type="CanvasLayer" parent="Canvas/UI"]
 layer = 90

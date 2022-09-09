@@ -497,6 +497,7 @@ func checkCost(building,module) -> bool:
 
 func buildModule(building,module):
 	Structure[building][module]["currentTier"] += 1
+	getCurrentModule(building,module)["time"]["completed"] = 0
 
 func buyModule(building,module):
 	var ntier = getTier(building,module,true)
@@ -524,12 +525,6 @@ func getCurrentModule(building,module):
 
 func demolish(building,module):
 	Structure[building][module]["currentTier"] -= 1
-	
-#func removeResources(building):
-#	var ctier = Structure[building]["currentTier"]
-#	for mat in Structure[building]["tier"+str(ctier+1)]["cost"]:
-#		var amm = Structure[building]["tier"+str(ctier+1)]["cost"][mat]
-#		Inventory.add_resource(mat,-amm)
 
 func runCollector(time):
 	var collectRate = getCurrentModule("Collector","Catcher")["benefits"]["collectRate"]
