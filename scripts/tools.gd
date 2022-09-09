@@ -216,13 +216,13 @@ func craftTool(name):
 
 func updateTool(name,downgrade = false):
 	emit_signal("toolChanged",name,downgrade,tools[name]["currentTier"])
-	if(name == "Axe"):
-		if(tools[name]["currentTier"] == 1):
-			Global.Missions.get_node("Woods").active_wood()
-		elif(tools[name]["currentTier"] == 0):
-			Global.Missions.get_node("Woods").deactive_wood()
-	for mission in Global.Missions.get_children():
-		mission.updateGatherTime()
+#	if(name == "Axe"):
+#		if(tools[name]["currentTier"] == 1):
+#			Global.Missions.get_node("Woods").active_wood()
+#		elif(tools[name]["currentTier"] == 0):
+#			Global.Missions.get_node("Woods").deactive_wood()
+#	for mission in Global.Missions.get_children():
+#		mission.updateGatherTime()
 	if(tools[name]["pinned"]):
 		Global.ToolsUI.updateTool(name, tools[name]["currentTier"], downgrade)
 	

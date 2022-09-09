@@ -1,8 +1,8 @@
 extends Control
 
 signal buildingSelected
-onready var icon: TextureRect = $BG/VBox/Icon
-onready var name_label: Label = $BG/VBox/Name
+onready var icon: TextureRect = $BG/Icon
+onready var name_label: Label = $BG/Name
 
 func init(nm):
 	self.name = nm

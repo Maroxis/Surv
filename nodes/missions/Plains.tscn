@@ -25,7 +25,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="HBox" type="HBoxContainer" parent="."]
+[node name="Resources" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 128.0
@@ -35,7 +35,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Food" parent="HBox" instance=ExtResource( 1 )]
+[node name="Food" parent="Resources" instance=ExtResource( 1 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -43,52 +43,55 @@ margin_left = 169.0
 margin_top = 296.0
 margin_right = 169.0
 margin_bottom = 296.0
+connectMission = false
 
-[node name="Icon" parent="HBox/Food/VBox/Button" index="1"]
+[node name="Icon" parent="Resources/Food/VBox/Button" index="1"]
 texture = ExtResource( 7 )
 
-[node name="Meat" parent="HBox" instance=ExtResource( 1 )]
+[node name="RawMeat" parent="Resources" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 255.0
 margin_top = 296.0
 margin_right = 255.0
 margin_bottom = 296.0
+connectMission = false
 
-[node name="Icon" parent="HBox/Meat/VBox/Button" index="1"]
+[node name="Icon" parent="Resources/RawMeat/VBox/Button" index="1"]
 texture = ExtResource( 3 )
 
-[node name="Name" parent="HBox/Meat/VBox" index="2"]
+[node name="Name" parent="Resources/RawMeat/VBox" index="2"]
 text = "Meat"
 
-[node name="Ammount" parent="HBox/Meat/VBox" index="3"]
+[node name="Ammount" parent="Resources/RawMeat/VBox" index="3"]
 text = "6x"
 
-[node name="Berries" parent="HBox" instance=ExtResource( 1 )]
+[node name="WildBerry" parent="Resources" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 769.0
 margin_top = 296.0
 margin_right = 769.0
 margin_bottom = 296.0
+connectMission = false
 
-[node name="Icon" parent="HBox/Berries/VBox/Button" index="1"]
+[node name="Icon" parent="Resources/WildBerry/VBox/Button" index="1"]
 texture = ExtResource( 5 )
 
-[node name="Name" parent="HBox/Berries/VBox" index="2"]
+[node name="Name" parent="Resources/WildBerry/VBox" index="2"]
 text = "Berries"
 
-[node name="Ammount" parent="HBox/Berries/VBox" index="3"]
+[node name="Ammount" parent="Resources/WildBerry/VBox" index="3"]
 text = "4x"
 
 [node name="Return" parent="." instance=ExtResource( 2 )]
 
-[connection signal="pressed" from="HBox/Food/VBox/Button/Button" to="." method="_on_Food_Button_pressed"]
-[connection signal="pressed" from="HBox/Meat/VBox/Button/Button" to="." method="_on_Meat_Button_pressed"]
-[connection signal="pressed" from="HBox/Berries/VBox/Button/Button" to="." method="_on_Berries_Button_pressed"]
+[connection signal="pressed" from="Resources/Food/VBox/Button/Button" to="." method="_on_Food_Button_pressed"]
+[connection signal="pressed" from="Resources/RawMeat/VBox/Button/Button" to="." method="_on_Meat_Button_pressed"]
+[connection signal="pressed" from="Resources/WildBerry/VBox/Button/Button" to="." method="_on_Berries_Button_pressed"]
 [connection signal="pressed" from="Return/Button" to="." method="_on_Return_Button_pressed"]
 
-[editable path="HBox/Food"]
-[editable path="HBox/Meat"]
-[editable path="HBox/Berries"]
+[editable path="Resources/Food"]
+[editable path="Resources/RawMeat"]
+[editable path="Resources/WildBerry"]
 [editable path="Return"]

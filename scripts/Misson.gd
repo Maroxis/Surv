@@ -1,4 +1,4 @@
-extends Control
+extends MissionBasic
 
 onready var missionTravelTime = 0
 onready var gatherTime = {}
@@ -6,24 +6,24 @@ onready var gatherAmm = {}
 onready var toolReq = {}
 onready var toolBonus= {}
 onready var gatherTimeWBonus = {}
-onready var pos = self.rect_position
+
 var resources
 
 func _ready() -> void:
 	Global.Weather.connect("weatherChanged",self,"updateTravelTime")
-	self.rect_position.y + self.rect_size.y
-
-func close(showNode = true):
-#	if(showNode):
-#		Global.MissionButtons.show()
-	var tween = create_tween().set_ease(Tween.EASE_IN)
-	tween.tween_property(self, "rect_position:y", pos.y + rect_size.y, 0.4)
-#	tween.tween_property(self, "modulate:a", 1.0, 0.1)
-	tween.tween_callback(self, "hide")
+	Tools.connect("toolChanged",self,"checkTools")
 
 func updateTravelTime():
 	Global.MissionButtons.updateMissionTime(self.name,getTravelTime())
-
+	
+func updateGatherTime():
+	for res in resources.get_children():
+		var nm = res.name
+		if(toolBonus[nm] != null):
+			var bonus = getToolBonus(nm)
+			gatherTimeWBonus[nm] = floor(gatherTime[nm]/bonus)
+			res.updateGatherTime(gatherTimeWBonus[nm])
+		
 func getTravelTime():
 	var travelTime = missionTravelTime
 	var weatherDifficulty
@@ -49,8 +49,11 @@ func _on_Return_Button_pressed() -> void:
 	Inventory.empty_bag()
 	close()
 
-func getToolBonus(name):
+func getToolBonus(nm):
+	var name = toolBonus[nm]
 	var ctier = Tools.tools[name]["currentTier"]
+	if(toolReq[nm] != null):
+		ctier = max(ctier-toolReq[nm]["tier"],0)
 	var bonus = Tools.tools[name]["tier"+str(ctier)]["benefits"]["actionMult"]
 	return bonus
 
@@ -67,6 +70,8 @@ func populateInfo():
 		var time = gatherTimeWBonus[nm]
 		var tlReq = toolReq[nm]
 		res.populate(res.name,amm,time,tlReq)
+		if res.connectMission:
+			res.connect("missionSelected",self,"missionSelected")
 
 func checkTools(tl,dn,lv):
 	for res in resources.get_children():
@@ -75,3 +80,7 @@ func checkTools(tl,dn,lv):
 				res.disable()
 			elif(lv >= toolReq[res.name]["tier"] and not dn):
 				res.enable()
+	updateGatherTime()
+
+func missionSelected(mission):
+	addRes(mission,gatherAmm[mission])

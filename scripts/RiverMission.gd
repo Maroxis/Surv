@@ -6,24 +6,35 @@ func _ready() -> void:
 	
 	gatherTime = {
 		"Water": 10,
-		"Clay": 35
+		"Clay": 35,
+		"Sand": 20
 	}
 	gatherTimeWBonus = gatherTime.duplicate()
-	
-func updateGatherTime():
-	var bonus = getToolBonus("Shovel")
-	gatherTimeWBonus["Clay"] = floor(gatherTime["Clay"]/bonus)
-	get_node("HBox/Clay/VBox/Time").text = Global.timeGetFullFormat(gatherTimeWBonus["Clay"])
-	
-	gatherTimeWBonus["Water"] = gatherTime["Water"]
-	get_node("HBox/Water/VBox/Time").text = Global.timeGetFullFormat(gatherTimeWBonus["Water"])
+
+	gatherAmm = {
+		"Water": "100%",
+		"Clay": 35,
+		"Sand": 20
+	}
+	toolReq = {
+		"Water": null,
+		"Clay": {
+			"tool":"Shovel",
+			"tier": 1
+		},
+		"Sand": {
+			"tool":"Shovel",
+			"tier": 1
+		}
+	}
+	toolBonus = {
+		"Water": null,
+		"Clay": "Shovel",
+		"Sand": "Shovel"
+	}
+	resources = $Resources
+	populateInfo()
 
 func _on_Water_Button_pressed() -> void:
 	Player.pass_time(floor(gatherTimeWBonus["Water"]),false,true)
 	Player.change_water(Player.maxWater, true)
-
-func _on_Close_Button_pressed() -> void:
-	close()
-
-func _on_Clay_Button_pressed() -> void:
-	addRes("Clay",2)

@@ -8,6 +8,10 @@ onready var buttonContainer: Control = $VBox/Button
 onready var toolReq: Label = $VBox/ToolReq
 onready var icon: TextureRect = $VBox/Button/Icon
 
+export var connectMission = true
+export var customMission = false
+signal missionSelected
+
 func updateGatherTime(tm):
 	time.text = Global.timeGetFullFormat(tm)
 
@@ -23,9 +27,15 @@ func disable():
 
 func populate(rsNam,amm,tm,tlReq):
 	resName.text = rsNam
-	ammount.text = str(amm)+"x"
+	ammount.text = str(amm)
+	if(typeof(amm) != TYPE_STRING):
+		ammount.text +="x"
 	time.text = Global.timeGetFullFormat(tm)
 	icon.texture =  load("res://sprites/Icons/64x64px/"+rsNam.to_lower()+".png")
 	if(tlReq):
 		toolReq.text = tlReq["tool"] + str(tlReq["tier"]) + "\nRequired"
 		disable()
+
+
+func _on_Button_pressed() -> void:
+	emit_signal("missionSelected",self.name)

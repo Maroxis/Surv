@@ -61,6 +61,12 @@ onready var resources = {
 		"weight" : 3.6,
 		"crafted": false
 	  },
+	"Sand": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 2.6,
+		"crafted": false
+	  },
 	"Coal": {
 		"ammount" : 0,
 		"bagAmmount":0,

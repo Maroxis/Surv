@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/WoodsMission.gd" type="Script" id=2]
+[ext_resource path="res://sprites/textiletex.jpg" type="Texture" id=3]
+[ext_resource path="res://nodes/MissionSelect.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/ReturnButton.tscn" type="PackedScene" id=5]
+
+[node name="Woods" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="TextureRect" parent="."]
+self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 0
+texture = ExtResource( 3 )
+stretch_mode = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Resources" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 192.0
+margin_right = -128.0
+margin_bottom = -128.0
+
+[node name="Wood" parent="Resources" instance=ExtResource( 4 )]
+margin_left = 118.0
+margin_top = 232.0
+margin_right = 118.0
+margin_bottom = 232.0
+
+[node name="Stick" parent="Resources" instance=ExtResource( 4 )]
+margin_left = 359.0
+margin_top = 232.0
+margin_right = 359.0
+margin_bottom = 232.0
+
+[node name="Leaf" parent="Resources" instance=ExtResource( 4 )]
+margin_left = 600.0
+margin_top = 232.0
+margin_right = 600.0
+margin_bottom = 232.0
+
+[node name="Rock" parent="Resources" instance=ExtResource( 4 )]
+margin_left = 841.0
+margin_top = 232.0
+margin_right = 841.0
+margin_bottom = 232.0
+
+[node name="Return" parent="." instance=ExtResource( 5 )]
+
+[connection signal="pressed" from="Return/Button" to="." method="_on_Return_Button_pressed"]
+
+[editable path="Return"]

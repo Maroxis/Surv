@@ -1,4 +1,4 @@
-extends "res://scripts/Misson.gd"
+extends MissionBasic
 
 onready var drinkNode = get_node("VBoxContainer/HBox2/Drink")
 onready var drinkNodeAmm = drinkNode.get_node("VBox/Ammount")

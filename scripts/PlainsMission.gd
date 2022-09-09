@@ -9,12 +9,27 @@ func _ready() -> void:
 		"RawMeat": 150,
 		"WildBerry": 30
 	}
+	gatherAmm = {
+		"Food": "100%",
+		"RawMeat": 6,
+		"WildBerry": 4
+	}
+	toolReq = {
+		"Food": null,
+		"RawMeat": {
+			"tool":"Knife",
+			"tier": 1
+		},
+		"WildBerry": null
+	}
+	toolBonus = {
+		"Food": "Knife",
+		"RawMeat": "Knife",
+		"WildBerry": "Knife"
+	}
 	gatherTimeWBonus = gatherTime.duplicate()
-	
-func updateGatherTime():
-	var bonus = getToolBonus("Knife")
-	gatherTimeWBonus["Food"] = floor(gatherTime["Food"]/bonus)
-	gatherTimeWBonus["WildBerry"] = floor(gatherTime["WildBerry"]/bonus)
+	resources = $Resources
+	populateInfo()
 
 func _on_Food_Button_pressed() -> void:
 	Player.pass_time(gatherTimeWBonus["Food"],false,true)
