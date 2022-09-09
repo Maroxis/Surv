@@ -1,4 +1,5 @@
 extends MissionBasic
+class_name Mission
 
 onready var missionTravelTime = 0
 onready var gatherTime = {}

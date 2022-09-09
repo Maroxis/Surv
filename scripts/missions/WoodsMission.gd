@@ -1,4 +1,4 @@
-extends "res://scripts/Misson.gd"
+extends Mission
 
 func _ready() -> void:
 	missionTravelTime = 40

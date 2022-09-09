@@ -14,10 +14,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/crafting/Craftable.gd"
 }, {
+"base": "MissionBasic",
+"class": "Mission",
+"language": "GDScript",
+"path": "res://scripts/missions/Misson.gd"
+}, {
 "base": "Control",
 "class": "MissionBasic",
 "language": "GDScript",
-"path": "res://scripts/MissionBasic.gd"
+"path": "res://scripts/missions/MissionBasic.gd"
 }, {
 "base": "Node",
 "class": "NodeAnimated",
@@ -26,6 +31,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Craftable": "",
+"Mission": "",
 "MissionBasic": "",
 "NodeAnimated": ""
 }
