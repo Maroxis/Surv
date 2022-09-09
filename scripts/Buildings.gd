@@ -14,32 +14,45 @@ onready var Structure = {
 			},
 			"tier1" : {
 				"cost": {
-					"Stick": 2,
-					"Leaf": 1
+					"Leaf": 24
 				},
 				"time":{
-					"sections": 2,
+					"sections": 3,
 					"completed": 0,
-					"ammount": 120
-				},
-				"benefits":{
-					"sleepRegenMult": 1.2
-				}
-			},
-			"tier2" : {
-				"cost": {
-					"Stick": 2,
-					"Leaf": 1
-				},
-				"time":{
-					"sections": 2,
-					"completed": 0,
-					"ammount": 120
+					"ammount": 60
 				},
 				"benefits":{
 					"sleepRegenMult": 1.3
 				}
 			},
+			"tier2" : {
+				"cost": {
+					"Stick": 8,
+					"Thread": 12,
+					"Rope": 4
+				},
+				"time":{
+					"sections": 6,
+					"completed": 0,
+					"ammount": 80
+				},
+				"benefits":{
+					"sleepRegenMult": 1.6
+				}
+			},
+			"tier3" : {
+				"cost": {
+					"Leaf": 48
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 60
+				},
+				"benefits":{
+					"sleepRegenMult": 1.8
+				}
+			}
 		},
 		"Frame":{
 			"currentTier": 0,
@@ -53,16 +66,31 @@ onready var Structure = {
 			},
 			"tier1" : {
 				"cost": {
-					"Stick": 2,
-					"Leaf": 3
+					"Stick": 6,
+					"Thread": 3
 				},
 				"time":{
-					"sections": 2,
+					"sections": 3,
 					"completed": 0,
-					"ammount": 120
+					"ammount": 20
 				},
 				"benefits":{
-					"enable": ["Wall","Roof"]
+					"enable": "Roof"
+				}
+			},
+			"tier2" : {
+				"cost": {
+					"Wood": 8,
+					"Stick": 5,
+					"Rope": 6
+				},
+				"time":{
+					"sections": 5,
+					"completed": 0,
+					"ammount": 50
+				},
+				"benefits":{
+					"enable": "Wall"
 				}
 			}
 		},
@@ -78,39 +106,38 @@ onready var Structure = {
 			},
 			"tier1" : {
 				"cost": {
-					"Stick": 2,
-					"Leaf": 3
+					"Wood": 8,
+					"Stick": 64
 				},
 				"time":{
-					"sections": 2,
+					"sections": 4,
 					"completed": 0,
-					"ammount": 120
+					"ammount": 80
 				},
 				"benefits":{
-					"defence": 1
+					"defence": 3
 				},
 				"required":{
 					"module":{
-						"Frame": 1
+						"Frame": 2
 					}
 				}
 			},
 			"tier2" : {
 				"cost": {
-					"Stick": 2,
-					"Leaf": 3
+					"Wood": 32
 				},
 				"time":{
-					"sections": 2,
+					"sections": 8,
 					"completed": 0,
-					"ammount": 120
+					"ammount": 80
 				},
 				"benefits":{
-					"defence": 2
+					"defence": 8
 				},
 				"required":{
 					"module":{
-						"Frame": 1
+						"Frame": 2
 					}
 				}
 			}
@@ -129,13 +156,13 @@ onready var Structure = {
 			},
 			"tier1" : {
 				"cost": {
-					"Stick": 2,
-					"Leaf": 3
+					"Stick": 12,
+					"Leaf": 40
 				},
 				"time":{
-					"sections": 2,
+					"sections": 4,
 					"completed": 0,
-					"ammount": 120
+					"ammount": 60
 				},
 				"benefits":{
 					"roofed": true,
@@ -149,21 +176,20 @@ onready var Structure = {
 			},
 			"tier2" : {
 				"cost": {
-					"Stick": 2,
-					"Leaf": 3
+					"Plank": 32
 				},
 				"time":{
-					"sections": 2,
+					"sections": 4,
 					"completed": 0,
-					"ammount": 120
+					"ammount": 40
 				},
 				"benefits":{
 					"roofed": true,
-					"defence": 1
+					"defence": 3
 				},
 				"required":{
 					"module":{
-						"Frame": 1
+						"Frame": 2
 					}
 				}
 			}
@@ -183,13 +209,14 @@ onready var Structure = {
 			},
 			"tier1" : {
 				"cost": {
-					"Stick": 2,
-					"Leaf": 3
+					"Stick": 3,
+					"Thread": 3,
+					"Leaf": 9
 				},
 				"time":{
-					"sections": 2,
+					"sections": 3,
 					"completed": 0,
-					"ammount": 120
+					"ammount": 20
 				},
 				"benefits":{
 					"collectRate": 0.003
@@ -202,16 +229,17 @@ onready var Structure = {
 			},
 			"tier2" : {
 				"cost": {
-					"Stick": 2,
-					"Leaf": 3
+					"Stick": 9,
+					"Thread": 9,
+					"Leaf": 27
 				},
 				"time":{
-					"sections": 2,
+					"sections": 4,
 					"completed": 0,
-					"ammount": 120
+					"ammount": 40
 				},
 				"benefits":{
-					"collectRate": 0.004
+					"collectRate": 0.006
 				},
 				"required":{
 					"module":{
@@ -221,16 +249,17 @@ onready var Structure = {
 			},
 			"tier3" : {
 				"cost": {
-					"Stick": 2,
-					"Leaf": 3
+					"Stick": 27,
+					"Thread": 27,
+					"Leaf": 81
 				},
 				"time":{
-					"sections": 2,
+					"sections": 4,
 					"completed": 0,
-					"ammount": 120
+					"ammount": 80
 				},
 				"benefits":{
-					"collectRate": 0.005
+					"collectRate": 0.012
 				},
 				"required":{
 					"module":{
@@ -251,13 +280,12 @@ onready var Structure = {
 			},
 			"tier1" : {
 				"cost": {
-					"Stick": 2,
-					"Leaf": 3
+					"Clay": 5
 				},
 				"time":{
-					"sections": 2,
+					"sections": 1,
 					"completed": 0,
-					"ammount": 120
+					"ammount": 40
 				},
 				"benefits":{
 					"tankSize": 30
@@ -265,13 +293,12 @@ onready var Structure = {
 			},
 			"tier2" : {
 				"cost": {
-					"Stick": 2,
-					"Leaf": 3
+					"Clay": 25
 				},
 				"time":{
-					"sections": 2,
+					"sections": 3,
 					"completed": 0,
-					"ammount": 120
+					"ammount": 80
 				},
 				"benefits":{
 					"tankSize": 80
@@ -279,16 +306,15 @@ onready var Structure = {
 			},
 			"tier3" : {
 				"cost": {
-					"Stick": 2,
-					"Leaf": 3
+					"Plank": 16
 				},
 				"time":{
-					"sections": 2,
+					"sections": 6,
 					"completed": 0,
 					"ammount": 120
 				},
 				"benefits":{
-					"tankSize": 200
+					"tankSize": 80
 				}
 			}
 		},
@@ -304,13 +330,13 @@ onready var Structure = {
 			},
 			"tier1" : {
 				"cost": {
-					"Stick": 2,
-					"Leaf": 3
+					"Stick": 4,
+					"Leaf": 12
 				},
 				"time":{
 					"sections": 2,
 					"completed": 0,
-					"ammount": 120
+					"ammount": 40
 				},
 				"benefits":{
 					"filter": 0.2
@@ -323,13 +349,13 @@ onready var Structure = {
 			},
 			"tier2" : {
 				"cost": {
-					"Stick": 2,
-					"Leaf": 3
+					"Stick": 6,
+					"Thread": 32
 				},
 				"time":{
-					"sections": 2,
+					"sections": 3,
 					"completed": 0,
-					"ammount": 120
+					"ammount": 40
 				},
 				"benefits":{
 					"filter": 0.6
@@ -342,13 +368,15 @@ onready var Structure = {
 			},
 			"tier3" : {
 				"cost": {
-					"Stick": 2,
-					"Leaf": 3
+					"Stick": 6,
+					"Thread": 32,
+					"Sand": 8,
+					"Clay": 2
 				},
 				"time":{
-					"sections": 2,
+					"sections": 4,
 					"completed": 0,
-					"ammount": 120
+					"ammount": 40
 				},
 				"benefits":{
 					"filter": 1.4
@@ -374,16 +402,29 @@ onready var Structure = {
 			},
 			"tier1" : {
 				"cost": {
-					"Stick": 2,
-					"Leaf": 3
+					"Clay": 20,
 				},
 				"time":{
-					"sections": 2,
+					"sections": 3,
 					"completed": 0,
-					"ammount": 120
+					"ammount": 80
 				},
 				"benefits":{
 					"smeltable": "Copper and Bronze"
+				}
+			},
+			"tier2" : {
+				"cost": {
+					"Rock": 30,
+					"Clay": 10
+				},
+				"time":{
+					"sections": 5,
+					"completed": 0,
+					"ammount": 80
+				},
+				"benefits":{
+					"smeltable": "Iron"
 				}
 			}
 		},
@@ -431,16 +472,29 @@ onready var Structure = {
 			},
 			"tier1" : {
 				"cost": {
-					"Stick": 2,
-					"Leaf": 3
+					"Stick": 40,
+					"Thread": 10
 				},
 				"time":{
-					"sections": 2,
+					"sections": 8,
 					"completed": 0,
-					"ammount": 120
+					"ammount": 40
 				},
 				"benefits":{
-					"defence": 1
+					"defence": 2
+				}
+			},
+			"tier2" : {
+				"cost": {
+					"Wood": 40
+				},
+				"time":{
+					"sections": 8,
+					"completed": 0,
+					"ammount": 40
+				},
+				"benefits":{
+					"defence": 7
 				}
 			}
 		},
@@ -456,12 +510,12 @@ onready var Structure = {
 			},
 			"tier1" : {
 				"time":{
-					"sections": 2,
+					"sections": 12,
 					"completed": 0,
-					"ammount": 120
+					"ammount": 80
 				},
 				"benefits":{
-					"defence": 1
+					"defence": 3
 				},
 				"required":{
 					"tool":{

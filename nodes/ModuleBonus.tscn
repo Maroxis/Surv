@@ -13,11 +13,9 @@ script = ExtResource( 1 )
 unique_name_in_owner = true
 margin_right = 724.0
 margin_bottom = 41.0
-text = "TEst desc"
 
 [node name="Value" type="Label" parent="."]
 unique_name_in_owner = true
 margin_top = 45.0
 margin_right = 724.0
 margin_bottom = 86.0
-text = "TEsasf adaefrg "

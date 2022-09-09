@@ -22,15 +22,16 @@ var selectedModule
 
 func init(bd):
 	building = bd
-	resRequired = true
 	ntier = null
 	selectedModule = null
 	refresh()
+	clearInfo()
 	show()
 	
 	
 func refresh():
 	disableButton()
+	resRequired = true
 	removeItems(mod_container)
 	removeItems(bonus_list)
 	removeItems(costs_list)
@@ -42,20 +43,25 @@ func addItems():
 		if(typeof(Buildings.Structure[building][mod]) == TYPE_DICTIONARY):
 			var tier = Buildings.getTier(building,mod,true)
 			var disabled = false if tier else true
+			var tl = null
+			var md = null
 			if(tier and Buildings.Structure[building][mod][tier].has("required")):
 				for reqCat in Buildings.Structure[building][mod][tier]["required"]:
 					for req in Buildings.Structure[building][mod][tier]["required"][reqCat]:
 						var rtier
 						var ctier
-						if(reqCat == "module"):
-							rtier = Buildings.Structure[building][mod][tier]["required"][reqCat][req]
-							ctier = Buildings.Structure[building][req]["currentTier"]
-						elif(reqCat == "tool"):
+						if(reqCat == "tool"):
 							rtier = Buildings.Structure[building][mod][tier]["required"][reqCat][req]
 							ctier = Tools.tools[req]["currentTier"]
+							tl = req
+						elif(reqCat == "module"):
+							rtier = Buildings.Structure[building][mod][tier]["required"][reqCat][req]
+							ctier = Buildings.Structure[building][req]["currentTier"]
+							md = req
 						if(ctier < rtier):
 							disabled = true
-			_addItem(mod,disabled)
+						
+			_addItem(mod,disabled,tl,md)
 
 func removeItems(container):
 	for n in container.get_children():
@@ -74,6 +80,7 @@ func writeInfo():
 	disableButton()
 	removeItems(bonus_list)
 	removeItems(costs_list)
+	resRequired = true
 	if(not building or not selectedModule):
 		return
 	module_name_label.text = selectedModule
@@ -94,8 +101,11 @@ func writeInfo():
 		else:
 			scene_instance.value.text = str(curVal)+" -> "+ str(beneVal)
 	var costCheck = true
-	if(Buildings.Structure[building][selectedModule][ntier].has("cost")):
+	var totalSec = Buildings.Structure[building][selectedModule][ntier]["time"]["sections"]
+	var compSec = Buildings.Structure[building][selectedModule][ntier]["time"]["completed"]
+	if(Buildings.Structure[building][selectedModule][ntier].has("cost") and compSec == 0):
 		label_cost.show()
+		costs_list.show()
 		for item in Buildings.Structure[building][selectedModule][ntier]["cost"]:
 			var scene_instance = scene_cost.instance()
 			costs_list.add_child(scene_instance)
@@ -110,9 +120,8 @@ func writeInfo():
 				scene_instance.value.add_color_override("font_color", Color(0,1,0))
 	else:
 		label_cost.hide()
+		costs_list.hide()
 		resRequired = false
-	var totalSec = Buildings.Structure[building][selectedModule][ntier]["time"]["sections"]
-	var compSec = Buildings.Structure[building][selectedModule][ntier]["time"]["completed"]
 	updateProgress(totalSec,compSec)
 	if(compSec > 0):
 		resRequired = false
@@ -127,13 +136,14 @@ func enableButton():
 	build_button.disabled = false
 	preview_icon.modulate = Color(1,1,1,1)
 	
-func _addItem(name,disabled):
+func _addItem(name,disabled,tl,md):
 	var scene_instance = scene.instance()
 	mod_container.add_child(scene_instance)
-	scene_instance.init(name,disabled)
+	scene_instance.init(name,disabled,tl,md)
 	scene_instance.connect("selected",self,"selectModule")
 
 func _on_Return_Button_pressed() -> void:
+	clearInfo()
 	hide()
 
 func _on_Build_Button_pressed() -> void:
@@ -146,6 +156,9 @@ func _on_Build_Button_pressed() -> void:
 	Buildings.Structure[building][selectedModule][ntier]["time"]["completed"] += 1
 	var totalSec = Buildings.Structure[building][selectedModule][ntier]["time"]["sections"]
 	var compSec = Buildings.Structure[building][selectedModule][ntier]["time"]["completed"]
+	if(compSec == 1):
+		label_cost.hide()
+		costs_list.hide()
 	updateProgress(totalSec,compSec)
 	if(totalSec == compSec):
 		Buildings.buildModule(building,selectedModule)
@@ -160,6 +173,12 @@ func getToolBonus():
 				var cTier = Tools.tools[tl]["currentTier"]
 				bonus += Tools.tools[tl]["tier"+str(cTier-rTier)]["benefits"]["actionMult"]-1
 	return bonus
+
+func clearInfo():
+	preview_icon.texture = null
+	progress_time_texture.value = 0
+	progress_section.text = "Select Module"
+	progress_time.text = ""
 
 func updateProgress(totalSec,compSec):
 	progress_time_texture.max_value = totalSec

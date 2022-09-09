@@ -25,14 +25,24 @@ onready var resources = {
 			"time": 20
 		}
 	  },
+	"Thread": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 0.2,
+		"cost" : {
+			"Leaf" : 3
+		},
+		"craftTime": 30,
+		"crafted": true
+	  },
 	"Rope": {
 		"ammount" : 0,
 		"bagAmmount":0,
 		"weight" : 1.0,
 		"cost" : {
-			"Leaf" : 3
+			"Thread" : 3
 		},
-		"craftTime": 10,
+		"craftTime": 60,
 		"crafted": true
 	  },
 	"Plank": {
