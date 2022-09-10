@@ -7,6 +7,7 @@ onready var gatherAmm = {}
 onready var toolReq = {}
 onready var toolBonus= {}
 onready var gatherTimeWBonus = {}
+onready var inOpen = true
 
 var resources
 
@@ -23,7 +24,9 @@ func updateGatherTime():
 		if(toolBonus[nm] != null):
 			var bonus = getToolBonus(nm)
 			gatherTimeWBonus[nm] = floor(gatherTime[nm]/bonus)
-			res.updateGatherTime(gatherTimeWBonus[nm])
+		else:
+			gatherTimeWBonus[nm] = gatherTime[nm]
+		res.updateGatherTime(gatherTimeWBonus[nm])
 		
 func getTravelTime():
 	var travelTime = missionTravelTime
@@ -51,16 +54,14 @@ func _on_Return_Button_pressed() -> void:
 	close()
 
 func getToolBonus(nm):
-	var name = toolBonus[nm]
-	var ctier = Tools.tools[name]["currentTier"]
-	if(toolReq[nm] != null):
-		ctier = max(ctier-toolReq[nm]["tier"],0)
-	var bonus = Tools.tools[name]["tier"+str(ctier)]["benefits"]["actionMult"]
-	return bonus
+	if(toolReq[nm]):
+		return Tools.getBonus(toolBonus[nm],toolReq[nm]["tier"])
+	else:
+		return Tools.getBonus(toolBonus[nm])
 
 func addRes(name,amm):
 	if Inventory.add_resource_to_bag(name,amm):
-		Player.pass_time(gatherTimeWBonus[name],false,true)
+		Player.pass_time(gatherTimeWBonus[name],false,inOpen)
 	else:
 		Global.BagUI.shake()
 		

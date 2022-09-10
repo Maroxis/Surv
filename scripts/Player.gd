@@ -1,9 +1,10 @@
 extends Node
 
-var thirstRate = 0.09 #per minute
-var hungerRate = 0.04 #per minute
+#0.07 ~= 100 per day
+var thirstRate = 0.14 #per minute
+var hungerRate = 0.07 #per minute
 var regenRate = 0.01 #per minute
-var exhaustRate = 0.1 #per minute
+var exhaustRate = 0.08 #per minute
 var sickRate = 0.002 #per minute
 var dryRate = 0.4 #per minute
 

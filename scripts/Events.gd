@@ -2,10 +2,10 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
-onready var forceEvent = null
+onready var forceEvent = 2
 
 onready var damageToolMlt = 0.8
-onready var waterDryAddTime = 15
+onready var waterAddTime = 25
 
 onready var plannedEvent = {
 }
@@ -20,9 +20,9 @@ onready var randomEvent = {
 		"function": "hardenNature"
 	},
 	"event2":{
-		"title":"Hot Weather",
-		"desc": "Nearby stream dried out. Now it takes more time to search for water",
-		"function": "driedStream"
+		"title":"Toxic stream",
+		"desc": "Nearby stream got poisoned. Now it takes more time to search for water",
+		"function": "poisonedStream"
 	},
 	"event3":{
 		"title":"Forest has overgrown",
@@ -144,14 +144,14 @@ func hardenNature():
 	damageToolMlt += 0.4
 	return {"error":null}
 
-func driedStream():
-	Global.Missions.river.gatherTime["Water"] += waterDryAddTime
+func poisonedStream():
+	Global.Missions.river.gatherTime["Water"] += waterAddTime
 	Global.Missions.river.updateGatherTime()
 	var time = Global.timeGetFullFormat(Global.Missions.river.gatherTimeWBonus["Water"])
 	return {"error":null,"res":"It now takes "+time+" to search for water"}
 
 func forestOvergrown():
-	Global.Missions.woods.missionTravelTime += 20
+	Global.Missions.woods.missionTravelTime += 30
 	Global.Missions.woods.updateTravelTime()
 	var time = Global.timeGetFullFormat(Global.Missions.woods.missionTravelTime,false,true)
 	return {"error":null,"res":"It now takes "+time+" to travel"}
@@ -172,8 +172,7 @@ func playerIll():
 	return {"error":null,"res":"You are "+descLv+" sick"}
 
 func animalAttack():
-#	var level = floor(clamp(Global.Date.day/10,1.0,5.0))
-	var level = 20
+	var level = floor(clamp(Global.Date.day/5,1.0,10.0))
 	var damage = level-Buildings.calcDefence()
 	if(damage <= 0):
 		return {"error":null,"res":"Your defence was enough to stop the attack"}
@@ -202,5 +201,6 @@ func unstableWeather():
 	Global.Weather.calmSustain += 1
 func flashStorm():
 	Global.Weather.setWeather(Global.Weather.type.Storm)
+	Global.Weather.weatherChangeRate += 0.01
 func toxicRain():
-	Global.Weather.rainToxic += 0.5
+	Global.Weather.rainToxic += 0.3

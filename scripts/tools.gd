@@ -12,11 +12,11 @@ onready var tools = {
 			}
 		},
 		"tier1" : {
-			"craftTime": 20,
+			"craftTime": 60,
 			"maxDurability": 1,
 			"curDurability": 1,
 			"cost": {
-				"Stick": 1,
+				"Stick": 2,
 				"Rock": 2
 			},
 			"benefits":{
@@ -24,27 +24,39 @@ onready var tools = {
 			}
 		},
 		"tier2" : {
-			"craftTime": 30,
+			"craftTime": 100,
 			"maxDurability": 2,
 			"curDurability": 2,
 			"cost": {
-				"Stick": 1,
-				"CopperIngot": 1
+				"Stick": 2,
+				"CopperIngot": 2
 			},
 			"benefits":{
 				"actionMult": 1.4
 			}
 		},
 		"tier3" : {
-			"craftTime": 30,
+			"craftTime": 80,
 			"maxDurability": 3,
 			"curDurability": 3,
 			"cost": {
-				"Stick": 1,
-				"BronzeIngot": 1
+				"Stick": 2,
+				"BronzeIngot": 2
 			},
 			"benefits":{
 				"actionMult": 1.4
+			}
+		},
+		"tier4" : {
+			"craftTime": 120,
+			"maxDurability": 3,
+			"curDurability": 3,
+			"cost": {
+				"Stick": 2,
+				"IronIngot": 2
+			},
+			"benefits":{
+				"actionMult": 1.6
 			}
 		}
 	},
@@ -57,7 +69,7 @@ onready var tools = {
 			}
 		},
 		"tier1" : {
-			"craftTime": 30,
+			"craftTime": 40,
 			"maxDurability": 1,
 			"curDurability": 1,
 			"cost": {
@@ -69,7 +81,7 @@ onready var tools = {
 			}
 		},
 		"tier2" : {
-			"craftTime": 30,
+			"craftTime": 80,
 			"maxDurability": 2,
 			"curDurability": 2,
 			"cost": {
@@ -81,7 +93,7 @@ onready var tools = {
 			}
 		},
 		"tier3" : {
-			"craftTime": 30,
+			"craftTime": 60,
 			"maxDurability": 3,
 			"curDurability": 3,
 			"cost": {
@@ -90,6 +102,18 @@ onready var tools = {
 			},
 			"benefits":{
 				"actionMult": 1.4
+			}
+		},
+		"tier4" : {
+			"craftTime": 100,
+			"maxDurability": 5,
+			"curDurability": 5,
+			"cost": {
+				"Stick": 1,
+				"IronIngot": 1
+			},
+			"benefits":{
+				"actionMult": 1.6
 			}
 		}
 	},
@@ -102,11 +126,11 @@ onready var tools = {
 			}
 		},
 		"tier1" : {
-			"craftTime": 30,
+			"craftTime": 60,
 			"maxDurability": 1,
 			"curDurability": 1,
 			"cost": {
-				"Stick": 1,
+				"Stick": 2,
 				"Rock": 2
 			},
 			"benefits":{
@@ -114,27 +138,39 @@ onready var tools = {
 			}
 		},
 		"tier2" : {
-			"craftTime": 30,
+			"craftTime": 100,
 			"maxDurability": 2,
 			"curDurability": 2,
 			"cost": {
-				"Stick": 1,
-				"CopperIngot": 1
+				"Stick": 2,
+				"CopperIngot": 3
 			},
 			"benefits":{
 				"actionMult": 1.4
 			}
 		},
 		"tier3" : {
-			"craftTime": 30,
+			"craftTime": 80,
 			"maxDurability": 3,
 			"curDurability": 3,
 			"cost": {
-				"Stick": 1,
-				"BronzeIngot": 1
+				"Stick": 2,
+				"BronzeIngot": 3
 			},
 			"benefits":{
 				"actionMult": 1.4
+			}
+		},
+		"tier4" : {
+			"craftTime": 120,
+			"maxDurability": 5,
+			"curDurability": 5,
+			"cost": {
+				"Stick": 2,
+				"IronIngot": 3
+			},
+			"benefits":{
+				"actionMult": 1.6
 			}
 		}
 	},
@@ -147,11 +183,11 @@ onready var tools = {
 			}
 		},
 		"tier1" : {
-			"craftTime": 30,
+			"craftTime": 80,
 			"maxDurability": 1,
 			"curDurability": 1,
 			"cost": {
-				"Stick": 1,
+				"Stick": 2,
 				"Rock": 2
 			},
 			"benefits":{
@@ -159,27 +195,39 @@ onready var tools = {
 			}
 		},
 		"tier2" : {
-			"craftTime": 30,
+			"craftTime": 120,
 			"maxDurability": 2,
 			"curDurability": 2,
 			"cost": {
-				"Stick": 1,
-				"CopperIngot": 1
+				"Stick": 2,
+				"CopperIngot": 3
 			},
 			"benefits":{
 				"actionMult": 1.4
 			}
 		},
 		"tier3" : {
-			"craftTime": 30,
+			"craftTime": 90,
 			"maxDurability": 3,
 			"curDurability": 3,
 			"cost": {
-				"Stick": 1,
-				"BronzeIngot": 1
+				"Stick": 2,
+				"BronzeIngot": 3
 			},
 			"benefits":{
 				"actionMult": 1.4
+			}
+		},
+		"tier4" : {
+			"craftTime": 160,
+			"maxDurability": 5,
+			"curDurability": 5,
+			"cost": {
+				"Stick": 2,
+				"IronIngot": 3
+			},
+			"benefits":{
+				"actionMult": 1.6
 			}
 		}
 	},
@@ -192,15 +240,39 @@ onready var tools = {
 			}
 		},
 		"tier1" : {
-			"craftTime": 30,
-			"maxDurability": 1,
-			"curDurability": 1,
+			"craftTime": 180,
+			"maxDurability": 2,
+			"curDurability": 2,
 			"cost": {
-				"Stick": 1,
-				"Rock": 2
+				"Stick": 2,
+				"CopperIngot": 2
 			},
 			"benefits":{
 				"actionMult": 1
+			}
+		},
+		"tier2" : {
+			"craftTime": 160,
+			"maxDurability": 3,
+			"curDurability": 3,
+			"cost": {
+				"Stick": 2,
+				"BronzeIngot": 2
+			},
+			"benefits":{
+				"actionMult": 1.2
+			}
+		},
+		"tier3" : {
+			"craftTime": 200,
+			"maxDurability": 5,
+			"curDurability": 5,
+			"cost": {
+				"Stick": 2,
+				"IronIngot": 2
+			},
+			"benefits":{
+				"actionMult": 1.4
 			}
 		}
 	}
@@ -216,13 +288,6 @@ func craftTool(name):
 
 func updateTool(name,downgrade = false):
 	emit_signal("toolChanged",name,downgrade,tools[name]["currentTier"])
-#	if(name == "Axe"):
-#		if(tools[name]["currentTier"] == 1):
-#			Global.Missions.get_node("Woods").active_wood()
-#		elif(tools[name]["currentTier"] == 0):
-#			Global.Missions.get_node("Woods").deactive_wood()
-#	for mission in Global.Missions.get_children():
-#		mission.updateGatherTime()
 	if(tools[name]["pinned"]):
 		Global.ToolsUI.updateTool(name, tools[name]["currentTier"], downgrade)
 	
@@ -233,6 +298,12 @@ func checkCost(name):
 		if(Inventory.resources[mat]["ammount"] < amm):
 			return false
 	return true
+
+func getBonus(tl,req = null):
+	var ctier = tools[tl]["currentTier"]
+	if(req != null):
+		ctier = max(ctier-req,0)
+	return tools[tl]["tier"+str(ctier)]["benefits"]["actionMult"]
 
 func removeRes(name):
 	var ctier = tools[name]["currentTier"]

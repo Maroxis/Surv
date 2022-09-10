@@ -5,7 +5,7 @@ onready var Structure = {
 		"Bed":{
 			"currentTier": 0,
 			"benefitsText":{
-				"sleepRegenMult": "Energy recovery multiplayer during sleep"
+				"sleepRegenMult": "Energy recovery and sickness reduction multiplayer during sleep"
 			},
 			"tier0" : {
 				"benefits":{
@@ -22,7 +22,7 @@ onready var Structure = {
 					"ammount": 60
 				},
 				"benefits":{
-					"sleepRegenMult": 1.3
+					"sleepRegenMult": 1.4
 				}
 			},
 			"tier2" : {
@@ -37,7 +37,7 @@ onready var Structure = {
 					"ammount": 80
 				},
 				"benefits":{
-					"sleepRegenMult": 1.6
+					"sleepRegenMult": 1.8
 				}
 			},
 			"tier3" : {
@@ -50,7 +50,7 @@ onready var Structure = {
 					"ammount": 60
 				},
 				"benefits":{
-					"sleepRegenMult": 1.8
+					"sleepRegenMult": 2.2
 				}
 			}
 		},

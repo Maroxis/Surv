@@ -48,9 +48,9 @@ onready var resources = {
 	"Plank": {
 		"ammount" : 0,
 		"bagAmmount":0,
-		"weight" : 4.0,
+		"weight" : 2.0,
 		"cost" : {
-			"Wood" : 3
+			"Wood" : 1
 		},
 		"requirement": {
 			"tool" : "Saw",
@@ -80,7 +80,7 @@ onready var resources = {
 	"Coal": {
 		"ammount" : 0,
 		"bagAmmount":0,
-		"weight" : 3.2,
+		"weight" : 2.6,
 		"crafted": false,
 		"burining":{
 			"temp": 2000,
@@ -113,7 +113,7 @@ onready var resources = {
 			"CopperOre" : 10
 		},
 		"meltingTemp" : 1000,
-		"craftTime": 260,
+		"craftTime": 720,
 		"furnaceTier": 1,
 		"crafted": true
 	  },
@@ -126,7 +126,7 @@ onready var resources = {
 			"TinOre" : 1
 		},
 		"meltingTemp" : 1000,
-		"craftTime": 180,
+		"craftTime": 600,
 		"furnaceTier": 1,
 		"crafted": true
 	  },
@@ -138,7 +138,7 @@ onready var resources = {
 			"IronOre" : 10
 		},
 		"meltingTemp" : 1800,
-		"craftTime": 420,
+		"craftTime": 1440,
 		"furnaceTier": 2,
 		"crafted": true
 	  },
@@ -149,7 +149,7 @@ onready var resources = {
 		"crafted": false,
 		"food": true,
 		"calories": 80,
-		"sick": 40,
+		"sick": 30,
 		"spoil":[],
 		"spoilTime": 2160,
 		"cookTime": 10,
@@ -165,7 +165,7 @@ onready var resources = {
 		"water": 3,
 		"sick": 5,
 		"spoil":[],
-		"spoilTime": 960
+		"spoilTime": 1440
 	  },
 	"CookedMeat": {
 		"ammount" : 0,
@@ -183,11 +183,12 @@ onready var upgrades = {
 		"obtained" : false,
 		"size" : 2,
 		"cost" : {
-			"Leaf" : 3,
-			"Rope" : 2
+			"Leaf" : 12,
+			"Thread" : 4,
+			"Rope" : 1
 		},
 		
-		"craftTime": 40
+		"craftTime": 120
 	},
 	"Backpack" : {
 		"obtained" : false,
@@ -196,15 +197,15 @@ onready var upgrades = {
 			"Leaf" : 3,
 			"Rope" : 2
 		},
-		"craftTime": 80
+		"craftTime": 360
 	},
 	"Flask" : {
 		"obtained" : false,
 		"size" : 20,
 		"cost" : {
-			"Clay" : 2
+			"Clay" : 3
 		},
-		"craftTime": 40
+		"craftTime": 80
 	}
 }
 

@@ -7,12 +7,15 @@ func _ready() -> void:
 	Global.FoodEat = self
 
 func open():
-	removeItems()
-	populateItems()
+	refresh()
 	show()
 
 func close():
 	hide()
+	
+func refresh():
+	removeItems()
+	populateItems()
 	
 func removeItems():
 	for n in food_container.get_children():
@@ -32,6 +35,7 @@ func eatFood(food,node):
 		node.shake()
 	else:
 		node.shakeSide()
+	refresh()
 
 func _on_Return_Button_pressed() -> void:
 	close()

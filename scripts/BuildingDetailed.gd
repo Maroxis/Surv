@@ -28,7 +28,6 @@ func init(bd):
 	clearInfo()
 	show()
 	
-	
 func refresh():
 	disableButton()
 	resRequired = true
@@ -53,14 +52,15 @@ func addItems():
 						if(reqCat == "tool"):
 							rtier = Buildings.Structure[building][mod][tier]["required"][reqCat][req]
 							ctier = Tools.tools[req]["currentTier"]
-							tl = req
+							if(ctier < rtier):
+								tl = req
 						elif(reqCat == "module"):
 							rtier = Buildings.Structure[building][mod][tier]["required"][reqCat][req]
 							ctier = Buildings.Structure[building][req]["currentTier"]
-							md = req
+							if(ctier < rtier):
+								md = req
 						if(ctier < rtier):
 							disabled = true
-						
 			_addItem(mod,disabled,tl,md)
 
 func removeItems(container):
@@ -170,8 +170,8 @@ func getToolBonus():
 		if(Buildings.Structure[building][selectedModule][ntier]["required"].has("tool")):
 			for tl in Buildings.Structure[building][selectedModule][ntier]["required"]["tool"]:
 				var rTier = Buildings.Structure[building][selectedModule][ntier]["required"]["tool"][tl]
-				var cTier = Tools.tools[tl]["currentTier"]
-				bonus += Tools.tools[tl]["tier"+str(cTier-rTier)]["benefits"]["actionMult"]-1
+				var tlBon = Tools.getBonus(tl,rTier)
+				bonus += (tlBon-1)
 	return bonus
 
 func clearInfo():

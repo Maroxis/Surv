@@ -407,9 +407,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 128.0
 script = ExtResource( 22 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BG" type="TextureRect" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Status"]
 self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
@@ -425,23 +422,18 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Status"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 312.0
+margin_left = 264.0
 margin_top = 64.0
-margin_right = -312.0
-margin_bottom = -64.0
+margin_right = -264.0
+margin_bottom = -128.0
 scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="ItemList" type="ItemList" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Status/ScrollContainer"]
-margin_right = 656.0
-margin_bottom = 464.0
+[node name="ItemList" type="VBoxContainer" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Status/ScrollContainer"]
+margin_right = 752.0
+margin_bottom = 400.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 14 )
-auto_height = true
-max_columns = 2
 
 [node name="Return" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Status" instance=ExtResource( 40 )]
 
