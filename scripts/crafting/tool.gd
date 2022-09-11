@@ -4,12 +4,12 @@ onready var tName = get_node("HBoxContainer/VBoxContainer2/Name")
 onready var tier = $HBoxContainer/VBoxContainer2/Tier
 onready var cost = get_node("HBoxContainer/VBoxContainer/Cost")
 onready var benefits = get_node("Benefits")
-onready var button = get_node("HBoxContainer2/CraftButton")
-#onready var btOrgPos = button.rect_position
+#onready var btOrgPos = craft_button.rect_position
 onready var timeLb = $"%Time"
 
 func _ready() -> void:
 	var item = $HBoxContainer/VBoxContainer2/TextureRect
+	craft_button = get_node("HBoxContainer2/CraftButton")
 	loadTex(item)
 
 func refresh():
@@ -22,21 +22,18 @@ func refresh():
 		self.tier.get_node("Next").text = str(ctier+1)
 		self.tier.get_node("Current").text = str(ctier)
 	else:
-		button.disabled = true
+		craft_button.disabled = true
 		fade()
 #		_updateBene(ctier,true)
 #		self.tier.get_node("Next").visible = false
 #		self.tier.get_node("Spacer").visible = false
 #		self.timeLb.text = ""
-#		self.button.disabled = true
-#		self.button.self_modulate = Color( 1, 1, 1, 0.2 )
+#		self.craft_button.disabled = true
+#		self.craft_button.self_modulate = Color( 1, 1, 1, 0.2 )
 
 func _updateCost(ctier):
-	self.cost.clear()
-	self.cost.add_item("Cost")
-	for mat in Tools.tools[self.name]["tier"+str(ctier+1)]["cost"]:
-		var amm = Tools.tools[self.name]["tier"+str(ctier+1)]["cost"][mat]
-		self.cost.add_item(str(mat)+" "+str(amm),null,false)
+	clearList(cost)
+	populateList(cost,Tools.tools[self.name]["tier"+str(ctier+1)],"cost",true)
 
 func _updateBene(ctier,lastTier):
 	self.benefits.clear()
@@ -57,7 +54,7 @@ func _updateBene(ctier,lastTier):
 func _on_CraftButton_pressed() -> void:
 	if(Tools.checkCost(self.name)):
 		Tools.craftTool(self.name)
-#		craftBtAnim(button,btOrgPos)
+#		craftBtAnim(craft_button,btOrgPos)
 		refresh()
 
 func _updateTime():

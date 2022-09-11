@@ -9,12 +9,13 @@ onready var itemsOrgPos = []
 onready var inProgress = 0
 onready var buffer = []
 
-onready var hidden_items = 2
-onready var max_visible_items = 2
+var hidden_items
+onready var max_visible_items = 8
 
 func _ready() -> void:
+	hidden_items = max_visible_items
 	Global.ResourcesUI = self
-	scroll_container.rect_size.x = (items[0].rect_size.x + seperation)*2
+	scroll_container.rect_size.x = (items[0].rect_size.x + seperation)*max_visible_items
 	scroll_container.scroll_horizontal = items[0].rect_size.x + seperation
 	for item in items:
 		itemsOrgPos.push_back(item.rect_position.x)

@@ -16,22 +16,26 @@ func initTabs():
 	for n in tabs.size():
 		tabs[n].tab = n
 		tabs[n].connect("tabClicked",self,"switchTab")
+	tabs[0].select()
 	switchTab(0)
 
 func switchTab(tab):
+	TabSwitcherContainer.get_children()[tab_container.current_tab].deselect()
+	TabSwitcherContainer.get_children()[tab].select()
 	tab_container.current_tab = tab
-	selected.rect_position.y = TabSwitcherContainer.get_children()[tab].rect_position.y -72
+	refreshTab(tab_container.get_current_tab_control())
 
 func refresh():
 	var tabs = tab_container.get_children()
 	for tab in tabs:
-		if(tab.has_node("Items")):
-			var items = tab.get_node("Items").get_children()
-			for item in items:
-				if(item.name != "Margin" and item.name != "Margin2"):
-					item.refresh()
-#	tab_label.text = tab_container.get_children()[tab_container.current_tab].name
+		refreshTab(tab)
 
+func refreshTab(tab):
+	if(tab.has_node("Items")):
+		var items = tab.get_node("Items").get_children()
+		for item in items:
+			if(item.name != "Margin" and item.name != "Margin2"):
+				item.refresh()
 
 func _on_Prev_pressed() -> void:
 	if(tab_container.current_tab > 0):

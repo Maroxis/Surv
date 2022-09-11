@@ -9,7 +9,6 @@ func refresh():
 		for module in Buildings.Structure[structure]:
 			if(typeof(Buildings.Structure[structure][module]) != TYPE_DICTIONARY):
 				continue
-			print(Buildings.getCurrentModule(structure,module))
 			var cmod = Buildings.getCurrentModule(structure,module)
 			for bene in cmod["benefits"]:
 				if bene == "defence":

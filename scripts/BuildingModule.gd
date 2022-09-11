@@ -6,8 +6,10 @@ onready var selected = false
 onready var icon: TextureRect = $Icon
 onready var bg: TextureRect = $BG
 onready var button: Button = $Button
-onready var tool_req: TextureRect = $ToolReq
-onready var mod_req: TextureRect = $ModReq
+onready var tool_icon: TextureRect = $ToolReq/ToolIcon
+onready var mod_icon: TextureRect = $ModReq/ModIcon
+onready var mod_req: ColorRect = $ModReq
+onready var tool_req: ColorRect = $ToolReq
 
 func init(mod,disabled,tl,md):
 	module = mod
@@ -19,14 +21,14 @@ func init(mod,disabled,tl,md):
 
 func reqTool(tl):
 	if(tl):
-		tool_req.texture = load("res://sprites/Icons/32x32px/"+tl.to_lower()+".png")
+		tool_icon.texture = load("res://sprites/Icons/32x32px/"+tl.to_lower()+".png")
 		tool_req.show()
 	else:
 		tool_req.hide()
 		
 func reqMod(md):
 	if(md):
-		mod_req.texture = load("res://sprites/Icons/32x32px/"+md.to_lower()+".png")
+		mod_icon.texture = load("res://sprites/Icons/32x32px/"+md.to_lower()+".png")
 		mod_req.show()
 	else:
 		mod_req.hide()

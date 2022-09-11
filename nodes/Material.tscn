@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sprites/Icons/32x32px/rope.png" type="Texture" id=1]
 [ext_resource path="res://scripts/crafting/Material.gd" type="Script" id=2]
@@ -6,18 +6,6 @@
 [ext_resource path="res://sprites/Icons/64x64px/build.png" type="Texture" id=4]
 [ext_resource path="res://fonts/ResourcesTheme.tres" type="Theme" id=5]
 [ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=6]
-
-[sub_resource type="StyleBoxEmpty" id=1]
-
-[sub_resource type="StyleBoxEmpty" id=2]
-
-[sub_resource type="StyleBoxEmpty" id=3]
-
-[sub_resource type="StyleBoxEmpty" id=4]
-
-[sub_resource type="StyleBoxEmpty" id=5]
-
-[sub_resource type="StyleBoxEmpty" id=6]
 
 [node name="Material" type="VBoxContainer"]
 margin_left = 744.0
@@ -68,30 +56,25 @@ rect_min_size = Vector2( 192, 0 )
 
 [node name="Desc" type="Label" parent="HBoxContainer/VBoxContainer"]
 visible = false
-margin_top = 45.0
-margin_right = 91.0
-margin_bottom = 86.0
+margin_right = 192.0
+margin_bottom = 41.0
 theme = ExtResource( 5 )
 text = "Desc"
 
-[node name="Cost" type="ItemList" parent="HBoxContainer/VBoxContainer"]
+[node name="CostLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_right = 192.0
+margin_bottom = 41.0
+theme = ExtResource( 5 )
+text = "Cost"
+align = 1
+
+[node name="Cost" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 45.0
 margin_right = 192.0
 margin_bottom = 45.0
-mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 theme = ExtResource( 6 )
-custom_colors/guide_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_styles/cursor = SubResource( 1 )
-custom_styles/selected_focus = SubResource( 2 )
-custom_styles/bg_focus = SubResource( 3 )
-custom_styles/cursor_unfocused = SubResource( 4 )
-custom_styles/selected = SubResource( 5 )
-custom_styles/bg = SubResource( 6 )
-items = [ "Cost", null, false ]
-auto_height = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 margin_top = 260.0

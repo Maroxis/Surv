@@ -271,6 +271,8 @@ func add_resource(res,amm,cook = false):
 
 func check_cost(item, amm = 1, upg = false):
 	var table = upgrades[item] if upg else resources[item]
+	if(not table.has("cost")):
+		return
 	for mat in table["cost"]:
 		if resources[mat]["ammount"] < table["cost"][mat] * amm:
 			return false

@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "Control",
 "class": "Craftable",
 "language": "GDScript",
 "path": "res://scripts/crafting/Craftable.gd"
@@ -50,6 +50,7 @@ Player="*res://scripts/Player.gd"
 Buildings="*res://scripts/Buildings.gd"
 Tools="*res://scripts/tools.gd"
 Events="*res://scripts/Events.gd"
+DevMode="*res://scripts/DevMode.gd"
 
 [display]
 

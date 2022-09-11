@@ -11,7 +11,6 @@ var ChestResources
 var Smelt
 var Weather
 var MissionButtons
-var Debug
 var BaseAct
 var Cook
 var FoodEat

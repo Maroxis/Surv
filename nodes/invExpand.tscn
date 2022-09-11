@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://sprites/BG/IconRect.png" type="Texture" id=1]
 [ext_resource path="res://sprites/Icons/64x64px/build.png" type="Texture" id=2]
@@ -7,18 +7,6 @@
 [ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=5]
 [ext_resource path="res://sprites/Icons/64x64px/bag.png" type="Texture" id=6]
 [ext_resource path="res://fonts/UIBonusTheme.tres" type="Theme" id=7]
-
-[sub_resource type="StyleBoxEmpty" id=1]
-
-[sub_resource type="StyleBoxEmpty" id=2]
-
-[sub_resource type="StyleBoxEmpty" id=3]
-
-[sub_resource type="StyleBoxEmpty" id=4]
-
-[sub_resource type="StyleBoxEmpty" id=5]
-
-[sub_resource type="StyleBoxEmpty" id=6]
 
 [node name="invExpand" type="VBoxContainer"]
 margin_right = 192.0
@@ -62,27 +50,27 @@ theme = ExtResource( 4 )
 text = "Name"
 align = 1
 
-[node name="Cost" type="ItemList" parent="HBoxContainer"]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 margin_left = 144.0
 margin_right = 336.0
 margin_bottom = 220.0
+
+[node name="CostLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_right = 192.0
+margin_bottom = 41.0
+theme = ExtResource( 4 )
+text = "Cost"
+align = 1
+
+[node name="Cost" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 45.0
+margin_right = 192.0
+margin_bottom = 220.0
 rect_min_size = Vector2( 192, 0 )
-mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 5 )
-custom_colors/guide_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_styles/cursor = SubResource( 1 )
-custom_styles/selected_focus = SubResource( 2 )
-custom_styles/bg_focus = SubResource( 3 )
-custom_styles/cursor_unfocused = SubResource( 4 )
-custom_styles/selected = SubResource( 5 )
-custom_styles/bg = SubResource( 6 )
-items = [ "Cost", null, false ]
-auto_height = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 margin_top = 260.0

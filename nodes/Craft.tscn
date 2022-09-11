@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://resources/tabFG.tres" type="StyleBox" id=1]
 [ext_resource path="res://fonts/CraftTabsFont.tres" type="DynamicFont" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://sprites/BG/DiscBorder.png" type="Texture" id=12]
 [ext_resource path="res://scripts/Craft.gd" type="Script" id=13]
 [ext_resource path="res://sprites/woodtex.png" type="Texture" id=14]
+[ext_resource path="res://sprites/Icons/64x64px/bag.png" type="Texture" id=15]
+[ext_resource path="res://nodes/CraftUpgrades.tscn" type="PackedScene" id=16]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -50,6 +52,12 @@ tabs_visible = false
 
 [node name="Tools" parent="TabContainer" instance=ExtResource( 4 )]
 visible = false
+
+[node name="Upgrades" parent="TabContainer" instance=ExtResource( 16 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_bottom = 418.0
 
 [node name="Smelting" parent="TabContainer" instance=ExtResource( 6 )]
 visible = false
@@ -91,14 +99,22 @@ margin_bottom = 136.0
 [node name="Icon" parent="TabSwitcher/VBoxContainer/Tools" index="1"]
 texture = ExtResource( 11 )
 
-[node name="Smelting" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 7 )]
+[node name="Upgrades" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 7 )]
 margin_top = 144.0
 margin_bottom = 208.0
+
+[node name="Icon" parent="TabSwitcher/VBoxContainer/Upgrades" index="1"]
+texture = ExtResource( 15 )
+
+[node name="Smelting" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 7 )]
+margin_top = 216.0
+margin_bottom = 280.0
 
 [node name="Icon" parent="TabSwitcher/VBoxContainer/Smelting" index="1"]
 texture = ExtResource( 10 )
 
 [node name="Control" type="Control" parent="TabSwitcher"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -131,5 +147,6 @@ stretch_mode = 1
 
 [editable path="TabSwitcher/VBoxContainer/Resources"]
 [editable path="TabSwitcher/VBoxContainer/Tools"]
+[editable path="TabSwitcher/VBoxContainer/Upgrades"]
 [editable path="TabSwitcher/VBoxContainer/Smelting"]
 [editable path="Return"]

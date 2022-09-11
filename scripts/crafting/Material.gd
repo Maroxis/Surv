@@ -2,44 +2,47 @@ extends Craftable
 
 onready var tName = get_node("HBoxContainer/VBoxContainer2/Name")
 onready var cost = get_node("HBoxContainer/VBoxContainer/Cost")
-onready var button = get_node("HBoxContainer2/CraftButton")
 onready var timeLb = $HBoxContainer2/Time
 onready var requirement: Label = $Requirement
 
+
 func _ready() -> void:
 	var item = $HBoxContainer/VBoxContainer2/TextureRect
+	craft_button = get_node("HBoxContainer2/CraftButton")
 	loadTex(item)
+	self.tName.text = self.name
 
 func refresh():
-	self.tName.text = self.name
-	self.cost.clear()
-	self.cost.add_item("Cost")
-	for mat in Inventory.resources[self.name]["cost"]:
-		var amm = Inventory.resources[self.name]["cost"][mat]
-		self.cost.add_item(str(mat)+" "+str(amm),null,false)
+	_updateCost()
 	_updateTime()
+	_updateReq()
+	
+func _on_CraftButton_pressed() -> void:
+	if Inventory.check_cost(self.name):
+#		craftBtAnim(craft_button,btOrgPos)
+		Inventory.craft_item(self.name)
+		refresh()
+
+func _updateCost():
+	clearList(cost)
+	populateList(cost,Inventory.resources[self.name],"cost",true)
+
+func _updateReq():
 	if(Inventory.resources[self.name].has("requirement")):
 		var req = Inventory.resources[self.name]["requirement"]
 		if(Tools.tools[req["tool"]]["currentTier"] < req["tier"]):
 			disable(req["tool"])
 		else:
 			enable()
-	
-func _on_CraftButton_pressed() -> void:
-	if Inventory.check_cost(self.name):
-#		craftBtAnim(button,btOrgPos)
-		Inventory.craft_item(self.name)
 
 func _updateTime():
 	timeLb.text = Global.timeGetFullFormat(Inventory.resources[self.name]["craftTime"],true)
 	
 func disable(req):
-	button.modulate.a = 0.4
-	button.disabled = true
+	disableBT()
 	requirement.visible = true
 	requirement.text = "Requires " + req
-
 func enable():
-	button.modulate.a = 1.0
-	button.disabled = false
+	enableBT()
 	requirement.visible = false
+

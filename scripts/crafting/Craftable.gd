@@ -1,6 +1,12 @@
-extends Node
+extends Control
 
 class_name Craftable
+
+onready var list_item_scene = load("res://nodes/ListItem.tscn")
+var craft_button
+
+func refresh():
+	return
 
 func fade():
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT)
@@ -19,3 +25,31 @@ func loadTex(item):
 	item.texture = load("res://sprites/Icons/128x128px/"+tex+".png")
 	item.modulate = Color(0.0,0.0,0.0,1.0)
 	
+func addListItem(list,text,val,color = Color(0,0,0,1),icon = false):
+	var scene_instance = list_item_scene.instance()
+	list.add_child(scene_instance)
+	scene_instance.desc.text = str(text)
+	scene_instance.value.text = str(val)
+	scene_instance.value.set("custom_colors/font_color", color)
+	if(icon):
+		scene_instance.icon.texture = load("res://sprites/Icons/32x32px/"+text.to_lower()+".png")
+
+func clearList(list):
+	for n in list.get_children():
+		n.queue_free()
+func populateList(list,dict,cat,wIcon = false):
+	for mat in dict[cat]:
+		var amm = dict[cat][mat]
+		if(amm > Inventory.resources[mat]["ammount"]):
+			addListItem(list,mat,amm,Color(1,1,0,1),wIcon)
+			disableBT()
+		else:
+			addListItem(list,mat,amm,Color(0,1,0,1),wIcon)
+			enableBT()
+
+func disableBT():
+	craft_button.modulate.a = 0.4
+	craft_button.disabled = true
+func enableBT():
+	craft_button.modulate.a = 1.0
+	craft_button.disabled = false
