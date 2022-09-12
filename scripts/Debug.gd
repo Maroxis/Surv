@@ -5,7 +5,6 @@ onready var status: Control = $"%Status"
 
 func _ready() -> void:
 	DevMode.DebugUI = self
-	switch(DevMode.on)
 
 func switch(on):
 	visible = on

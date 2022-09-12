@@ -31,3 +31,4 @@
 <a href="https://www.flaticon.com/free-icons/picket" title="picket icons">Picket icons created by surang - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/shovel" title="shovel icons">Shovel icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/log" title="log icons">Log icons created by Andrejs Kirma - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/off" title="off icons">Off icons created by Pixel perfect - Flaticon</a>
