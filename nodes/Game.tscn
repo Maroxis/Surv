@@ -891,6 +891,8 @@ margin_right = 1280.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 16, 0 )
 
+[node name="Sound" type="Node" parent="."]
+
 [connection signal="visibility_changed" from="Canvas/CanvasLayer/GameWindow/Missions/Home" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Home_visibility_changed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Build/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Build_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Craft/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Craft_Button_pressed"]

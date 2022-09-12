@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "NodeAnimated",
 "language": "GDScript",
 "path": "res://scripts/animate/NodeAnimated.gd"
+}, {
+"base": "ProgressBar",
+"class": "ProgressSlider",
+"language": "GDScript",
+"path": "res://scripts/ProgressSlider.gd"
 } ]
 _global_script_class_icons={
 "Craftable": "",
 "Mission": "",
 "MissionBasic": "",
-"NodeAnimated": ""
+"NodeAnimated": "",
+"ProgressSlider": ""
 }
 
 [application]
