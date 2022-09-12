@@ -8,6 +8,7 @@
 <a href="https://www.flaticon.com/free-icons/clay" title="clay icons">Clay icons created by Good Ware - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/coal" title="coal icons">Coal icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/gold" title="gold icons">Gold icons created by Smashicons - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/torch" title="torch icons">Torch icons created by Freepik - Flaticon</a>
 
 <a href="https://www.flaticon.com/free-icons/axe" title="axe icons">Axe icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/pickaxe" title="pickaxe icons">Pickaxe icons created by Freepik - Flaticon</a>
@@ -32,3 +33,4 @@
 <a href="https://www.flaticon.com/free-icons/shovel" title="shovel icons">Shovel icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/log" title="log icons">Log icons created by Andrejs Kirma - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/off" title="off icons">Off icons created by Pixel perfect - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/cave" title="cave icons">Cave icons created by andinur - Flaticon</a>

@@ -45,6 +45,17 @@ onready var resources = {
 		"craftTime": 60,
 		"crafted": true
 	  },
+	"Torch": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 2.2,
+		"cost" : {
+			"Stick" : 1,
+			"Rope" : 1
+		},
+		"craftTime": 10,
+		"crafted": true
+	  },
 	"Plank": {
 		"ammount" : 0,
 		"bagAmmount":0,

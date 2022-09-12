@@ -720,15 +720,9 @@ margin_right = 73.0
 margin_bottom = 30.0
 texture = ExtResource( 58 )
 
-[node name="Control" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
-margin_left = 144.0
-margin_right = 152.0
-margin_bottom = 128.0
-size_flags_horizontal = 3
-
 [node name="Tools" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
-margin_left = 156.0
-margin_right = 246.0
+margin_left = 144.0
+margin_right = 234.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 90, 0 )
 script = ExtResource( 63 )
@@ -791,6 +785,12 @@ margin_bottom = 104.0
 texture = ExtResource( 48 )
 script = ExtResource( 66 )
 
+[node name="Control" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
+margin_left = 238.0
+margin_right = 246.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+
 [node name="Inventory" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer" instance=ExtResource( 70 )]
 margin_left = 250.0
 margin_right = 1140.0
@@ -800,6 +800,7 @@ margin_left = 1144.0
 margin_right = 1192.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 48, 0 )
+size_flags_horizontal = 3
 
 [node name="SettingsButton" type="TextureButton" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
 margin_left = 1196.0
