@@ -39,7 +39,7 @@ func soak(amm):
 	if(soaked > 100):
 		change_sick(ceil((soaked-100) / 20))
 		soaked = 100
-	Global.Debug.soak_meter.value = soaked
+	DevMode.DebugUI.soak_meter.value = soaked
 
 func dry(time):
 	if(Global.Weather.current == Global.Weather.type.Sunny):
@@ -48,7 +48,7 @@ func dry(time):
 		soaked -= dryRate*time
 	if(soaked < 0):
 		soaked = 0
-	Global.Debug.soak_meter.value = soaked
+	DevMode.DebugUI.soak_meter.value = soaked
 
 func change_water(amm, set = false):
 	if(amm == 0 and not set):

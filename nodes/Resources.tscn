@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/Resources.gd" type="Script" id=2]
+[ext_resource path="res://sprites/textiletex.jpg" type="Texture" id=3]
 
 [node name="Resources" type="Control"]
 anchor_right = 1.0
@@ -14,14 +15,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="Bg" type="ColorRect" parent="Border"]
+[node name="Bg" type="TextureRect" parent="Border"]
+self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0
 margin_top = 16.0
 margin_right = -16.0
 margin_bottom = -16.0
-color = Color( 0.454902, 0.109804, 0.109804, 1 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 2
 
 [node name="Resources" type="HBoxContainer" parent="Border/Bg"]
 unique_name_in_owner = true

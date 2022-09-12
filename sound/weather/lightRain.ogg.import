@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/lightRain.ogg-297660232cb1df34c5a9e62581851c86.oggstr"
+
+[deps]
+
+source_file="res://sound/weather/lightRain.ogg"
+dest_files=[ "res://.import/lightRain.ogg-297660232cb1df34c5a9e62581851c86.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

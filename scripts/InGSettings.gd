@@ -23,3 +23,8 @@ func _on_MusicProgressSlider_value_changed(value: float) -> void:
 func _on_SFXProgressSlider_value_changed(value: float) -> void:
 	var sfx_index= AudioServer.get_bus_index("SFX")
 	AudioServer.set_bus_volume_db(sfx_index, value)
+
+
+func _on_WeatherProgressSlider_value_changed(value: float) -> void:
+	var sfx_index= AudioServer.get_bus_index("Weather")
+	AudioServer.set_bus_volume_db(sfx_index, value)
