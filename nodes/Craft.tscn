@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://resources/tabFG.tres" type="StyleBox" id=1]
 [ext_resource path="res://fonts/CraftTabsFont.tres" type="DynamicFont" id=2]
@@ -9,13 +9,16 @@
 [ext_resource path="res://nodes/TabSwithcerTab.tscn" type="PackedScene" id=7]
 [ext_resource path="res://nodes/ReturnButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://sprites/textiletex.jpg" type="Texture" id=9]
-[ext_resource path="res://sprites/Icons/256x256px/furnaceBase.png" type="Texture" id=10]
-[ext_resource path="res://sprites/Icons/32x32px/pickaxe.png" type="Texture" id=11]
+[ext_resource path="res://nodes/Butchering.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/Icons/64x64px/pickaxe.png" type="Texture" id=11]
 [ext_resource path="res://sprites/BG/DiscBorder.png" type="Texture" id=12]
 [ext_resource path="res://scripts/Craft.gd" type="Script" id=13]
 [ext_resource path="res://sprites/woodtex.png" type="Texture" id=14]
 [ext_resource path="res://sprites/Icons/64x64px/bag.png" type="Texture" id=15]
 [ext_resource path="res://nodes/CraftUpgrades.tscn" type="PackedScene" id=16]
+[ext_resource path="res://sprites/Icons/64x64px/rope.png" type="Texture" id=17]
+[ext_resource path="res://sprites/Icons/64x64px/butchering.png" type="Texture" id=18]
+[ext_resource path="res://sprites/Icons/128x128px/furnace.png" type="Texture" id=19]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -63,6 +66,10 @@ margin_bottom = 418.0
 visible = false
 anchor_top = 0.0
 margin_top = 0.0
+margin_right = 0.0
+
+[node name="Butchering" parent="TabContainer" instance=ExtResource( 10 )]
+visible = false
 
 [node name="TabSwitcher" type="Control" parent="."]
 anchor_left = 1.0
@@ -85,12 +92,15 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -32.0
-margin_top = -104.0
+margin_top = -176.0
 margin_right = 32.0
-margin_bottom = 104.0
+margin_bottom = 176.0
 custom_constants/separation = 8
 
 [node name="Resources" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 7 )]
+
+[node name="Icon" parent="TabSwitcher/VBoxContainer/Resources" index="1"]
+texture = ExtResource( 17 )
 
 [node name="Tools" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 7 )]
 margin_top = 72.0
@@ -111,7 +121,15 @@ margin_top = 216.0
 margin_bottom = 280.0
 
 [node name="Icon" parent="TabSwitcher/VBoxContainer/Smelting" index="1"]
-texture = ExtResource( 10 )
+texture = ExtResource( 19 )
+
+[node name="Butchering" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 7 )]
+visible = false
+margin_top = 216.0
+margin_bottom = 280.0
+
+[node name="Icon" parent="TabSwitcher/VBoxContainer/Butchering" index="1"]
+texture = ExtResource( 18 )
 
 [node name="Control" type="Control" parent="TabSwitcher"]
 visible = false
@@ -149,4 +167,5 @@ stretch_mode = 1
 [editable path="TabSwitcher/VBoxContainer/Tools"]
 [editable path="TabSwitcher/VBoxContainer/Upgrades"]
 [editable path="TabSwitcher/VBoxContainer/Smelting"]
+[editable path="TabSwitcher/VBoxContainer/Butchering"]
 [editable path="Return"]

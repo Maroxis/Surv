@@ -34,3 +34,4 @@
 <a href="https://www.flaticon.com/free-icons/log" title="log icons">Log icons created by Andrejs Kirma - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/off" title="off icons">Off icons created by Pixel perfect - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/cave" title="cave icons">Cave icons created by andinur - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/meat" title="meat icons">Meat icons created by Smashicons - Flaticon</a>
