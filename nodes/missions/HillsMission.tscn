@@ -35,24 +35,22 @@ margin_left = 192.0
 margin_top = 16.0
 margin_bottom = -112.0
 
-[node name="Explore" type="Control" parent="VBoxContainer"]
+[node name="Explore" type="HBoxContainer" parent="VBoxContainer"]
 unique_name_in_owner = true
-margin_right = 1088.0
-margin_bottom = 196.0
+margin_left = 104.0
+margin_top = 34.0
+margin_right = 984.0
+margin_bottom = 162.0
 rect_min_size = Vector2( 128, 128 )
-mouse_filter = 1
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 6
+custom_constants/separation = 32
 
 [node name="ExplorationProgress" type="TextureProgress" parent="VBoxContainer/Explore"]
 unique_name_in_owner = true
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -320.0
-margin_top = -64.0
-margin_right = 192.0
-margin_bottom = 64.0
+margin_right = 720.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 720, 128 )
 value = 70.0
 texture_under = ExtResource( 5 )
 texture_over = ExtResource( 6 )
@@ -100,14 +98,9 @@ valign = 1
 
 [node name="ExploreButton" type="TextureButton" parent="VBoxContainer/Explore"]
 self_modulate = Color( 1, 0.486275, 0, 1 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 200.0
-margin_top = -64.0
-margin_right = 328.0
-margin_bottom = 64.0
+margin_left = 752.0
+margin_right = 880.0
+margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 texture_normal = ExtResource( 7 )
 script = ExtResource( 11 )
