@@ -17,7 +17,8 @@ shader_param/skew_y = 0.0
 [node name="ItemSquare" type="Control"]
 margin_right = 64.0
 margin_bottom = 64.0
-rect_min_size = Vector2( 80, 80 )
+rect_min_size = Vector2( 96, 96 )
+mouse_filter = 2
 script = ExtResource( 4 )
 
 [node name="BG" type="TextureRect" parent="."]
@@ -25,6 +26,7 @@ self_modulate = Color( 1, 0.486275, 0, 1 )
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 1
@@ -40,6 +42,7 @@ margin_top = -32.0
 margin_right = 32.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 64, 64 )
+mouse_filter = 2
 texture = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -47,3 +50,4 @@ visible = false
 material = ExtResource( 3 )
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 2
