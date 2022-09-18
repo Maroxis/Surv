@@ -10,6 +10,7 @@ onready var label_ammount: Label = $"%LabelAmmount"
 onready var ammount_texture_progress: TextureProgress = $"%AmmountTextureProgress"
 onready var v_slider: VSlider = $"%VSlider"
 onready var ammount_slider: Control = $"%AmmountSlider"
+onready var v_box_container: HBoxContainer = $VBoxContainer
 
 #export var it = 5
 export var max_skew = 0.5
@@ -40,9 +41,11 @@ func init(withAmm = false):
 	var item_name = item_container.get_children()[selected_item].item_name
 	selectItem(item_name)
 	ammount_slider.visible = withAmm
+	if(!withAmm):
+		self.rect_min_size.x -= ammount_slider.rect_size.x + v_box_container.get("custom_constants/separation")
 	
 func selectItem(item_name):
-	emit_signal("itemSelected", self.name, item_name)
+	emit_signal("itemSelected", item_name)
 	refreshAmmBar(item_name)
 
 func refreshAmmBar(item_name):

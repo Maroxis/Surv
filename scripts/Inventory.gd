@@ -325,12 +325,13 @@ func check_cost(item, amm = 1, upg = false):
 			return false
 	return true
 
-func craft_item(item, amm = 1):
+func craft_item(item, amm = 1, add = true):
 	for mat in resources[item]["cost"]:
 		add_resource(mat, -(resources[item]["cost"][mat] * amm))
-	add_resource(item,amm)
-	Player.pass_time(resources[item]["craftTime"])
-	
+	if(add):
+		add_resource(item,amm)
+		Player.pass_time(resources[item]["craftTime"])
+
 func expand_bag(item):
 	if(upgrades[item]["obtained"] or !check_cost(item,1,true)):
 		return false

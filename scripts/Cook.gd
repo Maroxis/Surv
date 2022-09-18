@@ -4,6 +4,7 @@ onready var item_select: Control = $"%FoodSelect"
 onready var flame: TextureProgress = $"%Flame"
 onready var time_remaining: Label = $"%TimeRemaining"
 onready var fuel: Control = $"%Fuel"
+onready var food_label: Label = $"%FoodLabel"
 
 onready var selectedItem = "Blank"
 onready var cookingItem = "Blank"
@@ -30,6 +31,7 @@ func refresh():
 
 func selectItem(item):
 	selectedItem = item
+	food_label.text = item
 
 func changeAmm(amm):
 	rawAmm = amm
@@ -87,6 +89,5 @@ func _on_Fuel_itemClicked(item) -> void:
 func _on_FoodSelect_ammChanged(amm) -> void:
 	changeAmm(amm)
 
-
-func _on_FoodSelect_itemSelected(node,item) -> void:
+func _on_FoodSelect_itemSelected(item) -> void:
 	selectItem(item)

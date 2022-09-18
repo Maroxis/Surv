@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://sprites/UI/plus.png" type="Texture" id=1]
 [ext_resource path="res://sprites/Icons/256x256px/furnaceBase.png" type="Texture" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://sprites/Icons/128x128px/arrow.png" type="Texture" id=8]
 [ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://sprites/Icons/furnaceFlameFull.png" type="Texture" id=10]
+[ext_resource path="res://nodes/ClickSelect.tscn" type="PackedScene" id=11]
+[ext_resource path="res://nodes/ScrollSelect.tscn" type="PackedScene" id=12]
+[ext_resource path="res://resources/defaultFont.tres" type="Theme" id=13]
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
@@ -51,18 +54,28 @@ use_filter = true
 font_data = ExtResource( 9 )
 
 [node name="Smelting" type="Control"]
+anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -1152.0
 margin_top = -465.0
-margin_right = -128.0
 mouse_filter = 2
 theme = SubResource( 3 )
 script = ExtResource( 5 )
 
+[node name="RecipeLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchor_right = 1.0
+margin_bottom = 81.0
+theme = ExtResource( 13 )
+align = 1
+valign = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/separation = 32
 alignment = 1
 
 [node name="Control" type="Control" parent="HBoxContainer"]
@@ -71,10 +84,34 @@ margin_bottom = 465.0
 rect_min_size = Vector2( 208, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="RecipeSelect" parent="HBoxContainer" instance=ExtResource( 12 )]
+unique_name_in_owner = true
+margin_left = 240.0
+margin_top = 76.0
+margin_right = 408.0
+margin_bottom = 388.0
+
+[node name="OreRequired" type="VBoxContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 440.0
+margin_right = 568.0
+margin_bottom = 465.0
+rect_min_size = Vector2( 128, 0 )
+alignment = 1
+
+[node name="FuelSelect" parent="HBoxContainer" instance=ExtResource( 11 )]
+unique_name_in_owner = true
+margin_left = 600.0
+margin_top = 168.0
+margin_right = 728.0
+margin_bottom = 296.0
 
 [node name="OreContainer" type="HBoxContainer" parent="HBoxContainer"]
-margin_left = 212.0
-margin_right = 732.0
+visible = false
+margin_left = 648.0
+margin_right = 1168.0
 margin_bottom = 465.0
 size_flags_horizontal = 5
 size_flags_vertical = 5
@@ -157,9 +194,10 @@ margin_bottom = 308.0
 size_flags_horizontal = 3
 
 [node name="Start" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 736.0
+visible = false
+margin_left = 648.0
 margin_top = 62.0
-margin_right = 956.0
+margin_right = 868.0
 margin_bottom = 402.0
 rect_min_size = Vector2( 220, 340 )
 size_flags_vertical = 4
@@ -221,9 +259,17 @@ custom_fonts/font = SubResource( 4 )
 text = "Error"
 align = 1
 
+[node name="Control3" type="Control" parent="HBoxContainer"]
+margin_left = 760.0
+margin_right = 792.0
+margin_bottom = 465.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
 [node name="Furnace" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 960.0
-margin_right = 1160.0
+margin_left = 824.0
+margin_right = 1024.0
 margin_bottom = 465.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_vertical = 3
@@ -267,10 +313,13 @@ text = "03h:20m"
 align = 1
 
 [node name="Control2" type="Control" parent="HBoxContainer"]
-margin_left = 1164.0
-margin_right = 1260.0
+margin_left = 1056.0
+margin_right = 1152.0
 margin_bottom = 465.0
 rect_min_size = Vector2( 96, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[connection signal="visibility_changed" from="." to="." method="_on_Smelting_visibility_changed"]
+[connection signal="itemSelected" from="HBoxContainer/RecipeSelect" to="." method="_on_RecipeSelect_itemSelected"]
+[connection signal="itemClicked" from="HBoxContainer/FuelSelect" to="." method="_on_FuelSelect_itemClicked"]
 [connection signal="pressed" from="HBoxContainer/Start/Control/StartButton" to="." method="_on_Start_Button_pressed"]
