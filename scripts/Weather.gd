@@ -52,6 +52,7 @@ func setWeather(wthr):
 			
 	deactivateSunny()
 	activeClouds()
+	deactiveClouds()
 	deactiveRain()
 	deactiveLightning()
 	match current:
@@ -117,8 +118,8 @@ func deactiveRain():
 	rain.hide()
 	
 func activeClouds():
-	clouds.material.set_shader_param("cloudStrength", 0.1+0.15*current)
-	clouds.material.set_shader_param("light", 1.4-0.2*current)
+	clouds.material.set_shader_param("cloudStrength", 0.20+0.28*current)
+	clouds.material.set_shader_param("light", clamp(1.4-0.28*current,0.2,1.0))
 	background.material.set_shader_param("darken",0.8-0.02*current*current)
 func deactiveClouds():
 	clouds.material.set_shader_param("cloudStrength", 0.0)
