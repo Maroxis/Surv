@@ -29,13 +29,12 @@ shader_param/cloudStrength = 0.0
 shader_param/speed = 0.2
 shader_param/color = Vector3( 0.95, 0.95, 0.9 )
 shader_param/light = 1.0
-shader_param/OCTAVES = 3
 
 [sub_resource type="ShaderMaterial" id=12]
 shader = ExtResource( 8 )
 shader_param/direction = Vector2( 0.2, -1 )
 shader_param/speed = 0.15
-shader_param/scale = 3.4
+shader_param/scale = 2.6
 shader_param/color = Plane( 0.2, 0.4, 1, 1 )
 shader_param/light = 1.0
 shader_param/offset = Vector2( 0.2, 0.6 )

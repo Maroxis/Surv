@@ -64,10 +64,6 @@ Tools="*res://scripts/tools.gd"
 Events="*res://scripts/Events.gd"
 DevMode="*res://scripts/DevMode.gd"
 
-[debug]
-
-settings/fps/force_fps=60
-
 [display]
 
 window/size/width=1280
