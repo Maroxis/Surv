@@ -42,5 +42,5 @@ func _on_Meat_Button_pressed() -> void:
 
 func _on_Berries_Button_pressed() -> void:
 	var amm = 4
-	amm = Player.eat("WildBerry",amm)
+	amm = Player.eat("WildBerry", amm, false, false)
 	addRes("WildBerry",amm)
