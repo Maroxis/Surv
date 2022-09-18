@@ -13,7 +13,11 @@ onready var resources = {
 		"ammount" : 0,
 		"bagAmmount":0,
 		"weight" : 1.2,
-		"crafted": false
+		"crafted": false,
+		"burining":{
+			"temp": 600,
+			"time": 5
+		}
 	  },
 	"Wood": {
 		"ammount" : 0,
@@ -153,12 +157,27 @@ onready var resources = {
 		"furnaceTier": 2,
 		"crafted": true
 	  },
+	"RawSmallMeat": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 1.2,
+		"crafted": false,
+		"food": true,
+		"cookable": true,
+		"calories": 40,
+		"sick": 10,
+		"spoil":[],
+		"spoilTime": 2160,
+		"cookTime": 5,
+		"cooksInto" : "CookedSmallMeat"
+	  },
 	"RawMeat": {
 		"ammount" : 0,
 		"bagAmmount":0,
 		"weight" : 2.8,
 		"crafted": false,
 		"food": true,
+		"cookable": true,
 		"calories": 80,
 		"sick": 30,
 		"spoil":[],
@@ -172,11 +191,23 @@ onready var resources = {
 		"weight" : 1.2,
 		"crafted": false,
 		"food": true,
+		"cookable": false,
 		"calories": 10,
 		"water": 3,
 		"sick": 5,
 		"spoil":[],
 		"spoilTime": 1440
+	  },
+	"CookedSmallMeat": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 1.0,
+		"crafted": true,
+		"food": true,
+		"cookable": false,
+		"calories": 40,
+		"spoil":[],
+		"spoilTime": 4320
 	  },
 	"CookedMeat": {
 		"ammount" : 0,
@@ -184,6 +215,7 @@ onready var resources = {
 		"weight" : 2.2,
 		"crafted": true,
 		"food": true,
+		"cookable": false,
 		"calories": 80,
 		"spoil":[],
 		"spoilTime": 4320
@@ -250,35 +282,39 @@ func add_resource_to_bag(res,amm):
 func update_bag():
 	Global.BagUI.updateBag(bagSpaceLeft,bagSize)
 
-func add_resource(res,amm,cook = false):
+func add_resource(res,amm):
 	if amm < 0 and resources[res]["ammount"] < abs(amm):
 		return false
 	else:
+		if Inventory.resources[res].has("food"):
+			add_spoil(res,amm)
 		resources[res]["ammount"] += amm
 		if resources[res]["ammount"] > 99:
 			resources[res]["ammount"] = 99
-		if(resources[res].has("food")):
-			if(amm > 0):
-				var sp = {
-					"amm": amm,
-					"time": resources[res]["spoilTime"]
-				}
-				resources[res]["spoil"].push_back(sp)
-			elif(cook):
-				var i = abs(amm)
-				while i > 0:
-					for n in resources[res]["spoil"].size():
-						var spAmm = resources[res]["spoil"][n]["amm"]
-						if i >= spAmm:
-							i -= spAmm
-							resources[res]["spoil"][n]["amm"] = 0
-						else:
-							resources[res]["spoil"][n]["amm"] -= i
-							i = 0
-						if(i == 0):
-							break
 		Global.ResourcesUI.addRes(res,resources[res]["ammount"],resources[res]["crafted"])
 		return true
+
+func add_spoil(res,amm):
+	if(amm > 0):
+		var sp = {
+			"amm": amm,
+			"time": resources[res]["spoilTime"]
+		}
+		resources[res]["spoil"].push_back(sp)
+	else:
+		var i = abs(amm)
+		while i > 0:
+			for n in range(resources[res]["spoil"].size()-1,-1,-1):
+				var spAmm = resources[res]["spoil"][n]["amm"]
+				if i >= spAmm:
+					i -= spAmm
+					resources[res]["spoil"][n]["amm"] = 0
+					resources[res]["spoil"].remove(n)
+				else:
+					resources[res]["spoil"][n]["amm"] -= i
+					i = 0
+				if(i == 0):
+					break
 
 func check_cost(item, amm = 1, upg = false):
 	var table = upgrades[item] if upg else resources[item]
@@ -324,5 +360,5 @@ func spoil_food(time):
 				resources[res]["spoil"][n]["time"] -= time
 				if(resources[res]["spoil"][n]["time"] < 0):
 					add_resource(res,-resources[res]["spoil"][n]["amm"])
-					resources[res]["spoil"].remove(n)
+#					resources[res]["spoil"].remove(n)
 

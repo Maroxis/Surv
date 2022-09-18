@@ -64,7 +64,7 @@ func addRes(name,amm):
 		Player.pass_time(gatherTimeWBonus[name],false,inOpen)
 	else:
 		Global.BagUI.shake()
-		
+
 func populateInfo():
 	for res in resources.get_children():
 		var nm = res.name

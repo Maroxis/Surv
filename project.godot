@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "ProgressSlider",
 "language": "GDScript",
 "path": "res://scripts/ProgressSlider.gd"
+}, {
+"base": "Control",
+"class": "ScrollSelect",
+"language": "GDScript",
+"path": "res://scripts/ScrollSelect.gd"
 } ]
 _global_script_class_icons={
 "Craftable": "",
 "Mission": "",
 "MissionBasic": "",
 "NodeAnimated": "",
-"ProgressSlider": ""
+"ProgressSlider": "",
+"ScrollSelect": ""
 }
 
 [application]
@@ -57,6 +63,10 @@ Buildings="*res://scripts/Buildings.gd"
 Tools="*res://scripts/tools.gd"
 Events="*res://scripts/Events.gd"
 DevMode="*res://scripts/DevMode.gd"
+
+[debug]
+
+settings/fps/force_fps=60
 
 [display]
 

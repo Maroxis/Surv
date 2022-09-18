@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://sprites/BG/9rectPanel.png" type="Texture" id=1]
+[ext_resource path="res://sprites/BG/9rectPanelLight.png" type="Texture" id=1]
 [ext_resource path="res://sprites/Icons/64x64px/clay.png" type="Texture" id=2]
-[ext_resource path="res://resources/SkewShaderMaterial.tres" type="Material" id=3]
 [ext_resource path="res://scripts/ItemSquare.gd" type="Script" id=4]
 [ext_resource path="res://shaders/Skew.tres" type="Shader" id=5]
 
@@ -44,10 +43,3 @@ margin_bottom = 32.0
 rect_min_size = Vector2( 64, 64 )
 mouse_filter = 2
 texture = ExtResource( 2 )
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-material = ExtResource( 3 )
-margin_right = 40.0
-margin_bottom = 40.0
-mouse_filter = 2

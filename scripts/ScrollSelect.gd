@@ -1,10 +1,15 @@
 extends Control
 
+class_name ScrollSelect
 
 onready var item_scene = load("res://nodes/ItemSquare.tscn")
-onready var scroll_container: ScrollContainer = $ScrollContainer
-onready var item_container: VBoxContainer = $ScrollContainer/VBoxContainer
+onready var scroll_container: ScrollContainer = $"%ScrollContainer"
+onready var item_container: VBoxContainer = $"%ItemContainer"
 onready var tween: Tween = $Tween
+onready var label_ammount: Label = $"%LabelAmmount"
+onready var ammount_texture_progress: TextureProgress = $"%AmmountTextureProgress"
+onready var v_slider: VSlider = $"%VSlider"
+onready var ammount_slider: Control = $"%AmmountSlider"
 
 #export var it = 5
 export var max_skew = 0.5
@@ -14,18 +19,18 @@ var selected_item = 1
 var scrolling = false
 
 signal itemSelected
+signal ammChanged
 
 func _ready() -> void:
 #	for i in it:
-#		add_item("Axe")
-#	init()
+#		add_item("Wood")
 	return
 
 func _process(delta: float) -> void:
 	if(scrolling):
 		skew_items()
 
-func init():
+func init(withAmm = false):
 	var scene_instance = Control.new()
 	item_container.add_child(scene_instance)
 	item_height = item_container.get("custom_constants/separation")
@@ -33,11 +38,20 @@ func init():
 	item_height += item_container.get_children()[0].rect_size.y
 	first_skew()
 	var item_name = item_container.get_children()[selected_item].item_name
+	selectItem(item_name)
+	ammount_slider.visible = withAmm
+	
+func selectItem(item_name):
 	emit_signal("itemSelected", self.name, item_name)
+	refreshAmmBar(item_name)
+
+func refreshAmmBar(item_name):
+	changeMaxAmm(Inventory.resources[item_name]["ammount"])
+	changeAmm(0)
 
 func first_skew():
 	var items = item_container.get_children()
-	for i in range(1,3):
+	for i in range(1,min(3,items.size())):
 		if items[i].get_filename() == item_scene.get_path():
 			var skew = -max_skew + i*max_skew
 			items[i].setSkew(skew)
@@ -65,7 +79,21 @@ func _on_ScrollContainer_scroll_ended() -> void:
 	var index = int(height/100+1)
 	selected_item = index
 	var item_name = item_container.get_children()[selected_item].item_name
-	emit_signal("itemSelected", self.name, item_name)
+	selectItem(item_name)
 
 func _on_ScrollContainer_scroll_started() -> void:
 	scrolling = true
+
+
+func _on_HSlider_value_changed(amm) -> void:
+	changeAmm(amm)
+
+func changeAmm(amm):
+	label_ammount.text = str(amm)
+	ammount_texture_progress.value = amm
+	emit_signal("ammChanged", amm)
+
+func changeMaxAmm(mAmm):
+	mAmm = int(mAmm)
+	v_slider.max_value = mAmm
+	ammount_texture_progress.max_value = mAmm

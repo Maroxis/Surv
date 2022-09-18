@@ -60,10 +60,10 @@ connectMission = false
 [node name="Icon" parent="Resources/RawMeat/VBox/Button" index="1"]
 texture = ExtResource( 3 )
 
-[node name="Name" parent="Resources/RawMeat/VBox" index="2"]
+[node name="Name" parent="Resources/RawMeat/VBox" index="1"]
 text = "Meat"
 
-[node name="Ammount" parent="Resources/RawMeat/VBox" index="3"]
+[node name="Ammount" parent="Resources/RawMeat/VBox" index="2"]
 text = "6x"
 
 [node name="WildBerry" parent="Resources" instance=ExtResource( 1 )]
@@ -78,10 +78,10 @@ connectMission = false
 [node name="Icon" parent="Resources/WildBerry/VBox/Button" index="1"]
 texture = ExtResource( 5 )
 
-[node name="Name" parent="Resources/WildBerry/VBox" index="2"]
+[node name="Name" parent="Resources/WildBerry/VBox" index="1"]
 text = "Berries"
 
-[node name="Ammount" parent="Resources/WildBerry/VBox" index="3"]
+[node name="Ammount" parent="Resources/WildBerry/VBox" index="2"]
 text = "4x"
 
 [node name="Return" parent="." instance=ExtResource( 2 )]
