@@ -1,6 +1,6 @@
 extends Control
 
-onready var scene = load("res://nodes/ItemSquareAmm.tscn")
+onready var scene = load("res://nodes/components/ItemSquareAmm.tscn")
 
 signal itemClicked
 var selected

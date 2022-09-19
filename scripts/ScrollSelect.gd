@@ -2,7 +2,7 @@ extends Control
 
 class_name ScrollSelect
 
-onready var item_scene = load("res://nodes/ItemSquare.tscn")
+onready var item_scene = load("res://nodes/components/ItemSquare.tscn")
 onready var scroll_container: ScrollContainer = $"%ScrollContainer"
 onready var item_container: VBoxContainer = $"%ItemContainer"
 onready var tween: Tween = $Tween

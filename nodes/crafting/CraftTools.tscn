@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://nodes/CraftItem.tscn" type="PackedScene" id=1]
+[ext_resource path="res://nodes/crafting/CraftItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/HbarNoScroll.tres" type="Theme" id=7]
 
 [node name="Tools" type="ScrollContainer"]

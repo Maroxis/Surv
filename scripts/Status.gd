@@ -1,7 +1,7 @@
 extends "res://scripts/BaseActivity.gd"
 
 onready var list = get_node("ScrollContainer/ItemList")
-onready var scene_bonus = load("res://nodes/ModuleBonus.tscn")
+onready var scene_bonus = load("res://nodes/components/ModuleBonus.tscn")
 
 func refresh():
 	removeItems(list)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sprites/Icons/128x128px/Wenrexa Chest.png" type="Texture" id=1]
-[ext_resource path="res://nodes/ItemCount.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/components/ItemCount.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/InventoryUI.gd" type="Script" id=3]
 [ext_resource path="res://resources/HbarNoScroll.tres" type="Theme" id=4]
 [ext_resource path="res://nodes/Bag.tscn" type="PackedScene" id=5]

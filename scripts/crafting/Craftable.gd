@@ -2,7 +2,7 @@ extends Control
 
 class_name Craftable
 
-onready var list_item_scene = load("res://nodes/ListItem.tscn")
+onready var list_item_scene = load("res://nodes/components/ListItem.tscn")
 var craft_button
 
 func refresh():

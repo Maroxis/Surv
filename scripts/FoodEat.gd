@@ -1,7 +1,7 @@
 extends Control
 
 onready var food_container: HFlowContainer = $FoodContainer
-onready var scene = load("res://nodes/FoodItem.tscn")
+onready var scene = load("res://nodes/components/FoodItem.tscn")
 
 func _ready() -> void:
 	Global.FoodEat = self

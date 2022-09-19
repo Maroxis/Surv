@@ -10,7 +10,7 @@ func _ready() -> void:
 	loadRes()
 
 func loadRes():
-	var scene = load("res://nodes/ItemCount.tscn")
+	var scene = load("res://nodes/components/ItemCount.tscn")
 	for res in Inventory.resources:
 		var scene_instance = scene.instance()
 		if(Inventory.resources[res].has("food")):

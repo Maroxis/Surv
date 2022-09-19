@@ -1,8 +1,8 @@
 extends Control
 
-onready var scene = load("res://nodes/BuildingModule.tscn")
-onready var scene_bonus = load("res://nodes/ModuleBonus.tscn")
-onready var scene_cost = load("res://nodes/ModuleCost.tscn")
+onready var scene = load("res://nodes/components/BuildingModule.tscn")
+onready var scene_bonus = load("res://nodes/components/ModuleBonus.tscn")
+onready var scene_cost = load("res://nodes/components/ModuleCost.tscn")
 onready var module_select = $HBoxContainer/ModuleSelect
 onready var mod_container = $HBoxContainer/Container
 onready var preview_icon: TextureRect = $"%Icon"

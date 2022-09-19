@@ -5,7 +5,7 @@ onready var furnaceProgress: TextureProgress = $"%Progress"
 onready var recipe_select: Control = $"%RecipeSelect"
 onready var fuel_select: VBoxContainer = $"%FuelSelect"
 onready var ore_required: VBoxContainer = $"%OreRequired"
-onready var item_scene  = load("res://nodes/ItemSquareAmm.tscn")
+onready var item_scene  = load("res://nodes/components/ItemSquareAmm.tscn")
 onready var recipe_label: Label = $"%RecipeLabel"
 
 onready var basicFuelEfficency = 2
@@ -104,7 +104,7 @@ func _on_RecipeSelect_itemSelected(item) -> void:
 func _on_FuelSelect_itemClicked(item) -> void:
 	if(timeLeft > 0):
 		return
-	var amm = int(ceil(Inventory.resources[selectedRecipe]["craftTime"]/Inventory.resources[item]["burining"]["time"]))
+	var amm = int(ceil(Inventory.resources[selectedRecipe]["craftTime"]/Inventory.resources[item]["burining"]["time"]*getFuelEfficency()))
 	if(amm > Inventory.resources[item]["ammount"]):
 		fuel_select.shakeSelected()
 	elif(checkOre()):
