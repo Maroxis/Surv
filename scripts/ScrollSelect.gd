@@ -50,7 +50,7 @@ func selectItem(item_name):
 	refreshAmmBar(item_name)
 
 func refreshAmmBar(item_name):
-	changeMaxAmm(Inventory.resources[item_name]["ammount"])
+	changeMaxAmm(Inventory.get_res_amm(item_name))
 	changeAmm(0)
 
 func first_skew():

@@ -23,7 +23,7 @@ func removeItems():
 
 func populateItems():
 	for res in Inventory.resources:
-		if(Inventory.resources[res].has("calories") and Inventory.resources[res]["ammount"] > 0):
+		if(Inventory.resources[res].has("calories") and Inventory.get_res_amm(res) > 0):
 			var scene_instance = scene.instance()
 			food_container.add_child(scene_instance)
 			scene_instance.init(res)

@@ -295,7 +295,7 @@ func checkCost(name):
 	var ctier = tools[name]["currentTier"]
 	for mat in tools[name]["tier"+str(ctier+1)]["cost"]:
 		var amm = tools[name]["tier"+str(ctier+1)]["cost"][mat]
-		if(Inventory.resources[mat]["ammount"] < amm):
+		if(Inventory.get_res_amm(mat) < amm):
 			return false
 	return true
 

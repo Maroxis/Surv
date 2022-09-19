@@ -91,7 +91,7 @@ func selectRecipe(item):
 func checkOre():
 	var index = 0
 	for ore in Inventory.resources[selectedRecipe]["cost"]:
-		if(Inventory.resources[selectedRecipe]["cost"][ore] > Inventory.resources[ore]["ammount"]):
+		if(Inventory.resources[selectedRecipe]["cost"][ore] > Inventory.get_res_amm(ore)):
 			ore_required.get_children()[index].shakeSide()
 			return false
 		index += 1
@@ -105,7 +105,7 @@ func _on_FuelSelect_itemClicked(item) -> void:
 	if(timeLeft > 0):
 		return
 	var amm = int(ceil(Inventory.resources[selectedRecipe]["craftTime"]/Inventory.resources[item]["burining"]["time"]*getFuelEfficency()))
-	if(amm > Inventory.resources[item]["ammount"]):
+	if(amm > Inventory.get_res_amm(item)):
 		fuel_select.shakeSelected()
 	elif(checkOre()):
 		selectedFuel = item

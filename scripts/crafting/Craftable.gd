@@ -40,7 +40,7 @@ func clearList(list):
 func populateList(list,dict,cat,wIcon = false):
 	for mat in dict[cat]:
 		var amm = dict[cat][mat]
-		if(amm > Inventory.resources[mat]["ammount"]):
+		if(amm > Inventory.get_res_amm(mat)):
 			addListItem(list,mat,amm,Color(1,1,0,1),wIcon)
 			disableBT()
 		else:

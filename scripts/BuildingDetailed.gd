@@ -113,7 +113,7 @@ func writeInfo():
 			scene_instance.tex.texture = load("res://sprites/Icons/32x32px/"+item.to_lower()+".png")
 			var amm = Buildings.Structure[building][selectedModule][ntier]["cost"][item]
 			scene_instance.value.text = str(amm)
-			if(amm > Inventory.resources[item]["ammount"]):
+			if(amm > Inventory.get_res_amm(item)):
 				scene_instance.value.add_color_override("font_color", Color(1,1,0))
 				costCheck = false
 			else:

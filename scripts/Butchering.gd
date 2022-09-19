@@ -46,7 +46,7 @@ func refreshTime():
 	time_label.text = getCraftTime()
 
 func refreshButton():
-	if(Inventory.resources[selectedCarcass]["ammount"] == 0):
+	if(Inventory.get_res_amm(selectedCarcass) == 0):
 		butcher_button.disable()
 	else:
 		butcher_button.enable()

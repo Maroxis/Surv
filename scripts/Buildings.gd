@@ -539,7 +539,7 @@ func checkCost(building,module) -> bool:
 	var ntier = getTier(building,module,true)
 	for mat in Structure[building][module][ntier]["cost"]:
 		var amm = Structure[building][module][ntier]["cost"][mat]
-		if(Inventory.resources[mat]["ammount"] < amm):
+		if(Inventory.get_res_amm(mat) < amm):
 			return false
 	return true
 

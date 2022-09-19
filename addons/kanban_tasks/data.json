@@ -1,0 +1,95 @@
+{
+  "settings": {
+    "show_details_preview": true
+  },
+  "categories": [
+    {
+      "title": "Task",
+      "color": "6495ed"
+    }
+  ],
+  "columns": [
+    {
+      "stages": [
+        0
+      ]
+    },
+    {
+      "stages": [
+        1
+      ]
+    },
+    {
+      "stages": [
+        2
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "title": "Todo",
+      "tasks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ]
+    },
+    {
+      "title": "Doing",
+      "tasks": [
+        6
+      ]
+    },
+    {
+      "title": "Done",
+      "tasks": [
+        0
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "category": 0,
+      "title": "Colors",
+      "details": "741c1c -red\nb58214 -brown\n008a05 -green"
+    },
+    {
+      "category": 0,
+      "title": "broken tool event in forest",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "animal attack on build screen",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "firestarter tool",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "butcher modules",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "itemcraft refresh after craft",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "savesystem",
+      "details": ""
+    },
+    {
+      "category": 0,
+      "title": "cave torch time",
+      "details": ""
+    }
+  ]
+}

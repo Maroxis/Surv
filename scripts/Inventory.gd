@@ -5,12 +5,10 @@ var bagSpaceLeft = 10
 var bag = {}
 onready var resources = {
 	"Leaf": {
-		"ammount" : 0,
 		"weight" : 0.6,
 		"crafted": false
 	  },
 	"Stick": {
-		"ammount" : 0,
 		"weight" : 1.2,
 		"crafted": false,
 		"burining":{
@@ -19,7 +17,6 @@ onready var resources = {
 		}
 	  },
 	"Wood": {
-		"ammount" : 0,
 		"weight" : 3.2,
 		"crafted": false,
 		"burining":{
@@ -28,12 +25,10 @@ onready var resources = {
 		}
 	  },
 	"Leather": {
-		"ammount" : 0,
 		"weight" : 2.4,
 		"crafted": true
 	  },
 	"Thread": {
-		"ammount" : 0,
 		"weight" : 0.2,
 		"cost" : {
 			"Leaf" : 3
@@ -42,7 +37,6 @@ onready var resources = {
 		"crafted": true
 	  },
 	"Rope": {
-		"ammount" : 0,
 		"weight" : 1.0,
 		"cost" : {
 			"Thread" : 3
@@ -51,7 +45,6 @@ onready var resources = {
 		"crafted": true
 	  },
 	"Torch": {
-		"ammount" : 0,
 		"weight" : 2.2,
 		"cost" : {
 			"Stick" : 1,
@@ -61,7 +54,6 @@ onready var resources = {
 		"crafted": true
 	  },
 	"Plank": {
-		"ammount" : 0,
 		"weight" : 2.0,
 		"cost" : {
 			"Wood" : 1
@@ -74,22 +66,18 @@ onready var resources = {
 		"crafted": true
 	  },
 	"Rock": {
-		"ammount" : 0,
 		"weight" : 2.8,
 		"crafted": false
 	  },
 	"Clay": {
-		"ammount" : 0,
 		"weight" : 3.6,
 		"crafted": false
 	  },
 	"Sand": {
-		"ammount" : 0,
 		"weight" : 2.6,
 		"crafted": false
 	  },
 	"Coal": {
-		"ammount" : 0,
 		"weight" : 2.6,
 		"crafted": false,
 		"burining":{
@@ -98,22 +86,18 @@ onready var resources = {
 		}
 	  },
 	"CopperOre": {
-		"ammount" : 0,
 		"weight" : 1.2,
 		"crafted": false,
 	  },
 	"TinOre": {
-		"ammount" : 0,
 		"weight" : 1.2,
 		"crafted": false,
 	  },
 	"IronOre": {
-		"ammount" : 0,
 		"weight" : 1.2,
 		"crafted": false,
 	  },
 	"CopperIngot": {
-		"ammount" : 0,
 		"weight" : 10.8,
 		"cost" : {
 			"CopperOre" : 10
@@ -124,7 +108,6 @@ onready var resources = {
 		"crafted": true
 	  },
 	"BronzeIngot": {
-		"ammount" : 0,
 		"weight" : 10.8,
 		"cost" : {
 			"CopperOre" : 9,
@@ -136,7 +119,6 @@ onready var resources = {
 		"crafted": true
 	  },
 	"IronIngot": {
-		"ammount" : 0,
 		"weight" : 10.8,
 		"cost" : {
 			"IronOre" : 10
@@ -147,7 +129,6 @@ onready var resources = {
 		"crafted": true
 	  },
 	"RawSmallMeat": {
-		"ammount" : 0,
 		"weight" : 1.2,
 		"crafted": false,
 		"food": true,
@@ -160,7 +141,6 @@ onready var resources = {
 		"cooksInto" : "CookedSmallMeat"
 	  },
 	"RawMeat": {
-		"ammount" : 0,
 		"weight" : 2.8,
 		"crafted": false,
 		"food": true,
@@ -173,7 +153,6 @@ onready var resources = {
 		"cooksInto" : "CookedMeat"
 	  },
 	"WildBerry": {
-		"ammount" : 0,
 		"weight" : 1.2,
 		"crafted": false,
 		"food": true,
@@ -185,7 +164,6 @@ onready var resources = {
 		"spoilTime": 1440
 	  },
 	"CookedSmallMeat": {
-		"ammount" : 0,
 		"weight" : 1.0,
 		"crafted": true,
 		"food": true,
@@ -195,7 +173,6 @@ onready var resources = {
 		"spoilTime": 4320
 	  },
 	"CookedMeat": {
-		"ammount" : 0,
 		"weight" : 2.2,
 		"crafted": true,
 		"food": true,
@@ -205,7 +182,6 @@ onready var resources = {
 		"spoilTime": 4320
 	  },
 	"SmallCarcass": {
-		"ammount" : 0,
 		"weight" : 4.8,
 		"crafted": false,
 		"carcass": true,
@@ -219,7 +195,6 @@ onready var resources = {
 		"spoilTime": 4320
 	  },
 	"MediumCarcass": {
-		"ammount" : 0,
 		"weight" : 11.2,
 		"crafted": false,
 		"carcass": true,
@@ -234,7 +209,6 @@ onready var resources = {
 		"spoilTime": 4320
 	  },
 	"largeCarcass": {
-		"ammount" : 0,
 		"weight" : 22.2,
 		"crafted": false,
 		"carcass": true,
@@ -282,7 +256,10 @@ onready var upgrades = {
 
 
 func _ready() -> void:
-	pass
+	Save.add_missing_keys(resources)
+
+func get_res_amm(res):
+	return Save.get_res_amm(res)
 
 func empty_bag():
 	var amm
@@ -314,16 +291,12 @@ func update_bag():
 	Global.BagUI.updateBag(bagSpaceLeft,bagSize)
 
 func add_resource(res,amm):
-	if amm < 0 and resources[res]["ammount"] < abs(amm):
-		return false
-	else:
+	if(Save.add_resource(res,amm)):
 		if Inventory.resources[res].has("food"):
 			add_spoil(res,amm)
-		resources[res]["ammount"] += amm
-		if resources[res]["ammount"] > 999:
-			resources[res]["ammount"] = 999
-		Global.ResourcesUI.addRes(res,resources[res]["ammount"],resources[res]["crafted"])
 		return true
+	else:
+		return false
 
 func add_spoil(res,amm):
 	if(amm > 0):
@@ -352,7 +325,7 @@ func check_cost(item, amm = 1, upg = false):
 	if(not table.has("cost")):
 		return
 	for mat in table["cost"]:
-		if resources[mat]["ammount"] < table["cost"][mat] * amm:
+		if get_res_amm(mat) < table["cost"][mat] * amm:
 			return false
 	return true
 

@@ -72,11 +72,11 @@ func start():
 	cookingItem = Inventory.resources[selectedItem]["cooksInto"]
 	flame.value = 100
 	flame.material.set_shader_param("on",1.0)
-	item_select.changeMaxAmm(Inventory.resources[selectedItem]["ammount"])
+	item_select.changeMaxAmm(Inventory.get_res_amm(selectedItem))
 
 func attemptStart() -> void:
 	fuelRequired = ceil(Inventory.resources[selectedItem]["cookTime"] * rawAmm / Inventory.resources[selected_fuel]["burining"]["time"])
-	if(timeLeft != 0 or fuelRequired == 0 or fuelRequired > Inventory.resources[selected_fuel]["ammount"]):
+	if(timeLeft != 0 or fuelRequired == 0 or fuelRequired > Inventory.get_res_amm(selected_fuel)):
 		fuel.shakeSelected()
 		return
 	start()
