@@ -24,6 +24,16 @@ func loadRes():
 		scene_instance.changeSize(48)
 		scene_instance.changeCount(Inventory.get_res_amm(res))
 
+func clearList(list):
+	for n in list.get_children():
+		n.queue_free()
+
+func refresh():
+	clearList(rawList)
+	clearList(craftedList)
+	clearList(foodList)
+	loadRes()
+
 func update_resource(res,amm,crafted):
 	var node
 	if(Inventory.resources[res].has("food")):

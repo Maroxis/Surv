@@ -1,9 +1,9 @@
-[gd_resource type="Theme" load_steps=15 format=2]
+[gd_resource type="Theme" load_steps=16 format=2]
 
 [ext_resource path="res://resources/settingsFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://resources/settingsSubFont.tres" type="DynamicFont" id=2]
-[ext_resource path="res://sprites/UI/switch-off.png" type="Texture" id=3]
-[ext_resource path="res://sprites/UI/switch-on.png" type="Texture" id=4]
+[ext_resource path="res://sprites/UI/switch-on-128p.png" type="Texture" id=3]
+[ext_resource path="res://sprites/UI/switch-off-128p.png" type="Texture" id=4]
 [ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=17]
@@ -12,6 +12,9 @@ use_filter = true
 font_data = ExtResource( 5 )
 
 [sub_resource type="StyleBoxEmpty" id=16]
+
+[sub_resource type="StyleBoxLine" id=19]
+thickness = 4
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -26,7 +29,7 @@ font_data = ExtResource( 5 )
 [sub_resource type="StyleBoxEmpty" id=6]
 
 [sub_resource type="DynamicFont" id=18]
-size = 36
+size = 34
 use_filter = true
 font_data = ExtResource( 5 )
 
@@ -41,9 +44,11 @@ CheckButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
 CheckButton/constants/check_vadjust = 0
 CheckButton/constants/hseparation = 4
 CheckButton/fonts/font = SubResource( 17 )
-CheckButton/icons/off = ExtResource( 3 )
-CheckButton/icons/on = ExtResource( 4 )
+CheckButton/icons/off = ExtResource( 4 )
+CheckButton/icons/on = ExtResource( 3 )
 CheckButton/styles/focus = SubResource( 16 )
+HSeparator/constants/separation = 16
+HSeparator/styles/separator = SubResource( 19 )
 ItemList/colors/font_color = Color( 0, 0, 0, 1 )
 ItemList/colors/font_color_selected = Color( 0, 0, 0, 1 )
 ItemList/colors/guide_color = Color( 0, 0, 0, 1 )

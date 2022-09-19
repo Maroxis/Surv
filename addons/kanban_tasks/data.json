@@ -29,33 +29,28 @@
     {
       "title": "Todo",
       "tasks": [
+        0,
         1,
         2,
         3,
         4,
-        5,
-        7
+        6
       ]
     },
     {
       "title": "Doing",
       "tasks": [
-        6
+        5
       ]
     },
     {
       "title": "Done",
       "tasks": [
-        0
+
       ]
     }
   ],
   "tasks": [
-    {
-      "category": 0,
-      "title": "Colors",
-      "details": "741c1c -red\nb58214 -brown\n008a05 -green"
-    },
     {
       "category": 0,
       "title": "broken tool event in forest",
