@@ -37,7 +37,7 @@ scroll_vertical_enabled = false
 
 [node name="QuickBar" type="HBoxContainer" parent="ScrollContainer"]
 unique_name_in_owner = true
-margin_right = 712.0
+margin_right = 728.0
 margin_bottom = 128.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -45,65 +45,57 @@ custom_constants/separation = 8
 
 [node name="Item1" parent="ScrollContainer/QuickBar" instance=ExtResource( 2 )]
 modulate = Color( 0, 0, 0, 0 )
-margin_right = 72.0
 margin_bottom = 128.0
-rect_min_size = Vector2( 72, 0 )
+size_flags_vertical = 3
 
 [node name="Item2" parent="ScrollContainer/QuickBar" instance=ExtResource( 2 )]
 modulate = Color( 0, 0, 0, 0 )
-margin_left = 80.0
-margin_right = 152.0
+margin_left = 92.0
+margin_right = 176.0
 margin_bottom = 128.0
-rect_min_size = Vector2( 72, 0 )
+size_flags_vertical = 3
 
 [node name="Item3" parent="ScrollContainer/QuickBar" instance=ExtResource( 2 )]
 modulate = Color( 0, 0, 0, 0 )
-margin_left = 160.0
-margin_right = 232.0
+margin_left = 184.0
+margin_right = 268.0
 margin_bottom = 128.0
-rect_min_size = Vector2( 72, 0 )
+size_flags_vertical = 3
 
 [node name="Item4" parent="ScrollContainer/QuickBar" instance=ExtResource( 2 )]
 modulate = Color( 0, 0, 0, 0 )
-margin_left = 240.0
-margin_right = 312.0
+margin_left = 276.0
+margin_right = 360.0
 margin_bottom = 128.0
-rect_min_size = Vector2( 72, 0 )
+size_flags_vertical = 3
 
 [node name="Item5" parent="ScrollContainer/QuickBar" instance=ExtResource( 2 )]
 modulate = Color( 0, 0, 0, 0 )
-margin_left = 320.0
-margin_right = 392.0
+margin_left = 368.0
+margin_right = 452.0
 margin_bottom = 128.0
-rect_min_size = Vector2( 72, 0 )
+size_flags_vertical = 3
 
 [node name="Item6" parent="ScrollContainer/QuickBar" instance=ExtResource( 2 )]
 modulate = Color( 0, 0, 0, 0 )
-margin_left = 400.0
-margin_right = 472.0
+margin_left = 460.0
+margin_right = 544.0
 margin_bottom = 128.0
-rect_min_size = Vector2( 72, 0 )
+size_flags_vertical = 3
 
 [node name="Item7" parent="ScrollContainer/QuickBar" instance=ExtResource( 2 )]
 modulate = Color( 0, 0, 0, 0 )
-margin_left = 480.0
-margin_right = 552.0
+margin_left = 552.0
+margin_right = 636.0
 margin_bottom = 128.0
-rect_min_size = Vector2( 72, 0 )
+size_flags_vertical = 3
 
 [node name="Item8" parent="ScrollContainer/QuickBar" instance=ExtResource( 2 )]
 modulate = Color( 0, 0, 0, 0 )
-margin_left = 560.0
-margin_right = 632.0
+margin_left = 644.0
+margin_right = 728.0
 margin_bottom = 128.0
-rect_min_size = Vector2( 72, 0 )
-
-[node name="Item9" parent="ScrollContainer/QuickBar" instance=ExtResource( 2 )]
-modulate = Color( 0, 0, 0, 0 )
-margin_left = 640.0
-margin_right = 712.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 72, 0 )
+size_flags_vertical = 3
 
 [node name="TextureButton" type="TextureButton" parent="."]
 modulate = Color( 0, 0, 0, 1 )

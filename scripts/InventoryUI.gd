@@ -10,7 +10,7 @@ onready var inProgress = 0
 onready var buffer = []
 
 var hidden_items
-onready var max_visible_items = 8
+onready var max_visible_items = 7
 
 func _ready() -> void:
 	hidden_items = max_visible_items
