@@ -28,7 +28,7 @@ func _ready() -> void:
 #		add_item("Wood")
 	return
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if(scrolling):
 		skew_items()
 
@@ -77,8 +77,11 @@ func add_item(nm):
 
 func _on_ScrollContainer_scroll_ended() -> void:
 	var height = stepify(scroll_container.scroll_vertical,item_height)
+# warning-ignore:return_value_discarded
 	tween.interpolate_property(scroll_container, "scroll_vertical",scroll_container.scroll_vertical, height, 0.3,Tween.TRANS_SINE,Tween.EASE_OUT)
+# warning-ignore:return_value_discarded
 	tween.interpolate_property(self, "scrolling",true, false, 0.3)
+# warning-ignore:return_value_discarded
 	tween.start()
 	var index = int(height/100+1)
 	selected_item = index

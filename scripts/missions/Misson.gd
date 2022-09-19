@@ -13,6 +13,7 @@ var resources
 
 func _ready() -> void:
 	Global.Weather.connect("weatherChanged",self,"updateTravelTime")
+# warning-ignore:return_value_discarded
 	Tools.connect("toolChanged",self,"checkTools")
 
 func updateTravelTime():

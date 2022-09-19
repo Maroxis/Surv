@@ -9,7 +9,7 @@ var tab
 func _ready() -> void:
 	deselect()
 
-func init(id,tex):
+func init():
 	deselect()
 
 func select():

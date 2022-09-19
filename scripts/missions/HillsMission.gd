@@ -7,7 +7,7 @@ onready var exploreDiscovered = 1
 onready var exploration_progress: TextureProgress = $"%ExplorationProgress"
 onready var exploration_progress_label: Label = $"%LabelProgress"
 onready var exploration_progress_label_time: Label = $"%LabelTime"
-onready var explore: Control = $"%Explore"
+onready var explore_control: Control = $"%Explore"
 onready var explore_button: TextureButton = $VBoxContainer/Explore/ExploreButton
 
 func _ready() -> void:
@@ -66,7 +66,7 @@ func explore():
 		exploreDiscovered += 1
 		exploreCurrentProgress = 0
 		if(exploreDiscovered == exploreTable.size()):
-			explore.hide()
+			explore_control.hide()
 			return
 	updateVisualEx()
 

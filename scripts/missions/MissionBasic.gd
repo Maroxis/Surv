@@ -3,7 +3,7 @@ class_name MissionBasic
 
 onready var pos = self.rect_position
 
-func close(showNode = true):
+func close():
 	var tween = create_tween().set_ease(Tween.EASE_IN)
 	tween.tween_property(self, "rect_position:y", pos.y + rect_size.y, 0.4)
 	tween.tween_callback(self, "hide")

@@ -12,7 +12,9 @@ signal timeChanged
 func _ready() -> void:
 	updateLabels()
 	Global.Date = self
+# warning-ignore:return_value_discarded
 	connect("newDay", Events, "check_event")
+# warning-ignore:return_value_discarded
 	connect("timeChanged",Global.Weather,"setTime")
 
 func changeTime(amm) -> void:
