@@ -45,6 +45,7 @@ margin_right = 240.0
 margin_bottom = 109.0
 text = "WildBerry"
 align = 1
+clip_text = true
 
 [node name="Button" type="Button" parent="."]
 anchor_right = 1.0

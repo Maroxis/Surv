@@ -20,7 +20,7 @@ func _ready() -> void:
 	for res in Inventory.resources:
 		if Inventory.resources[res].has("cookable") and Inventory.resources[res]["cookable"]:
 			item_select.add_item(res)
-	item_select.init(true)
+	item_select.init()
 	flame.value = 0
 	fuel.addItem("Stick")
 	fuel.addItem("Wood")

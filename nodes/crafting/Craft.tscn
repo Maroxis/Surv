@@ -62,13 +62,13 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_bottom = 418.0
 
+[node name="Butchering" parent="TabContainer" instance=ExtResource( 10 )]
+visible = false
+
 [node name="Smelting" parent="TabContainer" instance=ExtResource( 6 )]
 visible = false
 anchor_top = 0.0
 margin_top = 0.0
-
-[node name="Butchering" parent="TabContainer" instance=ExtResource( 10 )]
-visible = false
 
 [node name="TabSwitcher" type="Control" parent="."]
 anchor_left = 1.0
@@ -115,20 +115,19 @@ margin_bottom = 208.0
 [node name="Icon" parent="TabSwitcher/VBoxContainer/Upgrades" index="1"]
 texture = ExtResource( 15 )
 
-[node name="Smelting" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 216.0
-margin_bottom = 280.0
-
-[node name="Icon" parent="TabSwitcher/VBoxContainer/Smelting" index="1"]
-texture = ExtResource( 19 )
-
 [node name="Butchering" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 7 )]
-visible = false
 margin_top = 216.0
 margin_bottom = 280.0
 
 [node name="Icon" parent="TabSwitcher/VBoxContainer/Butchering" index="1"]
 texture = ExtResource( 18 )
+
+[node name="Smelting" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 7 )]
+margin_top = 288.0
+margin_bottom = 352.0
+
+[node name="Icon" parent="TabSwitcher/VBoxContainer/Smelting" index="1"]
+texture = ExtResource( 19 )
 
 [node name="Control" type="Control" parent="TabSwitcher"]
 visible = false
@@ -165,6 +164,6 @@ stretch_mode = 1
 [editable path="TabSwitcher/VBoxContainer/Resources"]
 [editable path="TabSwitcher/VBoxContainer/Tools"]
 [editable path="TabSwitcher/VBoxContainer/Upgrades"]
-[editable path="TabSwitcher/VBoxContainer/Smelting"]
 [editable path="TabSwitcher/VBoxContainer/Butchering"]
+[editable path="TabSwitcher/VBoxContainer/Smelting"]
 [editable path="Return"]

@@ -13,8 +13,9 @@ onready var ammount_slider: Control = $"%AmmountSlider"
 onready var v_box_container: HBoxContainer = $VBoxContainer
 
 #export var it = 5
-export var max_skew = 0.5
+export var slider = false
 
+var max_skew = 0.5
 var item_height
 var selected_item = 1
 var scrolling = false
@@ -31,7 +32,7 @@ func _process(delta: float) -> void:
 	if(scrolling):
 		skew_items()
 
-func init(withAmm = false):
+func init():
 	var scene_instance = Control.new()
 	item_container.add_child(scene_instance)
 	item_height = item_container.get("custom_constants/separation")
@@ -40,8 +41,8 @@ func init(withAmm = false):
 	first_skew()
 	var item_name = item_container.get_children()[selected_item].item_name
 	selectItem(item_name)
-	ammount_slider.visible = withAmm
-	if(!withAmm):
+	ammount_slider.visible = slider
+	if(!slider):
 		self.rect_min_size.x -= ammount_slider.rect_size.x + v_box_container.get("custom_constants/separation")
 	
 func selectItem(item_name):

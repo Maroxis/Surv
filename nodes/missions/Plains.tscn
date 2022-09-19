@@ -49,6 +49,7 @@ connectMission = false
 texture = ExtResource( 7 )
 
 [node name="RawMeat" parent="Resources" instance=ExtResource( 1 )]
+visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 255.0
@@ -83,6 +84,30 @@ text = "Berries"
 
 [node name="Ammount" parent="Resources/WildBerry/VBox" index="2"]
 text = "4x"
+
+[node name="SmallCarcass" parent="Resources" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 769.0
+margin_top = 296.0
+margin_right = 769.0
+margin_bottom = 296.0
+
+[node name="MediumCarcass" parent="Resources" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 769.0
+margin_top = 296.0
+margin_right = 769.0
+margin_bottom = 296.0
+
+[node name="LargeCarcass" parent="Resources" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 769.0
+margin_top = 296.0
+margin_right = 769.0
+margin_bottom = 296.0
 
 [node name="Return" parent="." instance=ExtResource( 2 )]
 

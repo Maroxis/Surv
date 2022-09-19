@@ -7,11 +7,17 @@ func _ready() -> void:
 	gatherTime = {
 		"Food": 150,
 		"RawMeat": 150,
+		"SmallCarcass": 120,
+		"MediumCarcass": 140,
+		"LargeCarcass": 160,
 		"WildBerry": 30
 	}
 	gatherAmm = {
 		"Food": "100%",
 		"RawMeat": 6,
+		"SmallCarcass": 1,
+		"MediumCarcass": 1,
+		"LargeCarcass": 1,
 		"WildBerry": 4
 	}
 	toolReq = {
@@ -20,11 +26,26 @@ func _ready() -> void:
 			"tool":"Knife",
 			"tier": 1
 		},
+		"SmallCarcass": {
+			"tool":"Knife",
+			"tier": 1
+		},
+		"MediumCarcass": {
+			"tool":"Knife",
+			"tier": 2
+		},
+		"LargeCarcass": {
+			"tool":"Knife",
+			"tier": 2
+		},
 		"WildBerry": null
 	}
 	toolBonus = {
 		"Food": "Knife",
 		"RawMeat": "Knife",
+		"SmallCarcass": "Knife",
+		"MediumCarcass": "Knife",
+		"LargeCarcass": "Knife",
 		"WildBerry": "Knife"
 	}
 	gatherTimeWBonus = gatherTime.duplicate()

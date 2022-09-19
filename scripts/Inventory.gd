@@ -29,6 +29,12 @@ onready var resources = {
 			"time": 20
 		}
 	  },
+	"Leather": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 2.4,
+		"crafted": true
+	  },
 	"Thread": {
 		"ammount" : 0,
 		"bagAmmount":0,
@@ -217,6 +223,53 @@ onready var resources = {
 		"food": true,
 		"cookable": false,
 		"calories": 80,
+		"spoil":[],
+		"spoilTime": 4320
+	  },
+	"SmallCarcass": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 4.8,
+		"crafted": false,
+		"carcass": true,
+		"craftTime": 40,
+		"deconstruct":{
+			"RawSmallMeat":3,
+		},
+		"food": true,
+		"cookable": false,
+		"spoil":[],
+		"spoilTime": 4320
+	  },
+	"MediumCarcass": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 11.2,
+		"crafted": false,
+		"carcass": true,
+		"craftTime": 80,
+		"deconstruct":{
+			"RawMeat":4,
+			"Leather":2
+		},
+		"food": true,
+		"cookable": false,
+		"spoil":[],
+		"spoilTime": 4320
+	  },
+	"largeCarcass": {
+		"ammount" : 0,
+		"bagAmmount":0,
+		"weight" : 22.2,
+		"crafted": false,
+		"carcass": true,
+		"craftTime": 120,
+		"deconstruct":{
+			"RawMeat":9,
+			"Leather":4
+		},
+		"food": true,
+		"cookable": false,
 		"spoil":[],
 		"spoilTime": 4320
 	  }

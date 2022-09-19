@@ -9,6 +9,10 @@
 <a href="https://www.flaticon.com/free-icons/coal" title="coal icons">Coal icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/gold" title="gold icons">Gold icons created by Smashicons - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/torch" title="torch icons">Torch icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/chicken" title="chicken icons">Chicken icons created by Cuputo - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/wild-boar" title="wild boar icons">Wild boar icons created by tulpahn - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/deer" title="deer icons">Deer icons created by Chanut-is-Industries - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/leather" title="leather icons">Leather icons created by Freepik - Flaticon</a>
 
 <a href="https://www.flaticon.com/free-icons/axe" title="axe icons">Axe icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/pickaxe" title="pickaxe icons">Pickaxe icons created by Freepik - Flaticon</a>
