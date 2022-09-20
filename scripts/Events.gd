@@ -180,7 +180,7 @@ func animalAttack():
 		var buildings = []
 		for b in Buildings.Structure:
 			for m in Buildings.Structure[b]:
-				if typeof(Buildings.Structure[b][m]) == TYPE_DICTIONARY and Buildings.Structure[b][m]["currentTier"] > 0:
+				if typeof(Buildings.Structure[b][m]) == TYPE_DICTIONARY and Buildings.getTierInt(b,m) > 0:
 					buildings.push_back([b,m])
 		var rs
 		if(buildings.size() == 0):

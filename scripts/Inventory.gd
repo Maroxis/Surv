@@ -1,8 +1,5 @@
 extends Node
 
-var bagSize = 10
-var bagSpaceLeft = 10
-var bag = {}
 onready var resources = {
 	"Leaf": {
 		"weight" : 0.6,
@@ -254,41 +251,52 @@ onready var upgrades = {
 	}
 }
 
-
 func _ready() -> void:
 	Save.add_missing_keys(resources,Save.resources)
+	Save.add_missing_keys(upgrades,Save.upgrades,true)
 
+func refresh():
+	update_bag()
+	var flask = 1 if get_upgrade("Flask") else 0
+	Global.ToolsUI.updateTool("Water",flask)
+	
 func get_res_amm(res):
-	return Save.get_res_amm(res)
+	return int(Save.get_res_amm(res))
+
+func get_upgrade(upgrade):
+	return bool(Save.upgrades[upgrade])
+
+func set_upgrade(upgrade,obt):
+	 Save.upgrades[upgrade] = bool(obt)
 
 func empty_bag():
 	var amm
-	for res in bag:
-		amm = bag[res]
+	for res in Save.bag["content"]:
+		amm = int(Save.bag["content"][res])
 		add_resource(res,amm)
-	bag.clear()
-	bagSpaceLeft = bagSize
+	Save.bag["content"].clear()
+	Save.bag["space"] = Save.bag["size"]
 	update_bag()
 
 func add_resource_to_bag(res,amm):
-	if(resources[res]["weight"] > bagSpaceLeft+0.05):
+	if(resources[res]["weight"] > Save.bag["space"]+0.05):
 		return false
 	var a
-	if(resources[res]["weight"]*amm > bagSpaceLeft):
-		a = floor((bagSpaceLeft+0.05)/resources[res]["weight"])
+	if(resources[res]["weight"]*amm > Save.bag["space"]):
+		a = floor((Save.bag["space"]+0.05)/resources[res]["weight"])
 	else:
 		a = amm
-	bagSpaceLeft -= resources[res]["weight"]*a
-	bagSpaceLeft = abs(bagSpaceLeft)
-	if(bag.has(res)):
-		bag[res] += a
+	Save.bag["space"] -= resources[res]["weight"]*a
+	Save.bag["space"] = abs(Save.bag["space"])
+	if(Save.bag["content"].has(res)):
+		Save.bag["content"][res] += a
 	else:
-		bag[res] = a
+		Save.bag["content"][res] = a
 	update_bag()
 	return true
 
 func update_bag():
-	Global.BagUI.updateBag(bagSpaceLeft,bagSize)
+	Global.BagUI.updateBag(Save.bag["space"],Save.bag["size"])
 
 func add_resource(res,amm):
 	if(Save.add_resource(res,amm)):
@@ -337,25 +345,26 @@ func craft_item(item, amm = 1, add = true):
 		Player.pass_time(resources[item]["craftTime"])
 
 func expand_bag(item):
-	if(upgrades[item]["obtained"] or !check_cost(item,1,true)):
+	if(!buy_upgrade(item)):
+		return false
+	Save.bag["size"] += upgrades[item]["size"]
+	Save.bag["space"] += upgrades[item]["size"]
+	update_bag()
+	return true
+
+func buy_upgrade(item):
+	if(get_upgrade(item) or !check_cost(item,1,true)):
 		return false
 	for mat in upgrades[item]["cost"]:
 		add_resource(mat, -(upgrades[item]["cost"][mat]))
-	upgrades[item]["obtained"] = true
-	bagSize += upgrades[item]["size"]
-	bagSpaceLeft += upgrades[item]["size"]
-	update_bag()
+	set_upgrade(item,true)
 	Player.pass_time(upgrades[item]["craftTime"])
 	return true
-	
+
 func expand_water(item):
-	if(upgrades[item]["obtained"] or !check_cost(item,1,true)):
+	if(!buy_upgrade(item)):
 		return false
-	for mat in upgrades[item]["cost"]:
-		add_resource(mat, -(upgrades[item]["cost"][mat]))
-	upgrades[item]["obtained"] = true
 	Player.upd_max_water(upgrades[item]["size"]) 
-	Player.pass_time(upgrades[item]["craftTime"])
 	return true
 
 func spoil_food(time):

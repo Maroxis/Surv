@@ -4,7 +4,6 @@ signal toolChanged
 
 onready var tools = {
 	"Axe": {
-		"currentTier": 0,
 		"pinned": true,
 		"tier0" : {
 			"benefits":{
@@ -61,7 +60,6 @@ onready var tools = {
 		}
 	},
 	"Knife": {
-		"currentTier": 0,
 		"pinned": true,
 		"tier0" : {
 			"benefits":{
@@ -118,7 +116,6 @@ onready var tools = {
 		}
 	},
 	"Pickaxe": {
-		"currentTier": 0,
 		"pinned": true,
 		"tier0" : {
 			"benefits":{
@@ -175,7 +172,6 @@ onready var tools = {
 		}
 	},
 	"Shovel": {
-		"currentTier": 0,
 		"pinned": true,
 		"tier0" : {
 			"benefits":{
@@ -232,7 +228,6 @@ onready var tools = {
 		}
 	},
 	"Saw": {
-		"currentTier": 0,
 		"pinned": true,
 		"tier0" : {
 			"benefits":{
@@ -280,7 +275,7 @@ onready var tools = {
 
 func _ready() -> void:
 	Save.add_missing_keys(tools,Save.tools)
-
+	
 func refresh():
 	for tl in tools:
 		updateTool(tl)

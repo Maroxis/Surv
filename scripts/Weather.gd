@@ -25,7 +25,25 @@ signal weatherChanged
 func _ready() -> void:
 	Global.Weather = self
 	changeWeatherSound()
-	
+
+func pack():
+	var weather = {}
+	weather["current"] = current
+	weather["weatherChangeRate"] = weatherChangeRate
+	weather["progress"] = progress
+	weather["changeHelper"] = current
+	weather["calmSustain"] = calmSustain
+	weather["rainToxic"] = rainToxic
+	return weather
+
+func unpack(weather):
+	current = int(weather["current"])
+	weatherChangeRate = float(weather["weatherChangeRate"])
+	progress = int(weather["progress"])
+	current = int(weather["changeHelper"])
+	calmSustain = int(weather["calmSustain"])
+	rainToxic = float(weather["rainToxic"])
+
 func getRainInt():
 	return max(current - 2,0)
 
@@ -51,7 +69,6 @@ func setWeather(wthr):
 	current = clamp(wthr,0,type.size()-1)
 			
 	deactivateSunny()
-	activeClouds()
 	deactiveClouds()
 	deactiveRain()
 	deactiveLightning()
@@ -75,6 +92,9 @@ func setWeather(wthr):
 	
 	changeWeatherSound()
 	emit_signal("weatherChanged")
+
+func refresh():
+	setWeather(current)
 
 func activeRain():
 	rain.changeDensity(current)

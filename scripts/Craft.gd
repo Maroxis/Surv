@@ -8,6 +8,7 @@ onready var selected: TextureRect = $TabSwitcher/Control/Selected
 
 
 func _ready() -> void:
+	Global.Craft = self
 	refresh()
 	initTabs()
 

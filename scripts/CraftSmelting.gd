@@ -62,16 +62,20 @@ func getFuelEfficency():
 	
 func removeRes():
 	Inventory.craft_item(selectedRecipe,1,false)
-	var fAmm = int(ceil(Inventory.resources[selectedRecipe]["craftTime"]/(Inventory.resources[selectedFuel]["burining"]["time"]*getFuelEfficency())))
-	Inventory.add_resource(selectedFuel,-fAmm)
+	Inventory.add_resource(selectedFuel,-getFuelAmm())
 
 func clearList(list):
 	for n in list.get_children():
 		n.queue_free()
 
+func getFuelAmm(fuel = null):
+	if not fuel:
+		fuel = selectedFuel
+	return int(ceil(Inventory.resources[selectedRecipe]["craftTime"]/(Inventory.resources[fuel]["burining"]["time"]*getFuelEfficency())))
+
 func calcFuel():
 	for fuel in fuel_select.get_children():
-		var amm = int(ceil(Inventory.resources[selectedRecipe]["craftTime"]/(Inventory.resources[fuel.item]["burining"]["time"]*getFuelEfficency())))
+		var amm = getFuelAmm(fuel.name)
 		fuel.changeAmm(amm)
 		fuel.toggle(Inventory.resources[fuel.item]["burining"]["temp"] >= Inventory.resources[selectedRecipe]["meltingTemp"])
 
@@ -104,7 +108,7 @@ func _on_RecipeSelect_itemSelected(item) -> void:
 func _on_FuelSelect_itemClicked(item) -> void:
 	if(timeLeft > 0):
 		return
-	var amm = int(ceil(Inventory.resources[selectedRecipe]["craftTime"]/Inventory.resources[item]["burining"]["time"]*getFuelEfficency()))
+	var amm = getFuelAmm()
 	if(amm > Inventory.get_res_amm(item)):
 		fuel_select.shakeSelected()
 	elif(checkOre()):

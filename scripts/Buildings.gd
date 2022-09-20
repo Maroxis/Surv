@@ -3,7 +3,6 @@ extends Node
 onready var Structure = {
 	"House": {
 		"Bed":{
-			"currentTier": 0,
 			"benefitsText":{
 				"sleepRegenMult": "Energy recovery and sickness reduction multiplayer during sleep"
 			},
@@ -55,7 +54,6 @@ onready var Structure = {
 			}
 		},
 		"Frame":{
-			"currentTier": 0,
 			"benefitsText":{
 				"enable": "Enables building other modules"
 			},
@@ -95,7 +93,6 @@ onready var Structure = {
 			}
 		},
 		"Wall":{
-			"currentTier": 0,
 			"benefitsText":{
 				"defence": "Increases defence"
 			},
@@ -143,7 +140,6 @@ onready var Structure = {
 			}
 		},
 		"Roof":{
-			"currentTier": 0,
 			"benefitsText":{
 				"roofed": "Keeps fire lit while raining",
 				"defence": "Improves defence"
@@ -196,9 +192,8 @@ onready var Structure = {
 		},
 	},
 	"Collector": {
-		"waterLevel" : 0,
+		"waterLevel": 0,
 		"Catcher" : {
-			"currentTier": 0,
 			"benefitsText":{
 				"collectRate": "Increases water collect rate"
 			},
@@ -269,7 +264,6 @@ onready var Structure = {
 			}
 		},
 		"Tank" : {
-			"currentTier": 0,
 			"benefitsText":{
 				"tankSize": "Increases water tank size"
 			},
@@ -319,7 +313,6 @@ onready var Structure = {
 			}
 		},
 		"Filter" : {
-			"currentTier": 0,
 			"benefitsText":{
 				"filter": "Reduces polution, making water safer to drink"
 			},
@@ -391,7 +384,6 @@ onready var Structure = {
 	},
 	"Furnace": {
 		"Oven":{
-			"currentTier": 0,
 			"benefitsText":{
 				"smeltable": "Allows smelting new metals"
 			},
@@ -429,7 +421,6 @@ onready var Structure = {
 			}
 		},
 		"Bellows":{
-			"currentTier": 0,
 			"benefitsText":{
 				"timeMult": "Smelting time multiplayer"
 			},
@@ -461,7 +452,6 @@ onready var Structure = {
 	},
 	"Perimeter": {
 		"Fence":{
-			"currentTier": 0,
 			"benefitsText":{
 				"defence": "Increses camp defence"
 			},
@@ -499,7 +489,6 @@ onready var Structure = {
 			}
 		},
 		"Trench":{
-			"currentTier": 0,
 			"benefitsText":{
 				"defence": "Increses camp defence"
 			},
@@ -526,7 +515,10 @@ onready var Structure = {
 		}
 	}
 }
-	
+
+func _ready() -> void:
+	Save.add_missing_keys_deep(Structure,Save.structures)
+
 func calcDefence():
 	var defence = 0
 	defence += getCurrentModule("Perimeter","Fence")["benefits"]["defence"]
@@ -543,14 +535,8 @@ func checkCost(building,module) -> bool:
 			return false
 	return true
 
-#func build(building):
-#	if(building == "Collector"):
-#		Global.Missions.get_node("Home").activateDrink()
-#	removeResources(building)
-#	Structure[building]["currentTier"] += 1
-
 func buildModule(building,module):
-	Structure[building][module]["currentTier"] += 1
+	Save.structures[building][module] += 1
 	getCurrentModule(building,module)["time"]["completed"] = 0
 
 func buyModule(building,module):
@@ -567,7 +553,7 @@ func getTier(building,module,next = false):
 	else:
 		return "tier"+str(tier)
 func getTierInt(building,module,next = false):
-	var tier = Structure[building][module]["currentTier"] + (1 if next else 0)
+	var tier = int(Save.structures[building][module] + (1 if next else 0))
 	if(next and not Structure[building][module].has("tier"+str(tier))):
 		return null
 	else:
@@ -578,7 +564,7 @@ func getCurrentModule(building,module):
 	return Structure[building][module][tier]
 
 func demolish(building,module):
-	Structure[building][module]["currentTier"] -= 1
+	Save.structures[building][module] -= 1
 
 func runCollector(time):
 	var collectRate = getCurrentModule("Collector","Catcher")["benefits"]["collectRate"]

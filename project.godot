@@ -82,7 +82,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/kanban_tasks/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/SimpleTODO/plugin.cfg" )
 
 [input_devices]
 

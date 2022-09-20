@@ -56,7 +56,7 @@ func addItems():
 								tl = req
 						elif(reqCat == "module"):
 							rtier = Buildings.Structure[building][mod][tier]["required"][reqCat][req]
-							ctier = Buildings.Structure[building][req]["currentTier"]
+							ctier = Buildings.getTierInt(building,req)
 							if(ctier < rtier):
 								md = req
 						if(ctier < rtier):

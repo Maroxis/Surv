@@ -4,17 +4,33 @@ const save_file = "user://save_file_test.save"
 
 var resources = {}
 var tools = {}
+var upgrades = {}
+var bag = {
+	"size": 10,
+	"space": 10,
+	"content":{}
+}
+var structures = {}
 
 func packData():
 	var data = {}
 	data["resources"] = resources
 	data["player"] = Player.pack()
 	data["tools"] = tools
+	data["upgrades"] = upgrades
+	data["bag"] = bag
+	data["weather"] = Global.Weather.pack()
+	data["structures"] = structures
 	return to_json(data)
 
 func unpackData(data):
-	resources = data["resources"]
+	resources = Dictionary(data["resources"])
 	tools = data["tools"]
+	upgrades = data["upgrades"]
+	bag = data["bag"]
+	Global.Weather.unpack(data["weather"])
+	structures = data["structures"]
+	print(structures)
 	Player.unpack(data["player"])
 
 func saveData():
@@ -41,10 +57,18 @@ func removeData():
 	dir.remove(save_file)
 	return true
 
-func add_missing_keys(dict,target):
+func add_missing_keys(dict,target,bl = false):
 	for res in dict:
 		if(not target.has(res)):
-			target[res] = 0
+# warning-ignore:incompatible_ternary
+			target[res] = false if bl else 0
+
+func add_missing_keys_deep(dict,target,bl = false):
+	for sub in dict:
+		target[sub] = {}
+		for key in dict[sub]:
+# warning-ignore:incompatible_ternary
+			target[sub][key] = false if bl else 0
 
 func get_res_amm(res):
 	return resources[res]

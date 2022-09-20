@@ -5,6 +5,7 @@ onready var scene = load("res://nodes/Building.tscn")
 onready var building_container: HBoxContainer = $ScrollContainer/BuildingContainer
 
 func _ready() -> void:
+	Global.Build = self
 	populate()
 
 func populate():

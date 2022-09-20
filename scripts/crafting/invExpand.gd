@@ -14,6 +14,9 @@ func _ready() -> void:
 	loadTex(item)
 
 func refresh():
+	if Inventory.get_upgrade(self.name):
+		fade()
+		return
 	_updateCost()
 	_updateTime()
 

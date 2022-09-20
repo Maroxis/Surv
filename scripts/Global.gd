@@ -14,13 +14,18 @@ var MissionButtons
 var BaseAct
 var Cook
 var FoodEat
+var Craft
+var Build
 
 func refresh():
 	ChestResources.refresh()
 	Player.refresh_status()
 	ResourcesUI.reset()
 	Tools.refresh()
-
+	Inventory.refresh()
+	Craft.refresh()
+	Weather.refresh()
+	
 func timeGetFullFormat(time,lzero = false,labeled = false):
 	time = int(time)
 	var ftime = ""
