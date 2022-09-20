@@ -51,7 +51,7 @@ func addItems():
 						var ctier
 						if(reqCat == "tool"):
 							rtier = Buildings.Structure[building][mod][tier]["required"][reqCat][req]
-							ctier = Tools.tools[req]["currentTier"]
+							ctier = Tools.getTier(req)
 							if(ctier < rtier):
 								tl = req
 						elif(reqCat == "module"):

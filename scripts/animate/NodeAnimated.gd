@@ -20,9 +20,11 @@ func shakeSide():
 	shake(5,0.05,true)
 
 func fadeIn(time):
+#	self.visible = true
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, "modulate:a", 1.0, time)
 	
 func fadeOut(time):
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, "modulate:a", 0.0, time)
+#	tween.tween_property(self, "visible", false, time)

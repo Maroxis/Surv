@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func refresh():
 	self.tName.text = self.name
-	var ctier = Tools.tools[self.name]["currentTier"]
+	var ctier = Tools.getTier(self.name)
 	if(Tools.tools[self.name].has("tier"+str(ctier+1))):
 		_updateCost(ctier)
 		_updateBene(ctier,false)
@@ -58,5 +58,5 @@ func _on_CraftButton_pressed() -> void:
 		refresh()
 
 func _updateTime():
-	var ctier = Tools.tools[self.name]["currentTier"]
+	var ctier = Tools.getTier(self.name)
 	timeLb.text = Global.timeGetFullFormat(Tools.tools[self.name]["tier"+str(ctier+1)]["craftTime"],true)

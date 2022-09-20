@@ -44,6 +44,12 @@ func update_resource():
 			swipeNext()
 	return
 
+func reset():
+	for item in items:
+		item.fadeOut(0.8)
+		item.currentTex = null
+	buffer.clear()
+	hidden_items = max_visible_items
 
 func showNext():
 	items[hidden_items].fadeIn(0.8)

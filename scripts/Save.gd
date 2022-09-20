@@ -3,12 +3,24 @@ extends Node
 const save_file = "user://save_file_test.save"
 
 var resources = {}
-var player = {}
+var tools = {}
+
+func packData():
+	var data = {}
+	data["resources"] = resources
+	data["player"] = Player.pack()
+	data["tools"] = tools
+	return to_json(data)
+
+func unpackData(data):
+	resources = data["resources"]
+	tools = data["tools"]
+	Player.unpack(data["player"])
 
 func saveData():
 	var file = File.new()
 	file.open(save_file, File.WRITE)
-	file.store_line(to_json(resources))
+	file.store_line(packData())
 	file.close()
 	return true
 	
@@ -17,9 +29,9 @@ func loadData():
 	if not file.file_exists(save_file):
 		return false
 	file.open(save_file, File.READ)
-	resources = parse_json(file.get_line())
+	unpackData(parse_json(file.get_line()))
 	file.close()
-	refreshUI()
+	Global.refresh()
 	return true
 
 func removeData():
@@ -29,13 +41,10 @@ func removeData():
 	dir.remove(save_file)
 	return true
 
-func refreshUI():
-	Global.ChestResources.refresh()
-
-func add_missing_keys(dict):
+func add_missing_keys(dict,target):
 	for res in dict:
-		if(not resources.has(res)):
-			resources[res] = 0
+		if(not target.has(res)):
+			target[res] = 0
 
 func get_res_amm(res):
 	return resources[res]

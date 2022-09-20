@@ -3,6 +3,7 @@ extends NodeAnimated
 onready var texture_rect: TextureRect = $TextureRect
 onready var count: Label = $Count
 
+var item
 var currentTex
 var currentCount
 

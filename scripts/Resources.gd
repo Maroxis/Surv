@@ -7,31 +7,47 @@ onready var foodList = resources.get_node("Food/List")
 
 func _ready() -> void:
 	Global.ChestResources = self
+	createLists()
 	loadRes()
 
-func loadRes():
+func createLists():
 	var scene = load("res://nodes/components/ItemCount.tscn")
 	for res in Inventory.resources:
+		var list
 		var scene_instance = scene.instance()
 		if(Inventory.resources[res].has("food")):
-			foodList.add_child(scene_instance)
+			list = foodList
 		elif(Inventory.resources[res]["crafted"]):
-			craftedList.add_child(scene_instance)
+			list = craftedList
 		else:
-			rawList.add_child(scene_instance)
-		scene_instance.set_name(res)
-		scene_instance.changeTexture(res,"64x64px")
-		scene_instance.changeSize(48)
-		scene_instance.changeCount(Inventory.get_res_amm(res))
+			list = rawList
+		if !list.has_node(res):
+			list.add_child(scene_instance)
+			scene_instance.set_name(res)
+
+func loadRes():
+	for res in Inventory.resources:
+		var list
+		if(Inventory.resources[res].has("food")):
+			list = foodList
+		elif(Inventory.resources[res]["crafted"]):
+			list = craftedList
+		else:
+			list = rawList
+		var node = list.get_node(res)
+		node.changeTexture(res,"64x64px")
+		node.changeSize(48)
+		node.changeCount(Inventory.get_res_amm(res))
 
 func clearList(list):
 	for n in list.get_children():
 		n.queue_free()
 
 func refresh():
-	clearList(rawList)
-	clearList(craftedList)
-	clearList(foodList)
+#	clearList(rawList)
+#	clearList(craftedList)
+#	clearList(foodList)
+	createLists()
 	loadRes()
 
 func update_resource(res,amm,crafted):

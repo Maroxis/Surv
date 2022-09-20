@@ -16,6 +16,8 @@ func updateTool(tl,tier,downgrade = false):
 			node.modulate = Color(1,0.7,0,1)
 		4:
 			node.modulate = Color(1,1,1,1)
+		_:
+			print("default")
 	if(downgrade):
 		node.shake(5,0.05,true)
 	else:

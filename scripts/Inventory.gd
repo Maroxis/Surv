@@ -256,7 +256,7 @@ onready var upgrades = {
 
 
 func _ready() -> void:
-	Save.add_missing_keys(resources)
+	Save.add_missing_keys(resources,Save.resources)
 
 func get_res_amm(res):
 	return Save.get_res_amm(res)

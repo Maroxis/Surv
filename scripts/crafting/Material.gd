@@ -30,7 +30,7 @@ func _updateCost():
 func _updateReq():
 	if(Inventory.resources[self.name].has("requirement")):
 		var req = Inventory.resources[self.name]["requirement"]
-		if(Tools.tools[req["tool"]]["currentTier"] < req["tier"]):
+		if(Tools.getTier(req["tool"]) < req["tier"]):
 			disable(req["tool"])
 		else:
 			enable()

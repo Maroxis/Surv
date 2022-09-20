@@ -15,6 +15,11 @@ var BaseAct
 var Cook
 var FoodEat
 
+func refresh():
+	ChestResources.refresh()
+	Player.refresh_status()
+	ResourcesUI.reset()
+	Tools.refresh()
 
 func timeGetFullFormat(time,lzero = false,labeled = false):
 	time = int(time)

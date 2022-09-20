@@ -121,7 +121,7 @@ func testTimed(time, eDay = null):
 func damageTool():
 	var ownedTools = []
 	for tl in Tools.tools:
-		if Tools.tools[tl]["currentTier"] != 0:
+		if Tools.getTier(tl) != 0:
 			ownedTools.push_back(tl)
 	if(ownedTools.size() == 0):
 		return {"error":"no owned tool"}
@@ -132,10 +132,10 @@ func damageTool():
 	damage = damage + 1 if fmod(damageToolMlt,1.0) > rf else damage
 	if(damage == 0):
 		return {"error":null,"desc":"Your "+str(chTl)+" holds strong"}
-	var ctier = Tools.tools[chTl]["currentTier"]
+	var ctier = Tools.getTier(chTl)
 	Tools.tools[chTl]["tier"+str(ctier)]["curDurability"] -= damage
 	if(Tools.tools[chTl]["tier"+str(ctier)]["curDurability"]) < 1:
-		Tools.tools[chTl]["currentTier"] -= 1
+		Tools.setTier(chTl,Tools.getTier(chTl)-1)
 		Tools.updateTool(chTl,true)
 		return {"error":null,"desc":"Your "+str(chTl)+" got damaged and...","res":"broke"}
 	return {"error":null,"desc":"Your "+str(chTl)+" got damaged and...","res":"held"}

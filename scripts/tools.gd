@@ -278,21 +278,33 @@ onready var tools = {
 	}
 }
 
+func _ready() -> void:
+	Save.add_missing_keys(tools,Save.tools)
+
+func refresh():
+	for tl in tools:
+		updateTool(tl)
+
+func getTier(tl,next = false):
+	return int(Save.tools[tl] + (1 if next else 0))
+
+func setTier(tl,tier):
+	Save.tools[tl] = int(tier)
 
 func craftTool(name):
 	removeRes(name)
-	var ctier = tools[name]["currentTier"]
+	var ctier = getTier(name)
 	Player.pass_time(tools[name]["tier"+str(ctier+1)]["craftTime"])
-	tools[name]["currentTier"] += 1
+	setTier(name,ctier+1)
 	updateTool(name)
 
 func updateTool(name,downgrade = false):
-	emit_signal("toolChanged",name,downgrade,tools[name]["currentTier"])
+	emit_signal("toolChanged",name,downgrade,getTier(name))
 	if(tools[name]["pinned"]):
-		Global.ToolsUI.updateTool(name, tools[name]["currentTier"], downgrade)
+		Global.ToolsUI.updateTool(name, getTier(name), downgrade)
 	
 func checkCost(name):
-	var ctier = tools[name]["currentTier"]
+	var ctier = getTier(name)
 	for mat in tools[name]["tier"+str(ctier+1)]["cost"]:
 		var amm = tools[name]["tier"+str(ctier+1)]["cost"][mat]
 		if(Inventory.get_res_amm(mat) < amm):
@@ -300,13 +312,13 @@ func checkCost(name):
 	return true
 
 func getBonus(tl,req = null):
-	var ctier = tools[tl]["currentTier"]
+	var ctier = getTier(tl)
 	if(req != null):
 		ctier = max(ctier-req,0)
 	return tools[tl]["tier"+str(ctier)]["benefits"]["actionMult"]
 
 func removeRes(name):
-	var ctier = tools[name]["currentTier"]
+	var ctier = getTier(name)
 	for mat in tools[name]["tier"+str(ctier+1)]["cost"]:
 		var amm = tools[name]["tier"+str(ctier+1)]["cost"][mat]
 		Inventory.add_resource(mat,-amm)
