@@ -21,6 +21,9 @@ func packData():
 	data["bag"] = bag
 	data["weather"] = Global.Weather.pack()
 	data["structures"] = structures
+	data["events"] = Events.pack()
+	data["missions"] = Global.Missions.pack()
+	data["date"] = Global.Date.pack()
 	return to_json(data)
 
 func unpackData(data):
@@ -31,6 +34,9 @@ func unpackData(data):
 	Global.Weather.unpack(data["weather"])
 	structures = data["structures"]
 	Player.unpack(data["player"])
+	Events.unpack(data["events"])
+	Global.Missions.unpack(data["missions"])
+	Global.Date.unpack(data["date"])
 
 func saveData():
 	var file = File.new()

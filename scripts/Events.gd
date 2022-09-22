@@ -2,7 +2,7 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
-onready var forceEvent = null
+onready var forceEvent = 3
 
 onready var damageToolMlt = 0.8
 onready var waterAddTime = 25
@@ -60,11 +60,23 @@ onready var defaultEvent = {
 	"desc": "Nothing happened"
 }
 #onready var eventDates = [3,5,6,7,8,9,10]
-onready var eventDates = [3]
+onready var eventDates = [2]
 onready var eventIndex = 0
 
 func _ready() -> void:
 	rng.randomize()
+
+func pack():
+	var data = {}
+	data["eventIndex"] = eventIndex
+	data["damageToolMlt"] = damageToolMlt
+	data["waterAddTime"] = waterAddTime
+	return data
+
+func unpack(data):
+	eventIndex = data["eventIndex"]
+	damageToolMlt = data["damageToolMlt"]
+	waterAddTime = data["waterAddTime"]
 
 func check_event(day):
 	if(eventIndex+1 > eventDates.size() or eventDates[eventIndex] == day):
@@ -132,7 +144,6 @@ func damageTool():
 	damage = damage + 1 if fmod(damageToolMlt,1.0) > rf else damage
 	if(damage == 0):
 		return {"error":null,"desc":"Your "+str(chTl)+" holds strong"}
-	var ctier = Tools.getTier(chTl)
 	Save.tools[chTl]["durability"] -= damage
 	if(Save.tools[chTl]["durability"]) < 1:
 		Tools.setTier(chTl,Tools.getTier(chTl)-1)
@@ -146,6 +157,7 @@ func hardenNature():
 
 func poisonedStream():
 	Global.Missions.river.gatherTime["Water"] += waterAddTime
+	waterAddTime += 10
 	Global.Missions.river.updateGatherTime()
 	var time = Global.timeGetFullFormat(Global.Missions.river.gatherTimeWBonus["Water"])
 	return {"error":null,"res":"It now takes "+time+" to search for water"}

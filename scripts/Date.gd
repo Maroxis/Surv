@@ -10,12 +10,25 @@ signal timeChanged
 #signal timePassed
 
 func _ready() -> void:
-	updateLabels()
 	Global.Date = self
+	refresh()
 # warning-ignore:return_value_discarded
 	connect("newDay", Events, "check_event")
 # warning-ignore:return_value_discarded
 	connect("timeChanged",Global.Weather,"setTime")
+
+func pack():
+	var data = {}
+	data["day"] = day
+	data["time"] = time
+	return data
+
+func unpack(data):
+	day = data["day"]
+	time = data["time"]
+
+func refresh():
+	updateLabels()
 
 func changeTime(amm) -> void:
 	time += int(amm)

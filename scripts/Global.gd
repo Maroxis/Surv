@@ -25,6 +25,8 @@ func refresh():
 	Inventory.refresh()
 	Craft.refresh()
 	Weather.refresh()
+	Missions.refresh()
+	Date.refresh()
 	
 func timeGetFullFormat(time,lzero = false,labeled = false):
 	time = int(time)

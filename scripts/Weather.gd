@@ -95,6 +95,7 @@ func setWeather(wthr):
 
 func refresh():
 	setWeather(current)
+	setTime(Global.Date.time)
 
 func activeRain():
 	rain.changeDensity(current)
