@@ -30,7 +30,6 @@ func unpackData(data):
 	bag = data["bag"]
 	Global.Weather.unpack(data["weather"])
 	structures = data["structures"]
-	print(structures)
 	Player.unpack(data["player"])
 
 func saveData():
@@ -57,18 +56,35 @@ func removeData():
 	dir.remove(save_file)
 	return true
 
-func add_missing_keys(dict,target,bl = false):
+func add_missing_keys(dict, target, type = TYPE_INT, size = 0, keys = null):
 	for res in dict:
 		if(not target.has(res)):
-# warning-ignore:incompatible_ternary
-			target[res] = false if bl else 0
+			_create_key(target,res,type,size,keys)
 
-func add_missing_keys_deep(dict,target,bl = false):
+func _create_key(dict,key,type,size,keys):
+	match type:
+		TYPE_INT:
+			dict[key] = 0
+		TYPE_BOOL:
+			dict[key] = false
+		TYPE_INT_ARRAY:
+			dict[key] = []
+			for i in size:
+				dict[key].push_back(0)
+		TYPE_DICTIONARY:
+			dict[key] = {}
+			for i in size:
+				dict[key][keys[i]] = 0
+
+func add_missing_keys_deep(dict, target, type = TYPE_INT, size = 0, keys = null):
 	for sub in dict:
 		target[sub] = {}
 		for key in dict[sub]:
-# warning-ignore:incompatible_ternary
-			target[sub][key] = false if bl else 0
+			target[sub][key] = {}
+			if(typeof(dict[sub][key]) == TYPE_DICTIONARY):
+				_create_key(target[sub],key,type,size,keys)
+			else:
+				_create_key(target[sub],key,typeof(dict[sub][key]),size,keys)
 
 func get_res_amm(res):
 	return resources[res]

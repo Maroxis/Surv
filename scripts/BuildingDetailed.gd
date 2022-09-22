@@ -102,7 +102,7 @@ func writeInfo():
 			scene_instance.value.text = str(curVal)+" -> "+ str(beneVal)
 	var costCheck = true
 	var totalSec = Buildings.Structure[building][selectedModule][ntier]["time"]["sections"]
-	var compSec = Buildings.Structure[building][selectedModule][ntier]["time"]["completed"]
+	var compSec = Save.structures[building][selectedModule]["progress"]
 	if(Buildings.Structure[building][selectedModule][ntier].has("cost") and compSec == 0):
 		label_cost.show()
 		costs_list.show()
@@ -153,9 +153,9 @@ func _on_Build_Button_pressed() -> void:
 	var time = Buildings.Structure[building][selectedModule][ntier]["time"]["ammount"]
 	var bonus = getToolBonus()
 	Player.pass_time(time/bonus)
-	Buildings.Structure[building][selectedModule][ntier]["time"]["completed"] += 1
+	Save.structures[building][selectedModule]["progress"] += 1
 	var totalSec = Buildings.Structure[building][selectedModule][ntier]["time"]["sections"]
-	var compSec = Buildings.Structure[building][selectedModule][ntier]["time"]["completed"]
+	var compSec = Save.structures[building][selectedModule]["progress"]
 	if(compSec == 1):
 		label_cost.hide()
 		costs_list.hide()

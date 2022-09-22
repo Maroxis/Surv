@@ -253,7 +253,7 @@ onready var upgrades = {
 
 func _ready() -> void:
 	Save.add_missing_keys(resources,Save.resources)
-	Save.add_missing_keys(upgrades,Save.upgrades,true)
+	Save.add_missing_keys(upgrades,Save.upgrades,TYPE_BOOL)
 
 func refresh():
 	update_bag()

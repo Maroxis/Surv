@@ -191,7 +191,10 @@ func animalAttack():
 			if(buildings.size() < 1):
 				break
 			var r = rng.randi_range(0, buildings.size()-1)
-			Buildings.demolish(buildings[r][0],buildings[r][1])
+			if Save.structures[buildings[r][0]][buildings[r][1]]["progress"] > 0:
+				Save.structures[buildings[r][0]][buildings[r][1]]["progress"] = 0
+			else:
+				Buildings.demolish(buildings[r][0],buildings[r][1])
 			rs += buildings[r][0] + " " + buildings[r][1] + "\n"
 			buildings.remove(r)
 		return {"error":null,"res": rs}

@@ -517,7 +517,7 @@ onready var Structure = {
 }
 
 func _ready() -> void:
-	Save.add_missing_keys_deep(Structure,Save.structures)
+	Save.add_missing_keys_deep(Structure,Save.structures,TYPE_DICTIONARY,2,["ctier","progress"])
 
 func calcDefence():
 	var defence = 0
@@ -536,8 +536,9 @@ func checkCost(building,module) -> bool:
 	return true
 
 func buildModule(building,module):
-	Save.structures[building][module] += 1
-	getCurrentModule(building,module)["time"]["completed"] = 0
+	Save.structures[building][module]["ctier"] += 1
+	Save.structures[building][module]["progress"] = 0
+#	getCurrentModule(building,module)["time"]["completed"] = 0
 
 func buyModule(building,module):
 	var ntier = getTier(building,module,true)
@@ -553,7 +554,7 @@ func getTier(building,module,next = false):
 	else:
 		return "tier"+str(tier)
 func getTierInt(building,module,next = false):
-	var tier = int(Save.structures[building][module] + (1 if next else 0))
+	var tier = int(Save.structures[building][module]["ctier"] + (1 if next else 0))
 	if(next and not Structure[building][module].has("tier"+str(tier))):
 		return null
 	else:
@@ -564,7 +565,7 @@ func getCurrentModule(building,module):
 	return Structure[building][module][tier]
 
 func demolish(building,module):
-	Save.structures[building][module] -= 1
+	Save.structures[building][module]["ctier"] -= 1
 
 func runCollector(time):
 	var collectRate = getCurrentModule("Collector","Catcher")["benefits"]["collectRate"]
