@@ -2,7 +2,6 @@ extends Node
 
 const save_file = "user://save_file_test.save"
 
-var resources = {}
 var tools = {}
 var upgrades = {}
 var bag = {
@@ -14,7 +13,7 @@ var structures = {}
 
 func packData():
 	var data = {}
-	data["resources"] = resources
+	data["resources"] = Inventory.pack()
 	data["player"] = Player.pack()
 	data["tools"] = tools
 	data["upgrades"] = upgrades
@@ -24,10 +23,12 @@ func packData():
 	data["events"] = Events.pack()
 	data["missions"] = Global.Missions.pack()
 	data["date"] = Global.Date.pack()
+	data["cook"] = Global.Cook.pack()
+	data["smelt"] = Global.Smelt.pack()
 	return to_json(data)
 
 func unpackData(data):
-	resources = Dictionary(data["resources"])
+	Inventory.unpack(data["resources"])
 	tools = data["tools"]
 	upgrades = data["upgrades"]
 	bag = data["bag"]
@@ -37,6 +38,8 @@ func unpackData(data):
 	Events.unpack(data["events"])
 	Global.Missions.unpack(data["missions"])
 	Global.Date.unpack(data["date"])
+	Global.Cook.unpack(data["cook"])
+	Global.Smelt.unpack(data["smelt"])
 
 func saveData():
 	var file = File.new()
@@ -62,26 +65,34 @@ func removeData():
 	dir.remove(save_file)
 	return true
 
-func add_missing_keys(dict, target, type = TYPE_INT, size = 0, keys = null):
+func add_missing_keys(dict, target, type = TYPE_INT, size = 0, customKeys = null):
 	for res in dict:
 		if(not target.has(res)):
-			_create_key(target,res,type,size,keys)
+			_create_key(target,res,type,size,customKeys)
 
-func _create_key(dict,key,type,size,keys):
+func _create_key(dict,key,type,size,customKeys):
+	dict[key] = get_single_key(type)
 	match type:
-		TYPE_INT:
-			dict[key] = 0
-		TYPE_BOOL:
-			dict[key] = false
 		TYPE_INT_ARRAY:
-			dict[key] = []
 			for i in size:
 				dict[key].push_back(0)
 		TYPE_DICTIONARY:
-			dict[key] = {}
-			for i in size:
-				dict[key][keys[i]] = 0
+			for customKey in customKeys:
+				dict[key][customKey] = get_single_key(customKeys[customKey])
 
+func get_single_key(type):
+	var key
+	match type:
+		TYPE_INT:
+			key = 0
+		TYPE_BOOL:
+			key = false
+		TYPE_INT_ARRAY:
+			key = []
+		TYPE_DICTIONARY:
+			key = {}
+	return key
+	
 func add_missing_keys_deep(dict, target, type = TYPE_INT, size = 0, keys = null):
 	for sub in dict:
 		target[sub] = {}
@@ -91,15 +102,3 @@ func add_missing_keys_deep(dict, target, type = TYPE_INT, size = 0, keys = null)
 				_create_key(target[sub],key,type,size,keys)
 			else:
 				_create_key(target[sub],key,typeof(dict[sub][key]),size,keys)
-
-func get_res_amm(res):
-	return resources[res]
-
-func add_resource(res,amm):
-	if amm < 0 and resources[res] < abs(amm):
-		return false
-	else:
-		resources[res] += amm
-		resources[res] = min(resources[res],999)
-		Global.ResourcesUI.addRes(res,resources[res],Inventory.resources[res]["crafted"])
-		return true

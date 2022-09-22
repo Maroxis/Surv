@@ -32,7 +32,9 @@ func refresh():
 		refreshTab(tab)
 
 func refreshTab(tab):
-	if(tab.has_node("Items")):
+	if tab.has_method("refresh"):
+		tab.refresh()
+	elif tab.has_node("Items"):
 		var items = tab.get_node("Items").get_children()
 		for item in items:
 			if(item.name != "Margin" and item.name != "Margin2"):

@@ -24,8 +24,8 @@ func pack():
 	return data
 
 func unpack(data):
-	day = data["day"]
-	time = data["time"]
+	day = int(data["day"])
+	time = int(data["time"])
 
 func refresh():
 	updateLabels()

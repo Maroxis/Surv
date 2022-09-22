@@ -7,6 +7,7 @@ onready var fuel_select: VBoxContainer = $"%FuelSelect"
 onready var ore_required: VBoxContainer = $"%OreRequired"
 onready var item_scene  = load("res://nodes/components/ItemSquareAmm.tscn")
 onready var recipe_label: Label = $"%RecipeLabel"
+onready var warning: Panel = $"%Warning"
 
 onready var basicFuelEfficency = 2
 onready var timeTotal = 0
@@ -19,6 +20,30 @@ func _ready() -> void:
 	Global.Smelt = self
 	addItems()
 	selectRecipe(selectedRecipe)
+
+func refresh():
+	var showWarning = Buildings.getTierInt("Furnace","Oven") == 0
+	warning.visible = showWarning
+	if(timeTotal == 0):
+		return
+	timeRemainingLabel.text = Global.timeGetFullFormat(timeLeft,false,true) 
+	furnaceProgress.value = float(timeLeft)/float(timeTotal) * 100
+	if timeLeft == 0:
+		furnaceProgress.material.set_shader_param("on",0.0)
+	else:
+		furnaceProgress.material.set_shader_param("on",1.0)
+
+func pack():
+	var data = {}
+	data["timeTotal"] = timeTotal
+	data["timeLeft"] = timeLeft
+	data["smeltingRecipe"] = smeltingRecipe
+	return data
+
+func unpack(data):
+	timeTotal = data["timeTotal"]
+	timeLeft = data["timeLeft"]
+	smeltingRecipe = data["smeltingRecipe"]
 
 func addItems():
 	for res in Inventory.resources:
@@ -33,8 +58,7 @@ func run(time):
 		timeLeft -= time
 		if(timeLeft <= 0):
 			timeLeft = 0
-		timeRemainingLabel.text = Global.timeGetFullFormat(timeLeft,false,true) 
-		furnaceProgress.value = float(timeLeft)/float(timeTotal) * 100
+		refresh()
 		if(timeLeft == 0):
 			finish()
 #
@@ -108,9 +132,9 @@ func _on_RecipeSelect_itemSelected(item) -> void:
 func _on_FuelSelect_itemClicked(item) -> void:
 	if(timeLeft > 0):
 		return
+	selectedFuel = item
 	var amm = getFuelAmm()
 	if(amm > Inventory.get_res_amm(item)):
 		fuel_select.shakeSelected()
 	elif(checkOre()):
-		selectedFuel = item
 		start()

@@ -14,6 +14,10 @@ func addItem(nm):
 func itemClicked(item):
 	selected = item
 	emit_signal("itemClicked",item)
-	
+
+func toggle(on):
+	for item in get_children():
+		item.toggle(on)
+
 func shakeSelected():
 	get_node(selected).shakeSide()

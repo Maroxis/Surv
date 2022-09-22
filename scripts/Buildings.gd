@@ -517,7 +517,7 @@ onready var Structure = {
 }
 
 func _ready() -> void:
-	Save.add_missing_keys_deep(Structure,Save.structures,TYPE_DICTIONARY,2,["ctier","progress"])
+	Save.add_missing_keys_deep(Structure,Save.structures,TYPE_DICTIONARY,0,{"ctier":TYPE_INT,"progress":TYPE_INT})
 
 func calcDefence():
 	var defence = 0

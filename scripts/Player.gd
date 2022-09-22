@@ -170,7 +170,7 @@ func pass_time(time,sleep=false,wet = false):
 	
 	if(sick > 0):
 		var fullBonus = 2 if food > 50 and water > 50 else 1
-		change_sick(-(sickRate*time*sleepRegenMult*fullBonus))
+		change_sick(-(sickRate*3*time*sleepRegenMult*fullBonus))
 
 	Buildings.runCollector(time)
 	Inventory.spoil_food(time)
@@ -186,13 +186,13 @@ func change_sick(amm):
 	Global.UI.health.get_node("SickProgress").flashBar(sick > 80)
 
 func eat(fd, amm, over = false, remove = true):
-	var cal = Inventory.resources[fd]["calories"]
+	var cal = Inventory.food[fd]["calories"]
 	var space = self.maxFood - self.food
 	if (space < cal and not over) or space == 0:
 		return amm
 	var wtr = 0
-	if(Inventory.resources[fd].has("water")):
-		wtr = Inventory.resources[fd]["calories"]
+	if(Inventory.food[fd].has("water")):
+		wtr = Inventory.food[fd]["calories"]
 	var ate = 0
 	if(cal * amm <= space):
 		ate = amm
@@ -205,6 +205,8 @@ func eat(fd, amm, over = false, remove = true):
 			ate += 1
 		change_food(cal*ate,false)
 		change_water(wtr*amm)
+	if Inventory.food[fd].has("sick"):
+		change_sick(Inventory.food[fd]["sick"])
 	if remove:
-		Inventory.add_resource(fd,-ate)
+		Inventory.add_resource(fd,-ate,true)
 	return amm-ate

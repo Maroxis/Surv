@@ -17,17 +17,41 @@ onready var timeTotal = 0
 
 func _ready() -> void:
 	Global.Cook = self
-	for res in Inventory.resources:
-		if Inventory.resources[res].has("cookable") and Inventory.resources[res]["cookable"]:
-			item_select.add_item(res)
+	for food in Inventory.food:
+		if Inventory.food[food].has("cookable") and Inventory.food[food]["cookable"]:
+			item_select.add_item(food)
 	item_select.init()
 	flame.value = 0
 	fuel.addItem("Stick")
 	fuel.addItem("Wood")
 
+func pack():
+	var data = {}
+	data["timeLeft"] = timeLeft
+	data["timeTotal"] = timeTotal
+	data["cookAmm"] = cookAmm
+	data["cookingItem"] = cookingItem
+	return data
+
+func unpack(data):
+	timeLeft = int(data["timeLeft"])
+	timeTotal = int(data["timeTotal"])
+	cookAmm = int(data["cookAmm"])
+	cookingItem = String(data["cookingItem"])
+
 func refresh():
 	changeAmm(rawAmm)
 	item_select.refreshAmmBar(selectedItem)
+	refreshProgress()
+
+func refreshProgress():
+	if timeTotal == 0:
+		return
+	if timeLeft == 0:
+		flame.material.set_shader_param("on",0.0)
+	time_remaining.text = Global.timeGetFullFormat(timeLeft,false,true) 
+	flame.value = float(timeLeft)/float(timeTotal) * 100
+	flame.material.set_shader_param("on",1.0)
 
 func selectItem(item):
 	selectedItem = item
@@ -36,7 +60,7 @@ func selectItem(item):
 func changeAmm(amm):
 	rawAmm = amm
 	var fuelItems = fuel.get_children()
-	var cookTime = Inventory.resources[selectedItem]["cookTime"] * amm
+	var cookTime = Inventory.food[selectedItem]["cookTime"] * amm
 	for fuelItem in fuelItems:
 		var fuelAmm = ceil(cookTime / Inventory.resources[fuelItem.item]["burining"]["time"])
 		fuelItem.changeAmm(fuelAmm)
@@ -46,36 +70,33 @@ func changeAmm(amm):
 func run(time):
 	if(timeLeft > 0):
 		var roofed = Buildings.getCurrentModule("House","Roof")["benefits"]["roofed"]
-		var raining = true if Global.Weather.getRainInt() > 0 else false
+		var raining = Global.Weather.getRainInt() > 0
 		if(raining and not roofed):
 			return
 		else:
 			timeLeft -= time
 			if(timeLeft <= 0):
 				timeLeft = 0
-			time_remaining.text = Global.timeGetFullFormat(timeLeft,false,true) 
-			flame.value = float(timeLeft)/float(timeTotal) * 100
 			if(timeLeft == 0):
 				finish()
+			refreshProgress()
 
 func finish():
-	Inventory.add_resource(cookingItem,cookAmm)
-	flame.material.set_shader_param("on",0.0)
+	Inventory.add_resource(cookingItem,cookAmm,true)
 
 func start():
 	Inventory.add_resource(selected_fuel,-fuelRequired)
-	Inventory.add_resource(selectedItem,-rawAmm)
-	timeLeft = Inventory.resources[selectedItem]["cookTime"] * rawAmm
+	Inventory.add_resource(selectedItem,-rawAmm,true)
+	timeLeft = Inventory.food[selectedItem]["cookTime"] * rawAmm
 	timeTotal = timeLeft
 	time_remaining.text = Global.timeGetFullFormat(timeLeft,false,true) 
 	cookAmm = rawAmm
-	cookingItem = Inventory.resources[selectedItem]["cooksInto"]
-	flame.value = 100
-	flame.material.set_shader_param("on",1.0)
-	item_select.changeMaxAmm(Inventory.get_res_amm(selectedItem))
+	cookingItem = Inventory.food[selectedItem]["cooksInto"]
+	item_select.changeMaxAmm(Inventory.get_food_amm(selectedItem))
+	refreshProgress()
 
 func attemptStart() -> void:
-	fuelRequired = ceil(Inventory.resources[selectedItem]["cookTime"] * rawAmm / Inventory.resources[selected_fuel]["burining"]["time"])
+	fuelRequired = ceil(Inventory.food[selectedItem]["cookTime"] * rawAmm / Inventory.resources[selected_fuel]["burining"]["time"])
 	if(timeLeft != 0 or fuelRequired == 0 or fuelRequired > Inventory.get_res_amm(selected_fuel)):
 		fuel.shakeSelected()
 		return
@@ -83,8 +104,7 @@ func attemptStart() -> void:
 
 func _on_Fuel_itemClicked(item) -> void:
 	selected_fuel = item
-	attemptStart() 
-
+	attemptStart()
 
 func _on_FoodSelect_ammChanged(amm) -> void:
 	changeAmm(amm)

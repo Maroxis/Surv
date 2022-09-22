@@ -4,6 +4,7 @@ onready var resources: HBoxContainer = $"%Resources"
 onready var rawList = resources.get_node("Raw/List")
 onready var craftedList = resources.get_node("Crafted/List")
 onready var foodList = resources.get_node("Food/List")
+onready var scene = load("res://nodes/components/ItemCount.tscn")
 
 func _ready() -> void:
 	Global.ChestResources = self
@@ -11,33 +12,33 @@ func _ready() -> void:
 	loadRes()
 
 func createLists():
-	var scene = load("res://nodes/components/ItemCount.tscn")
 	for res in Inventory.resources:
-		var list
-		var scene_instance = scene.instance()
-		if(Inventory.resources[res].has("food")):
-			list = foodList
-		elif(Inventory.resources[res]["crafted"]):
-			list = craftedList
-		else:
-			list = rawList
-		if !list.has_node(res):
-			list.add_child(scene_instance)
-			scene_instance.set_name(res)
+		var list = craftedList if Inventory.resources[res]["crafted"] else rawList
+		_createList(list,res)
+	for food in Inventory.food:
+		_createList(foodList,food)
 
+func _createList(list,res):
+	var scene_instance = scene.instance()
+	if !list.has_node(res):
+		list.add_child(scene_instance)
+		scene_instance.set_name(res)
+
+func _loadSingleRes(list,res):
+	var node = list.get_node(res)
+	node.changeTexture(res,"64x64px")
+	node.changeSize(48)
+	if(list == foodList):
+		node.changeCount(Inventory.get_food_amm(res))
+	else:
+		node.changeCount(Inventory.get_res_amm(res))
+	
 func loadRes():
 	for res in Inventory.resources:
-		var list
-		if(Inventory.resources[res].has("food")):
-			list = foodList
-		elif(Inventory.resources[res]["crafted"]):
-			list = craftedList
-		else:
-			list = rawList
-		var node = list.get_node(res)
-		node.changeTexture(res,"64x64px")
-		node.changeSize(48)
-		node.changeCount(Inventory.get_res_amm(res))
+		var list = craftedList if Inventory.resources[res]["crafted"] else rawList
+		_loadSingleRes(list,res)
+	for food in Inventory.food:
+		_loadSingleRes(foodList,food)
 
 func clearList(list):
 	for n in list.get_children():
@@ -50,11 +51,11 @@ func refresh():
 	createLists()
 	loadRes()
 
-func update_resource(res,amm,crafted):
+func update_resource(res,amm,food):
 	var node
-	if(Inventory.resources[res].has("food")):
+	if(food):
 		node = foodList.get_node(res)
-	elif(crafted):
+	elif(Inventory.resources[res]["crafted"]):
 		node = craftedList.get_node(res)
 	else:
 		node = rawList.get_node(res)

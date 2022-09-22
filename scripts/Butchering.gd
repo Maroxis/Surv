@@ -12,30 +12,31 @@ func _ready() -> void:
 	addCarcassItems()
 
 func getCraftTime():
-	return Global.timeGetFullFormat(Inventory.resources[selectedCarcass]["craftTime"],false,true)
+	return Global.timeGetFullFormat(Inventory.food[selectedCarcass]["craftTime"],false,true)
 
 func getButcherBonus():
 	return 1
 
 func addCarcassItems():
-	for res in Inventory.resources:
-		if Inventory.resources[res].has("carcass"):
+	for res in Inventory.food:
+		if Inventory.food[res].has("carcass"):
 			carcass_select.add_item(res)
 	carcass_select.init()
 
 func butcher():
-	if Inventory.add_resource(selectedCarcass,-1):
-		for res in Inventory.resources[selectedCarcass]["deconstruct"]:
-			var amm = floor(Inventory.resources[selectedCarcass]["deconstruct"][res]*getButcherBonus())
-			Inventory.add_resource(res,amm)
-		Player.pass_time(Inventory.resources[selectedCarcass]["craftTime"])
+	if Inventory.add_resource(selectedCarcass,-1,true):
+		for res in Inventory.food[selectedCarcass]["deconstruct"]:
+			var amm = floor(Inventory.food[selectedCarcass]["deconstruct"][res]*getButcherBonus())
+			var fd = Inventory.food.has(res)
+			Inventory.add_resource(res,amm,fd)
+		Player.pass_time(Inventory.food[selectedCarcass]["craftTime"])
 
 func refreshOutput():
 	clearList(output_container)
-	for res in Inventory.resources[selectedCarcass]["deconstruct"]:
+	for res in Inventory.food[selectedCarcass]["deconstruct"]:
 		var scene = addScene(item_scene,output_container)
 		scene.init(res,false)
-		scene.changeAmm(Inventory.resources[selectedCarcass]["deconstruct"][res])
+		scene.changeAmm(Inventory.food[selectedCarcass]["deconstruct"][res])
 
 func refresh():
 	refreshTime()
@@ -46,7 +47,7 @@ func refreshTime():
 	time_label.text = getCraftTime()
 
 func refreshButton():
-	if(Inventory.get_res_amm(selectedCarcass) == 0):
+	if(Inventory.get_food_amm(selectedCarcass) == 0):
 		butcher_button.disable()
 	else:
 		butcher_button.enable()

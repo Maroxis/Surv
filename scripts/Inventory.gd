@@ -124,11 +124,13 @@ onready var resources = {
 		"craftTime": 1440,
 		"furnaceTier": 2,
 		"crafted": true
-	  },
+	  }
+}
+
+onready var food = {
 	"RawSmallMeat": {
 		"weight" : 1.2,
 		"crafted": false,
-		"food": true,
 		"cookable": true,
 		"calories": 40,
 		"sick": 10,
@@ -140,7 +142,6 @@ onready var resources = {
 	"RawMeat": {
 		"weight" : 2.8,
 		"crafted": false,
-		"food": true,
 		"cookable": true,
 		"calories": 80,
 		"sick": 30,
@@ -152,18 +153,16 @@ onready var resources = {
 	"WildBerry": {
 		"weight" : 1.2,
 		"crafted": false,
-		"food": true,
 		"cookable": false,
-		"calories": 10,
-		"water": 3,
-		"sick": 5,
+		"calories": 8,
+		"water": 2,
+		"sick": 1,
 		"spoil":[],
 		"spoilTime": 1440
 	  },
 	"CookedSmallMeat": {
 		"weight" : 1.0,
 		"crafted": true,
-		"food": true,
 		"cookable": false,
 		"calories": 40,
 		"spoil":[],
@@ -172,7 +171,6 @@ onready var resources = {
 	"CookedMeat": {
 		"weight" : 2.2,
 		"crafted": true,
-		"food": true,
 		"cookable": false,
 		"calories": 80,
 		"spoil":[],
@@ -186,7 +184,6 @@ onready var resources = {
 		"deconstruct":{
 			"RawSmallMeat":3,
 		},
-		"food": true,
 		"cookable": false,
 		"spoil":[],
 		"spoilTime": 4320
@@ -200,7 +197,6 @@ onready var resources = {
 			"RawMeat":4,
 			"Leather":2
 		},
-		"food": true,
 		"cookable": false,
 		"spoil":[],
 		"spoilTime": 4320
@@ -214,15 +210,14 @@ onready var resources = {
 			"RawMeat":9,
 			"Leather":4
 		},
-		"food": true,
 		"cookable": false,
 		"spoil":[],
 		"spoilTime": 4320
 	  }
 }
+
 onready var upgrades = {
 	"Bag" : {
-		"obtained" : false,
 		"size" : 2,
 		"cost" : {
 			"Leaf" : 12,
@@ -233,7 +228,6 @@ onready var upgrades = {
 		"craftTime": 120
 	},
 	"Backpack" : {
-		"obtained" : false,
 		"size" : 6,
 		"cost" : {
 			"Leaf" : 3,
@@ -242,7 +236,6 @@ onready var upgrades = {
 		"craftTime": 360
 	},
 	"Flask" : {
-		"obtained" : false,
 		"size" : 20,
 		"cost" : {
 			"Clay" : 3
@@ -250,10 +243,28 @@ onready var upgrades = {
 		"craftTime": 80
 	}
 }
+var resourcesData = {}
+var upgradesData = {}
+var foodData = {}
 
 func _ready() -> void:
-	Save.add_missing_keys(resources,Save.resources)
-	Save.add_missing_keys(upgrades,Save.upgrades,TYPE_BOOL)
+	Save.add_missing_keys(resources,resourcesData)
+	Save.add_missing_keys(upgrades,upgradesData,TYPE_BOOL)
+	Save.add_missing_keys(food,foodData,TYPE_DICTIONARY,2,{"amm":TYPE_INT,"spoil":TYPE_INT_ARRAY})
+
+func pack():
+	var data = {}
+	data["resources"] = resourcesData
+	data["upgrades"] = upgradesData
+	data["foodData"] = foodData
+	return data
+
+func unpack(data):
+	for res in resourcesData:
+		resourcesData[res] = int(data["resources"][res])
+	for upgrade in upgradesData:
+		upgradesData[upgrade] = bool(data["upgrades"][upgrade])
+	foodData = data["foodData"]
 
 func refresh():
 	update_bag()
@@ -261,32 +272,37 @@ func refresh():
 	Global.ToolsUI.updateTool("Water",flask)
 	
 func get_res_amm(res):
-	return int(Save.get_res_amm(res))
+	return int(resourcesData[res])
+
+func get_food_amm(res):
+	return int(foodData[res]["amm"])
 
 func get_upgrade(upgrade):
-	return bool(Save.upgrades[upgrade])
+	return bool(upgradesData[upgrade])
 
 func set_upgrade(upgrade,obt):
-	 Save.upgrades[upgrade] = bool(obt)
+	 upgradesData[upgrade] = bool(obt)
 
 func empty_bag():
 	var amm
 	for res in Save.bag["content"]:
 		amm = int(Save.bag["content"][res])
-		add_resource(res,amm)
+		var isfood = Inventory.food.has(res)
+		add_resource(res,amm,isfood)
 	Save.bag["content"].clear()
 	Save.bag["space"] = Save.bag["size"]
 	update_bag()
 
-func add_resource_to_bag(res,amm):
-	if(resources[res]["weight"] > Save.bag["space"]+0.05):
+func add_resource_to_bag(res,amm,fd = false):
+	var dict = food[res] if fd else resources[res]
+	if(dict["weight"] > Save.bag["space"]+0.05):
 		return false
 	var a
-	if(resources[res]["weight"]*amm > Save.bag["space"]):
-		a = floor((Save.bag["space"]+0.05)/resources[res]["weight"])
+	if(dict["weight"]*amm > Save.bag["space"]):
+		a = floor((Save.bag["space"]+0.05)/dict["weight"])
 	else:
 		a = amm
-	Save.bag["space"] -= resources[res]["weight"]*a
+	Save.bag["space"] -= dict["weight"]*a
 	Save.bag["space"] = abs(Save.bag["space"])
 	if(Save.bag["content"].has(res)):
 		Save.bag["content"][res] += a
@@ -298,32 +314,41 @@ func add_resource_to_bag(res,amm):
 func update_bag():
 	Global.BagUI.updateBag(Save.bag["space"],Save.bag["size"])
 
-func add_resource(res,amm):
-	if(Save.add_resource(res,amm)):
-		if Inventory.resources[res].has("food"):
-			add_spoil(res,amm)
-		return true
-	else:
+func add_resource(res,amm:int,fd = false):
+	var invAmm = foodData[res]["amm"] if fd else resourcesData[res]
+	if amm < 0 and invAmm < abs(amm):
 		return false
+	else:
+		var dictData = foodData if fd else resourcesData
+		if fd:
+			dictData[res]["amm"] += amm
+			dictData[res]["amm"] = min(dictData[res]["amm"],999)
+			Global.ResourcesUI.addRes(res,dictData[res]["amm"],fd)
+			add_spoil(res,amm)
+		else:
+			dictData[res] += amm
+			dictData[res] = min(dictData[res],999)
+			Global.ResourcesUI.addRes(res,dictData[res],fd)
+		return true
 
 func add_spoil(res,amm):
 	if(amm > 0):
 		var sp = {
 			"amm": amm,
-			"time": resources[res]["spoilTime"]
+			"time": food[res]["spoilTime"]
 		}
-		resources[res]["spoil"].push_back(sp)
+		foodData[res]["spoil"].push_back(sp)
 	else:
 		var i = abs(amm)
 		while i > 0:
-			for n in range(resources[res]["spoil"].size()-1,-1,-1):
-				var spAmm = resources[res]["spoil"][n]["amm"]
+			for n in range(foodData[res]["spoil"].size()-1,-1,-1):
+				var spAmm = foodData[res]["spoil"][n]["amm"]
 				if i >= spAmm:
 					i -= spAmm
-					resources[res]["spoil"][n]["amm"] = 0
-					resources[res]["spoil"].remove(n)
+					foodData[res]["spoil"][n]["amm"] = 0
+					foodData[res]["spoil"].remove(n)
 				else:
-					resources[res]["spoil"][n]["amm"] -= i
+					foodData[res]["spoil"][n]["amm"] -= i
 					i = 0
 				if(i == 0):
 					break
@@ -368,11 +393,9 @@ func expand_water(item):
 	return true
 
 func spoil_food(time):
-	for res in resources:
-		if resources[res].has("food") and not resources[res]["spoil"].empty():
-			for n in range(resources[res]["spoil"].size()-1,-1,-1):
-				resources[res]["spoil"][n]["time"] -= time
-				if(resources[res]["spoil"][n]["time"] < 0):
-					add_resource(res,-resources[res]["spoil"][n]["amm"])
-#					resources[res]["spoil"].remove(n)
-
+	for res in food:
+		if not foodData[res]["spoil"].empty():
+			for n in range(foodData[res]["spoil"].size()-1,-1,-1):
+				foodData[res]["spoil"][n]["time"] -= time
+				if(foodData[res]["spoil"][n]["time"] < 0):
+					add_resource(res,-foodData[res]["spoil"][n]["amm"],true)

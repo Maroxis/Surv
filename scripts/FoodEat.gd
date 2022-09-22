@@ -22,8 +22,8 @@ func removeItems():
 		n.queue_free()
 
 func populateItems():
-	for res in Inventory.resources:
-		if(Inventory.resources[res].has("calories") and Inventory.get_res_amm(res) > 0):
+	for res in Inventory.food:
+		if(Inventory.food[res].has("calories") and Inventory.get_food_amm(res) > 0):
 			var scene_instance = scene.instance()
 			food_container.add_child(scene_instance)
 			scene_instance.init(res)

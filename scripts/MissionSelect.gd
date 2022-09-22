@@ -12,7 +12,7 @@ onready var tool_req_tier: Label = $VBox/Button/ToolReq/Tier
 onready var icon: TextureRect = $VBox/Button/Icon
 
 export var connectMission = true
-export var customMission = false
+export var foodRes = false
 signal missionSelected
 
 func updateGatherTime(tm):
@@ -42,4 +42,4 @@ func populate(rsNam,amm,tm,tlReq):
 
 
 func _on_Button_pressed() -> void:
-	emit_signal("missionSelected",self.name)
+	emit_signal("missionSelected",self.name,foodRes)

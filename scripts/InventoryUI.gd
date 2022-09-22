@@ -87,8 +87,8 @@ func pr():
 	if(inProgress == 0 and not buffer.empty()):
 		update_resource()
 
-func addRes(res,amm,crafted):
-	Global.ChestResources.update_resource(res,amm,crafted)
+func addRes(res,amm,food):
+	Global.ChestResources.update_resource(res,amm,food)
 	addToBuffer(res,amm)
 	if(inProgress == 0 && buffer.size() == 1):
 		update_resource()

@@ -255,7 +255,7 @@ onready var tools = {
 }
 
 func _ready() -> void:
-	Save.add_missing_keys(tools,Save.tools,TYPE_DICTIONARY,2,["ctier","durability"])
+	Save.add_missing_keys(tools,Save.tools,TYPE_DICTIONARY,2,{"ctier":TYPE_INT,"durability":TYPE_INT})
 	
 func refresh():
 	for tl in tools:

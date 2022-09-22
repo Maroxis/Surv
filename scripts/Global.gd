@@ -27,6 +27,8 @@ func refresh():
 	Weather.refresh()
 	Missions.refresh()
 	Date.refresh()
+	Cook.refresh()
+	Smelt.refresh()
 	
 func timeGetFullFormat(time,lzero = false,labeled = false):
 	time = int(time)
