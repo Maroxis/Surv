@@ -13,7 +13,6 @@ onready var tools = {
 		"tier1" : {
 			"craftTime": 60,
 			"maxDurability": 1,
-			"curDurability": 1,
 			"cost": {
 				"Stick": 2,
 				"Rock": 2
@@ -25,7 +24,6 @@ onready var tools = {
 		"tier2" : {
 			"craftTime": 100,
 			"maxDurability": 2,
-			"curDurability": 2,
 			"cost": {
 				"Stick": 2,
 				"CopperIngot": 2
@@ -37,7 +35,6 @@ onready var tools = {
 		"tier3" : {
 			"craftTime": 80,
 			"maxDurability": 3,
-			"curDurability": 3,
 			"cost": {
 				"Stick": 2,
 				"BronzeIngot": 2
@@ -49,7 +46,6 @@ onready var tools = {
 		"tier4" : {
 			"craftTime": 120,
 			"maxDurability": 3,
-			"curDurability": 3,
 			"cost": {
 				"Stick": 2,
 				"IronIngot": 2
@@ -69,7 +65,6 @@ onready var tools = {
 		"tier1" : {
 			"craftTime": 40,
 			"maxDurability": 1,
-			"curDurability": 1,
 			"cost": {
 				"Stick": 1,
 				"Rock": 2
@@ -81,7 +76,6 @@ onready var tools = {
 		"tier2" : {
 			"craftTime": 80,
 			"maxDurability": 2,
-			"curDurability": 2,
 			"cost": {
 				"Stick": 1,
 				"CopperIngot": 1
@@ -93,7 +87,6 @@ onready var tools = {
 		"tier3" : {
 			"craftTime": 60,
 			"maxDurability": 3,
-			"curDurability": 3,
 			"cost": {
 				"Stick": 1,
 				"BronzeIngot": 1
@@ -105,7 +98,6 @@ onready var tools = {
 		"tier4" : {
 			"craftTime": 100,
 			"maxDurability": 5,
-			"curDurability": 5,
 			"cost": {
 				"Stick": 1,
 				"IronIngot": 1
@@ -125,7 +117,6 @@ onready var tools = {
 		"tier1" : {
 			"craftTime": 60,
 			"maxDurability": 1,
-			"curDurability": 1,
 			"cost": {
 				"Stick": 2,
 				"Rock": 2
@@ -137,7 +128,6 @@ onready var tools = {
 		"tier2" : {
 			"craftTime": 100,
 			"maxDurability": 2,
-			"curDurability": 2,
 			"cost": {
 				"Stick": 2,
 				"CopperIngot": 3
@@ -149,7 +139,6 @@ onready var tools = {
 		"tier3" : {
 			"craftTime": 80,
 			"maxDurability": 3,
-			"curDurability": 3,
 			"cost": {
 				"Stick": 2,
 				"BronzeIngot": 3
@@ -161,7 +150,6 @@ onready var tools = {
 		"tier4" : {
 			"craftTime": 120,
 			"maxDurability": 5,
-			"curDurability": 5,
 			"cost": {
 				"Stick": 2,
 				"IronIngot": 3
@@ -181,7 +169,6 @@ onready var tools = {
 		"tier1" : {
 			"craftTime": 80,
 			"maxDurability": 1,
-			"curDurability": 1,
 			"cost": {
 				"Stick": 2,
 				"Rock": 2
@@ -193,7 +180,6 @@ onready var tools = {
 		"tier2" : {
 			"craftTime": 120,
 			"maxDurability": 2,
-			"curDurability": 2,
 			"cost": {
 				"Stick": 2,
 				"CopperIngot": 3
@@ -205,7 +191,6 @@ onready var tools = {
 		"tier3" : {
 			"craftTime": 90,
 			"maxDurability": 3,
-			"curDurability": 3,
 			"cost": {
 				"Stick": 2,
 				"BronzeIngot": 3
@@ -217,7 +202,6 @@ onready var tools = {
 		"tier4" : {
 			"craftTime": 160,
 			"maxDurability": 5,
-			"curDurability": 5,
 			"cost": {
 				"Stick": 2,
 				"IronIngot": 3
@@ -237,7 +221,6 @@ onready var tools = {
 		"tier1" : {
 			"craftTime": 180,
 			"maxDurability": 2,
-			"curDurability": 2,
 			"cost": {
 				"Stick": 2,
 				"CopperIngot": 2
@@ -249,7 +232,6 @@ onready var tools = {
 		"tier2" : {
 			"craftTime": 160,
 			"maxDurability": 3,
-			"curDurability": 3,
 			"cost": {
 				"Stick": 2,
 				"BronzeIngot": 2
@@ -261,7 +243,6 @@ onready var tools = {
 		"tier3" : {
 			"craftTime": 200,
 			"maxDurability": 5,
-			"curDurability": 5,
 			"cost": {
 				"Stick": 2,
 				"IronIngot": 2
@@ -274,17 +255,18 @@ onready var tools = {
 }
 
 func _ready() -> void:
-	Save.add_missing_keys(tools,Save.tools)
+	Save.add_missing_keys(tools,Save.tools,TYPE_DICTIONARY,2,["ctier","durability"])
 	
 func refresh():
 	for tl in tools:
 		updateTool(tl)
 
 func getTier(tl,next = false):
-	return int(Save.tools[tl] + (1 if next else 0))
+	return int(Save.tools[tl]["ctier"] + (1 if next else 0))
 
 func setTier(tl,tier):
-	Save.tools[tl] = int(tier)
+	Save.tools[tl]["ctier"] = int(tier)
+	Save.tools[tl]["durability"] = tools[tl]["tier"+str(tier)]["maxDurability"]
 
 func craftTool(name):
 	removeRes(name)

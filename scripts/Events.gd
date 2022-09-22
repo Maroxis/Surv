@@ -133,8 +133,8 @@ func damageTool():
 	if(damage == 0):
 		return {"error":null,"desc":"Your "+str(chTl)+" holds strong"}
 	var ctier = Tools.getTier(chTl)
-	Tools.tools[chTl]["tier"+str(ctier)]["curDurability"] -= damage
-	if(Tools.tools[chTl]["tier"+str(ctier)]["curDurability"]) < 1:
+	Save.tools[chTl]["durability"] -= damage
+	if(Save.tools[chTl]["durability"]) < 1:
 		Tools.setTier(chTl,Tools.getTier(chTl)-1)
 		Tools.updateTool(chTl,true)
 		return {"error":null,"desc":"Your "+str(chTl)+" got damaged and...","res":"broke"}
