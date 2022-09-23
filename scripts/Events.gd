@@ -2,10 +2,11 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
-onready var forceEvent = 3
+onready var forceEvent = null
 
 onready var damageToolMlt = 0.8
 onready var waterAddTime = 25
+onready var showEvent = false
 
 onready var plannedEvent = {
 }
@@ -71,15 +72,17 @@ func pack():
 	data["eventIndex"] = eventIndex
 	data["damageToolMlt"] = damageToolMlt
 	data["waterAddTime"] = waterAddTime
+	data["showEvent"] = showEvent
 	return data
 
 func unpack(data):
 	eventIndex = data["eventIndex"]
 	damageToolMlt = data["damageToolMlt"]
 	waterAddTime = data["waterAddTime"]
+	showEvent = data["showEvent"]
 
-func check_event(day):
-	if(eventIndex+1 > eventDates.size() or eventDates[eventIndex] == day):
+func startEvent():
+	if showEvent:
 		var ev
 		if(plannedEvent.size() > eventIndex):
 			ev = plannedEvent["event"+str(eventIndex)]
@@ -94,8 +97,12 @@ func check_event(day):
 			res = call(ev["function"])
 			
 		showPopup(ev,res)
-		
 		eventIndex += 1
+		showEvent = false
+
+func check_event(day):
+	if(eventIndex+1 > eventDates.size() or eventDates[eventIndex] == day):
+		showEvent = true
 
 func showPopup(ev,res):
 	var title = ev["title"] if ev.has("title") else ""

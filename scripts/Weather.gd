@@ -68,13 +68,14 @@ func simWeather(time):
 func setWeather(wthr):
 	current = clamp(wthr,0,type.size()-1)
 			
-	deactivateSunny()
+#	deactivateSunny()
 	deactiveClouds()
 	deactiveRain()
 	deactiveLightning()
 	match current:
 		type.Sunny:
-			activateSunny()
+			pass
+#			activateSunny()
 		type.Calm:
 			pass
 		type.Cloudy:
@@ -153,24 +154,30 @@ func activeLightning():
 func deactiveLightning():
 	background.material.set_shader_param("lightning",0.0)
 
-func activateSunny():
-	background.material.set_shader_param("sunny",1.0)
-func deactivateSunny():
-	background.material.set_shader_param("sunny",0.0)
+#func activateSunny():
+#	background.material.set_shader_param("sunny",1.0)
+#func deactivateSunny():
+#	background.material.set_shader_param("sunny",0.0)
 
 func setTime(time):
 	time = time / 60
+	if current == type.Sunny:
+		background.material.set_shader_param("sunny",1.0)
+		
 	if(time >= 22 or time <= 4):
+		background.material.set_shader_param("sunny",0.0)
 		background.material.set_shader_param("r",0.4)
 		background.material.set_shader_param("g",0.4)
 		background.material.set_shader_param("b",1.0)
 	elif(time >= 20):
 		time -= 19
+		background.material.set_shader_param("sunny",0.0)
 		background.material.set_shader_param("r",1.0-0.3*time)
 		background.material.set_shader_param("g",0.6-0.1*time)
 		background.material.set_shader_param("b",0.4+0.3*time)
 	elif(time <= 6):
 		time -=4
+		background.material.set_shader_param("sunny",0.0)
 		background.material.set_shader_param("r",0.4+0.3*time)
 		background.material.set_shader_param("g",0.4+0.1*time)
 		background.material.set_shader_param("b",1.0-0.3*time)

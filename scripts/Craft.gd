@@ -24,6 +24,9 @@ func switchTab(tab):
 	TabSwitcherContainer.get_children()[tab_container.current_tab].deselect()
 	TabSwitcherContainer.get_children()[tab].select()
 	tab_container.current_tab = tab
+	refreshCurTab()
+
+func refreshCurTab():
 	refreshTab(tab_container.get_current_tab_control())
 
 func refresh():

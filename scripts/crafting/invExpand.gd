@@ -23,6 +23,7 @@ func refresh():
 func _updateCost():
 	clearList(cost)
 	populateList(cost,Inventory.upgrades[name],"cost",true)
+	toggleBT(cost_meet)
 
 func _updateTime():
 	timeLb.text = Global.timeGetFullFormat(Inventory.upgrades[self.name]["craftTime"],true)
@@ -30,4 +31,5 @@ func _updateTime():
 func _on_CraftButton_pressed() -> void:
 	if(Inventory.expand_bag(self.name)):
 		craft_button.disabled = true
-		fade()
+#		fade()
+		Global.Craft.refreshCurTab()

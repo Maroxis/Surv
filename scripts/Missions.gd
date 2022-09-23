@@ -1,13 +1,19 @@
 extends Control
 
-func _ready() -> void:
-	Global.Missions = self
-
 onready var woods: Control = $Woods
 onready var river: Control = $River
 onready var plains: Control = $Plains
 onready var hills: Control = $Hills
 onready var home: Control = $Home
+
+signal missionClosed
+
+func _ready() -> void:
+	Global.Missions = self
+	for mission in self.get_children():
+		mission.connect("closed",self,"mission_closed")
+# warning-ignore:return_value_discarded
+	connect("missionClosed",Events,"startEvent")
 
 func refresh():
 	for mission in self.get_children():
@@ -24,3 +30,6 @@ func unpack(data):
 	for mission in self.get_children():
 		mission.unpack(data[mission.name])
 	return
+
+func mission_closed():
+	emit_signal("missionClosed")

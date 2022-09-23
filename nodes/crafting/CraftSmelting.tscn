@@ -114,9 +114,8 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -40.0
 margin_top = -150.0
-margin_right = -24.0
-margin_bottom = -55.0
-rect_scale = Vector2( 4.96287, 1.32689 )
+margin_right = 40.0
+margin_bottom = -26.0
 texture_under = ExtResource( 10 )
 texture_progress = ExtResource( 10 )
 fill_mode = 3
@@ -143,6 +142,7 @@ size_flags_vertical = 3
 
 [node name="Warning" type="Panel" parent="."]
 unique_name_in_owner = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = SubResource( 8 )

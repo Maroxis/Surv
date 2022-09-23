@@ -171,13 +171,13 @@ func pass_time(time,sleep=false,wet = false):
 	if(sick > 0):
 		var fullBonus = 2 if food > 50 and water > 50 else 1
 		change_sick(-(sickRate*3*time*sleepRegenMult*fullBonus))
-
+	
 	Buildings.runCollector(time)
 	Inventory.spoil_food(time)
 	Global.Smelt.run(time)
 	Global.Cook.run(time)
-	Global.Date.changeTime(time)
 	Global.Weather.simWeather(time)
+	Global.Date.changeTime(time)
 	
 func change_sick(amm):
 	sick += amm

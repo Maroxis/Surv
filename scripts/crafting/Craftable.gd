@@ -4,6 +4,8 @@ class_name Craftable
 
 onready var list_item_scene = load("res://nodes/components/ListItem.tscn")
 var craft_button
+var cost_meet = false
+var tool_meet = false
 
 func refresh():
 	return
@@ -38,14 +40,20 @@ func clearList(list):
 	for n in list.get_children():
 		n.queue_free()
 func populateList(list,dict,cat,wIcon = false):
+	cost_meet = true
 	for mat in dict[cat]:
 		var amm = dict[cat][mat]
 		if(amm > Inventory.get_res_amm(mat)):
 			addListItem(list,mat,amm,Color(1,1,0,1),wIcon)
-			disableBT()
+			cost_meet = false
 		else:
 			addListItem(list,mat,amm,Color(0,1,0,1),wIcon)
-			enableBT()
+
+func toggleBT(on):
+	if on:
+		enableBT()
+	else:
+		disableBT()
 
 func disableBT():
 	craft_button.modulate.a = 0.4

@@ -230,7 +230,8 @@ onready var upgrades = {
 	"Backpack" : {
 		"size" : 6,
 		"cost" : {
-			"Leaf" : 3,
+			"Leaf" : 48,
+			"Thread" : 8,
 			"Rope" : 2
 		},
 		"craftTime": 360

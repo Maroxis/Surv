@@ -11,7 +11,7 @@ theme = ExtResource( 1 )
 scroll_vertical_enabled = false
 
 [node name="Items" type="HBoxContainer" parent="."]
-margin_right = 1280.0
+margin_right = 1576.0
 margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -29,14 +29,19 @@ margin_left = 360.0
 margin_right = 696.0
 margin_bottom = 720.0
 
-[node name="Flask" parent="Items" instance=ExtResource( 3 )]
+[node name="Backpack" parent="Items" instance=ExtResource( 4 )]
 margin_left = 744.0
 margin_right = 1080.0
 margin_bottom = 720.0
 
-[node name="Margin2" type="Control" parent="Items"]
+[node name="Flask" parent="Items" instance=ExtResource( 3 )]
 margin_left = 1128.0
-margin_right = 1280.0
+margin_right = 1464.0
+margin_bottom = 720.0
+
+[node name="Margin2" type="Control" parent="Items"]
+margin_left = 1512.0
+margin_right = 1576.0
 margin_bottom = 720.0
 rect_min_size = Vector2( 64, 0 )
 size_flags_horizontal = 3

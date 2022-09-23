@@ -34,6 +34,7 @@ func refresh():
 func _updateCost(ctier):
 	clearList(cost)
 	populateList(cost,Tools.tools[self.name]["tier"+str(ctier+1)],"cost",true)
+	toggleBT(cost_meet)
 
 func _updateBene(ctier,lastTier):
 	self.benefits.clear()
@@ -54,8 +55,7 @@ func _updateBene(ctier,lastTier):
 func _on_CraftButton_pressed() -> void:
 	if(Tools.checkCost(self.name)):
 		Tools.craftTool(self.name)
-#		craftBtAnim(craft_button,btOrgPos)
-		refresh()
+		Global.Craft.refreshCurTab()
 
 func _updateTime():
 	var ctier = Tools.getTier(self.name)

@@ -6,5 +6,5 @@ code = "shader_type canvas_item;
 uniform float on = 0.0;
 
 void vertex() {
-	VERTEX += vec2(cos(TIME)*(VERTEX.y - 80.0)/80.0*on, sin(TIME)*(VERTEX.y - 80.0)/10.0)*on;
+	VERTEX += vec2(sin(TIME)*(1.0-UV.y)*20.0*on, sin(TIME)*(1.0-UV.y)*12.0*on+cos(TIME*2.0)*(1.0-UV.y)*8.0*on);
 }"
