@@ -12,21 +12,15 @@ onready var home: Control = $Home
 func refresh():
 	for mission in self.get_children():
 		if mission is Mission:
-			mission.updateTravelTime()
-			mission.updateGatherTime()
+			mission.refresh()
 
 func pack():
 	var data = {}
 	for mission in self.get_children():
-		if mission is Mission:
-			data[mission.name] = {}
-			data[mission.name]["missionTravelTime"] = mission.missionTravelTime
-			data[mission.name]["gatherTime"] = mission.gatherTime
+		data[mission.name] = mission.pack()
 	return data
 
 func unpack(data):
 	for mission in self.get_children():
-		if mission is Mission:
-			mission.missionTravelTime = data[mission.name]["missionTravelTime"]
-			mission.gatherTime = data[mission.name]["gatherTime"]
-	return data
+		mission.unpack(data[mission.name])
+	return

@@ -16,6 +16,10 @@ func _ready() -> void:
 # warning-ignore:return_value_discarded
 	Tools.connect("toolChanged",self,"checkTools")
 
+func refresh():
+	updateTravelTime()
+	updateGatherTime()
+
 func updateTravelTime():
 	Global.MissionButtons.updateMissionTime(self.name,getTravelTime())
 	
@@ -87,3 +91,14 @@ func checkTools(tl,dn,lv):
 
 func missionSelected(mission,food):
 	addRes(mission,gatherAmm[mission],food)
+
+func pack():
+	var data = {}
+	data["missionTravelTime"] = missionTravelTime
+	data["gatherTime"] = gatherTime
+	return data
+
+func unpack(data):
+	missionTravelTime = data["missionTravelTime"]
+	gatherTime = data["gatherTime"]
+	return

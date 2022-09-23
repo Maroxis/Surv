@@ -65,12 +65,24 @@ func explore():
 		resources.get_children()[exploreDiscovered].show()
 		exploreDiscovered += 1
 		exploreCurrentProgress = 0
-		if(exploreDiscovered == exploreTable.size()):
-			explore_control.hide()
-			return
+	updateVisualEx()
+	Player.pass_time(exploreTime)
+
+func refresh():
+	updateTravelTime()
+	updateGatherTime()
+	revealAllEplored()
 	updateVisualEx()
 
+func revealAllEplored():
+	var res = resources.get_children()
+	for i in exploreDiscovered:
+		res[i].show()
+
 func updateVisualEx():
+	if exploreDiscovered == exploreTable.size():
+		explore_control.hide()
+		return
 	exploration_progress.max_value = exploreTable[exploreDiscovered]
 	exploration_progress.value = exploreCurrentProgress
 	exploration_progress_label.text = str(exploreCurrentProgress)+"/"+str(exploreTable[exploreDiscovered])
@@ -81,3 +93,20 @@ func _on_Explore_Button_pressed() -> void:
 		explore()
 	else:
 		explore_button.shakeSide()
+
+func pack():
+	var data = {}
+	data["missionTravelTime"] = missionTravelTime
+	data["gatherTime"] = gatherTime
+	data["exploreTime"] = exploreTime
+	data["exploreCurrentProgress"] = exploreCurrentProgress
+	data["exploreDiscovered"] = exploreDiscovered
+	return data
+
+func unpack(data):
+	missionTravelTime = data["missionTravelTime"]
+	gatherTime = data["gatherTime"]
+	exploreTime = data["exploreTime"]
+	exploreCurrentProgress = data["exploreCurrentProgress"]
+	exploreDiscovered = data["exploreDiscovered"]
+	return

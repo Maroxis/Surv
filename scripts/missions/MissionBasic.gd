@@ -13,3 +13,8 @@ func travel():
 	show()
 	var tween = create_tween().set_ease(Tween.EASE_IN)
 	tween.tween_property(self, "rect_position:y", pos.y, 0.4)
+
+func pack():
+	return {}
+func unpack(data):
+	return {}
