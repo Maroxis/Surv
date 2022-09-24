@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=7 format=2]
+
+[sub_resource type="ImageTexture" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[resource]
+HScrollBar/icons/decrement = SubResource( 1 )
+HScrollBar/icons/decrement_highlight = SubResource( 1 )
+HScrollBar/icons/decrement_pressed = SubResource( 1 )
+HScrollBar/icons/increment = SubResource( 1 )
+HScrollBar/icons/increment_highlight = SubResource( 1 )
+HScrollBar/icons/increment_pressed = SubResource( 1 )
+HScrollBar/styles/grabber = SubResource( 2 )
+HScrollBar/styles/grabber_highlight = SubResource( 3 )
+HScrollBar/styles/grabber_pressed = SubResource( 4 )
+HScrollBar/styles/scroll = SubResource( 5 )
+HScrollBar/styles/scroll_focus = SubResource( 6 )

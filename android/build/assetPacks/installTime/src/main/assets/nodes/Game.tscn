@@ -1,0 +1,867 @@
+[gd_scene load_steps=67 format=2]
+
+[ext_resource path="res://nodes/Weather.tscn" type="PackedScene" id=1]
+[ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/missions/River.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/Icons/128x128px/Wenrexa Drop Water or Blood.png" type="Texture" id=4]
+[ext_resource path="res://scripts/UI.gd" type="Script" id=5]
+[ext_resource path="res://nodes/StatusIndicator.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sprites/Icons/128x128px/food.png" type="Texture" id=7]
+[ext_resource path="res://nodes/missions/HillsMission.tscn" type="PackedScene" id=8]
+[ext_resource path="res://resources/GameTheme.tres" type="Theme" id=9]
+[ext_resource path="res://sprites/Icons/256x256px/house.png" type="Texture" id=10]
+[ext_resource path="res://sprites/Icons/128x128px/calendarC.png" type="Texture" id=11]
+[ext_resource path="res://nodes/missions/Woods.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sprites/Icons/64x64px/cog.png" type="Texture" id=13]
+[ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=14]
+[ext_resource path="res://nodes/InGSettings.tscn" type="PackedScene" id=15]
+[ext_resource path="res://sprites/Icons/64x64px/water.png" type="Texture" id=16]
+[ext_resource path="res://nodes/missions/Plains.tscn" type="PackedScene" id=17]
+[ext_resource path="res://sprites/Icons/128x128px/Wenrexa Healing magic.png" type="Texture" id=18]
+[ext_resource path="res://sprites/Icons/32x32px/shovel.png" type="Texture" id=19]
+[ext_resource path="res://nodes/Build.tscn" type="PackedScene" id=20]
+[ext_resource path="res://nodes/GameOver.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scripts/Status.gd" type="Script" id=22]
+[ext_resource path="res://scripts/Game.gd" type="Script" id=23]
+[ext_resource path="res://scripts/Missions.gd" type="Script" id=24]
+[ext_resource path="res://fonts/ResourcesTheme.tres" type="Theme" id=25]
+[ext_resource path="res://nodes/crafting/Craft.tscn" type="PackedScene" id=26]
+[ext_resource path="res://nodes/FoodEat.tscn" type="PackedScene" id=27]
+[ext_resource path="res://sprites/UI/Status/IconDiscBW.png" type="Texture" id=28]
+[ext_resource path="res://scripts/missions/Base.gd" type="Script" id=29]
+[ext_resource path="res://nodes/BaseActivity.tscn" type="PackedScene" id=30]
+[ext_resource path="res://sprites/Icons/64x64px/craft.png" type="Texture" id=31]
+[ext_resource path="res://sprites/Icons/64x64px/status.png" type="Texture" id=32]
+[ext_resource path="res://sprites/Icons/64x64px/sleep.png" type="Texture" id=33]
+[ext_resource path="res://sprites/Icons/32x32px/saw.png" type="Texture" id=34]
+[ext_resource path="res://sprites/textiletex.png" type="Texture" id=35]
+[ext_resource path="res://sprites/UI/Topbar/calendar/sun-cloud.png" type="Texture" id=37]
+[ext_resource path="res://scripts/Date.gd" type="Script" id=38]
+[ext_resource path="res://nodes/components/ReturnButton.tscn" type="PackedScene" id=40]
+[ext_resource path="res://sprites/UI/Status/backgroundTex.png" type="Texture" id=41]
+[ext_resource path="res://sprites/Icons/32x32px/pickaxe.png" type="Texture" id=44]
+[ext_resource path="res://sprites/Icons/32x32px/knife.png" type="Texture" id=45]
+[ext_resource path="res://sprites/Icons/32x32px/axe.png" type="Texture" id=46]
+[ext_resource path="res://sprites/Icons/32x32px/flask.png" type="Texture" id=48]
+[ext_resource path="res://nodes/Resources.tscn" type="PackedScene" id=49]
+[ext_resource path="res://scripts/MissionButtons.gd" type="Script" id=52]
+[ext_resource path="res://scripts/Debug.gd" type="Script" id=53]
+[ext_resource path="res://sprites/Icons/128x128px/hog-head.png" type="Texture" id=54]
+[ext_resource path="res://sprites/Icons/128x128px/Wenrexa Pickaxe.png" type="Texture" id=55]
+[ext_resource path="res://sprites/UI/Topbar/calendar/cloud.png" type="Texture" id=57]
+[ext_resource path="res://sprites/UI/Topbar/calendar/thunder-cloud.png" type="Texture" id=58]
+[ext_resource path="res://sprites/UI/Topbar/calendar/sun.png" type="Texture" id=59]
+[ext_resource path="res://sprites/UI/Topbar/calendar/rain-cloud.png" type="Texture" id=62]
+[ext_resource path="res://scripts/ToolsUI.gd" type="Script" id=63]
+[ext_resource path="res://scripts/WeatherUI.gd" type="Script" id=64]
+[ext_resource path="res://resources/ButtonNoBG.tres" type="Theme" id=65]
+[ext_resource path="res://scripts/animate/NodeAnimated.gd" type="Script" id=66]
+[ext_resource path="res://nodes/EventPopup.tscn" type="PackedScene" id=67]
+[ext_resource path="res://scripts/animate/TextureProgressAnimated.gd" type="Script" id=69]
+[ext_resource path="res://nodes/Inventory.tscn" type="PackedScene" id=70]
+[ext_resource path="res://sprites/Icons/64x64px/campfire.png" type="Texture" id=71]
+[ext_resource path="res://scripts/BaseActivities.gd" type="Script" id=72]
+[ext_resource path="res://nodes/Cook.tscn" type="PackedScene" id=73]
+[ext_resource path="res://scripts/FoodIcon.gd" type="Script" id=74]
+[ext_resource path="res://sprites/UI/Topbar/BG.png" type="Texture" id=75]
+[ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=77]
+
+[sub_resource type="DynamicFont" id=13]
+size = 30
+use_filter = true
+font_data = ExtResource( 77 )
+
+[node name="Game" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 23 )
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="WideScreenBG" type="TextureRect" parent="Canvas"]
+self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 35 )
+expand = true
+stretch_mode = 2
+
+[node name="Weather" parent="Canvas" instance=ExtResource( 1 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Canvas"]
+layer = 20
+
+[node name="GameWindow" type="Control" parent="Canvas/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 9 )
+
+[node name="Buttons" type="Control" parent="Canvas/CanvasLayer/GameWindow"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+mouse_filter = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource( 52 )
+
+[node name="Woods" parent="Canvas/CanvasLayer/GameWindow/Buttons" instance=ExtResource( 2 )]
+margin_left = 75.0
+margin_top = -156.0
+margin_right = 75.0
+margin_bottom = -156.0
+
+[node name="River" parent="Canvas/CanvasLayer/GameWindow/Buttons" instance=ExtResource( 2 )]
+margin_left = -409.0
+margin_top = -57.0
+margin_right = -409.0
+margin_bottom = -57.0
+
+[node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Buttons/River" index="2"]
+texture = ExtResource( 4 )
+
+[node name="Home" parent="Canvas/CanvasLayer/GameWindow/Buttons" instance=ExtResource( 2 )]
+margin_left = -95.0
+margin_top = 53.0
+margin_right = -95.0
+margin_bottom = 53.0
+
+[node name="PlateBG" parent="Canvas/CanvasLayer/GameWindow/Buttons/Home" index="0"]
+visible = false
+
+[node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Buttons/Home" index="2"]
+texture = ExtResource( 10 )
+
+[node name="Plains" parent="Canvas/CanvasLayer/GameWindow/Buttons" instance=ExtResource( 2 )]
+margin_left = 409.0
+margin_top = -29.0
+margin_right = 409.0
+margin_bottom = -29.0
+
+[node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Buttons/Plains" index="2"]
+texture = ExtResource( 54 )
+
+[node name="Hills" parent="Canvas/CanvasLayer/GameWindow/Buttons" instance=ExtResource( 2 )]
+margin_left = 174.0
+margin_top = 161.0
+margin_right = 174.0
+margin_bottom = 161.0
+
+[node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Buttons/Hills" index="2"]
+texture = ExtResource( 55 )
+
+[node name="Missions" type="Control" parent="Canvas/CanvasLayer/GameWindow"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 128.0
+mouse_filter = 2
+script = ExtResource( 24 )
+
+[node name="Woods" parent="Canvas/CanvasLayer/GameWindow/Missions" instance=ExtResource( 12 )]
+visible = false
+
+[node name="River" parent="Canvas/CanvasLayer/GameWindow/Missions" instance=ExtResource( 3 )]
+visible = false
+
+[node name="Plains" parent="Canvas/CanvasLayer/GameWindow/Missions" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Hills" parent="Canvas/CanvasLayer/GameWindow/Missions" instance=ExtResource( 8 )]
+visible = false
+
+[node name="Home" type="Control" parent="Canvas/CanvasLayer/GameWindow/Missions"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 29 )
+
+[node name="BG" type="TextureRect" parent="Canvas/CanvasLayer/GameWindow/Missions/Home"]
+self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 0
+texture = ExtResource( 35 )
+stretch_mode = 2
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/CanvasLayer/GameWindow/Missions/Home"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = -192
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBox" type="HBoxContainer" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer"]
+margin_right = 1280.0
+margin_bottom = 392.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer" type="Control" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox"]
+margin_right = 64.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 64, 0 )
+
+[node name="Build" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox" instance=ExtResource( 30 )]
+margin_left = 68.0
+margin_top = 196.0
+margin_right = 446.0
+margin_bottom = 196.0
+
+[node name="Name" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Build/VBox" index="1"]
+text = "Build"
+
+[node name="Craft" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox" instance=ExtResource( 30 )]
+margin_left = 450.0
+margin_top = 196.0
+margin_right = 829.0
+margin_bottom = 196.0
+
+[node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Craft/VBox/Button" index="1"]
+texture = ExtResource( 31 )
+
+[node name="Name" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Craft/VBox" index="1"]
+text = "Craft"
+
+[node name="Cook" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox" instance=ExtResource( 30 )]
+margin_left = 833.0
+margin_top = 196.0
+margin_right = 1211.0
+margin_bottom = 196.0
+
+[node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Cook/VBox/Button" index="1"]
+texture = ExtResource( 71 )
+
+[node name="Name" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Cook/VBox" index="1"]
+text = "Cook"
+
+[node name="Status" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox" instance=ExtResource( 30 )]
+unique_name_in_owner = true
+visible = false
+margin_left = 929.0
+margin_top = 196.0
+margin_right = 1212.0
+margin_bottom = 196.0
+
+[node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Status/VBox/Button" index="1"]
+texture = ExtResource( 32 )
+
+[node name="Name" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Status/VBox" index="1"]
+text = "Status"
+
+[node name="Spacer2" type="Control" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox"]
+margin_left = 1215.0
+margin_right = 1279.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 64, 0 )
+
+[node name="HBox2" type="HBoxContainer" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer"]
+margin_top = 200.0
+margin_right = 1280.0
+margin_bottom = 592.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer" type="Control" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2"]
+margin_right = 256.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 256, 0 )
+
+[node name="Drink" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2" instance=ExtResource( 30 )]
+modulate = Color( 1, 1, 1, 0.4 )
+margin_left = 260.0
+margin_top = 196.0
+margin_right = 638.0
+margin_bottom = 196.0
+
+[node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Drink/VBox/Button" index="1"]
+texture = ExtResource( 16 )
+
+[node name="Button" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Drink/VBox/Button" index="2"]
+disabled = true
+
+[node name="Name" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Drink/VBox" index="1"]
+text = "Drink"
+
+[node name="Ammount" type="Label" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Drink/VBox" index="2"]
+margin_top = 177.0
+margin_right = 128.0
+margin_bottom = 218.0
+theme = ExtResource( 25 )
+align = 1
+
+[node name="Sleep" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2" instance=ExtResource( 30 )]
+margin_left = 642.0
+margin_top = 196.0
+margin_right = 1020.0
+margin_bottom = 196.0
+
+[node name="Icon" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Sleep/VBox/Button" index="1"]
+texture = ExtResource( 33 )
+
+[node name="Name" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Sleep/VBox" index="1"]
+text = "Sleep"
+
+[node name="Time" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Sleep/VBox" index="2"]
+visible = true
+text = "6:00"
+
+[node name="Spacer2" type="Control" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2"]
+margin_left = 1024.0
+margin_right = 1280.0
+margin_bottom = 392.0
+rect_min_size = Vector2( 256, 0 )
+
+[node name="Return" parent="Canvas/CanvasLayer/GameWindow/Missions/Home" instance=ExtResource( 40 )]
+
+[node name="BaseActivities" type="Control" parent="Canvas/CanvasLayer/GameWindow"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 72 )
+
+[node name="Build" parent="Canvas/CanvasLayer/GameWindow/BaseActivities" instance=ExtResource( 20 )]
+visible = false
+
+[node name="Status" type="Control" parent="Canvas/CanvasLayer/GameWindow/BaseActivities"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 128.0
+script = ExtResource( 22 )
+
+[node name="BG" type="TextureRect" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Status"]
+self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 0
+texture = ExtResource( 35 )
+stretch_mode = 2
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Status"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 264.0
+margin_top = 64.0
+margin_right = -264.0
+margin_bottom = -128.0
+scroll_horizontal_enabled = false
+
+[node name="ItemList" type="VBoxContainer" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Status/ScrollContainer"]
+margin_right = 752.0
+margin_bottom = 400.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 14 )
+
+[node name="Return" parent="Canvas/CanvasLayer/GameWindow/BaseActivities/Status" instance=ExtResource( 40 )]
+
+[node name="Cook" parent="Canvas/CanvasLayer/GameWindow/BaseActivities" instance=ExtResource( 73 )]
+visible = false
+
+[node name="Craft" parent="Canvas/CanvasLayer/GameWindow/BaseActivities" instance=ExtResource( 26 )]
+visible = false
+
+[node name="UI" type="Control" parent="Canvas"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 9 )
+script = ExtResource( 5 )
+
+[node name="TopLayer" type="CanvasLayer" parent="Canvas/UI"]
+layer = 128
+
+[node name="Debug" type="Control" parent="Canvas/UI/TopLayer"]
+unique_name_in_owner = true
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 9 )
+script = ExtResource( 53 )
+
+[node name="TestButton" type="Button" parent="Canvas/UI/TopLayer/Debug"]
+unique_name_in_owner = true
+margin_left = 2.0
+margin_top = 128.0
+margin_right = 66.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 64, 64 )
+text = "WTHR"
+
+[node name="SoakMeter" type="ProgressBar" parent="Canvas/UI/TopLayer/Debug"]
+margin_left = 8.0
+margin_top = 197.0
+margin_right = 136.0
+margin_bottom = 229.0
+rect_min_size = Vector2( 128, 32 )
+
+[node name="AddResButton" type="Button" parent="Canvas/UI/TopLayer/Debug"]
+margin_left = 79.0
+margin_top = 129.0
+margin_right = 143.0
+margin_bottom = 193.0
+rect_min_size = Vector2( 64, 64 )
+text = "Items"
+
+[node name="Resources" parent="Canvas/UI/TopLayer" instance=ExtResource( 49 )]
+visible = false
+theme = ExtResource( 9 )
+
+[node name="EventPopup" parent="Canvas/UI/TopLayer" instance=ExtResource( 67 )]
+unique_name_in_owner = true
+visible = false
+theme = ExtResource( 9 )
+
+[node name="InGSettings" parent="Canvas/UI/TopLayer" instance=ExtResource( 15 )]
+unique_name_in_owner = true
+visible = false
+
+[node name="GameOver" parent="Canvas/UI/TopLayer" instance=ExtResource( 21 )]
+visible = false
+
+[node name="Status" type="CanvasLayer" parent="Canvas/UI"]
+layer = 90
+
+[node name="FoodEat" parent="Canvas/UI/Status" instance=ExtResource( 27 )]
+visible = false
+
+[node name="Corner" type="Control" parent="Canvas/UI/Status"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_right = 40.0
+
+[node name="BG" type="TextureRect" parent="Canvas/UI/Status/Corner"]
+self_modulate = Color( 0.466667, 0.227451, 0, 1 )
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -264.0
+margin_right = 264.0
+rect_min_size = Vector2( 264, 264 )
+texture = ExtResource( 41 )
+expand = true
+
+[node name="Health" parent="Canvas/UI/Status/Corner" instance=ExtResource( 6 )]
+unique_name_in_owner = true
+margin_left = 59.0
+margin_top = -51.0
+margin_right = 59.0
+margin_bottom = -51.0
+mouse_filter = 2
+
+[node name="TextureProgress" parent="Canvas/UI/Status/Corner/Health" index="0"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_right = 80.0
+margin_bottom = 80.0
+value = 100.0
+texture_under = ExtResource( 28 )
+texture_progress = ExtResource( 28 )
+
+[node name="TextureRect" parent="Canvas/UI/Status/Corner/Health/TextureProgress" index="0"]
+margin_left = -31.0
+margin_top = -33.0
+margin_right = 97.0
+margin_bottom = 95.0
+texture = ExtResource( 18 )
+
+[node name="SickProgress" type="TextureProgress" parent="Canvas/UI/Status/Corner/Health"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -58.0
+margin_top = -58.0
+margin_right = 90.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 148, 148 )
+value = 30.0
+texture_under = ExtResource( 28 )
+texture_progress = ExtResource( 28 )
+fill_mode = 8
+tint_under = Color( 0.0352941, 0.172549, 0, 1 )
+tint_progress = Color( 0.54902, 1, 0, 1 )
+radial_initial_angle = 180.0
+nine_patch_stretch = true
+stretch_margin_left = 48
+stretch_margin_top = 48
+stretch_margin_right = 48
+stretch_margin_bottom = 48
+script = ExtResource( 69 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Food" parent="Canvas/UI/Status/Corner" instance=ExtResource( 6 )]
+unique_name_in_owner = true
+self_modulate = Color( 1, 0.577148, 0, 1 )
+margin_left = 163.0
+margin_top = -121.0
+margin_right = 163.0
+margin_bottom = -121.0
+script = ExtResource( 74 )
+
+[node name="TextureProgress" parent="Canvas/UI/Status/Corner/Food" index="0"]
+self_modulate = Color( 1, 0.541176, 0, 1 )
+value = 100.0
+
+[node name="TextureRect" parent="Canvas/UI/Status/Corner/Food/TextureProgress" index="0"]
+margin_left = -32.0
+margin_top = -31.0
+margin_right = 96.0
+margin_bottom = 97.0
+texture = ExtResource( 7 )
+
+[node name="Button" type="Button" parent="Canvas/UI/Status/Corner/Food/TextureProgress" index="2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -48.0
+margin_top = -48.0
+margin_right = 48.0
+margin_bottom = 48.0
+theme = ExtResource( 65 )
+
+[node name="Water" parent="Canvas/UI/Status/Corner" instance=ExtResource( 6 )]
+unique_name_in_owner = true
+margin_left = 59.0
+margin_top = -160.0
+margin_right = 59.0
+margin_bottom = -160.0
+
+[node name="TextureProgress" parent="Canvas/UI/Status/Corner/Water" index="0"]
+self_modulate = Color( 0, 1, 1, 1 )
+value = 100.0
+
+[node name="Energy" parent="Canvas/UI/Status/Corner" instance=ExtResource( 6 )]
+unique_name_in_owner = true
+margin_left = 200.0
+margin_top = -20.0
+margin_right = 200.0
+margin_bottom = -20.0
+
+[node name="TextureProgress" parent="Canvas/UI/Status/Corner/Energy" index="0"]
+self_modulate = Color( 1, 0.890196, 0, 1 )
+value = 100.0
+
+[node name="TextureRect" parent="Canvas/UI/Status/Corner/Energy/TextureProgress" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 48.0
+margin_bottom = 48.0
+texture = ExtResource( 33 )
+expand = true
+
+[node name="TopBar" type="CanvasLayer" parent="Canvas/UI/Status"]
+layer = 95
+
+[node name="Control" type="Control" parent="Canvas/UI/Status/TopBar"]
+anchor_right = 1.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BG" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control"]
+self_modulate = Color( 1, 0.701961, 0.282353, 1 )
+anchor_right = 1.0
+rect_min_size = Vector2( 0, 128 )
+texture = ExtResource( 75 )
+expand = true
+stretch_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Canvas/UI/Status/TopBar/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Control3" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
+margin_right = 16.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 16, 0 )
+
+[node name="Date" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
+margin_left = 20.0
+margin_right = 148.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource( 38 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Calendar" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 4.0
+margin_right = -8.0
+margin_bottom = -8.0
+rect_min_size = Vector2( 120, 120 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = -8
+
+[node name="Control" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/VBoxContainer"]
+margin_right = 120.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 52 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Day" type="Label" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/VBoxContainer"]
+margin_left = 6.0
+margin_top = 44.0
+margin_right = 114.0
+margin_bottom = 83.0
+rect_min_size = Vector2( 108, 0 )
+size_flags_horizontal = 4
+theme = ExtResource( 25 )
+custom_fonts/font = SubResource( 13 )
+text = "Day 23"
+align = 1
+clip_text = true
+
+[node name="Time" type="Label" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/VBoxContainer"]
+margin_left = 23.0
+margin_top = 75.0
+margin_right = 97.0
+margin_bottom = 116.0
+size_flags_horizontal = 4
+theme = ExtResource( 25 )
+text = "24:00"
+
+[node name="WeatherUI" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar"]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -56.0
+margin_top = -44.0
+margin_right = 56.0
+margin_bottom = -8.0
+script = ExtResource( 64 )
+
+[node name="Sunny" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI"]
+visible = false
+margin_left = 41.0
+margin_top = -2.0
+margin_right = 73.0
+margin_bottom = 30.0
+texture = ExtResource( 59 )
+
+[node name="Calm" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI"]
+margin_left = 41.0
+margin_top = -2.0
+margin_right = 73.0
+margin_bottom = 30.0
+texture = ExtResource( 37 )
+
+[node name="Cloudy" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI"]
+visible = false
+margin_left = 41.0
+margin_top = -2.0
+margin_right = 73.0
+margin_bottom = 30.0
+texture = ExtResource( 57 )
+
+[node name="Rain" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI"]
+visible = false
+margin_left = 41.0
+margin_top = -2.0
+margin_right = 73.0
+margin_bottom = 30.0
+texture = ExtResource( 62 )
+
+[node name="HeavyRain" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI"]
+visible = false
+margin_left = 41.0
+margin_top = -2.0
+margin_right = 81.0
+margin_bottom = 38.0
+
+[node name="Rain" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI/HeavyRain"]
+margin_left = -20.0
+margin_right = 12.0
+margin_bottom = 32.0
+texture = ExtResource( 62 )
+
+[node name="Rain2" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI/HeavyRain"]
+margin_left = 22.0
+margin_right = 54.0
+margin_bottom = 32.0
+texture = ExtResource( 62 )
+
+[node name="Storm" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI"]
+visible = false
+margin_left = 41.0
+margin_top = -2.0
+margin_right = 73.0
+margin_bottom = 30.0
+texture = ExtResource( 58 )
+
+[node name="Tools" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
+margin_left = 152.0
+margin_right = 220.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 68, 0 )
+script = ExtResource( 63 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools"]
+margin_top = 10.0
+margin_right = 40.0
+margin_bottom = 40.0
+columns = 2
+
+[node name="Axe" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
+modulate = Color( 0, 0, 0, 0.188235 )
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 46 )
+script = ExtResource( 66 )
+
+[node name="Pickaxe" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
+modulate = Color( 0, 0, 0, 0.188235 )
+margin_left = 36.0
+margin_right = 68.0
+margin_bottom = 32.0
+texture = ExtResource( 44 )
+script = ExtResource( 66 )
+
+[node name="Knife" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
+modulate = Color( 0, 0, 0, 0.188235 )
+margin_top = 36.0
+margin_right = 32.0
+margin_bottom = 68.0
+texture = ExtResource( 45 )
+script = ExtResource( 66 )
+
+[node name="Shovel" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
+modulate = Color( 0, 0, 0, 0.188235 )
+margin_left = 36.0
+margin_top = 36.0
+margin_right = 68.0
+margin_bottom = 68.0
+texture = ExtResource( 19 )
+script = ExtResource( 66 )
+
+[node name="Saw" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
+modulate = Color( 0, 0, 0, 0.188235 )
+margin_top = 72.0
+margin_right = 32.0
+margin_bottom = 104.0
+texture = ExtResource( 34 )
+script = ExtResource( 66 )
+
+[node name="Water" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
+modulate = Color( 0, 0, 0, 0.188235 )
+margin_left = 36.0
+margin_top = 72.0
+margin_right = 68.0
+margin_bottom = 104.0
+texture = ExtResource( 48 )
+script = ExtResource( 66 )
+
+[node name="Control" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
+margin_left = 224.0
+margin_right = 246.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 4, 0 )
+size_flags_horizontal = 3
+
+[node name="Inventory" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer" instance=ExtResource( 70 )]
+margin_left = 250.0
+margin_right = 1140.0
+
+[node name="Control2" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
+margin_left = 1144.0
+margin_right = 1192.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 48, 0 )
+size_flags_horizontal = 3
+
+[node name="SettingsButton" type="TextureButton" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
+margin_left = 1196.0
+margin_top = 32.0
+margin_right = 1260.0
+margin_bottom = 96.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 13 )
+
+[node name="Control4" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
+margin_left = 1264.0
+margin_right = 1280.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 16, 0 )
+
+[node name="Sound" type="Node" parent="."]
+
+[connection signal="visibility_changed" from="Canvas/CanvasLayer/GameWindow/Missions/Home" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Home_visibility_changed"]
+[connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Build/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Build_Button_pressed"]
+[connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Craft/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Craft_Button_pressed"]
+[connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Cook/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Cook_Button_pressed"]
+[connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Status/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Status_Button_pressed"]
+[connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Drink/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Drink_Button_pressed"]
+[connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Sleep/VBox/Button/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Sleep_Button_pressed"]
+[connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/Return/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Return_Button_pressed"]
+[connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/BaseActivities/Status/Return/Button" to="Canvas/CanvasLayer/GameWindow/BaseActivities/Status" method="_on_Return_Button_pressed"]
+[connection signal="pressed" from="Canvas/UI/TopLayer/Debug/TestButton" to="Canvas/UI/TopLayer/Debug" method="_on_TestButton_pressed"]
+[connection signal="pressed" from="Canvas/UI/TopLayer/Debug/AddResButton" to="Canvas/UI/TopLayer/Debug" method="_on_AddResButton_pressed"]
+[connection signal="pressed" from="Canvas/UI/Status/Corner/Food/TextureProgress/Button" to="Canvas/UI/Status/Corner/Food" method="_on_Food_Button_pressed"]
+[connection signal="pressed" from="Canvas/UI/Status/TopBar/Control/HBoxContainer/SettingsButton" to="." method="_on_Settings_Button_pressed"]
+
+[editable path="Canvas/CanvasLayer/GameWindow/Buttons/Woods"]
+[editable path="Canvas/CanvasLayer/GameWindow/Buttons/River"]
+[editable path="Canvas/CanvasLayer/GameWindow/Buttons/Home"]
+[editable path="Canvas/CanvasLayer/GameWindow/Buttons/Plains"]
+[editable path="Canvas/CanvasLayer/GameWindow/Buttons/Hills"]
+[editable path="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Build"]
+[editable path="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Craft"]
+[editable path="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Cook"]
+[editable path="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox/Status"]
+[editable path="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Drink"]
+[editable path="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Sleep"]
+[editable path="Canvas/CanvasLayer/GameWindow/Missions/Home/Return"]
+[editable path="Canvas/CanvasLayer/GameWindow/BaseActivities/Status/Return"]
+[editable path="Canvas/UI/Status/FoodEat"]
+[editable path="Canvas/UI/Status/FoodEat/Return"]
+[editable path="Canvas/UI/Status/Corner/Health"]
+[editable path="Canvas/UI/Status/Corner/Food"]
+[editable path="Canvas/UI/Status/Corner/Water"]
+[editable path="Canvas/UI/Status/Corner/Energy"]

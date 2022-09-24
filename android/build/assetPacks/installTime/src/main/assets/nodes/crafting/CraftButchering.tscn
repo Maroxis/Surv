@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/Butchering.gd" type="Script" id=1]
+[ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://nodes/components/ScrollSelect.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/components/ItemButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/Icons/128x128px/butchering.png" type="Texture" id=5]
+[ext_resource path="res://sprites/Icons/128x128px/arrow.png" type="Texture" id=6]
+[ext_resource path="res://resources/defaultFont.tres" type="Theme" id=7]
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=3]
+default_font = SubResource( 2 )
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="Butchering" type="Control"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1152.0
+margin_top = -465.0
+mouse_filter = 2
+theme = SubResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 32
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+margin_right = 256.0
+margin_bottom = 465.0
+rect_min_size = Vector2( 256, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CarcassSelect" parent="HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 288.0
+margin_top = 76.0
+margin_right = 456.0
+margin_bottom = 388.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 488.0
+margin_right = 678.0
+margin_bottom = 465.0
+rect_min_size = Vector2( 190, 0 )
+alignment = 1
+
+[node name="ButcherButton" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
+margin_left = 23.0
+margin_top = 127.0
+margin_right = 167.0
+margin_bottom = 271.0
+icon = ExtResource( 5 )
+
+[node name="TimeLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 275.0
+margin_right = 190.0
+margin_bottom = 337.0
+theme = ExtResource( 7 )
+text = "23h:30m"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+margin_left = 710.0
+margin_right = 838.0
+margin_bottom = 465.0
+texture = ExtResource( 6 )
+stretch_mode = 4
+
+[node name="OutputContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 870.0
+margin_right = 998.0
+margin_bottom = 465.0
+rect_min_size = Vector2( 128, 0 )
+alignment = 1
+
+[node name="Control2" type="Control" parent="HBoxContainer"]
+margin_left = 1030.0
+margin_right = 1152.0
+margin_bottom = 465.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="visibility_changed" from="." to="." method="_on_Butchering_visibility_changed"]
+[connection signal="itemSelected" from="HBoxContainer/CarcassSelect" to="." method="_on_CarcassSelect_itemSelected"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButcherButton" to="." method="_on_ButcherButton_pressed"]

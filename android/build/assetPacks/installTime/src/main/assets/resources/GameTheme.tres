@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=7 format=2]
+
+[ext_resource path="res://resources/defaultDynFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://fonts/ResourcesFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 96
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[resource]
+default_font = ExtResource( 1 )
+48f/base_type = "Label"
+48f/fonts/font = SubResource( 2 )
+96f/base_type = "Label"
+96f/fonts/font = SubResource( 3 )
+Button/styles/focus = SubResource( 1 )
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/fonts/font = ExtResource( 2 )

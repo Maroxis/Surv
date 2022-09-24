@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://resources/ButtonNoBG.tres" type="Theme" id=1]
+[ext_resource path="res://sprites/BG/IconRectBWTex.png" type="Texture" id=2]
+[ext_resource path="res://scripts/BuildingModule.gd" type="Script" id=3]
+[ext_resource path="res://sprites/Icons/64x64px/bed.png" type="Texture" id=4]
+[ext_resource path="res://sprites/Icons/32x32px/shovel.png" type="Texture" id=5]
+[ext_resource path="res://sprites/Icons/32x32px/frame.png" type="Texture" id=6]
+
+[node name="Module" type="Control"]
+margin_top = 260.0
+margin_right = 96.0
+margin_bottom = 356.0
+rect_min_size = Vector2( 96, 96 )
+script = ExtResource( 3 )
+
+[node name="BG" type="TextureRect" parent="."]
+self_modulate = Color( 1, 0.486275, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+
+[node name="Icon" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 4 )
+stretch_mode = 4
+
+[node name="ModReq" type="ColorRect" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 44.0
+margin_bottom = 44.0
+color = Color( 0, 0, 0, 0.752941 )
+
+[node name="ModIcon" type="TextureRect" parent="ModReq"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 36.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 6 )
+
+[node name="ToolReq" type="ColorRect" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -44.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = 44.0
+color = Color( 0, 0, 0, 0.752941 )
+
+[node name="ToolIcon" type="TextureRect" parent="ToolReq"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 36.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 5 )
+
+[node name="Button" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

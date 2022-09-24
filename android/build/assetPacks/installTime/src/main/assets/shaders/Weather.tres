@@ -1,0 +1,32 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform sampler2D clouds;
+uniform float cloudStrength;
+uniform float darken;
+uniform float lightning;
+uniform float sunny;
+
+uniform float r = 1.0;
+uniform float g = 1.0;
+uniform float b = 1.0;
+
+void fragment() {
+	vec4 t1 = texture(TEXTURE, UV).rgba;
+	vec4 t2 = texture(clouds, UV).rgba;
+	t1.rgb *= darken;
+	t1.b *= 1.0-1.0*sunny*(1.0-UV.x)*(1.0-UV.y);
+	t1.g *= 1.0+0.8*sunny*(1.0-UV.x)*(1.0-UV.y);
+	t1.r *= 1.0+1.0*sunny*(1.0-UV.x)*(1.0-UV.y);
+	t1.rgb *= clamp(-0.2*tan(TIME/2.0),0.0,1.0)*lightning*5.0 +1.0;
+	t2.b *= 0.7;
+	float height = 1.0-UV.y;
+	vec4 col = mix( t1 , t2, cloudStrength*height); 
+	col.r *= r;
+	col.g *= g;
+	col.b *= b;
+	COLOR = col;
+}
+"
