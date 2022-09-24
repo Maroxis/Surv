@@ -32,27 +32,27 @@ custom_constants/separation = -256
 [node name="Water" parent="Resources" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 256.0
-margin_top = 296.0
-margin_right = 256.0
-margin_bottom = 296.0
+margin_left = 160.0
+margin_top = 164.0
+margin_right = 352.0
+margin_bottom = 427.0
 connectMission = false
 
 [node name="Clay" parent="Resources" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 512.0
-margin_top = 296.0
-margin_right = 512.0
-margin_bottom = 296.0
+margin_left = 416.0
+margin_top = 164.0
+margin_right = 608.0
+margin_bottom = 427.0
 
 [node name="Sand" parent="Resources" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 768.0
-margin_top = 296.0
-margin_right = 768.0
-margin_bottom = 296.0
+margin_left = 672.0
+margin_top = 164.0
+margin_right = 864.0
+margin_bottom = 427.0
 
 [node name="Return" parent="." instance=ExtResource( 5 )]
 

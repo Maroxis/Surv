@@ -266,7 +266,11 @@ func getTier(tl,next = false):
 
 func setTier(tl,tier):
 	Save.tools[tl]["ctier"] = int(tier)
-	Save.tools[tl]["durability"] = tools[tl]["tier"+str(tier)]["maxDurability"]
+	if tools[tl]["tier"+str(tier)].has("maxDurability"):
+		Save.tools[tl]["durability"] = tools[tl]["tier"+str(tier)]["maxDurability"]
+	else:
+		Save.tools[tl]["durability"] = 0
+	
 
 func craftTool(name):
 	removeRes(name)

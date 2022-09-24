@@ -114,7 +114,8 @@ func selectRecipe(item):
 		var amm = Inventory.resources[item]["cost"][res]
 		scene_instance.changeAmm(amm)
 	calcFuel()
-	timeRemainingLabel.text = Global.timeGetFullFormat(getCraftTime(),false,true)
+	if timeLeft == 0:
+		timeRemainingLabel.text = Global.timeGetFullFormat(getCraftTime(),false,true)
 
 func checkOre():
 	var index = 0

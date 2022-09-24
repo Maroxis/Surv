@@ -13,8 +13,8 @@ func _ready() -> void:
 
 	gatherAmm = {
 		"Water": "100%",
-		"Clay": 35,
-		"Sand": 20
+		"Clay": 3,
+		"Sand": 5
 	}
 	toolReq = {
 		"Water": null,

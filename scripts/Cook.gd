@@ -83,6 +83,7 @@ func run(time):
 
 func finish():
 	Inventory.add_resource(cookingItem,cookAmm,true)
+	refreshProgress()
 
 func start():
 	Inventory.add_resource(selected_fuel,-fuelRequired)

@@ -1,7 +1,7 @@
 extends Control
 
-onready var day = 1
-onready var time = 720
+onready var day : int = 1
+onready var time : int = 720
 onready var dayLabel = get_node("Calendar/VBoxContainer/Day")
 onready var timeLabel = get_node("Calendar/VBoxContainer/Time")
 
@@ -16,6 +16,9 @@ func _ready() -> void:
 	connect("newDay", Events, "check_event")
 # warning-ignore:return_value_discarded
 	connect("timeChanged",Global.Weather,"setTime")
+
+func getDay():
+	return int(day)
 
 func pack():
 	var data = {}
@@ -33,7 +36,7 @@ func refresh():
 func changeTime(amm) -> void:
 	time += int(amm)
 	if(time > 1440):
-		day += floor(time/1440)
+		day += int(float(time)/1440)
 		time = time % 1440
 		emit_signal("newDay", day)
 	updateLabels()

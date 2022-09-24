@@ -432,7 +432,8 @@ onready var Structure = {
 			"tier1" : {
 				"cost": {
 					"Stick": 2,
-					"Leaf": 3
+					"Leather": 3,
+					"Thread": 6
 				},
 				"time":{
 					"sections": 2,
@@ -522,6 +523,7 @@ func _ready() -> void:
 func calcDefence():
 	var defence = 0
 	defence += getCurrentModule("Perimeter","Fence")["benefits"]["defence"]
+	defence += getCurrentModule("Perimeter","Trench")["benefits"]["defence"]
 	defence += getCurrentModule("House","Wall")["benefits"]["defence"]
 	defence += getCurrentModule("House","Roof")["benefits"]["defence"]
 	return defence

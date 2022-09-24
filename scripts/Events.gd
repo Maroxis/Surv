@@ -60,8 +60,8 @@ onready var defaultEvent = {
 	"title":"Calm Day",
 	"desc": "Nothing happened"
 }
-#onready var eventDates = [3,5,6,7,8,9,10]
-onready var eventDates = [2]
+onready var eventDates = [3,6]
+#onready var eventDates = [2]
 onready var eventIndex = 0
 
 func _ready() -> void:
@@ -87,9 +87,8 @@ func startEvent():
 		if(plannedEvent.size() > eventIndex):
 			ev = plannedEvent["event"+str(eventIndex)]
 		else:
-			var r = forceEvent if forceEvent else rng.randi_range(0, randomEvent.size()-1)
+			var r = forceEvent if forceEvent != null else rng.randi_range(0, randomEvent.size()-1)
 			ev = randomEvent["event"+str(r)]
-		
 		var res
 		if(ev.has("params")):
 			res = call(ev["function"],ev["params"])
@@ -101,7 +100,7 @@ func startEvent():
 		showEvent = false
 
 func check_event(day):
-	if(eventIndex+1 > eventDates.size() or eventDates[eventIndex] == day):
+	if((eventIndex >= eventDates.size() and day % 2 == 0) or (eventIndex < eventDates.size() and  eventDates[eventIndex] == day)):
 		showEvent = true
 
 func showPopup(ev,res):
@@ -121,11 +120,6 @@ func showPopup(ev,res):
 	Global.EventPopup.populate(title,desc,txRes)
 	Global.EventPopup.show()
 	return
-	
-func test(a = ["error no args"]):
-	for item in a:
-		print(item)
-	return {"error":null}
 
 func testTimed(time, eDay = null):
 	if(eDay):

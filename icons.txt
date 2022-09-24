@@ -42,3 +42,4 @@
 <a href="https://www.flaticon.com/free-icons/heat" title="heat icons">Heat icons created by edt.im - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/save" title="save icons">Save icons created by Those Icons - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/fire" title="fire icons">Fire icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/wooden" title="wooden icons">Wooden icons created by Vitaly Gorbachev - Flaticon</a>
