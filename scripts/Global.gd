@@ -16,6 +16,8 @@ var Cook
 var FoodEat
 var Craft
 var Build
+var InGSettings
+var GameOver
 
 func refresh():
 	ChestResources.refresh()

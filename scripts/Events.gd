@@ -65,6 +65,9 @@ onready var eventDates = [3,6]
 onready var eventIndex = 0
 
 func _ready() -> void:
+	init()
+
+func init():
 	rng.randomize()
 
 func pack():

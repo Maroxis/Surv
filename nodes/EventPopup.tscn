@@ -143,6 +143,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Border" type="TextureRect" parent="."]
+visible = false
 modulate = Color( 1, 0.701961, 0.282353, 1 )
 anchor_left = 0.5
 anchor_right = 0.5

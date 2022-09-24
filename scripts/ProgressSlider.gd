@@ -9,5 +9,9 @@ func _ready() -> void:
 	h_slider.step = step
 	h_slider.page = page
 
+func set_val(val):
+	h_slider.value = val
+	self.value = value
+
 func _on_HSlider_value_changed(value: float) -> void:
 	self.value = value

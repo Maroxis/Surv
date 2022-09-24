@@ -20,6 +20,15 @@ func autoLoad():
 	saveData(blank_save_file)
 	loadData(auto_save_file)
 
+func newGame():
+	Save.removeData(Save.auto_save_file)
+	if not loadData(blank_save_file):
+		return false
+	Events.init()
+# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://nodes/TitleMenu.tscn")
+	return true
+
 func packData():
 	var data = {}
 	data["resources"] = Inventory.pack()
@@ -34,6 +43,7 @@ func packData():
 	data["date"] = Global.Date.pack()
 	data["cook"] = Global.Cook.pack()
 	data["smelt"] = Global.Smelt.pack()
+	data["settings"] = Global.InGSettings.pack()
 	return to_json(data)
 
 func unpackData(data):
@@ -49,6 +59,7 @@ func unpackData(data):
 	Global.Date.unpack(data["date"])
 	Global.Cook.unpack(data["cook"])
 	Global.Smelt.unpack(data["smelt"])
+	Global.InGSettings.unpack(data["settings"])
 
 func saveData(path):
 	var file = File.new()

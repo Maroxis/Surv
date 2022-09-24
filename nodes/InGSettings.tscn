@@ -184,6 +184,7 @@ mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="Sound" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
 margin_top = 596.0
 margin_right = 768.0
 margin_bottom = 1000.0

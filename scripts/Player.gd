@@ -80,7 +80,7 @@ func change_water(amm, set = false):
 	if(amm == 0 and not set):
 		return
 	if(water == 0 && amm < 0):
-		change_health(amm*2)
+		change_health(amm)
 	if(set):
 		water = amm
 	else:
@@ -126,6 +126,8 @@ func change_health(amm, set = false):
 	if(health < lowWarning && amm < 0):
 		Global.UI.health.shake()
 	Global.UI.health.get_node("TextureProgress/Value").text = str(ceil(health))
+	if(health <= 0):
+		Global.GameOver.init()
 
 func change_energy(amm, set = false):
 	if(energy == 0 && amm < 0):

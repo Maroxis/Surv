@@ -19,6 +19,8 @@ func _ready() -> void:
 
 func getDay():
 	return int(day)
+func getTime():
+	return int(time)
 
 func pack():
 	var data = {}
