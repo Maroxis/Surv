@@ -2,10 +2,7 @@ extends "res://scripts/BaseActivity.gd"
 
 onready var tab_container: TabContainer = $TabContainer
 onready var tabAmm = tab_container.get_child_count()
-#onready var tab_label: Label = $Category/BG/Control/Label
 onready var TabSwitcherContainer: VBoxContainer = $TabSwitcher/VBoxContainer
-onready var selected: TextureRect = $TabSwitcher/Control/Selected
-
 
 func _ready() -> void:
 	Global.Craft = self

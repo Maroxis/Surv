@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 onready var in_g_settings: Control = $"%InGSettings"
 
 func _ready() -> void:
