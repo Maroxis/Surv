@@ -56,7 +56,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Surv"
+config/name="Caesiv"
 run/main_scene="res://nodes/Game.tscn"
 config/icon="res://icon.png"
 
