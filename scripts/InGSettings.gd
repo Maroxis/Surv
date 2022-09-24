@@ -35,13 +35,13 @@ func _on_WeatherProgressSlider_value_changed(value: float) -> void:
 
 
 func _on_SaveButton_pressed() -> void:
-	if Save.saveData():
+	if Save.saveData(Save.save_file):
 		save_button.shake()
 	else:
 		save_button.shakeSide()
 
 func _on_LoadButton_pressed() -> void:
-	if Save.loadData():
+	if Save.loadData(Save.save_file):
 		load_button.shake()
 	else:
 		load_button.shakeSide()
@@ -49,7 +49,7 @@ func _on_LoadButton_pressed() -> void:
 
 
 func _on_DeleteSaveButton_pressed() -> void:
-	if Save.removeData():
+	if Save.removeData(Save.auto_save_file) and Save.loadData(Save.blank_save_file):
 		delete_save_button.shake()
 	else:
 		delete_save_button.shakeSide()

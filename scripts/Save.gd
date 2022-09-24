@@ -1,6 +1,8 @@
 extends Node
 
 const save_file = "user://save_file_test.save"
+const auto_save_file = "user://auto_save_file.save"
+const blank_save_file = "user://blank_save_file.save"
 
 var tools = {}
 var upgrades = {}
@@ -10,6 +12,13 @@ var bag = {
 	"content":{}
 }
 var structures = {}
+
+func autoSave():
+	saveData(auto_save_file)
+
+func autoLoad():
+	saveData(blank_save_file)
+	loadData(auto_save_file)
 
 func packData():
 	var data = {}
@@ -41,28 +50,28 @@ func unpackData(data):
 	Global.Cook.unpack(data["cook"])
 	Global.Smelt.unpack(data["smelt"])
 
-func saveData():
+func saveData(path):
 	var file = File.new()
-	file.open(save_file, File.WRITE)
+	file.open(path, File.WRITE)
 	file.store_line(packData())
 	file.close()
 	return true
 	
-func loadData():
+func loadData(path):
 	var file = File.new()
-	if not file.file_exists(save_file):
+	if not file.file_exists(path):
 		return false
-	file.open(save_file, File.READ)
+	file.open(path, File.READ)
 	unpackData(parse_json(file.get_line()))
 	file.close()
 	Global.refresh()
 	return true
 
-func removeData():
+func removeData(path):
 	var dir = Directory.new()
-	if not dir.file_exists(save_file):
+	if not dir.file_exists(path):
 		return false
-	dir.remove(save_file)
+	dir.remove(path)
 	return true
 
 func add_missing_keys(dict, target, type = TYPE_INT, size = 0, customKeys = null):

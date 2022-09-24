@@ -73,6 +73,8 @@ func pack():
 	data["damageToolMlt"] = damageToolMlt
 	data["waterAddTime"] = waterAddTime
 	data["showEvent"] = showEvent
+	data["rngSeed"] = rng.seed
+	data["rngState"] = rng.state
 	return data
 
 func unpack(data):
@@ -80,6 +82,8 @@ func unpack(data):
 	damageToolMlt = data["damageToolMlt"]
 	waterAddTime = data["waterAddTime"]
 	showEvent = data["showEvent"]
+	rng.seed = data["rngSeed"]
+	rng.state = data["rngState"]
 
 func startEvent():
 	if showEvent:

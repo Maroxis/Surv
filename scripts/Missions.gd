@@ -14,6 +14,8 @@ func _ready() -> void:
 		mission.connect("closed",self,"mission_closed")
 # warning-ignore:return_value_discarded
 	connect("missionClosed",Events,"startEvent")
+# warning-ignore:return_value_discarded
+	connect("missionClosed",Save,"autoSave")
 
 func refresh():
 	for mission in self.get_children():
