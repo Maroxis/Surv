@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/woodtex.jpg-e8c30d3016a065e0366ba559f2417676.stex"
+path="res://.import/textiletex.png-86909a2ee9d123a7b883e498dada482f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/woodtex.jpg"
-dest_files=[ "res://.import/woodtex.jpg-e8c30d3016a065e0366ba559f2417676.stex" ]
+source_file="res://sprites/textiletex.png"
+dest_files=[ "res://.import/textiletex.png-86909a2ee9d123a7b883e498dada482f.stex" ]
 
 [params]
 

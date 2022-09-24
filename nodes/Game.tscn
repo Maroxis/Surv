@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://nodes/Weather.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://sprites/Icons/128x128px/Wenrexa Healing magic.png" type="Texture" id=18]
 [ext_resource path="res://sprites/Icons/32x32px/shovel.png" type="Texture" id=19]
 [ext_resource path="res://nodes/Build.tscn" type="PackedScene" id=20]
+[ext_resource path="res://nodes/GameOver.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scripts/Status.gd" type="Script" id=22]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=23]
 [ext_resource path="res://scripts/Missions.gd" type="Script" id=24]
@@ -33,6 +34,7 @@
 [ext_resource path="res://sprites/Icons/64x64px/status.png" type="Texture" id=32]
 [ext_resource path="res://sprites/Icons/64x64px/sleep.png" type="Texture" id=33]
 [ext_resource path="res://sprites/Icons/32x32px/saw.png" type="Texture" id=34]
+[ext_resource path="res://sprites/textiletex.png" type="Texture" id=35]
 [ext_resource path="res://sprites/UI/Topbar/calendar/sun-cloud.png" type="Texture" id=37]
 [ext_resource path="res://scripts/Date.gd" type="Script" id=38]
 [ext_resource path="res://nodes/components/ReturnButton.tscn" type="PackedScene" id=40]
@@ -62,7 +64,6 @@
 [ext_resource path="res://nodes/Cook.tscn" type="PackedScene" id=73]
 [ext_resource path="res://scripts/FoodIcon.gd" type="Script" id=74]
 [ext_resource path="res://sprites/UI/Topbar/BG.png" type="Texture" id=75]
-[ext_resource path="res://sprites/textiletex.jpg" type="Texture" id=76]
 [ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=77]
 
 [sub_resource type="DynamicFont" id=13]
@@ -83,8 +84,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource( 76 )
+texture = ExtResource( 35 )
 expand = true
+stretch_mode = 2
 
 [node name="Weather" parent="Canvas" instance=ExtResource( 1 )]
 
@@ -160,11 +162,13 @@ mouse_filter = 2
 script = ExtResource( 24 )
 
 [node name="Woods" parent="Canvas/CanvasLayer/GameWindow/Missions" instance=ExtResource( 12 )]
+visible = false
 
 [node name="River" parent="Canvas/CanvasLayer/GameWindow/Missions" instance=ExtResource( 3 )]
 visible = false
 
 [node name="Plains" parent="Canvas/CanvasLayer/GameWindow/Missions" instance=ExtResource( 17 )]
+visible = false
 
 [node name="Hills" parent="Canvas/CanvasLayer/GameWindow/Missions" instance=ExtResource( 8 )]
 visible = false
@@ -180,8 +184,8 @@ self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 0
-texture = ExtResource( 76 )
-stretch_mode = 1
+texture = ExtResource( 35 )
+stretch_mode = 2
 __meta__ = {
 "_editor_description_": ""
 }
@@ -346,8 +350,8 @@ self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 0
-texture = ExtResource( 76 )
-stretch_mode = 1
+texture = ExtResource( 35 )
+stretch_mode = 2
 __meta__ = {
 "_editor_description_": ""
 }
@@ -380,6 +384,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+theme = ExtResource( 9 )
 script = ExtResource( 5 )
 
 [node name="TopLayer" type="CanvasLayer" parent="Canvas/UI"]
@@ -390,6 +395,7 @@ unique_name_in_owner = true
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
+theme = ExtResource( 9 )
 script = ExtResource( 53 )
 
 [node name="TestButton" type="Button" parent="Canvas/UI/TopLayer/Debug"]
@@ -418,13 +424,18 @@ text = "Items"
 
 [node name="Resources" parent="Canvas/UI/TopLayer" instance=ExtResource( 49 )]
 visible = false
+theme = ExtResource( 9 )
 
 [node name="EventPopup" parent="Canvas/UI/TopLayer" instance=ExtResource( 67 )]
 unique_name_in_owner = true
 visible = false
+theme = ExtResource( 9 )
 
 [node name="InGSettings" parent="Canvas/UI/TopLayer" instance=ExtResource( 15 )]
 unique_name_in_owner = true
+visible = false
+
+[node name="GameOver" parent="Canvas/UI/TopLayer" instance=ExtResource( 21 )]
 visible = false
 
 [node name="Status" type="CanvasLayer" parent="Canvas/UI"]
@@ -574,14 +585,8 @@ size_flags_vertical = 4
 
 [node name="BG" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control"]
 self_modulate = Color( 1, 0.701961, 0.282353, 1 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -840.0
-margin_top = -64.0
-margin_right = 840.0
-margin_bottom = 64.0
+anchor_right = 1.0
+rect_min_size = Vector2( 0, 128 )
 texture = ExtResource( 75 )
 expand = true
 stretch_mode = 2

@@ -8,7 +8,7 @@
 [ext_resource path="res://nodes/crafting/CraftSmelting.tscn" type="PackedScene" id=6]
 [ext_resource path="res://nodes/components/TabSwithcerTab.tscn" type="PackedScene" id=7]
 [ext_resource path="res://nodes/components/ReturnButton.tscn" type="PackedScene" id=8]
-[ext_resource path="res://sprites/textiletex.jpg" type="Texture" id=9]
+[ext_resource path="res://sprites/textiletex.png" type="Texture" id=9]
 [ext_resource path="res://nodes/crafting/CraftButchering.tscn" type="PackedScene" id=10]
 [ext_resource path="res://sprites/Icons/64x64px/pickaxe.png" type="Texture" id=11]
 [ext_resource path="res://scripts/Craft.gd" type="Script" id=13]
@@ -33,7 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 0
 texture = ExtResource( 9 )
-stretch_mode = 1
+stretch_mode = 2
 __meta__ = {
 "_editor_description_": ""
 }

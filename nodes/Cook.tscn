@@ -8,8 +8,8 @@
 [ext_resource path="res://resources/defaultFont.tres" type="Theme" id=6]
 [ext_resource path="res://sprites/UI/plus.png" type="Texture" id=7]
 [ext_resource path="res://sprites/Icons/flame.png" type="Texture" id=8]
+[ext_resource path="res://sprites/textiletex.png" type="Texture" id=9]
 [ext_resource path="res://shaders/flame.tres" type="Shader" id=11]
-[ext_resource path="res://sprites/textiletex.jpg" type="Texture" id=12]
 [ext_resource path="res://nodes/components/ScrollSelect.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -27,8 +27,8 @@ self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 0
-texture = ExtResource( 12 )
-stretch_mode = 1
+texture = ExtResource( 9 )
+stretch_mode = 2
 __meta__ = {
 "_editor_description_": ""
 }
