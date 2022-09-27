@@ -6,11 +6,11 @@ onready var curPos = self.rect_position
 func shake(distance = 10, del = 0.1, sideways = false):
 	var tween = create_tween().set_ease(Tween.EASE_OUT)
 	if(sideways):
-		tween.tween_property(self, "rect_position:x", curPos.x - distance, del)
+		tween.tween_property(self, "rect_position:x", curPos.x + self.margin_left - distance, del)
 		for i in 3:
-			tween.tween_property(self, "rect_position:x", curPos.x + distance, del*2)
-			tween.tween_property(self, "rect_position:x", curPos.x - distance, del*2)
-		tween.tween_property(self, "rect_position:x", curPos.x, del)
+			tween.tween_property(self, "rect_position:x", curPos.x + self.margin_left + distance, del*2)
+			tween.tween_property(self, "rect_position:x", curPos.x + self.margin_left - distance, del*2)
+		tween.tween_property(self, "rect_position:x", curPos.x + self.margin_left, del)
 	else:
 		tween.tween_property(self, "rect_position:y", curPos.y + distance, del)
 		tween.tween_property(self, "rect_position:y", curPos.y - distance, del*2)

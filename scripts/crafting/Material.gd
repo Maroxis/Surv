@@ -37,16 +37,15 @@ func _updateReq():
 		var req = Inventory.resources[self.name]["requirement"]
 		if(Tools.getTier(req["tool"]) < req["tier"]):
 			tool_meet = false
+			requirement.visible = true
+			requirement.text = "Requires " + str(req["tool"])
 
 func _updateTime():
 	timeLb.text = Global.timeGetFullFormat(Inventory.resources[self.name]["craftTime"],true)
 	
 func disable():
 	disableBT()
-	if(Inventory.resources[self.name].has("requirement")):
-		var req = Inventory.resources[self.name]["requirement"]["tool"]
-		requirement.visible = true
-		requirement.text = "Requires " + str(req)
+	
 func enable():
 	enableBT()
 	requirement.visible = false

@@ -40,7 +40,7 @@ onready var tools = {
 				"BronzeIngot": 2
 			},
 			"benefits":{
-				"actionMult": 1.4
+				"actionMult": 1.6
 			}
 		},
 		"tier4" : {
@@ -51,7 +51,7 @@ onready var tools = {
 				"IronIngot": 2
 			},
 			"benefits":{
-				"actionMult": 1.6
+				"actionMult": 1.8
 			}
 		}
 	},
@@ -92,7 +92,7 @@ onready var tools = {
 				"BronzeIngot": 1
 			},
 			"benefits":{
-				"actionMult": 1.4
+				"actionMult": 1.6
 			}
 		},
 		"tier4" : {
@@ -103,7 +103,7 @@ onready var tools = {
 				"IronIngot": 1
 			},
 			"benefits":{
-				"actionMult": 1.6
+				"actionMult": 1.8
 			}
 		}
 	},
@@ -144,7 +144,7 @@ onready var tools = {
 				"BronzeIngot": 3
 			},
 			"benefits":{
-				"actionMult": 1.4
+				"actionMult": 1.6
 			}
 		},
 		"tier4" : {
@@ -155,7 +155,7 @@ onready var tools = {
 				"IronIngot": 3
 			},
 			"benefits":{
-				"actionMult": 1.6
+				"actionMult": 1.8
 			}
 		}
 	},
@@ -182,7 +182,7 @@ onready var tools = {
 			"maxDurability": 2,
 			"cost": {
 				"Stick": 2,
-				"CopperIngot": 3
+				"CopperIngot": 2
 			},
 			"benefits":{
 				"actionMult": 1.4
@@ -193,10 +193,10 @@ onready var tools = {
 			"maxDurability": 3,
 			"cost": {
 				"Stick": 2,
-				"BronzeIngot": 3
+				"BronzeIngot": 2
 			},
 			"benefits":{
-				"actionMult": 1.4
+				"actionMult": 1.6
 			}
 		},
 		"tier4" : {
@@ -204,10 +204,10 @@ onready var tools = {
 			"maxDurability": 5,
 			"cost": {
 				"Stick": 2,
-				"IronIngot": 3
+				"IronIngot": 2
 			},
 			"benefits":{
-				"actionMult": 1.6
+				"actionMult": 1.8
 			}
 		}
 	},

@@ -8,6 +8,7 @@ onready var ore_required: VBoxContainer = $"%OreRequired"
 onready var item_scene  = load("res://nodes/components/ItemSquareAmm.tscn")
 onready var recipe_label: Label = $"%RecipeLabel"
 onready var warning: Panel = $"%Warning"
+onready var furnace: VBoxContainer = $"%Furnace"
 
 onready var basicFuelEfficency = 2
 onready var timeTotal = 0
@@ -20,6 +21,7 @@ func _ready() -> void:
 	Global.Smelt = self
 	addItems()
 	selectRecipe(selectedRecipe)
+	furnace.curPos = furnace.rect_position
 
 func refresh():
 	var showWarning = Buildings.getTierInt("Furnace","Oven") == 0
@@ -126,6 +128,14 @@ func checkOre():
 		index += 1
 	return true
 
+func checkFurnace():
+	var ctier = Buildings.getTierInt("Furnace","Oven")
+	var rtier = Inventory.resources[selectedRecipe]["furnaceTier"]
+	if ctier < rtier:
+		timeRemainingLabel.text = "Upgrade Furnace"
+		furnace.shakeSide()
+		return false
+	return true
 
 func _on_RecipeSelect_itemSelected(item) -> void:
 	selectRecipe(item)
@@ -137,5 +147,5 @@ func _on_FuelSelect_itemClicked(item) -> void:
 	var amm = getFuelAmm()
 	if(amm > Inventory.get_res_amm(item)):
 		fuel_select.shakeSelected()
-	elif(checkOre()):
+	elif(checkOre() and checkFurnace()):
 		start()

@@ -10,7 +10,7 @@ theme = ExtResource( 7 )
 scroll_vertical_enabled = false
 
 [node name="Items" type="HBoxContainer" parent="."]
-margin_right = 2764.0
+margin_right = 2828.0
 margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -65,8 +65,8 @@ __meta__ = {
 
 [node name="Margin2" type="Control" parent="Items"]
 margin_left = 2700.0
-margin_right = 2764.0
+margin_right = 2828.0
 margin_bottom = 720.0
-rect_min_size = Vector2( 64, 0 )
+rect_min_size = Vector2( 128, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3

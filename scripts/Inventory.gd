@@ -174,7 +174,7 @@ onready var food = {
 		"cookable": false,
 		"calories": 80,
 		"spoil":[],
-		"spoilTime": 4320
+		"spoilTime": 5760
 	  },
 	"SmallCarcass": {
 		"weight" : 4.8,
@@ -201,7 +201,7 @@ onready var food = {
 		"spoil":[],
 		"spoilTime": 4320
 	  },
-	"largeCarcass": {
+	"LargeCarcass": {
 		"weight" : 22.2,
 		"crafted": false,
 		"carcass": true,
@@ -403,6 +403,7 @@ func expand_water(item):
 	return true
 
 func spoil_food(time):
+	time *= Buildings.getCurrentModule("House","Cellar")["benefits"]["spoilMult"]
 	for res in food:
 		if not foodData[res]["spoil"].empty():
 			for n in range(foodData[res]["spoil"].size()-1,-1,-1):

@@ -190,6 +190,45 @@ onready var Structure = {
 				}
 			}
 		},
+		"Cellar":{
+			"benefitsText":{
+				"spoilMult": "Spoil time multiplayer",
+			},
+			"tier0" : {
+				"benefits":{
+					"spoilMult": 1.0
+				}
+			},
+			"tier1" : {
+				"time":{
+					"sections": 3,
+					"completed": 0,
+					"ammount": 60
+				},
+				"benefits":{
+					"spoilMult": 0.8
+				},
+				"required":{
+					"tool":{
+						"Shovel": 1
+					}
+				}
+			},
+			"tier2" : {
+				"cost": {
+					"Plank": 16,
+					"Clay": 9
+				},
+				"time":{
+					"sections": 6,
+					"completed": 0,
+					"ammount": 40
+				},
+				"benefits":{
+					"spoilMult": 0.6
+				}
+			}
+		}
 	},
 	"Collector": {
 		"waterLevel": 0,
@@ -343,7 +382,7 @@ onready var Structure = {
 			"tier2" : {
 				"cost": {
 					"Stick": 6,
-					"Thread": 32
+					"Thread": 20
 				},
 				"time":{
 					"sections": 3,
@@ -362,7 +401,7 @@ onready var Structure = {
 			"tier3" : {
 				"cost": {
 					"Stick": 6,
-					"Thread": 32,
+					"Thread": 20,
 					"Sand": 8,
 					"Clay": 2
 				},
