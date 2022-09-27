@@ -21,7 +21,7 @@ func autoLoad():
 	loadData(auto_save_file)
 
 func newGame():
-	Save.removeData(Save.auto_save_file)
+	delSave()
 	if not loadData(blank_save_file):
 		return false
 	Events.init()
@@ -29,6 +29,9 @@ func newGame():
 	get_tree().change_scene("res://nodes/TitleMenu.tscn")
 	return true
 
+func delSave():
+	return Save.removeData(Save.auto_save_file)
+	
 func packData():
 	var data = {}
 	data["resources"] = Inventory.pack()

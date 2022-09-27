@@ -21,7 +21,7 @@ func _ready() -> void:
 	Global.Smelt = self
 	addItems()
 	selectRecipe(selectedRecipe)
-	furnace.curPos = furnace.rect_position
+	furnace.curPos.x = furnace.rect_position.x
 
 func refresh():
 	var showWarning = Buildings.getTierInt("Furnace","Oven") == 0

@@ -1,13 +1,13 @@
 extends Control
 
 onready var day : int = 1
-onready var time : int = 720
+onready var time : int = 360
 onready var dayLabel = get_node("Calendar/VBoxContainer/Day")
 onready var timeLabel = get_node("Calendar/VBoxContainer/Time")
 
 signal newDay 
 signal timeChanged 
-#signal timePassed
+signal timePassed
 
 func _ready() -> void:
 	Global.Date = self
@@ -43,6 +43,7 @@ func changeTime(amm) -> void:
 		emit_signal("newDay", day)
 	updateLabels()
 	emit_signal("timeChanged",time)
+	emit_signal("timePassed",amm)
 
 func updateLabels() -> void:
 	dayLabel.text = "Day " + str(day)

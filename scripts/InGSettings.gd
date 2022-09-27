@@ -78,7 +78,9 @@ func _on_LoadButton_pressed() -> void:
 
 
 func _on_DeleteSaveButton_pressed() -> void:
-	if Save.newGame():
+	if Save.delSave():
+		delete_save_button.shake()
+	elif Save.newGame():
 		delete_save_button.shake()
 	else:
 		delete_save_button.shakeSide()

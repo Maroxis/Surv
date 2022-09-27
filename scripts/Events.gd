@@ -4,9 +4,10 @@ var rng = RandomNumberGenerator.new()
 
 onready var forceEvent = null
 
-onready var damageToolMlt = 0.8
-onready var waterAddTime = 25
-onready var showEvent = false
+onready var damageToolMlt : float = 0.8
+onready var waterAddTime : int = 25
+onready var showEvent : bool = false
+onready var animalTimer : int = 0
 
 onready var plannedEvent = {
 }
@@ -54,6 +55,11 @@ onready var randomEvent = {
 		"title":"Toxic Rain",
 		"desc": "Rain becomes more toxic, causes illnes when drinking without filtering",
 		"function": "toxicRain"
+	},
+	"event9":{
+		"title":"Spooked Animals",
+		"desc": "Animals over plains are nowhere to be found",
+		"function": "spookedAnimals"
 	}
 }
 onready var defaultEvent = {
@@ -61,11 +67,12 @@ onready var defaultEvent = {
 	"desc": "Nothing happened"
 }
 onready var eventDates = [3,6]
-#onready var eventDates = [2]
 onready var eventIndex = 0
 
 func _ready() -> void:
 	init()
+	if forceEvent != null:
+		eventDates = [2,3,4]
 
 func init():
 	rng.randomize()
@@ -75,6 +82,7 @@ func pack():
 	data["eventIndex"] = eventIndex
 	data["damageToolMlt"] = damageToolMlt
 	data["waterAddTime"] = waterAddTime
+	data["animalTimer"] = animalTimer
 	data["showEvent"] = showEvent
 	data["rngSeed"] = rng.seed
 	data["rngState"] = rng.state
@@ -84,6 +92,7 @@ func unpack(data):
 	eventIndex = data["eventIndex"]
 	damageToolMlt = data["damageToolMlt"]
 	waterAddTime = data["waterAddTime"]
+	animalTimer = data["animalTimer"]
 	showEvent = data["showEvent"]
 	rng.seed = data["rngSeed"]
 	rng.state = data["rngState"]
@@ -192,10 +201,10 @@ func playerIll():
 	return {"error":null,"res":"You are "+descLv+" sick"}
 
 func animalAttack():
-	var level = floor(clamp(Global.Date.day/5,1.0,10.0))
+	var level = floor(clamp(float(Global.Date.day)/5,1.0,10.0))
 	var damage = level-Buildings.calcDefence()
 	if(damage <= 0):
-		return {"error":null,"res":"Your defence was enough to stop the attack"}
+		return {"error":null,"res":"Your defence was enough to stop the attack \n Animal strength: "+str(level)+"\n"+" Defence level: "+str(Buildings.calcDefence())}
 	else:
 		var buildings = []
 		for b in Buildings.Structure:
@@ -224,6 +233,21 @@ func unstableWeather():
 	Global.Weather.calmSustain += 1
 func flashStorm():
 	Global.Weather.setWeather(Global.Weather.type.Storm)
-	Global.Weather.weatherChangeRate += 0.01
+	Global.Weather.weatherChangeRate += 0.005
 func toxicRain():
 	Global.Weather.rainToxic += 0.3
+
+func spookedAnimals():
+	if(Global.Date.connect("timePassed",self,"returnAnimals") == OK):
+		animalTimer += rng.randi_range(1440,2880) * ceil(float(Global.Date.getDay()) / 20) #24h-48h * day/20
+		get_tree().call_group("Animals", "hide")
+		return {"error":null}
+	else:
+		return {"error":"already hidden"}
+func returnAnimals(time):
+	animalTimer -= time
+	if animalTimer <= 0:
+		animalTimer = 0
+		Global.Date.disconnect("timePassed",self,"returnAnimals")
+		get_tree().call_group("Animals", "show")
+	return
