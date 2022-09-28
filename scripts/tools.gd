@@ -213,6 +213,7 @@ onready var tools = {
 	},
 	"Saw": {
 		"pinned": true,
+		"baseTier": 1,
 		"tier0" : {
 			"benefits":{
 				"actionMult": 1
@@ -280,9 +281,12 @@ func craftTool(name):
 	updateTool(name)
 
 func updateTool(name,downgrade = false):
-	emit_signal("toolChanged",name,downgrade,getTier(name))
+	var tier = getTier(name)
+	emit_signal("toolChanged",name,downgrade,tier)
 	if(tools[name]["pinned"]):
-		Global.ToolsUI.updateTool(name, getTier(name), downgrade)
+		if tier != 0 and tools[name].has("baseTier"):
+			tier += tools[name]["baseTier"]
+		Global.ToolsUI.updateTool(name, tier, downgrade)
 	
 func checkCost(name):
 	var ctier = getTier(name)
