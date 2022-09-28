@@ -20,6 +20,7 @@
 <a href="https://www.flaticon.com/free-icons/shovel" title="shovel icons">Shovel icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/handsaw" title="handsaw icons">Handsaw icons created by Graphix's Art - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/water" title="water icons">Water icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/fanny-pack" title="fanny pack icons">Fanny pack icons created by Smashicons - Flaticon</a>
 
 
 <a href="https://www.flaticon.com/free-icons/hammer" title="hammer icons">Hammer icons created by Stockio - Flaticon</a>
@@ -44,3 +45,4 @@
 <a href="https://www.flaticon.com/free-icons/fire" title="fire icons">Fire icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/wooden" title="wooden icons">Wooden icons created by Vitaly Gorbachev - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/pegs" title="pegs icons">Pegs icons created by pongsakornRed - Flaticon</a>
+

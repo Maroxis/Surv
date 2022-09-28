@@ -97,6 +97,9 @@ func _upd_water(amm):
 func upd_max_water(mx):
 	maxWater += mx
 	Global.UI.water.get_node("TextureProgress").max_value += mx
+func upd_max_food(mx):
+	maxFood += mx
+	Global.UI.food.get_node("TextureProgress").max_value += mx
 	
 func change_food(amm, set = false, over = false):
 	if(amm == 0 and not set):

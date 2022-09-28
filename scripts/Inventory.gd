@@ -246,9 +246,23 @@ onready var upgrades = {
 		"craftTime": 360
 	},
 	"Flask" : {
-		"size" : 20,
+		"size" : {
+			"Water":20
+		},
 		"cost" : {
 			"Clay" : 3
+		},
+		"craftTime": 80
+	},
+	"Pouch" : {
+		"size" : {
+			"Water":20,
+			"Food": 20
+		},
+		"cost" : {
+			"Leather" : 2,
+			"Thread" : 3,
+			"Rope" : 1
 		},
 		"craftTime": 80
 	}
@@ -397,9 +411,11 @@ func buy_upgrade(item):
 	return true
 
 func expand_water(item):
-	if(!buy_upgrade(item)):
-		return false
-	Player.upd_max_water(upgrades[item]["size"]) 
+	Global.ToolsUI.updateTool("Water", 1)
+	Player.upd_max_water(upgrades[item]["size"]["Water"]) 
+	return true
+func expand_food(item):
+	Player.upd_max_food(upgrades[item]["size"]["Food"]) 
 	return true
 
 func spoil_food(time):

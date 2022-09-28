@@ -1,17 +1,22 @@
 extends Craftable
 
-onready var benefitNr = $"%Benefit"
+onready var water: HBoxContainer = $"%Water"
+onready var food: HBoxContainer = $"%Food"
 onready var cost = $"%Cost"
 onready var timeLb = $"%Time"
-onready var expAmm = Inventory.upgrades[self.name]["size"]
 onready var nameLb = $"%Name"
-
+onready var item_tex: TextureRect = $"%ItemTex"
+onready var upg = Inventory.upgrades[self.name]
 func _ready() -> void:
-	var item = $HBoxContainer/VBoxContainer2/TextureRect
+	if upg["size"].has("Water"):
+		water.show()
+		water.get_node("Label").text = "+" + str(upg["size"]["Water"])
+	if upg["size"].has("Food"):
+		food.show()
+		food.get_node("Label").text = "+" + str(upg["size"]["Food"])
 	craft_button = $HBoxContainer2/CraftButton
-	benefitNr.text = "+" + str(expAmm)
 	nameLb.text = self.name
-	loadTex(item)
+	loadTex(item_tex)
 
 func refresh():
 	if Inventory.get_upgrade(self.name):
@@ -29,8 +34,10 @@ func _updateTime():
 	timeLb.text = Global.timeGetFullFormat(Inventory.upgrades[self.name]["craftTime"],true)
 
 func _on_CraftButton_pressed() -> void:
-	if(Inventory.expand_water(self.name)):
-		Global.ToolsUI.updateTool("Water", 1)
+	if Inventory.buy_upgrade(self.name):
 		craft_button.disabled = true
+		if upg["size"].has("Water"):
+			Inventory.expand_water(self.name)
+		if upg["size"].has("Food"):
+			Inventory.expand_food(self.name)
 		Global.Craft.refreshCurTab()
-#		fade()

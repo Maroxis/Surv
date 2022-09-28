@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/crafting/playerExpand.gd" type="Script" id=1]
 [ext_resource path="res://sprites/BG/IconRect.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=6]
 [ext_resource path="res://sprites/Icons/64x64px/bag.png" type="Texture" id=7]
 [ext_resource path="res://sprites/Icons/64x64px/water.png" type="Texture" id=8]
+[ext_resource path="res://sprites/Icons/64x64px/food.png" type="Texture" id=9]
 
 [node name="Flask" type="VBoxContainer"]
 margin_right = 336.0
@@ -34,7 +35,8 @@ custom_constants/separation = 16
 margin_right = 128.0
 margin_bottom = 220.0
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer2"]
+[node name="ItemTex" type="TextureRect" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 modulate = Color( 0, 0, 0, 1 )
 margin_right = 128.0
 margin_bottom = 128.0
@@ -115,17 +117,20 @@ text = "00:30"
 align = 1
 valign = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
 margin_top = 340.0
 margin_right = 336.0
-margin_bottom = 418.0
+margin_bottom = 340.0
 rect_min_size = Vector2( 192, 0 )
+custom_constants/separation = 32
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 336.0
+[node name="Water" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+margin_right = 94.0
 margin_bottom = 78.0
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Water"]
 self_modulate = Color( 0, 0, 0, 1 )
 margin_right = 34.0
 margin_bottom = 78.0
@@ -134,10 +139,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Benefit" type="Label" parent="VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
+[node name="Label" type="Label" parent="VBoxContainer/Water"]
 margin_left = 38.0
 margin_right = 94.0
+margin_bottom = 78.0
+rect_min_size = Vector2( 56, 78 )
+theme = ExtResource( 4 )
+text = "+0"
+align = 1
+valign = 1
+
+[node name="Food" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+margin_left = 126.0
+margin_right = 250.0
+margin_bottom = 78.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Food"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_right = 64.0
+margin_bottom = 78.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Food"]
+margin_left = 68.0
+margin_right = 124.0
 margin_bottom = 78.0
 rect_min_size = Vector2( 56, 78 )
 theme = ExtResource( 4 )
