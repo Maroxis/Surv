@@ -1,9 +1,9 @@
 extends Control
 
 onready var resources: HBoxContainer = $"%Resources"
-onready var rawList = resources.get_node("Raw/List")
-onready var craftedList = resources.get_node("Crafted/List")
-onready var foodList = resources.get_node("Food/List")
+onready var rawList = resources.get_node("Raw/ScrollContainer/List")
+onready var craftedList = resources.get_node("Crafted/ScrollContainer/List")
+onready var foodList = resources.get_node("Food/ScrollContainer/List")
 onready var scene = load("res://nodes/components/ItemCount.tscn")
 
 func _ready() -> void:
@@ -27,7 +27,7 @@ func _createList(list,res):
 func _loadSingleRes(list,res):
 	var node = list.get_node(res)
 	node.changeTexture(res,"64x64px")
-	node.changeSize(48)
+	node.changeSize(64)
 	if(list == foodList):
 		node.changeCount(Inventory.get_food_amm(res))
 	else:

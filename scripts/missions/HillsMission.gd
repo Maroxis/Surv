@@ -1,7 +1,7 @@
 extends Mission
 
-onready var exploreTable = [0,3,5,8,16]
-onready var exploreTime = 20
+onready var exploreTable = [0,6,12,20,32]
+onready var exploreTime = 30
 onready var exploreCurrentProgress = 0
 onready var exploreDiscovered = 1
 onready var exploration_progress: TextureProgress = $"%ExplorationProgress"
@@ -27,7 +27,7 @@ func _ready() -> void:
 		"CopperOre": 3,
 		"TinOre": 6,
 		"IronOre": 3,
-		"Coal": 5
+		"Coal": 4
 	}
 	toolReq = {
 		"Rock": null,

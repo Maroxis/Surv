@@ -75,7 +75,7 @@ onready var resources = {
 		"crafted": false
 	  },
 	"Coal": {
-		"weight" : 2.6,
+		"weight" : 2.0,
 		"crafted": false,
 		"burining":{
 			"temp": 2000,
@@ -83,15 +83,15 @@ onready var resources = {
 		}
 	  },
 	"CopperOre": {
-		"weight" : 1.2,
+		"weight" : 1.6,
 		"crafted": false,
 	  },
 	"TinOre": {
-		"weight" : 1.2,
+		"weight" : 1.4,
 		"crafted": false,
 	  },
 	"IronOre": {
-		"weight" : 1.2,
+		"weight" : 1.8,
 		"crafted": false,
 	  },
 	"CopperIngot": {
