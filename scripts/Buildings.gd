@@ -552,6 +552,30 @@ onready var Structure = {
 					}
 				}
 			}
+		},
+		"WarningSystem":{
+			"benefitsText":{
+				"defence": "Increses camp defence"
+			},
+			"tier0" : {
+				"benefits":{
+					"defence": 0
+				}
+			},
+			"tier1" : {
+				"cost": {
+					"Stick": 8,
+					"Thread": 5
+				},
+				"time":{
+					"sections": 4,
+					"completed": 0,
+					"ammount": 20
+				},
+				"benefits":{
+					"defence": 1
+				}
+			}
 		}
 	}
 }
