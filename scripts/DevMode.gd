@@ -1,10 +1,10 @@
 extends Node
 
 var DebugUI
-onready var on = true
+var on
 
 func _ready() -> void:
-	return
+	on = OS.is_debug_build ( )
 
 func add_resources():
 	for res in Inventory.resources:

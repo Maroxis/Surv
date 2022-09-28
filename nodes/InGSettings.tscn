@@ -67,7 +67,7 @@ size_flags_vertical = 3
 [node name="Data" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
 margin_right = 768.0
-margin_bottom = 252.0
+margin_bottom = 272.0
 
 [node name="Label" type="Label" parent="TextureRect/ScrollContainer/VBoxContainer/Data"]
 margin_right = 768.0
@@ -118,7 +118,7 @@ theme_type_variation = "MenuItem"
 text = "Load"
 align = 1
 
-[node name="HSeparator" type="HSeparator" parent="TextureRect/ScrollContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="TextureRect/ScrollContainer/VBoxContainer/Data"]
 margin_top = 256.0
 margin_right = 768.0
 margin_bottom = 272.0
@@ -129,7 +129,7 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 margin_top = 276.0
 margin_right = 768.0
-margin_bottom = 572.0
+margin_bottom = 592.0
 
 [node name="Label" type="Label" parent="TextureRect/ScrollContainer/VBoxContainer/Debug"]
 margin_right = 768.0
@@ -176,10 +176,10 @@ texture_normal = ExtResource( 8 )
 expand = true
 script = ExtResource( 9 )
 
-[node name="HSeparator2" type="HSeparator" parent="TextureRect/ScrollContainer/VBoxContainer"]
-margin_top = 576.0
+[node name="HSeparator" type="HSeparator" parent="TextureRect/ScrollContainer/VBoxContainer/Debug"]
+margin_top = 300.0
 margin_right = 768.0
-margin_bottom = 592.0
+margin_bottom = 316.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
