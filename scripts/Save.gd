@@ -3,6 +3,7 @@ extends Node
 const save_file = "user://save_file_test.save"
 const auto_save_file = "user://auto_save_file.save"
 const blank_save_file = "user://blank_save_file.save"
+const config_save_file = "user://config_file.json"
 
 var tools = {}
 var upgrades = {}
@@ -13,16 +14,34 @@ var bag = {
 }
 var structures = {}
 
+func saveConfig():
+	var data = to_json(Global.InGSettings.pack())
+	saveData(config_save_file,data)
+	return 
+
+func loadConfig():
+	var data = loadData(config_save_file)
+	Global.InGSettings.unpack(data)
+
 func autoSave():
 	saveData(auto_save_file)
 
 func autoLoad():
 	saveData(blank_save_file)
-	loadData(auto_save_file)
+	loadConfig()
+	loadSave(auto_save_file)
+
+func loadSave(path):
+	var data = loadData(path)
+	if(data == null):
+		return false
+	unpackData(data)
+	Global.refresh()
+	return true
 
 func newGame():
 	delSave()
-	if not loadData(blank_save_file):
+	if not loadSave(blank_save_file):
 		return false
 	Events.init()
 # warning-ignore:return_value_discarded
@@ -46,7 +65,6 @@ func packData():
 	data["date"] = Global.Date.pack()
 	data["cook"] = Global.Cook.pack()
 	data["smelt"] = Global.Smelt.pack()
-	data["settings"] = Global.InGSettings.pack()
 	return to_json(data)
 
 func unpackData(data):
@@ -62,24 +80,22 @@ func unpackData(data):
 	Global.Date.unpack(data["date"])
 	Global.Cook.unpack(data["cook"])
 	Global.Smelt.unpack(data["smelt"])
-	Global.InGSettings.unpack(data["settings"])
 
-func saveData(path):
+func saveData(path, data = packData()):
 	var file = File.new()
 	file.open(path, File.WRITE)
-	file.store_line(packData())
+	file.store_line(data)
 	file.close()
 	return true
 	
 func loadData(path):
 	var file = File.new()
 	if not file.file_exists(path):
-		return false
+		return null
 	file.open(path, File.READ)
-	unpackData(parse_json(file.get_line()))
+	var data = parse_json(file.get_line())
 	file.close()
-	Global.refresh()
-	return true
+	return data
 
 func removeData(path):
 	var dir = Directory.new()

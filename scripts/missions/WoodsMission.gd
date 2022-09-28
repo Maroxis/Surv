@@ -5,15 +5,15 @@ func _ready() -> void:
 	updateTravelTime()
 	
 	gatherTime = {
-		"Wood": 50,
-		"Stick": 40,
-		"Leaf": 20,
-		"Rock": 40
+		"Wood": 60,
+		"Stick": 50,
+		"Leaf": 40,
+		"Rock": 20
 	}
 	gatherAmm = {
-		"Wood": 2,
+		"Wood": 3,
 		"Stick": 3,
-		"Leaf": 5,
+		"Leaf": 10,
 		"Rock": 2
 	}
 	toolReq = {

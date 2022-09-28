@@ -35,8 +35,8 @@ func _on_Debug_Button_toggled(on) -> void:
 
 
 func _on_Exit_Button_pressed() -> void:
+	Save.saveConfig()
 	hide()
-
 
 func change_volume(id, db):
 	AudioServer.set_bus_volume_db(id, db)
@@ -70,7 +70,7 @@ func _on_SaveButton_pressed() -> void:
 		save_button.shakeSide()
 
 func _on_LoadButton_pressed() -> void:
-	if Save.loadData(Save.save_file):
+	if Save.loadSave(Save.save_file):
 		load_button.shake()
 	else:
 		load_button.shakeSide()
