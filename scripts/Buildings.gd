@@ -587,6 +587,7 @@ func calcDefence():
 	var defence = 0
 	defence += getCurrentModule("Perimeter","Fence")["benefits"]["defence"]
 	defence += getCurrentModule("Perimeter","Trench")["benefits"]["defence"]
+	defence += getCurrentModule("Perimeter","WarningSystem")["benefits"]["defence"]
 	defence += getCurrentModule("House","Wall")["benefits"]["defence"]
 	defence += getCurrentModule("House","Roof")["benefits"]["defence"]
 	return defence
