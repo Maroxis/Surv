@@ -16,12 +16,12 @@ var structures = {}
 
 func saveConfig():
 	var data = to_json(Global.InGSettings.pack())
-	saveData(config_save_file,data)
-	return 
+	return saveData(config_save_file,data)
 
 func loadConfig():
 	var data = loadData(config_save_file)
-	Global.InGSettings.unpack(data)
+	if data:
+		Global.InGSettings.unpack(data)
 
 func autoSave():
 	saveData(auto_save_file)
@@ -50,6 +50,8 @@ func newGame():
 
 func delSave():
 	return Save.removeData(Save.auto_save_file)
+func delConfig():
+	return Save.removeData(Save.config_save_file)
 	
 func packData():
 	var data = {}

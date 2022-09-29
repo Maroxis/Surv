@@ -6,7 +6,7 @@
 [ext_resource path="res://scripts/TitleMenu.gd" type="Script" id=4]
 [ext_resource path="res://sprites/icon.png" type="Texture" id=5]
 [ext_resource path="res://sprites/textiletex.png" type="Texture" id=6]
-[ext_resource path="res://nodes/InGSettings.tscn" type="PackedScene" id=7]
+[ext_resource path="res://nodes/Settings.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -147,7 +147,7 @@ text = "Quit"
 align = 1
 valign = 1
 
-[node name="InGSettings" parent="." instance=ExtResource( 7 )]
+[node name="Settings" parent="." instance=ExtResource( 7 )]
 visible = false
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]

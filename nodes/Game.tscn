@@ -14,7 +14,7 @@
 [ext_resource path="res://nodes/missions/Woods.tscn" type="PackedScene" id=12]
 [ext_resource path="res://sprites/Icons/64x64px/cog.png" type="Texture" id=13]
 [ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=14]
-[ext_resource path="res://nodes/InGSettings.tscn" type="PackedScene" id=15]
+[ext_resource path="res://nodes/Settings.tscn" type="PackedScene" id=15]
 [ext_resource path="res://sprites/Icons/64x64px/water.png" type="Texture" id=16]
 [ext_resource path="res://nodes/missions/Plains.tscn" type="PackedScene" id=17]
 [ext_resource path="res://sprites/Icons/128x128px/Wenrexa Healing magic.png" type="Texture" id=18]
