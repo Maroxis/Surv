@@ -197,7 +197,7 @@ func eat(fd, amm, over = false, remove = true):
 		return amm
 	var wtr = 0
 	if(Inventory.food[fd].has("water")):
-		wtr = Inventory.food[fd]["calories"]
+		wtr = Inventory.food[fd]["water"]
 	var ate = 0
 	if(cal * amm <= space):
 		ate = amm

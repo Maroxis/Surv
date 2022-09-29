@@ -49,7 +49,21 @@ onready var Structure = {
 					"ammount": 60
 				},
 				"benefits":{
-					"sleepRegenMult": 2.2
+					"sleepRegenMult": 2.0
+				}
+			},
+			"tier4" : {
+				"cost": {
+					"Leather": 10,
+					"Thread": 12
+				},
+				"time":{
+					"sections": 3,
+					"completed": 0,
+					"ammount": 60
+				},
+				"benefits":{
+					"sleepRegenMult": 2.4
 				}
 			}
 		},
@@ -347,7 +361,7 @@ onready var Structure = {
 					"ammount": 120
 				},
 				"benefits":{
-					"tankSize": 80
+					"tankSize": 200
 				}
 			}
 		},
@@ -539,17 +553,83 @@ onready var Structure = {
 			},
 			"tier1" : {
 				"time":{
-					"sections": 12,
+					"sections": 16,
 					"completed": 0,
 					"ammount": 80
 				},
 				"benefits":{
-					"defence": 3
+					"defence": 4
 				},
 				"required":{
 					"tool":{
 						"Shovel": 1
 					}
+				}
+			},
+			"tier2" : {
+				"cost": {
+					"Stick": 160
+				},
+				"time":{
+					"sections": 8,
+					"completed": 0,
+					"ammount": 40
+				},
+				"benefits":{
+					"defence": 6
+				}
+			}
+		},
+		"Pits":{
+			"benefitsText":{
+				"defence": "Increses camp defence"
+			},
+			"tier0" : {
+				"benefits":{
+					"defence": 0
+				}
+			},
+			"tier1" : {
+				"time":{
+					"sections": 8,
+					"completed": 0,
+					"ammount": 40
+				},
+				"benefits":{
+					"defence": 1
+				},
+				"required":{
+					"tool":{
+						"Shovel": 1
+					}
+				}
+			},
+			"tier2" : {
+				"cost": {
+					"Leaf": 32,
+					"Stick": 8,
+					"Thread": 4
+				},
+				"time":{
+					"sections": 4,
+					"completed": 0,
+					"ammount": 30
+				},
+				"benefits":{
+					"defence": 2
+				}
+			},
+			"tier3" : {
+				"cost": {
+					"Stick": 64
+				},
+				"time":{
+					"sections": 4,
+					"completed": 0,
+					"ammount": 30
+				},
+				"benefits":{
+					"defence": 3
 				}
 			}
 		},
@@ -579,6 +659,7 @@ onready var Structure = {
 		}
 	}
 }
+signal moduleBuilt
 
 func _ready() -> void:
 	Save.add_missing_keys_deep(Structure,Save.structures,TYPE_DICTIONARY,0,{"ctier":TYPE_INT,"progress":TYPE_INT})
@@ -604,6 +685,7 @@ func checkCost(building,module) -> bool:
 func buildModule(building,module):
 	Save.structures[building][module]["ctier"] += 1
 	Save.structures[building][module]["progress"] = 0
+	emit_signal("moduleBuilt",module)
 #	getCurrentModule(building,module)["time"]["completed"] = 0
 
 func buyModule(building,module):

@@ -1,26 +1,37 @@
-extends Control
+extends SceneLoader
 
 onready var scroll_container: ScrollContainer = $"%ScrollContainer"
 onready var quick_bar: HBoxContainer = $"%QuickBar"
 onready var seperation = quick_bar.get("custom_constants/separation")
-onready var chest: TextureButton = $TextureButton
-onready var items = quick_bar.get_children()
+onready var chest: TextureButton = $"%ChestButton"
+onready var bag: Control = $"%Bag"
+
 onready var itemsOrgPos = []
 onready var inProgress = 0
 onready var buffer = []
-
+onready var scene = load("res://nodes/components/ItemCount.tscn")
+onready var scrollOrgPos = scroll_container.rect_position.x
 var hidden_items
-onready var max_visible_items = 7
+onready var max_visible_items = 4
+
 
 func _ready() -> void:
-	hidden_items = max_visible_items
 	Global.ResourcesUI = self
-	scroll_container.rect_size.x = (items[0].rect_size.x + seperation)*max_visible_items
-	scroll_container.scroll_horizontal = items[0].rect_size.x + seperation
-	for item in items:
-		itemsOrgPos.push_back(item.rect_position.x)
+	max_visible_items = floor((self.rect_size.x - chest.rect_size.x - floor(bag.rect_size.x/2)) / 92)-1
+	for i in max_visible_items+1:
+		addItem(i)
+	hidden_items = max_visible_items
+	init()
+
+func init(set = false):
+	var isize = quick_bar.get_children()[0].rect_size.x + seperation
+	scroll_container.rect_size.x = isize * (max_visible_items+1)
+	self.rect_min_size.x  = chest.rect_size.x + scroll_container.rect_size.x + floor(bag.rect_size.x/2)
+	if set:
+		self.size_flags_horizontal = Control.SIZE_FILL
 
 func update_resource():
+	var items = quick_bar.get_children()
 	var buff = buffer.pop_front()
 	buff["res"] = buff["res"].to_lower()
 	var onDisplay = false
@@ -45,6 +56,7 @@ func update_resource():
 	return
 
 func reset():
+	var items = quick_bar.get_children()
 	for item in items:
 		item.fadeOut(0.8)
 		item.currentTex = null
@@ -52,11 +64,13 @@ func reset():
 	hidden_items = max_visible_items
 
 func showNext():
+	var items = quick_bar.get_children()
 	items[hidden_items].fadeIn(0.8)
 	hidden_items -= 1
 	chest.shake()
 
 func swipeNext():
+	var items = quick_bar.get_children()
 	inProgress = items.size()
 	var hurry = 0.5 if not buffer.empty() else 1.0
 #	var hurry = 1.0
@@ -76,9 +90,6 @@ func swipeNext():
 			tween.tween_property(items[n], "modulate:a", 0.0, 0)
 			tween.tween_callback(chest,"shake")
 
-func _on_TextureButton_pressed() -> void:
-	Global.ChestResources.toggle()
-
 func addToBuffer(item,amm):
 	buffer.push_back({"res":item,"amm":amm})
 
@@ -92,3 +103,23 @@ func addRes(res,amm,food):
 	addToBuffer(res,amm)
 	if(inProgress == 0 && buffer.size() == 1):
 		update_resource()
+
+func addItem(i):
+	var sc = addScene(scene,quick_bar)
+	sc.modulate.a = 0
+	sc.rect_position.x = (sc.rect_size.x + seperation) * i
+	itemsOrgPos.push_back(sc.rect_position.x)
+
+func _on_ChestButton_pressed() -> void:
+	Global.ChestResources.toggle()
+
+
+func _on_Inventory_item_rect_changed() -> void:
+	disconnect("item_rect_changed",self,"_on_Inventory_item_rect_changed")
+	var diff = floor((self.rect_size.x - chest.rect_size.x - floor(bag.rect_size.x/2)) / 92)-1 - max_visible_items
+	for i in range(max_visible_items+1,max_visible_items+1+diff):
+		addItem(i)
+	max_visible_items += diff
+	hidden_items += diff
+	init(true)
+	

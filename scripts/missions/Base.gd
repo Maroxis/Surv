@@ -2,6 +2,12 @@ extends MissionBasic
 
 onready var drinkNode = get_node("VBoxContainer/HBox2/Drink")
 onready var drinkNodeAmm = drinkNode.get_node("VBox/Ammount")
+onready var toxic_level = drinkNode.get_node("VBox/Button/ToxicLevel")
+
+func _ready() -> void:
+	Buildings.connect("moduleBuilt",self,"_checkMod")
+	Events.connect("toxicRain",self,"changeCollectorToxic")
+	changeCollectorToxic()
 
 func updateGatherTime():
 	return
@@ -36,9 +42,20 @@ func _on_Drink_Button_pressed() -> void:
 		amm = Buildings.Structure["Collector"]["waterLevel"]
 	Player.change_water(amm)
 	Buildings.changeWaterLevel(-amm)
-	var sick = Global.Weather.rainToxic - Buildings.getCurrentModule("Collector","Filter")["benefits"]["filter"]
+	var sick = getSickAmm()
 	if sick > 0:
 		Player.change_sick(sick*amm)
+
+func getSickAmm():
+	return Global.Weather.rainToxic - Buildings.getCurrentModule("Collector","Filter")["benefits"]["filter"]
+
+func _checkMod(module):
+	if module == "Filter":
+		changeCollectorToxic()
+
+func changeCollectorToxic():
+	var sick = clamp(getSickAmm(),0.0,1.0)
+	toxic_level.value = sick
 
 func _activateDrink():
 	drinkNode.modulate = Color(1,1,1,1)

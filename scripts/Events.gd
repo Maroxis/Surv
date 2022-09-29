@@ -69,6 +69,8 @@ onready var defaultEvent = {
 onready var eventDates = [3,6]
 onready var eventIndex = 0
 
+signal toxicRain
+
 func _ready() -> void:
 	init()
 	if forceEvent != null:
@@ -201,7 +203,7 @@ func playerIll():
 	return {"error":null,"res":"You are "+descLv+" sick"}
 
 func animalAttack():
-	var level = floor(clamp(float(Global.Date.day)/5,1.0,10.0))
+	var level = floor(clamp(float(Global.Date.day)/5,1.0,20.0))
 	var damage = level-Buildings.calcDefence()
 	if(damage <= 0):
 		return {"error":null,"res":"Your defence was enough to stop the attack \n Animal strength: "+str(level)+"\n"+" Defence level: "+str(Buildings.calcDefence())}
@@ -235,7 +237,8 @@ func flashStorm():
 	Global.Weather.setWeather(Global.Weather.type.Storm)
 	Global.Weather.weatherChangeRate += 0.005
 func toxicRain():
-	Global.Weather.rainToxic += 0.3
+	Global.Weather.rainToxic += 0.2
+	emit_signal("toxicRain")
 
 func spookedAnimals():
 	if(Global.Date.connect("timePassed",self,"returnAnimals") == OK):

@@ -155,7 +155,7 @@ onready var food = {
 		"crafted": false,
 		"cookable": false,
 		"calories": 8,
-		"water": 2,
+		"water": 4,
 		"sick": 1,
 		"spoil":[],
 		"spoilTime": 1440
