@@ -15,6 +15,8 @@ onready var cookAmm = 0
 onready var timeLeft = 0
 onready var timeTotal = 0
 
+signal cookProgress
+
 func _ready() -> void:
 	Global.Cook = self
 	for food in Inventory.food:
@@ -50,7 +52,9 @@ func refreshProgress():
 	if timeLeft == 0:
 		flame.material.set_shader_param("on",0.0)
 	time_remaining.text = Global.timeGetFullFormat(timeLeft,false,true) 
-	flame.value = float(timeLeft)/float(timeTotal) * 100
+	var val = float(timeLeft)/float(timeTotal) * 100
+	flame.value = val
+	emit_signal("cookProgress",val)
 	flame.material.set_shader_param("on",1.0)
 
 func selectItem(item):

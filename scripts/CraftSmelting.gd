@@ -17,6 +17,8 @@ var selectedRecipe
 var selectedFuel
 var smeltingRecipe
 
+signal furnaceProgress
+
 func _ready() -> void:
 	Global.Smelt = self
 	addItems()
@@ -29,7 +31,9 @@ func refresh():
 	if(timeTotal == 0):
 		return
 	timeRemainingLabel.text = Global.timeGetFullFormat(timeLeft,false,true) 
-	furnaceProgress.value = float(timeLeft)/float(timeTotal) * 100
+	var val = float(timeLeft)/float(timeTotal) * 100
+	furnaceProgress.value = val
+	emit_signal("furnaceProgress",val)
 	if timeLeft == 0:
 		furnaceProgress.material.set_shader_param("on",0.0)
 	else:
@@ -69,6 +73,7 @@ func finish():
 	furnaceProgress.material.set_shader_param("on",0.0)
 
 func start():
+	emit_signal("furnaceProgress",100)
 	var time = getCraftTime()
 	timeTotal = time
 	timeLeft = time

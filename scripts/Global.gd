@@ -18,6 +18,7 @@ var Craft
 var Build
 var InGSettings
 var GameOver
+var FoodLookup
 
 func refresh():
 	ChestResources.refresh()
@@ -31,6 +32,7 @@ func refresh():
 	Date.refresh()
 	Cook.refresh()
 	Smelt.refresh()
+	FoodLookup.refresh()
 	
 func timeGetFullFormat(time,lzero = false,labeled = false):
 	time = int(time)

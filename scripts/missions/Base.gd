@@ -5,7 +5,9 @@ onready var drinkNodeAmm = drinkNode.get_node("VBox/Ammount")
 onready var toxic_level = drinkNode.get_node("VBox/Button/ToxicLevel")
 
 func _ready() -> void:
+# warning-ignore:return_value_discarded
 	Buildings.connect("moduleBuilt",self,"_checkMod")
+# warning-ignore:return_value_discarded
 	Events.connect("toxicRain",self,"changeCollectorToxic")
 	changeCollectorToxic()
 
