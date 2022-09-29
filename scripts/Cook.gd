@@ -12,7 +12,7 @@ onready var selected_fuel = null
 onready var fuelRequired = 0
 onready var rawAmm = 0
 onready var cookAmm = 0
-onready var timeLeft = 0
+onready var timeLeft : int = 0
 onready var timeTotal = 0
 
 signal cookProgress
@@ -47,6 +47,7 @@ func refresh():
 	refreshProgress()
 
 func refreshProgress():
+	flame.material.set_shader_param("on",1.0)
 	if timeTotal == 0:
 		return
 	if timeLeft == 0:
@@ -55,7 +56,6 @@ func refreshProgress():
 	var val = float(timeLeft)/float(timeTotal) * 100
 	flame.value = val
 	emit_signal("cookProgress",val)
-	flame.material.set_shader_param("on",1.0)
 
 func selectItem(item):
 	selectedItem = item
