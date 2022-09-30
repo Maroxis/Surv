@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://nodes/Weather.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
@@ -42,6 +42,7 @@
 [ext_resource path="res://nodes/components/ReturnButton.tscn" type="PackedScene" id=40]
 [ext_resource path="res://sprites/UI/Status/backgroundTex.png" type="Texture" id=41]
 [ext_resource path="res://nodes/FoodLookup.tscn" type="PackedScene" id=42]
+[ext_resource path="res://scripts/TopBar.gd" type="Script" id=43]
 [ext_resource path="res://sprites/Icons/32x32px/pickaxe.png" type="Texture" id=44]
 [ext_resource path="res://sprites/Icons/32x32px/knife.png" type="Texture" id=45]
 [ext_resource path="res://sprites/Icons/32x32px/axe.png" type="Texture" id=46]
@@ -590,13 +591,14 @@ expand = true
 [node name="TopBar" type="CanvasLayer" parent="Canvas/UI/Status"]
 layer = 95
 
-[node name="Control" type="Control" parent="Canvas/UI/Status/TopBar"]
+[node name="TopBar" type="Control" parent="Canvas/UI/Status/TopBar"]
 anchor_right = 1.0
 rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource( 43 )
 
-[node name="BG" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control"]
+[node name="BG" type="TextureRect" parent="Canvas/UI/Status/TopBar/TopBar"]
 self_modulate = Color( 1, 0.701961, 0.282353, 1 )
 anchor_right = 1.0
 rect_min_size = Vector2( 0, 128 )
@@ -604,16 +606,16 @@ texture = ExtResource( 75 )
 expand = true
 stretch_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Canvas/UI/Status/TopBar/Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Canvas/UI/Status/TopBar/TopBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Control3" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
+[node name="Control3" type="Control" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer"]
 margin_right = 16.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 16, 0 )
 
-[node name="Date" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
+[node name="Date" type="Control" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer"]
 margin_left = 20.0
 margin_right = 148.0
 margin_bottom = 128.0
@@ -625,7 +627,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Calendar" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date"]
+[node name="Calendar" type="TextureRect" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Date"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 4.0
@@ -638,14 +640,14 @@ texture = ExtResource( 11 )
 expand = true
 stretch_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Date/Calendar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = -8
 
-[node name="Control" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/VBoxContainer"]
+[node name="Control" type="Control" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Date/Calendar/VBoxContainer"]
 margin_right = 120.0
 margin_bottom = 52.0
 rect_min_size = Vector2( 0, 52 )
@@ -653,7 +655,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Day" type="Label" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/VBoxContainer"]
+[node name="Day" type="Label" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Date/Calendar/VBoxContainer"]
 margin_left = 6.0
 margin_top = 44.0
 margin_right = 114.0
@@ -666,7 +668,7 @@ text = "Day 23"
 align = 1
 clip_text = true
 
-[node name="Time" type="Label" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/VBoxContainer"]
+[node name="Time" type="Label" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Date/Calendar/VBoxContainer"]
 margin_left = 23.0
 margin_top = 75.0
 margin_right = 97.0
@@ -675,7 +677,7 @@ size_flags_horizontal = 4
 theme = ExtResource( 25 )
 text = "24:00"
 
-[node name="WeatherUI" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar"]
+[node name="WeatherUI" type="Control" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Date/Calendar"]
 self_modulate = Color( 0, 0, 0, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -687,7 +689,7 @@ margin_right = 56.0
 margin_bottom = -8.0
 script = ExtResource( 64 )
 
-[node name="Sunny" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI"]
+[node name="Sunny" type="TextureRect" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Date/Calendar/WeatherUI"]
 visible = false
 margin_left = 41.0
 margin_top = -2.0
@@ -695,14 +697,14 @@ margin_right = 73.0
 margin_bottom = 30.0
 texture = ExtResource( 59 )
 
-[node name="Calm" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI"]
+[node name="Calm" type="TextureRect" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Date/Calendar/WeatherUI"]
 margin_left = 41.0
 margin_top = -2.0
 margin_right = 73.0
 margin_bottom = 30.0
 texture = ExtResource( 37 )
 
-[node name="Cloudy" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI"]
+[node name="Cloudy" type="TextureRect" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Date/Calendar/WeatherUI"]
 visible = false
 margin_left = 41.0
 margin_top = -2.0
@@ -710,7 +712,7 @@ margin_right = 73.0
 margin_bottom = 30.0
 texture = ExtResource( 57 )
 
-[node name="Rain" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI"]
+[node name="Rain" type="TextureRect" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Date/Calendar/WeatherUI"]
 visible = false
 margin_left = 41.0
 margin_top = -2.0
@@ -718,26 +720,26 @@ margin_right = 73.0
 margin_bottom = 30.0
 texture = ExtResource( 62 )
 
-[node name="HeavyRain" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI"]
+[node name="HeavyRain" type="Control" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Date/Calendar/WeatherUI"]
 visible = false
 margin_left = 41.0
 margin_top = -2.0
 margin_right = 81.0
 margin_bottom = 38.0
 
-[node name="Rain" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI/HeavyRain"]
+[node name="Rain" type="TextureRect" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Date/Calendar/WeatherUI/HeavyRain"]
 margin_left = -20.0
 margin_right = 12.0
 margin_bottom = 32.0
 texture = ExtResource( 62 )
 
-[node name="Rain2" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI/HeavyRain"]
+[node name="Rain2" type="TextureRect" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Date/Calendar/WeatherUI/HeavyRain"]
 margin_left = 22.0
 margin_right = 54.0
 margin_bottom = 32.0
 texture = ExtResource( 62 )
 
-[node name="Storm" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Date/Calendar/WeatherUI"]
+[node name="Storm" type="TextureRect" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Date/Calendar/WeatherUI"]
 visible = false
 margin_left = 41.0
 margin_top = -2.0
@@ -745,7 +747,7 @@ margin_right = 73.0
 margin_bottom = 30.0
 texture = ExtResource( 58 )
 
-[node name="Tools" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
+[node name="Tools" type="Control" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer"]
 margin_left = 152.0
 margin_right = 220.0
 margin_bottom = 128.0
@@ -755,20 +757,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GridContainer" type="GridContainer" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools"]
+[node name="GridContainer" type="GridContainer" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Tools"]
 margin_top = 10.0
 margin_right = 40.0
 margin_bottom = 40.0
 columns = 2
 
-[node name="Axe" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
+[node name="Axe" type="TextureRect" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Tools/GridContainer"]
 modulate = Color( 0, 0, 0, 0.188235 )
 margin_right = 32.0
 margin_bottom = 32.0
 texture = ExtResource( 46 )
 script = ExtResource( 66 )
 
-[node name="Pickaxe" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
+[node name="Pickaxe" type="TextureRect" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Tools/GridContainer"]
 modulate = Color( 0, 0, 0, 0.188235 )
 margin_left = 36.0
 margin_right = 68.0
@@ -776,7 +778,7 @@ margin_bottom = 32.0
 texture = ExtResource( 44 )
 script = ExtResource( 66 )
 
-[node name="Knife" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
+[node name="Knife" type="TextureRect" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Tools/GridContainer"]
 modulate = Color( 0, 0, 0, 0.188235 )
 margin_top = 36.0
 margin_right = 32.0
@@ -784,7 +786,7 @@ margin_bottom = 68.0
 texture = ExtResource( 45 )
 script = ExtResource( 66 )
 
-[node name="Shovel" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
+[node name="Shovel" type="TextureRect" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Tools/GridContainer"]
 modulate = Color( 0, 0, 0, 0.188235 )
 margin_left = 36.0
 margin_top = 36.0
@@ -793,7 +795,7 @@ margin_bottom = 68.0
 texture = ExtResource( 19 )
 script = ExtResource( 66 )
 
-[node name="Saw" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
+[node name="Saw" type="TextureRect" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Tools/GridContainer"]
 modulate = Color( 0, 0, 0, 0.188235 )
 margin_top = 72.0
 margin_right = 32.0
@@ -801,7 +803,7 @@ margin_bottom = 104.0
 texture = ExtResource( 34 )
 script = ExtResource( 66 )
 
-[node name="Water" type="TextureRect" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer/Tools/GridContainer"]
+[node name="Water" type="TextureRect" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/Tools/GridContainer"]
 modulate = Color( 0, 0, 0, 0.188235 )
 margin_left = 36.0
 margin_top = 72.0
@@ -810,21 +812,28 @@ margin_bottom = 104.0
 texture = ExtResource( 48 )
 script = ExtResource( 66 )
 
-[node name="FireStatus" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer" instance=ExtResource( 39 )]
+[node name="FireStatus" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer" instance=ExtResource( 39 )]
 
-[node name="FoodLookup" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer" instance=ExtResource( 42 )]
+[node name="FoodLookup" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer" instance=ExtResource( 42 )]
 
-[node name="Inventory" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer" instance=ExtResource( 70 )]
+[node name="InventorySpacer" type="Control" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer"]
+unique_name_in_owner = true
 margin_left = 380.0
+margin_right = 380.0
+margin_bottom = 128.0
+
+[node name="Inventory" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer" instance=ExtResource( 70 )]
+margin_left = 384.0
 margin_right = 1156.0
 
-[node name="Control2" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
+[node name="SettingsSpacer" type="Control" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer"]
+unique_name_in_owner = true
 margin_left = 1160.0
 margin_right = 1192.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 32, 0 )
 
-[node name="SettingsButton" type="TextureButton" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
+[node name="SettingsButton" type="TextureButton" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer"]
 margin_left = 1196.0
 margin_top = 32.0
 margin_right = 1260.0
@@ -833,7 +842,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource( 13 )
 
-[node name="Control4" type="Control" parent="Canvas/UI/Status/TopBar/Control/HBoxContainer"]
+[node name="Control4" type="Control" parent="Canvas/UI/Status/TopBar/TopBar/HBoxContainer"]
 margin_left = 1264.0
 margin_right = 1280.0
 margin_bottom = 128.0
@@ -853,7 +862,7 @@ rect_min_size = Vector2( 16, 0 )
 [connection signal="pressed" from="Canvas/UI/TopLayer/Debug/TestButton" to="Canvas/UI/TopLayer/Debug" method="_on_TestButton_pressed"]
 [connection signal="pressed" from="Canvas/UI/TopLayer/Debug/AddResButton" to="Canvas/UI/TopLayer/Debug" method="_on_AddResButton_pressed"]
 [connection signal="pressed" from="Canvas/UI/Status/Corner/Food/TextureProgress/Button" to="Canvas/UI/Status/Corner/Food" method="_on_Food_Button_pressed"]
-[connection signal="pressed" from="Canvas/UI/Status/TopBar/Control/HBoxContainer/SettingsButton" to="." method="_on_Settings_Button_pressed"]
+[connection signal="pressed" from="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/SettingsButton" to="." method="_on_Settings_Button_pressed"]
 
 [editable path="Canvas/CanvasLayer/GameWindow/Buttons/Woods"]
 [editable path="Canvas/CanvasLayer/GameWindow/Buttons/River"]

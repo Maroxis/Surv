@@ -14,6 +14,7 @@ onready var scrollOrgPos = scroll_container.rect_position.x
 var hidden_items
 onready var max_visible_items = 4
 
+signal changeFlag
 
 func _ready() -> void:
 	Global.ResourcesUI = self
@@ -29,6 +30,7 @@ func init(set = false):
 	self.rect_min_size.x  = chest.rect_size.x + scroll_container.rect_size.x + floor(bag.rect_size.x/2)
 	if set:
 		self.size_flags_horizontal = Control.SIZE_FILL
+		emit_signal("changeFlag")
 
 func update_resource():
 	var items = quick_bar.get_children()
