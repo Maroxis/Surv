@@ -7,6 +7,7 @@ onready var cooked_meat: HBoxContainer = $VBoxContainer/CookedMeat
 
 func _ready() -> void:
 	Global.FoodLookup = self
+	refresh()
 
 func refresh():
 	wild_berry.changeCount(Inventory.get_food_amm("WildBerry"))
