@@ -295,6 +295,12 @@ func refresh():
 	var flask = 1 if get_upgrade("Flask") else 0
 	Global.ToolsUI.updateTool("Water",flask)
 	
+func get_food_total_amm():
+	var amm = 0
+	for fd in foodData:
+		amm += foodData[fd]["amm"]
+	return amm
+
 func get_res_amm(res):
 	return int(resourcesData[res])
 

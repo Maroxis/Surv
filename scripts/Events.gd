@@ -65,6 +65,11 @@ onready var randomEvent = {
 		"title":"Cave in",
 		"desc": "Cave wall collapsed blocking entry",
 		"function": "caveIn"
+	},
+	"event11":{
+		"title":"Rats",
+		"desc": "Rats got into your food supply",
+		"function": "rats"
 	}
 }
 onready var defaultEvent = {
@@ -79,7 +84,7 @@ signal toxicRain
 func _ready() -> void:
 	init()
 	if forceEvent != null:
-		eventDates = [2,3,4]
+		eventDates = [2,3,4,5,6,7]
 
 func init():
 	rng.randomize()
@@ -270,3 +275,28 @@ func returnAnimals(time):
 func caveIn():
 	var amm = ceil(float(Global.Date.getDay()) / 10)
 	Global.Missions.hills.enableCaveIn(amm)
+
+func rats():
+	var amm = floor(clamp(float(Global.Date.day)/5,1.0,20.0))
+	var famm = Inventory.get_food_total_amm()
+	amm = amm if famm >= amm else famm
+	
+	var foodAvaliable = []
+	var ate = {}
+	for food in Inventory.foodData:
+		if Inventory.get_food_amm(food) > 0:
+			foodAvaliable.push_back({"name":food,"amm":Inventory.get_food_amm(food)})
+			ate[food] = 0
+	
+	for n in amm:
+		var r = rng.randi_range(0, foodAvaliable.size()-1)
+		Inventory.add_resource(foodAvaliable[r]["name"],-1,true)
+		ate[foodAvaliable[r]["name"]] += 1
+		foodAvaliable[r]["amm"] -= 1
+		if foodAvaliable[r]["amm"] == 0:
+			foodAvaliable.remove(r)
+	var rs = "They ate: \n"
+	for food in ate:
+		if ate[food] > 0:
+			rs += " " + str(food) + ": " + str(ate[food]) + "\n"
+	return {"error":null,"res": rs}
