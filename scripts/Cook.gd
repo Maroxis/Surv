@@ -36,10 +36,14 @@ func pack():
 	return data
 
 func unpack(data):
-	timeLeft = int(data["timeLeft"])
-	timeTotal = int(data["timeTotal"])
-	cookAmm = int(data["cookAmm"])
-	cookingItem = String(data["cookingItem"])
+	if data.has("timeLeft"):
+		timeLeft = int(data["timeLeft"])
+	if data.has("timeTotal"):
+		timeTotal = int(data["timeTotal"])
+	if data.has("cookAmm"):
+		cookAmm = int(data["cookAmm"])
+	if data.has("cookingItem"):
+		cookingItem = String(data["cookingItem"])
 
 func refresh():
 	changeAmm(rawAmm)

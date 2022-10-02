@@ -116,13 +116,20 @@ func pack():
 	return data
 
 func unpack(data):
-	missionTravelTime = data["missionTravelTime"]
-	gatherTime = data["gatherTime"]
-	exploreTime = data["exploreTime"]
-	exploreCurrentProgress = data["exploreCurrentProgress"]
-	exploreDiscovered = data["exploreDiscovered"]
-	caveInTotal = data["caveInTotal"]
-	caveInProgress = data["caveInProgress"]
+	if data.has("missionTravelTime"):
+		missionTravelTime = data["missionTravelTime"]
+	if data.has("gatherTime"):
+		gatherTime = data["gatherTime"]
+	if data.has("exploreTime"):
+		exploreTime = data["exploreTime"]
+	if data.has("exploreCurrentProgress"):
+		exploreCurrentProgress = data["exploreCurrentProgress"]
+	if data.has("exploreDiscovered"):
+		exploreDiscovered = data["exploreDiscovered"]
+	if data.has("caveInTotal"):
+		caveInTotal = data["caveInTotal"]
+	if data.has("caveInProgress"):
+		caveInProgress = data["caveInProgress"]
 	return
 
 func enableCaveIn(amm):

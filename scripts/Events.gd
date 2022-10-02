@@ -96,13 +96,20 @@ func pack():
 	return data
 
 func unpack(data):
-	eventIndex = data["eventIndex"]
-	damageToolMlt = data["damageToolMlt"]
-	waterAddTime = data["waterAddTime"]
-	animalTimer = data["animalTimer"]
-	showEvent = data["showEvent"]
-	rng.seed = data["rngSeed"]
-	rng.state = data["rngState"]
+	if data.has("eventIndex"):
+		eventIndex = data["eventIndex"]
+	if data.has("damageToolMlt"):
+		damageToolMlt = data["damageToolMlt"]
+	if data.has("waterAddTime"):
+		waterAddTime = data["waterAddTime"]
+	if data.has("animalTimer"):
+		animalTimer = data["animalTimer"]
+	if data.has("showEvent"):
+		showEvent = data["showEvent"]
+	if data.has("rngSeed"):
+		rng.seed = data["rngSeed"]
+	if data.has("rngState"):
+		rng.state = data["rngState"]
 
 func startEvent():
 	if showEvent:
@@ -259,7 +266,7 @@ func returnAnimals(time):
 		Global.Date.disconnect("timePassed",self,"returnAnimals")
 		get_tree().call_group("Animals", "show")
 	return
-	
+
 func caveIn():
 	var amm = ceil(float(Global.Date.getDay()) / 10)
 	Global.Missions.hills.enableCaveIn(amm)

@@ -38,16 +38,26 @@ func pack():
 	return dict
 
 func unpack(dict):
-	maxWater = dict["maxWater"]
-	maxFood = dict["maxFood"]
-	maxHealth = dict["maxHealth"]
-	maxEnergy = dict["maxEnergy"]
-	water = dict["water"]
-	food = dict["food"]
-	health = dict["health"]
-	energy = dict["energy"]
-	sick = dict["sick"]
-	soaked = dict["soaked"]
+	if dict.has("maxWater"):
+		maxWater = dict["maxWater"]
+	if dict.has("maxFood"):
+		maxFood = dict["maxFood"]
+	if dict.has("maxHealth"):
+		maxHealth = dict["maxHealth"]
+	if dict.has("maxEnergy"):
+		maxEnergy = dict["maxEnergy"]
+	if dict.has("water"):
+		water = dict["water"]
+	if dict.has("food"):
+		food = dict["food"]
+	if dict.has("health"):
+		health = dict["health"]
+	if dict.has("energy"):
+		energy = dict["energy"]
+	if dict.has("sick"):
+		sick = dict["sick"]
+	if dict.has("soaked"):
+		soaked = dict["soaked"]
 
 func refresh_status():
 	Global.UI.water.get_node("TextureProgress").animateValue(ceil(water))

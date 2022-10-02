@@ -99,6 +99,8 @@ func pack():
 	return data
 
 func unpack(data):
-	missionTravelTime = data["missionTravelTime"]
-	gatherTime = data["gatherTime"]
+	if data.has("missionTravelTime"):
+		missionTravelTime = data["missionTravelTime"]
+	if data.has("gatherTime"):
+		gatherTime = data["gatherTime"]
 	return

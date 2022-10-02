@@ -35,9 +35,18 @@ func loadSave(path):
 	var data = loadData(path)
 	if(data == null):
 		return false
+	data = addKeysToData(data)
 	unpackData(data)
 	Global.refresh()
 	return true
+
+func addKeysToData(data):
+	add_missing_keys(Tools.tools,data["tools"],TYPE_DICTIONARY,2,{"ctier":TYPE_INT,"durability":TYPE_INT})
+	add_missing_keys(Inventory.resources,data["resources"]["resources"])
+	add_missing_keys(Inventory.upgrades,data["resources"]["upgrades"],TYPE_BOOL)
+	add_missing_keys(Inventory.food,data["resources"]["foodData"],TYPE_DICTIONARY,2,{"amm":TYPE_INT,"spoil":TYPE_INT_ARRAY})
+	add_missing_keys_deep(Buildings.Structure,data["structures"],TYPE_DICTIONARY,0,{"ctier":TYPE_INT,"progress":TYPE_INT})
+	return data
 
 func newGame():
 	delSave()

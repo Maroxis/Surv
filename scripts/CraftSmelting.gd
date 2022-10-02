@@ -47,9 +47,12 @@ func pack():
 	return data
 
 func unpack(data):
-	timeTotal = data["timeTotal"]
-	timeLeft = data["timeLeft"]
-	smeltingRecipe = data["smeltingRecipe"]
+	if data.has("timeTotal"):
+		timeTotal = data["timeTotal"]
+	if data.has("timeLeft"):
+		timeLeft = data["timeLeft"]
+	if data.has("smeltingRecipe"):
+		smeltingRecipe = data["smeltingRecipe"]
 
 func addItems():
 	for res in Inventory.resources:

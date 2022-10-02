@@ -37,12 +37,18 @@ func pack():
 	return weather
 
 func unpack(weather):
-	current = int(weather["current"])
-	weatherChangeRate = float(weather["weatherChangeRate"])
-	progress = int(weather["progress"])
-	current = int(weather["changeHelper"])
-	calmSustain = int(weather["calmSustain"])
-	rainToxic = float(weather["rainToxic"])
+	if weather.has("current"):
+		current = int(weather["current"])
+	if weather.has("weatherChangeRate"):
+		weatherChangeRate = float(weather["weatherChangeRate"])
+	if weather.has("progress"):
+		progress = int(weather["progress"])
+	if weather.has("changeHelper"):
+		current = int(weather["changeHelper"])
+	if weather.has("calmSustain"):
+		calmSustain = int(weather["calmSustain"])
+	if weather.has("rainToxic"):
+		rainToxic = float(weather["rainToxic"])
 
 func getRainInt():
 	return max(current - 2,0)
