@@ -60,6 +60,11 @@ onready var randomEvent = {
 		"title":"Spooked Animals",
 		"desc": "Animals over plains are nowhere to be found",
 		"function": "spookedAnimals"
+	},
+	"event10":{
+		"title":"Cave in",
+		"desc": "Cave wall collapsed blocking entry",
+		"function": "caveIn"
 	}
 }
 onready var defaultEvent = {
@@ -188,8 +193,8 @@ func forestOvergrown():
 	return {"error":null,"res":"It now takes "+time+" to travel"}
 
 func playerIll():
-	var sickMlt = clamp(Global.Date.day/10,1.0,5.0)
-	var sick = rng.randi_range(5, 20)*sickMlt
+	var sickMlt = clamp(Global.Date.day/10,1.0,6.0)
+	var sick = rng.randi_range(5, 10)*sickMlt
 	var descLv
 	Player.change_sick(sick)
 	if(Player.sick < 20):
@@ -254,3 +259,7 @@ func returnAnimals(time):
 		Global.Date.disconnect("timePassed",self,"returnAnimals")
 		get_tree().call_group("Animals", "show")
 	return
+	
+func caveIn():
+	var amm = ceil(float(Global.Date.getDay()) / 10)
+	Global.Missions.hills.enableCaveIn(amm)

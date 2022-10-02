@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://nodes/MissionSelect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/components/ReturnButton.tscn" type="PackedScene" id=2]
@@ -11,10 +11,29 @@
 [ext_resource path="res://sprites/Icons/128x128px/cave.png" type="Texture" id=9]
 [ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=10]
 [ext_resource path="res://scripts/animate/NodeAnimated.gd" type="Script" id=11]
+[ext_resource path="res://sprites/Icons/64x64px/pickaxe.png" type="Texture" id=12]
+[ext_resource path="res://resources/GameTheme.tres" type="Theme" id=13]
+[ext_resource path="res://resources/ProgressBar.tres" type="Theme" id=14]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 1 )
+draw_center = false
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Theme" id=1]
+Panel/styles/panel = SubResource( 2 )
 
 [node name="Hills" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 13 )
 script = ExtResource( 3 )
 
 [node name="BG" type="TextureRect" parent="."]
@@ -173,9 +192,116 @@ margin_top = 92.0
 margin_right = 913.0
 margin_bottom = 355.0
 
+[node name="CaveIn" type="Control" parent="."]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Rock" type="TextureRect" parent="CaveIn"]
+self_modulate = Color( 0.407843, 0.407843, 0.407843, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+stretch_mode = 2
+
+[node name="Textile" type="TextureRect" parent="CaveIn"]
+self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -252.0
+margin_top = -220.0
+margin_right = 252.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 504, 440 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 2
+
+[node name="Border" type="Panel" parent="CaveIn"]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -255.0
+margin_top = -223.0
+margin_right = 255.0
+margin_bottom = 223.0
+rect_min_size = Vector2( 510, 446 )
+mouse_filter = 1
+theme = SubResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Info" type="VBoxContainer" parent="CaveIn"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -167.5
+margin_right = 128.0
+margin_bottom = 167.5
+
+[node name="Label" type="Label" parent="CaveIn/Info"]
+margin_left = 50.0
+margin_right = 206.0
+margin_bottom = 62.0
+size_flags_horizontal = 4
+theme_type_variation = "48f"
+text = "Cave in"
+
+[node name="MissionSelect" parent="CaveIn/Info" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 32.0
+margin_top = 66.0
+margin_right = 224.0
+margin_bottom = 288.0
+rect_min_size = Vector2( 192, 222 )
+connectMission = false
+
+[node name="VBox" parent="CaveIn/Info/MissionSelect" index="0"]
+margin_bottom = 222.0
+
+[node name="Button" parent="CaveIn/Info/MissionSelect/VBox" index="0"]
+margin_top = 4.0
+margin_bottom = 132.0
+
+[node name="Icon" parent="CaveIn/Info/MissionSelect/VBox/Button" index="1"]
+texture = ExtResource( 12 )
+
+[node name="Name" parent="CaveIn/Info/MissionSelect/VBox" index="1"]
+margin_top = 136.0
+margin_bottom = 177.0
+text = "Dig"
+
+[node name="Ammount" parent="CaveIn/Info/MissionSelect/VBox" index="2"]
+visible = false
+
+[node name="Time" parent="CaveIn/Info/MissionSelect/VBox" index="3"]
+margin_top = 181.0
+margin_bottom = 222.0
+text = "1:30"
+
+[node name="TextureProgress" type="ProgressBar" parent="CaveIn/Info"]
+margin_top = 292.0
+margin_right = 256.0
+margin_bottom = 356.0
+rect_min_size = Vector2( 256, 64 )
+theme = ExtResource( 14 )
+max_value = 10.0
+step = 1.0
+percent_visible = false
+
 [node name="Return" parent="." instance=ExtResource( 2 )]
 
 [connection signal="pressed" from="VBoxContainer/Explore/ExploreButton" to="." method="_on_Explore_Button_pressed"]
+[connection signal="pressed" from="CaveIn/Info/MissionSelect/VBox/Button/Button" to="." method="_on_CaveInButton_pressed"]
 [connection signal="pressed" from="Return/Button" to="." method="_on_Return_Button_pressed"]
 
+[editable path="CaveIn/Info/MissionSelect"]
 [editable path="Return"]

@@ -4,11 +4,15 @@ onready var exploreTable = [0,6,12,20,32]
 onready var exploreTime = 30
 onready var exploreCurrentProgress = 0
 onready var exploreDiscovered = 1
+onready var caveInTotal = 0
+onready var caveInProgress = 0
 onready var exploration_progress: TextureProgress = $"%ExplorationProgress"
 onready var exploration_progress_label: Label = $"%LabelProgress"
 onready var exploration_progress_label_time: Label = $"%LabelTime"
 onready var explore_control: Control = $"%Explore"
 onready var explore_button: TextureButton = $VBoxContainer/Explore/ExploreButton
+onready var cave_in: Control = $"%CaveIn"
+onready var cave_in_tex_pr: ProgressBar = $CaveIn/Info/TextureProgress
 
 func _ready() -> void:
 	inOpen = false
@@ -73,6 +77,12 @@ func refresh():
 	updateGatherTime()
 	revealAllEplored()
 	updateVisualEx()
+	refreshCaveIn()
+	
+func refreshCaveIn():
+	cave_in.visible = caveInTotal != 0
+	cave_in_tex_pr.value = caveInProgress
+	cave_in_tex_pr.max_value = caveInTotal
 
 func revealAllEplored():
 	var res = resources.get_children()
@@ -101,6 +111,8 @@ func pack():
 	data["exploreTime"] = exploreTime
 	data["exploreCurrentProgress"] = exploreCurrentProgress
 	data["exploreDiscovered"] = exploreDiscovered
+	data["caveInTotal"] = caveInTotal
+	data["caveInProgress"] = caveInProgress
 	return data
 
 func unpack(data):
@@ -109,4 +121,27 @@ func unpack(data):
 	exploreTime = data["exploreTime"]
 	exploreCurrentProgress = data["exploreCurrentProgress"]
 	exploreDiscovered = data["exploreDiscovered"]
+	caveInTotal = data["caveInTotal"]
+	caveInProgress = data["caveInProgress"]
 	return
+
+func enableCaveIn(amm):
+	caveInTotal = amm
+	cave_in_tex_pr.max_value = amm
+	cave_in.show()
+
+func disableCaveIn():
+	cave_in.hide()
+	caveInProgress = 0
+	caveInTotal = 0
+	cave_in_tex_pr.max_value = 0
+
+func digCaveIn():
+	caveInProgress += 1
+	cave_in_tex_pr.value = caveInProgress
+	if caveInProgress >= caveInTotal:
+		disableCaveIn()
+
+func _on_CaveInButton_pressed() -> void:
+	Player.pass_time(90)
+	digCaveIn()
