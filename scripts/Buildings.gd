@@ -41,7 +41,8 @@ onready var Structure = {
 			},
 			"tier3" : {
 				"cost": {
-					"Leaf": 48
+					"Cloth": 6,
+					"Thread": 4
 				},
 				"time":{
 					"sections": 2,
@@ -230,16 +231,28 @@ onready var Structure = {
 			},
 			"tier2" : {
 				"cost": {
-					"Plank": 16,
-					"Clay": 9
+					"Clay": 18
 				},
 				"time":{
-					"sections": 6,
+					"sections": 3,
 					"completed": 0,
-					"ammount": 40
+					"ammount": 80
 				},
 				"benefits":{
 					"spoilMult": 0.6
+				}
+			},
+			"tier3" : {
+				"cost": {
+					"Plank": 16
+				},
+				"time":{
+					"sections": 3,
+					"completed": 0,
+					"ammount": 60
+				},
+				"benefits":{
+					"spoilMult": 0.4
 				}
 			}
 		}
@@ -396,7 +409,7 @@ onready var Structure = {
 			"tier2" : {
 				"cost": {
 					"Stick": 6,
-					"Thread": 20
+					"Cloth": 3
 				},
 				"time":{
 					"sections": 3,
@@ -404,7 +417,7 @@ onready var Structure = {
 					"ammount": 40
 				},
 				"benefits":{
-					"filter": 0.6
+					"filter": 0.8
 				},
 				"required":{
 					"module":{
@@ -415,7 +428,7 @@ onready var Structure = {
 			"tier3" : {
 				"cost": {
 					"Stick": 6,
-					"Thread": 20,
+					"Cloth": 3,
 					"Sand": 8,
 					"Clay": 2
 				},
@@ -425,7 +438,25 @@ onready var Structure = {
 					"ammount": 40
 				},
 				"benefits":{
-					"filter": 1.4
+					"filter": 1.6
+				},
+				"required":{
+					"module":{
+						"Tank": 1
+					}
+				}
+			},
+			"tier4" : {
+				"cost": {
+					"Coal": 6
+				},
+				"time":{
+					"sections": 1,
+					"completed": 0,
+					"ammount": 30
+				},
+				"benefits":{
+					"filter": 2.2
 				},
 				"required":{
 					"module":{
@@ -464,12 +495,17 @@ onready var Structure = {
 					"Clay": 10
 				},
 				"time":{
-					"sections": 5,
+					"sections": 6,
 					"completed": 0,
 					"ammount": 80
 				},
 				"benefits":{
 					"smeltable": "Iron"
+				},
+				"required":{
+					"tool":{
+						"Shovel": 1,
+					}
 				}
 			}
 		},
@@ -499,6 +535,84 @@ onready var Structure = {
 				"required":{
 					"module":{
 						"Oven": 1
+					}
+				}
+			}
+		}
+	},
+	"Workbench":{
+		"Table":{
+			"benefitsText":{
+				"enable": "Enables placing other tools"
+			},
+			"tier0" : {
+				"benefits":{
+					"enable": null
+				}
+			},
+			"tier1" : {
+				"cost": {
+					"Wood": 5
+				},
+				"time":{
+					"sections": 3,
+					"completed": 0,
+					"ammount": 80
+				},
+				"benefits":{
+					"enable": "Mortar"
+				}
+			}
+		},
+		"Mortar":{
+			"benefitsText":{
+				"enable": "Enables grinding powders",
+				"actionMult": "Grinding speed"
+			},
+			"tier0" : {
+				"benefits":{
+					"enable": null,
+					"actionMult": 0
+				}
+			},
+			"tier1" : {
+				"cost": {
+					"Stone": 5,
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"enable": "Grinded Herbs",
+					"actionMult": 1
+				},
+				"required":{
+					"module":{
+						"Table": 1
+					},
+					"tool":{
+						"Pickaxe": 1,
+					}
+				}
+			},
+			"tier2" : {
+				"cost": {
+					"CopperIngot": 2,
+				},
+				"time":{
+					"sections": 2,
+					"completed": 0,
+					"ammount": 120
+				},
+				"benefits":{
+					"enable": "Grinded Herbs",
+					"actionMult": 1.2
+				},
+				"required":{
+					"module":{
+						"Table": 1
 					}
 				}
 			}

@@ -1,20 +1,22 @@
 extends Mission
 
+onready var herb: Control = $Resources/Herb
+
 func _ready() -> void:
 	missionTravelTime = 40
-	updateTravelTime()
-	
 	gatherTime = {
 		"Wood": 60,
 		"Stick": 50,
 		"Leaf": 40,
-		"Rock": 20
+		"Rock": 20,
+		"Herb": 50
 	}
 	gatherAmm = {
 		"Wood": 3,
 		"Stick": 3,
 		"Leaf": 10,
-		"Rock": 2
+		"Rock": 2,
+		"Herb": 3
 	}
 	toolReq = {
 		"Wood": {
@@ -23,14 +25,27 @@ func _ready() -> void:
 		},
 		"Stick": null,
 		"Leaf": null,
-		"Rock": null
+		"Rock": null,
+		"Herb": {
+			"tool":"Knife",
+			"tier": 1
+		}
 	}
 	toolBonus = {
 		"Wood": "Axe",
 		"Stick": "Axe",
 		"Leaf": "Knife",
-		"Rock": null
+		"Rock": null,
+		"Herb": "Knife"
 	}
 	gatherTimeWBonus = gatherTime.duplicate()
 	resources = $Resources
+	updateTravelTime()
 	populateInfo()
+
+func toggleHerb(time):
+	time = floor(time / 60)
+	if time >= 22 or time <= 6:
+		herb.show()
+	else:
+		herb.hide()

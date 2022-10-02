@@ -41,10 +41,13 @@ func loadSave(path):
 	return true
 
 func addKeysToData(data):
+	if not data["resources"].has("medsData"):
+		data["resources"]["medsData"] = {}
 	add_missing_keys(Tools.tools,data["tools"],TYPE_DICTIONARY,2,{"ctier":TYPE_INT,"durability":TYPE_INT})
 	add_missing_keys(Inventory.resources,data["resources"]["resources"])
 	add_missing_keys(Inventory.upgrades,data["resources"]["upgrades"],TYPE_BOOL)
 	add_missing_keys(Inventory.food,data["resources"]["foodData"],TYPE_DICTIONARY,2,{"amm":TYPE_INT,"spoil":TYPE_INT_ARRAY})
+	add_missing_keys(Inventory.meds,data["resources"]["medsData"])
 	add_missing_keys_deep(Buildings.Structure,data["structures"],TYPE_DICTIONARY,0,{"ctier":TYPE_INT,"progress":TYPE_INT})
 	return data
 
@@ -114,6 +117,11 @@ func removeData(path):
 		return false
 	dir.remove(path)
 	return true
+
+func add_original_keys(dict, target):
+	for res in dict:
+		if(not target.has(res)):
+			target[res] = dict[res]
 
 func add_missing_keys(dict, target, type = TYPE_INT, size = 0, customKeys = null):
 	for res in dict:

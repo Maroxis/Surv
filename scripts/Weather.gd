@@ -14,7 +14,7 @@ onready var progress = 0
 onready var changeHelper = 1
 onready var calmSustain = 1
 
-onready var rainToxic = 0.1 # sick per unit
+onready var rainToxic = 0.0 # sick per unit
 onready var currentSound = null
 onready var light_rain_sound: AudioStreamPlayer = $Sound/LightRain
 onready var heavy_rain_sound: AudioStreamPlayer = $Sound/HeavyRain

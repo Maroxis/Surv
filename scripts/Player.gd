@@ -161,31 +161,27 @@ func sleep():
 	
 func pass_time(time,sleep=false,wet = false):
 	time = int(time)
-	var sleepRegenMult = 1
-	var sickPenaltyMlt = 1.0 if sick < 20 else 0.8
+	var sleepRegenMult = Buildings.getCurrentModule("House","Bed")["benefits"]["sleepRegenMult"] if sleep else 1.0
 	var weatherPenalty = 1.2 if(Global.Weather.current == Global.Weather.type.Sunny) else 1.0
 	var soakMult = Global.Weather.getRainInt()
 	if(wet and soakMult > 0):
 		soak(time*soakMult)
 	elif(soaked > 0):
 		dry(time)
-	if(sleep):
-		var houseb = Buildings.getCurrentModule("House","Bed")["benefits"]
-		sleepRegenMult= houseb["sleepRegenMult"]
-		change_energy(maxEnergy-sick)
-	else:
-		change_energy(-(time*exhaustRate*weatherPenalty))
-		
+	if(sick > 0 and not wet):
+		var fullBonus = 2 if food > 50 and water > 50 else 1
+		change_sick(-(sickRate*2*time*sleepRegenMult*fullBonus))
+	var sickPenaltyMlt = 1.0 if sick < 20 else 0.8
 	if(food > 50 && water > 30 && sick < 50):
 		change_health(time*regenRate*sleepRegenMult*sickPenaltyMlt)
 	elif(sick > 80):
 		change_health(-(time*regenRate))
 	change_water(-(time*thirstRate*sickPenaltyMlt*sickPenaltyMlt*weatherPenalty))
 	change_food(-(time*hungerRate*sickPenaltyMlt))
-	
-	if(sick > 0):
-		var fullBonus = 2 if food > 50 and water > 50 else 1
-		change_sick(-(sickRate*2*time*sleepRegenMult*fullBonus))
+	if sleep:
+		change_energy(maxEnergy-sick)
+	else:
+		change_energy(-(time*exhaustRate*weatherPenalty))
 	
 	Buildings.runCollector(time)
 	Inventory.spoil_food(time)

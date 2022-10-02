@@ -99,6 +99,7 @@ func pack():
 	return data
 
 func unpack(data):
+	Save.add_original_keys(gatherTime,data["gatherTime"])
 	if data.has("missionTravelTime"):
 		missionTravelTime = data["missionTravelTime"]
 	if data.has("gatherTime"):

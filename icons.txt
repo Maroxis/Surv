@@ -47,4 +47,8 @@
 <a href="https://www.flaticon.com/free-icons/pegs" title="pegs icons">Pegs icons created by pongsakornRed - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/tap" title="tap icons">Tap icons created by Pixel perfect - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/music" title="music icons">Music icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/mortar" title="mortar icons">Mortar icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/carpentry" title="carpentry icons">Carpentry icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/tables" title="tables icons">Tables icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/fabric" title="fabric icons">Fabric icons created by Freepik - Flaticon</a>
 

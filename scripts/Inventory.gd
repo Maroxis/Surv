@@ -21,6 +21,10 @@ onready var resources = {
 			"time": 20
 		}
 	  },
+	"Herb": {
+		"weight" : 0.8,
+		"crafted": false
+	  },
 	"Leather": {
 		"weight" : 2.4,
 		"crafted": true
@@ -31,6 +35,14 @@ onready var resources = {
 			"Leaf" : 3
 		},
 		"craftTime": 30,
+		"crafted": true
+	  },
+	"Cloth": {
+		"weight" : 1.2,
+		"cost" : {
+			"Thread" : 6
+		},
+		"craftTime": 60,
 		"crafted": true
 	  },
 	"Rope": {
@@ -267,20 +279,35 @@ onready var upgrades = {
 		"craftTime": 80
 	}
 }
+
+onready var meds = {
+	"Poultice":{
+		"cost" : {
+			"Herb" : 3,
+			"Cloth": 1
+		},
+		"craftTime": 20,
+		"crafted": true
+	}
+}
+
 var resourcesData = {}
 var upgradesData = {}
 var foodData = {}
+var medsData = {}
 
 func _ready() -> void:
 	Save.add_missing_keys(resources,resourcesData)
 	Save.add_missing_keys(upgrades,upgradesData,TYPE_BOOL)
 	Save.add_missing_keys(food,foodData,TYPE_DICTIONARY,2,{"amm":TYPE_INT,"spoil":TYPE_INT_ARRAY})
+	Save.add_missing_keys(meds,medsData)
 
 func pack():
 	var data = {}
 	data["resources"] = resourcesData
 	data["upgrades"] = upgradesData
 	data["foodData"] = foodData
+	data["medsData"] = medsData
 	return data
 
 func unpack(data):
@@ -289,6 +316,7 @@ func unpack(data):
 	for upgrade in upgradesData:
 		upgradesData[upgrade] = bool(data["upgrades"][upgrade])
 	foodData = data["foodData"]
+	medsData = data["medsData"]
 
 func refresh():
 	update_bag()

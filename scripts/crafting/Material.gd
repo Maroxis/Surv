@@ -1,5 +1,7 @@
 extends Craftable
 
+class_name Craftable_Material
+
 onready var tName = get_node("HBoxContainer/VBoxContainer2/Name")
 onready var cost = get_node("HBoxContainer/VBoxContainer/Cost")
 onready var timeLb = $HBoxContainer2/Time
