@@ -23,6 +23,11 @@ var energy = 100.0
 var sick = 0
 var soaked = 0
 
+var medsBuff = {}
+
+func _ready() -> void:
+	reset_meds()
+
 func pack():
 	var dict = {}
 	dict["maxWater"] = maxWater
@@ -35,6 +40,7 @@ func pack():
 	dict["energy"] = energy
 	dict["sick"] = sick
 	dict["soaked"] = soaked
+	dict["medsBuff"] = medsBuff
 	return dict
 
 func unpack(dict):
@@ -58,6 +64,8 @@ func unpack(dict):
 		sick = dict["sick"]
 	if dict.has("soaked"):
 		soaked = dict["soaked"]
+	if dict.has("medsBuff"):
+		medsBuff = dict["medsBuff"]
 
 func refresh_status():
 	Global.UI.water.get_node("TextureProgress").animateValue(ceil(water))
@@ -69,6 +77,24 @@ func refresh_status():
 	Global.UI.health.get_node("SickProgress").animateValue(ceil(sick))
 	Global.UI.energy.get_node("TextureProgress").animateValue(ceil(energy))
 	Global.UI.energy.get_node("TextureProgress/Value").text = str(ceil(energy))
+	deplete_meds(0)
+
+func reset_meds():
+	medsBuff = {
+		"time": 0,
+		"totalTime": 0,
+		"sickGain": 1.0,
+		"sickReduction": 1.0,
+		"healthRegen": 1.0
+	}
+
+func apply_med(medName):
+	var med = Inventory.meds[medName]
+	for buff in med["buffs"]:
+		medsBuff[buff] = med["buffs"][buff]
+	medsBuff["totalTime"] = medsBuff["time"]
+	Inventory.add_meds(medName,-1)
+	deplete_meds(0)
 
 func soak(amm):
 	soaked += amm
@@ -133,6 +159,7 @@ func change_health(amm, set = false):
 	if(set):
 		health = amm
 	else:
+		amm = amm * medsBuff["healthRegen"] if amm > 0 else amm
 		health += amm
 	health = clamp(health,0,maxHealth)
 	Global.UI.health.get_node("TextureProgress").animateValue(ceil(health))
@@ -189,8 +216,19 @@ func pass_time(time,sleep=false,wet = false):
 	Global.Cook.run(time)
 	Global.Weather.simWeather(time)
 	Global.Date.changeTime(time)
-	
+	deplete_meds(time)
+
+func deplete_meds(time):
+	medsBuff["time"] -= time
+	if medsBuff["time"] <= 0:
+		reset_meds()
+	Global.UI.health.setMedProgress(medsBuff["time"],medsBuff["totalTime"])
+
 func change_sick(amm):
+	if amm > 0:
+		amm *= medsBuff["sickGain"]
+	else:
+		amm *= medsBuff["sickReduction"]
 	sick += amm
 	sick = clamp(sick,0,100)
 	Global.UI.health.get_node("SickProgress").animateValue(ceil(sick))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://nodes/Weather.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
@@ -50,6 +50,7 @@
 [ext_resource path="res://sprites/Icons/32x32px/flask.png" type="Texture" id=48]
 [ext_resource path="res://nodes/Resources.tscn" type="PackedScene" id=49]
 [ext_resource path="res://nodes/MedsApply.tscn" type="PackedScene" id=50]
+[ext_resource path="res://fonts/StatusIndicatorFont.tres" type="DynamicFont" id=51]
 [ext_resource path="res://scripts/MissionButtons.gd" type="Script" id=52]
 [ext_resource path="res://scripts/Debug.gd" type="Script" id=53]
 [ext_resource path="res://sprites/Icons/128x128px/hog-head.png" type="Texture" id=54]
@@ -71,6 +72,9 @@
 [ext_resource path="res://scripts/FoodIcon.gd" type="Script" id=74]
 [ext_resource path="res://sprites/UI/Topbar/BG.png" type="Texture" id=75]
 [ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=77]
+
+[sub_resource type="Theme" id=2]
+default_font = ExtResource( 51 )
 
 [sub_resource type="DynamicFont" id=13]
 size = 30
@@ -479,7 +483,7 @@ rect_min_size = Vector2( 264, 264 )
 texture = ExtResource( 41 )
 expand = true
 
-[node name="Health" parent="Canvas/UI/Status/Corner" instance=ExtResource( 6 )]
+[node name="Health" type="Control" parent="Canvas/UI/Status/Corner"]
 unique_name_in_owner = true
 margin_left = 59.0
 margin_top = -51.0
@@ -487,22 +491,60 @@ margin_right = 59.0
 margin_bottom = -51.0
 script = ExtResource( 47 )
 
-[node name="TextureProgress" parent="Canvas/UI/Status/Corner/Health" index="0"]
+[node name="TextureProgress" type="TextureProgress" parent="Canvas/UI/Status/Corner/Health"]
 self_modulate = Color( 1, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -48.0
+margin_top = -48.0
 margin_right = 80.0
 margin_bottom = 80.0
 value = 100.0
 texture_under = ExtResource( 28 )
 texture_progress = ExtResource( 28 )
+fill_mode = 3
+tint_under = Color( 0.25098, 0.25098, 0.25098, 1 )
+script = ExtResource( 69 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TextureRect" parent="Canvas/UI/Status/Corner/Health/TextureProgress" index="0"]
+[node name="MedsProgress" type="TextureProgress" parent="Canvas/UI/Status/Corner/Health/TextureProgress"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 margin_left = -31.0
 margin_top = -33.0
 margin_right = 97.0
 margin_bottom = 95.0
-texture = ExtResource( 18 )
+rect_scale = Vector2( 0.5, 0.5 )
+texture_under = ExtResource( 18 )
+texture_progress = ExtResource( 18 )
+fill_mode = 3
+tint_under = Color( 0, 0, 0, 0.501961 )
+tint_progress = Color( 0, 0.541176, 0.0196078, 1 )
+script = ExtResource( 69 )
 
-[node name="Button" type="Button" parent="Canvas/UI/Status/Corner/Health/TextureProgress" index="2"]
+[node name="Value" type="Label" parent="Canvas/UI/Status/Corner/Health/TextureProgress"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -31.5
+margin_top = -27.0
+margin_right = 31.5
+margin_bottom = 27.0
+theme = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 0.501961 )
+text = "100"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="Canvas/UI/Status/Corner/Health/TextureProgress"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -897,7 +939,6 @@ rect_min_size = Vector2( 16, 0 )
 [editable path="Canvas/CanvasLayer/GameWindow/BaseActivities/Status/Return"]
 [editable path="Canvas/UI/Status/FoodEat"]
 [editable path="Canvas/UI/Status/FoodEat/Return"]
-[editable path="Canvas/UI/Status/Corner/Health"]
 [editable path="Canvas/UI/Status/Corner/Food"]
 [editable path="Canvas/UI/Status/Corner/Water"]
 [editable path="Canvas/UI/Status/Corner/Energy"]

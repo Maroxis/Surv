@@ -11,7 +11,15 @@ func populateItems():
 			var scene_instance = scene.instance()
 			container.add_child(scene_instance)
 			scene_instance.init(res)
+			scene_instance.addBuffs(Inventory.meds[res]["buffs"])
 			scene_instance.connect("itemClicked",self,"applyMed")
+	if Player.medsBuff["time"] > 0:
+		disableAll()
 
 func applyMed(med,_node):
-	print(med)
+	Player.apply_med(med)
+	refresh()
+	
+func disableAll():
+	for item in container.get_children():
+		item.disable()

@@ -287,7 +287,11 @@ onready var meds = {
 			"Cloth": 1
 		},
 		"craftTime": 20,
-		"crafted": true,
+		"buffs":{
+			"time": 1440,
+			"sickGain": 0.8,
+			"sickReduction": 1.2
+		},
 		"requirement": {
 			"module" : {
 				"bname":"Workbench",

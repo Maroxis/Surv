@@ -4,6 +4,8 @@ class_name IndicatorItem
 
 onready var label: Label = $VBoxContainer/Label
 onready var icon: TextureRect = $VBoxContainer/Icon
+onready var button: Button = $Button
+
 var item
 
 signal itemClicked
@@ -22,3 +24,7 @@ func changeLabel(nm):
 func changeTex(tex):
 	tex = tex.to_lower()
 	icon.texture = load("res://sprites/Icons/64x64px/"+tex+".png")
+
+func disable():
+	button.disabled = true
+	self.modulate = Color(0.4,0.4,0.4)
