@@ -153,10 +153,12 @@ func get_single_key(type):
 	
 func add_missing_keys_deep(dict, target, type = TYPE_INT, size = 0, keys = null):
 	for sub in dict:
-		target[sub] = {}
+		if not target.has(sub):
+			target[sub] = {}
 		for key in dict[sub]:
-			target[sub][key] = {}
-			if(typeof(dict[sub][key]) == TYPE_DICTIONARY):
-				_create_key(target[sub],key,type,size,keys)
-			else:
-				_create_key(target[sub],key,typeof(dict[sub][key]),size,keys)
+			if not target[sub].has(key):
+				target[sub][key] = {}
+				if(typeof(dict[sub][key]) == TYPE_DICTIONARY):
+					_create_key(target[sub],key,type,size,keys)
+				else:
+					_create_key(target[sub],key,typeof(dict[sub][key]),size,keys)

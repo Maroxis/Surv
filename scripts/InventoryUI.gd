@@ -100,8 +100,8 @@ func pr():
 	if(inProgress == 0 and not buffer.empty()):
 		update_resource()
 
-func addRes(res,amm,food):
-	Global.ChestResources.update_resource(res,amm,food)
+func addRes(res,amm,food,meds = false):
+	Global.ChestResources.update_resource(res,amm,food,meds)
 	if food:
 		Global.FoodLookup.refresh()
 	addToBuffer(res,amm)

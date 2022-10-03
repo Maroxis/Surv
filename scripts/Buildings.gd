@@ -577,7 +577,7 @@ onready var Structure = {
 			},
 			"tier1" : {
 				"cost": {
-					"Stone": 5,
+					"Rock": 5,
 				},
 				"time":{
 					"sections": 2,

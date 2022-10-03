@@ -43,9 +43,14 @@ func _ready() -> void:
 	updateTravelTime()
 	populateInfo()
 
-func toggleHerb(time):
+func toggleHerb():
+	var time = Global.Date.getTime()
 	time = floor(time / 60)
 	if time >= 22 or time <= 6:
 		herb.show()
 	else:
 		herb.hide()
+
+func _on_Woods_visibility_changed() -> void:
+	if visible:
+		toggleHerb()

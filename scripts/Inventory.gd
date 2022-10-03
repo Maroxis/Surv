@@ -287,7 +287,14 @@ onready var meds = {
 			"Cloth": 1
 		},
 		"craftTime": 20,
-		"crafted": true
+		"crafted": true,
+		"requirement": {
+			"module" : {
+				"bname":"Workbench",
+				"mname":"Mortar",
+				"tier" : 1
+			}
+		}
 	}
 }
 
@@ -331,6 +338,9 @@ func get_food_total_amm():
 
 func get_res_amm(res):
 	return int(resourcesData[res])
+	
+func get_meds_amm(res):
+	return int(medsData[res])
 
 func get_food_amm(res):
 	return int(foodData[res]["amm"])
@@ -389,6 +399,11 @@ func add_resource(res,amm:int,fd = false):
 			Global.ResourcesUI.addRes(res,dictData[res],fd)
 		return true
 
+func add_meds(item,amm):
+	medsData[item] += amm
+	medsData[item] = min(medsData[item],999)
+	Global.ResourcesUI.addRes(item,medsData[item],false,true)
+
 func add_spoil(res,amm):
 	if(amm > 0):
 		var sp = {
@@ -411,8 +426,8 @@ func add_spoil(res,amm):
 				if(i == 0):
 					break
 
-func check_cost(item, amm = 1, upg = false):
-	var table = upgrades[item] if upg else resources[item]
+func check_cost(item, amm = 1, table = resources):
+	table = table[item]
 	if(not table.has("cost")):
 		return
 	for mat in table["cost"]:
@@ -427,6 +442,12 @@ func craft_item(item, amm = 1, add = true):
 		add_resource(item,amm)
 		Player.pass_time(resources[item]["craftTime"])
 
+func craft_meds(item, amm = 1):
+	for mat in meds[item]["cost"]:
+		add_resource(mat, -(meds[item]["cost"][mat] * amm))
+	add_meds(item,amm)
+
+
 func expand_bag(item):
 	if(!buy_upgrade(item)):
 		return false
@@ -436,7 +457,7 @@ func expand_bag(item):
 	return true
 
 func buy_upgrade(item):
-	if(get_upgrade(item) or !check_cost(item,1,true)):
+	if(get_upgrade(item) or !check_cost(item,1,upgrades)):
 		return false
 	for mat in upgrades[item]["cost"]:
 		add_resource(mat, -(upgrades[item]["cost"][mat]))

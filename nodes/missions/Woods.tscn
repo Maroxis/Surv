@@ -72,6 +72,7 @@ margin_bottom = 427.0
 
 [node name="Return" parent="." instance=ExtResource( 5 )]
 
+[connection signal="visibility_changed" from="." to="." method="_on_Woods_visibility_changed"]
 [connection signal="pressed" from="Return/Button" to="." method="_on_Return_Button_pressed"]
 
 [editable path="Return"]

@@ -6,7 +6,7 @@ onready var tName = get_node("HBoxContainer/VBoxContainer2/Name")
 onready var cost = get_node("HBoxContainer/VBoxContainer/Cost")
 onready var timeLb = $HBoxContainer2/Time
 onready var requirement: Label = $Requirement
-
+onready var module_meet = true
 
 func _ready() -> void:
 	var item = $HBoxContainer/VBoxContainer2/TextureRect
@@ -18,7 +18,7 @@ func refresh():
 	_updateCost()
 	_updateTime()
 	_updateReq()
-	if cost_meet and tool_meet:
+	if cost_meet and tool_meet and module_meet:
 		enable()
 	else:
 		disable()

@@ -36,21 +36,21 @@ margin_top = 64.0
 margin_right = -64.0
 
 [node name="Raw" type="VBoxContainer" parent="Border/Bg/Resources"]
-margin_right = 325.0
+margin_right = 226.0
 margin_bottom = 496.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="Border/Bg/Resources/Raw"]
-margin_right = 325.0
+margin_right = 226.0
 margin_bottom = 41.0
 theme = ExtResource( 1 )
 text = "Raw"
 align = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Border/Bg/Resources/Raw"]
-margin_left = 162.0
+margin_left = 113.0
 margin_top = 45.0
-margin_right = 162.0
+margin_right = 113.0
 margin_bottom = 496.0
 size_flags_horizontal = 6
 size_flags_vertical = 3
@@ -62,28 +62,28 @@ custom_constants/hseparation = 32
 columns = 2
 
 [node name="Control" type="Control" parent="Border/Bg/Resources"]
-margin_left = 329.0
-margin_right = 393.0
+margin_left = 230.0
+margin_right = 294.0
 margin_bottom = 496.0
 rect_min_size = Vector2( 64, 0 )
 
 [node name="Crafted" type="VBoxContainer" parent="Border/Bg/Resources"]
-margin_left = 397.0
-margin_right = 722.0
+margin_left = 298.0
+margin_right = 524.0
 margin_bottom = 496.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="Border/Bg/Resources/Crafted"]
-margin_right = 325.0
+margin_right = 226.0
 margin_bottom = 41.0
 theme = ExtResource( 1 )
 text = "Crafted"
 align = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Border/Bg/Resources/Crafted"]
-margin_left = 162.0
+margin_left = 113.0
 margin_top = 45.0
-margin_right = 162.0
+margin_right = 113.0
 margin_bottom = 496.0
 size_flags_horizontal = 6
 size_flags_vertical = 3
@@ -98,28 +98,28 @@ custom_constants/hseparation = 32
 columns = 2
 
 [node name="Control2" type="Control" parent="Border/Bg/Resources"]
-margin_left = 726.0
-margin_right = 790.0
+margin_left = 528.0
+margin_right = 592.0
 margin_bottom = 496.0
 rect_min_size = Vector2( 64, 0 )
 
 [node name="Food" type="VBoxContainer" parent="Border/Bg/Resources"]
-margin_left = 794.0
-margin_right = 1120.0
+margin_left = 596.0
+margin_right = 822.0
 margin_bottom = 496.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="Border/Bg/Resources/Food"]
-margin_right = 326.0
+margin_right = 226.0
 margin_bottom = 41.0
 theme = ExtResource( 1 )
 text = "Food"
 align = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Border/Bg/Resources/Food"]
-margin_left = 163.0
+margin_left = 113.0
 margin_top = 45.0
-margin_right = 163.0
+margin_right = 113.0
 margin_bottom = 496.0
 size_flags_horizontal = 6
 size_flags_vertical = 3
@@ -132,3 +132,38 @@ __meta__ = {
 size_flags_horizontal = 4
 custom_constants/hseparation = 32
 columns = 2
+
+[node name="Control3" type="Control" parent="Border/Bg/Resources"]
+margin_left = 826.0
+margin_right = 890.0
+margin_bottom = 496.0
+rect_min_size = Vector2( 64, 0 )
+
+[node name="Meds" type="VBoxContainer" parent="Border/Bg/Resources"]
+margin_left = 894.0
+margin_right = 1120.0
+margin_bottom = 496.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Border/Bg/Resources/Meds"]
+margin_right = 226.0
+margin_bottom = 41.0
+theme = ExtResource( 1 )
+text = "Medical"
+align = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Border/Bg/Resources/Meds"]
+margin_left = 113.0
+margin_top = 45.0
+margin_right = 113.0
+margin_bottom = 496.0
+size_flags_horizontal = 6
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="List" type="GridContainer" parent="Border/Bg/Resources/Meds/ScrollContainer"]
+size_flags_horizontal = 4
+custom_constants/hseparation = 32

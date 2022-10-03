@@ -4,6 +4,7 @@ onready var resources: HBoxContainer = $"%Resources"
 onready var rawList = resources.get_node("Raw/ScrollContainer/List")
 onready var craftedList = resources.get_node("Crafted/ScrollContainer/List")
 onready var foodList = resources.get_node("Food/ScrollContainer/List")
+onready var medsList = resources.get_node("Meds/ScrollContainer/List")
 onready var scene = load("res://nodes/components/ItemCount.tscn")
 
 func _ready() -> void:
@@ -17,6 +18,8 @@ func createLists():
 		_createList(list,res)
 	for food in Inventory.food:
 		_createList(foodList,food)
+	for med in Inventory.meds:
+		_createList(medsList,med)
 
 func _createList(list,res):
 	var scene_instance = scene.instance()
@@ -30,6 +33,8 @@ func _loadSingleRes(list,res):
 	node.changeSize(64)
 	if(list == foodList):
 		node.changeCount(Inventory.get_food_amm(res))
+	elif(list == medsList):
+		node.changeCount(Inventory.get_meds_amm(res))
 	else:
 		node.changeCount(Inventory.get_res_amm(res))
 	
@@ -39,6 +44,8 @@ func loadRes():
 		_loadSingleRes(list,res)
 	for food in Inventory.food:
 		_loadSingleRes(foodList,food)
+	for med in Inventory.meds:
+		_loadSingleRes(medsList,med)
 
 func clearList(list):
 	for n in list.get_children():
@@ -51,10 +58,12 @@ func refresh():
 	createLists()
 	loadRes()
 
-func update_resource(res,amm,food):
+func update_resource(res,amm,food,meds):
 	var node
 	if(food):
 		node = foodList.get_node(res)
+	elif(meds):
+		node = medsList.get_node(res)
 	elif(Inventory.resources[res]["crafted"]):
 		node = craftedList.get_node(res)
 	else:
