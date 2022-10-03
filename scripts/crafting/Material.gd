@@ -35,12 +35,21 @@ func _updateCost():
 
 func _updateReq():
 	tool_meet = true
+	module_meet = true
+	requirement.visible = false
 	if(Inventory.resources[self.name].has("requirement")):
 		var req = Inventory.resources[self.name]["requirement"]
-		if(Tools.getTier(req["tool"]) < req["tier"]):
-			tool_meet = false
-			requirement.visible = true
-			requirement.text = "Requires " + str(req["tool"])
+		requirement.text = ""
+		if req.has("tool"):
+			if(Tools.getTier(req["tool"]["name"]) < req["tool"]["tier"]):
+				tool_meet = false
+				requirement.visible = true
+				requirement.text += "Requires " + str(req["tool"]["name"] + "\n")
+		if req.has("module"):
+			if(Buildings.getTierInt(req["module"]["bname"],req["module"]["mname"]) < req["module"]["tier"]):
+				module_meet = false
+				requirement.visible = true
+				requirement.text += "Requires " +str(req["module"]["bname"]) + " " + str(req["module"]["mname"])
 
 func _updateTime():
 	timeLb.text = Global.timeGetFullFormat(Inventory.resources[self.name]["craftTime"],true)

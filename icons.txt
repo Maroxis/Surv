@@ -51,4 +51,7 @@
 <a href="https://www.flaticon.com/free-icons/carpentry" title="carpentry icons">Carpentry icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/tables" title="tables icons">Tables icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/fabric" title="fabric icons">Fabric icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/ayurvedic" title="ayurvedic icons">Ayurvedic icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/alternative-medicine" title="alternative medicine icons">Alternative medicine icons created by muhammad atho' - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/powder" title="powder icons">Powder icons created by Freepik - Flaticon</a>
 

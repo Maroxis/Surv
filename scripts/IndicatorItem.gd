@@ -15,7 +15,7 @@ func _on_Button_pressed() -> void:
 
 func init(itemName):
 	item = itemName
-	changeLabel(itemName)
+	changeLabel(Global.splitString(itemName))
 	changeTex(itemName)
 
 func changeLabel(nm):

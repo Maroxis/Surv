@@ -25,6 +25,21 @@ onready var resources = {
 		"weight" : 0.8,
 		"crafted": false
 	  },
+	"HerbPowder": {
+		"weight" : 0.8,
+		"cost" : {
+			"Herb" : 6
+		},
+		"requirement": {
+			"module" : {
+				"bname":"Workbench",
+				"mname":"Mortar",
+				"tier" : 1
+			}
+		},
+		"craftTime": 40,
+		"crafted": true
+	  },
 	"Leather": {
 		"weight" : 2.4,
 		"crafted": true
@@ -68,8 +83,10 @@ onready var resources = {
 			"Wood" : 1
 		},
 		"requirement": {
-			"tool" : "Saw",
-			"tier" : 1
+			"tool":{
+				"name" : "Saw",
+				"tier" : 1
+			}
 		},
 		"craftTime": 40,
 		"crafted": true
@@ -291,6 +308,30 @@ onready var meds = {
 			"time": 1440,
 			"sickGain": 0.8,
 			"sickReduction": 1.2
+		}
+	},
+	"HerbalTea":{
+		"cost" : {
+			"HerbPowder" : 1,
+			"Cloth": 1
+		},
+		"craftTime": 10,
+		"buffs":{
+			"time": 1440,
+			"healthRegen": 2.0,
+			"sickReduction": 1.2
+		}
+	},
+	"HerbalGranulate":{
+		"cost" : {
+			"HerbPowder" : 2,
+			"Coal": 2
+		},
+		"craftTime": 80,
+		"buffs":{
+			"time": 1440,
+			"healthRegen": 1.2,
+			"sickReduction": 1.6
 		},
 		"requirement": {
 			"module" : {

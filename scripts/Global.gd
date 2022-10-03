@@ -52,3 +52,11 @@ func timeGetFullFormat(time,lzero = false,labeled = false):
 	if(labeled):
 		ftime += "m"
 	return ftime
+
+func splitString(string):
+	var result = ""
+	var r = RegEx.new()
+	r.compile("([A-Z])+([a-z])+")
+	for m in r.search_all(string):
+		result += m.get_string() + " "
+	return result

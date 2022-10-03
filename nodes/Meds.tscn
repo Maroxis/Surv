@@ -4,4 +4,45 @@
 [ext_resource path="res://scripts/Meds.gd" type="Script" id=2]
 
 [node name="Meds" instance=ExtResource( 1 )]
+margin_left = 0.0
+margin_right = 336.0
+rect_min_size = Vector2( 512, 0 )
 script = ExtResource( 2 )
+
+[node name="Control" parent="." index="0"]
+margin_right = 528.0
+
+[node name="HBoxContainer" parent="." index="1"]
+margin_right = 528.0
+
+[node name="VBoxContainer2" parent="HBoxContainer" index="0"]
+margin_right = 192.0
+rect_min_size = Vector2( 192, 0 )
+
+[node name="TextureRect" parent="HBoxContainer/VBoxContainer2" index="0"]
+margin_right = 192.0
+
+[node name="Name" parent="HBoxContainer/VBoxContainer2" index="1"]
+margin_right = 192.0
+
+[node name="VBoxContainer" parent="HBoxContainer" index="1"]
+margin_left = 208.0
+margin_right = 528.0
+rect_min_size = Vector2( 320, 0 )
+
+[node name="CostLabel" parent="HBoxContainer/VBoxContainer" index="1"]
+margin_right = 320.0
+align = 0
+
+[node name="Cost" parent="HBoxContainer/VBoxContainer" index="2"]
+margin_right = 320.0
+
+[node name="HBoxContainer2" parent="." index="2"]
+margin_right = 528.0
+
+[node name="CraftButton" parent="HBoxContainer2" index="0"]
+margin_right = 349.0
+
+[node name="Time" parent="HBoxContainer2" index="1"]
+margin_left = 353.0
+margin_right = 528.0

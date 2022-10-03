@@ -2,7 +2,7 @@ extends Control
 
 class_name IndicatorPopup
 
-var container: HFlowContainer
+var container
 var scene
 
 func open():

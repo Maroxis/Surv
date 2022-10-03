@@ -77,7 +77,8 @@ func refresh_status():
 	Global.UI.health.get_node("SickProgress").animateValue(ceil(sick))
 	Global.UI.energy.get_node("TextureProgress").animateValue(ceil(energy))
 	Global.UI.energy.get_node("TextureProgress/Value").text = str(ceil(energy))
-	deplete_meds(0)
+	Global.UI.health.setMedMaxTime(medsBuff["totalTime"])
+	Global.UI.health.setMedProgress(medsBuff["time"])
 
 func reset_meds():
 	medsBuff = {
@@ -94,6 +95,7 @@ func apply_med(medName):
 		medsBuff[buff] = med["buffs"][buff]
 	medsBuff["totalTime"] = medsBuff["time"]
 	Inventory.add_meds(medName,-1)
+	Global.UI.health.setMedMaxTime(medsBuff["totalTime"])
 	deplete_meds(0)
 
 func soak(amm):
@@ -159,7 +161,11 @@ func change_health(amm, set = false):
 	if(set):
 		health = amm
 	else:
-		amm = amm * medsBuff["healthRegen"] if amm > 0 else amm
+		if amm > 0:
+			amm *= medsBuff["healthRegen"]
+		else:
+			amm /= medsBuff["healthRegen"]
+		print("health: ",amm)
 		health += amm
 	health = clamp(health,0,maxHealth)
 	Global.UI.health.get_node("TextureProgress").animateValue(ceil(health))
@@ -222,13 +228,14 @@ func deplete_meds(time):
 	medsBuff["time"] -= time
 	if medsBuff["time"] <= 0:
 		reset_meds()
-	Global.UI.health.setMedProgress(medsBuff["time"],medsBuff["totalTime"])
+	Global.UI.health.setMedProgress(medsBuff["time"])
 
 func change_sick(amm):
 	if amm > 0:
 		amm *= medsBuff["sickGain"]
 	else:
 		amm *= medsBuff["sickReduction"]
+	print("sick: ",amm)
 	sick += amm
 	sick = clamp(sick,0,100)
 	Global.UI.health.get_node("SickProgress").animateValue(ceil(sick))

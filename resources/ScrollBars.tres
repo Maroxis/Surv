@@ -1,0 +1,41 @@
+[gd_resource type="Theme" load_steps=5 format=2]
+
+[ext_resource path="res://resources/grabber_style.tres" type="StyleBox" id=1]
+[ext_resource path="res://sprites/BG/9rectPanel.png" type="Texture" id=2]
+
+[sub_resource type="StyleBoxTexture" id=3]
+content_margin_left = 224.0
+content_margin_right = 112.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 32, 32 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+expand_margin_bottom = 8.0
+modulate_color = Color( 0.0627451, 0.0627451, 0.0627451, 0.407843 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+content_margin_left = 224.0
+content_margin_right = 112.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 32, 32 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+expand_margin_bottom = 8.0
+modulate_color = Color( 0.0627451, 0.0627451, 0.0627451, 0.407843 )
+
+[resource]
+HScrollBar/icons/decrement = null
+HScrollBar/icons/decrement_highlight = null
+HScrollBar/icons/decrement_pressed = null
+HScrollBar/icons/increment = null
+HScrollBar/icons/increment_highlight = null
+HScrollBar/icons/increment_pressed = null
+HScrollBar/styles/grabber = ExtResource( 1 )
+HScrollBar/styles/grabber_highlight = ExtResource( 1 )
+HScrollBar/styles/grabber_pressed = ExtResource( 1 )
+HScrollBar/styles/scroll = SubResource( 3 )
+HScrollBar/styles/scroll_focus = SubResource( 4 )

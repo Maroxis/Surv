@@ -4,7 +4,7 @@ onready var calories: Label = $VBoxContainer/Calories
 
 func init(itemName):
 	item = itemName
-	changeLabel(itemName)
+	changeLabel(Global.splitString(itemName))
 	changeTex(itemName)
 	changeCal(itemName)
 	

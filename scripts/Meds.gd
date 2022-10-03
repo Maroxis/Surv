@@ -10,6 +10,7 @@ func _updateCost():
 func _updateReq():
 	tool_meet = true
 	module_meet = true
+	requirement.visible = false
 	if(Inventory.meds[self.name].has("requirement")):
 		var req = Inventory.meds[self.name]["requirement"]
 		requirement.text = ""
