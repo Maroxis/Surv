@@ -1,33 +1,17 @@
-extends Control
-
-onready var food_container: HFlowContainer = $FoodContainer
-onready var scene = load("res://nodes/components/FoodItem.tscn")
+extends IndicatorPopup
 
 func _ready() -> void:
+	container = $FoodContainer
+	scene = load("res://nodes/components/FoodItem.tscn")
 	Global.FoodEat = self
-
-func open():
-	refresh()
-	show()
-
-func close():
-	hide()
-	
-func refresh():
-	removeItems()
-	populateItems()
-	
-func removeItems():
-	for n in food_container.get_children():
-		n.queue_free()
 
 func populateItems():
 	for res in Inventory.food:
 		if(Inventory.food[res].has("calories") and Inventory.get_food_amm(res) > 0):
 			var scene_instance = scene.instance()
-			food_container.add_child(scene_instance)
+			container.add_child(scene_instance)
 			scene_instance.init(res)
-			scene_instance.connect("foodClicked",self,"eatFood")
+			scene_instance.connect("itemClicked",self,"eatFood")
 
 func eatFood(food,node):
 	var left = Player.eat(food,1,true)
@@ -36,6 +20,3 @@ func eatFood(food,node):
 	else:
 		node.shakeSide()
 	refresh()
-
-func _on_Return_Button_pressed() -> void:
-	close()

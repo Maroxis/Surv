@@ -1,22 +1,12 @@
-extends NodeAnimated
+extends IndicatorItem
 
-onready var label: Label = $VBoxContainer/Label
-onready var icon: TextureRect = $VBoxContainer/Icon
-var food
-
-signal foodClicked
-
-func _on_Button_pressed() -> void:
-	emit_signal("foodClicked",food,self)
+onready var calories: Label = $VBoxContainer/Calories
 
 func init(itemName):
-	food = itemName
+	item = itemName
 	changeLabel(itemName)
 	changeTex(itemName)
-
-func changeLabel(nm):
-	label.text = nm
-
-func changeTex(tex):
-	tex = tex.to_lower()
-	icon.texture = load("res://sprites/Icons/64x64px/"+tex+".png")
+	changeCal(itemName)
+	
+func changeCal(itemName):
+	calories.text = str(Inventory.food[itemName]["calories"]) + " cal"

@@ -19,6 +19,7 @@ var Build
 var InGSettings
 var GameOver
 var FoodLookup
+var MedsApply
 
 func refresh():
 	ChestResources.refresh()
