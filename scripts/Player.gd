@@ -165,7 +165,6 @@ func change_health(amm, set = false):
 			amm *= medsBuff["healthRegen"]
 		else:
 			amm /= medsBuff["healthRegen"]
-		print("health: ",amm)
 		health += amm
 	health = clamp(health,0,maxHealth)
 	Global.UI.health.get_node("TextureProgress").animateValue(ceil(health))
@@ -235,7 +234,6 @@ func change_sick(amm):
 		amm *= medsBuff["sickGain"]
 	else:
 		amm *= medsBuff["sickReduction"]
-	print("sick: ",amm)
 	sick += amm
 	sick = clamp(sick,0,100)
 	Global.UI.health.get_node("SickProgress").animateValue(ceil(sick))

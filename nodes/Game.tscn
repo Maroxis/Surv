@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://nodes/Weather.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
@@ -55,6 +55,7 @@
 [ext_resource path="res://scripts/Debug.gd" type="Script" id=53]
 [ext_resource path="res://sprites/Icons/128x128px/hog-head.png" type="Texture" id=54]
 [ext_resource path="res://sprites/Icons/128x128px/Wenrexa Pickaxe.png" type="Texture" id=55]
+[ext_resource path="res://nodes/WinScreen.tscn" type="PackedScene" id=56]
 [ext_resource path="res://sprites/UI/Topbar/calendar/cloud.png" type="Texture" id=57]
 [ext_resource path="res://sprites/UI/Topbar/calendar/thunder-cloud.png" type="Texture" id=58]
 [ext_resource path="res://sprites/UI/Topbar/calendar/sun.png" type="Texture" id=59]
@@ -435,12 +436,20 @@ margin_bottom = 229.0
 rect_min_size = Vector2( 128, 32 )
 
 [node name="AddResButton" type="Button" parent="Canvas/UI/TopLayer/Debug"]
-margin_left = 79.0
+margin_left = 112.0
 margin_top = 129.0
-margin_right = 143.0
+margin_right = 205.0
 margin_bottom = 193.0
 rect_min_size = Vector2( 64, 64 )
 text = "Items"
+
+[node name="SkipDaysButton" type="Button" parent="Canvas/UI/TopLayer/Debug"]
+margin_left = 208.0
+margin_top = 129.0
+margin_right = 285.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 64, 64 )
+text = "Date"
 
 [node name="Resources" parent="Canvas/UI/TopLayer" instance=ExtResource( 49 )]
 visible = false
@@ -456,6 +465,9 @@ unique_name_in_owner = true
 visible = false
 
 [node name="GameOver" parent="Canvas/UI/TopLayer" instance=ExtResource( 21 )]
+visible = false
+
+[node name="WinScreen" parent="Canvas/UI/TopLayer" instance=ExtResource( 56 )]
 visible = false
 
 [node name="Status" type="CanvasLayer" parent="Canvas/UI"]
@@ -920,6 +932,7 @@ rect_min_size = Vector2( 16, 0 )
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/BaseActivities/Status/Return/Button" to="Canvas/CanvasLayer/GameWindow/BaseActivities/Status" method="_on_Return_Button_pressed"]
 [connection signal="pressed" from="Canvas/UI/TopLayer/Debug/TestButton" to="Canvas/UI/TopLayer/Debug" method="_on_TestButton_pressed"]
 [connection signal="pressed" from="Canvas/UI/TopLayer/Debug/AddResButton" to="Canvas/UI/TopLayer/Debug" method="_on_AddResButton_pressed"]
+[connection signal="pressed" from="Canvas/UI/TopLayer/Debug/SkipDaysButton" to="Canvas/UI/TopLayer/Debug" method="_on_SkipDaysButton_pressed"]
 [connection signal="pressed" from="Canvas/UI/Status/Corner/Health/TextureProgress/Button" to="Canvas/UI/Status/Corner/Health" method="_on_Health_Button_pressed"]
 [connection signal="pressed" from="Canvas/UI/Status/Corner/Food/TextureProgress/Button" to="Canvas/UI/Status/Corner/Food" method="_on_Food_Button_pressed"]
 [connection signal="pressed" from="Canvas/UI/Status/TopBar/TopBar/HBoxContainer/SettingsButton" to="." method="_on_Settings_Button_pressed"]

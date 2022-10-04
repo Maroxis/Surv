@@ -16,6 +16,8 @@ func _on_TestButton_pressed() -> void:
 	else:
 		Global.Weather.setWeather(0)
 
-
 func _on_AddResButton_pressed() -> void:
 	DevMode.add_resources()
+
+func _on_SkipDaysButton_pressed() -> void:
+	Global.Date.day += 10

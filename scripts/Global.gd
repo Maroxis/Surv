@@ -20,6 +20,7 @@ var InGSettings
 var GameOver
 var FoodLookup
 var MedsApply
+var WinScreen
 
 func refresh():
 	ChestResources.refresh()

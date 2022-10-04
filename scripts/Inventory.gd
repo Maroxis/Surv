@@ -305,7 +305,7 @@ onready var meds = {
 		},
 		"craftTime": 20,
 		"buffs":{
-			"time": 1440,
+			"time": 960,
 			"sickGain": 0.8,
 			"sickReduction": 1.2
 		}
@@ -329,7 +329,7 @@ onready var meds = {
 		},
 		"craftTime": 80,
 		"buffs":{
-			"time": 1440,
+			"time": 2880,
 			"healthRegen": 1.2,
 			"sickReduction": 1.6
 		},

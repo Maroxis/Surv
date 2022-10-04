@@ -16,6 +16,8 @@ func _ready() -> void:
 	connect("newDay", Events, "check_event")
 # warning-ignore:return_value_discarded
 	connect("timeChanged",Global.Weather,"setTime")
+# warning-ignore:return_value_discarded
+	connect("newDay", Global.WinScreen,"checkDay")
 #	connect("timeChanged",Global.Missions.woods,"toggleHerb")
 
 func getDay():
