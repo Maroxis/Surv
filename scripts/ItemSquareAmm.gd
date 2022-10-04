@@ -17,7 +17,7 @@ func init(nm,button = false):
 
 func changeItem(nm):
 	item = nm
-	name_label.text = nm
+	name_label.text = Global.splitString(nm)
 	icon.texture = load("res://sprites/Icons/64x64px/"+nm.to_lower()+".png")
 	
 func changeAmm(amm):

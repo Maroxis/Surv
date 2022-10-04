@@ -53,6 +53,7 @@ func refresh():
 func refreshProgress():
 	flame.material.set_shader_param("on",1.0)
 	if timeTotal == 0:
+		flame.material.set_shader_param("on",0.0)
 		return
 	if timeLeft == 0:
 		flame.material.set_shader_param("on",0.0)
@@ -63,7 +64,7 @@ func refreshProgress():
 
 func selectItem(item):
 	selectedItem = item
-	food_label.text = item
+	food_label.text = Global.splitString(item)
 
 func changeAmm(amm):
 	rawAmm = amm

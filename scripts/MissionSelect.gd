@@ -29,7 +29,7 @@ func disable():
 	button.disabled = true
 
 func populate(rsNam,amm,tm,tlReq):
-	resName.text = rsNam
+	resName.text = Global.splitString(rsNam)
 	ammount.text = str(amm)
 	if(typeof(amm) != TYPE_STRING):
 		ammount.text +="x"

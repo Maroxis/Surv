@@ -42,13 +42,14 @@ func _updateBene(ctier,lastTier):
 		for bene in Tools.tools[self.name]["tier"+str(ctier+1)]["benefits"]:
 			var bamm = Tools.tools[self.name]["tier"+str(ctier+1)]["benefits"][bene]
 			var cbamm = Tools.tools[self.name]["tier"+str(ctier)]["benefits"][bene]
-			self.benefits.add_item(str(bene),null,false)
+			self.benefits.add_item("Action speed",null,false)
+#			self.benefits.add_item(str(bene),null,false)
 			self.benefits.add_item(str(cbamm)+" -> "+str(bamm),null,false)
 			self.benefits.set_item_custom_fg_color(self.benefits.get_item_count()-1,Color(0, 1, 0, 1))
 	else:
 		for bene in Tools.tools[self.name]["tier"+str(ctier)]["benefits"]:
 				var cbamm = Tools.tools[self.name]["tier"+str(ctier)]["benefits"][bene]
-				self.benefits.add_item(str(bene),null,false)
+				self.benefits.add_item("Action speed",null,false)
 				self.benefits.add_item(str(cbamm),null,false)
 				self.benefits.set_item_custom_fg_color(self.benefits.get_item_count()-1,Color(0, 1, 0, 1))
 				

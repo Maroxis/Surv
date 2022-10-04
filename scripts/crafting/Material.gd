@@ -12,7 +12,7 @@ func _ready() -> void:
 	var item = $HBoxContainer/VBoxContainer2/TextureRect
 	craft_button = get_node("HBoxContainer2/CraftButton")
 	loadTex(item)
-	self.tName.text = self.name
+	self.tName.text = Global.splitString(self.name)
 
 func refresh():
 	_updateCost()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://sprites/Icons/64x64px/clay.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Icons/64x64px/rawsmallmeat.png" type="Texture" id=1]
 [ext_resource path="res://sprites/BG/9rectPanel.png" type="Texture" id=3]
 [ext_resource path="res://scripts/ItemSquareAmm.gd" type="Script" id=4]
 [ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=5]
@@ -34,6 +34,7 @@ ItemList/styles/cursor_unfocused = SubResource( 4 )
 ItemList/styles/selected = SubResource( 5 )
 ItemList/styles/selected_focus = SubResource( 6 )
 Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/constants/line_spacing = -6
 
 [sub_resource type="DynamicFont" id=11]
 size = 28
@@ -49,7 +50,7 @@ Label/colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 [node name="ItemSquare" type="Control"]
 margin_right = 104.0
 margin_bottom = 96.0
-rect_min_size = Vector2( 128, 128 )
+rect_min_size = Vector2( 144, 144 )
 mouse_filter = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -67,16 +68,16 @@ patch_margin_right = 12
 patch_margin_bottom = 12
 
 [node name="Name" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -60.0
-margin_right = 60.0
-margin_bottom = 41.0
+anchor_right = 1.0
+margin_left = 4.0
+margin_top = 2.0
+margin_right = -4.0
+margin_bottom = 48.0
 theme = SubResource( 8 )
-text = "Name"
+text = "Name sada fdfg"
 align = 1
 valign = 1
-clip_text = true
+autowrap = true
 
 [node name="Icon" type="TextureRect" parent="."]
 anchor_left = 0.5
@@ -84,21 +85,18 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -32.0
-margin_top = -32.0
+margin_top = -24.0
 margin_right = 32.0
-margin_bottom = 32.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 64, 64 )
 mouse_filter = 2
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 
 [node name="Ammount" type="Label" parent="."]
-anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -64.0
-margin_top = -41.0
-margin_right = 64.0
+margin_top = -36.0
 theme = SubResource( 10 )
 text = "234"
 align = 1

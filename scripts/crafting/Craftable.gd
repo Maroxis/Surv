@@ -30,7 +30,7 @@ func loadTex(item):
 func addListItem(list,text,val,color = Color(0,0,0,1),icon = false):
 	var scene_instance = list_item_scene.instance()
 	list.add_child(scene_instance)
-	scene_instance.desc.text = str(text)
+	scene_instance.desc.text = Global.splitString(str(text))
 	scene_instance.value.text = str(val)
 	scene_instance.value.set("custom_colors/font_color", color)
 	if(icon):
