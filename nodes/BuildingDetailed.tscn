@@ -15,18 +15,22 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 520, 0 )
-rect_pivot_offset = Vector2( 1784, -265 )
 mouse_filter = 1
-size_flags_horizontal = 2
-size_flags_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 7 )
 
 [node name="BG" type="TextureRect" parent="."]
 self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource( 3 )
+expand = true
 stretch_mode = 2
 __meta__ = {
 "_editor_description_": ""

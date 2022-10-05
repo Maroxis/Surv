@@ -3,6 +3,7 @@ extends MissionBasic
 onready var drinkNode = get_node("VBoxContainer/HBox2/Drink")
 onready var drinkNodeAmm = drinkNode.get_node("VBox/Ammount")
 onready var toxic_level = drinkNode.get_node("VBox/Button/ToxicLevel")
+onready var defence_amm: Label = $"%DefenceAmm"
 
 func _ready() -> void:
 # warning-ignore:return_value_discarded
@@ -76,6 +77,7 @@ func _on_Cook_Button_pressed() -> void:
 
 func _on_Home_visibility_changed() -> void:
 	if visible:
+		defence_amm.text = str(Buildings.calcDefence())
 		if(Buildings.getTierInt("Collector","Tank") > 0):
 			_activateDrink()
 		else:
