@@ -482,7 +482,7 @@ onready var Structure = {
 			},
 			"tier1" : {
 				"cost": {
-					"Clay": 14,
+					"Clay": 12,
 				},
 				"time":{
 					"sections": 3,
@@ -497,8 +497,8 @@ onready var Structure = {
 			},
 			"tier2" : {
 				"cost": {
-					"Rock": 30,
-					"Clay": 10
+					"Rock": 24,
+					"Clay": 8
 				},
 				"time":{
 					"sections": 6,

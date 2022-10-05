@@ -1,7 +1,7 @@
 extends Mission
 
-onready var exploreTable = [0,6,12,20,32]
-onready var exploreTime = 30
+onready var exploreTable = [0,4,8,12,20]
+onready var exploreTime = 40
 onready var exploreCurrentProgress = 0
 onready var exploreDiscovered = 1
 onready var caveInTotal = 0
@@ -13,6 +13,7 @@ onready var explore_control: Control = $"%Explore"
 onready var explore_button: TextureButton = $VBoxContainer/Explore/ExploreButton
 onready var cave_in: Control = $"%CaveIn"
 onready var cave_in_tex_pr: ProgressBar = $CaveIn/Info/TextureProgress
+onready var cave_in_mission_select: Control = $CaveIn/Info/MissionSelect
 
 func _ready() -> void:
 	inOpen = false
@@ -62,6 +63,12 @@ func _ready() -> void:
 	gatherTimeWBonus = gatherTime.duplicate()
 	resources = $"%Resources"
 	populateInfo()
+# warning-ignore:return_value_discarded
+	Tools.connect("toolChanged",self,"checkPick")
+
+func checkPick(tl,_dn,_tr):
+	if tl == "Pickaxe":
+		refreshCaveIn()
 
 func explore():
 	exploreCurrentProgress += 1
@@ -69,6 +76,7 @@ func explore():
 		resources.get_children()[exploreDiscovered].show()
 		exploreDiscovered += 1
 		exploreCurrentProgress = 0
+		exploreTime += 20
 	updateVisualEx()
 	Player.pass_time(exploreTime)
 
@@ -83,6 +91,7 @@ func refreshCaveIn():
 	cave_in.visible = caveInTotal != 0
 	cave_in_tex_pr.value = caveInProgress
 	cave_in_tex_pr.max_value = caveInTotal
+	cave_in_mission_select.updateGatherTime(getCaveInTime())
 
 func revealAllEplored():
 	var res = resources.get_children()
@@ -133,6 +142,7 @@ func unpack(data):
 	return
 
 func enableCaveIn(amm):
+	cave_in_mission_select.updateGatherTime(getCaveInTime())
 	caveInTotal = amm
 	cave_in_tex_pr.max_value = amm
 	cave_in.show()
@@ -149,6 +159,9 @@ func digCaveIn():
 	if caveInProgress >= caveInTotal:
 		disableCaveIn()
 
+func getCaveInTime():
+	return 120 / Tools.getBonus("Pickaxe")
+
 func _on_CaveInButton_pressed() -> void:
-	Player.pass_time(90)
+	Player.pass_time(getCaveInTime())
 	digCaveIn()

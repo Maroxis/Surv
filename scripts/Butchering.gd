@@ -12,7 +12,9 @@ func _ready() -> void:
 	addCarcassItems()
 
 func getCraftTime():
-	return Global.timeGetFullFormat(Inventory.food[selectedCarcass]["craftTime"],false,true)
+	var time = Inventory.food[selectedCarcass]["craftTime"]
+	time /= Tools.getBonus("Knife")
+	return Global.timeGetFullFormat(time,false,true)
 
 func getButcherBonus():
 	return 1

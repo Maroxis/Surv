@@ -227,7 +227,7 @@ onready var tools = {
 				"CopperIngot": 2
 			},
 			"benefits":{
-				"actionMult": 1
+				"actionMult": 1.2
 			}
 		},
 		"tier2" : {
@@ -238,7 +238,7 @@ onready var tools = {
 				"BronzeIngot": 2
 			},
 			"benefits":{
-				"actionMult": 1.2
+				"actionMult": 1.4
 			}
 		},
 		"tier3" : {
@@ -249,7 +249,7 @@ onready var tools = {
 				"IronIngot": 2
 			},
 			"benefits":{
-				"actionMult": 1.4
+				"actionMult": 1.6
 			}
 		}
 	}

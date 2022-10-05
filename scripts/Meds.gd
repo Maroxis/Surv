@@ -26,7 +26,9 @@ func _updateReq():
 				requirement.text += "Requires " +str(req["module"]["bname"]) + " " + str(req["module"]["mname"])
 
 func _updateTime():
-	timeLb.text = Global.timeGetFullFormat(Inventory.meds[self.name]["craftTime"],true)
+	var time = Inventory.get_item_craft_time(self.name,Inventory.meds)
+	timeLb.text = Global.timeGetFullFormat(time,true)
+
 
 func _on_CraftButton_pressed() -> void:
 	if Inventory.check_cost(self.name, 1, Inventory.meds):

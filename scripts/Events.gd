@@ -277,7 +277,7 @@ func caveIn():
 	Global.Missions.hills.enableCaveIn(amm)
 
 func rats():
-	var amm = floor(clamp(float(Global.Date.day)/5,1.0,20.0))
+	var amm = floor(clamp(float(Global.Date.day)/8,1.0,12.0))
 	var famm = Inventory.get_food_total_amm()
 	amm = amm if famm >= amm else famm
 	
@@ -295,6 +295,8 @@ func rats():
 		foodAvaliable[r]["amm"] -= 1
 		if foodAvaliable[r]["amm"] == 0:
 			foodAvaliable.remove(r)
+	if ate.size() == 0:
+		return {"error":null,"res": "There was nothing to eat"}
 	var rs = "They ate: \n"
 	for food in ate:
 		if ate[food] > 0:

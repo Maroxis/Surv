@@ -52,7 +52,8 @@ func _updateReq():
 				requirement.text += "Requires " +str(req["module"]["bname"]) + " " + str(req["module"]["mname"])
 
 func _updateTime():
-	timeLb.text = Global.timeGetFullFormat(Inventory.resources[self.name]["craftTime"],true)
+	var time = Inventory.get_item_craft_time(self.name)
+	timeLb.text = Global.timeGetFullFormat(time,true)
 	
 func disable():
 	disableBT()

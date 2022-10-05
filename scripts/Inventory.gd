@@ -495,12 +495,29 @@ func craft_item(item, amm = 1, add = true):
 		add_resource(mat, -(resources[item]["cost"][mat] * amm))
 	if(add):
 		add_resource(item,amm)
-		Player.pass_time(resources[item]["craftTime"])
+		var time = get_item_craft_time(item)
+		Player.pass_time(time)
+
+func get_item_craft_time(item, dict = resources):
+	var bonus = 1
+	if dict[item].has("requirement"):
+			if dict[item]["requirement"].has("tool"):
+				var tl = dict[item]["requirement"]["tool"]["name"]
+				var tier = dict[item]["requirement"]["tool"]["tier"]
+				bonus = Tools.getBonus(tl,tier)
+			if dict[item]["requirement"].has("module"):
+				var bname = dict[item]["requirement"]["module"]["bname"]
+				var mname = dict[item]["requirement"]["module"]["mname"]
+				bonus *= Buildings.getCurrentModule(bname,mname)["benefits"]["actionMult"]
+	bonus = max(bonus,1)
+	return dict[item]["craftTime"]/bonus
 
 func craft_meds(item, amm = 1):
 	for mat in meds[item]["cost"]:
 		add_resource(mat, -(meds[item]["cost"][mat] * amm))
 	add_meds(item,amm)
+	var time = get_item_craft_time(item,meds)
+	Player.pass_time(time*amm)
 
 
 func expand_bag(item):
