@@ -55,4 +55,5 @@
 <a href="https://www.flaticon.com/free-icons/ayurvedic" title="ayurvedic icons">Ayurvedic icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/alternative-medicine" title="alternative medicine icons">Alternative medicine icons created by muhammad atho' - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/powder" title="powder icons">Powder icons created by Freepik - Flaticon</a>
-
+<a href="https://www.flaticon.com/free-icons/spinning-wheel" title="spinning wheel icons">Spinning wheel icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/wood" title="wood icons">Wood icons created by Freepik - Flaticon</a>

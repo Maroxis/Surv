@@ -145,7 +145,25 @@ onready var Structure = {
 					"ammount": 80
 				},
 				"benefits":{
-					"defence": 8
+					"defence": 6
+				},
+				"required":{
+					"module":{
+						"Frame": 2
+					}
+				}
+			},
+			"tier3" : {
+				"cost": {
+					"Brick": 24
+				},
+				"time":{
+					"sections": 12,
+					"completed": 0,
+					"ammount": 80
+				},
+				"benefits":{
+					"defence": 10
 				},
 				"required":{
 					"module":{
@@ -187,7 +205,7 @@ onready var Structure = {
 			},
 			"tier2" : {
 				"cost": {
-					"Plank": 32
+					"Plank": 24
 				},
 				"time":{
 					"sections": 4,
@@ -244,7 +262,7 @@ onready var Structure = {
 			},
 			"tier3" : {
 				"cost": {
-					"Plank": 16
+					"Plank": 12
 				},
 				"time":{
 					"sections": 3,
@@ -366,7 +384,7 @@ onready var Structure = {
 			},
 			"tier3" : {
 				"cost": {
-					"Plank": 16
+					"Plank": 12
 				},
 				"time":{
 					"sections": 6,
@@ -622,7 +640,7 @@ onready var Structure = {
 			},
 			"tier2" : {
 				"cost": {
-					"CopperIngot": 2,
+					"BronzeIngot": 2,
 				},
 				"time":{
 					"sections": 2,
@@ -637,6 +655,76 @@ onready var Structure = {
 					"module":{
 						"Table": 1
 					}
+				}
+			}
+		},
+		"Chisel":{
+			"benefitsText":{
+				"resReduction": "Plank reduced resource cost"
+			},
+			"tier0" : {
+				"benefits":{
+					"resReduction": 0
+				}
+			},
+			"tier1" : {
+				"cost": {
+					"BronzeIngot": 1,
+				},
+				"time":{
+					"sections": 1,
+					"completed": 0,
+					"ammount": 60
+				},
+				"benefits":{
+					"resReduction": 1
+				},
+				"required":{
+					"module":{
+						"Table": 1
+					}
+				}
+			}
+		},
+		"SpinningWheel":{
+			"benefitsText":{
+				"actionMult": "Cloth and Rope weaving speed",
+				"resReduction": "Cloth and Rope reduced resource cost"
+			},
+			"tier0" : {
+				"benefits":{
+					"actionMult": 1,
+					"resReduction": 0
+				}
+			},
+			"tier1" : {
+				"cost": {
+					"Plank": 3,
+					"Stick": 12
+				},
+				"time":{
+					"sections": 3,
+					"completed": 0,
+					"ammount": 80
+				},
+				"benefits":{
+					"actionMult": 1.4,
+					"resReduction": 0
+				}
+			},
+			"tier2" : {
+				"cost": {
+					"BronzeIngot": 2,
+					"Leather": 3
+				},
+				"time":{
+					"sections": 4,
+					"completed": 0,
+					"ammount": 60
+				},
+				"benefits":{
+					"actionMult": 1.6,
+					"resReduction": 1
 				}
 			}
 		}

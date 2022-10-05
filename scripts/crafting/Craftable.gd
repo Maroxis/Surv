@@ -41,14 +41,15 @@ func clearList(list):
 		n.queue_free()
 func populateList(list,dict,cat,wIcon = false):
 	cost_meet = true
+	var reduction = Inventory.get_cost_reduction(dict) if cat == "cost" else 0
 	for mat in dict[cat]:
-		var amm = dict[cat][mat]
+		var amm = dict[cat][mat] - reduction
 		if(amm > Inventory.get_res_amm(mat)):
 			addListItem(list,mat,amm,Color(1,1,0,1),wIcon)
 			cost_meet = false
 		else:
 			addListItem(list,mat,amm,Color(0,1,0,1),wIcon)
-
+			
 func toggleBT(on):
 	if on:
 		enableBT()

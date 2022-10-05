@@ -57,6 +57,12 @@ onready var resources = {
 		"cost" : {
 			"Thread" : 6
 		},
+		"craftBenefit": {
+			"module":{
+				"bname": "Workbench",
+				"mname": "SpinningWheel"
+			}
+		},
 		"craftTime": 60,
 		"crafted": true
 	  },
@@ -64,6 +70,12 @@ onready var resources = {
 		"weight" : 1.0,
 		"cost" : {
 			"Thread" : 3
+		},
+		"craftBenefit": {
+			"module":{
+				"bname": "Workbench",
+				"mname": "SpinningWheel"
+			}
 		},
 		"craftTime": 60,
 		"crafted": true
@@ -80,12 +92,18 @@ onready var resources = {
 	"Plank": {
 		"weight" : 2.0,
 		"cost" : {
-			"Wood" : 1
+			"Wood" : 2
 		},
 		"requirement": {
 			"tool":{
 				"name" : "Saw",
 				"tier" : 1
+			}
+		},
+		"craftBenefit": {
+			"module":{
+				"bname": "Workbench",
+				"mname": "Chisel"
 			}
 		},
 		"craftTime": 40,
@@ -278,7 +296,7 @@ onready var upgrades = {
 	"Cart" : {
 		"size" : 12,
 		"cost" : {
-			"Plank" : 16,
+			"Plank" : 12,
 			"BronzeIngot" : 2,
 			"Rope" : 2
 		},
@@ -485,14 +503,31 @@ func check_cost(item, amm = 1, table = resources):
 	table = table[item]
 	if(not table.has("cost")):
 		return
+	var reduction = get_cost_reduction(table)
 	for mat in table["cost"]:
-		if get_res_amm(mat) < table["cost"][mat] * amm:
+		if get_res_amm(mat) < (table["cost"][mat] - reduction) * amm:
 			return false
 	return true
 
+func get_cost_reduction(item):
+	var reduction = 0
+	var bene =  get_craft_benefit(item)
+	if bene != null and bene.has("resReduction"):
+		reduction = bene["resReduction"]
+	return reduction
+
+func get_craft_benefit(item):
+	if item.has("craftBenefit"):
+		if item["craftBenefit"].has("module"):
+			var m = item["craftBenefit"]["module"]
+			var bene = Buildings.getCurrentModule(m["bname"],m["mname"])["benefits"]
+			return bene
+	return null
+
 func craft_item(item, amm = 1, add = true):
+	var reduction = get_cost_reduction(resources[item])
 	for mat in resources[item]["cost"]:
-		add_resource(mat, -(resources[item]["cost"][mat] * amm))
+		add_resource(mat, -((resources[item]["cost"][mat] - reduction) * amm))
 	if(add):
 		add_resource(item,amm)
 		var time = get_item_craft_time(item)
@@ -509,12 +544,16 @@ func get_item_craft_time(item, dict = resources):
 				var bname = dict[item]["requirement"]["module"]["bname"]
 				var mname = dict[item]["requirement"]["module"]["mname"]
 				bonus *= Buildings.getCurrentModule(bname,mname)["benefits"]["actionMult"]
+	var bene = get_craft_benefit(dict[item])
+	if bene != null and bene.has("actionMult"):
+		bonus *= bene["actionMult"]
 	bonus = max(bonus,1)
 	return dict[item]["craftTime"]/bonus
 
 func craft_meds(item, amm = 1):
+	var reduction = get_cost_reduction(meds[item])
 	for mat in meds[item]["cost"]:
-		add_resource(mat, -(meds[item]["cost"][mat] * amm))
+		add_resource(mat, -((meds[item]["cost"][mat] - reduction) * amm))
 	add_meds(item,amm)
 	var time = get_item_craft_time(item,meds)
 	Player.pass_time(time*amm)
