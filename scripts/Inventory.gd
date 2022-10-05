@@ -99,6 +99,16 @@ onready var resources = {
 		"weight" : 3.6,
 		"crafted": false
 	  },
+	"Brick": {
+		"weight" : 2.4,
+		"cost" : {
+			"Clay" : 3
+		},
+		"meltingTemp" : 600,
+		"craftTime": 120,
+		"furnaceTier": 1,
+		"crafted": true
+	  },
 	"Sand": {
 		"weight" : 2.6,
 		"crafted": false

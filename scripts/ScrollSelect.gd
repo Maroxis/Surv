@@ -14,7 +14,7 @@ onready var v_box_container: HBoxContainer = $VBoxContainer
 
 #export var it = 5
 export var slider = false
-
+export var selfControlSlider = true
 var max_skew = 0.5
 var item_height
 var selected_item = 1
@@ -42,12 +42,17 @@ func init():
 	var item_name = item_container.get_children()[selected_item].item_name
 	selectItem(item_name)
 	ammount_slider.visible = slider
-	if(!slider):
-		self.rect_min_size.x -= ammount_slider.rect_size.x + v_box_container.get("custom_constants/separation")
+#	if(!slider):
+#		self.rect_min_size.x -= ammount_slider.rect_size.x + v_box_container.get("custom_constants/separation")
 	
+func toggleSlider(on):
+	slider = on
+	ammount_slider.visible = on
+
 func selectItem(item_name):
 	emit_signal("itemSelected", item_name)
-	refreshAmmBar(item_name)
+	if selfControlSlider:
+		refreshAmmBar(item_name)
 
 func refreshAmmBar(item_name):
 	if Inventory.resources.has(item_name):

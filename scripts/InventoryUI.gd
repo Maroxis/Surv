@@ -127,3 +127,7 @@ func _on_Inventory_item_rect_changed() -> void:
 	hidden_items += diff
 	init(true)
 	
+
+
+func _on_Timer_timeout() -> void:
+	init(true)

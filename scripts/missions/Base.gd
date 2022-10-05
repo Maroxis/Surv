@@ -55,6 +55,8 @@ func getSickAmm():
 func _checkMod(module):
 	if module == "Filter":
 		changeCollectorToxic()
+	else:
+		defence_amm.text = str(Buildings.calcDefence())
 
 func changeCollectorToxic():
 	var sick = clamp(getSickAmm(),0.0,1.0)

@@ -13,8 +13,10 @@ onready var furnace: VBoxContainer = $"%Furnace"
 onready var basicFuelEfficency = 2
 onready var timeTotal = 0
 onready var timeLeft = 0
+onready var itemAmm = 1
 var selectedRecipe
 var selectedFuel
+var selectedAmm
 var smeltingRecipe
 
 signal furnaceProgress
@@ -24,10 +26,13 @@ func _ready() -> void:
 	addItems()
 	selectRecipe(selectedRecipe)
 	furnace.curPos.x = furnace.rect_position.x
+	recipe_select.changeAmm(1)
 
 func refresh():
+	changeSliderMaxAmm()
 	var showWarning = Buildings.getTierInt("Furnace","Oven") == 0
 	warning.visible = showWarning
+	recipe_select.toggleSlider(Buildings.getTierInt("Furnace","Oven") > 1)
 	if(timeTotal == 0):
 		return
 	timeRemainingLabel.text = Global.timeGetFullFormat(timeLeft,false,true) 
@@ -44,6 +49,7 @@ func pack():
 	data["timeTotal"] = timeTotal
 	data["timeLeft"] = timeLeft
 	data["smeltingRecipe"] = smeltingRecipe
+	data["selectedAmm"] = selectedAmm
 	return data
 
 func unpack(data):
@@ -53,6 +59,8 @@ func unpack(data):
 		timeLeft = data["timeLeft"]
 	if data.has("smeltingRecipe"):
 		smeltingRecipe = data["smeltingRecipe"]
+	if data.has("selectedAmm"):
+		selectedAmm = data["selectedAmm"]
 
 func addItems():
 	for res in Inventory.resources:
@@ -70,9 +78,9 @@ func run(time):
 		refresh()
 		if(timeLeft == 0):
 			finish()
-#
+
 func finish():
-	Inventory.add_resource(smeltingRecipe,1)
+	Inventory.add_resource(smeltingRecipe,selectedAmm)
 	furnaceProgress.material.set_shader_param("on",0.0)
 
 func start():
@@ -80,6 +88,7 @@ func start():
 	var time = getCraftTime()
 	timeTotal = time
 	timeLeft = time
+	selectedAmm = itemAmm
 	removeRes()
 	smeltingRecipe = selectedRecipe
 	timeRemainingLabel.text = Global.timeGetFullFormat(time,false,true) 
@@ -92,10 +101,10 @@ func getCraftTime():
 	return time
 
 func getFuelEfficency():
-	return basicFuelEfficency
+	return basicFuelEfficency * Buildings.getCurrentModule("Furnace","Oven")["benefits"]["fuelEff"]
 	
 func removeRes():
-	Inventory.craft_item(selectedRecipe,1,false)
+	Inventory.craft_item(selectedRecipe,selectedAmm,false)
 	Inventory.add_resource(selectedFuel,-getFuelAmm())
 
 func clearList(list):
@@ -105,7 +114,8 @@ func clearList(list):
 func getFuelAmm(fuel = null):
 	if not fuel:
 		fuel = selectedFuel
-	return int(ceil(Inventory.resources[selectedRecipe]["craftTime"]/(Inventory.resources[fuel]["burining"]["time"]*getFuelEfficency())))
+	var amm = ceil((Inventory.resources[selectedRecipe]["craftTime"]*itemAmm)/(Inventory.resources[fuel]["burining"]["time"]*getFuelEfficency()))
+	return int(amm)
 
 func calcFuel():
 	for fuel in fuel_select.get_children():
@@ -121,16 +131,20 @@ func selectRecipe(item):
 		var scene_instance = item_scene.instance()
 		ore_required.add_child(scene_instance)
 		scene_instance.init(res)
-		var amm = Inventory.resources[item]["cost"][res]
+		var amm = Inventory.resources[item]["cost"][res]*itemAmm
 		scene_instance.changeAmm(amm)
 	calcFuel()
 	if timeLeft == 0:
 		timeRemainingLabel.text = Global.timeGetFullFormat(getCraftTime(),false,true)
 
+func changeAmm(amm):
+	itemAmm = max(amm,1)
+	selectRecipe(selectedRecipe)
+
 func checkOre():
 	var index = 0
 	for ore in Inventory.resources[selectedRecipe]["cost"]:
-		if(Inventory.resources[selectedRecipe]["cost"][ore] > Inventory.get_res_amm(ore)):
+		if(Inventory.resources[selectedRecipe]["cost"][ore]*itemAmm > Inventory.get_res_amm(ore)):
 			ore_required.get_children()[index].shakeSide()
 			return false
 		index += 1
@@ -145,8 +159,14 @@ func checkFurnace():
 		return false
 	return true
 
+func changeSliderMaxAmm():
+	var mxamm = Buildings.getCurrentModule("Furnace","Oven")["benefits"]["multiSmelt"]
+	recipe_select.changeMaxAmm(mxamm)
+
 func _on_RecipeSelect_itemSelected(item) -> void:
-	selectRecipe(item)
+	selectedRecipe = item
+	changeSliderMaxAmm()
+	selectRecipe(selectedRecipe)
 
 func _on_FuelSelect_itemClicked(item) -> void:
 	if(timeLeft > 0):
@@ -157,3 +177,7 @@ func _on_FuelSelect_itemClicked(item) -> void:
 		fuel_select.shakeSelected()
 	elif(checkOre() and checkFurnace()):
 		start()
+
+
+func _on_RecipeSelect_ammChanged(amm) -> void:
+	changeAmm(amm)

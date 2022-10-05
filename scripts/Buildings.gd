@@ -469,11 +469,15 @@ onready var Structure = {
 	"Furnace": {
 		"Oven":{
 			"benefitsText":{
-				"smeltable": "Allows smelting new metals"
+				"smeltable": "Allows smelting new metals",
+				"multiSmelt": "Allows smelting multiple items at a time",
+				"fuelEff": "Better fuel efficency"
 			},
 			"tier0" : {
 				"benefits":{
-					"smeltable": null
+					"smeltable": null,
+					"multiSmelt": 1,
+					"fuelEff": 1
 				}
 			},
 			"tier1" : {
@@ -486,7 +490,9 @@ onready var Structure = {
 					"ammount": 80
 				},
 				"benefits":{
-					"smeltable": "Copper and Bronze"
+					"smeltable": "Copper and Bronze",
+					"multiSmelt": 1,
+					"fuelEff": 1
 				}
 			},
 			"tier2" : {
@@ -500,12 +506,29 @@ onready var Structure = {
 					"ammount": 80
 				},
 				"benefits":{
-					"smeltable": "Iron"
+					"smeltable": "Copper and Bronze",
+					"multiSmelt": 4,
+					"fuelEff": 1.2
 				},
 				"required":{
 					"tool":{
 						"Shovel": 1,
 					}
+				}
+			},
+			"tier3" : {
+				"cost": {
+					"Brick": 12
+				},
+				"time":{
+					"sections": 4,
+					"completed": 0,
+					"ammount": 80
+				},
+				"benefits":{
+					"smeltable": "Iron",
+					"multiSmelt": 4,
+					"fuelEff": 1.2
 				}
 			}
 		},
