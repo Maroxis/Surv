@@ -335,7 +335,7 @@ onready var meds = {
 		"buffs":{
 			"time": 960,
 			"sickGain": 0.8,
-			"sickReduction": 1.2
+			"sickReduction": 2.0
 		}
 	},
 	"HerbalTea":{
@@ -347,7 +347,7 @@ onready var meds = {
 		"buffs":{
 			"time": 1440,
 			"healthRegen": 2.0,
-			"sickReduction": 1.2
+			"sickReduction": 2.0
 		}
 	},
 	"HerbalGranulate":{
@@ -359,7 +359,7 @@ onready var meds = {
 		"buffs":{
 			"time": 2880,
 			"healthRegen": 1.2,
-			"sickReduction": 1.6
+			"sickReduction": 3.2
 		},
 		"requirement": {
 			"module" : {

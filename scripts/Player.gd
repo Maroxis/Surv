@@ -202,7 +202,7 @@ func pass_time(time,sleep=false,wet = false):
 		dry(time)
 	if(sick > 0 and not wet):
 		var fullBonus = 2 if food > 50 and water > 50 else 1
-		change_sick(-(sickRate*2*time*sleepRegenMult*fullBonus))
+		change_sick(-(sickRate*time*sleepRegenMult*fullBonus))
 	var sickPenaltyMlt = 1.0 if sick < 20 else 0.8
 	if(food > 50 && water > 30 && sick < 50):
 		change_health(time*regenRate*sleepRegenMult*sickPenaltyMlt)
