@@ -36,6 +36,7 @@ func _updateTime():
 func _on_CraftButton_pressed() -> void:
 	if Inventory.buy_upgrade(self.name):
 		craft_button.disabled = true
+		craftBtAnim(true)
 		if upg["size"].has("Water"):
 			Inventory.expand_water(self.name)
 		if upg["size"].has("Food"):

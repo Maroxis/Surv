@@ -67,8 +67,10 @@ func getToolBonus(nm):
 func addRes(name,amm, food = false):
 	if Inventory.add_resource_to_bag(name,amm,food):
 		Player.pass_time(gatherTimeWBonus[name],false,inOpen)
+		return true
 	else:
 		Global.BagUI.shake()
+		return false
 
 func populateInfo():
 	for res in resources.get_children():
@@ -89,8 +91,9 @@ func checkTools(tl,dn,lv):
 				res.enable()
 	updateGatherTime()
 
-func missionSelected(mission,food):
-	addRes(mission,gatherAmm[mission],food)
+func missionSelected(mission,food,node):
+	var sucess = addRes(mission,gatherAmm[mission],food)
+	node.shake(sucess)
 
 func pack():
 	var data = {}

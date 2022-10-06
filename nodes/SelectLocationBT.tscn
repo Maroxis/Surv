@@ -4,8 +4,8 @@
 [ext_resource path="res://scripts/SelectLocation.gd" type="Script" id=2]
 [ext_resource path="res://fonts/ResourcesTheme.tres" type="Theme" id=3]
 [ext_resource path="res://sprites/BG/IconDiscBWTex.png" type="Texture" id=4]
+[ext_resource path="res://nodes/ClickSound.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sprites/Icons/128x128px/Wenrexa Axe.png" type="Texture" id=6]
-[ext_resource path="res://sound/sfx/click.wav" type="AudioStream" id=7]
 
 [node name="SelectLocationBT" type="Control"]
 mouse_filter = 2
@@ -75,8 +75,6 @@ margin_bottom = 64.0
 rect_min_size = Vector2( 128, 128 )
 flat = true
 
-[node name="Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
-bus = "SFX"
+[node name="Sound" parent="." instance=ExtResource( 5 )]
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

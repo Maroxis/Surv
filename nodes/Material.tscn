@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://sprites/Icons/32x32px/rope.png" type="Texture" id=1]
 [ext_resource path="res://scripts/crafting/Material.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://sprites/Icons/64x64px/build.png" type="Texture" id=4]
 [ext_resource path="res://fonts/ResourcesTheme.tres" type="Theme" id=5]
 [ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=6]
+[ext_resource path="res://scripts/animate/NodeAnimated.gd" type="Script" id=7]
 
 [node name="Material" type="VBoxContainer"]
 margin_left = 744.0
@@ -93,6 +94,7 @@ size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
 expand = true
 stretch_mode = 3
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

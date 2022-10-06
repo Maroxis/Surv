@@ -108,8 +108,9 @@ func start():
 func attemptStart() -> void:
 	fuelRequired = ceil(Inventory.food[selectedItem]["cookTime"] * rawAmm / Inventory.resources[selected_fuel]["burining"]["time"])
 	if(timeLeft != 0 or fuelRequired == 0 or fuelRequired > Inventory.get_res_amm(selected_fuel)):
-		fuel.shakeSelected()
+		fuel.shakeSelectedSide()
 		return
+	fuel.shakeSelected()
 	start()
 
 func _on_Fuel_itemClicked(item) -> void:

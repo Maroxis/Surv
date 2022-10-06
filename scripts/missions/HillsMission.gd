@@ -14,6 +14,7 @@ onready var explore_button: TextureButton = $VBoxContainer/Explore/ExploreButton
 onready var cave_in: Control = $"%CaveIn"
 onready var cave_in_tex_pr: ProgressBar = $CaveIn/Info/TextureProgress
 onready var cave_in_mission_select: Control = $CaveIn/Info/MissionSelect
+onready var sound: AudioStreamPlayer = $Sound
 
 func _ready() -> void:
 	inOpen = false
@@ -108,10 +109,12 @@ func updateVisualEx():
 	exploration_progress_label_time.text = Global.timeGetFullFormat(exploreTime)
 
 func _on_Explore_Button_pressed() -> void:
+	sound.play()
 	if(Inventory.add_resource("Torch",-1)):
+		explore_button.shakeSubtle()
 		explore()
 	else:
-		explore_button.shakeSide()
+		explore_button.shakeSubtleSide()
 
 func pack():
 	var data = {}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/crafting/tool.gd" type="Script" id=1]
 [ext_resource path="res://sprites/Icons/128x128px/calendar.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=5]
 [ext_resource path="res://fonts/ResourcesTheme.tres" type="Theme" id=6]
 [ext_resource path="res://fonts/UIBonusTheme.tres" type="Theme" id=7]
+[ext_resource path="res://scripts/animate/NodeAnimated.gd" type="Script" id=8]
 
 [sub_resource type="Animation" id=8]
 length = 0.001
@@ -170,6 +171,7 @@ size_flags_horizontal = 3
 texture_normal = ExtResource( 4 )
 expand = true
 stretch_mode = 3
+script = ExtResource( 8 )
 
 [node name="BG" type="NinePatchRect" parent="HBoxContainer2/CraftButton"]
 self_modulate = Color( 1, 0.486275, 0, 1 )

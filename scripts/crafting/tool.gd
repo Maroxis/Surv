@@ -56,6 +56,7 @@ func _updateBene(ctier,lastTier):
 func _on_CraftButton_pressed() -> void:
 	if(Tools.checkCost(self.name)):
 		Tools.craftTool(self.name)
+		craftBtAnim(true)
 		Global.Craft.refreshCurTab()
 
 func _updateTime():

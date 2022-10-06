@@ -25,6 +25,12 @@ func shake(distance = 10, del = 0.1, sideways = false):
 func tweenFinished():
 	tweenInProgress -= 1
 
+func shakeSubtle():
+	shake(3,0.08)
+
+func shakeSubtleSide():
+	shake(3,0.05,true)
+
 func shakeSide():
 	shake(5,0.05,true)
 

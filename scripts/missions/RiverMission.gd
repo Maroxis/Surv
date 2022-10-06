@@ -1,4 +1,5 @@
 extends Mission
+onready var water: Control = $Resources/Water
 
 func _ready() -> void:
 	missionTravelTime = 20
@@ -38,3 +39,4 @@ func _ready() -> void:
 func _on_Water_Button_pressed() -> void:
 	Player.pass_time(floor(gatherTimeWBonus["Water"]),false,true)
 	Player.change_water(Player.maxWater, true)
+	water.shake(true)

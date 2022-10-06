@@ -174,8 +174,9 @@ func _on_FuelSelect_itemClicked(item) -> void:
 	selectedFuel = item
 	var amm = getFuelAmm()
 	if(amm > Inventory.get_res_amm(item)):
-		fuel_select.shakeSelected()
+		fuel_select.shakeSelectedSide()
 	elif(checkOre() and checkFurnace()):
+		fuel_select.shakeSelected()
 		start()
 
 

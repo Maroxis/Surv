@@ -3,7 +3,7 @@ extends Craftable
 class_name Craftable_Material
 
 onready var tName = get_node("HBoxContainer/VBoxContainer2/Name")
-onready var cost = get_node("HBoxContainer/VBoxContainer/Cost")
+onready var cost = $HBoxContainer/VBoxContainer/Cost
 onready var timeLb = $HBoxContainer2/Time
 onready var requirement: Label = $Requirement
 onready var module_meet = true
@@ -25,7 +25,7 @@ func refresh():
 	
 func _on_CraftButton_pressed() -> void:
 	if Inventory.check_cost(self.name):
-#		craftBtAnim(craft_button,btOrgPos)
+		craftBtAnim(true)
 		Inventory.craft_item(self.name)
 		Global.Craft.refreshCurTab()
 

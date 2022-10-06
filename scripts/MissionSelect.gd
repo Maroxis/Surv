@@ -10,6 +10,7 @@ onready var tool_req: TextureRect = $VBox/Button/ToolReq
 onready var tool_req_tier: Label = $VBox/Button/ToolReq/Tier
 
 onready var icon: TextureRect = $VBox/Button/Icon
+onready var sound: AudioStreamPlayer = $Sound
 
 export var connectMission = true
 export var foodRes = false
@@ -40,6 +41,12 @@ func populate(rsNam,amm,tm,tlReq):
 		tool_req_tier.text = str(tlReq["tier"])
 		disable()
 
+func shake(suc):
+	if suc:
+		buttonContainer.shakeSubtle()
+	else:
+		buttonContainer.shakeSubtleSide()
 
 func _on_Button_pressed() -> void:
-	emit_signal("missionSelected",self.name,foodRes)
+	emit_signal("missionSelected",self.name,foodRes,self)
+	sound.play()

@@ -147,6 +147,7 @@ func _on_Return_Button_pressed() -> void:
 	hide()
 
 func _on_Build_Button_pressed() -> void:
+	preview_icon.shakeSubtle()
 	if(resRequired):
 		Buildings.buyModule(building,selectedModule)
 		resRequired = false

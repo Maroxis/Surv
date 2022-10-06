@@ -1,4 +1,5 @@
 extends Mission
+onready var wild_berry: Control = $Resources/WildBerry
 
 func _ready() -> void:
 	missionTravelTime = 80
@@ -63,5 +64,6 @@ func _on_Meat_Button_pressed() -> void:
 
 func _on_Berries_Button_pressed() -> void:
 	var amm = 4
-	amm = Player.eat("WildBerry", amm, false, false)
-	addRes("WildBerry",amm,true)
+	var rest = Player.eat("WildBerry", amm, false, false)
+	var added = addRes("WildBerry",rest,true)
+	wild_berry.shake( added or rest != amm )

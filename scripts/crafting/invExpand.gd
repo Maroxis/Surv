@@ -31,5 +31,6 @@ func _updateTime():
 func _on_CraftButton_pressed() -> void:
 	if(Inventory.expand_bag(self.name)):
 		craft_button.disabled = true
+		craftBtAnim(true)
 #		fade()
 		Global.Craft.refreshCurTab()

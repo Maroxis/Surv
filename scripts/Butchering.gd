@@ -32,6 +32,7 @@ func butcher():
 			var fd = Inventory.food.has(res)
 			Inventory.add_resource(res,amm,fd)
 		Player.pass_time(Inventory.food[selectedCarcass]["craftTime"])
+		butcher_button.shakeSubtle()
 		refreshButton()
 
 func refreshOutput():

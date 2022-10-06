@@ -19,5 +19,8 @@ func toggle(on):
 	for item in get_children():
 		item.toggle(on)
 
+func shakeSelectedSide():
+	get_node(selected).shakeSubtleSide()
+
 func shakeSelected():
-	get_node(selected).shakeSide()
+	get_node(selected).shakeSubtle()
