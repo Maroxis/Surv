@@ -179,6 +179,7 @@ func damageTool():
 	var rf = rng.randf_range(0.0, 1.0)
 	damage = damage + 1 if fmod(damageToolMlt,1.0) > rf else damage
 	if(damage == 0):
+		damageToolMlt += 0.2
 		return {"error":null,"desc":"Your "+str(chTl)+" holds strong"}
 	Save.tools[chTl]["durability"] -= damage
 	if(Save.tools[chTl]["durability"]) < 1:
@@ -205,8 +206,8 @@ func forestOvergrown():
 	return {"error":null,"res":"It now takes "+time+" to travel"}
 
 func playerIll():
-	var sickMlt = clamp(Global.Date.day/10,1.0,6.0)
-	var sick = rng.randi_range(5, 10)*sickMlt
+	var sickMlt = clamp(Global.Date.day/8,1.0,6.0)
+	var sick = rng.randi_range(6, 10)*sickMlt
 	var descLv
 	Player.change_sick(sick)
 	if(Player.sick < 20):
@@ -220,7 +221,8 @@ func playerIll():
 	return {"error":null,"res":"You are "+descLv+" sick"}
 
 func animalAttack():
-	var level = floor(clamp(float(Global.Date.day)/5,1.0,20.0))
+	var rl = rand_range(0.9,1.1)
+	var level = floor(clamp((float(Global.Date.day)/5)*rl,1.0,20.0))
 	var damage = level-Buildings.calcDefence()
 	if(damage <= 0):
 		return {"error":null,"res":"Your defence was enough to stop the attack \n Animal strength: "+str(level)+"\n"+" Defence level: "+str(Buildings.calcDefence())}
@@ -248,13 +250,13 @@ func animalAttack():
 		return {"error":null,"res": rs}
 
 func unstableWeather():
-	Global.Weather.weatherChangeRate += 0.01
+	Global.Weather.weatherChangeRate += 0.015
 	Global.Weather.calmSustain += 1
 func flashStorm():
 	Global.Weather.setWeather(Global.Weather.type.Storm)
 	Global.Weather.weatherChangeRate += 0.005
 func toxicRain():
-	Global.Weather.rainToxic += 0.2
+	Global.Weather.rainToxic += 0.3
 	emit_signal("toxicRain")
 
 func spookedAnimals():

@@ -21,7 +21,7 @@ onready var Structure = {
 					"ammount": 60
 				},
 				"benefits":{
-					"sleepRegenMult": 1.4
+					"sleepRegenMult": 1.3
 				}
 			},
 			"tier2" : {
@@ -36,7 +36,7 @@ onready var Structure = {
 					"ammount": 80
 				},
 				"benefits":{
-					"sleepRegenMult": 1.8
+					"sleepRegenMult": 1.6
 				}
 			},
 			"tier3" : {
@@ -50,7 +50,7 @@ onready var Structure = {
 					"ammount": 60
 				},
 				"benefits":{
-					"sleepRegenMult": 2.0
+					"sleepRegenMult": 1.8
 				}
 			},
 			"tier4" : {
@@ -64,7 +64,7 @@ onready var Structure = {
 					"ammount": 60
 				},
 				"benefits":{
-					"sleepRegenMult": 2.4
+					"sleepRegenMult": 2.0
 				}
 			}
 		},
@@ -186,10 +186,10 @@ onready var Structure = {
 			"tier1" : {
 				"cost": {
 					"Stick": 12,
-					"Leaf": 40
+					"Leaf": 36
 				},
 				"time":{
-					"sections": 4,
+					"sections": 2,
 					"completed": 0,
 					"ammount": 60
 				},
@@ -270,7 +270,7 @@ onready var Structure = {
 					"ammount": 60
 				},
 				"benefits":{
-					"spoilMult": 0.4
+					"spoilMult": 0.5
 				}
 			}
 		}
@@ -601,7 +601,7 @@ onready var Structure = {
 					"ammount": 80
 				},
 				"benefits":{
-					"enable": "Mortar"
+					"enable": "Mortar and Chisel"
 				}
 			}
 		},
@@ -742,7 +742,7 @@ onready var Structure = {
 			"tier1" : {
 				"cost": {
 					"Stick": 40,
-					"Thread": 10
+					"Thread": 8
 				},
 				"time":{
 					"sections": 8,
@@ -893,6 +893,7 @@ func calcDefence():
 	var defence = 0
 	defence += getCurrentModule("Perimeter","Fence")["benefits"]["defence"]
 	defence += getCurrentModule("Perimeter","Trench")["benefits"]["defence"]
+	defence += getCurrentModule("Perimeter","Pits")["benefits"]["defence"]
 	defence += getCurrentModule("Perimeter","WarningSystem")["benefits"]["defence"]
 	defence += getCurrentModule("House","Wall")["benefits"]["defence"]
 	defence += getCurrentModule("House","Roof")["benefits"]["defence"]
