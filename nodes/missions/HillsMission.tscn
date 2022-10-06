@@ -281,9 +281,6 @@ margin_top = 136.0
 margin_bottom = 177.0
 text = "Dig"
 
-[node name="Ammount" parent="CaveIn/Info/MissionSelect/VBox" index="2"]
-visible = false
-
 [node name="Time" parent="CaveIn/Info/MissionSelect/VBox" index="3"]
 margin_top = 181.0
 margin_bottom = 222.0

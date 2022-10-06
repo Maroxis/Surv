@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://sprites/BG/IconDiscBWTex.png" type="Texture" id=1]
 [ext_resource path="res://sprites/Icons/32x32px/axe.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://sprites/Icons/64x64px/ore.png" type="Texture" id=5]
 [ext_resource path="res://nodes/ClickSound.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/animate/NodeAnimated.gd" type="Script" id=7]
+[ext_resource path="res://sprites/Icons/64x64px/bag.png" type="Texture" id=8]
 
 [node name="MissionSelect" type="Control"]
 anchor_right = 1.0
@@ -115,22 +116,56 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Ammount" type="Label" parent="VBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBox"]
 margin_top = 177.0
 margin_right = 192.0
-margin_bottom = 218.0
+margin_bottom = 241.0
+rect_min_size = Vector2( 0, 64 )
+alignment = 1
+
+[node name="Ammount" type="Label" parent="VBox/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 25.0
+margin_top = 11.0
+margin_right = 104.0
+margin_bottom = 52.0
+size_flags_horizontal = 0
 theme = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Amm"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="WeightContainer" type="TextureRect" parent="VBox/HBoxContainer"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 108.0
+margin_right = 167.0
+margin_bottom = 64.0
+texture = ExtResource( 8 )
+
+[node name="Weight" type="Label" parent="VBox/HBoxContainer/WeightContainer"]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -22.5
+margin_top = -2.0
+margin_right = 20.5
+margin_bottom = 30.0
+theme = ExtResource( 3 )
+theme_type_variation = "weight"
+text = "12.8"
+align = 1
+valign = 1
+
 [node name="Time" type="Label" parent="VBox"]
-margin_top = 222.0
+margin_top = 245.0
 margin_right = 192.0
-margin_bottom = 263.0
+margin_bottom = 286.0
 theme = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "00:30"

@@ -37,6 +37,7 @@ margin_top = 164.0
 margin_right = 352.0
 margin_bottom = 427.0
 connectMission = false
+type = "null"
 
 [node name="Clay" parent="Resources" instance=ExtResource( 4 )]
 anchor_right = 0.0

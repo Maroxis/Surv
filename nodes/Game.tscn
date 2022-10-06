@@ -720,6 +720,7 @@ expand = true
 stretch_mode = 2
 
 [node name="StatsBG" type="NinePatchRect" parent="Canvas/UI/Status/TopBar/TopBar"]
+visible = false
 margin_left = 144.0
 margin_top = 4.0
 margin_right = 376.0
