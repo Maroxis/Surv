@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://sprites/BG/9rectPanel.png" type="Texture" id=1]
+[ext_resource path="res://shaders/Blur.gdshader" type="Shader" id=2]
+[ext_resource path="res://shaders/Mask.gdshader" type="Shader" id=3]
+[ext_resource path="res://sprites/BG/IconDiscBW.png" type="Texture" id=4]
+
+[sub_resource type="ShaderMaterial" id=17]
+render_priority = 2
+shader = ExtResource( 2 )
+shader_param/lod = 2.0
+
+[sub_resource type="ShaderMaterial" id=19]
+shader = ExtResource( 3 )
+
+[node name="Blur" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Blur" type="NinePatchRect" parent="."]
+material = SubResource( 17 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="Mask" type="TextureRect" parent="."]
+material = SubResource( 19 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -64.0
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 4 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=2]
+[gd_scene load_steps=82 format=2]
 
 [ext_resource path="res://nodes/Weather.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
@@ -75,6 +75,7 @@
 [ext_resource path="res://nodes/Cook.tscn" type="PackedScene" id=73]
 [ext_resource path="res://scripts/FoodIcon.gd" type="Script" id=74]
 [ext_resource path="res://sprites/UI/Topbar/BG.png" type="Texture" id=75]
+[ext_resource path="res://nodes/TutorialManager.tscn" type="PackedScene" id=76]
 [ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=77]
 
 [sub_resource type="Theme" id=2]
@@ -451,7 +452,7 @@ theme = ExtResource( 9 )
 script = ExtResource( 5 )
 
 [node name="TopLayer" type="CanvasLayer" parent="Canvas/UI"]
-layer = 128
+layer = 126
 
 [node name="Debug" type="Control" parent="Canvas/UI/TopLayer"]
 unique_name_in_owner = true
@@ -994,6 +995,12 @@ margin_left = 1264.0
 margin_right = 1280.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 16, 0 )
+
+[node name="Tutorial" type="CanvasLayer" parent="Canvas/UI"]
+layer = 127
+
+[node name="TutorialManager" parent="Canvas/UI/Tutorial" instance=ExtResource( 76 )]
+visible = false
 
 [node name="Sound" type="Node" parent="."]
 

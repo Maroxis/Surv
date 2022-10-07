@@ -1,7 +1,7 @@
 extends Control
 
 onready var day : int = 1
-onready var time : int = 360
+onready var time : int = 420
 onready var dayLabel = get_node("Calendar/VBoxContainer/Day")
 onready var timeLabel = get_node("Calendar/VBoxContainer/Time")
 

@@ -57,3 +57,4 @@
 <a href="https://www.flaticon.com/free-icons/powder" title="powder icons">Powder icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/spinning-wheel" title="spinning wheel icons">Spinning wheel icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/wood" title="wood icons">Wood icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/curved-arrow" title="curved arrow icons">Curved arrow icons created by Prosymbols Premium - Flaticon</a>
