@@ -6,7 +6,8 @@ onready var reference: TextureRect = $Reference
 onready var reference_mission: TextureRect = $ReferenceMission
 
 func _ready() -> void:
-	self.show()
+#	self.show()
+	pass
 
 func show_next():
 	var tutorials = tutorials_container.get_children()

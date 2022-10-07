@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Control",
+"class": "BaseActivityWTabs",
+"language": "GDScript",
+"path": "res://scripts/BaseActivityWTabs.gd"
+}, {
+"base": "Control",
 "class": "Craftable",
 "language": "GDScript",
 "path": "res://scripts/crafting/Craftable.gd"
@@ -60,6 +65,7 @@ _global_script_classes=[ {
 "path": "res://scripts/ScrollSelect.gd"
 } ]
 _global_script_class_icons={
+"BaseActivityWTabs": "",
 "Craftable": "",
 "Craftable_Material": "",
 "IndicatorItem": "",

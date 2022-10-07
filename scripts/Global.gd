@@ -13,6 +13,7 @@ var Weather
 var MissionButtons
 var BaseAct
 var Cook
+var BaseCooking
 var FoodEat
 var Craft
 var Build

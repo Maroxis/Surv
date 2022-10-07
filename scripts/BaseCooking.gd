@@ -1,7 +1,7 @@
 extends BaseActivityWTabs
 
 func _ready() -> void:
-	Global.Craft = self
+	Global.BaseCooking = self
 	tab_container = $TabContainer
 	tabAmm = tab_container.get_child_count()
 	TabSwitcherContainer = $TabSwitcher/VBoxContainer
@@ -12,11 +12,3 @@ func refresh():
 	var tabs = tab_container.get_children()
 	for tab in tabs:
 		refreshTab(tab)
-
-func _on_Prev_pressed() -> void:
-	if(tab_container.current_tab > 0):
-		tab_container.current_tab -= 1
-
-func _on_Next_pressed() -> void:
-	if(tab_container.current_tab < tabAmm-1):
-		tab_container.current_tab += 1

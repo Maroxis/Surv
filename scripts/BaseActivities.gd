@@ -2,7 +2,7 @@ extends Control
 
 onready var build: Control = $Build
 onready var status: Control = $Status
-onready var cook: Control = $Cook
+onready var cook: Control = $BaseCooking
 onready var craft: Control = $Craft
 
 

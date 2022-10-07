@@ -8,7 +8,7 @@ onready var Structure = {
 			},
 			"tier0" : {
 				"benefits":{
-					"sleepRegenMult": 1.1
+					"sleepRegenMult": 1.2
 				}
 			},
 			"tier1" : {
@@ -21,7 +21,7 @@ onready var Structure = {
 					"ammount": 60
 				},
 				"benefits":{
-					"sleepRegenMult": 1.3
+					"sleepRegenMult": 1.4
 				}
 			},
 			"tier2" : {

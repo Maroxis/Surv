@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://resources/tabFG.tres" type="StyleBox" id=1]
 [ext_resource path="res://fonts/CraftTabsFont.tres" type="DynamicFont" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://nodes/components/TabSwithcerTab.tscn" type="PackedScene" id=7]
 [ext_resource path="res://nodes/components/ReturnButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://sprites/textiletex.png" type="Texture" id=9]
-[ext_resource path="res://nodes/crafting/CraftButchering.tscn" type="PackedScene" id=10]
 [ext_resource path="res://sprites/Icons/64x64px/pickaxe.png" type="Texture" id=11]
 [ext_resource path="res://sprites/Icons/128x128px/Wenrexa Healing magic.png" type="Texture" id=12]
 [ext_resource path="res://scripts/Craft.gd" type="Script" id=13]
@@ -17,7 +16,6 @@
 [ext_resource path="res://sprites/Icons/64x64px/bag.png" type="Texture" id=15]
 [ext_resource path="res://nodes/crafting/CraftUpgrades.tscn" type="PackedScene" id=16]
 [ext_resource path="res://sprites/Icons/64x64px/rope.png" type="Texture" id=17]
-[ext_resource path="res://sprites/Icons/64x64px/butchering.png" type="Texture" id=18]
 [ext_resource path="res://sprites/Icons/128x128px/furnace.png" type="Texture" id=19]
 [ext_resource path="res://nodes/crafting/CraftMeds.tscn" type="PackedScene" id=20]
 
@@ -43,7 +41,6 @@ __meta__ = {
 [node name="TabContainer" type="TabContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 128.0
 margin_bottom = -96.0
 custom_fonts/font = ExtResource( 2 )
 custom_styles/tab_fg = ExtResource( 1 )
@@ -68,9 +65,6 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_bottom = 418.0
 
-[node name="Butchering" parent="TabContainer" instance=ExtResource( 10 )]
-visible = false
-
 [node name="Smelting" parent="TabContainer" instance=ExtResource( 6 )]
 visible = false
 anchor_top = 0.0
@@ -81,6 +75,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -144.0
+margin_bottom = -96.0
 rect_min_size = Vector2( 96, 0 )
 
 [node name="TextureRect" type="TextureRect" parent="TabSwitcher"]
@@ -101,43 +96,39 @@ margin_top = -212.0
 margin_right = -56.0
 margin_bottom = 212.0
 custom_constants/separation = 8
+alignment = 1
 
 [node name="Resources" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 7 )]
+margin_top = 36.0
+margin_bottom = 100.0
 
 [node name="Icon" parent="TabSwitcher/VBoxContainer/Resources" index="1"]
 texture = ExtResource( 17 )
 
 [node name="Meds" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 72.0
-margin_bottom = 136.0
+margin_top = 108.0
+margin_bottom = 172.0
 
 [node name="Icon" parent="TabSwitcher/VBoxContainer/Meds" index="1"]
 texture = ExtResource( 12 )
 
 [node name="Tools" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 144.0
-margin_bottom = 208.0
+margin_top = 180.0
+margin_bottom = 244.0
 
 [node name="Icon" parent="TabSwitcher/VBoxContainer/Tools" index="1"]
 texture = ExtResource( 11 )
 
 [node name="Upgrades" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 216.0
-margin_bottom = 280.0
+margin_top = 252.0
+margin_bottom = 316.0
 
 [node name="Icon" parent="TabSwitcher/VBoxContainer/Upgrades" index="1"]
 texture = ExtResource( 15 )
 
-[node name="Butchering" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 288.0
-margin_bottom = 352.0
-
-[node name="Icon" parent="TabSwitcher/VBoxContainer/Butchering" index="1"]
-texture = ExtResource( 18 )
-
 [node name="Smelting" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 360.0
-margin_bottom = 424.0
+margin_top = 324.0
+margin_bottom = 388.0
 
 [node name="Icon" parent="TabSwitcher/VBoxContainer/Smelting" index="1"]
 texture = ExtResource( 19 )
@@ -150,6 +141,5 @@ texture = ExtResource( 19 )
 [editable path="TabSwitcher/VBoxContainer/Meds"]
 [editable path="TabSwitcher/VBoxContainer/Tools"]
 [editable path="TabSwitcher/VBoxContainer/Upgrades"]
-[editable path="TabSwitcher/VBoxContainer/Butchering"]
 [editable path="TabSwitcher/VBoxContainer/Smelting"]
 [editable path="Return"]

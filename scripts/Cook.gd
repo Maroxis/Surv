@@ -1,4 +1,4 @@
-extends "res://scripts/BaseActivity.gd"
+extends BaseActivityWTabs
 
 onready var item_select: Control = $"%FoodSelect"
 onready var flame: TextureProgress = $"%Flame"
