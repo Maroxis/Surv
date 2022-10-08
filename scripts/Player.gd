@@ -118,7 +118,7 @@ func change_water(amm, set = false):
 	if(amm == 0 and not set):
 		return
 	if(water == 0 && amm < 0):
-		change_health(amm)
+		change_health(amm, GameOver.reasons.Water)
 	if(set):
 		water = amm
 	else:
@@ -143,7 +143,7 @@ func change_food(amm, set = false, over = false):
 	if(amm == 0 and not set):
 		return
 	if(food == 0 && amm < 0):
-		change_health(amm*2)
+		change_health(amm*2,GameOver.reasons.Food)
 	if(set):
 		food = amm
 	else:
@@ -155,7 +155,7 @@ func change_food(amm, set = false, over = false):
 		Global.UI.food.shake()
 	Global.UI.food.get_node("TextureProgress/Value").text = str(ceil(food))
 	
-func change_health(amm, set = false):
+func change_health(amm, reason = null, set = false):
 	if(amm == 0 and not set):
 		return
 	if(set):
@@ -172,11 +172,11 @@ func change_health(amm, set = false):
 		Global.UI.health.shake()
 	Global.UI.health.get_node("TextureProgress/Value").text = str(ceil(health))
 	if(health <= 0):
-		Global.GameOver.init()
+		Global.GameOver.init(reason)
 
 func change_energy(amm, set = false):
 	if(energy == 0 && amm < 0):
-		change_health(amm/2)
+		change_health(amm/2, GameOver.reasons.Energy)
 	if(set):
 		energy = amm
 	else:
@@ -205,9 +205,9 @@ func pass_time(time,sleep=false,wet = false):
 		change_sick(-(sickRate*1.2*time*sleepRegenMult*fullBonus))
 	var sickPenaltyMlt = 1.0 if sick < 20 else 0.8
 	if(food > 50 && water > 30 && sick < 50):
-		change_health(time*regenRate*sleepRegenMult*sickPenaltyMlt)
+		change_health(time*regenRate*sleepRegenMult*sickPenaltyMlt, GameOver.reasons.Sick)
 	elif(sick > 80):
-		change_health(-(time*regenRate))
+		change_health(-(time*regenRate), GameOver.reasons.Sick)
 	change_water(-(time*thirstRate*sickPenaltyMlt*sickPenaltyMlt*weatherPenalty))
 	change_food(-(time*hungerRate*sickPenaltyMlt))
 	if sleep:
