@@ -13,6 +13,7 @@ script = ExtResource( 1 )
 unique_name_in_owner = true
 margin_right = 724.0
 margin_bottom = 41.0
+autowrap = true
 
 [node name="Value" type="Label" parent="."]
 unique_name_in_owner = true

@@ -10,6 +10,7 @@ onready var music_bg: NinePatchRect = $TextureRect/ScrollContainer/VBoxContainer
 onready var weather_bg: NinePatchRect = $TextureRect/ScrollContainer/VBoxContainer/Sound/Weather/BG
 onready var reset_tutorial_button: TextureButton = $TextureRect/ScrollContainer/VBoxContainer/TutorialData/HBoxContainer/ResetTutorialButton
 onready var skip_tutorial_button: TextureButton = $TextureRect/ScrollContainer/VBoxContainer/TutorialData/HBoxContainer/SkipTutorialButton
+onready var screen_button: CheckButton = $TextureRect/ScrollContainer/VBoxContainer/Display/ScreenButton
 
 func _ready() -> void:
 	debug.visible = DevMode.on
@@ -30,12 +31,16 @@ func pack():
 		data[ch] = {}
 		data[ch]["volume"] = AudioServer.get_bus_volume_db(ch)
 		data[ch]["mute"] = AudioServer.is_bus_mute(ch)
+	data["display"] = {}
+	data["display"]["fullscreen"] = screen_button.pressed
 	return data
 
 func unpack(data):
 	for ch in AudioServer.bus_count:
 		change_volume(ch, data[str(ch)]["volume"])
 		setMute(ch, data[str(ch)]["mute"])
+	if data.has("display"):
+		screen_button.pressed = data["display"]["fullscreen"]
 	refresh(data)
 	return
 
@@ -49,11 +54,10 @@ func refresh(data):
 	setButton(sfx_bg,data["1"]["mute"])
 	setButton(music_bg,data["2"]["mute"])
 	setButton(weather_bg,data["3"]["mute"])
-
+	toggle_fullscreen(screen_button.pressed)
 
 func _on_Debug_Button_toggled(on) -> void:
 	DevMode.DebugUI.switch(on)
-
 
 func _on_Exit_Button_pressed() -> void:
 	Save.saveConfig()
@@ -136,3 +140,13 @@ func _on_ResetTutorialButton_pressed() -> void:
 func _on_SkipTutorialButton_pressed() -> void:
 	skip_tutorial_button.shake()
 	Global.Tutorial.skip_all()
+
+func toggle_fullscreen(on):
+	if on:
+		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D,  SceneTree.STRETCH_ASPECT_EXPAND, Vector2(1280,720))
+	else:
+		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D,  SceneTree.STRETCH_ASPECT_KEEP, Vector2(1280,720))
+
+
+func _on_ScreenButton_toggled(button_pressed: bool) -> void:
+	toggle_fullscreen(button_pressed)

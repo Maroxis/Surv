@@ -64,7 +64,7 @@ margin_right = -64.0
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/ScrollContainer"]
 margin_left = 186.0
 margin_right = 954.0
-margin_bottom = 840.0
+margin_bottom = 1114.0
 rect_min_size = Vector2( 768, 0 )
 size_flags_horizontal = 6
 size_flags_vertical = 3
@@ -332,10 +332,37 @@ step = 1.0
 value = -10.0
 rounded = true
 
-[node name="TutorialData" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
+[node name="Display" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
 margin_top = 456.0
 margin_right = 768.0
-margin_bottom = 708.0
+margin_bottom = 726.0
+
+[node name="HSeparator" type="HSeparator" parent="TextureRect/ScrollContainer/VBoxContainer/Display"]
+margin_right = 768.0
+margin_bottom = 60.0
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_constants/separation = 60
+
+[node name="Label" type="Label" parent="TextureRect/ScrollContainer/VBoxContainer/Display"]
+margin_top = 64.0
+margin_right = 768.0
+margin_bottom = 130.0
+text = "Display"
+align = 1
+
+[node name="ScreenButton" type="CheckButton" parent="TextureRect/ScrollContainer/VBoxContainer/Display"]
+margin_top = 134.0
+margin_right = 768.0
+margin_bottom = 270.0
+pressed = true
+text = "Use full screen"
+align = 1
+
+[node name="TutorialData" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
+margin_top = 730.0
+margin_right = 768.0
+margin_bottom = 982.0
 
 [node name="HSeparator" type="HSeparator" parent="TextureRect/ScrollContainer/VBoxContainer/TutorialData"]
 margin_right = 768.0
@@ -393,9 +420,9 @@ align = 1
 valign = 1
 
 [node name="MarginBottom" type="Control" parent="TextureRect/ScrollContainer/VBoxContainer"]
-margin_top = 712.0
+margin_top = 986.0
 margin_right = 768.0
-margin_bottom = 840.0
+margin_bottom = 1114.0
 rect_min_size = Vector2( 0, 128 )
 
 [connection signal="pressed" from="TextureRect/ExitButton" to="." method="_on_Exit_Button_pressed"]
@@ -409,5 +436,6 @@ rect_min_size = Vector2( 0, 128 )
 [connection signal="value_changed" from="TextureRect/ScrollContainer/VBoxContainer/Sound/Music/ProgressSlider" to="." method="_on_MusicProgressSlider_value_changed"]
 [connection signal="pressed" from="TextureRect/ScrollContainer/VBoxContainer/Sound/Weather/BG/WeatherButton" to="." method="_on_WeatherButton_pressed"]
 [connection signal="value_changed" from="TextureRect/ScrollContainer/VBoxContainer/Sound/Weather/ProgressSlider" to="." method="_on_WeatherProgressSlider_value_changed"]
+[connection signal="toggled" from="TextureRect/ScrollContainer/VBoxContainer/Display/ScreenButton" to="." method="_on_ScreenButton_toggled"]
 [connection signal="pressed" from="TextureRect/ScrollContainer/VBoxContainer/TutorialData/HBoxContainer/ResetTutorialButton" to="." method="_on_ResetTutorialButton_pressed"]
 [connection signal="pressed" from="TextureRect/ScrollContainer/VBoxContainer/TutorialData/HBoxContainer/SkipTutorialButton" to="." method="_on_SkipTutorialButton_pressed"]
