@@ -15,13 +15,20 @@ var bag = {
 var structures = {}
 
 func saveConfig():
-	var data = to_json(Global.InGSettings.pack())
+	var data = {}
+	data["settings"] = Global.InGSettings.pack()
+	data["tutorial"] = Global.Tutorial.pack()
+	data = to_json(data)
 	return saveData(config_save_file,data)
 
 func loadConfig():
 	var data = loadData(config_save_file)
 	if data:
-		Global.InGSettings.unpack(data)
+		if data.has("settings"): # save compatibility to remove later
+			Global.InGSettings.unpack(data["settings"])
+			Global.Tutorial.unpack(data["tutorial"])
+		else:
+			Global.InGSettings.unpack(data)
 
 func autoSave():
 	saveData(auto_save_file)

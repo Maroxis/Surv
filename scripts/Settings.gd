@@ -8,6 +8,8 @@ onready var sound: VBoxContainer = $"%Sound"
 onready var sfx_bg: NinePatchRect = $TextureRect/ScrollContainer/VBoxContainer/Sound/SFX/BG
 onready var music_bg: NinePatchRect = $TextureRect/ScrollContainer/VBoxContainer/Sound/Music/BG
 onready var weather_bg: NinePatchRect = $TextureRect/ScrollContainer/VBoxContainer/Sound/Weather/BG
+onready var reset_tutorial_button: TextureButton = $TextureRect/ScrollContainer/VBoxContainer/TutorialData/HBoxContainer/ResetTutorialButton
+onready var skip_tutorial_button: TextureButton = $TextureRect/ScrollContainer/VBoxContainer/TutorialData/HBoxContainer/SkipTutorialButton
 
 func _ready() -> void:
 	debug.visible = DevMode.on
@@ -42,7 +44,7 @@ func refresh(data):
 	var ch = 1
 	for i in sound_container.size():
 		if sound_container[i] is HBoxContainer:
-			sound_container[i].get_node("ProgressSlider").set_val(data[str(ch)]["volume"])
+			sound_container[i].get_node("ProgressSlider").value = data[str(ch)]["volume"]
 			ch += 1
 	setButton(sfx_bg,data["1"]["mute"])
 	setButton(music_bg,data["2"]["mute"])
@@ -124,3 +126,13 @@ func _on_MusicButton_pressed() -> void:
 func _on_WeatherButton_pressed() -> void:
 	var sfx_index= AudioServer.get_bus_index("Weather")
 	toggleMute(sfx_index,weather_bg)
+
+
+func _on_ResetTutorialButton_pressed() -> void:
+	reset_tutorial_button.shake()
+	Global.Tutorial.reset()
+
+
+func _on_SkipTutorialButton_pressed() -> void:
+	skip_tutorial_button.shake()
+	Global.Tutorial.skip_all()

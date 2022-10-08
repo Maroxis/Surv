@@ -200,7 +200,7 @@ func pass_time(time,sleep=false,wet = false):
 		soak(time*soakMult)
 	elif(soaked > 0):
 		dry(time)
-	if(sick > 0 and not wet):
+	if(sick > 0 and (Global.Weather.getRainInt() < 1 or not wet)):
 		var fullBonus = 2 if food > 50 and water > 50 else 1
 		change_sick(-(sickRate*1.2*time*sleepRegenMult*fullBonus))
 	var sickPenaltyMlt = 1.0 if sick < 20 else 0.8

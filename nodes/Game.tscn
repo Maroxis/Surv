@@ -443,6 +443,7 @@ visible = false
 margin_top = 128.0
 
 [node name="Craft" parent="Canvas/CanvasLayer/GameWindow/BaseActivities" instance=ExtResource( 26 )]
+visible = false
 margin_top = 128.0
 
 [node name="UI" type="Control" parent="Canvas"]

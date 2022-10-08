@@ -44,18 +44,18 @@ anchor_bottom = 1.0
 texture = ExtResource( 12 )
 stretch_mode = 4
 
-[node name="Tutorials" type="Control" parent="."]
+[node name="StartTutorials" type="Control" parent="."]
 unique_name_in_owner = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Goal" type="Control" parent="Tutorials"]
+[node name="Goal" type="Control" parent="StartTutorials"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Blur" parent="Tutorials/Goal" instance=ExtResource( 5 )]
+[node name="Blur" parent="StartTutorials/Goal" instance=ExtResource( 5 )]
 
-[node name="Mask" parent="Tutorials/Goal/Blur" index="1"]
+[node name="Mask" parent="StartTutorials/Goal/Blur" index="1"]
 margin_left = -628.0
 margin_top = -360.0
 margin_right = -484.0
@@ -63,32 +63,32 @@ margin_bottom = -232.0
 texture = ExtResource( 2 )
 expand = true
 
-[node name="Sign" parent="Tutorials/Goal" instance=ExtResource( 4 )]
+[node name="Sign" parent="StartTutorials/Goal" instance=ExtResource( 4 )]
 margin_left = -352.0
 margin_top = -203.0
 margin_right = 416.0
 margin_bottom = 109.0
 
-[node name="Arrow" parent="Tutorials/Goal/Sign" index="1"]
+[node name="Arrow" parent="StartTutorials/Goal/Sign" index="1"]
 margin_left = -105.0
 margin_top = -143.0
 margin_right = 151.0
 margin_bottom = 113.0
 flip_v = true
 
-[node name="Text" parent="Tutorials/Goal/Sign" index="2"]
+[node name="Text" parent="StartTutorials/Goal/Sign" index="2"]
 margin_left = -224.0
 margin_right = 224.0
 text = "Your Goal is to survive 100 days"
 
-[node name="Status" type="Control" parent="Tutorials"]
+[node name="Status" type="Control" parent="StartTutorials"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Blur" parent="Tutorials/Status" instance=ExtResource( 5 )]
+[node name="Blur" parent="StartTutorials/Status" instance=ExtResource( 5 )]
 
-[node name="Mask" parent="Tutorials/Status/Blur" index="1"]
+[node name="Mask" parent="StartTutorials/Status/Blur" index="1"]
 margin_left = -640.0
 margin_top = 72.0
 margin_right = -352.0
@@ -96,13 +96,13 @@ margin_bottom = 360.0
 texture = ExtResource( 11 )
 expand = true
 
-[node name="Sign" parent="Tutorials/Status" instance=ExtResource( 4 )]
+[node name="Sign" parent="StartTutorials/Status" instance=ExtResource( 4 )]
 margin_left = -287.0
 margin_top = -176.0
 margin_right = 481.0
 margin_bottom = 136.0
 
-[node name="Text" parent="Tutorials/Status/Sign" index="2"]
+[node name="Text" parent="StartTutorials/Status/Sign" index="2"]
 margin_left = -338.0
 margin_top = -74.5
 margin_right = 338.0
@@ -110,14 +110,14 @@ margin_bottom = 10.5
 text = "When time passes your status will deplete.
 Don't let your health drop to 0 or it's Game Over"
 
-[node name="Mission" type="Control" parent="Tutorials"]
+[node name="Mission" type="Control" parent="StartTutorials"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Blur" parent="Tutorials/Mission" instance=ExtResource( 5 )]
+[node name="Blur" parent="StartTutorials/Mission" instance=ExtResource( 5 )]
 
-[node name="Mask" parent="Tutorials/Mission/Blur" index="1"]
+[node name="Mask" parent="StartTutorials/Mission/Blur" index="1"]
 material = SubResource( 19 )
 margin_left = -487.0
 margin_top = -131.0
@@ -130,7 +130,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Mask2" type="TextureRect" parent="Tutorials/Mission/Blur"]
+[node name="Mask2" type="TextureRect" parent="StartTutorials/Mission/Blur"]
 material = SubResource( 19 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -144,7 +144,7 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 1
 
-[node name="Mask3" type="TextureRect" parent="Tutorials/Mission/Blur"]
+[node name="Mask3" type="TextureRect" parent="StartTutorials/Mission/Blur"]
 material = SubResource( 19 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -158,27 +158,27 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 1
 
-[node name="Sign" parent="Tutorials/Mission" instance=ExtResource( 4 )]
+[node name="Sign" parent="StartTutorials/Mission" instance=ExtResource( 4 )]
 margin_left = -244.0
 margin_top = 98.0
 margin_right = 396.0
 margin_bottom = 346.0
 
-[node name="Arrow" parent="Tutorials/Mission/Sign" index="1"]
+[node name="Arrow" parent="StartTutorials/Mission/Sign" index="1"]
 margin_left = -61.0
 margin_top = -187.0
 margin_right = 195.0
 margin_bottom = 69.0
 flip_v = true
 
-[node name="Text" parent="Tutorials/Mission/Sign" index="2"]
+[node name="Text" parent="StartTutorials/Mission/Sign" index="2"]
 margin_left = -190.0
 margin_top = -52.5
 margin_right = 190.0
 margin_bottom = -11.5
 text = "Travel to gather Resources"
 
-[node name="Arrow2" type="TextureRect" parent="Tutorials/Mission/Sign"]
+[node name="Arrow2" type="TextureRect" parent="StartTutorials/Mission/Sign"]
 show_behind_parent = true
 margin_left = 307.0
 margin_top = -129.0
@@ -188,7 +188,7 @@ texture = ExtResource( 7 )
 flip_h = true
 flip_v = true
 
-[node name="Arrow3" type="TextureRect" parent="Tutorials/Mission/Sign"]
+[node name="Arrow3" type="TextureRect" parent="StartTutorials/Mission/Sign"]
 show_behind_parent = true
 margin_left = 167.0
 margin_top = -140.0
@@ -196,7 +196,7 @@ margin_right = 423.0
 margin_bottom = 116.0
 texture = ExtResource( 8 )
 
-[node name="MissionTime" type="Control" parent="Tutorials"]
+[node name="MissionTime" type="Control" parent="StartTutorials"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -204,9 +204,9 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Blur" parent="Tutorials/MissionTime" instance=ExtResource( 5 )]
+[node name="Blur" parent="StartTutorials/MissionTime" instance=ExtResource( 5 )]
 
-[node name="Mask" parent="Tutorials/MissionTime/Blur" index="1"]
+[node name="Mask" parent="StartTutorials/MissionTime/Blur" index="1"]
 material = SubResource( 19 )
 margin_left = -487.0
 margin_top = 0.0
@@ -219,7 +219,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Mask2" type="TextureRect" parent="Tutorials/MissionTime/Blur"]
+[node name="Mask2" type="TextureRect" parent="StartTutorials/MissionTime/Blur"]
 material = SubResource( 19 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -233,7 +233,7 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 1
 
-[node name="Mask3" type="TextureRect" parent="Tutorials/MissionTime/Blur"]
+[node name="Mask3" type="TextureRect" parent="StartTutorials/MissionTime/Blur"]
 material = SubResource( 19 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -247,13 +247,13 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 1
 
-[node name="Sign" parent="Tutorials/MissionTime" instance=ExtResource( 4 )]
+[node name="Sign" parent="StartTutorials/MissionTime" instance=ExtResource( 4 )]
 margin_left = -244.0
 margin_top = 98.0
 margin_right = 396.0
 margin_bottom = 346.0
 
-[node name="Arrow" parent="Tutorials/MissionTime/Sign" index="1"]
+[node name="Arrow" parent="StartTutorials/MissionTime/Sign" index="1"]
 margin_left = -61.0
 margin_top = -187.0
 margin_right = 195.0
@@ -263,7 +263,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Text" parent="Tutorials/MissionTime/Sign" index="2"]
+[node name="Text" parent="StartTutorials/MissionTime/Sign" index="2"]
 margin_left = -150.5
 margin_top = -58.5
 margin_right = 150.5
@@ -271,7 +271,7 @@ margin_bottom = 26.5
 text = "Each time you travel,
 time will pass"
 
-[node name="Arrow2" type="TextureRect" parent="Tutorials/MissionTime/Sign"]
+[node name="Arrow2" type="TextureRect" parent="StartTutorials/MissionTime/Sign"]
 show_behind_parent = true
 margin_left = 307.0
 margin_top = -129.0
@@ -281,7 +281,7 @@ texture = ExtResource( 7 )
 flip_h = true
 flip_v = true
 
-[node name="Arrow3" type="TextureRect" parent="Tutorials/MissionTime/Sign"]
+[node name="Arrow3" type="TextureRect" parent="StartTutorials/MissionTime/Sign"]
 show_behind_parent = true
 margin_left = 159.0
 margin_top = -140.0
@@ -289,14 +289,14 @@ margin_right = 415.0
 margin_bottom = 116.0
 texture = ExtResource( 8 )
 
-[node name="MissionResource" type="Control" parent="Tutorials"]
+[node name="MissionResource" type="Control" parent="StartTutorials"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Blur" parent="Tutorials/MissionResource" instance=ExtResource( 5 )]
+[node name="Blur" parent="StartTutorials/MissionResource" instance=ExtResource( 5 )]
 
-[node name="Mask" parent="Tutorials/MissionResource/Blur" index="1"]
+[node name="Mask" parent="StartTutorials/MissionResource/Blur" index="1"]
 margin_left = -157.0
 margin_top = -136.0
 margin_right = -21.0
@@ -304,7 +304,7 @@ margin_bottom = 152.0
 texture = ExtResource( 2 )
 expand = true
 
-[node name="Mask2" type="TextureRect" parent="Tutorials/MissionResource/Blur"]
+[node name="Mask2" type="TextureRect" parent="StartTutorials/MissionResource/Blur"]
 material = SubResource( 19 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -317,19 +317,19 @@ margin_bottom = -232.0
 texture = ExtResource( 2 )
 expand = true
 
-[node name="Sign" parent="Tutorials/MissionResource" instance=ExtResource( 4 )]
+[node name="Sign" parent="StartTutorials/MissionResource" instance=ExtResource( 4 )]
 margin_left = 155.0
 margin_top = -198.0
 margin_right = 443.0
 margin_bottom = 122.0
 
-[node name="Arrow" parent="Tutorials/MissionResource/Sign" index="1"]
+[node name="Arrow" parent="StartTutorials/MissionResource/Sign" index="1"]
 margin_left = -161.0
 margin_top = 26.0
 margin_right = 95.0
 margin_bottom = 282.0
 
-[node name="Text" parent="Tutorials/MissionResource/Sign" index="2"]
+[node name="Text" parent="StartTutorials/MissionResource/Sign" index="2"]
 margin_left = -134.5
 margin_top = -58.5
 margin_right = 134.5
@@ -337,7 +337,7 @@ margin_bottom = 26.5
 text = "Collect resource to
 add it to your bag"
 
-[node name="Arrow2" type="TextureRect" parent="Tutorials/MissionResource/Sign"]
+[node name="Arrow2" type="TextureRect" parent="StartTutorials/MissionResource/Sign"]
 show_behind_parent = true
 margin_left = -222.0
 margin_top = -149.0
@@ -346,14 +346,14 @@ margin_bottom = 107.0
 texture = ExtResource( 7 )
 flip_v = true
 
-[node name="MissionReturn" type="Control" parent="Tutorials"]
+[node name="MissionReturn" type="Control" parent="StartTutorials"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Blur" parent="Tutorials/MissionReturn" instance=ExtResource( 5 )]
+[node name="Blur" parent="StartTutorials/MissionReturn" instance=ExtResource( 5 )]
 
-[node name="Mask" parent="Tutorials/MissionReturn/Blur" index="1"]
+[node name="Mask" parent="StartTutorials/MissionReturn/Blur" index="1"]
 margin_left = -256.0
 margin_top = 264.0
 margin_right = 256.0
@@ -361,7 +361,7 @@ margin_bottom = 360.0
 texture = ExtResource( 2 )
 expand = true
 
-[node name="Mask2" type="TextureRect" parent="Tutorials/MissionReturn/Blur"]
+[node name="Mask2" type="TextureRect" parent="StartTutorials/MissionReturn/Blur"]
 material = SubResource( 19 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -377,13 +377,13 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Sign" parent="Tutorials/MissionReturn" instance=ExtResource( 4 )]
+[node name="Sign" parent="StartTutorials/MissionReturn" instance=ExtResource( 4 )]
 margin_left = 155.0
 margin_top = -198.0
 margin_right = 539.0
 margin_bottom = 122.0
 
-[node name="Arrow" parent="Tutorials/MissionReturn/Sign" index="1"]
+[node name="Arrow" parent="StartTutorials/MissionReturn/Sign" index="1"]
 margin_left = 46.0
 margin_top = 180.0
 margin_right = 302.0
@@ -391,7 +391,7 @@ margin_bottom = 436.0
 rect_rotation = 90.0
 flip_h = true
 
-[node name="Text" parent="Tutorials/MissionReturn/Sign" index="2"]
+[node name="Text" parent="StartTutorials/MissionReturn/Sign" index="2"]
 margin_left = -167.0
 margin_top = -80.5
 margin_right = 167.0
@@ -400,7 +400,7 @@ text = "Once your bag is full
 return to add resources
 to your base"
 
-[node name="Arrow2" type="TextureRect" parent="Tutorials/MissionReturn/Sign"]
+[node name="Arrow2" type="TextureRect" parent="StartTutorials/MissionReturn/Sign"]
 show_behind_parent = true
 margin_left = -222.0
 margin_top = -149.0
@@ -409,32 +409,32 @@ margin_bottom = 107.0
 texture = ExtResource( 7 )
 flip_v = true
 
-[node name="Base" type="Control" parent="Tutorials"]
+[node name="Base" type="Control" parent="StartTutorials"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Blur" parent="Tutorials/Base" instance=ExtResource( 5 )]
+[node name="Blur" parent="StartTutorials/Base" instance=ExtResource( 5 )]
 
-[node name="Mask" parent="Tutorials/Base/Blur" index="1"]
+[node name="Mask" parent="StartTutorials/Base/Blur" index="1"]
 margin_left = -157.0
 margin_top = -12.0
 margin_right = -29.0
 margin_bottom = 116.0
 
-[node name="Sign" parent="Tutorials/Base" instance=ExtResource( 4 )]
+[node name="Sign" parent="StartTutorials/Base" instance=ExtResource( 4 )]
 margin_left = -64.0
 margin_top = -296.0
 margin_right = 576.0
 margin_bottom = -48.0
 
-[node name="Arrow" parent="Tutorials/Base/Sign" index="1"]
+[node name="Arrow" parent="StartTutorials/Base/Sign" index="1"]
 margin_left = 64.0
 margin_top = 170.0
 margin_right = 320.0
 margin_bottom = 426.0
 
-[node name="Text" parent="Tutorials/Base/Sign" index="2"]
+[node name="Text" parent="StartTutorials/Base/Sign" index="2"]
 margin_left = -281.0
 margin_top = -72.5
 margin_right = 281.0
@@ -442,30 +442,30 @@ margin_bottom = 56.5
 text = "Spend resources on your base and tools
 for better change at survival!"
 
-[node name="Label" parent="Tutorials/Base/Sign/NextButton" index="0"]
+[node name="Label" parent="StartTutorials/Base/Sign/NextButton" index="0"]
 margin_left = -39.0
 margin_right = 39.0
 text = "Close"
 
-[connection signal="pressed" from="Tutorials/Goal/Sign/NextButton" to="." method="_on_NextButton_pressed"]
-[connection signal="pressed" from="Tutorials/Status/Sign/NextButton" to="." method="_on_NextButton_pressed"]
-[connection signal="pressed" from="Tutorials/Mission/Sign/NextButton" to="." method="_on_NextButton_pressed"]
-[connection signal="pressed" from="Tutorials/MissionTime/Sign/NextButton" to="." method="_on_NextButton_pressed"]
-[connection signal="pressed" from="Tutorials/MissionResource/Sign/NextButton" to="." method="_on_NextButton_pressed"]
-[connection signal="pressed" from="Tutorials/MissionReturn/Sign/NextButton" to="." method="_on_NextButton_pressed"]
-[connection signal="pressed" from="Tutorials/Base/Sign/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="StartTutorials/Goal/Sign/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="StartTutorials/Status/Sign/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="StartTutorials/Mission/Sign/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="StartTutorials/MissionTime/Sign/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="StartTutorials/MissionResource/Sign/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="StartTutorials/MissionReturn/Sign/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="StartTutorials/Base/Sign/NextButton" to="." method="_on_NextButton_pressed"]
 
-[editable path="Tutorials/Goal/Blur"]
-[editable path="Tutorials/Goal/Sign"]
-[editable path="Tutorials/Status/Blur"]
-[editable path="Tutorials/Status/Sign"]
-[editable path="Tutorials/Mission/Blur"]
-[editable path="Tutorials/Mission/Sign"]
-[editable path="Tutorials/MissionTime/Blur"]
-[editable path="Tutorials/MissionTime/Sign"]
-[editable path="Tutorials/MissionResource/Blur"]
-[editable path="Tutorials/MissionResource/Sign"]
-[editable path="Tutorials/MissionReturn/Blur"]
-[editable path="Tutorials/MissionReturn/Sign"]
-[editable path="Tutorials/Base/Blur"]
-[editable path="Tutorials/Base/Sign"]
+[editable path="StartTutorials/Goal/Blur"]
+[editable path="StartTutorials/Goal/Sign"]
+[editable path="StartTutorials/Status/Blur"]
+[editable path="StartTutorials/Status/Sign"]
+[editable path="StartTutorials/Mission/Blur"]
+[editable path="StartTutorials/Mission/Sign"]
+[editable path="StartTutorials/MissionTime/Blur"]
+[editable path="StartTutorials/MissionTime/Sign"]
+[editable path="StartTutorials/MissionResource/Blur"]
+[editable path="StartTutorials/MissionResource/Sign"]
+[editable path="StartTutorials/MissionReturn/Blur"]
+[editable path="StartTutorials/MissionReturn/Sign"]
+[editable path="StartTutorials/Base/Blur"]
+[editable path="StartTutorials/Base/Sign"]

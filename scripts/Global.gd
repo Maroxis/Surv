@@ -22,6 +22,7 @@ var GameOver
 var FoodLookup
 var MedsApply
 var WinScreen
+var Tutorial
 
 func refresh():
 	ChestResources.refresh()
