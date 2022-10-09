@@ -141,12 +141,16 @@ func _on_SkipTutorialButton_pressed() -> void:
 	skip_tutorial_button.shake()
 	Global.Tutorial.skip_all()
 
-func toggle_fullscreen(on):
+func toggle_fullscreen(on, reload = false):
 	if on:
 		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D,  SceneTree.STRETCH_ASPECT_EXPAND, Vector2(1280,720))
 	else:
 		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D,  SceneTree.STRETCH_ASPECT_KEEP, Vector2(1280,720))
+	Global.ResourcesUI.resizeQuickBar()
+	if reload:
+		Save.saveConfig()
+# warning-ignore:return_value_discarded
+		get_tree().reload_current_scene()
 
-
-func _on_ScreenButton_toggled(button_pressed: bool) -> void:
-	toggle_fullscreen(button_pressed)
+func _on_ScreenButton_pressed() -> void:
+	toggle_fullscreen(screen_button.pressed, true)

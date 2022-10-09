@@ -23,6 +23,7 @@ var FoodLookup
 var MedsApply
 var WinScreen
 var Tutorial
+var TopBar
 
 func refresh():
 	ChestResources.refresh()

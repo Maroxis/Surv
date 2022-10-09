@@ -356,7 +356,7 @@ margin_top = 134.0
 margin_right = 768.0
 margin_bottom = 270.0
 pressed = true
-text = "Use full screen"
+text = "Use full screen *will reload game*"
 align = 1
 
 [node name="TutorialData" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
@@ -436,6 +436,6 @@ rect_min_size = Vector2( 0, 128 )
 [connection signal="value_changed" from="TextureRect/ScrollContainer/VBoxContainer/Sound/Music/ProgressSlider" to="." method="_on_MusicProgressSlider_value_changed"]
 [connection signal="pressed" from="TextureRect/ScrollContainer/VBoxContainer/Sound/Weather/BG/WeatherButton" to="." method="_on_WeatherButton_pressed"]
 [connection signal="value_changed" from="TextureRect/ScrollContainer/VBoxContainer/Sound/Weather/ProgressSlider" to="." method="_on_WeatherProgressSlider_value_changed"]
-[connection signal="toggled" from="TextureRect/ScrollContainer/VBoxContainer/Display/ScreenButton" to="." method="_on_ScreenButton_toggled"]
+[connection signal="pressed" from="TextureRect/ScrollContainer/VBoxContainer/Display/ScreenButton" to="." method="_on_ScreenButton_pressed"]
 [connection signal="pressed" from="TextureRect/ScrollContainer/VBoxContainer/TutorialData/HBoxContainer/ResetTutorialButton" to="." method="_on_ResetTutorialButton_pressed"]
 [connection signal="pressed" from="TextureRect/ScrollContainer/VBoxContainer/TutorialData/HBoxContainer/SkipTutorialButton" to="." method="_on_SkipTutorialButton_pressed"]
