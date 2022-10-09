@@ -14,28 +14,15 @@ onready var scrollOrgPos = scroll_container.rect_position.x
 var hidden_items
 onready var max_visible_items = 0
 onready var marg_left = 0
-#signal changeFlag
 onready var timer: Timer = $Timer
 var resizeInProgress = false
 
 func _ready() -> void:
 	Global.ResourcesUI = self
-#	max_visible_items = floor((self.rect_size.x - chest.rect_size.x - floor(bag.rect_size.x/2)) / 92)-1
-#	for i in max_visible_items+1:
 	addItem(0)
 	hidden_items = max_visible_items
 # warning-ignore:return_value_discarded
 	get_tree().root.connect("size_changed", self, "_on_viewport_size_changed")
-#	resizeQuickBar()
-
-#func init(set = false):
-#	return
-#	var isize = quick_bar.get_children()[0].rect_size.x + seperation
-#	scroll_container.rect_size.x = isize * (max_visible_items+1)
-#	self.rect_min_size.x  = chest.rect_size.x + scroll_container.rect_size.x + floor(bag.rect_size.x/2)
-#	if set:
-#	self.size_flags_horizontal = Control.SIZE_FILL
-#		emit_signal("changeFlag",true)
 
 func update_resource():
 	var items = quick_bar.get_children()
@@ -80,7 +67,6 @@ func swipeNext():
 	var items = quick_bar.get_children()
 	inProgress = items.size()
 	var hurry = 0.5 if not buffer.empty() else 1.0
-#	var hurry = 1.0
 	for n in range(inProgress-1,-1,-1):
 		var tween = create_tween().set_ease(Tween.EASE_OUT)
 		tween.connect("finished", self, "pr")
@@ -131,9 +117,7 @@ func resizeQuickBar(var first_pass = true):
 #	var isize = quick_bar.get_children()[0].rect_size.x + seperation
 	var isize = 92
 	var size = get_viewport().size.x - marg_left - chest.rect_size.x - floor(bag.rect_size.x/2)
-	print(size, " ",get_viewport().size.x, " ",marg_left)
 	var diff = floor(size / isize) - max_visible_items+2
-	print("diff: ",diff)
 	if diff > 0:
 		for i in range(max_visible_items+1,max_visible_items+1+diff):
 			addItem(i)
@@ -146,31 +130,14 @@ func resizeQuickBar(var first_pass = true):
 	scroll_container.rect_size.x = isize * (max_visible_items+1)
 	self.rect_min_size.x  = chest.rect_size.x + scroll_container.rect_size.x + floor(bag.rect_size.x/2)
 	self.rect_size.x  = self.rect_min_size.x
-#	self.margin_left = - (self.rect_size.x+24)
-#	self.rect_position.x = get_viewport().size.x - self.rect_size.x - 24
-	print("marg ",self.marg_left)
-	
-	print(self.rect_position.x)
 	if first_pass:
 		resizeQuickBar(false)
-#	self.rect_min_size.x  = chest.rect_size.x + scroll_container.rect_size.x + floor(bag.rect_size.x/2)
-#	init(size)
 	resizeInProgress = false
-
-func _on_Inventory_item_rect_changed() -> void:
-	return
-#	print("prev: ", prev_window_size_x,"now: ",get_viewport().size.x)
-#	if not is_equal_approx(prev_size_x,self.rect_size.x):
-#		prev_size_x = self.rect_size.x
-#		timer.start()
-#	return
-#	disconnect("item_rect_changed",self,"_on_Inventory_item_rect_changed")
 
 func _on_viewport_size_changed() -> void:
 	timer.start()
 
 func _on_Timer_timeout() -> void:
-	print("timeout")
 	if resizeInProgress:
 		timer.start()
 	else:
