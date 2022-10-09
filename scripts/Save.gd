@@ -35,6 +35,7 @@ func saveRecord(time):
 	var prevData = loadRecord()
 	var data = LeaderBoard.addRecord(prevData,time)
 	saveData(record_save_file,data)
+	return data
 
 func loadRecord():
 	return loadData(record_save_file)
@@ -80,7 +81,18 @@ func delSave():
 	return Save.removeData(Save.auto_save_file)
 func delConfig():
 	return Save.removeData(Save.config_save_file)
-	
+func delRecords():
+	return Save.removeData(Save.record_save_file)
+func delBlank():
+	return Save.removeData(Save.blank_save_file)
+
+func purgeData():
+	print("config: ",delConfig())
+	print("records: ",delRecords())
+	print("blank: ",delBlank())
+	print("save: ",delSave())
+	return true
+
 func packData():
 	var data = {}
 	data["resources"] = Inventory.pack()
@@ -112,6 +124,8 @@ func unpackData(data):
 	Global.Smelt.unpack(data["smelt"])
 
 func saveData(path, data = packData()):
+	if typeof(data) != TYPE_STRING:
+		data = to_json(data)
 	var file = File.new()
 	file.open(path, File.WRITE)
 	file.store_line(data)

@@ -22,7 +22,7 @@ func addRun(prevData,time,date):
 func createRecord(time, date):
 	var data = {}
 	data["bestTime"] = time
-	date["runs"] = {}
+	data["runs"] = {}
 	data["runs"][date] = {}
 	data["runs"][date]["time"] = time
 	return data

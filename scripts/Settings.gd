@@ -154,3 +154,8 @@ func toggle_fullscreen(on, reload = false):
 
 func _on_ScreenButton_pressed() -> void:
 	toggle_fullscreen(screen_button.pressed, true)
+
+
+func _on_PurgeDataButton_pressed() -> void:
+	if Save.purgeData():
+		get_tree().quit()
