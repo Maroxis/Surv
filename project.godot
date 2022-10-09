@@ -100,6 +100,7 @@ Buildings="*res://scripts/Buildings.gd"
 Tools="*res://scripts/tools.gd"
 Events="*res://scripts/Events.gd"
 DevMode="*res://scripts/DevMode.gd"
+LeaderBoard="*res://scripts/LeaderBoard.gd"
 
 [display]
 

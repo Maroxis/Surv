@@ -25,6 +25,9 @@ func getDay():
 func getTime():
 	return int(time)
 
+func getTotalTime():
+	return day * 1440 + time
+
 func pack():
 	var data = {}
 	data["day"] = day

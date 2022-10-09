@@ -15,6 +15,7 @@ func init(reason):
 	var time = Global.timeGetFullFormat(Global.Date.getTime(),true,true)
 	time_lived_label.text = "Survived\n" + day + "D " + time
 	death_reason_label.text += get_reason(reason) + " "
+	Save.saveRecord(Global.Date.getTotalTime())
 	show()
 
 func get_reason(reason : int):

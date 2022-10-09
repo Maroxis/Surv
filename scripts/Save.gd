@@ -4,6 +4,7 @@ const save_file = "user://save_file_test.save"
 const auto_save_file = "user://auto_save_file.save"
 const blank_save_file = "user://blank_save_file.save"
 const config_save_file = "user://config_file.json"
+const record_save_file = "user://record_file.json"
 
 var tools = {}
 var upgrades = {}
@@ -29,6 +30,14 @@ func loadConfig():
 			Global.Tutorial.unpack(data["tutorial"])
 		else:
 			Global.InGSettings.unpack(data)
+
+func saveRecord(time):
+	var prevData = loadRecord()
+	var data = LeaderBoard.addRecord(prevData,time)
+	saveData(record_save_file,data)
+
+func loadRecord():
+	return loadData(record_save_file)
 
 func autoSave():
 	saveData(auto_save_file)
