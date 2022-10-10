@@ -112,3 +112,7 @@ func changeMaxAmm(mAmm):
 	mAmm = int(mAmm)
 	v_slider.max_value = mAmm
 	ammount_texture_progress.max_value = mAmm
+
+
+func _on_MaxButton_pressed() -> void:
+	changeAmm(v_slider.max_value)

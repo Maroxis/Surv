@@ -27,7 +27,7 @@ texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 2 )
 fill_mode = 3
 tint_under = Color( 0, 0, 0, 1 )
-tint_progress = Color( 1, 0.486275, 0, 1 )
+tint_progress = Color( 0.454902, 0.109804, 0.109804, 1 )
 
 [node name="Furnace" type="TextureProgress" parent="VBoxContainer"]
 margin_top = 76.0
@@ -37,4 +37,4 @@ texture_under = ExtResource( 1 )
 texture_progress = ExtResource( 1 )
 fill_mode = 3
 tint_under = Color( 0, 0, 0, 1 )
-tint_progress = Color( 1, 0.486275, 0, 1 )
+tint_progress = Color( 0.454902, 0.109804, 0.109804, 1 )
