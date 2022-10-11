@@ -487,12 +487,11 @@ func add_spoil(res,amm):
 	else:
 		var i = abs(amm)
 		while i > 0:
-			for n in range(foodData[res]["spoil"].size()-1,-1,-1):
+			for n in foodData[res]["spoil"].size():
 				var spAmm = foodData[res]["spoil"][n]["amm"]
 				if i >= spAmm:
 					i -= spAmm
 					foodData[res]["spoil"][n]["amm"] = 0
-					foodData[res]["spoil"].remove(n)
 				else:
 					foodData[res]["spoil"][n]["amm"] -= i
 					i = 0
@@ -592,3 +591,4 @@ func spoil_food(time):
 				foodData[res]["spoil"][n]["time"] -= time
 				if(foodData[res]["spoil"][n]["time"] < 0):
 					add_resource(res,-foodData[res]["spoil"][n]["amm"],true)
+					foodData[res]["spoil"].remove(n)

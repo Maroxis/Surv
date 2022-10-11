@@ -2,7 +2,7 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
-onready var forceEvent = 5
+onready var forceEvent = null
 
 onready var damageToolMlt : float = 0.8
 onready var waterAddTime : int = 25
