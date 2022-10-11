@@ -2,7 +2,7 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
-onready var forceEvent = null
+onready var forceEvent = 5
 
 onready var damageToolMlt : float = 0.8
 onready var waterAddTime : int = 25
@@ -220,9 +220,12 @@ func playerIll():
 		descLv = "dangerously" #drains health
 	return {"error":null,"res":"You are "+descLv+" sick"}
 
-func animalAttack():
+func calcAttack():
 	var rl = rand_range(0.9,1.1)
-	var level = floor(clamp((float(Global.Date.day)/5)*rl,1.0,20.0))
+	return floor(clamp((float(Global.Date.day)/5)*rl,1.0,30.0))
+
+func animalAttack():
+	var level = calcAttack()
 	var damage = level-Buildings.calcDefence()
 	if(damage <= 0):
 		return {"error":null,"res":"Your defence was enough to stop the attack \n Animal strength: "+str(level)+"\n"+" Defence level: "+str(Buildings.calcDefence())}

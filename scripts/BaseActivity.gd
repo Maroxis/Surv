@@ -1,5 +1,6 @@
-extends Control
+extends SceneLoader
 
+class_name BaseActivity
 #onready var homeNode = get_node("../../Missions/Home")
 
 func close(_showHome = true):

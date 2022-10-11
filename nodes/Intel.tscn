@@ -1,0 +1,140 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sprites/textiletex.png" type="Texture" id=1]
+[ext_resource path="res://scripts/Intel.gd" type="Script" id=2]
+[ext_resource path="res://nodes/components/ReturnButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/Icons/256x256px/perimeter.png" type="Texture" id=4]
+[ext_resource path="res://resources/GameTheme.tres" type="Theme" id=5]
+
+[node name="Intel" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -128.0
+rect_pivot_offset = Vector2( 1668, -90 )
+theme = ExtResource( 5 )
+script = ExtResource( 2 )
+
+[node name="BG" type="TextureRect" parent="."]
+self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 0
+texture = ExtResource( 1 )
+stretch_mode = 2
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0.0627451 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -176.0
+margin_right = 128.0
+margin_bottom = 80.0
+texture = ExtResource( 4 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -384.0
+margin_top = -280.0
+margin_right = 384.0
+margin_bottom = 200.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 768.0
+margin_bottom = 292.0
+rect_min_size = Vector2( 768, 0 )
+
+[node name="Summary" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_right = 768.0
+margin_bottom = 152.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Summary"]
+margin_right = 768.0
+margin_bottom = 62.0
+theme_type_variation = "48f"
+text = "Summary"
+align = 1
+
+[node name="Enemy" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Summary"]
+margin_top = 66.0
+margin_right = 768.0
+margin_bottom = 107.0
+
+[node name="EnemyLabel" type="Label" parent="ScrollContainer/VBoxContainer/Summary/Enemy"]
+margin_right = 388.0
+margin_bottom = 41.0
+text = "Estimated enemy strength: "
+
+[node name="EnemyValueLabel" type="Label" parent="ScrollContainer/VBoxContainer/Summary/Enemy"]
+unique_name_in_owner = true
+margin_left = 392.0
+margin_right = 466.0
+margin_bottom = 41.0
+text = "13-18"
+
+[node name="Base" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Summary"]
+margin_top = 111.0
+margin_right = 768.0
+margin_bottom = 152.0
+
+[node name="BaseLabel" type="Label" parent="ScrollContainer/VBoxContainer/Summary/Base"]
+margin_right = 202.0
+margin_bottom = 41.0
+text = "Base defence: "
+
+[node name="BaseValueLabel" type="Label" parent="ScrollContainer/VBoxContainer/Summary/Base"]
+unique_name_in_owner = true
+margin_left = 206.0
+margin_right = 222.0
+margin_bottom = 41.0
+text = "8"
+
+[node name="Details" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 156.0
+margin_right = 768.0
+margin_bottom = 222.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Details"]
+margin_right = 768.0
+margin_bottom = 62.0
+theme_type_variation = "48f"
+text = "Details"
+align = 1
+
+[node name="DetailsList" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Details"]
+unique_name_in_owner = true
+margin_top = 66.0
+margin_right = 768.0
+margin_bottom = 66.0
+
+[node name="RecentlyDestroyed" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 226.0
+margin_right = 768.0
+margin_bottom = 292.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/RecentlyDestroyed"]
+margin_right = 768.0
+margin_bottom = 62.0
+theme_type_variation = "48f"
+text = "Recently Destroyed"
+align = 1
+
+[node name="DestroyedList" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/RecentlyDestroyed"]
+unique_name_in_owner = true
+margin_top = 66.0
+margin_right = 768.0
+margin_bottom = 66.0
+
+[node name="Return" parent="." instance=ExtResource( 3 )]
+
+[connection signal="pressed" from="Return/Button" to="." method="_on_Return_Button_pressed"]
+
+[editable path="Return"]

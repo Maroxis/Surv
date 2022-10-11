@@ -24,6 +24,7 @@ var MedsApply
 var WinScreen
 var Tutorial
 var TopBar
+var Intel
 
 func refresh():
 	ChestResources.refresh()

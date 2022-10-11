@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 class_name SceneLoader
 
@@ -14,3 +14,8 @@ func addScene(scene,container):
 func removeLastScene(container):
 	var child = container.get_child(container.get_child_count()-1)
 	child.queue_free()
+
+func addLabel(container):
+	var new_label = Label.new()
+	container.add_child(new_label)
+	return new_label

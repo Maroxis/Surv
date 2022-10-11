@@ -860,11 +860,13 @@ onready var Structure = {
 		},
 		"WarningSystem":{
 			"benefitsText":{
-				"defence": "Increses camp defence"
+				"defence": "Increses camp defence",
+				"intel": "Increases information accuracy on intel screen"
 			},
 			"tier0" : {
 				"benefits":{
-					"defence": 0
+					"defence": 0,
+					"intel": 0
 				}
 			},
 			"tier1" : {
@@ -878,7 +880,50 @@ onready var Structure = {
 					"ammount": 20
 				},
 				"benefits":{
-					"defence": 1
+					"defence": 1,
+					"intel": 1
+				}
+			},
+			"tier2" : {
+				"cost": {
+					"Rock": 6,
+					"Thread": 12
+				},
+				"time":{
+					"sections": 4,
+					"completed": 0,
+					"ammount": 40
+				},
+				"benefits":{
+					"defence": 1,
+					"intel": 2
+				}
+			}
+		},
+		"WatchTower":{
+			"benefitsText":{
+				"defence": "Increses camp defence",
+				"intel": "Increases information accuracy on intel screen"
+			},
+			"tier0" : {
+				"benefits":{
+					"defence": 0,
+					"intel": 0
+				}
+			},
+			"tier1" : {
+				"cost": {
+					"Wood": 24,
+					"Plank": 6
+				},
+				"time":{
+					"sections": 3,
+					"completed": 0,
+					"ammount": 80
+				},
+				"benefits":{
+					"defence": 3,
+					"intel": 2
 				}
 			}
 		}
@@ -886,19 +931,69 @@ onready var Structure = {
 }
 signal moduleBuilt
 
+onready var save_data = {}
+
 func _ready() -> void:
 	Save.add_missing_keys_deep(Structure,Save.structures,TYPE_DICTIONARY,0,{"ctier":TYPE_INT,"progress":TYPE_INT})
 
+func pack():
+	return save_data
+
+func unpack(data):
+	for key in data:
+		save_data[key] = data[key]
+	return
+
+func addRecDestroyed(building,module):
+	if not save_data.has("destroyed"):
+		save_data["destroyed"] = []
+	for dest in save_data["destroyed"]:
+		if dest["mname"] == module:
+			return false
+	var data = {
+		"bname" : building,
+		"mname" : module
+	}
+	save_data["destroyed"].push_back(data)
+	return true
+
+func removeRecDestroyed(module):
+	for n in save_data["destroyed"].size():
+		if save_data["destroyed"][n]["mname"] == module:
+			save_data["destroyed"].remove(n)
+			return
+
+func getRecDestroyed():
+	if save_data.has("destroyed"):
+		return save_data["destroyed"]
+	else:
+		return null
+
+func getIntelLv():
+	var intel = 0
+	intel += getCurrentModule("Perimeter","WarningSystem")["benefits"]["intel"]
+	intel += getCurrentModule("Perimeter","WatchTower")["benefits"]["intel"]
+	return intel
+
 func calcDefence():
 	var defence = 0
-	defence += getCurrentModule("Perimeter","Fence")["benefits"]["defence"]
-	defence += getCurrentModule("Perimeter","Trench")["benefits"]["defence"]
-	defence += getCurrentModule("Perimeter","Pits")["benefits"]["defence"]
-	defence += getCurrentModule("Perimeter","WarningSystem")["benefits"]["defence"]
-	defence += getCurrentModule("House","Wall")["benefits"]["defence"]
-	defence += getCurrentModule("House","Roof")["benefits"]["defence"]
+	var modules = getDefenceModules()
+	for mod in modules:
+		defence += mod["def"]
 	return defence
-	
+
+func getDefenceModules():
+	var list = []
+	for building in Structure:
+		for module in Structure[building]:
+			if typeof(Structure[building][module]) == TYPE_DICTIONARY and Structure[building][module]["benefitsText"].has("defence"):
+				var item = {
+					"bname": building,
+					"mname": module,
+					"def" : getCurrentModule(building,module)["benefits"]["defence"]
+				}
+				list.push_back(item)
+	return list
 
 func checkCost(building,module) -> bool:
 	var ntier = getTier(building,module,true)
@@ -911,6 +1006,7 @@ func checkCost(building,module) -> bool:
 func buildModule(building,module):
 	Save.structures[building][module]["ctier"] += 1
 	Save.structures[building][module]["progress"] = 0
+	removeRecDestroyed(module)
 	emit_signal("moduleBuilt",module)
 #	getCurrentModule(building,module)["time"]["completed"] = 0
 
@@ -940,6 +1036,7 @@ func getCurrentModule(building,module):
 
 func demolish(building,module):
 	Save.structures[building][module]["ctier"] -= 1
+	addRecDestroyed(building,module)
 
 func runCollector(time):
 	var collectRate = getCurrentModule("Collector","Catcher")["benefits"]["collectRate"]

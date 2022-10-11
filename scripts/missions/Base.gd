@@ -84,3 +84,8 @@ func _on_Home_visibility_changed() -> void:
 			_activateDrink()
 		else:
 			_deactivateDrink()
+
+
+func _on_Defence_pressed() -> void:
+	Global.Intel.refresh()
+	Global.Intel.show()
