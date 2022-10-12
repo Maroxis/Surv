@@ -7,7 +7,9 @@ func animateValue(val):
 	tween.tween_property(self, "value", val, 0.3)
 	
 func flashBar(start):
-	if(start and flashTween == null):
+	if(start):
+		if flashTween:
+			flashTween.kill()
 		flashTween = create_tween()
 		flashTween.set_loops()
 		flashTween.tween_property(self, "tint_progress:a", 0.0, 0.7).set_delay(3)
