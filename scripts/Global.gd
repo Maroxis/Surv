@@ -39,6 +39,7 @@ func refresh():
 	Smelt.refresh()
 	FoodLookup.refresh()
 	Missions.refresh()
+	UI.hardRefresh()
 	
 func timeGetFullFormat(time,lzero = false,labeled = false):
 	time = int(time)

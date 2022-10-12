@@ -68,17 +68,7 @@ func unpack(dict):
 		medsBuff = dict["medsBuff"]
 
 func refresh_status():
-	Global.UI.water.get_node("TextureProgress").animateValue(ceil(water))
-	Global.UI.water.get_node("TextureProgress/Value").text = str(ceil(water))
-	Global.UI.food.get_node("TextureProgress").animateValue(ceil(food))
-	Global.UI.food.get_node("TextureProgress/Value").text = str(ceil(food))
-	Global.UI.health.get_node("TextureProgress").animateValue(ceil(health))
-	Global.UI.health.get_node("TextureProgress/Value").text = str(ceil(health))
-	Global.UI.health.get_node("SickProgress").animateValue(ceil(sick))
-	Global.UI.energy.get_node("TextureProgress").animateValue(ceil(energy))
-	Global.UI.energy.get_node("TextureProgress/Value").text = str(ceil(energy))
-	Global.UI.health.setMedMaxTime(medsBuff["totalTime"])
-	Global.UI.health.setMedProgress(medsBuff["time"])
+	Global.UI.refresh()
 
 func reset_meds():
 	medsBuff = {
@@ -95,7 +85,7 @@ func apply_med(medName):
 		medsBuff[buff] = med["buffs"][buff]
 	medsBuff["totalTime"] = medsBuff["time"]
 	Inventory.add_meds(medName,-1)
-	Global.UI.health.setMedMaxTime(medsBuff["totalTime"])
+	Global.UI.refreshHealth()
 	deplete_meds(0)
 
 func soak(amm):
@@ -127,17 +117,16 @@ func change_water(amm, set = false):
 	_upd_water(amm)
 
 func _upd_water(amm):
-	Global.UI.water.get_node("TextureProgress").animateValue(ceil(water))
 	if(water < lowWarning && amm < 0):
 		Global.UI.water.shake()
-	Global.UI.water.get_node("TextureProgress/Value").text = str(ceil(water))
+	Global.UI.refreshWater()
 	
 func upd_max_water(mx):
 	maxWater += mx
-	Global.UI.water.get_node("TextureProgress").max_value += mx
+	Global.UI.refreshMaxWater()
 func upd_max_food(mx):
 	maxFood += mx
-	Global.UI.food.get_node("TextureProgress").max_value += mx
+	Global.UI.refreshMaxFood()
 	
 func change_food(amm, set = false, over = false):
 	if(amm == 0 and not set):
@@ -150,10 +139,9 @@ func change_food(amm, set = false, over = false):
 		food += amm
 	if not over:
 		food = clamp(food,0,maxFood)
-	Global.UI.food.get_node("TextureProgress").animateValue(ceil(food))
 	if(food < lowWarning && amm < 0):
 		Global.UI.food.shake()
-	Global.UI.food.get_node("TextureProgress/Value").text = str(ceil(food))
+	Global.UI.refreshFood()
 	
 func change_health(amm, reason = null, set = false):
 	if(amm == 0 and not set):
@@ -167,10 +155,9 @@ func change_health(amm, reason = null, set = false):
 			amm /= medsBuff["healthRegen"]
 		health += amm
 	health = clamp(health,0,maxHealth)
-	Global.UI.health.get_node("TextureProgress").animateValue(ceil(health))
 	if(health < lowWarning && amm < 0):
 		Global.UI.health.shake()
-	Global.UI.health.get_node("TextureProgress/Value").text = str(ceil(health))
+	Global.UI.refreshHealth()
 	if(health <= 0):
 		Global.GameOver.init(reason)
 
@@ -182,10 +169,9 @@ func change_energy(amm, set = false):
 	else:
 		energy += amm
 	energy = clamp(energy,0,maxEnergy)
-	Global.UI.energy.get_node("TextureProgress").animateValue(ceil(energy))
 	if(energy < lowWarning && amm < 0):
 		Global.UI.energy.shake()
-	Global.UI.energy.get_node("TextureProgress/Value").text = str(ceil(energy))
+	Global.UI.refreshEnergy()
 
 func sleep():
 	var sleepTime = 360
@@ -227,7 +213,7 @@ func deplete_meds(time):
 	medsBuff["time"] -= time
 	if medsBuff["time"] <= 0:
 		reset_meds()
-	Global.UI.health.setMedProgress(medsBuff["time"])
+	Global.UI.refreshHealth()
 
 func change_sick(amm):
 	if amm > 0:
@@ -236,8 +222,7 @@ func change_sick(amm):
 		amm *= medsBuff["sickReduction"]
 	sick += amm
 	sick = clamp(sick,0,100)
-	Global.UI.health.get_node("SickProgress").animateValue(ceil(sick))
-	Global.UI.health.get_node("SickProgress").flashBar(sick > 80)
+	Global.UI.refreshHealth()
 
 func eat(fd, amm, over = false, remove = true):
 	var cal = Inventory.food[fd]["calories"]
