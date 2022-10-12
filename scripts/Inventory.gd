@@ -14,7 +14,7 @@ onready var resources = {
 		}
 	  },
 	"Wood": {
-		"weight" : 3.2,
+		"weight" : 2.4,
 		"crafted": false,
 		"burining":{
 			"temp": 1200,
@@ -110,11 +110,11 @@ onready var resources = {
 		"crafted": true
 	  },
 	"Rock": {
-		"weight" : 2.8,
+		"weight" : 2.0,
 		"crafted": false
 	  },
 	"Clay": {
-		"weight" : 3.6,
+		"weight" : 3.2,
 		"crafted": false
 	  },
 	"Brick": {
@@ -132,7 +132,7 @@ onready var resources = {
 		"crafted": false
 	  },
 	"Coal": {
-		"weight" : 2.0,
+		"weight" : 1.8,
 		"crafted": false,
 		"burining":{
 			"temp": 2000,
@@ -140,15 +140,15 @@ onready var resources = {
 		}
 	  },
 	"CopperOre": {
-		"weight" : 1.6,
-		"crafted": false,
-	  },
-	"TinOre": {
 		"weight" : 1.4,
 		"crafted": false,
 	  },
+	"TinOre": {
+		"weight" : 1.2,
+		"crafted": false,
+	  },
 	"IronOre": {
-		"weight" : 1.8,
+		"weight" : 2.0,
 		"crafted": false,
 	  },
 	"CopperIngot": {
@@ -190,6 +190,7 @@ onready var food = {
 		"crafted": false,
 		"cookable": true,
 		"calories": 40,
+		"water": 5,
 		"sick": 10,
 		"spoil":[],
 		"spoilTime": 2160,
@@ -201,6 +202,7 @@ onready var food = {
 		"crafted": false,
 		"cookable": true,
 		"calories": 80,
+		"water": 10,
 		"sick": 30,
 		"spoil":[],
 		"spoilTime": 2160,
@@ -222,6 +224,7 @@ onready var food = {
 		"crafted": true,
 		"cookable": false,
 		"calories": 40,
+		"water": 4,
 		"spoil":[],
 		"spoilTime": 4320
 	  },
@@ -230,6 +233,7 @@ onready var food = {
 		"crafted": true,
 		"cookable": false,
 		"calories": 80,
+		"water": 8,
 		"spoil":[],
 		"spoilTime": 5760
 	  },
@@ -246,7 +250,7 @@ onready var food = {
 		"spoilTime": 4320
 	  },
 	"MediumCarcass": {
-		"weight" : 11.2,
+		"weight" : 8.6,
 		"crafted": false,
 		"carcass": true,
 		"craftTime": 80,
@@ -259,7 +263,7 @@ onready var food = {
 		"spoilTime": 4320
 	  },
 	"LargeCarcass": {
-		"weight" : 22.2,
+		"weight" : 14.8,
 		"crafted": false,
 		"carcass": true,
 		"craftTime": 120,
