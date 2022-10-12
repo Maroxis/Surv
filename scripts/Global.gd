@@ -30,7 +30,6 @@ func refresh():
 	ChestResources.refresh()
 	Player.refresh_status()
 	ResourcesUI.reset()
-	Missions.refresh()
 	Tools.refresh()
 	Inventory.refresh()
 	Craft.refresh()
@@ -39,6 +38,7 @@ func refresh():
 	Cook.refresh()
 	Smelt.refresh()
 	FoodLookup.refresh()
+	Missions.refresh()
 	
 func timeGetFullFormat(time,lzero = false,labeled = false):
 	time = int(time)

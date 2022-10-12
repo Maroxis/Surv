@@ -10,10 +10,13 @@ func _ready() -> void:
 	Buildings.connect("moduleBuilt",self,"_checkMod")
 # warning-ignore:return_value_discarded
 	Events.connect("toxicRain",self,"changeCollectorToxic")
-	changeCollectorToxic()
 
 func updateGatherTime():
 	return
+
+func refresh():
+	changeCollectorToxic()
+	drinkNodeAmm.text = str(Buildings.getWaterLevel()) + "W"
 
 func _on_Return_Button_pressed() -> void:
 	close()

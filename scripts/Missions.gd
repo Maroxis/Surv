@@ -19,7 +19,7 @@ func _ready() -> void:
 
 func refresh():
 	for mission in self.get_children():
-		if mission is Mission:
+		if mission is Mission or mission is MissionBasic:
 			mission.refresh()
 
 func pack():

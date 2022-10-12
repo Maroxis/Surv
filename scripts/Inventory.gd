@@ -456,6 +456,8 @@ func update_bag():
 	Global.BagUI.updateBag(Save.bag["space"],Save.bag["size"])
 
 func add_resource(res,amm:int,fd = false):
+	if amm == 0:
+		return false
 	var invAmm = foodData[res]["amm"] if fd else resourcesData[res]
 	if amm < 0 and invAmm < abs(amm):
 		return false

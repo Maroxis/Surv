@@ -1042,7 +1042,10 @@ func runCollector(time):
 	var collectRate = getCurrentModule("Collector","Catcher")["benefits"]["collectRate"]
 	var weatherBonus = max(Global.Weather.current-1,0) * max(Global.Weather.current-1,0)
 	changeWaterLevel(time*collectRate*weatherBonus)
-	
+
+func getWaterLevel():
+	return round(Structure["Collector"]["waterLevel"])
+
 func changeWaterLevel(amm,set = false):
 	if(set):
 		Structure["Collector"]["waterLevel"] = amm
@@ -1050,4 +1053,4 @@ func changeWaterLevel(amm,set = false):
 		Structure["Collector"]["waterLevel"] += amm
 	var tankSize = getCurrentModule("Collector","Tank")["benefits"]["tankSize"]
 	Structure["Collector"]["waterLevel"] = clamp(Structure["Collector"]["waterLevel"],0,tankSize)
-	Global.Missions.get_node("Home").drinkNodeAmm.text = str(round(Structure["Collector"]["waterLevel"])) + "W"
+	Global.Missions.get_node("Home").drinkNodeAmm.text = str(getWaterLevel()) + "W"
