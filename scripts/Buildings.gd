@@ -727,6 +727,30 @@ onready var Structure = {
 					"resReduction": 1
 				}
 			}
+		},
+		"DryingRack":{
+			"benefitsText":{
+				"enable": "Enables drying meat"
+			},
+			"tier0" : {
+				"benefits":{
+					"enable": false
+				}
+			},
+			"tier1" : {
+				"cost": {
+					"Stick": 16,
+					"Thread": 6
+				},
+				"time":{
+					"sections": 3,
+					"completed": 0,
+					"ammount": 60
+				},
+				"benefits":{
+					"enable": true
+				}
+			}
 		}
 	},
 	"Perimeter": {
