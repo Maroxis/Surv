@@ -117,7 +117,7 @@ func resizeQuickBar(var first_pass = true):
 #	var isize = quick_bar.get_children()[0].rect_size.x + seperation
 	var isize = 92
 	var size = get_viewport().size.x - marg_left - chest.rect_size.x - floor(bag.rect_size.x/2)
-	var diff = floor(size / isize) - max_visible_items+2
+	var diff = floor(size / isize) - (max_visible_items+1)
 	if diff > 0:
 		for i in range(max_visible_items+1,max_visible_items+1+diff):
 			addItem(i)
