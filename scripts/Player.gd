@@ -194,8 +194,8 @@ func pass_time(time,sleep=false,wet = false):
 		change_health(time*regenRate*sleepRegenMult*sickPenaltyMlt, GameOver.reasons.Sick)
 	elif(sick > 80):
 		change_health(-(time*regenRate), GameOver.reasons.Sick)
-	change_water(-(time*thirstRate*sickPenaltyMlt*sickPenaltyMlt*weatherPenalty))
-	change_food(-(time*hungerRate*sickPenaltyMlt))
+	change_water(-(time*thirstRate*weatherPenalty/sickPenaltyMlt))
+	change_food(-(time*hungerRate/sickPenaltyMlt))
 	if sleep:
 		change_energy(maxEnergy-sick)
 	else:
