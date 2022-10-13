@@ -995,6 +995,9 @@ func getRecDestroyed():
 	else:
 		return null
 
+func getSpoilMlt():
+	return getCurrentModule("House","Cellar")["benefits"]["spoilMult"]
+
 func getIntelLv():
 	var intel = 0
 	intel += getCurrentModule("Perimeter","WarningSystem")["benefits"]["intel"]

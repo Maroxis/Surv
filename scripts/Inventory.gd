@@ -612,7 +612,7 @@ func spoil_food(time):
 	for res in food:
 		if not foodData[res]["spoil"].empty():
 			for n in range(foodData[res]["spoil"].size()-1,-1,-1):
-				foodData[res]["spoil"][n]["time"] -= time
+				foodData[res]["spoil"][n]["time"] = int(foodData[res]["spoil"][n]["time"]-time)
 				if(foodData[res]["spoil"][n]["time"] < 0):
 					add_resource(res,-foodData[res]["spoil"][n]["amm"],true)
 					foodData[res]["spoil"].remove(n)

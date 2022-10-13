@@ -53,6 +53,7 @@ margin_bottom = 48.0
 rect_min_size = Vector2( 32, 32 )
 max_value = 1440.0
 value = 1000.0
+rounded = true
 texture_under = ExtResource( 10 )
 texture_progress = ExtResource( 10 )
 fill_mode = 5

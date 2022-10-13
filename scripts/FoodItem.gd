@@ -24,9 +24,16 @@ func changeInfo(itemName):
 	else:
 		sick.text = "0"
 	if Inventory.foodData[itemName]["spoil"].size() > 0:
-		var t = max(Inventory.foodData[itemName]["spoil"][0]["time"],0)
-		spoil_progress.value = t
-		var d = floor(t/1440)
+		var spoilTime = null
+		for sp in Inventory.foodData[itemName]["spoil"].size():
+			if Inventory.foodData[itemName]["spoil"][sp]["amm"] > 0:
+				spoilTime = Inventory.foodData[itemName]["spoil"][sp]["time"]
+				break
+		var t = 0
+		if spoilTime != null:
+			t = max(spoilTime/Buildings.getSpoilMlt(),0)
+		spoil_progress.value = 1440 if t >= 1440 else t
+		var d = int(t/1440)
 		if d > 0:
 			spoil_label.text = str(min(d,9))
 		else:
