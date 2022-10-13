@@ -106,6 +106,7 @@ func packData():
 	data["missions"] = Global.Missions.pack()
 	data["date"] = Global.Date.pack()
 	data["cook"] = Global.Cook.pack()
+	data["drying"] = Global.Drying.pack()
 	data["smelt"] = Global.Smelt.pack()
 	data["buildings"] = Buildings.pack()
 	return to_json(data)
@@ -125,6 +126,8 @@ func unpackData(data):
 	Global.Smelt.unpack(data["smelt"])
 	if data.has("buildings"):
 		Buildings.unpack(data["buildings"])
+	if data.has("drying"):
+		Global.Drying.unpack(data["drying"])
 
 func saveData(path, data = packData()):
 	if typeof(data) != TYPE_STRING:

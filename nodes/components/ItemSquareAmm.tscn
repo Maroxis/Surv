@@ -73,6 +73,7 @@ margin_left = 4.0
 margin_top = 2.0
 margin_right = -4.0
 margin_bottom = 48.0
+rect_min_size = Vector2( 0, 46 )
 theme = SubResource( 8 )
 text = "Name sada fdfg"
 align = 1

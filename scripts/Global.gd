@@ -25,6 +25,7 @@ var WinScreen
 var Tutorial
 var TopBar
 var Intel
+var Drying
 
 func refresh():
 	ChestResources.refresh()
@@ -36,6 +37,7 @@ func refresh():
 	Weather.refresh()
 	Date.refresh()
 	Cook.refresh()
+	Drying.refresh()
 	Smelt.refresh()
 	FoodLookup.refresh()
 	Missions.refresh()

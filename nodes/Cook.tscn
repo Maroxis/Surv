@@ -34,46 +34,46 @@ anchor_bottom = 1.0
 custom_constants/separation = 12
 
 [node name="Control" type="Control" parent="HBoxContainer"]
-margin_right = 213.0
+margin_right = 256.0
 margin_bottom = 720.0
-rect_min_size = Vector2( 144, 0 )
+rect_min_size = Vector2( 256, 0 )
 size_flags_horizontal = 3
 
 [node name="FoodSelect" parent="HBoxContainer" instance=ExtResource( 13 )]
 unique_name_in_owner = true
-margin_left = 225.0
+margin_left = 268.0
 margin_top = 204.0
-margin_right = 409.0
+margin_right = 452.0
 margin_bottom = 516.0
 slider = true
 
 [node name="Plus" type="TextureRect" parent="HBoxContainer"]
-margin_left = 421.0
+margin_left = 464.0
 margin_top = 328.0
-margin_right = 485.0
+margin_right = 528.0
 margin_bottom = 392.0
 size_flags_vertical = 4
 texture = ExtResource( 7 )
 
 [node name="Fuel" parent="HBoxContainer" instance=ExtResource( 3 )]
 unique_name_in_owner = true
-margin_left = 497.0
+margin_left = 540.0
 margin_top = 296.0
-margin_right = 625.0
+margin_right = 668.0
 margin_bottom = 424.0
 
 [node name="Control3" type="Control" parent="HBoxContainer"]
-margin_left = 637.0
-margin_right = 850.0
+margin_left = 680.0
+margin_right = 872.0
 margin_bottom = 720.0
 size_flags_horizontal = 3
 
 [node name="Progress" type="Control" parent="HBoxContainer"]
-margin_left = 862.0
-margin_top = 232.0
-margin_right = 1054.0
-margin_bottom = 488.0
-rect_min_size = Vector2( 192, 256 )
+margin_left = 884.0
+margin_top = 179.0
+margin_right = 1076.0
+margin_bottom = 541.0
+rect_min_size = Vector2( 192, 362 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource( 4 )
@@ -114,7 +114,7 @@ text = "0h:20m"
 align = 1
 
 [node name="Control2" type="Control" parent="HBoxContainer"]
-margin_left = 1066.0
+margin_left = 1088.0
 margin_right = 1280.0
 margin_bottom = 720.0
 rect_min_size = Vector2( 144, 0 )

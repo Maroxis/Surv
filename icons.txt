@@ -59,3 +59,4 @@
 <a href="https://www.flaticon.com/free-icons/wood" title="wood icons">Wood icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/curved-arrow" title="curved arrow icons">Curved arrow icons created by Prosymbols Premium - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/tower" title="tower icons">Tower icons created by Darius Dan - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/meat" title="meat icons">Meat icons created by Smashicons - Flaticon</a>

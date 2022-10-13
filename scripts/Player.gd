@@ -205,6 +205,7 @@ func pass_time(time,sleep=false,wet = false):
 	Inventory.spoil_food(time)
 	Global.Smelt.run(time)
 	Global.Cook.run(time)
+	Global.Drying.run(time)
 	Global.Weather.simWeather(time)
 	Global.Date.changeTime(time)
 	deplete_meds(time)

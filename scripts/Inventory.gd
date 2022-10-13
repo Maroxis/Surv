@@ -189,25 +189,33 @@ onready var food = {
 		"weight" : 1.2,
 		"crafted": false,
 		"cookable": true,
+		"dryable": true,
 		"calories": 40,
 		"water": 5,
 		"sick": 10,
 		"spoil":[],
 		"spoilTime": 2160,
 		"cookTime": 5,
-		"cooksInto" : "CookedSmallMeat"
+		"dryTime": 50,
+		"cooksInto" : "CookedSmallMeat",
+		"driesInto" : "DriedMeat",
+		"dryMult" : 1
 	  },
 	"RawMeat": {
 		"weight" : 2.8,
 		"crafted": false,
 		"cookable": true,
+		"dryable": true,
 		"calories": 80,
 		"water": 10,
 		"sick": 30,
 		"spoil":[],
 		"spoilTime": 2160,
 		"cookTime": 10,
-		"cooksInto" : "CookedMeat"
+		"dryTime": 100,
+		"cooksInto" : "CookedMeat",
+		"driesInto" : "DriedMeat",
+		"dryMult" : 2
 	  },
 	"WildBerry": {
 		"weight" : 1.2,
@@ -236,6 +244,15 @@ onready var food = {
 		"water": 8,
 		"spoil":[],
 		"spoilTime": 5760
+	  },
+	"DriedMeat": {
+		"weight" : 1.8,
+		"crafted": true,
+		"cookable": false,
+		"calories": 30,
+		"water": 1,
+		"spoil":[],
+		"spoilTime": 10080
 	  },
 	"SmallCarcass": {
 		"weight" : 4.8,

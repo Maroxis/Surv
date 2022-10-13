@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/BaseCooking.gd" type="Script" id=1]
 [ext_resource path="res://sprites/Icons/64x64px/butchering.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://nodes/components/TabSwithcerTab.tscn" type="PackedScene" id=10]
 [ext_resource path="res://nodes/crafting/CraftButchering.tscn" type="PackedScene" id=11]
 [ext_resource path="res://nodes/Cook.tscn" type="PackedScene" id=12]
+[ext_resource path="res://nodes/crafting/CraftDrying.tscn" type="PackedScene" id=13]
+[ext_resource path="res://sprites/Icons/64x64px/dryingrackfilled.png" type="Texture" id=14]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -35,7 +37,6 @@ __meta__ = {
 [node name="TabContainer" type="TabContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 144.0
 margin_right = -144.0
 margin_bottom = -96.0
 custom_fonts/font = ExtResource( 8 )
@@ -55,6 +56,9 @@ margin_left = 0.0
 margin_top = 0.0
 
 [node name="Cook" parent="TabContainer" instance=ExtResource( 12 )]
+visible = false
+
+[node name="Drying" parent="TabContainer" instance=ExtResource( 13 )]
 visible = false
 
 [node name="TabSwitcher" type="Control" parent="."]
@@ -86,18 +90,25 @@ custom_constants/separation = 16
 alignment = 1
 
 [node name="Butchering" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 10 )]
-margin_top = 140.0
-margin_bottom = 204.0
+margin_top = 100.0
+margin_bottom = 164.0
 
 [node name="Icon" parent="TabSwitcher/VBoxContainer/Butchering" index="1"]
 texture = ExtResource( 2 )
 
 [node name="Cook" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 10 )]
-margin_top = 220.0
-margin_bottom = 284.0
+margin_top = 180.0
+margin_bottom = 244.0
 
 [node name="Icon" parent="TabSwitcher/VBoxContainer/Cook" index="1"]
 texture = ExtResource( 4 )
+
+[node name="Drying" parent="TabSwitcher/VBoxContainer" instance=ExtResource( 10 )]
+margin_top = 260.0
+margin_bottom = 324.0
+
+[node name="Icon" parent="TabSwitcher/VBoxContainer/Drying" index="1"]
+texture = ExtResource( 14 )
 
 [node name="Return" parent="." instance=ExtResource( 9 )]
 
@@ -105,4 +116,5 @@ texture = ExtResource( 4 )
 
 [editable path="TabSwitcher/VBoxContainer/Butchering"]
 [editable path="TabSwitcher/VBoxContainer/Cook"]
+[editable path="TabSwitcher/VBoxContainer/Drying"]
 [editable path="Return"]
