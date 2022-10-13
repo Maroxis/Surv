@@ -6,6 +6,7 @@ var hungerRate = 0.07 #per minute
 var regenRate = 0.01 #per minute
 var exhaustRate = 0.08 #per minute
 var sickRate = 0.002 #per minute
+var soakRate = 0.4 #per minute
 var dryRate = 0.4 #per minute
 
 var maxWater = 100
@@ -183,7 +184,7 @@ func pass_time(time,sleep=false,wet = false):
 	var weatherPenalty = 1.2 if(Global.Weather.current == Global.Weather.type.Sunny) else 1.0
 	var soakMult = Global.Weather.getRainInt()
 	if(wet and soakMult > 0):
-		soak(time*soakMult)
+		soak(time*soakMult*soakRate*(1+Global.Weather.rainToxic))
 	elif(soaked > 0):
 		dry(time)
 	if(sick > 0 and (Global.Weather.getRainInt() < 1 or not wet)):
