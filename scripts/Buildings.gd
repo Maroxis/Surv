@@ -955,7 +955,9 @@ onready var Structure = {
 }
 signal moduleBuilt
 
-onready var save_data = {}
+onready var save_data = {
+	"destroyed" : {}
+}
 
 func _ready() -> void:
 	Save.add_missing_keys_deep(Structure,Save.structures,TYPE_DICTIONARY,0,{"ctier":TYPE_INT,"progress":TYPE_INT})

@@ -208,7 +208,7 @@ onready var food = {
 		"dryable": true,
 		"calories": 80,
 		"water": 10,
-		"sick": 30,
+		"sick": 15,
 		"spoil":[],
 		"spoilTime": 2160,
 		"cookTime": 10,
