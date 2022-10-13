@@ -46,7 +46,7 @@ func autoSave():
 func autoLoad():
 	saveData(blank_save_file)
 	loadConfig()
-	loadSave(auto_save_file)
+	return loadSave(auto_save_file)
 
 func loadSave(path):
 	var data = loadData(path)
