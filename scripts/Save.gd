@@ -2,6 +2,7 @@ extends Node
 
 const save_file = "user://save_file_test.save"
 const auto_save_file = "user://auto_save_file.save"
+const auto_hard_save_file = "user://auto_hard_save_file.save"
 const blank_save_file = "user://blank_save_file.save"
 const config_save_file = "user://config_file.json"
 const record_save_file = "user://record_file.json"
@@ -41,12 +42,18 @@ func loadRecord():
 	return loadData(record_save_file)
 
 func autoSave():
-	saveData(auto_save_file)
+	if Difficulty.is_normal():
+		saveData(auto_save_file)
+	else:
+		saveData(auto_hard_save_file)
 
 func autoLoad():
 	saveData(blank_save_file)
 	loadConfig()
-	return loadSave(auto_save_file)
+	if Difficulty.is_normal():
+		return loadSave(auto_save_file)
+	else:
+		return loadSave(auto_hard_save_file)
 
 func loadSave(path):
 	var data = loadData(path)
@@ -78,7 +85,10 @@ func newGame():
 	return true
 
 func delSave():
-	return Save.removeData(Save.auto_save_file)
+	if Difficulty.is_normal():
+		return Save.removeData(Save.auto_save_file)
+	else:
+		return Save.removeData(Save.auto_hard_save_file)
 func delConfig():
 	return Save.removeData(Save.config_save_file)
 func delRecords():

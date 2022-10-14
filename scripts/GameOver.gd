@@ -17,8 +17,9 @@ func init(reason):
 	time_lived_label.text = "Survived\n" + day + "Days\n" + time
 	death_reason_label.text += get_reason(reason) + " "
 	var record = Save.saveRecord(Global.Date.getTotalTime())
-	day = str(floor(record["bestTime"]/1440))
-	time = Global.timeGetFullFormat(fmod(record["bestTime"],1440),true,true)
+	var best = "bestTime" if Difficulty.is_normal() else "bestHardTime"
+	day = str(floor(record[best]/1440))
+	time = Global.timeGetFullFormat(fmod(record[best],1440),true,true)
 	record_lived_label.text = "Record\n" + day + "Days\n" + time
 	show()
 
