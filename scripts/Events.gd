@@ -4,8 +4,8 @@ var rng = RandomNumberGenerator.new()
 
 onready var forceEvent = null
 
-onready var damageToolMlt : float = 0.8
-onready var waterAddTime : int = 25
+onready var damageToolMlt : float = Difficulty.get_starting_tool_dmg_mlt()
+onready var waterAddTime : int = Difficulty.get_starting_water_add_time()
 onready var showEvent : bool = false
 onready var animalTimer : int = 0
 
@@ -179,7 +179,7 @@ func damageTool():
 	var rf = rng.randf_range(0.0, 1.0)
 	damage = damage + 1 if fmod(damageToolMlt,1.0) > rf else damage
 	if(damage == 0):
-		damageToolMlt += 0.2
+		damageToolMlt += Difficulty.get_scaling_tool_dmg()
 		return {"error":null,"desc":"Your "+str(chTl)+" holds strong"}
 	Save.tools[chTl]["durability"] -= damage
 	if(Save.tools[chTl]["durability"]) < 1:
@@ -189,24 +189,24 @@ func damageTool():
 	return {"error":null,"desc":"Your "+str(chTl)+" got damaged and...","res":"held"}
 
 func hardenNature():
-	damageToolMlt += 0.4
+	damageToolMlt += Difficulty.get_scaling_tool_dmg()*2
 	return {"error":null}
 
 func poisonedStream():
 	Global.Missions.river.gatherTime["Water"] += waterAddTime
-	waterAddTime += 10
+	waterAddTime += Difficulty.get_scaling_water_add_time()
 	Global.Missions.river.updateGatherTime()
 	var time = Global.timeGetFullFormat(Global.Missions.river.gatherTimeWBonus["Water"])
 	return {"error":null,"res":"It now takes "+time+" to search for water"}
 
 func forestOvergrown():
-	Global.Missions.woods.missionTravelTime += 30
+	Global.Missions.woods.missionTravelTime += Difficulty.get_woods_travel_add_time()
 	Global.Missions.woods.updateTravelTime()
 	var time = Global.timeGetFullFormat(Global.Missions.woods.missionTravelTime,false,true)
 	return {"error":null,"res":"It now takes "+time+" to travel"}
 
 func playerIll():
-	var sickMlt = clamp(Global.Date.day/8,1.0,6.0)
+	var sickMlt = Difficulty.get_sick_mlt()
 	var sick = rng.randi_range(6, 10)*sickMlt
 	var descLv
 	Player.change_sick(sick)
@@ -221,8 +221,7 @@ func playerIll():
 	return {"error":null,"res":"You are "+descLv+" sick"}
 
 func calcAttack():
-	var rl = rand_range(0.9,1.1)
-	return floor(clamp((float(Global.Date.day)/5)*rl,1.0,30.0))
+	return Difficulty.get_attack_val()
 
 func animalAttack():
 	var level = calcAttack()
@@ -264,7 +263,7 @@ func toxicRain():
 
 func spookedAnimals():
 	if(Global.Date.connect("timePassed",self,"returnAnimals") == OK):
-		animalTimer += rng.randi_range(1440,2880) * ceil(float(Global.Date.getDay()) / 20) #24h-48h * day/20
+		animalTimer += rng.randi_range(1440,2880) * Difficulty.get_spooked_animals_mlt() #24h-48h * mlt
 		get_tree().call_group("Animals", "hide")
 		return {"error":null}
 	else:
@@ -278,11 +277,10 @@ func returnAnimals(time):
 	return
 
 func caveIn():
-	var amm = ceil(float(Global.Date.getDay()) / 10)
-	Global.Missions.hills.enableCaveIn(amm)
+	Global.Missions.hills.enableCaveIn(Difficulty.get_cave_in_amm())
 
 func rats():
-	var amm = floor(clamp(float(Global.Date.day)/8,1.0,12.0))
+	var amm = Difficulty.get_rats_amm()
 	var famm = Inventory.get_food_total_amm()
 	amm = amm if famm >= amm else famm
 	

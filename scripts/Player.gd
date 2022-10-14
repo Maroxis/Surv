@@ -90,10 +90,11 @@ func apply_med(medName):
 	deplete_meds(0)
 
 func soak(amm):
+	var soakLimit = Difficulty.get_soak_limit()
 	soaked += amm
-	if(soaked > 100):
-		change_sick(ceil((soaked-100) / 20))
-		soaked = 100
+	if(soaked > soakLimit):
+		change_sick(ceil((soaked-soakLimit) / 20))
+		soaked = soakLimit
 	DevMode.DebugUI.soak_meter.value = soaked
 
 func dry(time):
@@ -151,8 +152,9 @@ func change_health(amm, reason = null, set = false):
 		health = amm
 	else:
 		if amm > 0:
-			amm *= medsBuff["healthRegen"]
+			amm *= medsBuff["healthRegen"] * Difficulty.get_health_regen_multiplayer()
 		else:
+			amm *= Difficulty.get_health_damage_multiplayer()
 			amm /= medsBuff["healthRegen"]
 		health += amm
 	health = clamp(health,0,maxHealth)
@@ -189,7 +191,7 @@ func pass_time(time,sleep=false,wet = false):
 		dry(time)
 	if(sick > 0 and (Global.Weather.getRainInt() < 1 or not wet)):
 		var fullBonus = 2 if food > 50 and water > 50 else 1
-		change_sick(-(sickRate*1.2*time*sleepRegenMult*fullBonus))
+		change_sick(-(sickRate*time*sleepRegenMult*fullBonus))
 	var sickPenaltyMlt = 1.0 if sick < 20 else 0.8
 	if(food > 50 && water > 30 && sick < 50):
 		change_health(time*regenRate*sleepRegenMult*sickPenaltyMlt, GameOver.reasons.Sick)
@@ -219,9 +221,9 @@ func deplete_meds(time):
 
 func change_sick(amm):
 	if amm > 0:
-		amm *= medsBuff["sickGain"]
+		amm *= medsBuff["sickGain"] * Difficulty.get_sick_gain_multiplayer()
 	else:
-		amm *= medsBuff["sickReduction"]
+		amm *= medsBuff["sickReduction"] * Difficulty.get_sick_reduction_multiplayer()
 	sick += amm
 	sick = clamp(sick,0,100)
 	Global.UI.refreshHealth()
