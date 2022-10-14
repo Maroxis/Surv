@@ -37,3 +37,11 @@ func createRecord(time, date):
 		data["runsHard"][date] = {}
 		data["runsHard"][date]["time"] = time
 	return data
+
+func getBestTime(data):
+	var runs = "runs" if Difficulty.is_normal() else "runsHard"
+	var bestTime = 0
+	for run in data[runs]:
+		if data[runs][run]["time"] > bestTime:
+			bestTime = data[runs][run]["time"]
+	return bestTime

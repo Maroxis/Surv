@@ -39,7 +39,6 @@ func get_sick_mlt():
 
 func get_attack_val():
 	var rl = rand_range(0.9,1.1)
-	print(is_normal())
 	return ceil((Global.Date.day/6.6)*rl) if is_normal() else ceil((Global.Date.day/4.0)*rl)
 
 func get_spooked_animals_mlt():
