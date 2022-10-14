@@ -45,9 +45,9 @@ onready var tools = {
 		},
 		"tier4" : {
 			"craftTime": 120,
-			"maxDurability": 3,
+			"maxDurability": 5,
 			"cost": {
-				"Stick": 2,
+				"Plank": 1,
 				"IronIngot": 2
 			},
 			"benefits":{
@@ -99,7 +99,7 @@ onready var tools = {
 			"craftTime": 100,
 			"maxDurability": 5,
 			"cost": {
-				"Stick": 1,
+				"Plank": 1,
 				"IronIngot": 1
 			},
 			"benefits":{
@@ -151,7 +151,7 @@ onready var tools = {
 			"craftTime": 120,
 			"maxDurability": 5,
 			"cost": {
-				"Stick": 2,
+				"Plank": 2,
 				"IronIngot": 3
 			},
 			"benefits":{
@@ -203,7 +203,7 @@ onready var tools = {
 			"craftTime": 160,
 			"maxDurability": 5,
 			"cost": {
-				"Stick": 2,
+				"Plank": 2,
 				"IronIngot": 2
 			},
 			"benefits":{
@@ -220,17 +220,6 @@ onready var tools = {
 			}
 		},
 		"tier1" : {
-			"craftTime": 180,
-			"maxDurability": 2,
-			"cost": {
-				"Stick": 2,
-				"CopperIngot": 2
-			},
-			"benefits":{
-				"actionMult": 1.2
-			}
-		},
-		"tier2" : {
 			"craftTime": 160,
 			"maxDurability": 3,
 			"cost": {
@@ -238,18 +227,18 @@ onready var tools = {
 				"BronzeIngot": 2
 			},
 			"benefits":{
-				"actionMult": 1.4
+				"actionMult": 1.2
 			}
 		},
-		"tier3" : {
+		"tier2" : {
 			"craftTime": 200,
 			"maxDurability": 5,
 			"cost": {
-				"Stick": 2,
+				"Plank": 1,
 				"IronIngot": 2
 			},
 			"benefits":{
-				"actionMult": 1.6
+				"actionMult": 1.4
 			}
 		}
 	}

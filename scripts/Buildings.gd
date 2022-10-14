@@ -26,8 +26,8 @@ onready var Structure = {
 			},
 			"tier2" : {
 				"cost": {
-					"Stick": 8,
-					"Thread": 12,
+					"Stick": 16,
+					"Thread": 14,
 					"Rope": 4
 				},
 				"time":{
@@ -41,8 +41,9 @@ onready var Structure = {
 			},
 			"tier3" : {
 				"cost": {
-					"Cloth": 6,
-					"Thread": 4
+					"Leather": 12,
+					"Thread": 16,
+					"Cloth": 6
 				},
 				"time":{
 					"sections": 2,
@@ -50,13 +51,12 @@ onready var Structure = {
 					"ammount": 60
 				},
 				"benefits":{
-					"sleepRegenMult": 1.8
+					"sleepRegenMult": 2.0
 				}
 			},
 			"tier4" : {
 				"cost": {
-					"Leather": 10,
-					"Thread": 12
+					"Plank": 12
 				},
 				"time":{
 					"sections": 3,
@@ -64,7 +64,7 @@ onready var Structure = {
 					"ammount": 60
 				},
 				"benefits":{
-					"sleepRegenMult": 2.0
+					"sleepRegenMult": 2.4
 				}
 			}
 		},
@@ -103,7 +103,7 @@ onready var Structure = {
 					"ammount": 50
 				},
 				"benefits":{
-					"enable": "Wall"
+					"enable": "Wall, Roof v2"
 				}
 			}
 		},
@@ -155,7 +155,7 @@ onready var Structure = {
 			},
 			"tier3" : {
 				"cost": {
-					"Brick": 24
+					"Brick": 42
 				},
 				"time":{
 					"sections": 12,
@@ -163,7 +163,7 @@ onready var Structure = {
 					"ammount": 80
 				},
 				"benefits":{
-					"defence": 10
+					"defence": 12
 				},
 				"required":{
 					"module":{
@@ -234,7 +234,7 @@ onready var Structure = {
 			},
 			"tier1" : {
 				"time":{
-					"sections": 3,
+					"sections": 5,
 					"completed": 0,
 					"ammount": 60
 				},
@@ -249,7 +249,7 @@ onready var Structure = {
 			},
 			"tier2" : {
 				"cost": {
-					"Clay": 18
+					"Clay": 22
 				},
 				"time":{
 					"sections": 3,
@@ -262,7 +262,7 @@ onready var Structure = {
 			},
 			"tier3" : {
 				"cost": {
-					"Plank": 12
+					"Plank": 14
 				},
 				"time":{
 					"sections": 3,
@@ -536,7 +536,7 @@ onready var Structure = {
 			},
 			"tier3" : {
 				"cost": {
-					"Brick": 12
+					"Brick": 22
 				},
 				"time":{
 					"sections": 4,
@@ -546,7 +546,7 @@ onready var Structure = {
 				"benefits":{
 					"smeltable": "Iron",
 					"multiSmelt": 4,
-					"fuelEff": 1.2
+					"fuelEff": 1.4
 				}
 			}
 		},
@@ -593,7 +593,7 @@ onready var Structure = {
 			},
 			"tier1" : {
 				"cost": {
-					"Wood": 5
+					"Plank": 5
 				},
 				"time":{
 					"sections": 3,
@@ -618,12 +618,12 @@ onready var Structure = {
 			},
 			"tier1" : {
 				"cost": {
-					"Rock": 5,
+					"BronzeIngot": 2,
 				},
 				"time":{
 					"sections": 2,
 					"completed": 0,
-					"ammount": 120
+					"ammount": 80
 				},
 				"benefits":{
 					"enable": "Grinded Herbs",
@@ -632,15 +632,12 @@ onready var Structure = {
 				"required":{
 					"module":{
 						"Table": 1
-					},
-					"tool":{
-						"Pickaxe": 1,
 					}
 				}
 			},
 			"tier2" : {
 				"cost": {
-					"BronzeIngot": 2,
+					"IronIngot": 2,
 				},
 				"time":{
 					"sections": 2,
@@ -670,6 +667,7 @@ onready var Structure = {
 			"tier1" : {
 				"cost": {
 					"BronzeIngot": 1,
+					"Plank": 1
 				},
 				"time":{
 					"sections": 1,
@@ -720,10 +718,26 @@ onready var Structure = {
 				"time":{
 					"sections": 4,
 					"completed": 0,
+					"ammount": 40
+				},
+				"benefits":{
+					"actionMult": 1.4,
+					"resReduction": 1
+				}
+			},
+			"tier3" : {
+				"cost": {
+					"IronIngot": 2,
+					"Leather": 3,
+					"Thread": 6
+				},
+				"time":{
+					"sections": 4,
+					"completed": 0,
 					"ammount": 60
 				},
 				"benefits":{
-					"actionMult": 1.6,
+					"actionMult": 2.0,
 					"resReduction": 1
 				}
 			}
@@ -788,6 +802,19 @@ onready var Structure = {
 				},
 				"benefits":{
 					"defence": 7
+				}
+			},
+			"tier3" : {
+				"cost": {
+					"Brick": 62
+				},
+				"time":{
+					"sections": 8,
+					"completed": 0,
+					"ammount": 80
+				},
+				"benefits":{
+					"defence": 16
 				}
 			}
 		},
@@ -910,7 +937,7 @@ onready var Structure = {
 			},
 			"tier2" : {
 				"cost": {
-					"Rock": 6,
+					"Rock": 8,
 					"Thread": 12
 				},
 				"time":{
