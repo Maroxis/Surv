@@ -5,6 +5,7 @@ onready var quick_bar: HBoxContainer = $"%QuickBar"
 onready var seperation = quick_bar.get("custom_constants/separation")
 onready var chest: TextureButton = $"%ChestButton"
 onready var bag: Control = $"%Bag"
+onready var container: Control = $"%Container"
 
 onready var itemsOrgPos = []
 onready var inProgress = 0
@@ -15,7 +16,7 @@ var hidden_items
 onready var max_visible_items = 0
 onready var marg_left = 0
 onready var timer: Timer = $Timer
-var resizeInProgress = false
+#var resizeInProgress = false
 
 func _ready() -> void:
 	Global.ResourcesUI = self
@@ -105,6 +106,10 @@ func addItem(i):
 	sc.rect_position.x = (sc.rect_size.x + seperation) * i
 	itemsOrgPos.push_back(sc.rect_position.x)
 
+func removeAll():
+	clearList(quick_bar)
+	itemsOrgPos.clear()
+
 func removeItem():
 	removeLastScene(quick_bar)
 	itemsOrgPos.pop_back()
@@ -112,33 +117,44 @@ func removeItem():
 func _on_ChestButton_pressed() -> void:
 	Global.ChestResources.toggle()
 
-func resizeQuickBar(var first_pass = true):
-	resizeInProgress = true
+func resizeQuickBar():
+	var isize = quick_bar.get_children()[0].rect_size.x + seperation
+	var new_size = stepify(get_viewport().size.x - marg_left - floor(bag.rect_size.x/2) - chest.rect_size.x -24, isize)-isize
+	container.margin_left = -(new_size + chest.rect_size.x + 24 + floor(bag.rect_size.x/2))
+	container.rect_min_size.x = new_size
+	var new_max = int((container.rect_min_size.x - floor(bag.rect_size.x/2))/isize)
+	max_visible_items = new_max
+	hidden_items = new_max
+	removeAll()
+	for i in max_visible_items+1:
+		addItem(i)
+	scroll_container.rect_size.x = new_size
+	return
+#	resizeInProgress = true
 #	var isize = quick_bar.get_children()[0].rect_size.x + seperation
-	var isize = 92
-	var size = get_viewport().size.x - marg_left - chest.rect_size.x - floor(bag.rect_size.x/2)
-	var diff = floor(size / isize) - (max_visible_items+1)
-	if diff > 0:
-		for i in range(max_visible_items+1,max_visible_items+1+diff):
-			addItem(i)
-	else:
-		for i in abs(diff):
-			removeItem()
-	self.margin_left = - (self.rect_size.x+24)
-	max_visible_items += diff
-	hidden_items += diff
-	scroll_container.rect_size.x = isize * (max_visible_items+1)
-	self.rect_min_size.x  = chest.rect_size.x + scroll_container.rect_size.x + floor(bag.rect_size.x/2)
-	self.rect_size.x  = self.rect_min_size.x
-	if first_pass:
-		resizeQuickBar(false)
-	resizeInProgress = false
+#	var size = get_viewport().size.x - marg_left - chest.rect_size.x - floor(bag.rect_size.x/2)
+#	var diff = floor(size / isize) - (max_visible_items+1)
+#	if diff > 0:
+#		for i in range(max_visible_items+1,max_visible_items+1+diff):
+#			addItem(i)
+#	else:
+#		for i in abs(diff):
+#			removeItem()
+#	self.margin_left = - (self.rect_size.x+24)
+#	max_visible_items += diff
+#	hidden_items += diff
+#	scroll_container.rect_size.x = isize * (max_visible_items+1)
+#	self.rect_min_size.x  = chest.rect_size.x + scroll_container.rect_size.x + floor(bag.rect_size.x/2)
+#	self.rect_size.x  = self.rect_min_size.x
+#	if first_pass:
+#		resizeQuickBar(false)
+#	resizeInProgress = false
 
 func _on_viewport_size_changed() -> void:
 	timer.start()
 
 func _on_Timer_timeout() -> void:
-	if resizeInProgress:
-		timer.start()
-	else:
-		resizeQuickBar()
+#	if resizeInProgress:
+#		timer.start()
+#	else:
+	resizeQuickBar()

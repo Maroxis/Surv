@@ -13,7 +13,7 @@ func addScene(scene,container):
 
 func removeLastScene(container):
 	var child = container.get_child(container.get_child_count()-1)
-	child.queue_free()
+	child.free()
 
 func addLabel(container):
 	var new_label = Label.new()

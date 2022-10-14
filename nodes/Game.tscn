@@ -999,8 +999,6 @@ rect_min_size = Vector2( 24, 0 )
 size_flags_horizontal = 3
 
 [node name="Inventory" parent="Canvas/UI/Status/TopBar/TopBar" instance=ExtResource( 70 )]
-margin_left = -800.0
-margin_right = -24.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
