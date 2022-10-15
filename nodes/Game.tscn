@@ -717,6 +717,7 @@ anchor_right = 1.0
 rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource( 9 )
 script = ExtResource( 43 )
 
 [node name="BG" type="TextureRect" parent="Canvas/UI/Status/TopBar/TopBar"]
@@ -769,24 +770,37 @@ margin_right = 24.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 24, 0 )
 
-[node name="SettingsButton" type="TextureButton" parent="Canvas/UI/Status/TopBar/TopBar/Left"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/UI/Status/TopBar/TopBar/Left"]
 margin_left = 28.0
-margin_top = 32.0
-margin_right = 92.0
-margin_bottom = 96.0
+margin_right = 96.0
+margin_bottom = 128.0
+alignment = 1
+
+[node name="SettingsButton" type="TextureButton" parent="Canvas/UI/Status/TopBar/TopBar/Left/VBoxContainer"]
+margin_left = 2.0
+margin_top = 9.0
+margin_right = 66.0
+margin_bottom = 73.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource( 13 )
 
+[node name="VersionLabel" type="Label" parent="Canvas/UI/Status/TopBar/TopBar/Left/VBoxContainer"]
+margin_top = 77.0
+margin_right = 68.0
+margin_bottom = 118.0
+text = "1.6.1"
+align = 1
+
 [node name="Control3" type="Control" parent="Canvas/UI/Status/TopBar/TopBar/Left"]
-margin_left = 96.0
-margin_right = 112.0
+margin_left = 100.0
+margin_right = 116.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 16, 0 )
 
 [node name="Date" type="Control" parent="Canvas/UI/Status/TopBar/TopBar/Left"]
-margin_left = 116.0
-margin_right = 244.0
+margin_left = 120.0
+margin_right = 248.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 size_flags_horizontal = 4
@@ -918,8 +932,8 @@ margin_bottom = 30.0
 texture = ExtResource( 58 )
 
 [node name="Tools" type="Control" parent="Canvas/UI/Status/TopBar/TopBar/Left"]
-margin_left = 248.0
-margin_right = 316.0
+margin_left = 252.0
+margin_right = 320.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 68, 0 )
 script = ExtResource( 63 )
@@ -983,12 +997,12 @@ texture = ExtResource( 48 )
 script = ExtResource( 66 )
 
 [node name="FireStatus" parent="Canvas/UI/Status/TopBar/TopBar/Left" instance=ExtResource( 39 )]
-margin_left = 320.0
-margin_right = 368.0
+margin_left = 324.0
+margin_right = 372.0
 
 [node name="FoodLookup" parent="Canvas/UI/Status/TopBar/TopBar/Left" instance=ExtResource( 42 )]
-margin_left = 372.0
-margin_right = 472.0
+margin_left = 376.0
+margin_right = 476.0
 
 [node name="MarginRight" type="Control" parent="Canvas/UI/Status/TopBar/TopBar/Left"]
 visible = false
@@ -1025,7 +1039,7 @@ visible = false
 [connection signal="pressed" from="Canvas/UI/TopLayer/Debug/SkipDaysButton" to="Canvas/UI/TopLayer/Debug" method="_on_SkipDaysButton_pressed"]
 [connection signal="pressed" from="Canvas/UI/Status/Corner/Health/TextureProgress/Button" to="Canvas/UI/Status/Corner/Health" method="_on_Health_Button_pressed"]
 [connection signal="pressed" from="Canvas/UI/Status/Corner/Food/TextureProgress/Button" to="Canvas/UI/Status/Corner/Food" method="_on_Food_Button_pressed"]
-[connection signal="pressed" from="Canvas/UI/Status/TopBar/TopBar/Left/SettingsButton" to="." method="_on_Settings_Button_pressed"]
+[connection signal="pressed" from="Canvas/UI/Status/TopBar/TopBar/Left/VBoxContainer/SettingsButton" to="." method="_on_Settings_Button_pressed"]
 
 [editable path="Canvas/CanvasLayer/GameWindow/Buttons/Woods"]
 [editable path="Canvas/CanvasLayer/GameWindow/Buttons/River"]

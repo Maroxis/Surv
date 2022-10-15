@@ -125,14 +125,12 @@ func resizeQuickBar():
 	container.margin_right = 0
 	container.rect_min_size.x = new_size
 	var new_max = int((new_size)/isize)
-	print(new_max)
 	max_visible_items = new_max-1
 	hidden_items = max_visible_items
 	removeAll()
 	for i in new_max:
 		addItem(i)
 	scroll_container.rect_size.x = new_size
-	print(new_size," ",scroll_container.rect_size.x)
 	return
 #	resizeInProgress = true
 #	var isize = quick_bar.get_children()[0].rect_size.x + seperation
