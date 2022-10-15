@@ -119,16 +119,20 @@ func _on_ChestButton_pressed() -> void:
 
 func resizeQuickBar():
 	var isize = quick_bar.get_children()[0].rect_size.x + seperation
-	var new_size = stepify(get_viewport().size.x - marg_left - floor(bag.rect_size.x/2) - chest.rect_size.x -24, isize)-isize
-	container.margin_left = -(new_size + chest.rect_size.x + 24 + floor(bag.rect_size.x/2))
+	var content = chest.rect_size.x + abs(chest.margin_right) + floor(bag.rect_size.x/2)
+	var new_size = stepify(get_viewport().size.x - marg_left - content - ceil(bag.rect_size.x/2), isize)
+	container.margin_left = -(new_size + content)
+	container.margin_right = 0
 	container.rect_min_size.x = new_size
-	var new_max = int((container.rect_min_size.x - floor(bag.rect_size.x/2))/isize)
-	max_visible_items = new_max
-	hidden_items = new_max
+	var new_max = int((new_size)/isize)
+	print(new_max)
+	max_visible_items = new_max-1
+	hidden_items = max_visible_items
 	removeAll()
-	for i in max_visible_items+1:
+	for i in new_max:
 		addItem(i)
 	scroll_container.rect_size.x = new_size
+	print(new_size," ",scroll_container.rect_size.x)
 	return
 #	resizeInProgress = true
 #	var isize = quick_bar.get_children()[0].rect_size.x + seperation
