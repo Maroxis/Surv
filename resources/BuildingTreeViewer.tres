@@ -1,0 +1,37 @@
+[gd_resource type="Theme" load_steps=9 format=2]
+
+[ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="DynamicFont" id=12]
+size = 13
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[resource]
+GraphEdit/styles/bg = SubResource( 1 )
+GraphEditMinimap/colors/resizer_color = Color( 0, 0, 0, 1 )
+GraphEditMinimap/icons/resizer = null
+GraphEditMinimap/styles/bg = null
+GraphEditMinimap/styles/camera = null
+GraphEditMinimap/styles/node = null
+GraphNode/fonts/title_font = SubResource( 12 )
+GraphNode/icons/close = null
+GraphNode/icons/port = null
+GraphNode/icons/resizer = null
+HScrollBar/styles/grabber = SubResource( 2 )
+HScrollBar/styles/grabber_highlight = SubResource( 3 )
+HScrollBar/styles/grabber_pressed = SubResource( 4 )
+HScrollBar/styles/scroll = SubResource( 5 )
+HScrollBar/styles/scroll_focus = SubResource( 6 )

@@ -146,11 +146,6 @@ onready var Structure = {
 				},
 				"benefits":{
 					"defence": 6
-				},
-				"required":{
-					"module":{
-						"Frame": 2
-					}
 				}
 			},
 			"tier3" : {
@@ -164,11 +159,6 @@ onready var Structure = {
 				},
 				"benefits":{
 					"defence": 12
-				},
-				"required":{
-					"module":{
-						"Frame": 2
-					}
 				}
 			}
 		},
@@ -277,76 +267,6 @@ onready var Structure = {
 	},
 	"Collector": {
 		"waterLevel": 0,
-		"Catcher" : {
-			"benefitsText":{
-				"collectRate": "Increases water collect rate"
-			},
-			"tier0" : {
-				"benefits":{
-					"collectRate": 0.001
-				}
-			},
-			"tier1" : {
-				"cost": {
-					"Stick": 3,
-					"Thread": 3,
-					"Leaf": 9
-				},
-				"time":{
-					"sections": 3,
-					"completed": 0,
-					"ammount": 20
-				},
-				"benefits":{
-					"collectRate": 0.003
-				},
-				"required":{
-					"module":{
-						"Tank": 1
-					}
-				}
-			},
-			"tier2" : {
-				"cost": {
-					"Stick": 9,
-					"Thread": 9,
-					"Leaf": 27
-				},
-				"time":{
-					"sections": 4,
-					"completed": 0,
-					"ammount": 40
-				},
-				"benefits":{
-					"collectRate": 0.006
-				},
-				"required":{
-					"module":{
-						"Tank": 1
-					}
-				}
-			},
-			"tier3" : {
-				"cost": {
-					"Stick": 27,
-					"Thread": 27,
-					"Leaf": 81
-				},
-				"time":{
-					"sections": 4,
-					"completed": 0,
-					"ammount": 80
-				},
-				"benefits":{
-					"collectRate": 0.012
-				},
-				"required":{
-					"module":{
-						"Tank": 1
-					}
-				}
-			}
-		},
 		"Tank" : {
 			"benefitsText":{
 				"tankSize": "Increases water tank size"
@@ -396,6 +316,66 @@ onready var Structure = {
 				}
 			}
 		},
+		"Catcher" : {
+			"benefitsText":{
+				"collectRate": "Increases water collect rate"
+			},
+			"tier0" : {
+				"benefits":{
+					"collectRate": 0.001
+				}
+			},
+			"tier1" : {
+				"cost": {
+					"Stick": 3,
+					"Thread": 3,
+					"Leaf": 9
+				},
+				"time":{
+					"sections": 3,
+					"completed": 0,
+					"ammount": 20
+				},
+				"benefits":{
+					"collectRate": 0.003
+				},
+				"required":{
+					"module":{
+						"Tank": 1
+					}
+				}
+			},
+			"tier2" : {
+				"cost": {
+					"Stick": 9,
+					"Thread": 9,
+					"Leaf": 27
+				},
+				"time":{
+					"sections": 4,
+					"completed": 0,
+					"ammount": 40
+				},
+				"benefits":{
+					"collectRate": 0.006
+				}
+			},
+			"tier3" : {
+				"cost": {
+					"Stick": 27,
+					"Thread": 27,
+					"Leaf": 81
+				},
+				"time":{
+					"sections": 4,
+					"completed": 0,
+					"ammount": 80
+				},
+				"benefits":{
+					"collectRate": 0.012
+				}
+			}
+		},
 		"Filter" : {
 			"benefitsText":{
 				"filter": "Reduces polution, making water safer to drink"
@@ -436,11 +416,6 @@ onready var Structure = {
 				},
 				"benefits":{
 					"filter": 0.8
-				},
-				"required":{
-					"module":{
-						"Tank": 1
-					}
 				}
 			},
 			"tier3" : {
@@ -457,11 +432,6 @@ onready var Structure = {
 				},
 				"benefits":{
 					"filter": 1.6
-				},
-				"required":{
-					"module":{
-						"Tank": 1
-					}
 				}
 			},
 			"tier4" : {
@@ -475,11 +445,6 @@ onready var Structure = {
 				},
 				"benefits":{
 					"filter": 2.2
-				},
-				"required":{
-					"module":{
-						"Tank": 1
-					}
 				}
 			}
 		}
@@ -607,12 +572,12 @@ onready var Structure = {
 		},
 		"Mortar":{
 			"benefitsText":{
-				"enable": "Enables grinding powders",
+				"enableCraft": "Enables grinding powders",
 				"actionMult": "Grinding speed"
 			},
 			"tier0" : {
 				"benefits":{
-					"enable": null,
+					"enableCraft": null,
 					"actionMult": 0
 				}
 			},
@@ -626,7 +591,7 @@ onready var Structure = {
 					"ammount": 80
 				},
 				"benefits":{
-					"enable": "Grinded Herbs",
+					"enableCraft": "Grinded Herbs",
 					"actionMult": 1
 				},
 				"required":{
@@ -645,13 +610,8 @@ onready var Structure = {
 					"ammount": 120
 				},
 				"benefits":{
-					"enable": "Grinded Herbs",
+					"enableCraft": "Grinded Herbs",
 					"actionMult": 1.2
-				},
-				"required":{
-					"module":{
-						"Table": 1
-					}
 				}
 			}
 		},
@@ -744,11 +704,11 @@ onready var Structure = {
 		},
 		"DryingRack":{
 			"benefitsText":{
-				"enable": "Enables drying meat"
+				"enableCraft": "Enables drying meat"
 			},
 			"tier0" : {
 				"benefits":{
-					"enable": false
+					"enableCraft": false
 				}
 			},
 			"tier1" : {
@@ -762,7 +722,7 @@ onready var Structure = {
 					"ammount": 60
 				},
 				"benefits":{
-					"enable": true
+					"enableCraft": true
 				}
 			}
 		}
