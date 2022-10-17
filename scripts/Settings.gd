@@ -11,11 +11,13 @@ onready var weather_bg: NinePatchRect = $TextureRect/ScrollContainer/VBoxContain
 onready var reset_tutorial_button: TextureButton = $TextureRect/ScrollContainer/VBoxContainer/TutorialData/HBoxContainer/ResetTutorialButton
 onready var skip_tutorial_button: TextureButton = $TextureRect/ScrollContainer/VBoxContainer/TutorialData/HBoxContainer/SkipTutorialButton
 onready var screen_button: CheckButton = $TextureRect/ScrollContainer/VBoxContainer/Display/ScreenButton
+onready var resolution_option_button: OptionButton = $"%ResolutionOptionButton"
 
 func _ready() -> void:
 	debug.visible = DevMode.on
 	Global.InGSettings = self
 	muteAll()
+	add_resolutions()
 
 func muteAll():
 	setMute(1,true)
@@ -32,7 +34,8 @@ func pack():
 		data[ch]["volume"] = AudioServer.get_bus_volume_db(ch)
 		data[ch]["mute"] = AudioServer.is_bus_mute(ch)
 	data["display"] = {}
-	data["display"]["fullscreen"] = screen_button.pressed
+#	data["display"]["fullscreen"] = screen_button.pressed
+	data["display"]["resolution"] = resolution_option_button.selected
 	return data
 
 func unpack(data):
@@ -40,7 +43,9 @@ func unpack(data):
 		change_volume(ch, data[str(ch)]["volume"])
 		setMute(ch, data[str(ch)]["mute"])
 	if data.has("display"):
-		screen_button.pressed = data["display"]["fullscreen"]
+#		screen_button.pressed = data["display"]["fullscreen"]
+		if data["display"].has("resolution"):
+			resolution_option_button.selected = data["display"]["resolution"]
 	refresh(data)
 	return
 
@@ -54,7 +59,8 @@ func refresh(data):
 	setButton(sfx_bg,data["1"]["mute"])
 	setButton(music_bg,data["2"]["mute"])
 	setButton(weather_bg,data["3"]["mute"])
-	toggle_fullscreen(screen_button.pressed)
+#	toggle_fullscreen(screen_button.pressed)
+	switch_resolution(resolution_option_button.selected)
 
 func _on_Debug_Button_toggled(on) -> void:
 	DevMode.DebugUI.switch(on)
@@ -140,22 +146,43 @@ func _on_ResetTutorialButton_pressed() -> void:
 func _on_SkipTutorialButton_pressed() -> void:
 	skip_tutorial_button.shake()
 	Global.Tutorial.skip_all()
-
-func toggle_fullscreen(on, reload = false):
-	if on:
-		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D,  SceneTree.STRETCH_ASPECT_EXPAND, Vector2(1280,720))
-	else:
-		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D,  SceneTree.STRETCH_ASPECT_KEEP, Vector2(1280,720))
-	Global.ResourcesUI.resizeQuickBar()
-	if reload:
-		Save.saveConfig()
+#
+#func toggle_fullscreen(on, _reload = false):
+#	if on:
+#		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D,  SceneTree.STRETCH_ASPECT_EXPAND, Vector2(1280,720))
+#	else:
+#		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D,  SceneTree.STRETCH_ASPECT_KEEP, Vector2(1280,720))
+##		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D,  SceneTree.STRETCH_ASPECT_KEEP, Vector2(1680,720))
+#	Global.ResourcesUI.resizeQuickBar()
+#	if reload:
+#		Save.saveConfig()
 # warning-ignore:return_value_discarded
-		get_tree().reload_current_scene()
-
-func _on_ScreenButton_pressed() -> void:
-	toggle_fullscreen(screen_button.pressed, true)
+#		get_tree().reload_current_scene()
+#
+#func _on_ScreenButton_pressed() -> void:
+#	toggle_fullscreen(screen_button.pressed, true)
 
 
 func _on_PurgeDataButton_pressed() -> void:
 	if Save.purgeData():
 		get_tree().quit()
+
+func add_resolutions():
+	resolution_option_button.add_item("Dynamic FullScreen")
+	resolution_option_button.add_item("16:9")
+	resolution_option_button.add_item("18:9")
+	resolution_option_button.add_item("21:9")
+
+func switch_resolution(res):
+	match res:
+		0:
+			get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D,  SceneTree.STRETCH_ASPECT_EXPAND, Vector2(1280,720))
+		1:
+			get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D,  SceneTree.STRETCH_ASPECT_KEEP, Vector2(1280,720))
+		2:
+			get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D,  SceneTree.STRETCH_ASPECT_KEEP, Vector2(1440,720))
+		3:
+			get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D,  SceneTree.STRETCH_ASPECT_KEEP, Vector2(1680,720))
+
+func _on_ResolutionOptionButton_item_selected(index: int) -> void:
+	switch_resolution(index)

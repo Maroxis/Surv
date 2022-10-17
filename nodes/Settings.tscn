@@ -38,12 +38,10 @@ expand = true
 stretch_mode = 2
 
 [node name="ExitButton" type="TextureButton" parent="TextureRect"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -84.0
-margin_top = 32.0
-margin_right = -20.0
-margin_bottom = 96.0
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 88.0
+margin_bottom = 88.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 4 )
 
@@ -64,7 +62,7 @@ margin_right = -64.0
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/ScrollContainer"]
 margin_left = 186.0
 margin_right = 954.0
-margin_bottom = 1114.0
+margin_bottom = 1050.0
 rect_min_size = Vector2( 768, 0 )
 size_flags_horizontal = 6
 size_flags_vertical = 3
@@ -362,7 +360,7 @@ rounded = true
 [node name="Display" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
 margin_top = 456.0
 margin_right = 768.0
-margin_bottom = 726.0
+margin_bottom = 662.0
 
 [node name="HSeparator" type="HSeparator" parent="TextureRect/ScrollContainer/VBoxContainer/Display"]
 margin_right = 768.0
@@ -379,17 +377,25 @@ text = "Display"
 align = 1
 
 [node name="ScreenButton" type="CheckButton" parent="TextureRect/ScrollContainer/VBoxContainer/Display"]
+visible = false
 margin_top = 134.0
 margin_right = 768.0
 margin_bottom = 270.0
 pressed = true
-text = "Use full screen *will reload game*"
+text = "Use full screen"
 align = 1
 
-[node name="TutorialData" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
-margin_top = 730.0
+[node name="ResolutionOptionButton" type="OptionButton" parent="TextureRect/ScrollContainer/VBoxContainer/Display"]
+unique_name_in_owner = true
+margin_top = 134.0
 margin_right = 768.0
-margin_bottom = 982.0
+margin_bottom = 206.0
+text = "Ratio"
+
+[node name="TutorialData" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
+margin_top = 666.0
+margin_right = 768.0
+margin_bottom = 918.0
 
 [node name="HSeparator" type="HSeparator" parent="TextureRect/ScrollContainer/VBoxContainer/TutorialData"]
 margin_right = 768.0
@@ -447,9 +453,9 @@ align = 1
 valign = 1
 
 [node name="MarginBottom" type="Control" parent="TextureRect/ScrollContainer/VBoxContainer"]
-margin_top = 986.0
+margin_top = 922.0
 margin_right = 768.0
-margin_bottom = 1114.0
+margin_bottom = 1050.0
 rect_min_size = Vector2( 0, 128 )
 
 [connection signal="pressed" from="TextureRect/ExitButton" to="." method="_on_Exit_Button_pressed"]
@@ -464,6 +470,6 @@ rect_min_size = Vector2( 0, 128 )
 [connection signal="value_changed" from="TextureRect/ScrollContainer/VBoxContainer/Sound/Music/ProgressSlider" to="." method="_on_MusicProgressSlider_value_changed"]
 [connection signal="pressed" from="TextureRect/ScrollContainer/VBoxContainer/Sound/Weather/BG/WeatherButton" to="." method="_on_WeatherButton_pressed"]
 [connection signal="value_changed" from="TextureRect/ScrollContainer/VBoxContainer/Sound/Weather/ProgressSlider" to="." method="_on_WeatherProgressSlider_value_changed"]
-[connection signal="pressed" from="TextureRect/ScrollContainer/VBoxContainer/Display/ScreenButton" to="." method="_on_ScreenButton_pressed"]
+[connection signal="item_selected" from="TextureRect/ScrollContainer/VBoxContainer/Display/ResolutionOptionButton" to="." method="_on_ResolutionOptionButton_item_selected"]
 [connection signal="pressed" from="TextureRect/ScrollContainer/VBoxContainer/TutorialData/HBoxContainer/ResetTutorialButton" to="." method="_on_ResetTutorialButton_pressed"]
 [connection signal="pressed" from="TextureRect/ScrollContainer/VBoxContainer/TutorialData/HBoxContainer/SkipTutorialButton" to="." method="_on_SkipTutorialButton_pressed"]

@@ -105,7 +105,6 @@ func addItem(i):
 	var sc = addScene(scene,quick_bar)
 	sc.modulate.a = 0
 	sc.rect_position.x = (sc.rect_size.x + seperation) * i
-#	print(sc.rect_size.x + seperation)
 	itemsOrgPos.push_back(sc.rect_position.x)
 
 func removeAll():
@@ -121,10 +120,8 @@ func _on_ChestButton_pressed() -> void:
 
 func resizeQuickBar():
 	var isize = quick_bar.get_children()[0].rect_size.x + seperation
-	var content = chest.rect_size.x + floor(bag.rect_size.x/2)
+	var content = chest.rect_size.x + bag.rect_size.x
 	var new_size = stepify(get_viewport().size.x - marg_left - content - isize/2, isize)
-#	container.margin_left = -(new_size + content)
-#	container.margin_right = 0
 	container.rect_min_size.x = new_size + ceil(bag.rect_size.x/2)
 	var new_max = int((new_size)/isize)
 	max_visible_items = new_max-1
@@ -134,25 +131,6 @@ func resizeQuickBar():
 		addItem(i)
 	scroll_container.rect_size.x = new_size
 	return
-#	resizeInProgress = true
-#	var isize = quick_bar.get_children()[0].rect_size.x + seperation
-#	var size = get_viewport().size.x - marg_left - chest.rect_size.x - floor(bag.rect_size.x/2)
-#	var diff = floor(size / isize) - (max_visible_items+1)
-#	if diff > 0:
-#		for i in range(max_visible_items+1,max_visible_items+1+diff):
-#			addItem(i)
-#	else:
-#		for i in abs(diff):
-#			removeItem()
-#	self.margin_left = - (self.rect_size.x+24)
-#	max_visible_items += diff
-#	hidden_items += diff
-#	scroll_container.rect_size.x = isize * (max_visible_items+1)
-#	self.rect_min_size.x  = chest.rect_size.x + scroll_container.rect_size.x + floor(bag.rect_size.x/2)
-#	self.rect_size.x  = self.rect_min_size.x
-#	if first_pass:
-#		resizeQuickBar(false)
-#	resizeInProgress = false
 
 func _on_viewport_size_changed() -> void:
 	timer.start()
