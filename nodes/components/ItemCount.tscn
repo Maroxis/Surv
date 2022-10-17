@@ -18,9 +18,6 @@ rect_min_size = Vector2( 32, 32 )
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Count" type="Label" parent="."]
 margin_left = 36.0

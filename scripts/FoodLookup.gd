@@ -1,8 +1,8 @@
 extends Control
 
-onready var wild_berry: HBoxContainer = $VBoxContainer/WildBerry
-onready var cooked_small_meat: HBoxContainer = $VBoxContainer/CookedSmallMeat
-onready var cooked_meat: HBoxContainer = $VBoxContainer/CookedMeat
+onready var wild_berry = $VBoxContainer/WildBerry
+onready var cooked_small_meat = $VBoxContainer/CookedSmallMeat
+onready var cooked_meat = $VBoxContainer/CookedMeat
 
 
 func _ready() -> void:
