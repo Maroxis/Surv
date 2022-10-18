@@ -956,6 +956,25 @@ func unpack(data):
 	for key in data:
 		save_data[key] = data[key]
 	return
+	
+func checkIfReqFullfiled(building,mod,tier):
+	tier = "tier"+str(tier)
+	if(Structure[building][mod][tier].has("required")):
+		for reqCat in Buildings.Structure[building][mod][tier]["required"]:
+			for req in Buildings.Structure[building][mod][tier]["required"][reqCat]:
+				var rtier
+				var ctier
+				if(reqCat == "tool"):
+					rtier = Buildings.Structure[building][mod][tier]["required"][reqCat][req]
+					ctier = Tools.getTier(req)
+					if(ctier < rtier):
+						return false
+				elif(reqCat == "module"):
+					rtier = Buildings.Structure[building][mod][tier]["required"][reqCat][req]
+					ctier = Buildings.getTierInt(building,req)
+					if(ctier < rtier):
+						return false
+	return true
 
 func addRecDestroyed(building,module):
 	if not save_data.has("destroyed"):

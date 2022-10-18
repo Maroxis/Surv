@@ -1,5 +1,6 @@
 extends GraphNode
 
+var buildingName
 var moduleName
 var level
 var column
@@ -12,7 +13,10 @@ onready var canvas_layer: CanvasLayer = $CanvasLayer
 
 signal selectedNode
 
-func init(nm,lv,col = null):
+func init(bd,nm = null,lv = null,col = null):
+	buildingName = bd
+	if nm == null:
+		nm = buildingName
 	moduleName = nm
 	level = lv
 	column = col
@@ -25,11 +29,22 @@ func init(nm,lv,col = null):
 	else:
 		texture_rect.texture = load("res://sprites/Icons/256x256px/"+nm.to_lower()+".png")
 
+
 func set_bought():
 	self.overlay = GraphNode.OVERLAY_POSITION
+	set_slot_color_left(0,Color8(0,138,5))
+	set_slot_color_right(0,Color8(0,138,5))
+	tool_button.visible = false
 func set_avaliable():
 	self.overlay = GraphNode.OVERLAY_BREAKPOINT
+	set_slot_color_left(0,Color8(255,179,72))
+	set_slot_color_right(0,Color8(255,179,72))
 	tool_button.visible = true
+func set_locked():
+	self.overlay = GraphNode.OVERLAY_DISABLED
+	set_slot_color_left(0,Color8(48,56,56))
+	set_slot_color_right(0,Color8(48,56,56))
+	tool_button.visible = false
 
 func update_pos_x(x):
 	self.offset.x = x

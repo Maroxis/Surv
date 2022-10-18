@@ -6,6 +6,7 @@ onready var scene = load("res://nodes/components/BuildingTreeModuleNode.tscn")
 onready var v_scroll_bar: VScrollBar = $VScrollBar
 onready var bg: TextureRect = $BG
 onready var canvas_layer: CanvasLayer = $CanvasLayer
+onready var module_detailed: Control = $CanvasLayer/ModuleDetailed
 
 signal scrollChanged
 signal showed
@@ -13,10 +14,26 @@ signal hidden
 
 func _ready() -> void:
 	graph_edit.get_zoom_hbox().visible = false
-	var offset = 32
+	var offset = 32 + 128
 	for structure in Buildings.Structure:
 		offset = create_modules(structure,offset)
 	v_scroll_bar.max_value = offset - 720 + 128 + 96 + 16
+# warning-ignore:return_value_discarded
+	module_detailed.connect("moduleConstructed",self,"refresh")
+	refresh()
+
+func refresh():
+	for mod in graph_edit.get_children():
+		if mod is GraphNode:
+			if mod.level == null:
+				continue
+			var clv = Buildings.getTierInt(mod.buildingName,mod.moduleName)
+			if mod.level <= clv:
+				mod.set_bought()
+			elif mod.level == clv+1 and Buildings.checkIfReqFullfiled(mod.buildingName,mod.moduleName,mod.level):
+				mod.set_avaliable()
+			else:
+				mod.set_locked()
 
 func create_modules(structure,mainOffset):
 	var nodes = {}
@@ -48,7 +65,7 @@ func create_modules(structure,mainOffset):
 			connect("showed",mod,"show")
 # warning-ignore:return_value_discarded
 			connect("hidden",mod,"hide")
-			mod.init(module,tier,tr)
+			mod.init(structure,module,tier,tr)
 			if tr == 1:
 				mod.set_avaliable()
 			if not moduleDict.has("tier"+str(tier+1)) and not moduleDict["benefitsText"].has("enable"):
@@ -72,7 +89,7 @@ func create_modules(structure,mainOffset):
 	nodes["structure"] = addScene(scene,graph_edit)
 	nodes["structure"].set_slot_enabled_left(0, false)
 	nodes["structure"].offset.y = (mainOffset + curOffset) / 2 - nodes["structure"].rect_size.y
-	nodes["structure"].init(structure,null)
+	nodes["structure"].init(structure)
 	nodes["structure"].set_bought()
 	for mod in nodes:
 		if typeof(nodes[mod]) == TYPE_ARRAY and nodes[mod][0].column == 1:
@@ -91,7 +108,7 @@ func close():
 	canvas_layer.hide()
 
 func _on_GraphEdit_node_selected(node: Node) -> void:
-	print(node.moduleName)
+	module_detailed.init(node.buildingName,node.moduleName)
 
 func _on_Return_Button_pressed() -> void:
 	close()

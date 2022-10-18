@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/BuildingTreeViewer.gd" type="Script" id=1]
 [ext_resource path="res://nodes/components/ReturnButton.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://resources/HVBarNoScroll.tres" type="Theme" id=5]
 [ext_resource path="res://sprites/textiletex.png" type="Texture" id=6]
 [ext_resource path="res://shaders/texScroll.gdshader" type="Shader" id=7]
+[ext_resource path="res://nodes/ModuleDetailed.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 7 )
@@ -32,7 +33,6 @@ stretch_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 5 )
-scroll_offset = Vector2( 0, -128 )
 use_snap = false
 minimap_enabled = false
 
@@ -54,6 +54,17 @@ layer = 85
 visible = false
 
 [node name="Return" parent="CanvasLayer" instance=ExtResource( 2 )]
+
+[node name="ModuleDetailed" parent="CanvasLayer" instance=ExtResource( 8 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -232.0
+margin_right = 640.0
+margin_bottom = 360.0
 
 [connection signal="node_selected" from="GraphEdit" to="." method="_on_GraphEdit_node_selected"]
 [connection signal="value_changed" from="VScrollBar" to="." method="_on_VScrollBar_value_changed"]
