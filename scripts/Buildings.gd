@@ -976,6 +976,13 @@ func checkIfReqFullfiled(building,mod,tier):
 						return false
 	return true
 
+func getRequiredTool(building,mod,tier):
+	tier = "tier"+str(tier)
+	if Buildings.Structure[building][mod][tier].has("required"):
+		if Buildings.Structure[building][mod][tier]["required"].has("tool"):
+			return Buildings.Structure[building][mod][tier]["required"]["tool"]
+	return null
+
 func addRecDestroyed(building,module):
 	if not save_data.has("destroyed"):
 		save_data["destroyed"] = []

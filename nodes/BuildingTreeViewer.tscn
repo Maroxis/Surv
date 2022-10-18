@@ -46,7 +46,7 @@ anchor_right = 1.0
 margin_left = -32.0
 margin_top = 128.0
 margin_bottom = 616.0
-rect_min_size = Vector2( 24, 0 )
+rect_min_size = Vector2( 24, 86 )
 theme = ExtResource( 4 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -7,6 +7,7 @@ onready var v_scroll_bar: VScrollBar = $VScrollBar
 onready var bg: TextureRect = $BG
 onready var canvas_layer: CanvasLayer = $CanvasLayer
 onready var module_detailed: Control = $CanvasLayer/ModuleDetailed
+onready var xmargin = 192
 
 signal scrollChanged
 signal showed
@@ -17,7 +18,7 @@ func _ready() -> void:
 	var offset = 32 + 128
 	for structure in Buildings.Structure:
 		offset = create_modules(structure,offset)
-	v_scroll_bar.max_value = offset - 720 + 128 + 96 + 16
+	v_scroll_bar.max_value = offset - 720 + 16
 # warning-ignore:return_value_discarded
 	module_detailed.connect("moduleConstructed",self,"refresh")
 	refresh()
@@ -56,7 +57,7 @@ func create_modules(structure,mainOffset):
 			tr += reqtier
 			var mod = addScene(scene,graph_edit)
 			nodes[module].push_back(mod)
-			mod.offset.x = (tr)*(mod.rect_size.x + 32)
+			mod.offset.x = (tr)*(mod.rect_size.x + 32) + xmargin
 			mod.offset.y = (modnum)*(mod.rect_size.y + 4) + mainOffset
 			mod.connect("selectedNode",self,"_on_GraphEdit_node_selected")
 # warning-ignore:return_value_discarded
@@ -89,6 +90,7 @@ func create_modules(structure,mainOffset):
 	nodes["structure"] = addScene(scene,graph_edit)
 	nodes["structure"].set_slot_enabled_left(0, false)
 	nodes["structure"].offset.y = (mainOffset + curOffset) / 2 - nodes["structure"].rect_size.y
+	nodes["structure"].offset.x = xmargin
 	nodes["structure"].init(structure)
 	nodes["structure"].set_bought()
 	for mod in nodes:
@@ -119,6 +121,11 @@ func _on_VScrollBar_value_changed(value: float) -> void:
 
 func _input(event):
 	if event is InputEventScreenDrag:
-		var speed = 2.0
+		var speed = 3.0
+#		var tween = create_tween()
+#		tween.tween_property(v_scroll_bar,"value",v_scroll_bar.value-event.relative.y*speed,0.1)
+#		tween.tween_property(v_scroll_bar,"value",v_scroll_bar.value-event.relative.y*speed,0.1)
+#		tween.tween_property(bg.get_material(), "shader_param/offset", Vector2(0.0,-(v_scroll_bar.value-event.relative.y)), 0.1)
 		v_scroll_bar.value -= event.relative.y*speed
 		bg.material.set_shader_param("offset", Vector2(0.0,-v_scroll_bar.value))
+		
