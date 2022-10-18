@@ -4,6 +4,7 @@ var building
 onready var graph_edit: GraphEdit = $GraphEdit
 onready var scene = load("res://nodes/components/BuildingTreeModuleNode.tscn")
 onready var v_scroll_bar: VScrollBar = $VScrollBar
+onready var bg: TextureRect = $BG
 
 signal scrollChanged
 
@@ -81,3 +82,9 @@ func _on_Return_Button_pressed() -> void:
 func _on_VScrollBar_value_changed(value: float) -> void:
 	graph_edit.scroll_offset.y = value
 	emit_signal("scrollChanged",value)
+
+func _input(event):
+	if event is InputEventScreenDrag:
+		var speed = 2.0
+		v_scroll_bar.value -= event.relative.y*speed
+		bg.material.set_shader_param("offset", Vector2(0.0,-v_scroll_bar.value))
