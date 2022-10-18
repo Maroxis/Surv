@@ -1,6 +1,8 @@
-[gd_resource type="Theme" load_steps=9 format=2]
+[gd_resource type="Theme" load_steps=12 format=2]
 
 [ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://resources/styleboxtexture9rect.tres" type="StyleBox" id=2]
+[ext_resource path="res://sprites/BG/9rectPanelLight.png" type="Texture" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -8,6 +10,23 @@
 size = 13
 use_filter = true
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=13]
+content_margin_left = 10.0
+content_margin_right = 8.0
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 32, 32 )
+margin_left = 12.0
+margin_right = 12.0
+margin_top = 12.0
+margin_bottom = 12.0
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+expand_margin_top = 8.0
+expand_margin_bottom = 8.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color( 0.0313726, 1, 0, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -30,6 +49,10 @@ GraphNode/fonts/title_font = SubResource( 12 )
 GraphNode/icons/close = null
 GraphNode/icons/port = null
 GraphNode/icons/resizer = null
+GraphNode/styles/defaultfocus = ExtResource( 2 )
+GraphNode/styles/defaultframe = ExtResource( 2 )
+GraphNode/styles/frame = ExtResource( 2 )
+GraphNode/styles/position = SubResource( 13 )
 HScrollBar/styles/grabber = SubResource( 2 )
 HScrollBar/styles/grabber_highlight = SubResource( 3 )
 HScrollBar/styles/grabber_pressed = SubResource( 4 )
