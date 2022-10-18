@@ -30,6 +30,7 @@ stretch_mode = 6
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 80
+visible = false
 
 [node name="ToolButton" type="ToolButton" parent="CanvasLayer"]
 visible = false

@@ -8,6 +8,7 @@ var initialized = false
 var yOffset = 0
 onready var texture_rect: TextureRect = $TextureRect
 onready var tool_button: Button = $CanvasLayer/ToolButton
+onready var canvas_layer: CanvasLayer = $CanvasLayer
 
 signal selectedNode
 
@@ -48,6 +49,13 @@ func _on_Module_offset_changed() -> void:
 #	if initialized:
 #		if self.offset != orgOffset:
 #			self.offset = orgOffset
+
+func show():
+	.show()
+	canvas_layer.visible = true
+func hide():
+	.hide()
+	canvas_layer.visible =  false
 
 func _on_Button_pressed() -> void:
 	emit_signal("selectedNode",self)

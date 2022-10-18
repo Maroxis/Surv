@@ -1,19 +1,22 @@
-extends SceneLoader
+extends BaseActivity
 
 var building
 onready var graph_edit: GraphEdit = $GraphEdit
 onready var scene = load("res://nodes/components/BuildingTreeModuleNode.tscn")
 onready var v_scroll_bar: VScrollBar = $VScrollBar
 onready var bg: TextureRect = $BG
+onready var canvas_layer: CanvasLayer = $CanvasLayer
 
 signal scrollChanged
+signal showed
+signal hidden
 
 func _ready() -> void:
 	graph_edit.get_zoom_hbox().visible = false
-	var offset = 16
+	var offset = 32
 	for structure in Buildings.Structure:
 		offset = create_modules(structure,offset)
-	v_scroll_bar.max_value = offset - 720 + 32
+	v_scroll_bar.max_value = offset - 720 + 128 + 96 + 16
 
 func create_modules(structure,mainOffset):
 	var nodes = {}
@@ -39,7 +42,12 @@ func create_modules(structure,mainOffset):
 			mod.offset.x = (tr)*(mod.rect_size.x + 32)
 			mod.offset.y = (modnum)*(mod.rect_size.y + 4) + mainOffset
 			mod.connect("selectedNode",self,"_on_GraphEdit_node_selected")
+# warning-ignore:return_value_discarded
 			connect("scrollChanged",mod,"update_button_offset")
+# warning-ignore:return_value_discarded
+			connect("showed",mod,"show")
+# warning-ignore:return_value_discarded
+			connect("hidden",mod,"hide")
 			mod.init(module,tier,tr)
 			if tr == 1:
 				mod.set_avaliable()
@@ -72,12 +80,21 @@ func create_modules(structure,mainOffset):
 			graph_edit.connect_node(nodes["structure"].name,0,nodes[mod][0].name,0)
 	return curOffset
 
+func show():
+	emit_signal("showed")
+	self.visible = true
+	canvas_layer.show()
+
+func close():
+	emit_signal("hidden")
+	self.hide()
+	canvas_layer.hide()
+
 func _on_GraphEdit_node_selected(node: Node) -> void:
 	print(node.moduleName)
 
 func _on_Return_Button_pressed() -> void:
-	hide()
-
+	close()
 
 func _on_VScrollBar_value_changed(value: float) -> void:
 	graph_edit.scroll_offset.y = value
