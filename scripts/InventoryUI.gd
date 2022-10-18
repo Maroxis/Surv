@@ -123,14 +123,17 @@ func resizeQuickBar():
 	var content = chest.rect_size.x + bag.rect_size.x
 	var diff = (get_viewport().size.y-720.0)*1.778
 	var new_size = stepify(get_viewport().size.x - diff - marg_left - content - isize/2, isize)
-	container.rect_min_size.x = new_size + ceil(bag.rect_size.x/2)
 	var new_max = int((new_size)/isize)
 	max_visible_items = new_max-1
 	hidden_items = max_visible_items
 	removeAll()
 	for i in new_max:
 		addItem(i)
-	scroll_container.rect_size.x = new_size
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(container,"rect_min_size:x",new_size + ceil(bag.rect_size.x/2),0.1)
+	tween.tween_property(scroll_container,"rect_min_size:x",new_size,0.1)
+#	container.rect_min_size.x = new_size + ceil(bag.rect_size.x/2)
+#	scroll_container.rect_size.x = new_size
 	return
 
 func _on_viewport_size_changed() -> void:
