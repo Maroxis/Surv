@@ -1,4 +1,5 @@
 extends BaseActivityWTabs
+onready var bg: TextureRect = $BG
 
 func _ready() -> void:
 	Global.Craft = self
@@ -6,6 +7,7 @@ func _ready() -> void:
 	tabAmm = tab_container.get_child_count()
 	TabSwitcherContainer = $TabSwitcher/VBoxContainer
 	refresh()
+	connectScroll()
 	initTabs()
 
 func refresh():
@@ -20,3 +22,16 @@ func _on_Prev_pressed() -> void:
 func _on_Next_pressed() -> void:
 	if(tab_container.current_tab < tabAmm-1):
 		tab_container.current_tab += 1
+		
+func refreshCurTab():
+	.refreshCurTab()
+	var val = tab_container.get_current_tab_control().get_h_scrollbar().value
+	moveBG(val)
+
+func connectScroll():
+	for tab in tab_container.get_children():
+		if tab is ScrollContainer:
+			tab.get_h_scrollbar().connect("value_changed",self,"moveBG")
+
+func moveBG(val):
+	bg.material.set_shader_param("offset", Vector2(-val,0))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://resources/tabFG.tres" type="StyleBox" id=1]
 [ext_resource path="res://fonts/CraftTabsFont.tres" type="DynamicFont" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://nodes/components/TabSwithcerTab.tscn" type="PackedScene" id=7]
 [ext_resource path="res://nodes/components/ReturnButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://sprites/textiletex.png" type="Texture" id=9]
+[ext_resource path="res://shaders/texScroll.gdshader" type="Shader" id=10]
 [ext_resource path="res://sprites/Icons/64x64px/pickaxe.png" type="Texture" id=11]
 [ext_resource path="res://sprites/Icons/128x128px/Wenrexa Healing magic.png" type="Texture" id=12]
 [ext_resource path="res://scripts/Craft.gd" type="Script" id=13]
@@ -18,6 +19,10 @@
 [ext_resource path="res://sprites/Icons/64x64px/rope.png" type="Texture" id=17]
 [ext_resource path="res://sprites/Icons/128x128px/furnace.png" type="Texture" id=19]
 [ext_resource path="res://nodes/crafting/CraftMeds.tscn" type="PackedScene" id=20]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 10 )
+shader_param/offset = Vector2( 0, 0 )
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -29,6 +34,7 @@ script = ExtResource( 13 )
 
 [node name="BG" type="TextureRect" parent="."]
 self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
+material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 0
