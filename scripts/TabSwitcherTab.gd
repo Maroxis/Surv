@@ -12,10 +12,12 @@ func _ready() -> void:
 func init():
 	deselect()
 
+func changeIcon(text: String,size: int = 32):
+	icon.texture = load("res://sprites/Icons/"+str(size)+"x"+str(size)+"px/"+text.to_lower()+".png")
+
 func select():
 	texture_button.modulate = Color(0,0.8,0,1)
 func deselect():
 	texture_button.modulate = Color(1,0.5,0,1)
 func _on_TextureButton_pressed() -> void:
-	select()
 	emit_signal("tabClicked",tab)

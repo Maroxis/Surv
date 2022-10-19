@@ -49,6 +49,9 @@ func set_locked():
 	set_slot_color_left(0,Color8(48,56,56))
 	set_slot_color_right(0,Color8(48,56,56))
 	tool_button.visible = false
+#func set_hidden():
+#	set_locked()
+#	self.visible = false
 
 func update_pos_x(x):
 	self.offset.x = x

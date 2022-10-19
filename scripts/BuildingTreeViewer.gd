@@ -3,11 +3,14 @@ extends BaseActivity
 var building
 onready var graph_edit: GraphEdit = $GraphEdit
 onready var scene = load("res://nodes/components/BuildingTreeModuleNode.tscn")
+onready var sceneTab = load("res://nodes/components/TabSwithcerTab.tscn")
 onready var v_scroll_bar: VScrollBar = $VScrollBar
 onready var bg: TextureRect = $BG
 onready var canvas_layer: CanvasLayer = $CanvasLayer
 onready var module_detailed: Control = $CanvasLayer/ModuleDetailed
+onready var tab_container: VBoxContainer = $CanvasLayer/TabContainer
 onready var xmargin = 192
+var catOffsets = []
 
 signal scrollChanged
 signal showed
@@ -17,10 +20,12 @@ func _ready() -> void:
 	graph_edit.get_zoom_hbox().visible = false
 	var offset = 32 + 128
 	for structure in Buildings.Structure:
+		catOffsets.push_back(float(offset-128-6))
 		offset = create_modules(structure,offset)
 	v_scroll_bar.max_value = offset - 720 + 16
 # warning-ignore:return_value_discarded
 	module_detailed.connect("moduleConstructed",self,"refresh")
+	create_tabs()
 	refresh()
 
 func refresh():
@@ -35,6 +40,22 @@ func refresh():
 				mod.set_avaliable()
 			else:
 				mod.set_locked()
+
+func create_tabs():
+	var tab = 0
+	for struct in Buildings.Structure:
+		create_quick_tab(struct,tab)
+		tab += 1
+	
+func create_quick_tab(nm,tb):
+	var tab = addScene(sceneTab,tab_container)
+	tab.changeIcon(nm,256)
+	tab.tab = tb
+	tab.connect("tabClicked",self,"scroll_to")
+	
+func scroll_to(tb):
+	scroll(catOffsets[tb],true)
+#	scroll(y,true)
 
 func create_modules(structure,mainOffset):
 	var nodes = {}
@@ -119,13 +140,22 @@ func _on_VScrollBar_value_changed(value: float) -> void:
 	graph_edit.scroll_offset.y = value
 	emit_signal("scrollChanged",value)
 
+func scroll(val,set = false):
+	if set:
+		var tween = create_tween().set_parallel()
+		tween.tween_property(v_scroll_bar,"value",val,0.3)
+		tween.tween_property(bg.get_material(), "shader_param/offset", Vector2(0.0,-val), 0.3)
+	else:
+		v_scroll_bar.value -= val
+		bg.material.set_shader_param("offset", Vector2(0.0,-v_scroll_bar.value))
+
 func _input(event):
 	if event is InputEventScreenDrag:
 		var speed = 3.0
+		scroll(event.relative.y*speed)
 #		var tween = create_tween()
 #		tween.tween_property(v_scroll_bar,"value",v_scroll_bar.value-event.relative.y*speed,0.1)
 #		tween.tween_property(v_scroll_bar,"value",v_scroll_bar.value-event.relative.y*speed,0.1)
 #		tween.tween_property(bg.get_material(), "shader_param/offset", Vector2(0.0,-(v_scroll_bar.value-event.relative.y)), 0.1)
-		v_scroll_bar.value -= event.relative.y*speed
-		bg.material.set_shader_param("offset", Vector2(0.0,-v_scroll_bar.value))
+		
 		

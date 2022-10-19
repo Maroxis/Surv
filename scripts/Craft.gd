@@ -25,8 +25,10 @@ func _on_Next_pressed() -> void:
 		
 func refreshCurTab():
 	.refreshCurTab()
-	var val = tab_container.get_current_tab_control().get_h_scrollbar().value
-	moveBG(val)
+	var current = tab_container.get_current_tab_control()
+	if current is ScrollContainer:
+		var val = current.get_h_scrollbar().value
+		moveBG(val)
 
 func connectScroll():
 	for tab in tab_container.get_children():

@@ -122,7 +122,6 @@ func resizeQuickBar():
 	var isize = quick_bar.get_children()[0].rect_size.x + seperation
 	var content = chest.rect_size.x + bag.rect_size.x
 	var ratio = get_viewport().size.x/get_viewport().size.y
-	print(ratio)
 	var diff = (get_viewport().size.y-720.0)*ratio
 	var new_size = stepify(get_viewport().size.x - diff - marg_left - content - isize/2, isize)
 	var new_max = int((new_size)/isize)
