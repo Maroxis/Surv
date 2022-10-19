@@ -27,10 +27,10 @@ size_flags_horizontal = 3
 
 [node name="Container" type="Control" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 828.0
+margin_left = 608.0
 margin_right = 1128.0
 margin_bottom = 128.0
-rect_min_size = Vector2( 300, 128 )
+rect_min_size = Vector2( 520, 128 )
 __meta__ = {
 "_editor_description_": ""
 }
