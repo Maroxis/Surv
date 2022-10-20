@@ -24,9 +24,8 @@ func init(bd,nm = null,lv = null,col = null):
 	column = col
 	orgOffset = self.offset
 	initialized = true
-	self.title = Global.splitString(nm)
+	self.title = Global.toRoman(level)
 	if level != null:
-		self.title += " " + str(lv)
 		texture_rect.texture = load("res://sprites/Icons/64x64px/"+nm.to_lower()+".png")
 	else:
 		texture_rect.texture = load("res://sprites/Icons/256x256px/"+nm.to_lower()+".png")
@@ -56,7 +55,7 @@ func set_locked():
 func update_pos_x(x):
 	self.offset.x = x
 	tool_button.rect_position.x = x
-	req_tool.rect_position.x = x + 104
+	req_tool.rect_position.x = x + (self.rect_size.x - req_tool.rect_size.x - 8)
 
 func update_pos_y(y):
 	self.offset.y = y

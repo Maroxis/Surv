@@ -8,7 +8,7 @@ onready var v_scroll_bar: VScrollBar = $VScrollBar
 onready var bg: TextureRect = $BG
 onready var canvas_layer: CanvasLayer = $CanvasLayer
 onready var module_detailed: Control = $CanvasLayer/ModuleDetailed
-onready var tab_container: VBoxContainer = $CanvasLayer/TabContainer
+onready var tab_container: VBoxContainer = $CanvasLayer/TabSwitcher/TabContainer
 onready var xmargin = 192
 var catOffsets = []
 

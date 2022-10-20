@@ -17,7 +17,7 @@
 [ext_resource path="res://sprites/Icons/64x64px/bag.png" type="Texture" id=15]
 [ext_resource path="res://nodes/crafting/CraftUpgrades.tscn" type="PackedScene" id=16]
 [ext_resource path="res://sprites/Icons/64x64px/rope.png" type="Texture" id=17]
-[ext_resource path="res://sprites/Icons/128x128px/furnace.png" type="Texture" id=19]
+[ext_resource path="res://sprites/Icons/64x64px/furnaceFilled.png" type="Texture" id=18]
 [ext_resource path="res://nodes/crafting/CraftMeds.tscn" type="PackedScene" id=20]
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -137,7 +137,7 @@ margin_top = 324.0
 margin_bottom = 388.0
 
 [node name="Icon" parent="TabSwitcher/VBoxContainer/Smelting" index="1"]
-texture = ExtResource( 19 )
+texture = ExtResource( 18 )
 
 [node name="Return" parent="." instance=ExtResource( 8 )]
 

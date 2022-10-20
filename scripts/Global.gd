@@ -68,3 +68,14 @@ func splitString(string):
 	for m in r.search_all(string):
 		result += m.get_string() + " "
 	return result
+
+func toRoman(number):
+	match number:
+		1: return "I"
+		2: return "II"
+		3: return "III"
+		4: return "IV"
+		5: return "V"
+		6: return "VI"
+		_: return ""
+	
