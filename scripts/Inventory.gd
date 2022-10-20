@@ -55,7 +55,7 @@ onready var resources = {
 	"Cloth": {
 		"weight" : 1.2,
 		"cost" : {
-			"Thread" : 6
+			"Thread" : 5
 		},
 		"craftBenefit": {
 			"module":{
