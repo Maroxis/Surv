@@ -154,7 +154,7 @@ onready var resources = {
 	"CopperIngot": {
 		"weight" : 10.8,
 		"cost" : {
-			"CopperOre" : 10
+			"CopperOre" : 8
 		},
 		"meltingTemp" : 1000,
 		"craftTime": 720,
@@ -164,7 +164,7 @@ onready var resources = {
 	"BronzeIngot": {
 		"weight" : 10.8,
 		"cost" : {
-			"CopperOre" : 9,
+			"CopperOre" : 8,
 			"TinOre" : 1
 		},
 		"meltingTemp" : 1000,
@@ -175,7 +175,7 @@ onready var resources = {
 	"IronIngot": {
 		"weight" : 10.8,
 		"cost" : {
-			"IronOre" : 10
+			"IronOre" : 8
 		},
 		"meltingTemp" : 1800,
 		"craftTime": 1440,

@@ -1,6 +1,6 @@
 extends Mission
 
-onready var exploreTable = [0,4,8,12,20]
+onready var exploreTable = [0,3,5,8,12]
 onready var exploreTime = 40
 onready var exploreCurrentProgress = 0
 onready var exploreDiscovered = 1
