@@ -8,6 +8,7 @@ onready var normal_save_label: Label = $CenterContainer/VBoxContainer/HBoxContai
 onready var hard_save_label: Label = $CenterContainer/VBoxContainer/HBoxContainer2/Hard/DateLabel
 onready var normal_bt_label: Label = $CenterContainer/VBoxContainer/HBoxContainer2/Normal/StartNormal/Label
 onready var hard_bt_label: Label = $CenterContainer/VBoxContainer/HBoxContainer2/Hard/StartHard/Label
+onready var leader_boards: Control = $LeaderBoards
 
 
 func _ready() -> void:
@@ -48,3 +49,6 @@ func _on_Credits_pressed() -> void:
 
 func _on_Records_pressed() -> void:
 	pass # Replace with function body.
+
+func _on_LeaderBoardsButton_pressed() -> void:
+	leader_boards.open()

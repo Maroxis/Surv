@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://resources/GameTheme.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/LeaderBoardRun.gd" type="Script" id=2]
+
+[node name="Run" type="Control"]
+margin_right = 256.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 256, 64 )
+mouse_filter = 2
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="TimeLabel" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "32D - 21h:34m"
+align = 1
+valign = 1

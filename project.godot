@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/IndicatorPopup.gd"
 }, {
+"base": "Node",
+"class": "Leader_Board",
+"language": "GDScript",
+"path": "res://scripts/LeaderBoard.gd"
+}, {
 "base": "MissionBasic",
 "class": "Mission",
 "language": "GDScript",
@@ -87,6 +92,7 @@ _global_script_class_icons={
 "GameOver": "",
 "IndicatorItem": "",
 "IndicatorPopup": "",
+"Leader_Board": "",
 "Mission": "",
 "MissionBasic": "",
 "NodeAnimated": "",

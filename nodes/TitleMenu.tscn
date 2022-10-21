@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://sprites/BG/IconRectBW.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://sprites/textiletex.png" type="Texture" id=6]
 [ext_resource path="res://nodes/Settings.tscn" type="PackedScene" id=7]
 [ext_resource path="res://sprites/BG/9rectPanel.png" type="Texture" id=8]
+[ext_resource path="res://sprites/Icons/64x64px/podium.png" type="Texture" id=9]
+[ext_resource path="res://nodes/LeaderBoards.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -32,26 +34,28 @@ margin_bottom = -56.0
 theme = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 262.0
+margin_left = 200.0
 margin_top = 32.0
-margin_right = 890.0
+margin_right = 952.0
 margin_bottom = 632.0
 custom_constants/separation = -8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
-margin_right = 628.0
+margin_right = 752.0
 margin_bottom = 192.0
+alignment = 1
 
 [node name="Icon2" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer"]
-margin_right = 192.0
+margin_left = 64.0
+margin_right = 256.0
 margin_bottom = 192.0
 texture = ExtResource( 5 )
 stretch_mode = 4
 
 [node name="Title" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
-margin_left = 196.0
+margin_left = 260.0
 margin_top = 45.0
-margin_right = 427.0
+margin_right = 491.0
 margin_bottom = 146.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -62,23 +66,24 @@ align = 1
 valign = 1
 
 [node name="Icon" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer"]
-margin_left = 431.0
-margin_right = 623.0
+margin_left = 495.0
+margin_right = 687.0
 margin_bottom = 192.0
 texture = ExtResource( 5 )
 stretch_mode = 4
 
 [node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
 margin_top = 184.0
-margin_right = 628.0
+margin_right = 752.0
 margin_bottom = 232.0
 rect_min_size = Vector2( 0, 48 )
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 margin_top = 224.0
-margin_right = 628.0
+margin_right = 752.0
 margin_bottom = 608.0
 theme = ExtResource( 3 )
+custom_constants/separation = 16
 
 [node name="Normal" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
 margin_right = 312.0
@@ -137,8 +142,8 @@ align = 1
 valign = 1
 
 [node name="Hard" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 316.0
-margin_right = 628.0
+margin_left = 328.0
+margin_right = 640.0
 margin_bottom = 384.0
 rect_min_size = Vector2( 312, 384 )
 
@@ -196,10 +201,41 @@ text = "Start"
 align = 1
 valign = 1
 
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 656.0
+margin_right = 752.0
+margin_bottom = 384.0
+
+[node name="Leaderboards" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer"]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/Leaderboards"]
+self_modulate = Color( 0, 0.541176, 0.0196078, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/Leaderboards"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+stretch_mode = 4
+
+[node name="LeaderBoardsButton" type="ToolButton" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/Leaderboards"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
 [node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer"]
-margin_left = 314.0
+margin_left = 376.0
 margin_top = 600.0
-margin_right = 314.0
+margin_right = 376.0
 margin_bottom = 600.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -210,9 +246,8 @@ columns = 2
 [node name="Settings" type="TextureButton" parent="CenterContainer/VBoxContainer/GridContainer"]
 visible = false
 self_modulate = Color( 1, 0.701961, 0.282353, 1 )
-margin_top = 160.0
 margin_right = 256.0
-margin_bottom = 288.0
+margin_bottom = 128.0
 focus_mode = 0
 size_flags_horizontal = 4
 enabled_focus_mode = 0
@@ -229,9 +264,8 @@ valign = 1
 [node name="Quit" type="TextureButton" parent="CenterContainer/VBoxContainer/GridContainer"]
 visible = false
 self_modulate = Color( 0.792157, 0.376471, 0, 1 )
-margin_top = 160.0
 margin_right = 256.0
-margin_bottom = 288.0
+margin_bottom = 128.0
 focus_mode = 0
 size_flags_horizontal = 4
 enabled_focus_mode = 0
@@ -251,10 +285,8 @@ valign = 1
 [node name="Records" type="TextureButton" parent="CenterContainer/VBoxContainer/GridContainer"]
 visible = false
 self_modulate = Color( 1, 0.701961, 0.282353, 1 )
-margin_left = 288.0
-margin_top = 160.0
-margin_right = 544.0
-margin_bottom = 288.0
+margin_right = 256.0
+margin_bottom = 128.0
 focus_mode = 0
 size_flags_horizontal = 4
 enabled_focus_mode = 0
@@ -272,8 +304,12 @@ valign = 1
 [node name="Settings" parent="." instance=ExtResource( 7 )]
 visible = false
 
+[node name="LeaderBoards" parent="." instance=ExtResource( 10 )]
+visible = false
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/Normal/StartNormal" to="." method="_on_StartNormal_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/Hard/StartHard" to="." method="_on_StartHard_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/Leaderboards/LeaderBoardsButton" to="." method="_on_LeaderBoardsButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Records" to="." method="_on_Records_pressed"]
