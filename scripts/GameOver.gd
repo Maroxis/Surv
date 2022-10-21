@@ -18,9 +18,12 @@ func init(reason):
 	death_reason_label.text += get_reason(reason) + " "
 	var record = Save.saveRecord(Global.Date.getTotalTime())
 	var best = LeaderBoard.getBestTime(record)
-	day = str(floor(best/1440))
-	time = Global.timeGetFullFormat(fmod(best,1440),true,true)
-	record_lived_label.text = "Record\n" + day + "Days\n" + time
+	if best != null:
+		day = str(floor(best/1440))
+		time = Global.timeGetFullFormat(fmod(best,1440),true,true)
+		record_lived_label.text = "Record\n" + day + "Days\n" + time
+	else:
+		record_lived_label.text = "error loading records"
 	show()
 
 func get_reason(reason : int):

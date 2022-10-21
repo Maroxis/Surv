@@ -41,7 +41,7 @@ static func sort_time(a,b):
 #	return data
 
 func getBestTime(data):
-	if data == null:
+	if data == null or typeof(data) != TYPE_ARRAY:
 		return null
 	for n in range(0,data.size()):
 		if data[n]["difficulty"] == Difficulty.current:
