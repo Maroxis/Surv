@@ -26,6 +26,7 @@ var Tutorial
 var TopBar
 var Intel
 var Drying
+var Sound
 
 func refresh():
 	ChestResources.refresh()

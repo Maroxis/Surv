@@ -12,7 +12,6 @@ onready var tool_req: TextureRect = $VBox/Button/ToolReq
 onready var tool_req_tier: Label = $VBox/Button/ToolReq/Tier
 
 onready var icon: TextureRect = $VBox/Button/Icon
-onready var sound: AudioStreamPlayer = $Sound
 
 export var connectMission = true
 export var foodRes = false
@@ -55,5 +54,6 @@ func shake(suc):
 		buttonContainer.shakeSubtleSide()
 
 func _on_Button_pressed() -> void:
+	Global.Sound.play(Sound.UI_DEFAULT)
 	emit_signal("missionSelected",self.name,foodRes,self)
-	sound.play()
+#	sound.play()

@@ -18,10 +18,14 @@ func _ready() -> void:
 func getVersion():
 	var export_config: ConfigFile = ConfigFile.new()
 	var err = export_config.load("res://export_presets.cfg")
+	var ver
 	if err == OK:
-		return export_config.get_value("preset.1.options","version/name")
+		ver = str(export_config.get_value("preset.1.options","version/name"))
 	else:
-		return ""
+		ver = ""
+	if DevMode.on:
+		ver += "d"
+	return ver
 #func changeFlag(expand = true):
 #	return
 #	if expand:
