@@ -62,14 +62,13 @@ margin_right = -64.0
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/ScrollContainer"]
 margin_left = 186.0
 margin_right = 954.0
-margin_bottom = 1278.0
+margin_bottom = 1974.0
 rect_min_size = Vector2( 768, 0 )
 size_flags_horizontal = 6
 size_flags_vertical = 3
 
 [node name="Debug" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
-visible = false
 margin_right = 768.0
 margin_bottom = 692.0
 
@@ -216,8 +215,9 @@ size_flags_horizontal = 3
 
 [node name="Sound" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
+margin_top = 696.0
 margin_right = 768.0
-margin_bottom = 452.0
+margin_bottom = 1148.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="TextureRect/ScrollContainer/VBoxContainer/Sound"]
@@ -358,9 +358,9 @@ value = -10.0
 rounded = true
 
 [node name="Display" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
-margin_top = 456.0
+margin_top = 1152.0
 margin_right = 768.0
-margin_bottom = 662.0
+margin_bottom = 1358.0
 
 [node name="HSeparator" type="HSeparator" parent="TextureRect/ScrollContainer/VBoxContainer/Display"]
 margin_right = 768.0
@@ -393,9 +393,9 @@ margin_bottom = 206.0
 text = "Ratio"
 
 [node name="TutorialData" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
-margin_top = 666.0
+margin_top = 1362.0
 margin_right = 768.0
-margin_bottom = 918.0
+margin_bottom = 1614.0
 
 [node name="HSeparator" type="HSeparator" parent="TextureRect/ScrollContainer/VBoxContainer/TutorialData"]
 margin_right = 768.0
@@ -454,9 +454,9 @@ valign = 1
 
 [node name="DebugExport" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 922.0
+margin_top = 1618.0
 margin_right = 768.0
-margin_bottom = 1146.0
+margin_bottom = 1842.0
 
 [node name="Data" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer/DebugExport"]
 margin_right = 768.0
@@ -493,9 +493,9 @@ mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="MarginBottom" type="Control" parent="TextureRect/ScrollContainer/VBoxContainer"]
-margin_top = 1150.0
+margin_top = 1846.0
 margin_right = 768.0
-margin_bottom = 1278.0
+margin_bottom = 1974.0
 rect_min_size = Vector2( 0, 128 )
 
 [connection signal="pressed" from="TextureRect/ExitButton" to="." method="_on_Exit_Button_pressed"]

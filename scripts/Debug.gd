@@ -9,6 +9,7 @@ func _ready() -> void:
 func switch(on):
 	visible = on
 	status.visible = on
+	DevMode.godMode = on
 
 func _on_TestButton_pressed() -> void:
 	if(Global.Weather.current < Global.Weather.type.size() -1):

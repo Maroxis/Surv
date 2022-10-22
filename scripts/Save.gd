@@ -156,19 +156,21 @@ func saveData(path, data = packData()):
 	if typeof(data) != TYPE_STRING:
 		data = to_json(data)
 	var file = File.new()
-	file.open(path, File.WRITE)
-	file.store_line(data)
-	file.close()
-	return true
+	if file.open(path, File.WRITE) == OK:
+		file.store_line(data)
+		file.close()
+		return true
+	return false
 	
 func loadData(path):
 	var file = File.new()
 	if not file.file_exists(path):
 		return null
-	file.open(path, File.READ)
-	var data = parse_json(file.get_line())
-	file.close()
-	return data
+	if file.open(path, File.READ) == OK:
+		var data = parse_json(file.get_line())
+		file.close()
+		return data
+	return null
 
 func removeData(path):
 	var dir = Directory.new()

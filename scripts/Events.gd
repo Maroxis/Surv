@@ -118,18 +118,24 @@ func unpack(data):
 
 func startEvent():
 	if showEvent:
-		var ev
+		var ev = null
 		if(plannedEvent.size() > eventIndex):
-			ev = plannedEvent["event"+str(eventIndex)]
+			var ind = "event"+str(eventIndex)
+			if plannedEvent.has(ind):
+				ev = plannedEvent[ind]
 		else:
 			var r = forceEvent if forceEvent != null else rng.randi_range(0, randomEvent.size()-1)
-			ev = randomEvent["event"+str(r)]
+			var ind = "event"+str(r)
+			if randomEvent.has(ind):
+				ev = randomEvent[ind]
+		if ev == null:
+			return
 		var res
 		if(ev.has("params")):
 			res = call(ev["function"],ev["params"])
 		else:
 			res = call(ev["function"])
-			
+		
 		showPopup(ev,res)
 		eventIndex += 1
 		showEvent = false

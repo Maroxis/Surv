@@ -212,7 +212,8 @@ func pass_time(time,sleep=false,wet = false):
 	Global.Weather.simWeather(time)
 	Global.Date.changeTime(time)
 	deplete_meds(time)
-
+	if DevMode.godMode:
+		DevMode.keep_status_full()
 func deplete_meds(time):
 	medsBuff["time"] -= time
 	if medsBuff["time"] <= 0:
