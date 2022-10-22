@@ -12,6 +12,7 @@ onready var reset_tutorial_button: TextureButton = $TextureRect/ScrollContainer/
 onready var skip_tutorial_button: TextureButton = $TextureRect/ScrollContainer/VBoxContainer/TutorialData/HBoxContainer/SkipTutorialButton
 onready var screen_button: CheckButton = $TextureRect/ScrollContainer/VBoxContainer/Display/ScreenButton
 onready var resolution_option_button: OptionButton = $"%ResolutionOptionButton"
+onready var export_debug_button: ToolButton = $"%ExportDebugButton"
 
 func _ready() -> void:
 	debug.visible = DevMode.on
@@ -186,3 +187,10 @@ func switch_resolution(res):
 
 func _on_ResolutionOptionButton_item_selected(index: int) -> void:
 	switch_resolution(index)
+
+
+func _on_ExportDebugButton_pressed() -> void:
+	if Save.exportDebug():
+		export_debug_button.shake()
+	else:
+		export_debug_button.shakeSide()

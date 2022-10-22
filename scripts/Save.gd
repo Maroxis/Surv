@@ -16,6 +16,19 @@ var bag = {
 }
 var structures = {}
 
+func exportDebug():
+	if OS.request_permissions():
+		var path = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/godot_debug.txt"
+		var data
+#		var data = "Test.ASDF"
+		if Difficulty.current == Difficulty.Hard:
+			data = loadData(auto_hard_save_file)
+		else:
+			data = loadData(auto_save_file)
+		return saveData(path,data)
+	else:
+		return false
+
 func saveConfig():
 	var data = {}
 	data["settings"] = Global.InGSettings.pack()

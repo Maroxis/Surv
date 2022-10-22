@@ -7,6 +7,9 @@ func _ready() -> void:
 	Global.Weather.refresh()
 	if not Save.autoLoad():
 		Global.refresh()
+#	print(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS))
+#	print(OS.request_permissions())
+	
 
 func _on_Settings_Button_pressed() -> void:
 	in_g_settings.show()
