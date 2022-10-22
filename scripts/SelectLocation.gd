@@ -5,4 +5,4 @@ func updateMissionTime(time):
 
 func _on_Button_pressed() -> void:
 	Global.Missions.get_node(self.name).travel()
-	Global.Sound.play(Sound.UI_DEFAULT)
+	Global.Sound.play(Sound.UI_DEFAULT, "SFX")

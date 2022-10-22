@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Burza_z_piorunem_looped.ogg-e5cdc2ee0ae1688feb8e664bc301dc1b.oggstr"
+
+[deps]
+
+source_file="res://sound/weather/Burza_z_piorunem_looped.ogg"
+dest_files=[ "res://.import/Burza_z_piorunem_looped.ogg-e5cdc2ee0ae1688feb8e664bc301dc1b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

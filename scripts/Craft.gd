@@ -1,5 +1,5 @@
 extends BaseActivityWTabs
-onready var bg: TextureRect = $BG
+onready var bg: TextureRect = $BGCanvasRed
 
 func _ready() -> void:
 	Global.Craft = self

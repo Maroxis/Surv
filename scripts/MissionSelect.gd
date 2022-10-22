@@ -54,6 +54,6 @@ func shake(suc):
 		buttonContainer.shakeSubtleSide()
 
 func _on_Button_pressed() -> void:
-	Global.Sound.play(Sound.UI_DEFAULT)
+	Global.Sound.play(Sound.UI_DEFAULT, "SFX")
 	emit_signal("missionSelected",self.name,foodRes,self)
 #	sound.play()

@@ -15,7 +15,7 @@ onready var changeHelper = 1
 onready var calmSustain = 1
 
 onready var rainToxic = 0.0 # sick per unit
-onready var currentSound = null
+#onready var currentSound = null
 onready var light_rain_sound: AudioStreamPlayer = $Sound/LightRain
 onready var heavy_rain_sound: AudioStreamPlayer = $Sound/HeavyRain
 onready var calm_sound: AudioStreamPlayer = $Sound/Calm
@@ -24,7 +24,6 @@ signal weatherChanged
 
 func _ready() -> void:
 	Global.Weather = self
-	changeWeatherSound()
 
 func pack():
 	var weather = {}
@@ -96,7 +95,6 @@ func setWeather(wthr):
 			activeClouds()
 			activeRain()
 			activeLightning()
-	
 	changeWeatherSound()
 	emit_signal("weatherChanged")
 
@@ -109,37 +107,38 @@ func activeRain():
 	rain.show()
 
 func changeWeatherSound():
-	var prevSound = currentSound
-	var max_db
-	match current:
-		type.Sunny:
-			currentSound = calm_sound
-			max_db = 0.0
-		type.Calm:
-			currentSound = calm_sound
-			max_db = 0.0
-		type.Cloudy:
-			currentSound = calm_sound
-			max_db = 0.0
-		type.Rain:
-			currentSound = light_rain_sound
-			max_db = -10.0
-		type.HeavyRain:
-			currentSound = heavy_rain_sound
-			max_db = -10.0
-		type.Storm:
-			currentSound = heavy_rain_sound
-			max_db = -10.0
-	if(prevSound == currentSound):
-		return
-	if(prevSound):
-		var tween = create_tween()
-		tween.tween_property(prevSound, "volume_db", -40.0, 2.4)
-		tween.tween_callback(prevSound, "stop")
-	if(currentSound):
-		currentSound.play()
-		var tween = create_tween()
-		tween.tween_property(currentSound, "volume_db", max_db, 1.6)
+	Global.Sound.play(current,"Weather",false)
+#	var prevSound = currentSound
+#	var max_db
+#	match current:
+#		type.Sunny:
+#			currentSound = calm_sound
+#			max_db = 0.0
+#		type.Calm:
+#			currentSound = calm_sound
+#			max_db = 0.0
+#		type.Cloudy:
+#			currentSound = calm_sound
+#			max_db = 0.0
+#		type.Rain:
+#			currentSound = light_rain_sound
+#			max_db = -10.0
+#		type.HeavyRain:
+#			currentSound = heavy_rain_sound
+#			max_db = -10.0
+#		type.Storm:
+#			currentSound = heavy_rain_sound
+#			max_db = -10.0
+#	if(prevSound == currentSound):
+#		return
+#	if(prevSound):
+#		var tween = create_tween()
+#		tween.tween_property(prevSound, "volume_db", -40.0, 2.4)
+#		tween.tween_callback(prevSound, "stop")
+#	if(currentSound):
+#		currentSound.play()
+#		var tween = create_tween()
+#		tween.tween_property(currentSound, "volume_db", max_db, 1.6)
 
 func deactiveRain():
 	rain.changeDensity(current)
