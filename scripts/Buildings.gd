@@ -943,7 +943,7 @@ onready var Structure = {
 signal moduleBuilt
 
 onready var save_data = {
-	"destroyed" : {}
+	"destroyed" : []
 }
 
 func _ready() -> void:
@@ -984,10 +984,10 @@ func getRequiredTool(building,mod,tier):
 	return null
 
 func addRecDestroyed(building,module):
-	if not save_data.has("destroyed"):
+	if not save_data.has("destroyed") or typeof(save_data["destroyed"]) == TYPE_DICTIONARY:
 		save_data["destroyed"] = []
-	for dest in save_data["destroyed"]:
-		if dest["mname"] == module:
+	for n in range(0,save_data["destroyed"].size()):
+		if save_data["destroyed"][n]["mname"] == module:
 			return false
 	var data = {
 		"bname" : building,

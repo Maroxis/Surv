@@ -33,9 +33,9 @@ func run(time):
 			timeLeft -= time
 			if(timeLeft <= 0):
 				timeLeft = 0
-			if(timeLeft == 0):
 				finish()
-			refreshProgress()
+			else:
+				refreshProgress()
 
 func _on_FoodSelect_ammChanged(amm) -> void:
 	changeAmm(amm)
