@@ -71,8 +71,10 @@ func simWeather(time):
 
 
 func setWeather(wthr):
+	if wthr == current:
+		return
 	current = clamp(wthr,0,type.size()-1)
-			
+	
 #	deactivateSunny()
 	deactiveClouds()
 	deactiveRain()

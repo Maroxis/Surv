@@ -7,6 +7,8 @@ onready var record_lived_label: Label = $VBoxContainer/HBoxContainer/NinePatchRe
 onready var death_reason_label: Label = $VBoxContainer/DeathReasonLabel
 enum reasons {Water, Food, Energy, Sick}
 
+var recordAdded = false
+
 func _ready() -> void:
 	Global.GameOver = self
 	death_reason_label.text = "You died of "
@@ -16,14 +18,16 @@ func init(reason):
 	var time = Global.timeGetFullFormat(Global.Date.getTime(),true,true)
 	time_lived_label.text = "Survived\n" + day + "Days\n" + time
 	death_reason_label.text += get_reason(reason) + " "
-	var record = Save.saveRecord(Global.Date.getTotalTime())
-	var best = LeaderBoard.getBestTime(record)
-	if best != null:
-		day = str(floor(best/1440))
-		time = Global.timeGetFullFormat(fmod(best,1440),true,true)
-		record_lived_label.text = "Record\n" + day + "Days\n" + time
-	else:
-		record_lived_label.text = "error loading records"
+	if not recordAdded:
+		var record = Save.saveRecord(Global.Date.getTotalTime())
+		var best = LeaderBoard.getBestTime(record)
+		if best != null:
+			day = str(floor(best/1440))
+			time = Global.timeGetFullFormat(fmod(best,1440),true,true)
+			record_lived_label.text = "Record\n" + day + "Days\n" + time
+		else:
+			record_lived_label.text = "error loading records"
+		recordAdded = true
 	show()
 
 func get_reason(reason : int):
