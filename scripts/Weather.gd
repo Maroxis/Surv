@@ -20,6 +20,8 @@ onready var light_rain_sound: AudioStreamPlayer = $Sound/LightRain
 onready var heavy_rain_sound: AudioStreamPlayer = $Sound/HeavyRain
 onready var calm_sound: AudioStreamPlayer = $Sound/Calm
 
+onready var shadersOn = true
+
 signal weatherChanged
 
 func _ready() -> void:
@@ -37,7 +39,7 @@ func pack():
 
 func unpack(weather):
 	if weather.has("current"):
-		current = int(weather["current"])
+		setWeather(int(weather["current"]))
 	if weather.has("weatherChangeRate"):
 		weatherChangeRate = float(weather["weatherChangeRate"])
 	if weather.has("progress"):
@@ -48,6 +50,11 @@ func unpack(weather):
 		calmSustain = int(weather["calmSustain"])
 	if weather.has("rainToxic"):
 		rainToxic = float(weather["rainToxic"])
+
+func switch_shaders(on):
+	runShaders(type.Calm)
+	setTime(720)
+	shadersOn = on
 
 func getRainInt():
 	return max(current - 2,0)
@@ -74,12 +81,17 @@ func setWeather(wthr):
 	if wthr == current:
 		return
 	current = clamp(wthr,0,type.size()-1)
-	
-#	deactivateSunny()
+	if shadersOn:
+		runShaders()
+	changeWeatherSound()
+	emit_signal("weatherChanged")
+
+func runShaders(weather = self.current):
+	#deactivateSunny()
 	deactiveClouds()
 	deactiveRain()
 	deactiveLightning()
-	match current:
+	match weather:
 		type.Sunny:
 			pass
 #			activateSunny()
@@ -97,8 +109,6 @@ func setWeather(wthr):
 			activeClouds()
 			activeRain()
 			activeLightning()
-	changeWeatherSound()
-	emit_signal("weatherChanged")
 
 func refresh():
 	setWeather(current)
@@ -167,6 +177,8 @@ func deactiveLightning():
 #	background.material.set_shader_param("sunny",0.0)
 
 func setTime(time):
+	if not shadersOn:
+		return
 	time = time / 60
 	if current == type.Sunny:
 		background.material.set_shader_param("sunny",1.0)

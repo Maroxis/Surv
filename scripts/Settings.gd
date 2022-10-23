@@ -13,6 +13,7 @@ onready var skip_tutorial_button: TextureButton = $TextureRect/ScrollContainer/V
 onready var screen_button: CheckButton = $TextureRect/ScrollContainer/VBoxContainer/Display/ScreenButton
 onready var resolution_option_button: OptionButton = $"%ResolutionOptionButton"
 onready var export_debug_button: ToolButton = $"%ExportDebugButton"
+onready var shaders_button: CheckButton = $"%ShadersButton"
 
 func _ready() -> void:
 	debug.visible = DevMode.on
@@ -37,6 +38,7 @@ func pack():
 	data["display"] = {}
 #	data["display"]["fullscreen"] = screen_button.pressed
 	data["display"]["resolution"] = resolution_option_button.selected
+	data["display"]["shaders"] = shaders_button.pressed
 	return data
 
 func unpack(data):
@@ -47,6 +49,8 @@ func unpack(data):
 #		screen_button.pressed = data["display"]["fullscreen"]
 		if data["display"].has("resolution"):
 			resolution_option_button.selected = data["display"]["resolution"]
+		if data["display"].has("shaders"):
+			shaders_button.pressed = data["display"]["shaders"]
 	refresh(data)
 	return
 
@@ -194,3 +198,7 @@ func _on_ExportDebugButton_pressed() -> void:
 		export_debug_button.shake()
 	else:
 		export_debug_button.shakeSide()
+
+
+func _on_Shaders_Button_toggled(on) -> void:
+	get_tree().call_group("Shaders", "switch_shaders",on)

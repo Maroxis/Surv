@@ -62,7 +62,7 @@ margin_right = -64.0
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/ScrollContainer"]
 margin_left = 186.0
 margin_right = 954.0
-margin_bottom = 1974.0
+margin_bottom = 2114.0
 rect_min_size = Vector2( 768, 0 )
 size_flags_horizontal = 6
 size_flags_vertical = 3
@@ -360,7 +360,7 @@ rounded = true
 [node name="Display" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
 margin_top = 1152.0
 margin_right = 768.0
-margin_bottom = 1358.0
+margin_bottom = 1498.0
 
 [node name="HSeparator" type="HSeparator" parent="TextureRect/ScrollContainer/VBoxContainer/Display"]
 margin_right = 768.0
@@ -392,10 +392,22 @@ margin_right = 768.0
 margin_bottom = 206.0
 text = "Ratio"
 
-[node name="TutorialData" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
-margin_top = 1362.0
+[node name="ShadersButton" type="CheckButton" parent="TextureRect/ScrollContainer/VBoxContainer/Display"]
+unique_name_in_owner = true
+margin_top = 210.0
 margin_right = 768.0
-margin_bottom = 1614.0
+margin_bottom = 346.0
+focus_mode = 0
+theme_type_variation = "MenuItem"
+shortcut_in_tooltip = false
+pressed = true
+enabled_focus_mode = 0
+text = "Shaders"
+
+[node name="TutorialData" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
+margin_top = 1502.0
+margin_right = 768.0
+margin_bottom = 1754.0
 
 [node name="HSeparator" type="HSeparator" parent="TextureRect/ScrollContainer/VBoxContainer/TutorialData"]
 margin_right = 768.0
@@ -454,9 +466,9 @@ valign = 1
 
 [node name="DebugExport" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 1618.0
+margin_top = 1758.0
 margin_right = 768.0
-margin_bottom = 1842.0
+margin_bottom = 1982.0
 
 [node name="Data" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer/DebugExport"]
 margin_right = 768.0
@@ -493,9 +505,9 @@ mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="MarginBottom" type="Control" parent="TextureRect/ScrollContainer/VBoxContainer"]
-margin_top = 1846.0
+margin_top = 1986.0
 margin_right = 768.0
-margin_bottom = 1974.0
+margin_bottom = 2114.0
 rect_min_size = Vector2( 0, 128 )
 
 [connection signal="pressed" from="TextureRect/ExitButton" to="." method="_on_Exit_Button_pressed"]
@@ -511,6 +523,7 @@ rect_min_size = Vector2( 0, 128 )
 [connection signal="pressed" from="TextureRect/ScrollContainer/VBoxContainer/Sound/Weather/BG/WeatherButton" to="." method="_on_WeatherButton_pressed"]
 [connection signal="value_changed" from="TextureRect/ScrollContainer/VBoxContainer/Sound/Weather/ProgressSlider" to="." method="_on_WeatherProgressSlider_value_changed"]
 [connection signal="item_selected" from="TextureRect/ScrollContainer/VBoxContainer/Display/ResolutionOptionButton" to="." method="_on_ResolutionOptionButton_item_selected"]
+[connection signal="toggled" from="TextureRect/ScrollContainer/VBoxContainer/Display/ShadersButton" to="." method="_on_Shaders_Button_toggled"]
 [connection signal="pressed" from="TextureRect/ScrollContainer/VBoxContainer/TutorialData/HBoxContainer/ResetTutorialButton" to="." method="_on_ResetTutorialButton_pressed"]
 [connection signal="pressed" from="TextureRect/ScrollContainer/VBoxContainer/TutorialData/HBoxContainer/SkipTutorialButton" to="." method="_on_SkipTutorialButton_pressed"]
 [connection signal="pressed" from="TextureRect/ScrollContainer/VBoxContainer/DebugExport/Data/HBoxContainer/Save/ExportDebugButton" to="." method="_on_ExportDebugButton_pressed"]
