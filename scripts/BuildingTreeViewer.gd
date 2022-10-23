@@ -150,7 +150,7 @@ func scroll(val,set = false):
 		bg.material.set_shader_param("offset", Vector2(0.0,-v_scroll_bar.value))
 
 func _input(event):
-	if event is InputEventScreenDrag:
+	if self.visible and event is InputEventScreenDrag:
 		var speed = 3.0
 		scroll(event.relative.y*speed)
 #		var tween = create_tween()

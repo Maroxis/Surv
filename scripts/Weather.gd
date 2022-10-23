@@ -2,7 +2,7 @@ extends Node
 
 
 enum type {Sunny = 0, Calm = 1, Cloudy = 2, Rain = 3, HeavyRain = 4, Storm = 5}
-onready var current = type.Calm
+onready var current = null
 
 onready var rain: Control = $Background/Rain
 onready var background: TextureRect = $Background
