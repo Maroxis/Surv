@@ -22,6 +22,7 @@
 <a href="https://www.flaticon.com/free-icons/handsaw" title="handsaw icons">Handsaw icons created by Graphix's Art - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/water" title="water icons">Water icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/fanny-pack" title="fanny pack icons">Fanny pack icons created by Smashicons - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/hammer" title="hammer icons">Hammer icons created by Pixel perfect - Flaticon</a>
 
 
 <a href="https://www.flaticon.com/free-icons/hammer" title="hammer icons">Hammer icons created by Stockio - Flaticon</a>

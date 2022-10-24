@@ -600,7 +600,7 @@ func buy_upgrade(item):
 	return true
 
 func expand_water(item):
-	Global.ToolsUI.updateTool("Water", 1)
+#	Global.ToolsUI.updateTool("Water", 1)
 	Player.upd_max_water(upgrades[item]["size"]["Water"]) 
 	return true
 func expand_food(item):

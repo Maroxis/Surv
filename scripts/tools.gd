@@ -211,9 +211,61 @@ onready var tools = {
 			}
 		}
 	},
+	"Hammer": {
+		"pinned": true,
+		"tier0" : {
+			"benefits":{
+				"actionMult": 1
+			}
+		},
+		"tier1" : {
+			"craftTime": 40,
+			"maxDurability": 1,
+			"cost": {
+				"Stick": 2,
+				"Rock": 2
+			},
+			"benefits":{
+				"actionMult": 1.2
+			}
+		},
+		"tier2" : {
+			"craftTime": 80,
+			"maxDurability": 2,
+			"cost": {
+				"Stick": 2,
+				"CopperIngot": 2
+			},
+			"benefits":{
+				"actionMult": 1.4
+			}
+		},
+		"tier3" : {
+			"craftTime": 60,
+			"maxDurability": 3,
+			"cost": {
+				"Stick": 2,
+				"BronzeIngot": 2
+			},
+			"benefits":{
+				"actionMult": 1.6
+			}
+		},
+		"tier4" : {
+			"craftTime": 120,
+			"maxDurability": 5,
+			"cost": {
+				"Plank": 2,
+				"IronIngot": 2
+			},
+			"benefits":{
+				"actionMult": 1.8
+			}
+		}
+	},
 	"Saw": {
 		"pinned": true,
-		"baseTier": 1,
+		"baseTier": 2,
 		"tier0" : {
 			"benefits":{
 				"actionMult": 1

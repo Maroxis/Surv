@@ -37,6 +37,11 @@ onready var Structure = {
 				},
 				"benefits":{
 					"sleepRegenMult": 1.6
+				},
+				"required":{
+					"tool":{
+						"Hammer": 1,
+					}
 				}
 			},
 			"tier3" : {
@@ -65,6 +70,11 @@ onready var Structure = {
 				},
 				"benefits":{
 					"sleepRegenMult": 2.4
+				},
+				"required":{
+					"tool":{
+						"Hammer": 2,
+					}
 				}
 			}
 		},
@@ -89,6 +99,11 @@ onready var Structure = {
 				},
 				"benefits":{
 					"enable": "Roof"
+				},
+				"required":{
+					"tool":{
+						"Hammer": 1,
+					}
 				}
 			},
 			"tier2" : {
@@ -104,6 +119,11 @@ onready var Structure = {
 				},
 				"benefits":{
 					"enable": "Wall, Roof v2"
+				},
+				"required":{
+					"tool":{
+						"Hammer": 1,
+					}
 				}
 			}
 		},
@@ -132,6 +152,9 @@ onready var Structure = {
 				"required":{
 					"module":{
 						"Frame": 2
+					},
+					"tool":{
+						"Hammer": 1,
 					}
 				}
 			},
@@ -146,6 +169,11 @@ onready var Structure = {
 				},
 				"benefits":{
 					"defence": 6
+				},
+				"required":{
+					"tool":{
+						"Hammer": 1,
+					}
 				}
 			},
 			"tier3" : {
@@ -159,6 +187,11 @@ onready var Structure = {
 				},
 				"benefits":{
 					"defence": 12
+				},
+				"required":{
+					"tool":{
+						"Hammer": 2,
+					}
 				}
 			}
 		},
@@ -190,6 +223,9 @@ onready var Structure = {
 				"required":{
 					"module":{
 						"Frame": 1
+					},
+					"tool":{
+						"Hammer": 1,
 					}
 				}
 			},
@@ -209,6 +245,9 @@ onready var Structure = {
 				"required":{
 					"module":{
 						"Frame": 2
+					},
+					"tool":{
+						"Hammer": 2,
 					}
 				}
 			}
@@ -261,6 +300,11 @@ onready var Structure = {
 				},
 				"benefits":{
 					"spoilMult": 0.5
+				},
+				"required":{
+					"tool":{
+						"Hammer": 2,
+					}
 				}
 			}
 		}
@@ -313,6 +357,11 @@ onready var Structure = {
 				},
 				"benefits":{
 					"tankSize": 200
+				},
+				"required":{
+					"tool":{
+						"Hammer": 2,
+					}
 				}
 			}
 		},
@@ -492,11 +541,6 @@ onready var Structure = {
 					"smeltable": "Copper and Bronze",
 					"multiSmelt": 4,
 					"fuelEff": 1.2
-				},
-				"required":{
-					"tool":{
-						"Shovel": 1,
-					}
 				}
 			},
 			"tier3" : {
@@ -512,6 +556,11 @@ onready var Structure = {
 					"smeltable": "Iron",
 					"multiSmelt": 4,
 					"fuelEff": 1.4
+				},
+				"required":{
+					"tool":{
+						"Hammer": 2,
+					}
 				}
 			}
 		},
@@ -567,6 +616,11 @@ onready var Structure = {
 				},
 				"benefits":{
 					"enable": "Mortar and Chisel"
+				},
+				"required":{
+					"tool":{
+						"Hammer": 2,
+					}
 				}
 			}
 		},
@@ -668,6 +722,11 @@ onready var Structure = {
 				"benefits":{
 					"actionMult": 1.4,
 					"resReduction": 0
+				},
+				"required":{
+					"tool":{
+						"Hammer": 2,
+					}
 				}
 			},
 			"tier2" : {
@@ -683,6 +742,11 @@ onready var Structure = {
 				"benefits":{
 					"actionMult": 1.4,
 					"resReduction": 1
+				},
+				"required":{
+					"tool":{
+						"Hammer": 2,
+					}
 				}
 			},
 			"tier3" : {
@@ -699,6 +763,11 @@ onready var Structure = {
 				"benefits":{
 					"actionMult": 2.0,
 					"resReduction": 1
+				},
+				"required":{
+					"tool":{
+						"Hammer": 2,
+					}
 				}
 			}
 		},
@@ -723,6 +792,11 @@ onready var Structure = {
 				},
 				"benefits":{
 					"enableCraft": true
+				},
+				"required":{
+					"tool":{
+						"Hammer": 1,
+					}
 				}
 			}
 		}
@@ -749,6 +823,11 @@ onready var Structure = {
 				},
 				"benefits":{
 					"defence": 2
+				},
+				"required":{
+					"tool":{
+						"Hammer": 1,
+					}
 				}
 			},
 			"tier2" : {
@@ -762,6 +841,11 @@ onready var Structure = {
 				},
 				"benefits":{
 					"defence": 7
+				},
+				"required":{
+					"tool":{
+						"Hammer": 1,
+					}
 				}
 			},
 			"tier3" : {
@@ -775,6 +859,11 @@ onready var Structure = {
 				},
 				"benefits":{
 					"defence": 16
+				},
+				"required":{
+					"tool":{
+						"Hammer": 2,
+					}
 				}
 			}
 		},
@@ -813,6 +902,11 @@ onready var Structure = {
 				},
 				"benefits":{
 					"defence": 6
+				},
+				"required":{
+					"tool":{
+						"Hammer": 1,
+					}
 				}
 			}
 		},
@@ -866,6 +960,11 @@ onready var Structure = {
 				},
 				"benefits":{
 					"defence": 3
+				},
+				"required":{
+					"tool":{
+						"Hammer": 1,
+					}
 				}
 			}
 		},
@@ -893,6 +992,11 @@ onready var Structure = {
 				"benefits":{
 					"defence": 1,
 					"intel": 1
+				},
+				"required":{
+					"tool":{
+						"Hammer": 1,
+					}
 				}
 			},
 			"tier2" : {
@@ -908,6 +1012,11 @@ onready var Structure = {
 				"benefits":{
 					"defence": 1,
 					"intel": 2
+				},
+				"required":{
+					"tool":{
+						"Hammer": 1,
+					}
 				}
 			}
 		},
@@ -935,6 +1044,11 @@ onready var Structure = {
 				"benefits":{
 					"defence": 3,
 					"intel": 2
+				},
+				"required":{
+					"tool":{
+						"Hammer": 2,
+					}
 				}
 			}
 		}
