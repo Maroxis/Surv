@@ -32,14 +32,14 @@ func get_scaling_water_add_time():
 	return 10 if is_normal() else 25
 
 func get_woods_travel_add_time():
-	return 30 if is_normal() else 50
+	return 30 if is_normal() else 40
 
 func get_sick_mlt():
 	return clamp(Global.Date.day/12,1.0,6.0) if is_normal() else clamp(Global.Date.day/8,1.2,8.0)
 
 func get_attack_val():
 	var rl = rand_range(0.9,1.1)
-	return ceil((Global.Date.day/6.6)*rl) if is_normal() else ceil((Global.Date.day/5.0)*rl)
+	return ceil((Global.Date.day/7.1)*rl) if is_normal() else ceil((Global.Date.day/5.2)*rl)
 
 func get_spooked_animals_mlt():
 	return ceil(Global.Date.getDay() / 22.0) if is_normal() else ceil(Global.Date.getDay() / 18.0)

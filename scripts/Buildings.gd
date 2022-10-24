@@ -173,6 +173,7 @@ onready var Structure = {
 				"required":{
 					"tool":{
 						"Hammer": 1,
+						"Axe": 1
 					}
 				}
 			},
@@ -554,7 +555,7 @@ onready var Structure = {
 				},
 				"benefits":{
 					"smeltable": "Iron",
-					"multiSmelt": 4,
+					"multiSmelt": 8,
 					"fuelEff": 1.4
 				},
 				"required":{
@@ -845,6 +846,7 @@ onready var Structure = {
 				"required":{
 					"tool":{
 						"Hammer": 1,
+						"Axe": 1
 					}
 				}
 			},
@@ -863,6 +865,94 @@ onready var Structure = {
 				"required":{
 					"tool":{
 						"Hammer": 2,
+					}
+				}
+			}
+		},
+		"Gate":{
+			"benefitsText":{
+				"defence": "Increses camp defence"
+			},
+			"tier0" : {
+				"benefits":{
+					"defence": 0
+				}
+			},
+			"tier1" : {
+				"cost": {
+					"Stick": 12,
+					"Thread": 3
+				},
+				"time":{
+					"sections": 3,
+					"completed": 0,
+					"ammount": 40
+				},
+				"benefits":{
+					"defence": 1
+				},
+				"required":{
+					"module":{
+						"Fence": 1
+					},
+					"tool":{
+						"Hammer": 1,
+					}
+				}
+			},
+			"tier2" : {
+				"cost": {
+					"Wood": 12
+				},
+				"time":{
+					"sections": 3,
+					"completed": 0,
+					"ammount": 40
+				},
+				"benefits":{
+					"defence": 3
+				},
+				"required":{
+					"tool":{
+						"Hammer": 1,
+					}
+				}
+			},
+			"tier3" : {
+				"cost": {
+					"Plank": 12
+				},
+				"time":{
+					"sections": 3,
+					"completed": 0,
+					"ammount": 80
+				},
+				"benefits":{
+					"defence": 5
+				},
+				"required":{
+					"tool":{
+						"Hammer": 2,
+					}
+				}
+			},
+			"tier4" : {
+				"cost": {
+					"Plank": 4,
+					"Nail": 6,
+					"IronIngot": 2
+				},
+				"time":{
+					"sections": 4,
+					"completed": 0,
+					"ammount": 60
+				},
+				"benefits":{
+					"defence": 9
+				},
+				"required":{
+					"tool":{
+						"Hammer": 3,
 					}
 				}
 			}
@@ -906,6 +996,26 @@ onready var Structure = {
 				"required":{
 					"tool":{
 						"Hammer": 1,
+						"Knife": 1
+					}
+				}
+			},
+			"tier3" : {
+				"cost": {
+					"Wood": 48,
+					"Nail": 24
+				},
+				"time":{
+					"sections": 8,
+					"completed": 0,
+					"ammount": 60
+				},
+				"benefits":{
+					"defence": 14
+				},
+				"required":{
+					"tool":{
+						"Hammer": 3,
 					}
 				}
 			}
@@ -964,6 +1074,26 @@ onready var Structure = {
 				"required":{
 					"tool":{
 						"Hammer": 1,
+						"Knife": 1
+					}
+				}
+			},
+			"tier4" : {
+				"cost": {
+					"Wood": 12,
+					"Nail": 8
+				},
+				"time":{
+					"sections": 4,
+					"completed": 0,
+					"ammount": 50
+				},
+				"benefits":{
+					"defence": 6
+				},
+				"required":{
+					"tool":{
+						"Hammer": 3,
 					}
 				}
 			}
@@ -1018,6 +1148,26 @@ onready var Structure = {
 						"Hammer": 1,
 					}
 				}
+			},
+			"tier3" : {
+				"cost": {
+					"Nail": 14,
+					"Thread": 6
+				},
+				"time":{
+					"sections": 3,
+					"completed": 0,
+					"ammount": 50
+				},
+				"benefits":{
+					"defence": 4,
+					"intel": 2
+				},
+				"required":{
+					"tool":{
+						"Hammer": 3,
+					}
+				}
 			}
 		},
 		"WatchTower":{
@@ -1033,8 +1183,7 @@ onready var Structure = {
 			},
 			"tier1" : {
 				"cost": {
-					"Wood": 24,
-					"Plank": 6
+					"Wood": 24
 				},
 				"time":{
 					"sections": 3,
@@ -1042,12 +1191,33 @@ onready var Structure = {
 					"ammount": 80
 				},
 				"benefits":{
-					"defence": 3,
+					"defence": 2,
 					"intel": 2
 				},
 				"required":{
 					"tool":{
-						"Hammer": 2,
+						"Hammer": 1,
+						"Axe": 1
+					}
+				}
+			},
+			"tier2" : {
+				"cost": {
+					"Plank": 16,
+					"Nail": 16
+				},
+				"time":{
+					"sections": 3,
+					"completed": 0,
+					"ammount": 80
+				},
+				"benefits":{
+					"defence": 6,
+					"intel": 2
+				},
+				"required":{
+					"tool":{
+						"Hammer": 3,
 					}
 				}
 			}

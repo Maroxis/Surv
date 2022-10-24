@@ -101,7 +101,7 @@ func getCraftTime():
 	return time
 
 func getFuelEfficency():
-	return basicFuelEfficency * Buildings.getCurrentModule("Furnace","Oven")["benefits"]["fuelEff"]
+	return float(basicFuelEfficency * Buildings.getCurrentModule("Furnace","Oven")["benefits"]["fuelEff"])
 	
 func removeRes():
 	Inventory.craft_item(selectedRecipe,selectedAmm,false)

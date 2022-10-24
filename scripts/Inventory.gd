@@ -10,7 +10,7 @@ onready var resources = {
 		"crafted": false,
 		"burining":{
 			"temp": 600,
-			"time": 5
+			"time": 8
 		}
 	  },
 	"Wood": {
@@ -18,7 +18,7 @@ onready var resources = {
 		"crafted": false,
 		"burining":{
 			"temp": 1200,
-			"time": 20
+			"time": 30
 		}
 	  },
 	"Herb": {
@@ -136,7 +136,7 @@ onready var resources = {
 		"crafted": false,
 		"burining":{
 			"temp": 2000,
-			"time": 60
+			"time": 90
 		}
 	  },
 	"CopperOre": {
@@ -179,6 +179,16 @@ onready var resources = {
 		},
 		"meltingTemp" : 1800,
 		"craftTime": 1440,
+		"furnaceTier": 2,
+		"crafted": true
+	  },
+	"Nail": {
+		"weight" : 0.6,
+		"cost" : {
+			"IronOre" : 1
+		},
+		"meltingTemp" : 1800,
+		"craftTime": 180,
 		"furnaceTier": 2,
 		"crafted": true
 	  }
