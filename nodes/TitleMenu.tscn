@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://sprites/BG/IconRectBW.png" type="Texture" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://sprites/BG/9rectPanel.png" type="Texture" id=8]
 [ext_resource path="res://sprites/Icons/64x64px/podium.png" type="Texture" id=9]
 [ext_resource path="res://nodes/LeaderBoards.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/GooglePlay/ic_play_games_badge_green.png" type="Texture" id=11]
+[ext_resource path="res://sprites/GooglePlay/ic_play_games_badge_achievements_green.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -207,9 +209,65 @@ margin_left = 768.0
 margin_right = 864.0
 margin_bottom = 384.0
 
-[node name="Leaderboards" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer"]
+[node name="SignIn" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer"]
 margin_right = 96.0
 margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/SignIn"]
+self_modulate = Color( 0, 0.541176, 0.0196078, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/SignIn"]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 11 )
+stretch_mode = 4
+
+[node name="SignInButton" type="ToolButton" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/SignIn"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Achivements" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer"]
+margin_top = 100.0
+margin_right = 96.0
+margin_bottom = 196.0
+rect_min_size = Vector2( 96, 96 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/Achivements"]
+self_modulate = Color( 0, 0.541176, 0.0196078, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/Achivements"]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 12 )
+stretch_mode = 4
+
+[node name="ShowAchivementsButton" type="ToolButton" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/Achivements"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Leaderboards" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer"]
+margin_top = 200.0
+margin_right = 96.0
+margin_bottom = 296.0
 rect_min_size = Vector2( 96, 96 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/Leaderboards"]
@@ -310,6 +368,8 @@ visible = false
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/Normal/StartNormal" to="." method="_on_StartNormal_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/Hard/StartHard" to="." method="_on_StartHard_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/SignIn/SignInButton" to="." method="_on_SignInButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/Achivements/ShowAchivementsButton" to="." method="_on_ShowAchivementsButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/Leaderboards/LeaderBoardsButton" to="." method="_on_LeaderBoardsButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Quit" to="." method="_on_Quit_pressed"]

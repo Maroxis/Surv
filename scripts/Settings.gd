@@ -14,6 +14,7 @@ onready var screen_button: CheckButton = $TextureRect/ScrollContainer/VBoxContai
 onready var resolution_option_button: OptionButton = $"%ResolutionOptionButton"
 onready var export_debug_button: ToolButton = $"%ExportDebugButton"
 onready var shaders_button: CheckButton = $"%ShadersButton"
+#onready var gpgs_autostart = false
 
 func _ready() -> void:
 	debug.visible = DevMode.on
@@ -39,6 +40,7 @@ func pack():
 #	data["display"]["fullscreen"] = screen_button.pressed
 	data["display"]["resolution"] = resolution_option_button.selected
 	data["display"]["shaders"] = shaders_button.pressed
+#	data["gpgs"]["autostart"] = gpgs_autostart
 	return data
 
 func unpack(data):
@@ -51,6 +53,9 @@ func unpack(data):
 			resolution_option_button.selected = data["display"]["resolution"]
 		if data["display"].has("shaders"):
 			shaders_button.pressed = data["display"]["shaders"]
+#	if data.has("gpgs"):
+#		if data["gpgs"].has("autostart"):
+#			gpgs_autostart = data["gpgs"]["autostart"]
 	refresh(data)
 	return
 
@@ -152,21 +157,8 @@ func _on_SkipTutorialButton_pressed() -> void:
 	skip_tutorial_button.shake()
 	Global.Tutorial.skip_all()
 #
-#func toggle_fullscreen(on, _reload = false):
-#	if on:
-#		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D,  SceneTree.STRETCH_ASPECT_EXPAND, Vector2(1280,720))
-#	else:
-#		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D,  SceneTree.STRETCH_ASPECT_KEEP, Vector2(1280,720))
-##		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D,  SceneTree.STRETCH_ASPECT_KEEP, Vector2(1680,720))
-#	Global.ResourcesUI.resizeQuickBar()
-#	if reload:
-#		Save.saveConfig()
-# warning-ignore:return_value_discarded
-#		get_tree().reload_current_scene()
-#
-#func _on_ScreenButton_pressed() -> void:
-#	toggle_fullscreen(screen_button.pressed, true)
-
+#func set_gpgs_autostart(on):
+#	gpgs_autostart = on
 
 func _on_PurgeDataButton_pressed() -> void:
 	if Save.purgeData():

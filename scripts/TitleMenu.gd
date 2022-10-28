@@ -17,6 +17,14 @@ func _ready() -> void:
 	populate_save_info(normal_save_label,normal_bt_label,normal_save_data)
 	populate_save_info(hard_save_label,hard_bt_label,hard_save_data)
 
+func gpgs_autostart():
+	Save.loadConfig()
+	if Global.InGSettings.gpgs_autostart:
+		print("autostart")
+		if not ServiceManager.is_gpgs_available():
+			return
+		ServiceManager.sign_in()
+
 func populate_save_info(label,bt,data):
 	if data != null:
 		var date = data["date"]
@@ -52,3 +60,15 @@ func _on_Records_pressed() -> void:
 
 func _on_LeaderBoardsButton_pressed() -> void:
 	leader_boards.open()
+
+
+func _on_SignInButton_pressed() -> void:
+	if not ServiceManager.is_gpgs_available():
+		return
+	else:
+		ServiceManager.sign_in()
+
+
+func _on_ShowAchivementsButton_pressed() -> void:
+	if ServiceManager.is_signed_in():
+		ServiceManager.show_achivements()
