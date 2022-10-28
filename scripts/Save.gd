@@ -32,7 +32,7 @@ func exportDebug():
 func saveConfig():
 	var data = {}
 	data["settings"] = Global.InGSettings.pack()
-	data["tutorial"] = Global.Tutorial.pack()
+#	data["tutorial"] = Global.Tutorial.pack()
 	data = to_json(data)
 	return saveData(config_save_file,data)
 
@@ -41,7 +41,7 @@ func loadConfig():
 	if data:
 		if data.has("settings"): # save compatibility to remove later
 			Global.InGSettings.unpack(data["settings"])
-			Global.Tutorial.unpack(data["tutorial"])
+#			Global.Tutorial.unpack(data["tutorial"])
 		else:
 			Global.InGSettings.unpack(data)
 

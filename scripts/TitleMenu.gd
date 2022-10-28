@@ -9,21 +9,25 @@ onready var hard_save_label: Label = $CenterContainer/VBoxContainer/HBoxContaine
 onready var normal_bt_label: Label = $CenterContainer/VBoxContainer/HBoxContainer2/Normal/StartNormal/Label
 onready var hard_bt_label: Label = $CenterContainer/VBoxContainer/HBoxContainer2/Hard/StartHard/Label
 onready var leader_boards: Control = $LeaderBoards
+onready var sign_in_bt: Control = $CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/SignIn
 
 
 func _ready() -> void:
+	Global.TitleMenu = self
 	var normal_save_data = Save.loadData(Save.auto_save_file)
 	var hard_save_data = Save.loadData(Save.auto_hard_save_file)
 	populate_save_info(normal_save_label,normal_bt_label,normal_save_data)
 	populate_save_info(hard_save_label,hard_bt_label,hard_save_data)
+	gpgs_autostart()
 
 func gpgs_autostart():
 	Save.loadConfig()
-	if Global.InGSettings.gpgs_autostart:
-		print("autostart")
+	if Global.InGSettings.gpgs_autostart_button.pressed:
 		if not ServiceManager.is_gpgs_available():
 			return
 		ServiceManager.sign_in()
+	else:
+		sign_in_bt.show()
 
 func populate_save_info(label,bt,data):
 	if data != null:
@@ -72,3 +76,12 @@ func _on_SignInButton_pressed() -> void:
 func _on_ShowAchivementsButton_pressed() -> void:
 	if ServiceManager.is_signed_in():
 		ServiceManager.show_achivements()
+
+
+func _on_TestButton_pressed() -> void:
+	ServiceManager.play_games_services.unlockAchievement("CgkIzazBqs8DEAIQFg")
+
+
+func _on_SignOutButton_pressed() -> void:
+	if ServiceManager.is_signed_in():
+		ServiceManager.sign_out()

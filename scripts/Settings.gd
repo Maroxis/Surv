@@ -14,7 +14,7 @@ onready var screen_button: CheckButton = $TextureRect/ScrollContainer/VBoxContai
 onready var resolution_option_button: OptionButton = $"%ResolutionOptionButton"
 onready var export_debug_button: ToolButton = $"%ExportDebugButton"
 onready var shaders_button: CheckButton = $"%ShadersButton"
-#onready var gpgs_autostart = false
+onready var gpgs_autostart_button: CheckButton = $"%GPGSAutostartButton"
 
 func _ready() -> void:
 	debug.visible = DevMode.on
@@ -40,7 +40,8 @@ func pack():
 #	data["display"]["fullscreen"] = screen_button.pressed
 	data["display"]["resolution"] = resolution_option_button.selected
 	data["display"]["shaders"] = shaders_button.pressed
-#	data["gpgs"]["autostart"] = gpgs_autostart
+	data["gpgs"] = {}
+	data["gpgs"]["autostart"] = gpgs_autostart_button.pressed
 	return data
 
 func unpack(data):
@@ -53,9 +54,9 @@ func unpack(data):
 			resolution_option_button.selected = data["display"]["resolution"]
 		if data["display"].has("shaders"):
 			shaders_button.pressed = data["display"]["shaders"]
-#	if data.has("gpgs"):
-#		if data["gpgs"].has("autostart"):
-#			gpgs_autostart = data["gpgs"]["autostart"]
+	if data.has("gpgs"):
+		if data["gpgs"].has("autostart"):
+			gpgs_autostart_button.pressed = data["gpgs"]["autostart"]
 	refresh(data)
 	return
 
@@ -156,9 +157,6 @@ func _on_ResetTutorialButton_pressed() -> void:
 func _on_SkipTutorialButton_pressed() -> void:
 	skip_tutorial_button.shake()
 	Global.Tutorial.skip_all()
-#
-#func set_gpgs_autostart(on):
-#	gpgs_autostart = on
 
 func _on_PurgeDataButton_pressed() -> void:
 	if Save.purgeData():
@@ -184,13 +182,11 @@ func switch_resolution(res):
 func _on_ResolutionOptionButton_item_selected(index: int) -> void:
 	switch_resolution(index)
 
-
 func _on_ExportDebugButton_pressed() -> void:
 	if Save.exportDebug():
 		export_debug_button.shake()
 	else:
 		export_debug_button.shakeSide()
-
 
 func _on_Shaders_Button_toggled(on) -> void:
 	get_tree().call_group("Shaders", "switch_shaders",on)

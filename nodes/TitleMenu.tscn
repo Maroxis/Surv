@@ -210,6 +210,7 @@ margin_right = 864.0
 margin_bottom = 384.0
 
 [node name="SignIn" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer"]
+visible = false
 margin_right = 96.0
 margin_bottom = 96.0
 rect_min_size = Vector2( 96, 96 )
@@ -236,10 +237,38 @@ stretch_mode = 4
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Achivements" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer"]
+[node name="SignOut" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer"]
+visible = false
 margin_top = 100.0
 margin_right = 96.0
 margin_bottom = 196.0
+rect_min_size = Vector2( 96, 96 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/SignOut"]
+self_modulate = Color( 0, 0.541176, 0.0196078, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/SignOut"]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 11 )
+stretch_mode = 4
+
+[node name="SignOutButton" type="ToolButton" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/SignOut"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Achivements" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer"]
+margin_right = 96.0
+margin_bottom = 96.0
 rect_min_size = Vector2( 96, 96 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/Achivements"]
@@ -265,9 +294,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Leaderboards" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer"]
-margin_top = 200.0
+margin_top = 100.0
 margin_right = 96.0
-margin_bottom = 296.0
+margin_bottom = 196.0
 rect_min_size = Vector2( 96, 96 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/Leaderboards"]
@@ -288,6 +317,35 @@ texture = ExtResource( 9 )
 stretch_mode = 4
 
 [node name="LeaderBoardsButton" type="ToolButton" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/Leaderboards"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TestAchivement" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer"]
+visible = false
+margin_top = 300.0
+margin_right = 96.0
+margin_bottom = 396.0
+rect_min_size = Vector2( 96, 96 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/TestAchivement"]
+self_modulate = Color( 0, 0.541176, 0.0196078, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/TestAchivement"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="TestsButton" type="ToolButton" parent="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/TestAchivement"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -369,8 +427,10 @@ visible = false
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/Normal/StartNormal" to="." method="_on_StartNormal_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/Hard/StartHard" to="." method="_on_StartHard_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/SignIn/SignInButton" to="." method="_on_SignInButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/SignOut/SignOutButton" to="." method="_on_SignOutButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/Achivements/ShowAchivementsButton" to="." method="_on_ShowAchivementsButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/Leaderboards/LeaderBoardsButton" to="." method="_on_LeaderBoardsButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/TestAchivement/TestsButton" to="." method="_on_TestButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Records" to="." method="_on_Records_pressed"]

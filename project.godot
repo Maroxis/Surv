@@ -127,6 +127,7 @@ Events="*res://scripts/Events.gd"
 DevMode="*res://scripts/DevMode.gd"
 LeaderBoard="*res://scripts/LeaderBoard.gd"
 ServiceManager="*res://scripts/ServiceManager.gd"
+Achivements="*res://scripts/Achivements.gd"
 
 [display]
 

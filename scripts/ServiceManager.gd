@@ -47,12 +47,14 @@ func _ready():
 #	play_games_services.connect("_on_player_stats_loading_failed", self, "_on_player_stats_loading_failed")
 
 func _on_sign_in_success(acc:String):
-#	Global.InGSettings.set_gpgs_autostart(true)
-	print("Succes: ",acc)
+	Global.InGSettings.gpgs_autostart_button.pressed = true
+	Save.saveConfig()
+	Global.TitleMenu.sign_in_bt.hide()
 
 func _on_sign_in_failed(err:int):
-#	Global.InGSettings.set_gpgs_autostart(false)
-	print("Error: ",err)
+	Global.InGSettings.gpgs_autostart_button.pressed = false
+	Save.saveConfig()
+	Global.TitleMenu.sign_in_bt.show()
 
 func _on_achievement_unlocked(id : String):
 	print("achivement unlocked: ",id)
@@ -69,9 +71,14 @@ func _on_achievement_info_load_failed(id : String):
 func sign_in():
 	play_games_services.signIn()
 
+func sign_out():
+	play_games_services.signOut()
+	Global.InGSettings.gpgs_autostart_button.pressed = false
+	Global.TitleMenu.sign_in_bt.show()
+	Save.saveConfig()
+
 func show_achivements():
 	print("aaa")
-#	play_games_services.unlockAchievement("CgkIzazBqs8DEAIQFg")
 	play_games_services.showAchievements()
 func is_signed_in():
 	if is_gpgs_available():

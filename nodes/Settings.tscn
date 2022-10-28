@@ -62,7 +62,7 @@ margin_right = -64.0
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/ScrollContainer"]
 margin_left = 186.0
 margin_right = 954.0
-margin_bottom = 2114.0
+margin_bottom = 2132.0
 rect_min_size = Vector2( 768, 0 )
 size_flags_horizontal = 6
 size_flags_vertical = 3
@@ -404,7 +404,39 @@ pressed = true
 enabled_focus_mode = 0
 text = "Shaders"
 
+[node name="Google" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
+margin_top = 1502.0
+margin_right = 768.0
+margin_bottom = 1772.0
+
+[node name="HSeparator" type="HSeparator" parent="TextureRect/ScrollContainer/VBoxContainer/Google"]
+margin_right = 768.0
+margin_bottom = 60.0
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_constants/separation = 60
+
+[node name="Label" type="Label" parent="TextureRect/ScrollContainer/VBoxContainer/Google"]
+margin_top = 64.0
+margin_right = 768.0
+margin_bottom = 130.0
+text = "Google play game services"
+align = 1
+
+[node name="GPGSAutostartButton" type="CheckButton" parent="TextureRect/ScrollContainer/VBoxContainer/Google"]
+unique_name_in_owner = true
+margin_top = 134.0
+margin_right = 768.0
+margin_bottom = 270.0
+focus_mode = 0
+theme_type_variation = "MenuItem"
+shortcut_in_tooltip = false
+pressed = true
+enabled_focus_mode = 0
+text = "Autostart"
+
 [node name="TutorialData" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
+visible = false
 margin_top = 1502.0
 margin_right = 768.0
 margin_bottom = 1754.0
@@ -466,9 +498,9 @@ valign = 1
 
 [node name="DebugExport" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 1758.0
+margin_top = 1776.0
 margin_right = 768.0
-margin_bottom = 1982.0
+margin_bottom = 2000.0
 
 [node name="Data" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer/DebugExport"]
 margin_right = 768.0
@@ -505,9 +537,9 @@ mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="MarginBottom" type="Control" parent="TextureRect/ScrollContainer/VBoxContainer"]
-margin_top = 1986.0
+margin_top = 2004.0
 margin_right = 768.0
-margin_bottom = 2114.0
+margin_bottom = 2132.0
 rect_min_size = Vector2( 0, 128 )
 
 [connection signal="pressed" from="TextureRect/ExitButton" to="." method="_on_Exit_Button_pressed"]

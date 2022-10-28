@@ -27,6 +27,7 @@ var TopBar
 var Intel
 var Drying
 var Sound
+var TitleMenu
 
 func refresh():
 	ChestResources.refresh()

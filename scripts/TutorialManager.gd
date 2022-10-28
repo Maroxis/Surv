@@ -13,8 +13,9 @@ func _ready() -> void:
 	Global.Tutorial = self
 
 func init():
-	if not tut_data["startTutorials"]:
-		self.show()
+	return
+#	if not tut_data["startTutorials"]:
+#		self.show()
 
 func pack():
 	return tut_data
