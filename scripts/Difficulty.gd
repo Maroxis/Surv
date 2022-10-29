@@ -16,9 +16,9 @@ func get_health_damage_multiplayer():
 	return 0.8 if is_normal() else 1.0
 
 func get_sick_gain_multiplayer():
-	return 0.8 if is_normal() else 1.4
+	return 0.8 if is_normal() else 1.2
 func get_sick_reduction_multiplayer():
-	return 1.6 if is_normal() else 0.8
+	return 1.6 if is_normal() else 0.9
 
 #Events
 func get_starting_tool_dmg_mlt():
@@ -29,23 +29,25 @@ func get_scaling_tool_dmg():
 func get_starting_water_add_time():
 	return 25 if is_normal() else 55
 func get_scaling_water_add_time():
-	return 10 if is_normal() else 25
+	return 10 if is_normal() else 20
 
 func get_woods_travel_add_time():
 	return 30 if is_normal() else 40
 
 func get_sick_mlt():
-	return clamp(Global.Date.day/12,1.0,6.0) if is_normal() else clamp(Global.Date.day/8,1.2,8.0)
+	return clamp(Global.Date.day/12,1.0,6.0) if is_normal() else clamp(Global.Date.day/8,1.2,7.0)
 
-func get_attack_val():
+func get_attack_val(absolute = false):
+	if absolute:
+		return ceil((Global.Date.day/7.1)) if is_normal() else ceil((Global.Date.day/5.2))
 	var rl = rand_range(0.9,1.1)
 	return ceil((Global.Date.day/7.1)*rl) if is_normal() else ceil((Global.Date.day/5.2)*rl)
 
 func get_spooked_animals_mlt():
-	return ceil(Global.Date.getDay() / 22.0) if is_normal() else ceil(Global.Date.getDay() / 18.0)
+	return ceil(Global.Date.getDay() / 22.0) if is_normal() else ceil(Global.Date.getDay() / 19.0)
 
 func get_cave_in_amm():
 	return ceil(Global.Date.getDay() / 10.0) if is_normal() else ceil(Global.Date.getDay() / 8.0)
 
 func get_rats_amm():
-	return int(clamp(Global.Date.day/9.0,1.0,12.0)) if is_normal() else int(clamp(Global.Date.day/7.0,1.0,22.0))
+	return int(clamp(Global.Date.day/9.2,1.0,12.0)) if is_normal() else int(clamp(Global.Date.day/7.4,1.0,22.0))

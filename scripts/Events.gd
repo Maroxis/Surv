@@ -226,8 +226,8 @@ func playerIll():
 		descLv = "dangerously" #drains health
 	return {"error":null,"res":"You are "+descLv+" sick"}
 
-func calcAttack():
-	return Difficulty.get_attack_val()
+func calcAttack(absolute = false):
+	return Difficulty.get_attack_val(absolute)
 
 func animalAttack():
 	var level = calcAttack()

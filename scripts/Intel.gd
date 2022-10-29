@@ -5,13 +5,13 @@ onready var base_value_label: Label = $"%BaseValueLabel"
 onready var details_list: VBoxContainer = $"%DetailsList"
 onready var destroyed_list: VBoxContainer = $"%DestroyedList"
 
-onready var max_intel_lv = 3
+onready var max_intel_lv = 4
 
 func _ready() -> void:
 	Global.Intel = self
 
 func refresh():
-	var estimatedAttack = Events.calcAttack()
+	var estimatedAttack = Events.calcAttack(true)
 	var intelLv = Buildings.getIntelLv()
 	intelLv = min(intelLv,max_intel_lv)
 	var unc = float(max_intel_lv+1 - intelLv) / 10
