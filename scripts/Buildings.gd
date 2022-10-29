@@ -1334,6 +1334,7 @@ func buildModule(building,module):
 	Save.structures[building][module]["progress"] = 0
 	removeRecDestroyed(module)
 	emit_signal("moduleBuilt",module)
+	Achivements.module_built(building,module)
 #	getCurrentModule(building,module)["time"]["completed"] = 0
 
 func buyModule(building,module):
@@ -1341,9 +1342,8 @@ func buyModule(building,module):
 	for res in Structure[building][module][ntier]["cost"]:
 		var amm = Structure[building][module][ntier]["cost"][res]
 		Inventory.add_resource(res,-amm)
-		
+
 func getTier(building,module,next = false):
-	
 	var tier = getTierInt(building,module,next)
 	if(tier == null):
 		return null
@@ -1355,6 +1355,21 @@ func getTierInt(building,module,next = false):
 		return null
 	else:
 		return tier
+
+func getMaxTierInt(building,module):
+	var i :int = 1
+	while Structure[building][module].has("tier"+str(i+1)):
+		i += 1
+	return i
+
+func isMaxTier(building,module = null):
+	if module != null:
+		return getTierInt(building,module) == getMaxTierInt(building,module)
+	else:
+		for module in Structure[building]:
+			if not isMaxTier(building,module):
+				return false
+		return true
 
 func getCurrentModule(building,module):
 	var tier = getTier(building,module)

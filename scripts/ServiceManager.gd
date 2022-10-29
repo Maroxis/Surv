@@ -1,6 +1,7 @@
 extends Node
 
 var play_games_services
+var loaded_achivements = null
 #var is_signed_in: bool = play_games_services.isSignedIn()
 func _ready():
 	# Check if plugin was added to the project
@@ -28,8 +29,8 @@ func _ready():
 	play_games_services.connect("_on_achievement_unlocking_failed", self, "_on_achievement_unlocking_failed") # achievement: String
 #	play_games_services.connect("_on_achievement_revealed", self, "_on_achievement_revealed") # achievement: String
 #	play_games_services.connect("_on_achievement_revealing_failed", self, "_on_achievement_revealing_failed") # achievement: String
-#	play_games_services.connect("_on_achievement_incremented", self, "_on_achievement_incremented") # achievement: String
-#	play_games_services.connect("_on_achievement_incrementing_failed", self, "_on_achievement_incrementing_failed") # achievement: String
+	play_games_services.connect("_on_achievement_incremented", self, "_on_achievement_incremented") # achievement: String
+	play_games_services.connect("_on_achievement_incrementing_failed", self, "_on_achievement_incrementing_failed") # achievement: String
 	play_games_services.connect("_on_achievement_info_loaded", self, "_on_achievement_info_loaded") # achievements_json : String
 	play_games_services.connect("_on_achievement_info_load_failed", self, "_on_achievement_info_load_failed")
 #	play_games_services.connect("_on_leaderboard_score_retrieved", self, "_on_leaderboard_score_retrieved") # playerstats: String (JSON)
@@ -46,28 +47,36 @@ func _ready():
 #	play_games_services.connect("_on_player_stats_loaded", self, "_on_player_stats_loaded")  # json_response: String
 #	play_games_services.connect("_on_player_stats_loading_failed", self, "_on_player_stats_loading_failed")
 
-func _on_sign_in_success(acc:String):
+func _on_sign_in_success(_acc:String):
 	Global.InGSettings.gpgs_autostart_button.pressed = true
 	Save.saveConfig()
 	Global.TitleMenu.sign_in_bt.hide()
+	play_games_services.loadAchievementInfo(false)
 
 func _on_sign_in_failed(err:int):
 	Global.InGSettings.gpgs_autostart_button.pressed = false
 	Save.saveConfig()
 	Global.TitleMenu.sign_in_bt.show()
+	print("Log in failed: ",err)
 
 func _on_achievement_unlocked(id : String):
-	print("achivement unlocked: ",id)
+	print("achivement unlocked: ",get_achivement(id)["name"])
 
 func _on_achievement_unlocking_failed(id : String):
-	print("achivement failed: ",id)
+	print("achivement failed: ",get_achivement(id)["name"])
 
-func _on_achievement_info_loaded(achivements : String):
-	print("achivements: ",achivements)
+func _on_achievement_incremented(id : String):
+	print("incremented: ", get_achivement(id)["name"])
+	
+func _on_achievement_incrementing_failed(id : String):
+	print("inc failed: ", get_achivement(id)["name"])
+
+func _on_achievement_info_loaded(achievements_json : String):
+	loaded_achivements = parse_json(achievements_json)
 
 func _on_achievement_info_load_failed(id : String):
-	print("achivements failed: ",id)
-
+	print("achivements loading failed: ",id)
+	
 func sign_in():
 	play_games_services.signIn()
 
@@ -78,7 +87,6 @@ func sign_out():
 	Save.saveConfig()
 
 func show_achivements():
-	print("aaa")
 	play_games_services.showAchievements()
 func is_signed_in():
 	if is_gpgs_available():
@@ -89,5 +97,44 @@ func is_gpgs_available():
 	if play_games_services and play_games_services.isGooglePlayServicesAvailable():
 		return true
 	else:
-		print("no google services")
+#		print("no google services")
 		return false
+
+func unlock_achivement(id):
+	if is_signed_in() and get_achivement(id)["state"] != 0:
+		play_games_services.unlockAchievement(id)
+		_set_unlocked(id)
+
+func inc_achivement(id,step):
+	var a = get_achivement(id)
+	if is_signed_in() and a["state"] != 0:
+		play_games_services.incrementAchievement(id, step)
+		_set_achivement_key(id,"current_steps", a["current_steps"] + step)
+		if a["current_steps"] + step >= a["total_steps"]:
+			_set_unlocked(id)
+
+func _set_unlocked(id):
+	if loaded_achivements == null:
+		return false
+	for a in loaded_achivements:
+		if a["id"] == id:
+			a["state"] = 0
+			return true
+	return false
+
+func get_achivement(id):
+	if loaded_achivements == null:
+		return null
+	for a in loaded_achivements:
+		if a["id"] == id:
+			return a
+	return null
+
+func _set_achivement_key(id,key,val):
+	if loaded_achivements == null:
+		return false
+	for a in loaded_achivements:
+		if a["id"] == id:
+			a[key] = val
+			return true
+	return false

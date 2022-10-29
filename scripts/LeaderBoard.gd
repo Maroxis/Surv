@@ -24,22 +24,6 @@ static func sort_time(a,b):
 		return a["difficulty"] > b["difficulty"]
 	return a["time"] > b["time"]
 
-#
-#func createRecord(time, date):
-#	print("createNew")
-#	var data = {}
-#	if Difficulty.is_normal():
-#		data["bestTime"] = time
-#		data["runs"] = {}
-#		data["runs"][date] = {}
-#		data["runs"][date]["time"] = time
-#	else:
-#		data["bestHardTime"] = time
-#		data["runsHard"] = {}
-#		data["runsHard"][date] = {}
-#		data["runsHard"][date]["time"] = time
-#	return data
-
 func getBestTime(data):
 	if data == null or typeof(data) != TYPE_ARRAY:
 		return null

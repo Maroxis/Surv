@@ -489,6 +489,7 @@ func update_bag():
 func add_resource(res,amm:int,fd = false):
 	if amm == 0:
 		return false
+	Achivements.res_added(res,amm)
 	var invAmm = foodData[res]["amm"] if fd else resourcesData[res]
 	invAmm = int(invAmm)
 	if amm < 0 and invAmm < abs(amm):
@@ -507,6 +508,7 @@ func add_resource(res,amm:int,fd = false):
 		return true
 
 func add_meds(item,amm):
+	Achivements.med_added(item,amm)
 	medsData[item] += amm
 	medsData[item] = min(medsData[item],999)
 	Global.ResourcesUI.addRes(item,medsData[item],false,true)

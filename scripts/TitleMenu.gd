@@ -13,6 +13,7 @@ onready var sign_in_bt: Control = $CenterContainer/VBoxContainer/HBoxContainer2/
 
 
 func _ready() -> void:
+	print("debugging working")
 	Global.TitleMenu = self
 	var normal_save_data = Save.loadData(Save.auto_save_file)
 	var hard_save_data = Save.loadData(Save.auto_hard_save_file)

@@ -10,8 +10,6 @@ func _ready() -> void:
 	Global.TopBar = self
 	inventory.marg_left = left_container.rect_size.x
 	version_label.text = str(getVersion())
-#	print(Globals.get("platform.android/version"))
-#	version_label.text = Global.get("platform.android/version")
 	return
 # warning-ignore:return_value_discarded
 #	inventory.connect("changeFlag",self,"changeFlag")

@@ -93,6 +93,3 @@ func set_current(player,bus):
 		fadeIn(busQueue[bus]["next"],bus,true)
 	else:
 		busQueue[bus]["next"] = null
-#
-#func test(p):
-#	print(p)
