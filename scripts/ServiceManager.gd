@@ -113,6 +113,18 @@ func inc_achivement(id,step):
 		if a["current_steps"] + step >= a["total_steps"]:
 			_set_unlocked(id)
 
+func set_achivement_steps(id,amm):
+	if amm < 0:
+		return
+	amm -= get_achivement(id)["current_steps"]
+	if amm < 1:
+		return
+	inc_achivement(id,amm)
+
+func reveal_achivement(id):
+	play_games_services.revealAchievement(id)
+	_set_revealed(id)
+
 func _set_unlocked(id):
 	if loaded_achivements == null:
 		return false
@@ -121,6 +133,10 @@ func _set_unlocked(id):
 			a["state"] = 0
 			return true
 	return false
+
+func _set_revealed(id):
+	if get_achivement(id)["state"] == 2:
+		_set_achivement_key(id,"state",1)
 
 func get_achivement(id):
 	if loaded_achivements == null:

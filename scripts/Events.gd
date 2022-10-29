@@ -289,7 +289,7 @@ func rats():
 	var amm = Difficulty.get_rats_amm()
 	var famm = Inventory.get_food_total_amm()
 	amm = amm if famm >= amm else famm
-	
+	Achivements.rats_eat(amm)
 	var foodAvaliable = []
 	var ate = {}
 	for food in Inventory.foodData:

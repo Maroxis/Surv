@@ -1,10 +1,12 @@
 extends Node
 
 func res_added(res,amm):
-	if amm < 0:
-		if "Carcass" in res:
-			ServiceManager.inc_achivement("CgkIzazBqs8DEAIQBw",-amm)# Butcher
-	elif amm > 0:
+	if not ServiceManager.is_signed_in():
+		return
+#	if amm < 0:
+#		if "Carcass" in res:
+#			ServiceManager.inc_achivement("CgkIzazBqs8DEAIQBw",-amm)# Butcher
+	if amm > 0:
 		match res:
 			"Wood":
 				ServiceManager.inc_achivement("CgkIzazBqs8DEAIQCA",amm) # Lumberjack
@@ -20,9 +22,14 @@ func res_added(res,amm):
 			ServiceManager.inc_achivement("CgkIzazBqs8DEAIQBg",amm) # Miner
 
 func med_added(_med,amm):
+	if not ServiceManager.is_signed_in():
+		return
 	ServiceManager.inc_achivement("CgkIzazBqs8DEAIQCQ",amm) # Herbalist
 
-func module_built(building,module):
+func animal_butchered():
+	ServiceManager.inc_achivement("CgkIzazBqs8DEAIQBw",1) # Butcher
+
+func module_built(building,_module):
 	match building:
 		"House":
 			if Buildings.getTierInt("House","Bed") > 0 and Buildings.getTierInt("House","Wall") > 0 and Buildings.getTierInt("House","Roof") > 0:
@@ -35,18 +42,29 @@ func module_built(building,module):
 				ServiceManager.unlock_achivement("CgkIzazBqs8DEAIQDQ") # Workshop
 	calc_defence()
 
-func day_passed(_days):
-	ServiceManager.inc_achivement("CgkIzazBqs8DEAIQEg",1) # Expert Survivor
-	ServiceManager.inc_achivement("CgkIzazBqs8DEAIQEQ",1) # Survivor
-	ServiceManager.inc_achivement("CgkIzazBqs8DEAIQEA",1) # Scout
-	ServiceManager.inc_achivement("CgkIzazBqs8DEAIQDw",1) # Getting hang of it
+func day_passed(days):
+	if not ServiceManager.is_signed_in():
+		return
+	ServiceManager.set_achivement_steps("CgkIzazBqs8DEAIQEg",days) # Expert Survivor
+	ServiceManager.set_achivement_steps("CgkIzazBqs8DEAIQEQ",days) # Survivor
+	ServiceManager.set_achivement_steps("CgkIzazBqs8DEAIQEA",days) # Scout
+	ServiceManager.set_achivement_steps("CgkIzazBqs8DEAIQDw",days) # Getting hang of it
 
 func calc_defence():
+	if not ServiceManager.is_signed_in():
+		return
 	var def = Buildings.calcDefence()
-	var a1 = ServiceManager.get_achivement("CgkIzazBqs8DEAIQDA") # Welcome to my castle
-	var a2 = ServiceManager.get_achivement("CgkIzazBqs8DEAIQCw") # Well defended
-	if a1["state"] != 0 and a1["current_steps"] < def:
-		ServiceManager.inc_achivement("CgkIzazBqs8DEAIQDA",def - a1["current_steps"])
-	if a2["state"] != 0 and a2["current_steps"] < def:
-		ServiceManager.inc_achivement("CgkIzazBqs8DEAIQCw",def - a2["current_steps"])
+	ServiceManager.set_achivement_steps("CgkIzazBqs8DEAIQDA",def) # Welcome to my castle
+	ServiceManager.set_achivement_steps("CgkIzazBqs8DEAIQCw", def) # Well defended
 
+func rats_eat(amm):
+	if not ServiceManager.is_signed_in():
+		return
+	ServiceManager.reveal_achivement("CgkIzazBqs8DEAIQEw")
+	ServiceManager.inc_achivement("CgkIzazBqs8DEAIQEw",amm) # Plague
+
+func full_sick():
+	if not ServiceManager.is_signed_in():
+		return
+	ServiceManager.reveal_achivement("CgkIzazBqs8DEAIQFA")
+	ServiceManager.unlock_achivement("CgkIzazBqs8DEAIQFA") # Gravely sick

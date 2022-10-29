@@ -34,6 +34,7 @@ func butcher():
 		Player.pass_time(Inventory.food[selectedCarcass]["craftTime"])
 		butcher_button.shakeSubtle()
 		refreshButton()
+		Achivements.animal_butchered()
 
 func refreshOutput():
 	clearList(output_container)

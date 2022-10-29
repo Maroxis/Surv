@@ -226,6 +226,8 @@ func change_sick(amm):
 	else:
 		amm *= medsBuff["sickReduction"] * Difficulty.get_sick_reduction_multiplayer()
 	sick += amm
+	if sick >= 100:
+		Achivements.full_sick()
 	sick = clamp(sick,0,100)
 	Global.UI.refreshHealth()
 
