@@ -3,13 +3,12 @@ extends CanvasLayer
 #onready var vx = get_viewport().size.x
 #onready var cx = rect_position.x
 var game = preload("res://nodes/Game.tscn")
-onready var settings: Control = $Settings
 onready var normal_save_label: Label = $CenterContainer/VBoxContainer/HBoxContainer2/Normal/DateLabel
 onready var hard_save_label: Label = $CenterContainer/VBoxContainer/HBoxContainer2/Hard/DateLabel
 onready var normal_bt_label: Label = $CenterContainer/VBoxContainer/HBoxContainer2/Normal/StartNormal/Label
 onready var hard_bt_label: Label = $CenterContainer/VBoxContainer/HBoxContainer2/Hard/StartHard/Label
 onready var leader_boards: Control = $LeaderBoards
-onready var sign_in_bt: Control = $CenterContainer/VBoxContainer/HBoxContainer2/GridContainer/SignIn
+onready var gpgs_container: GridContainer = $CenterContainer/VBoxContainer/HBoxContainer2/GPGSContainer
 
 
 func _ready() -> void:
@@ -20,15 +19,18 @@ func _ready() -> void:
 	populate_save_info(normal_save_label,normal_bt_label,normal_save_data)
 	populate_save_info(hard_save_label,hard_bt_label,hard_save_data)
 	gpgs_autostart()
+	ServiceManager.connect("signedIn",self,'toggle_gpgs',[true])
+	ServiceManager.connect("signedOut",self,'toggle_gpgs',[false])
 
 func gpgs_autostart():
-	Save.loadConfig()
-	if Global.InGSettings.gpgs_autostart_button.pressed:
-		if not ServiceManager.is_gpgs_available():
-			return
-		ServiceManager.sign_in()
-	else:
-		sign_in_bt.show()
+	var data = Save.loadConfig()["settings"]
+	if data.has("gpgs"):
+		if data["gpgs"].has("autostart"):
+			if ServiceManager.is_gpgs_available() and data["gpgs"]["autostart"]:
+				ServiceManager.sign_in()
+
+func toggle_gpgs(on):
+	gpgs_container.toggle(on)
 
 func populate_save_info(label,bt,data):
 	if data != null:
@@ -41,11 +43,9 @@ func populate_save_info(label,bt,data):
 
 func _on_Quit_pressed() -> void:
 	get_tree().quit()
-
-
-func _on_Settings_pressed() -> void:
-	settings.show()
-
+#
+#func _on_Settings_pressed() -> void:
+#	settings.show()
 
 func _on_StartNormal_pressed() -> void:
 	Difficulty.current = Difficulty.Normal
@@ -57,32 +57,5 @@ func _on_StartHard_pressed() -> void:
 # warning-ignore:return_value_discarded
 	get_tree().change_scene_to(game)
 
-func _on_Credits_pressed() -> void:
-	pass # Replace with function body.
-
-func _on_Records_pressed() -> void:
-	pass # Replace with function body.
-
-func _on_LeaderBoardsButton_pressed() -> void:
+func _on_GPGSContainer_leaderBoardsPressed() -> void:
 	leader_boards.open()
-
-
-func _on_SignInButton_pressed() -> void:
-	if not ServiceManager.is_gpgs_available():
-		return
-	else:
-		ServiceManager.sign_in()
-
-
-func _on_ShowAchivementsButton_pressed() -> void:
-	if ServiceManager.is_signed_in():
-		ServiceManager.show_achivements()
-
-
-func _on_TestButton_pressed() -> void:
-	ServiceManager.play_games_services.unlockAchievement("CgkIzazBqs8DEAIQFg")
-
-
-func _on_SignOutButton_pressed() -> void:
-	if ServiceManager.is_signed_in():
-		ServiceManager.sign_out()

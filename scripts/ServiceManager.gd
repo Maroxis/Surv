@@ -3,6 +3,9 @@ extends Node
 var play_games_services
 var loaded_achivements = null
 #var is_signed_in: bool = play_games_services.isSignedIn()
+signal signedIn
+signal signedOut
+
 func _ready():
 	# Check if plugin was added to the project
 	if Engine.has_singleton("GodotPlayGamesServices"):
@@ -48,16 +51,12 @@ func _ready():
 #	play_games_services.connect("_on_player_stats_loading_failed", self, "_on_player_stats_loading_failed")
 
 func _on_sign_in_success(_acc:String):
-	Global.InGSettings.gpgs_autostart_button.pressed = true
-	Save.saveConfig()
-	Global.TitleMenu.sign_in_bt.hide()
 	play_games_services.loadAchievementInfo(false)
+	emit_signal("signedIn")
 
 func _on_sign_in_failed(err:int):
-	Global.InGSettings.gpgs_autostart_button.pressed = false
-	Save.saveConfig()
-	Global.TitleMenu.sign_in_bt.show()
 	print("Log in failed: ",err)
+	emit_signal("signedOut")
 
 func _on_achievement_unlocked(id : String):
 	print("achivement unlocked: ",get_achivement(id)["name"])
@@ -82,9 +81,7 @@ func sign_in():
 
 func sign_out():
 	play_games_services.signOut()
-	Global.InGSettings.gpgs_autostart_button.pressed = false
-	Global.TitleMenu.sign_in_bt.show()
-	Save.saveConfig()
+	emit_signal("signedOut")
 
 func show_achivements():
 	play_games_services.showAchievements()

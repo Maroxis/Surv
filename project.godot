@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/BaseActivity.gd"
 }, {
-"base": "Control",
+"base": "SceneLoader",
 "class": "BaseActivityWTabs",
 "language": "GDScript",
 "path": "res://scripts/BaseActivityWTabs.gd"

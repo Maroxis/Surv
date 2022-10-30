@@ -1,0 +1,159 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://sprites/BG/9rectPanel.png" type="Texture" id=1]
+[ext_resource path="res://sprites/icon.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Icons/64x64px/podium.png" type="Texture" id=3]
+[ext_resource path="res://sprites/GooglePlay/ic_play_games_badge_green.png" type="Texture" id=4]
+[ext_resource path="res://sprites/GooglePlay/ic_play_games_badge_achievements_green.png" type="Texture" id=5]
+[ext_resource path="res://scripts/GPGSContainer.gd" type="Script" id=6]
+
+[node name="GPGSContainer" type="GridContainer"]
+margin_left = 768.0
+margin_right = 864.0
+margin_bottom = 384.0
+script = ExtResource( 6 )
+
+[node name="SignIn" type="Control" parent="."]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="SignIn"]
+self_modulate = Color( 0, 0.541176, 0.0196078, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="TextureRect" type="TextureRect" parent="SignIn"]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+stretch_mode = 4
+
+[node name="SignInButton" type="ToolButton" parent="SignIn"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="SignOut" type="Control" parent="."]
+visible = false
+margin_top = 100.0
+margin_right = 96.0
+margin_bottom = 196.0
+rect_min_size = Vector2( 96, 96 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="SignOut"]
+self_modulate = Color( 0.792157, 0.376471, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="TextureRect" type="TextureRect" parent="SignOut"]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+stretch_mode = 4
+
+[node name="SignOutButton" type="ToolButton" parent="SignOut"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Achivements" type="Control" parent="."]
+visible = false
+margin_right = 96.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Achivements"]
+self_modulate = Color( 0, 0.541176, 0.0196078, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="TextureRect" type="TextureRect" parent="Achivements"]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+stretch_mode = 4
+
+[node name="ShowAchivementsButton" type="ToolButton" parent="Achivements"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Leaderboards" type="Control" parent="."]
+margin_top = 100.0
+margin_right = 96.0
+margin_bottom = 196.0
+rect_min_size = Vector2( 96, 96 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Leaderboards"]
+self_modulate = Color( 0, 0.541176, 0.0196078, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="TextureRect" type="TextureRect" parent="Leaderboards"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+stretch_mode = 4
+
+[node name="LeaderBoardsButton" type="ToolButton" parent="Leaderboards"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TestAchivement" type="Control" parent="."]
+visible = false
+margin_top = 300.0
+margin_right = 96.0
+margin_bottom = 396.0
+rect_min_size = Vector2( 96, 96 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TestAchivement"]
+self_modulate = Color( 0, 0.541176, 0.0196078, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="TextureRect" type="TextureRect" parent="TestAchivement"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="TestsButton" type="ToolButton" parent="TestAchivement"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[connection signal="pressed" from="SignIn/SignInButton" to="." method="_on_SignInButton_pressed"]
+[connection signal="pressed" from="SignOut/SignOutButton" to="." method="_on_SignOutButton_pressed"]
+[connection signal="pressed" from="Achivements/ShowAchivementsButton" to="." method="_on_ShowAchivementsButton_pressed"]
+[connection signal="pressed" from="Leaderboards/LeaderBoardsButton" to="." method="_on_LeaderBoardsButton_pressed"]

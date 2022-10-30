@@ -15,12 +15,18 @@ onready var resolution_option_button: OptionButton = $"%ResolutionOptionButton"
 onready var export_debug_button: ToolButton = $"%ExportDebugButton"
 onready var shaders_button: CheckButton = $"%ShadersButton"
 onready var gpgs_autostart_button: CheckButton = $"%GPGSAutostartButton"
+onready var gpgs_container: GridContainer = $"%GPGSContainer"
 
 func _ready() -> void:
 	debug.visible = DevMode.on
 	Global.InGSettings = self
 	muteAll()
 	add_resolutions()
+	gpgs_container.leaderboards.hide()
+	var data = Save.loadConfig()
+	unpack(data["settings"])
+	ServiceManager.connect("signedIn",self,'toggle_gpgs',[true])
+	ServiceManager.connect("signedOut",self,'toggle_gpgs',[false])
 
 func muteAll():
 	setMute(1,true)
@@ -72,6 +78,11 @@ func refresh(data):
 	setButton(weather_bg,data["3"]["mute"])
 #	toggle_fullscreen(screen_button.pressed)
 	switch_resolution(resolution_option_button.selected)
+	gpgs_container.toggle(ServiceManager.is_signed_in())
+
+func toggle_gpgs(on):
+	gpgs_container.toggle(on)
+	Global.InGSettings.gpgs_autostart_button.pressed = on
 
 func _on_Debug_Button_toggled(on) -> void:
 	DevMode.DebugUI.switch(on)
@@ -190,3 +201,7 @@ func _on_ExportDebugButton_pressed() -> void:
 
 func _on_Shaders_Button_toggled(on) -> void:
 	get_tree().call_group("Shaders", "switch_shaders",on)
+
+func _on_InGSettings_visibility_changed() -> void:
+	if visible:
+		toggle_gpgs(ServiceManager.is_signed_in())

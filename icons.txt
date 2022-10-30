@@ -65,3 +65,6 @@
 <a href="https://www.flaticon.com/free-icons/ui" title="ui icons">Ui icons created by IYAHICON - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/leaderboard" title="leaderboard icons">Leaderboard icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/castle" title="castle icons">Castle icons created by Freepik - Flaticon</a>
+
+<a href="https://www.flaticon.com/free-icons/rat" title="rat icons">Rat icons created by Nadiinko - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/skull" title="skull icons">Skull icons created by Freepik - Flaticon</a>

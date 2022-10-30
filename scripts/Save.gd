@@ -38,12 +38,7 @@ func saveConfig():
 
 func loadConfig():
 	var data = loadData(config_save_file)
-	if data:
-		if data.has("settings"): # save compatibility to remove later
-			Global.InGSettings.unpack(data["settings"])
-#			Global.Tutorial.unpack(data["tutorial"])
-		else:
-			Global.InGSettings.unpack(data)
+	return data
 
 func saveRecord(time):
 	var prevData = loadRecord()
@@ -62,7 +57,7 @@ func autoSave():
 
 func autoLoad():
 	saveData(blank_save_file)
-	loadConfig()
+#	loadConfig()
 	if Difficulty.is_normal():
 		return loadSave(auto_save_file)
 	else:
