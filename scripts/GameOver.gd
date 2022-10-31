@@ -19,6 +19,7 @@ func init(reason):
 	time_lived_label.text = "Survived\n" + day + "Days\n" + time
 	death_reason_label.text += get_reason(reason) + " "
 	if not recordAdded:
+		ServiceManager.add_highscore(Global.Date.getTotalTime(),Difficulty.current)
 		var record = Save.saveRecord(Global.Date.getTotalTime())
 		var best = LeaderBoard.getBestTime(record)
 		if best != null:

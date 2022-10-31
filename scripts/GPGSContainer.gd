@@ -29,7 +29,10 @@ func _on_ShowAchivementsButton_pressed() -> void:
 		ServiceManager.show_achivements()
 
 func _on_LeaderBoardsButton_pressed() -> void:
-	emit_signal("leaderBoardsPressed")
+	if ServiceManager.is_signed_in():
+		ServiceManager.show_leaderboards()
+	else:
+		emit_signal("leaderBoardsPressed")
 
 func _on_SignOutButton_pressed() -> void:
 	if ServiceManager.is_signed_in():

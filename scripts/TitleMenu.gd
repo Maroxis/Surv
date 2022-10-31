@@ -19,7 +19,9 @@ func _ready() -> void:
 	populate_save_info(normal_save_label,normal_bt_label,normal_save_data)
 	populate_save_info(hard_save_label,hard_bt_label,hard_save_data)
 	gpgs_autostart()
+# warning-ignore:return_value_discarded
 	ServiceManager.connect("signedIn",self,'toggle_gpgs',[true])
+# warning-ignore:return_value_discarded
 	ServiceManager.connect("signedOut",self,'toggle_gpgs',[false])
 
 func gpgs_autostart():

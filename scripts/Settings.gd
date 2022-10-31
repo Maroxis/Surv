@@ -25,7 +25,9 @@ func _ready() -> void:
 	gpgs_container.leaderboards.hide()
 	var data = Save.loadConfig()
 	unpack(data["settings"])
+# warning-ignore:return_value_discarded
 	ServiceManager.connect("signedIn",self,'toggle_gpgs',[true])
+# warning-ignore:return_value_discarded
 	ServiceManager.connect("signedOut",self,'toggle_gpgs',[false])
 
 func muteAll():

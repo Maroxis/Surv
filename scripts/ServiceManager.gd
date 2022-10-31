@@ -36,10 +36,10 @@ func _ready():
 	play_games_services.connect("_on_achievement_incrementing_failed", self, "_on_achievement_incrementing_failed") # achievement: String
 	play_games_services.connect("_on_achievement_info_loaded", self, "_on_achievement_info_loaded") # achievements_json : String
 	play_games_services.connect("_on_achievement_info_load_failed", self, "_on_achievement_info_load_failed")
-#	play_games_services.connect("_on_leaderboard_score_retrieved", self, "_on_leaderboard_score_retrieved") # playerstats: String (JSON)
-#	play_games_services.connect("_on_leaderboard_score_retrieve_failed", self, "_on_leaderboard_score_retrieve_failed") 
-#	play_games_services.connect("_on_leaderboard_score_submitted", self, "_on_leaderboard_score_submitted") # leaderboard_id: String
-#	play_games_services.connect("_on_leaderboard_score_submitting_failed", self, "_on_leaderboard_score_submitting_failed") # leaderboard_id: String
+	play_games_services.connect("_on_leaderboard_score_retrieved", self, "_on_leaderboard_score_retrieved") # playerstats: String (JSON)
+	play_games_services.connect("_on_leaderboard_score_retrieve_failed", self, "_on_leaderboard_score_retrieve_failed") 
+	play_games_services.connect("_on_leaderboard_score_submitted", self, "_on_leaderboard_score_submitted") # leaderboard_id: String
+	play_games_services.connect("_on_leaderboard_score_submitting_failed", self, "_on_leaderboard_score_submitting_failed") # leaderboard_id: String
 #	play_games_services.connect("_on_game_saved_success", self, "_on_game_saved_success") # no params
 #	play_games_services.connect("_on_game_saved_fail", self, "_on_game_saved_fail") # no params
 #	play_games_services.connect("_on_game_load_success", self, "_on_game_load_success") # data: String
@@ -85,11 +85,16 @@ func sign_out():
 
 func show_achivements():
 	play_games_services.showAchievements()
+
 func is_signed_in():
 	if is_gpgs_available():
 		return play_games_services.isSignedIn()
 	else:
 		return false
+
+func show_leaderboards():
+	play_games_services.showAllLeaderBoards()
+
 func is_gpgs_available():
 	if play_games_services and play_games_services.isGooglePlayServicesAvailable():
 		return true
@@ -151,3 +156,19 @@ func _set_achivement_key(id,key,val):
 			a[key] = val
 			return true
 	return false
+
+func add_highscore(time,difficulty):
+	if difficulty == Difficulty.Normal:
+		time = clamp(time,120,144000)
+		play_games_services.submitLeaderBoardScore("CgkIzazBqs8DEAIQFw", time)
+	elif difficulty == Difficulty.Hard:
+		play_games_services.submitLeaderBoardScore("CgkIzazBqs8DEAIQGA", time)
+
+func _on_leaderboard_score_retrieved(_playerstats: String):
+	pass
+func _on_leaderboard_score_retrieve_failed():
+	pass
+func _on_leaderboard_score_submitted(_leaderboard_id: String):
+	pass
+func _on_leaderboard_score_submitting_failed(_leaderboard_id: String):
+	pass
