@@ -55,26 +55,31 @@ func _on_sign_in_success(_acc:String):
 	emit_signal("signedIn")
 
 func _on_sign_in_failed(err:int):
-	print("Log in failed: ",err)
+#	print("Log in failed: ",err)
 	emit_signal("signedOut")
 
 func _on_achievement_unlocked(id : String):
-	print("achivement unlocked: ",get_achivement(id)["name"])
+#	print("achivement unlocked: ",get_achivement(id)["name"])
+	pass
 
 func _on_achievement_unlocking_failed(id : String):
-	print("achivement failed: ",get_achivement(id)["name"])
+#	print("achivement failed: ",get_achivement(id)["name"])
+	pass
 
 func _on_achievement_incremented(id : String):
-	print("incremented: ", get_achivement(id)["name"])
+#	print("incremented: ", get_achivement(id)["name"])
+	pass
 	
 func _on_achievement_incrementing_failed(id : String):
-	print("inc failed: ", get_achivement(id)["name"])
+#	print("inc failed: ", get_achivement(id)["name"])
+	pass
 
 func _on_achievement_info_loaded(achievements_json : String):
 	loaded_achivements = parse_json(achievements_json)
 
 func _on_achievement_info_load_failed(id : String):
-	print("achivements loading failed: ",id)
+#	print("achivements loading failed: ",id)
+	pass
 	
 func sign_in():
 	play_games_services.signIn()

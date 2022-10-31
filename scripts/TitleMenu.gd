@@ -25,11 +25,16 @@ func _ready() -> void:
 	ServiceManager.connect("signedOut",self,'toggle_gpgs',[false])
 
 func gpgs_autostart():
-	var data = Save.loadConfig()["settings"]
-	if data.has("gpgs"):
-		if data["gpgs"].has("autostart"):
-			if ServiceManager.is_gpgs_available() and data["gpgs"]["autostart"]:
-				ServiceManager.sign_in()
+	if not ServiceManager.is_gpgs_available():
+		return
+	var data = Save.loadConfig()
+	if data == null:
+		ServiceManager.sign_in()
+	elif data.has("settings"):
+		if data["settings"].has("gpgs"):
+			if data["settings"]["gpgs"].has("autostart"):
+				if data["settings"]["gpgs"]["autostart"]:
+					ServiceManager.sign_in()
 
 func toggle_gpgs(on):
 	gpgs_container.toggle(on)
