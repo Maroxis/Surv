@@ -117,7 +117,7 @@ func inc_achivement(id,step):
 	if is_signed_in() and a["state"] != 0:
 		play_games_services.incrementAchievement(id, step)
 		_set_achivement_key(id,"current_steps", a["current_steps"] + step)
-		if a["current_steps"] + step >= a["total_steps"]:
+		if a["current_steps"] + step > a["total_steps"]:
 			_set_unlocked(id)
 
 func set_achivement_steps(id,amm):
