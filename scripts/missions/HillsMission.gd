@@ -1,6 +1,6 @@
 extends Mission
 
-onready var exploreTable = [0,3,5,8,12]
+onready var exploreTable = [0,3,6,9,16]
 onready var exploreTime = 40
 onready var exploreCurrentProgress = 0
 onready var exploreDiscovered = 1
@@ -25,7 +25,7 @@ func _ready() -> void:
 		"CopperOre": 50,
 		"TinOre": 30,
 		"IronOre": 80,
-		"Coal": 20
+		"Coal": 40
 	}
 	gatherAmm = {
 		"Rock": 10,

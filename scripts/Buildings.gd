@@ -64,9 +64,9 @@ onready var Structure = {
 					"Plank": 12
 				},
 				"time":{
-					"sections": 3,
+					"sections": 5,
 					"completed": 0,
-					"ammount": 60
+					"ammount": 80
 				},
 				"benefits":{
 					"sleepRegenMult": 2.4
@@ -184,7 +184,7 @@ onready var Structure = {
 				"time":{
 					"sections": 12,
 					"completed": 0,
-					"ammount": 80
+					"ammount": 90
 				},
 				"benefits":{
 					"defence": 12
@@ -235,9 +235,9 @@ onready var Structure = {
 					"Plank": 24
 				},
 				"time":{
-					"sections": 4,
+					"sections": 5,
 					"completed": 0,
-					"ammount": 40
+					"ammount": 80
 				},
 				"benefits":{
 					"roofed": true,
@@ -295,9 +295,9 @@ onready var Structure = {
 					"Plank": 14
 				},
 				"time":{
-					"sections": 3,
+					"sections": 5,
 					"completed": 0,
-					"ammount": 60
+					"ammount": 80
 				},
 				"benefits":{
 					"spoilMult": 0.5
@@ -326,9 +326,9 @@ onready var Structure = {
 					"Clay": 5
 				},
 				"time":{
-					"sections": 1,
+					"sections": 2,
 					"completed": 0,
-					"ammount": 40
+					"ammount": 30
 				},
 				"benefits":{
 					"tankSize": 30
@@ -339,7 +339,7 @@ onready var Structure = {
 					"Clay": 25
 				},
 				"time":{
-					"sections": 3,
+					"sections": 4,
 					"completed": 0,
 					"ammount": 80
 				},
@@ -354,7 +354,7 @@ onready var Structure = {
 				"time":{
 					"sections": 6,
 					"completed": 0,
-					"ammount": 120
+					"ammount": 80
 				},
 				"benefits":{
 					"tankSize": 200
@@ -491,7 +491,7 @@ onready var Structure = {
 				"time":{
 					"sections": 1,
 					"completed": 0,
-					"ammount": 30
+					"ammount": 40
 				},
 				"benefits":{
 					"filter": 2.2
@@ -536,7 +536,7 @@ onready var Structure = {
 				"time":{
 					"sections": 6,
 					"completed": 0,
-					"ammount": 80
+					"ammount": 90
 				},
 				"benefits":{
 					"smeltable": "Copper and Bronze",
@@ -549,9 +549,9 @@ onready var Structure = {
 					"Brick": 22
 				},
 				"time":{
-					"sections": 4,
+					"sections": 6,
 					"completed": 0,
-					"ammount": 80
+					"ammount": 120
 				},
 				"benefits":{
 					"smeltable": "Iron",
@@ -738,7 +738,7 @@ onready var Structure = {
 				"time":{
 					"sections": 4,
 					"completed": 0,
-					"ammount": 40
+					"ammount": 60
 				},
 				"benefits":{
 					"actionMult": 1.4,
@@ -759,7 +759,7 @@ onready var Structure = {
 				"time":{
 					"sections": 4,
 					"completed": 0,
-					"ammount": 60
+					"ammount": 80
 				},
 				"benefits":{
 					"actionMult": 2.0,
@@ -838,7 +838,7 @@ onready var Structure = {
 				"time":{
 					"sections": 8,
 					"completed": 0,
-					"ammount": 40
+					"ammount": 80
 				},
 				"benefits":{
 					"defence": 7
@@ -855,9 +855,9 @@ onready var Structure = {
 					"Brick": 62
 				},
 				"time":{
-					"sections": 8,
+					"sections": 14,
 					"completed": 0,
-					"ammount": 80
+					"ammount": 120
 				},
 				"benefits":{
 					"defence": 16
@@ -884,7 +884,7 @@ onready var Structure = {
 					"Thread": 3
 				},
 				"time":{
-					"sections": 3,
+					"sections": 2,
 					"completed": 0,
 					"ammount": 40
 				},
@@ -905,7 +905,7 @@ onready var Structure = {
 					"Wood": 12
 				},
 				"time":{
-					"sections": 3,
+					"sections": 4,
 					"completed": 0,
 					"ammount": 40
 				},
@@ -923,7 +923,7 @@ onready var Structure = {
 					"Plank": 12
 				},
 				"time":{
-					"sections": 3,
+					"sections": 4,
 					"completed": 0,
 					"ammount": 80
 				},
@@ -943,9 +943,9 @@ onready var Structure = {
 					"IronIngot": 2
 				},
 				"time":{
-					"sections": 4,
+					"sections": 5,
 					"completed": 0,
-					"ammount": 60
+					"ammount": 90
 				},
 				"benefits":{
 					"defence": 9
@@ -983,7 +983,7 @@ onready var Structure = {
 			},
 			"tier2" : {
 				"cost": {
-					"Stick": 160
+					"Stick": 120
 				},
 				"time":{
 					"sections": 8,
@@ -991,7 +991,7 @@ onready var Structure = {
 					"ammount": 40
 				},
 				"benefits":{
-					"defence": 6
+					"defence": 7
 				},
 				"required":{
 					"tool":{
@@ -1006,9 +1006,9 @@ onready var Structure = {
 					"Nail": 24
 				},
 				"time":{
-					"sections": 8,
+					"sections": 14,
 					"completed": 0,
-					"ammount": 60
+					"ammount": 90
 				},
 				"benefits":{
 					"defence": 14
@@ -1046,7 +1046,7 @@ onready var Structure = {
 			},
 			"tier2" : {
 				"cost": {
-					"Leaf": 32,
+					"Leaf": 24,
 					"Stick": 8,
 					"Thread": 4
 				},
@@ -1061,7 +1061,7 @@ onready var Structure = {
 			},
 			"tier3" : {
 				"cost": {
-					"Stick": 64
+					"Stick": 48
 				},
 				"time":{
 					"sections": 4,
@@ -1086,7 +1086,7 @@ onready var Structure = {
 				"time":{
 					"sections": 4,
 					"completed": 0,
-					"ammount": 50
+					"ammount": 80
 				},
 				"benefits":{
 					"defence": 6
@@ -1132,7 +1132,7 @@ onready var Structure = {
 			"tier2" : {
 				"cost": {
 					"Rock": 8,
-					"Thread": 12
+					"Thread": 4
 				},
 				"time":{
 					"sections": 4,
@@ -1155,9 +1155,9 @@ onready var Structure = {
 					"Thread": 6
 				},
 				"time":{
-					"sections": 3,
+					"sections": 4,
 					"completed": 0,
-					"ammount": 50
+					"ammount": 60
 				},
 				"benefits":{
 					"defence": 4,
@@ -1207,12 +1207,12 @@ onready var Structure = {
 					"Nail": 16
 				},
 				"time":{
-					"sections": 3,
+					"sections": 6,
 					"completed": 0,
-					"ammount": 80
+					"ammount": 90
 				},
 				"benefits":{
-					"defence": 6,
+					"defence": 7,
 					"intel": 2
 				},
 				"required":{
