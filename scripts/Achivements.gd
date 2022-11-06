@@ -29,17 +29,17 @@ func med_added(_med,amm):
 func animal_butchered():
 	ServiceManager.inc_achivement("CgkIzazBqs8DEAIQBw",1) # Butcher
 
-func module_built(building,_module):
-	match building:
-		"House":
-			if Buildings.getTierInt("House","Bed") > 0 and Buildings.getTierInt("House","Wall") > 0 and Buildings.getTierInt("House","Roof") > 0:
-				ServiceManager.unlock_achivement("CgkIzazBqs8DEAIQCg") # Home sweet home
-		"Collector":
-			if Buildings.isMaxTier(building):
-				ServiceManager.unlock_achivement("CgkIzazBqs8DEAIQDg") # Well hydrated
-		"Workbench":
-			if Buildings.isMaxTier(building):
-				ServiceManager.unlock_achivement("CgkIzazBqs8DEAIQDQ") # Workshop
+func module_built(_building,_module):
+	if not ServiceManager.is_signed_in():
+		return
+	if Buildings.getTierInt("House","Bed") > 0 and Buildings.getTierInt("House","Wall") > 0 and Buildings.getTierInt("House","Roof") > 0:
+		ServiceManager.unlock_achivement("CgkIzazBqs8DEAIQCg") # Home sweet home
+	if Buildings.isMaxTier("Collector"):
+		ServiceManager.unlock_achivement("CgkIzazBqs8DEAIQDg") # Well hydrated
+	if Buildings.isMaxTier("Workbench"):
+		ServiceManager.unlock_achivement("CgkIzazBqs8DEAIQDQ") # Workshop
+	if Buildings.isMaxTier("Obelisk","Monument"):
+		ServiceManager.unlock_achivement("CgkIzazBqs8DEAIQFQ") # Monument
 	calc_defence()
 
 func day_passed(days):
@@ -51,8 +51,6 @@ func day_passed(days):
 	ServiceManager.set_achivement_steps("CgkIzazBqs8DEAIQDw",days) # Getting hang of it
 
 func calc_defence():
-	if not ServiceManager.is_signed_in():
-		return
 	var def = Buildings.calcDefence()
 	ServiceManager.set_achivement_steps("CgkIzazBqs8DEAIQDA",def) # Welcome to my castle
 	ServiceManager.set_achivement_steps("CgkIzazBqs8DEAIQCw", def) # Well defended

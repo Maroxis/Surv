@@ -13,7 +13,7 @@ onready var gpgs_container: GridContainer = $CenterContainer/VBoxContainer/HBoxC
 
 func _ready() -> void:
 	print("debugging working")
-	Global.TitleMenu = self
+#	Global.TitleMenu = self
 	var normal_save_data = Save.loadData(Save.auto_save_file)
 	var hard_save_data = Save.loadData(Save.auto_hard_save_file)
 	populate_save_info(normal_save_label,normal_bt_label,normal_save_data)
@@ -66,3 +66,7 @@ func _on_StartHard_pressed() -> void:
 
 func _on_GPGSContainer_leaderBoardsPressed() -> void:
 	leader_boards.open()
+
+func _notification(what):   
+	if what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST: 
+		get_tree().quit()

@@ -110,7 +110,7 @@ func create_modules(structure,mainOffset):
 		modnum += 1
 	nodes["structure"] = addScene(scene,graph_edit)
 	nodes["structure"].set_slot_enabled_left(0, false)
-	nodes["structure"].offset.y = (mainOffset + curOffset) / 2 - nodes["structure"].rect_size.y
+	nodes["structure"].offset.y = (mainOffset + curOffset) / 2 - nodes["structure"].rect_size.y - 4
 	nodes["structure"].offset.x = xmargin
 	nodes["structure"].init(structure)
 	nodes["structure"].set_bought()

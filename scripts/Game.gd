@@ -10,3 +10,7 @@ func _ready() -> void:
 
 func _on_Settings_Button_pressed() -> void:
 	in_g_settings.show()
+
+func _notification(what):   
+	if what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST: 
+		Global.to_title_menu()

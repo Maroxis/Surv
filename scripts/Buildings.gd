@@ -1222,6 +1222,107 @@ onready var Structure = {
 				}
 			}
 		}
+	},
+	"Obelisk": {
+		"Monument":{
+			"benefitsText":{
+				"stage":"Fully building monument wins game"
+			},
+			"tier0" : {
+				"benefits":{
+				"stage": 0
+				}
+			},
+			"tier1" : {
+				"benefits":{
+					"stage": 1
+				},
+				"time":{
+					"sections": 24,
+					"completed": 0,
+					"ammount": 120
+				},
+				"required":{
+					"tool":{
+						"Shovel": 3,
+					}
+				}
+			},
+			"tier2" : {
+				"benefits":{
+					"stage": 2
+				},
+				"cost": {
+					"Rock": 240,
+					"Clay": 120
+				},
+				"time":{
+					"sections": 24,
+					"completed": 0,
+					"ammount": 90
+				},
+				"required":{
+					"tool":{
+						"Hammer": 3,
+					}
+				}
+			},
+			"tier3" : {
+				"benefits":{
+					"stage": 3
+				},
+				"cost": {
+					"Brick": 120
+				},
+				"time":{
+					"sections": 12,
+					"completed": 0,
+					"ammount": 140
+				},
+				"required":{
+					"tool":{
+						"Hammer": 3,
+					}
+				}
+			},
+			"tier4" : {
+				"benefits":{
+					"stage": 4
+				},
+				"cost": {
+					"Plank": 60,
+					"Nail": 20
+				},
+				"time":{
+					"sections": 12,
+					"completed": 0,
+					"ammount": 80
+				},
+				"required":{
+					"tool":{
+						"Hammer": 3,
+					}
+				}
+			},
+			"tier5" : {
+				"benefits":{
+					"stage": 5
+				},
+				"cost": {
+					"IronIngot": 12,
+				},
+				"time":{
+					"sections": 12,
+					"completed": 0,
+					"ammount": 90
+				},
+				"required":{
+					"tool":{
+						"Hammer": 4,
+					}
+				}
+			}
+		}
 	}
 }
 signal moduleBuilt
@@ -1367,6 +1468,8 @@ func isMaxTier(building,module = null):
 		return getTierInt(building,module) == getMaxTierInt(building,module)
 	else:
 		for module in Structure[building]:
+			if typeof(Structure[building][module]) != TYPE_DICTIONARY:
+				continue
 			if not isMaxTier(building,module):
 				return false
 		return true

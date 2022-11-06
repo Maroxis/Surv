@@ -54,30 +54,30 @@ func _on_sign_in_success(_acc:String):
 	play_games_services.loadAchievementInfo(false)
 	emit_signal("signedIn")
 
-func _on_sign_in_failed(err:int):
+func _on_sign_in_failed(_err:int):
 #	print("Log in failed: ",err)
 	emit_signal("signedOut")
 
 func _on_achievement_unlocked(id : String):
 #	print("achivement unlocked: ",get_achivement(id)["name"])
-	pass
+	_set_unlocked(id)
 
-func _on_achievement_unlocking_failed(id : String):
+func _on_achievement_unlocking_failed(_id : String):
 #	print("achivement failed: ",get_achivement(id)["name"])
 	pass
 
-func _on_achievement_incremented(id : String):
+func _on_achievement_incremented(_id : String):
 #	print("incremented: ", get_achivement(id)["name"])
 	pass
 	
-func _on_achievement_incrementing_failed(id : String):
+func _on_achievement_incrementing_failed(_id : String):
 #	print("inc failed: ", get_achivement(id)["name"])
 	pass
 
 func _on_achievement_info_loaded(achievements_json : String):
 	loaded_achivements = parse_json(achievements_json)
 
-func _on_achievement_info_load_failed(id : String):
+func _on_achievement_info_load_failed(_id : String):
 #	print("achivements loading failed: ",id)
 	pass
 	
@@ -110,15 +110,12 @@ func is_gpgs_available():
 func unlock_achivement(id):
 	if is_signed_in() and get_achivement(id)["state"] != 0:
 		play_games_services.unlockAchievement(id)
-		_set_unlocked(id)
 
 func inc_achivement(id,step):
 	var a = get_achivement(id)
 	if is_signed_in() and a["state"] != 0:
 		play_games_services.incrementAchievement(id, step)
 		_set_achivement_key(id,"current_steps", a["current_steps"] + step)
-		if a["current_steps"] + step > a["total_steps"]:
-			_set_unlocked(id)
 
 func set_achivement_steps(id,amm):
 	if amm < 0:
@@ -163,6 +160,8 @@ func _set_achivement_key(id,key,val):
 	return false
 
 func add_highscore(time,difficulty):
+	if not is_signed_in():
+		return
 	if difficulty == Difficulty.Normal:
 		time = clamp(time,120,144000)
 		play_games_services.submitLeaderBoardScore("CgkIzazBqs8DEAIQFw", time)

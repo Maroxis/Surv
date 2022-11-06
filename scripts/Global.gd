@@ -1,5 +1,5 @@
 extends Node
-
+onready var TitleMenu = load("res://nodes/TitleMenu.tscn")
 var UI
 var Missions
 var Date
@@ -27,7 +27,7 @@ var TopBar
 var Intel
 var Drying
 var Sound
-var TitleMenu
+#var TitleMenu
 
 func refresh():
 	ChestResources.refresh()
@@ -80,4 +80,7 @@ func toRoman(number):
 		5: return "V"
 		6: return "VI"
 		_: return ""
-	
+
+func to_title_menu():
+# warning-ignore:return_value_discarded
+	get_tree().change_scene_to(TitleMenu)

@@ -17,7 +17,8 @@ func _ready() -> void:
 # warning-ignore:return_value_discarded
 	connect("timeChanged",Global.Weather,"setTime")
 # warning-ignore:return_value_discarded
-	connect("newDay", Global.WinScreen,"checkDay")
+	if Difficulty.current == Difficulty.Normal:
+		connect("newDay", Global.WinScreen,"checkDay")
 # warning-ignore:return_value_discarded
 	connect("newDay", Achivements,"day_passed")
 #	connect("timeChanged",Global.Missions.woods,"toggleHerb")
