@@ -7,11 +7,14 @@ onready var hills: Control = $Hills
 onready var home: Control = $Home
 
 signal missionClosed
+signal missionOpened
 
 func _ready() -> void:
 	Global.Missions = self
 	for mission in self.get_children():
 		mission.connect("closed",self,"mission_closed")
+		if mission is Mission:
+			mission.connect("missionOpened",self,"mission_opened")
 # warning-ignore:return_value_discarded
 	connect("missionClosed",Events,"startEvent")
 # warning-ignore:return_value_discarded
@@ -35,3 +38,5 @@ func unpack(data):
 
 func mission_closed():
 	emit_signal("missionClosed")
+func mission_opened():
+	emit_signal("missionOpened")

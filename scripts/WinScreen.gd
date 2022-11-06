@@ -6,6 +6,7 @@ onready var monument_built_label: Label = $VBoxContainer/MonumentBuiltLabel
 func _ready() -> void:
 	Global.WinScreen = self
 	if Difficulty.current == Difficulty.Hard:
+# warning-ignore:return_value_discarded
 		Buildings.connect("moduleBuilt",self,"checkMonument")
 		continue_bt.show()
 		time_lived_label.hide()
