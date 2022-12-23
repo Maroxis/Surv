@@ -6,39 +6,36 @@ onready var mission_tutorials_container: Control = $"%MissionTutorials"
 #onready var reference: TextureRect = $Reference
 #onready var reference_mission: TextureRect = $ReferenceMission
 
-
-onready var tut_data = {
-	"startTutorials": false,
-	"missionTutorials": false
-}
-
 func _ready() -> void:
+	print(MetaData.data)
 	Global.Tutorial = self
-#	Global.Missions.connect("missionOpened",self,"show_tutorial",[mission_tutorials_container])
-#	show_tutorial(start_tutorials_container)
+	if !MetaData.data["Tutorial"]["startTutorials"]:
+		show_tutorial(start_tutorials_container)
+	if !MetaData.data["Tutorial"]["missionTutorials"]:
+		Global.Missions.connect("missionOpened",self,"show_tutorial",[mission_tutorials_container])
 
 func init():
 	return
 #	if not tut_data["startTutorials"]:
 #		self.show()
 
-func pack():
-	return tut_data
-
-func unpack(data):
-	for key in data:
-		tut_data[key] = data[key]
-	init()
+#func pack():
+#	return MetaData.data["Tutorial"]
+#
+#func unpack(data):
+#	for key in data:
+#		MetaData.data["Tutorial"][key] = data[key]
+#	init()
 
 func skip_all():
-	for tut in tut_data:
-		tut_data[tut] = true
-	Save.saveConfig()
+	for tut in MetaData.data["Tutorial"]:
+		MetaData.data["Tutorial"][tut] = true
+	Save.saveMetadata()
 
 func reset():
-	for tut in tut_data:
-		tut_data[tut] = false
-	Save.saveConfig()
+	for tut in MetaData.data["Tutorial"]:
+		MetaData.data["Tutorial"][tut] = false
+	Save.saveMetadata()
 
 func show_next(tutorials_container):
 	var tutorials = tutorials_container.get_children()
@@ -54,13 +51,12 @@ func show_next(tutorials_container):
 		current += 1
 	else:
 		self.hide()
-#		tut_data["startTutorials"] = true
-#		Save.saveConfig()
-#		match tutorials_container:
-#			start_tutorials_container:
-#				Global.Missions.connect("missionOpened",self,"show_tutorial",[mission_tutorials_container])
-#			mission_tutorials_container:
-#				pass
+		match tutorials_container:
+			start_tutorials_container:
+				MetaData.data["Tutorial"]["startTutorials"] = true
+			mission_tutorials_container:
+				MetaData.data["Tutorial"]["missionTutorials"] = true
+		Save.saveMetadata()
 
 func show_tutorial(tut):
 	current = 0

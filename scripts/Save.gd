@@ -5,6 +5,7 @@ const auto_save_file = "user://auto_save_file.save"
 const auto_hard_save_file = "user://auto_hard_save_file.save"
 const blank_save_file = "user://blank_save_file.save"
 const config_save_file = "user://config_file.json"
+const meta_save_file = "user://meta_file.save"
 const record_save_file = "user://record_file.json"
 
 var tools = {}
@@ -32,13 +33,23 @@ func exportDebug():
 func saveConfig():
 	var data = {}
 	data["settings"] = Global.InGSettings.pack()
-#	data["tutorial"] = Global.Tutorial.pack()
 	data = to_json(data)
 	return saveData(config_save_file,data)
 
 func loadConfig():
 	var data = loadData(config_save_file)
 	return data
+
+func saveMetadata():
+	var data = MetaData.pack()
+	data = to_json(data)
+	return saveData(meta_save_file,data)
+
+func loadMetadata():
+	var data = loadData(meta_save_file)
+	if data != null:
+		MetaData.unpack(data)
+#	return data
 
 func saveRecord(time):
 	var prevData = loadRecord()
@@ -103,12 +114,15 @@ func delRecords():
 	return Save.removeData(Save.record_save_file)
 func delBlank():
 	return Save.removeData(Save.blank_save_file)
+func delMeta():
+	return Save.removeData(Save.meta_save_file)
 
 func purgeData():
 	print("config: ",delConfig())
 	print("records: ",delRecords())
 	print("blank: ",delBlank())
 	print("save: ",delSave())
+	print("meta: ",delMeta())
 	return true
 
 func packData():

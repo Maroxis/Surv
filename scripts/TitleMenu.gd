@@ -14,6 +14,7 @@ onready var gpgs_container: GridContainer = $CenterContainer/VBoxContainer/HBoxC
 func _ready() -> void:
 	print("debugging working")
 #	Global.TitleMenu = self
+	Save.loadMetadata()
 	var normal_save_data = Save.loadData(Save.auto_save_file)
 	var hard_save_data = Save.loadData(Save.auto_hard_save_file)
 	populate_save_info(normal_save_label,normal_bt_label,normal_save_data)
