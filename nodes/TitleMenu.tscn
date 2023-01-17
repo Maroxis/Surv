@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://sprites/BG/IconRectBW.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scripts/TitleMenu.gd" type="Script" id=4]
 [ext_resource path="res://sprites/icon.png" type="Texture" id=5]
 [ext_resource path="res://nodes/components/BGCanvasRed.tscn" type="PackedScene" id=6]
+[ext_resource path="res://nodes/Credits.tscn" type="PackedScene" id=7]
 [ext_resource path="res://sprites/BG/9rectPanel.png" type="Texture" id=8]
 [ext_resource path="res://nodes/GPGSContainer.tscn" type="PackedScene" id=9]
 [ext_resource path="res://nodes/LeaderBoards.tscn" type="PackedScene" id=10]
@@ -228,12 +229,53 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="GPGSContainer" parent="CenterContainer/VBoxContainer/HBoxContainer2" instance=ExtResource( 9 )]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 768.0
+margin_right = 864.0
 margin_bottom = 420.0
+
+[node name="GPGSContainer" parent="CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer" instance=ExtResource( 9 )]
+unique_name_in_owner = true
+margin_left = 0.0
+margin_right = 96.0
+margin_bottom = 196.0
+
+[node name="Credits" type="Control" parent="CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+margin_top = 200.0
+margin_right = 96.0
+margin_bottom = 296.0
+rect_min_size = Vector2( 96, 96 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Credits"]
+self_modulate = Color( 0, 0.541176, 0.0196078, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Credits"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_type_variation = "64f"
+text = "C"
+align = 1
+valign = 1
+
+[node name="CreditsButton" type="ToolButton" parent="CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Credits"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="LeaderBoards" parent="." instance=ExtResource( 10 )]
 visible = false
 
+[node name="Credits" parent="." instance=ExtResource( 7 )]
+visible = false
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/Normal/StartNormal" to="." method="_on_StartNormal_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/Hard/StartHard" to="." method="_on_StartHard_pressed"]
-[connection signal="leaderBoardsPressed" from="CenterContainer/VBoxContainer/HBoxContainer2/GPGSContainer" to="." method="_on_GPGSContainer_leaderBoardsPressed"]
+[connection signal="leaderBoardsPressed" from="CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GPGSContainer" to="." method="_on_GPGSContainer_leaderBoardsPressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Credits/CreditsButton" to="." method="_on_CreditsButton_pressed"]

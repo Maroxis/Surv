@@ -8,7 +8,8 @@ onready var hard_save_label: Label = $CenterContainer/VBoxContainer/HBoxContaine
 onready var normal_bt_label: Label = $CenterContainer/VBoxContainer/HBoxContainer2/Normal/StartNormal/Label
 onready var hard_bt_label: Label = $CenterContainer/VBoxContainer/HBoxContainer2/Hard/StartHard/Label
 onready var leader_boards: Control = $LeaderBoards
-onready var gpgs_container: GridContainer = $CenterContainer/VBoxContainer/HBoxContainer2/GPGSContainer
+onready var gpgs_container: GridContainer = $"%GPGSContainer"
+onready var credits: Control = $"%Credits"
 
 
 func _ready() -> void:
@@ -71,3 +72,7 @@ func _on_GPGSContainer_leaderBoardsPressed() -> void:
 func _notification(what):   
 	if what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST: 
 		get_tree().quit()
+
+
+func _on_CreditsButton_pressed() -> void:
+	credits.open()
