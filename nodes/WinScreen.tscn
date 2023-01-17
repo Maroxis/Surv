@@ -13,7 +13,7 @@ theme = ExtResource( 2 )
 script = ExtResource( 5 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-self_modulate = Color( 0.454902, 0.109804, 0.109804, 1 )
+self_modulate = Color( 0.6, 0.145098, 0.145098, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -40,9 +40,11 @@ align = 1
 [node name="TimeLivedLabel" type="Label" parent="VBoxContainer"]
 margin_top = 226.0
 margin_right = 1280.0
-margin_bottom = 288.0
+margin_bottom = 418.0
 theme_type_variation = "48f"
-text = "You've survived over 100 days!"
+text = "You've survived over 100 days!
+You can continue in normal mode without score, 
+but we recommend starting new hard mode!"
 align = 1
 
 [node name="MonumentBuiltLabel" type="Label" parent="VBoxContainer"]
@@ -55,22 +57,22 @@ text = "You've built the monument!"
 align = 1
 
 [node name="Control2" type="Control" parent="VBoxContainer"]
-margin_top = 292.0
+margin_top = 422.0
 margin_right = 1280.0
-margin_bottom = 438.0
+margin_bottom = 503.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 442.0
+margin_top = 507.0
 margin_right = 1280.0
-margin_bottom = 570.0
+margin_bottom = 635.0
 alignment = 1
 
 [node name="Return" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
 self_modulate = Color( 0.129412, 1, 0, 1 )
-margin_left = 512.0
-margin_right = 768.0
+margin_left = 382.0
+margin_right = 638.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 256, 128 )
 size_flags_horizontal = 5
@@ -96,7 +98,6 @@ theme = ExtResource( 1 )
 text = "Return"
 
 [node name="Continue" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
-visible = false
 self_modulate = Color( 0.129412, 1, 0, 1 )
 margin_left = 642.0
 margin_right = 898.0
@@ -124,7 +125,7 @@ theme = ExtResource( 1 )
 text = "Continue"
 
 [node name="Control3" type="Control" parent="VBoxContainer"]
-margin_top = 574.0
+margin_top = 639.0
 margin_right = 1280.0
 margin_bottom = 720.0
 size_flags_horizontal = 3

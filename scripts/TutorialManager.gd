@@ -7,7 +7,6 @@ onready var mission_tutorials_container: Control = $"%MissionTutorials"
 #onready var reference_mission: TextureRect = $ReferenceMission
 
 func _ready() -> void:
-	print(MetaData.data)
 	Global.Tutorial = self
 	if !MetaData.data["Tutorial"]["startTutorials"]:
 		show_tutorial(start_tutorials_container)
