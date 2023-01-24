@@ -81,11 +81,11 @@
 [ext_resource path="res://nodes/BuildingTreeViewer.tscn" type="PackedScene" id=79]
 [ext_resource path="res://scripts/Sound.gd" type="Script" id=80]
 [ext_resource path="res://sound/sfx/UI_Neutral.ogg" type="AudioStream" id=81]
-[ext_resource path="res://sound/weather/Deszcz_slaby_looped.ogg" type="AudioStream" id=82]
-[ext_resource path="res://sound/weather/Deszcz_mocny_looped.ogg" type="AudioStream" id=83]
-[ext_resource path="res://sound/weather/Slonce_upal_looped.ogg" type="AudioStream" id=84]
-[ext_resource path="res://sound/weather/Slonce_pochmurnie_Pochmurnie_looped.ogg" type="AudioStream" id=85]
-[ext_resource path="res://sound/weather/Burza_z_piorunem_looped.ogg" type="AudioStream" id=86]
+[ext_resource path="res://sound/weather/Słońce_LOOP.ogg" type="AudioStream" id=82]
+[ext_resource path="res://sound/weather/Pochmurnie_LOOP.ogg" type="AudioStream" id=83]
+[ext_resource path="res://sound/weather/Deszcz_mocny_LOOP.ogg" type="AudioStream" id=84]
+[ext_resource path="res://sound/weather/Burza_LOOP.ogg" type="AudioStream" id=85]
+[ext_resource path="res://sound/weather/Deszcz_słaby_LOOP.ogg" type="AudioStream" id=86]
 [ext_resource path="res://nodes/components/BGCanvasRed.tscn" type="PackedScene" id=87]
 [ext_resource path="res://sprites/Icons/32x32px/hammer.png" type="Texture" id=88]
 [ext_resource path="res://sound/sfx/UI_Neutral_Short.ogg" type="AudioStream" id=89]
@@ -1060,7 +1060,7 @@ visible = false
 
 [node name="Sound" type="Node" parent="."]
 script = ExtResource( 80 )
-soundList = [ ExtResource( 84 ), ExtResource( 85 ), ExtResource( 85 ), ExtResource( 82 ), ExtResource( 83 ), ExtResource( 86 ), ExtResource( 81 ), ExtResource( 89 ), ExtResource( 94 ), ExtResource( 95 ), ExtResource( 93 ), ExtResource( 92 ), ExtResource( 90 ), ExtResource( 91 ), ExtResource( 101 ), ExtResource( 98 ), ExtResource( 96 ), ExtResource( 97 ), ExtResource( 99 ), ExtResource( 100 ), ExtResource( 103 ), ExtResource( 112 ), ExtResource( 104 ), ExtResource( 116 ), ExtResource( 109 ), ExtResource( 110 ), ExtResource( 113 ), ExtResource( 118 ), ExtResource( 102 ), ExtResource( 119 ), ExtResource( 114 ), ExtResource( 106 ), ExtResource( 105 ), ExtResource( 108 ), ExtResource( 115 ), ExtResource( 111 ), ExtResource( 117 ), ExtResource( 107 ) ]
+soundList = [ ExtResource( 82 ), ExtResource( 83 ), ExtResource( 83 ), ExtResource( 86 ), ExtResource( 84 ), ExtResource( 85 ), ExtResource( 81 ), ExtResource( 89 ), ExtResource( 94 ), ExtResource( 95 ), ExtResource( 93 ), ExtResource( 92 ), ExtResource( 90 ), ExtResource( 91 ), ExtResource( 101 ), ExtResource( 98 ), ExtResource( 96 ), ExtResource( 97 ), ExtResource( 99 ), ExtResource( 100 ), ExtResource( 103 ), ExtResource( 112 ), ExtResource( 104 ), ExtResource( 116 ), ExtResource( 109 ), ExtResource( 110 ), ExtResource( 113 ), ExtResource( 118 ), ExtResource( 102 ), ExtResource( 119 ), ExtResource( 114 ), ExtResource( 106 ), ExtResource( 105 ), ExtResource( 108 ), ExtResource( 115 ), ExtResource( 111 ), ExtResource( 117 ), ExtResource( 107 ) ]
 
 [node name="SoundList" type="Node" parent="Sound"]
 

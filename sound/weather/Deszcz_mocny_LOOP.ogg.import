@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Deszcz_mocny_LOOP.ogg-4c4b1735619c99bf0afac68533147088.oggstr"
+
+[deps]
+
+source_file="res://sound/weather/Deszcz_mocny_LOOP.ogg"
+dest_files=[ "res://.import/Deszcz_mocny_LOOP.ogg-4c4b1735619c99bf0afac68533147088.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

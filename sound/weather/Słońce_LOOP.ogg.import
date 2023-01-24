@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Słońce_LOOP.ogg-31049efe4b1e28258a20076dcd66d8bf.oggstr"
+
+[deps]
+
+source_file="res://sound/weather/Słońce_LOOP.ogg"
+dest_files=[ "res://.import/Słońce_LOOP.ogg-31049efe4b1e28258a20076dcd66d8bf.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
