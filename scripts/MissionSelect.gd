@@ -16,6 +16,7 @@ onready var icon: TextureRect = $VBox/Button/Icon
 export var connectMission = true
 export var foodRes = false
 export(String, "resources", "food", "meds", "null") var type = "resources"
+export var sound = 7
 signal missionSelected
 
 func updateGatherTime(tm):
@@ -54,6 +55,6 @@ func shake(suc):
 		buttonContainer.shakeSubtleSide()
 
 func _on_Button_pressed() -> void:
-	Global.Sound.play(Sound.UI_DEFAULT, "SFX")
 	emit_signal("missionSelected",self.name,foodRes,self)
+	Global.Sound.play(sound, "SFX")
 #	sound.play()

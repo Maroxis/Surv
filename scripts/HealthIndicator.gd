@@ -4,6 +4,7 @@ onready var meds_progress: TextureProgress = $TextureProgress/MedsProgress
 
 func _on_Health_Button_pressed() -> void:
 	Global.MedsApply.open()
+	Global.Sound.play(Sound.UI_DEFAULT_SHORT, "SFX")
 
 func setMedMaxTime(time):
 	time = max(time,1)

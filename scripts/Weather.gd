@@ -16,9 +16,9 @@ onready var calmSustain = 1
 
 onready var rainToxic = 0.0 # sick per unit
 #onready var currentSound = null
-onready var light_rain_sound: AudioStreamPlayer = $Sound/LightRain
-onready var heavy_rain_sound: AudioStreamPlayer = $Sound/HeavyRain
-onready var calm_sound: AudioStreamPlayer = $Sound/Calm
+#onready var light_rain_sound: AudioStreamPlayer = $Sound/LightRain
+#onready var heavy_rain_sound: AudioStreamPlayer = $Sound/HeavyRain
+#onready var calm_sound: AudioStreamPlayer = $Sound/Calm
 
 onready var shadersOn = true
 

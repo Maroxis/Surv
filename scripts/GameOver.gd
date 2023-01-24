@@ -30,6 +30,7 @@ func init(reason):
 			record_lived_label.text = "error loading records"
 		recordAdded = true
 	show()
+	Global.Sound.play(Sound.UI_DEATH, "SFX")
 
 func get_reason(reason : int):
 	match reason:

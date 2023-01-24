@@ -108,7 +108,7 @@ func updateVisualEx():
 	exploration_progress_label_time.text = Global.timeGetFullFormat(exploreTime)
 
 func _on_Explore_Button_pressed() -> void:
-	Global.Sound.play(Sound.UI_DEFAULT, "SFX")
+	Global.Sound.play(Sound.UI_TORCH, "SFX")
 	if(Inventory.add_resource("Torch",-1)):
 		explore_button.shakeSubtle()
 		explore()

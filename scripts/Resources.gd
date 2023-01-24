@@ -73,3 +73,4 @@ func update_resource(res,amm,food,meds):
 
 func toggle():
 	visible = !visible
+	Global.Sound.play(Sound.UI_EQ_BOX, "SFX")

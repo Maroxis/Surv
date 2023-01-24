@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/UI_Clay.ogg-5907125589f0229616d62849ff735cec.oggstr"
+
+[deps]
+
+source_file="res://sound/sfx/UI_Clay.ogg"
+dest_files=[ "res://.import/UI_Clay.ogg-5907125589f0229616d62849ff735cec.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

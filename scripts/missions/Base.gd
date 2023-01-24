@@ -28,16 +28,19 @@ func _on_Sleep_Button_pressed() -> void:
 func _on_Build_Button_pressed() -> void:
 	Global.BaseAct.build.show()
 	Global.BaseAct.build.refresh()
+	Global.Sound.play(Sound.UI_DEFAULT, "SFX")
 #	close(false)
 
 func _on_Craft_Button_pressed() -> void:
 	Global.BaseAct.craft.show()
 	Global.BaseAct.craft.refresh()
+	Global.Sound.play(Sound.UI_DEFAULT, "SFX")
 #	close(false)
 
 func _on_Status_Button_pressed() -> void:
 	Global.BaseAct.status.show()
 	Global.BaseAct.status.refresh()
+	Global.Sound.play(Sound.UI_DEFAULT, "SFX")
 #	close(false)
 
 func _on_Drink_Button_pressed() -> void:
@@ -51,6 +54,7 @@ func _on_Drink_Button_pressed() -> void:
 	var sick = getSickAmm()
 	if sick > 0:
 		Player.change_sick(sick*amm)
+	Global.Sound.play(Sound.UI_DRINKING, "SFX")
 
 func getSickAmm():
 	return Global.Weather.rainToxic - Buildings.getCurrentModule("Collector","Filter")["benefits"]["filter"]
@@ -77,6 +81,7 @@ func _deactivateDrink():
 func _on_Cook_Button_pressed() -> void:
 	Global.BaseAct.cook.show()
 	Global.BaseAct.cook.refresh()
+	Global.Sound.play(Sound.UI_DEFAULT, "SFX")
 #	close(false)
 
 
@@ -92,3 +97,4 @@ func _on_Home_visibility_changed() -> void:
 func _on_Defence_pressed() -> void:
 	Global.Intel.refresh()
 	Global.Intel.show()
+	Global.Sound.play(Sound.UI_DEFAULT, "SFX")

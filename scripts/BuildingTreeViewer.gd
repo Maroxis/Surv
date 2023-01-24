@@ -132,6 +132,7 @@ func close():
 
 func _on_GraphEdit_node_selected(node: Node) -> void:
 	module_detailed.init(node.buildingName,node.moduleName)
+	Global.Sound.play(Sound.UI_DEFAULT_SHORT, "SFX")
 
 func _on_Return_Button_pressed() -> void:
 	close()

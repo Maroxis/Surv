@@ -179,6 +179,7 @@ func change_energy(amm, set = false):
 func sleep():
 	var sleepTime = 360
 	pass_time(sleepTime,true)
+	Global.Sound.play(Sound.UI_SLEEP, "SFX")
 	
 func pass_time(time,sleep=false,wet = false):
 	time = int(time)
@@ -255,4 +256,5 @@ func eat(fd, amm, over = false, remove = true):
 		change_sick(Inventory.food[fd]["sick"])
 	if remove:
 		Inventory.add_resource(fd,-ate,true)
+	Global.Sound.play(Sound.UI_EATING, "SFX")
 	return amm-ate

@@ -68,6 +68,7 @@ margin_bottom = 427.0
 connectMission = false
 foodRes = true
 type = "food"
+sound = 8
 
 [node name="Icon" parent="Resources/WildBerry/VBox/Button" index="1"]
 texture = ExtResource( 5 )
@@ -84,6 +85,7 @@ margin_right = 479.0
 margin_bottom = 427.0
 foodRes = true
 type = "food"
+sound = 11
 
 [node name="MediumCarcass" parent="Resources" groups=["Animals"] instance=ExtResource( 1 )]
 anchor_right = 0.0
@@ -94,6 +96,7 @@ margin_right = 736.0
 margin_bottom = 427.0
 foodRes = true
 type = "food"
+sound = 11
 
 [node name="LargeCarcass" parent="Resources" groups=["Animals"] instance=ExtResource( 1 )]
 anchor_right = 0.0
@@ -104,6 +107,7 @@ margin_right = 993.0
 margin_bottom = 427.0
 foodRes = true
 type = "food"
+sound = 11
 
 [node name="Return" parent="." instance=ExtResource( 2 )]
 

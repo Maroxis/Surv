@@ -18,6 +18,7 @@ func populateItems():
 
 func applyMed(med,_node):
 	Player.apply_med(med)
+	Global.Sound.play(Sound.UI_HEART, "SFX")
 	refresh()
 	
 func disableAll():

@@ -110,6 +110,7 @@ func _on_Return_Button_pressed() -> void:
 	close()
 
 func _on_Build_Button_pressed() -> void:
+	Global.Sound.play(Sound.UI_BLUEPRINTS, "SFX")
 	preview_icon.shakeSubtle()
 	if(resRequired):
 		Buildings.buyModule(building,selectedModule)

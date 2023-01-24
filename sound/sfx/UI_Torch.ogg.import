@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/UI_Torch.ogg-7d998b9286900b833fa4aecd8dcd96e5.oggstr"
+
+[deps]
+
+source_file="res://sound/sfx/UI_Torch.ogg"
+dest_files=[ "res://.import/UI_Torch.ogg-7d998b9286900b833fa4aecd8dcd96e5.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

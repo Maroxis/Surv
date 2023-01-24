@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/UI_Furnace_LOOP.ogg-fca5b389f5b382525b61ddc75c163a12.oggstr"
+
+[deps]
+
+source_file="res://sound/sfx/UI_Furnace_LOOP.ogg"
+dest_files=[ "res://.import/UI_Furnace_LOOP.ogg-fca5b389f5b382525b61ddc75c163a12.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

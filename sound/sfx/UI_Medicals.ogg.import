@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/UI_Medicals.ogg-1060588487c97cf2b439e2d7682e6bcc.oggstr"
+
+[deps]
+
+source_file="res://sound/sfx/UI_Medicals.ogg"
+dest_files=[ "res://.import/UI_Medicals.ogg-1060588487c97cf2b439e2d7682e6bcc.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -14,6 +14,7 @@ func show():
 	var tween = create_tween().set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "rect_position:y", 0.0, 0.5)
 	tween.tween_property(texture_button, "disabled", false, 0.1)
+	Global.Sound.play(Sound.UI_EVENTS, "SFX")
 	
 
 func hide():

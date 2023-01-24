@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://sprites/BG/IconDiscBWTex.png" type="Texture" id=1]
 [ext_resource path="res://sprites/Icons/32x32px/axe.png" type="Texture" id=2]
 [ext_resource path="res://fonts/ResourcesTheme.tres" type="Theme" id=3]
 [ext_resource path="res://scripts/MissionSelect.gd" type="Script" id=4]
 [ext_resource path="res://sprites/Icons/64x64px/ore.png" type="Texture" id=5]
-[ext_resource path="res://nodes/ClickSound.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/animate/NodeAnimated.gd" type="Script" id=7]
 [ext_resource path="res://sprites/Icons/64x64px/bag.png" type="Texture" id=8]
 
@@ -173,9 +172,5 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Sound" parent="." instance=ExtResource( 6 )]
-volume_db = -1.0
-pitch_scale = 0.9
 
 [connection signal="pressed" from="VBox/Button/Button" to="." method="_on_Button_pressed"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/UI_Low_health_LOOP.ogg-c47f77bf38423af5cd9f1c345a72684d.oggstr"
+
+[deps]
+
+source_file="res://sound/sfx/UI_Low_health_LOOP.ogg"
+dest_files=[ "res://.import/UI_Low_health_LOOP.ogg-c47f77bf38423af5cd9f1c345a72684d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

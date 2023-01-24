@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/UI_Lokacje.ogg-57cb85e38c38b96f74021ef4aa8e31cf.oggstr"
+
+[deps]
+
+source_file="res://sound/sfx/UI_Lokacje.ogg"
+dest_files=[ "res://.import/UI_Lokacje.ogg-57cb85e38c38b96f74021ef4aa8e31cf.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
