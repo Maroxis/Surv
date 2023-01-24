@@ -55,6 +55,7 @@ func _updateBene(ctier,lastTier):
 				
 func _on_CraftButton_pressed() -> void:
 	if(Tools.checkCost(self.name)):
+		Global.Sound.play(Sound.UI_TOOLS, "SFX")
 		Tools.craftTool(self.name)
 		craftBtAnim(true)
 		Global.Craft.refreshCurTab()

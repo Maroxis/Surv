@@ -58,6 +58,7 @@ func changeAmm(amm):
 		time_remaining.text = Global.timeGetFullFormat(cookTime,false,true) 
 
 func start():
+	Global.Sound.play(Sound.UI_DEFAULT_SHORT, "SFX")
 	Inventory.add_resource(selectedItem,-rawAmm,true)
 	timeLeft = Inventory.food[selectedItem]["dryTime"] * rawAmm
 	timeTotal = timeLeft

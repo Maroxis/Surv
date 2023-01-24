@@ -30,6 +30,10 @@ func _updateTime():
 
 func _on_CraftButton_pressed() -> void:
 	if(Inventory.expand_bag(self.name)):
+		if self.name == "Cart":
+			Global.Sound.play(Sound.UI_CART, "SFX")
+		else:
+			Global.Sound.play(Sound.UI_MATERIALS, "SFX")
 		craft_button.disabled = true
 		craftBtAnim(true)
 #		fade()

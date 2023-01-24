@@ -21,3 +21,4 @@ func deselect():
 	texture_button.modulate = Color(1,0.5,0,1)
 func _on_TextureButton_pressed() -> void:
 	emit_signal("tabClicked",tab)
+	Global.Sound.play(Sound.UI_DEFAULT_SHORT, "SFX")

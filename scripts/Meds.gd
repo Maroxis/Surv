@@ -32,6 +32,7 @@ func _updateTime():
 
 func _on_CraftButton_pressed() -> void:
 	if Inventory.check_cost(self.name, 1, Inventory.meds):
+		Global.Sound.play(Sound.UI_MEDICALS, "SFX")
 		craftBtAnim(true)
 		Inventory.craft_meds(self.name)
 		Global.Craft.refreshCurTab()

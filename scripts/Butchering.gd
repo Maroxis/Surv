@@ -27,6 +27,7 @@ func addCarcassItems():
 
 func butcher():
 	if Inventory.add_resource(selectedCarcass,-1,true):
+		Global.Sound.play(Sound.UI_CHOP, "SFX")
 		for res in Inventory.food[selectedCarcass]["deconstruct"]:
 			var amm = floor(Inventory.food[selectedCarcass]["deconstruct"][res]*getButcherBonus())
 			var fd = Inventory.food.has(res)

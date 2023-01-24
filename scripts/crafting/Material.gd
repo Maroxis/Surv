@@ -25,6 +25,11 @@ func refresh():
 	
 func _on_CraftButton_pressed() -> void:
 	if Inventory.check_cost(self.name):
+		if self.name == "Plank":
+			Global.Sound.play(Sound.UI_PLANK, "SFX")
+		else:
+			Global.Sound.play(Sound.UI_MATERIALS, "SFX")
+		
 		craftBtAnim(true)
 		Inventory.craft_item(self.name)
 		Global.Craft.refreshCurTab()

@@ -35,6 +35,7 @@ func _updateTime():
 
 func _on_CraftButton_pressed() -> void:
 	if Inventory.buy_upgrade(self.name):
+		Global.Sound.play(Sound.UI_MATERIALS, "SFX")
 		craft_button.disabled = true
 		craftBtAnim(true)
 		if upg["size"].has("Water"):
