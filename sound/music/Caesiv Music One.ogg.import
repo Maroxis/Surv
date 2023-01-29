@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Caesiv Music One.ogg-95623c6dab0893cbe59529b868f5c85
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

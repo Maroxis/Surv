@@ -180,8 +180,7 @@ func _music_pass_time(amm):
 		_music_play()
 	else:
 		music["delay"] -= amm
-	print(music["delay"])
-		
+	
 func _music_play():
 	randomize()
 	var rand_song = musicList[randi() % musicList.size()]
