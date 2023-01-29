@@ -20,7 +20,6 @@ onready var gpgs_container: GridContainer = $"%GPGSContainer"
 func _ready() -> void:
 	debug.visible = DevMode.on
 	Global.InGSettings = self
-	muteAll()
 	add_resolutions()
 	gpgs_container.leaderboards.hide()
 	var data = Save.loadConfig()
@@ -91,6 +90,7 @@ func _on_Debug_Button_toggled(on) -> void:
 	DevMode.DebugUI.switch(on)
 
 func _on_Exit_Button_pressed() -> void:
+	Global.Sound.play(Sound.UI_DEFAULT, "SFX")
 	Save.saveConfig()
 	hide()
 

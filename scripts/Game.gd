@@ -9,6 +9,7 @@ func _ready() -> void:
 		Global.refresh()
 
 func _on_Settings_Button_pressed() -> void:
+	Global.Sound.play(Sound.UI_DEFAULT, "SFX")
 	in_g_settings.show()
 
 func _notification(what):   

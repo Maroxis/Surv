@@ -96,6 +96,10 @@ func checkTools(tl,dn,lv):
 func missionSelected(mission,food,node):
 	var sucess = addRes(mission,gatherAmm[mission],food)
 	node.shake(sucess)
+	if sucess:
+		Global.Sound.play(node.sound, "SFX")
+	else:
+		Global.Sound.play(Sound.UI_ERROR, "SFX")
 
 func pack():
 	var data = {}

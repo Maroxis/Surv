@@ -5,6 +5,8 @@ class_name Sound
 
 export(Array,AudioStream) var soundList
 
+#Global.Sound.play(Sound.UI_DEFAULT, "SFX")
+
 onready var busQueue = {
 	"Master":{
 		"current" : null,
@@ -69,7 +71,8 @@ enum {
 	UI_STICK = 34,
 	UI_TOOLS = 35,
 	UI_TORCH = 36,
-	UI_WOOD = 37
+	UI_WOOD = 37,
+	UI_ERROR = 38
 }
 func _ready() -> void:
 	Global.Sound = self

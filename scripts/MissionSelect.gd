@@ -56,5 +56,4 @@ func shake(suc):
 
 func _on_Button_pressed() -> void:
 	emit_signal("missionSelected",self.name,foodRes,self)
-	Global.Sound.play(sound, "SFX")
 #	sound.play()

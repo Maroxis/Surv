@@ -66,4 +66,8 @@ func _on_Berries_Button_pressed() -> void:
 	var amm = 4
 	var rest = Player.eat("WildBerry", amm, false, false)
 	var added = addRes("WildBerry",rest,true)
-	wild_berry.shake( added or rest != amm )
+	wild_berry.shake(added or rest != amm)
+	if added and rest == amm:
+		Global.Sound.play(Sound.UI_BERRY, "SFX")
+	elif not added:
+		Global.Sound.play(Sound.UI_ERROR, "SFX")

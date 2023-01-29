@@ -39,4 +39,5 @@ func _ready() -> void:
 func _on_Water_Button_pressed() -> void:
 	Player.pass_time(floor(gatherTimeWBonus["Water"]),false,true)
 	Player.change_water(Player.maxWater, true)
+	Global.Sound.play(Sound.UI_DRINKING, "SFX")
 	water.shake(true)
