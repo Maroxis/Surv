@@ -11,5 +11,5 @@ dest_files=[ "res://.import/UI_Low_health_LOOP.ogg-c47f77bf38423af5cd9f1c345a726
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0

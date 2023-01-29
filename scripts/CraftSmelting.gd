@@ -41,9 +41,10 @@ func refresh():
 	emit_signal("furnaceProgress",val)
 	if timeLeft == 0:
 		furnaceProgress.material.set_shader_param("on",0.0)
+		Global.Sound.stop_loop(Sound.UI_FURNACE_LOOP)
 	else:
 		furnaceProgress.material.set_shader_param("on",1.0)
-
+		Global.Sound.play_loop(Sound.UI_FURNACE_LOOP, "SFX_LOOP_GLOBAL")
 func pack():
 	var data = {}
 	data["timeTotal"] = timeTotal
@@ -82,6 +83,7 @@ func run(time):
 func finish():
 	Inventory.add_resource(smeltingRecipe,selectedAmm)
 	furnaceProgress.material.set_shader_param("on",0.0)
+	Global.Sound.stop_loop(Sound.UI_FURNACE_LOOP)
 
 func start():
 	emit_signal("furnaceProgress",100)
@@ -94,6 +96,7 @@ func start():
 	timeRemainingLabel.text = Global.timeGetFullFormat(time,false,true) 
 	furnaceProgress.value = 100
 	furnaceProgress.material.set_shader_param("on",1.0)
+	Global.Sound.play_loop(Sound.UI_FURNACE_LOOP, "SFX_LOOP_GLOBAL")
 
 func getCraftTime():
 	var time = Inventory.resources[selectedRecipe]["craftTime"]

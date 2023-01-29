@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Caesiv Music One.ogg-95623c6dab0893cbe59529b868f5c85f.oggstr"
+
+[deps]
+
+source_file="res://sound/music/Caesiv Music One.ogg"
+dest_files=[ "res://.import/Caesiv Music One.ogg-95623c6dab0893cbe59529b868f5c85f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

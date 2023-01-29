@@ -12,6 +12,7 @@ signal cookProgress
 
 func _ready() -> void:
 	Global.Cook = self
+	sound = Sound.UI_COOK_LOOP
 	for food in Inventory.food:
 		if Inventory.food[food].has("cookable") and Inventory.food[food]["cookable"]:
 			item_select.add_item(food)
@@ -50,6 +51,8 @@ func refreshProgress():
 		return
 	if timeLeft == 0:
 		flame.material.set_shader_param("on",0.0)
+	else:
+		Global.Sound.play_loop(Sound.UI_COOK_LOOP, "SFX_LOOP_GLOBAL")
 	time_remaining.text = Global.timeGetFullFormat(timeLeft,false,true) 
 	var val = float(timeLeft)/float(timeTotal) * 100
 	flame.value = val
@@ -75,6 +78,7 @@ func start():
 	processingItem = Inventory.food[selectedItem]["cooksInto"]
 	item_select.changeMaxAmm(Inventory.get_food_amm(selectedItem))
 	refreshProgress()
+	Global.Sound.play_loop(Sound.UI_COOK_LOOP, "SFX_LOOP_GLOBAL")
 
 func attemptStart() -> void:
 	fuelRequired = ceil(Inventory.food[selectedItem]["cookTime"] * rawAmm / Inventory.resources[selected_fuel]["burining"]["time"])

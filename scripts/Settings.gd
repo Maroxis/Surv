@@ -17,6 +17,8 @@ onready var shaders_button: CheckButton = $"%ShadersButton"
 onready var gpgs_autostart_button: CheckButton = $"%GPGSAutostartButton"
 onready var gpgs_container: GridContainer = $"%GPGSContainer"
 
+var main_channels = 4
+
 func _ready() -> void:
 	debug.visible = DevMode.on
 	Global.InGSettings = self
@@ -40,7 +42,7 @@ func muteAll():
 
 func pack():
 	var data = {}
-	for ch in AudioServer.bus_count:
+	for ch in main_channels:
 		data[ch] = {}
 		data[ch]["volume"] = AudioServer.get_bus_volume_db(ch)
 		data[ch]["mute"] = AudioServer.is_bus_mute(ch)
@@ -53,7 +55,7 @@ func pack():
 	return data
 
 func unpack(data):
-	for ch in AudioServer.bus_count:
+	for ch in main_channels:
 		change_volume(ch, data[str(ch)]["volume"])
 		setMute(ch, data[str(ch)]["mute"])
 	if data.has("display"):

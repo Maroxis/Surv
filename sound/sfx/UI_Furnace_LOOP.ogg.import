@@ -11,5 +11,5 @@ dest_files=[ "res://.import/UI_Furnace_LOOP.ogg-fca5b389f5b382525b61ddc75c163a12
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
