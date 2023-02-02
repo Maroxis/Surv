@@ -170,7 +170,7 @@ func _create_music_player():
 func _music_create_delay():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	music["delay"] = rng.randi_range(120, 240)
+	music["delay"] = rng.randi_range(720, 2880)
 	
 func _music_pass_time(amm):
 	if music["player"].is_playing():

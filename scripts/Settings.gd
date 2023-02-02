@@ -44,7 +44,7 @@ func pack():
 	var data = {}
 	for ch in main_channels:
 		data[ch] = {}
-		data[ch]["volume"] = AudioServer.get_bus_volume_db(ch)
+		data[ch]["volume"] = db2linear(AudioServer.get_bus_volume_db(ch))
 		data[ch]["mute"] = AudioServer.is_bus_mute(ch)
 	data["display"] = {}
 #	data["display"]["fullscreen"] = screen_button.pressed
@@ -75,8 +75,9 @@ func refresh(data):
 	var ch = 1
 	for i in sound_container.size():
 		if sound_container[i] is HBoxContainer:
-			sound_container[i].get_node("ProgressSlider").value = data[str(ch)]["volume"]
+			sound_container[i].get_node("ProgressSlider").set_val(data[str(ch)]["volume"])
 			ch += 1
+	_on_MasterProgressSlider_value_changed(1.0) #master unused fix for forcing always full volume
 	setButton(sfx_bg,data["1"]["mute"])
 	setButton(music_bg,data["2"]["mute"])
 	setButton(weather_bg,data["3"]["mute"])
@@ -96,8 +97,8 @@ func _on_Exit_Button_pressed() -> void:
 	Save.saveConfig()
 	hide()
 
-func change_volume(id, db):
-	AudioServer.set_bus_volume_db(id, db)
+func change_volume(id, val):
+	AudioServer.set_bus_volume_db(id, linear2db(val))
 	
 func _on_MasterProgressSlider_value_changed(value: float) -> void:
 	var sfx_index= AudioServer.get_bus_index("Master")
