@@ -14,7 +14,7 @@ var maxFood = 100
 var maxHealth = 100
 var maxEnergy = 100
 
-var lowWarning = 15
+var lowWarning = 20
 
 var water = 40.0
 var food = 80.0
@@ -160,6 +160,10 @@ func change_health(amm, reason = null, set = false):
 	health = clamp(health,0,maxHealth)
 	if(health < lowWarning && amm < 0):
 		Global.UI.health.shake()
+		Global.Sound.play_loop(Sound.UI_LOW_HEALTH_LOOP, "SFX_LOOP_GLOBAL")
+	elif(health > lowWarning and amm > 0):
+		Global.Sound.stop_loop(Sound.UI_LOW_HEALTH_LOOP)
+		
 	Global.UI.refreshHealth()
 	if(health <= 0):
 		Global.GameOver.init(reason)
