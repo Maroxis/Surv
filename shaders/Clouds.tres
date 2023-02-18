@@ -4,7 +4,7 @@
 code = "shader_type canvas_item;
 uniform float cloudStrength = 0.0;
 uniform float speed = 0.2;
-uniform vec3 color = vec3(0.95, 0.95, 0.90);
+uniform vec3 color = vec3(0.90, 0.90, 0.95);
 uniform float light = 1.0;
 
 float rand(vec2 coord){

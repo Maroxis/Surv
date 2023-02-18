@@ -157,7 +157,7 @@ func deactiveRain():
 	rain.hide()
 	
 func activeClouds():
-	clouds.material.set_shader_param("cloudStrength", min(0.15+0.20*current,1.0))
+	clouds.material.set_shader_param("cloudStrength", min(0.1+0.2*current,1.0))
 	clouds.material.set_shader_param("light", clamp(1.2-0.20*current,0.2,1.0))
 	background.material.set_shader_param("darken",0.8-0.02*current*current)
 	clouds.show()
