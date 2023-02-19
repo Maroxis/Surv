@@ -52,8 +52,12 @@ func unpack(weather):
 		rainToxic = float(weather["rainToxic"])
 
 func switch_shaders(on):
-	runShaders(type.Calm)
-	setTime(720)
+	if on:
+		runShaders()
+		setTime(Global.Date.time)
+	else:
+		runShaders(type.Calm)
+		setTime(720)
 	shadersOn = on
 
 func getRainInt():
