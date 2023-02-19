@@ -1,12 +1,19 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://sprites/papertex.png" type="Texture" id=1]
 [ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=2]
 [ext_resource path="res://sprites/BG/IconRect.png" type="Texture" id=3]
 [ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://scripts/EventPopup.gd" type="Script" id=5]
-[ext_resource path="res://sprites/UI/Topbar/BG.png" type="Texture" id=6]
+[ext_resource path="res://shaders/Blur.gdshader" type="Shader" id=6]
 [ext_resource path="res://sprites/primitive warning.png" type="Texture" id=7]
+[ext_resource path="res://sprites/BG/paper-scroll.png" type="Texture" id=8]
+[ext_resource path="res://sprites/BG/white-rect.png" type="Texture" id=9]
+[ext_resource path="res://resources/LightMaskMaterial.tres" type="Material" id=10]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 6 )
+shader_param/lod = 2.0
 
 [sub_resource type="DynamicFont" id=1]
 size = 128
@@ -29,8 +36,18 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 5 )
 
-[node name="BG" type="TextureRect" parent="."]
-self_modulate = Color( 0.8, 0.8, 0.752941, 1 )
+[node name="MaskLight" type="Light2D" parent="."]
+unique_name_in_owner = true
+light_mask = 0
+position = Vector2( 840, 360 )
+texture = ExtResource( 9 )
+mode = 2
+range_layer_min = 126
+range_layer_max = 126
+range_item_cull_mask = 2
+
+[node name="Blur" type="TextureRect" parent="."]
+material = SubResource( 2 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -39,14 +56,30 @@ margin_left = -840.0
 margin_top = -360.0
 margin_right = 840.0
 margin_bottom = 360.0
+texture = ExtResource( 9 )
+
+[node name="BG" type="TextureRect" parent="."]
+self_modulate = Color( 0.8, 0.8, 0.752941, 1 )
+light_mask = 2
+material = ExtResource( 10 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -360.0
+margin_right = 640.0
+margin_bottom = 360.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 2
 
-[node name="WarningTexture" type="TextureRect" parent="."]
+[node name="WarningTexture" type="TextureRect" parent="BG"]
 self_modulate = Color( 1, 1, 1, 0.243137 )
+light_mask = 2
+use_parent_material = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -58,6 +91,8 @@ margin_bottom = 332.5
 texture = ExtResource( 7 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+light_mask = 2
+material = ExtResource( 10 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -71,12 +106,15 @@ grow_vertical = 2
 alignment = 1
 
 [node name="Control" type="Control" parent="HBoxContainer"]
+light_mask = 2
 margin_right = 238.0
 margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+light_mask = 2
+use_parent_material = true
 margin_left = 242.0
 margin_right = 1437.0
 margin_bottom = 720.0
@@ -85,6 +123,8 @@ size_flags_stretch_ratio = 5.0
 
 [node name="Title" type="Label" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
+light_mask = 2
+use_parent_material = true
 margin_right = 1195.0
 margin_bottom = 161.0
 theme = ExtResource( 2 )
@@ -94,12 +134,16 @@ align = 1
 valign = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer"]
+light_mask = 2
+use_parent_material = true
 margin_top = 165.0
 margin_right = 1195.0
 margin_bottom = 485.0
 rect_min_size = Vector2( 0, 320 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/ScrollContainer"]
+light_mask = 2
+use_parent_material = true
 margin_right = 1195.0
 margin_bottom = 320.0
 size_flags_horizontal = 3
@@ -107,6 +151,8 @@ size_flags_vertical = 3
 
 [node name="Desc" type="Label" parent="HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
+light_mask = 2
+use_parent_material = true
 margin_right = 1195.0
 margin_bottom = 85.0
 theme = ExtResource( 2 )
@@ -116,6 +162,8 @@ autowrap = true
 
 [node name="Result" type="Label" parent="HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
+light_mask = 2
+use_parent_material = true
 margin_top = 89.0
 margin_right = 1195.0
 margin_bottom = 130.0
@@ -126,6 +174,8 @@ autowrap = true
 [node name="TextureButton" type="TextureButton" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 self_modulate = Color( 0.129412, 1, 0, 1 )
+light_mask = 2
+use_parent_material = true
 margin_top = 489.0
 margin_right = 1195.0
 margin_bottom = 617.0
@@ -138,6 +188,8 @@ expand = true
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/TextureButton"]
+light_mask = 2
+use_parent_material = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -150,22 +202,31 @@ theme = ExtResource( 2 )
 text = "OK"
 
 [node name="Control2" type="Control" parent="HBoxContainer"]
+light_mask = 2
+use_parent_material = true
 margin_left = 1441.0
 margin_right = 1680.0
 margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Border" type="TextureRect" parent="."]
-visible = false
-modulate = Color( 1, 0.701961, 0.282353, 1 )
+[node name="ScrollBorder" type="NinePatchRect" parent="."]
+unique_name_in_owner = true
+self_modulate = Color( 0.8, 0.8, 0.752941, 1 )
+light_mask = 2
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -840.0
-margin_top = -64.0
-margin_right = 840.0
-texture = ExtResource( 6 )
-expand = true
-stretch_mode = 1
+margin_left = -656.0
+margin_top = -48.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 1312, 64 )
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 264, 70 )
+patch_margin_left = 24
+patch_margin_top = 16
+patch_margin_right = 24
+patch_margin_bottom = 16
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
