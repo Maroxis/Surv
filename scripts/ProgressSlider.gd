@@ -1,21 +1,23 @@
-extends ProgressBar
+extends HSlider
 class_name ProgressSlider
-onready var h_slider: HSlider = $HSlider
 onready var db_indicator: Label = $DbIndicator
+onready var texture_progress: TextureProgress = $TextureProgress
 
 func _ready() -> void:
 	emit_signal("value_changed",value)
-	h_slider.min_value = min_value
-	h_slider.max_value = max_value
-	h_slider.step = step
-	h_slider.page = page
-	
+
 func set_val(val):
-	h_slider.value = val
+	self.value = val
+
+func set_mute(muted):
+	if muted:
+		texture_progress.tint_progress = Color("ff0000")
+	else:
+		texture_progress.tint_progress = Color("08ff00")
 
 func get_db():
-	return linear2db(h_slider.value)
+	return linear2db(value)
 
-func _on_HSlider_value_changed(value: float) -> void:
-	self.value = value
+func _on_ProgressSlider_value_changed(value: float) -> void:
 	db_indicator.text =( "%.2f" % linear2db(value) ) + "db"
+	texture_progress.value = value

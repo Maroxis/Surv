@@ -16,10 +16,16 @@ onready var export_debug_button: ToolButton = $"%ExportDebugButton"
 onready var shaders_button: CheckButton = $"%ShadersButton"
 onready var gpgs_autostart_button: CheckButton = $"%GPGSAutostartButton"
 onready var gpgs_container: GridContainer = $"%GPGSContainer"
+onready var bg_paper: TextureRect = $TextureRect
+onready var scroll_container: ScrollContainer = $TextureRect/ScrollContainer
+onready var sfx_progress_slider: HSlider = $TextureRect/ScrollContainer/VBoxContainer/Sound/SFX/ProgressSlider
+onready var music_progress_slider: HSlider = $TextureRect/ScrollContainer/VBoxContainer/Sound/Music/ProgressSlider
+onready var weather_progress_slider: HSlider = $TextureRect/ScrollContainer/VBoxContainer/Sound/Weather/ProgressSlider
 
 var main_channels = 4
 
 func _ready() -> void:
+	scroll_container.get_v_scrollbar().connect("value_changed",self,"moveBG")
 	debug.visible = DevMode.on
 	Global.InGSettings = self
 	add_resolutions()
@@ -143,8 +149,10 @@ func toggleMute(sfx_index,button):
 	var muted = AudioServer.is_bus_mute(sfx_index)
 	setButton(button,not muted)
 	AudioServer.set_bus_mute(sfx_index, not muted)
+	return not muted
 
 func setButton(button,muted:bool):
+	print(button)
 	if muted:
 		button.modulate = Color(1,0,0)
 	else:
@@ -155,15 +163,18 @@ func setMute(ch,mute):
 
 func _on_SFXButton_pressed() -> void:
 	var sfx_index= AudioServer.get_bus_index("SFX")
-	toggleMute(sfx_index,sfx_bg)
+	var muted = toggleMute(sfx_index,sfx_bg)
+	sfx_progress_slider.set_mute(muted)
 
 func _on_MusicButton_pressed() -> void:
 	var sfx_index= AudioServer.get_bus_index("Music")
-	toggleMute(sfx_index,music_bg)
+	var muted = toggleMute(sfx_index,music_bg)
+	music_progress_slider.set_mute(muted)
 
 func _on_WeatherButton_pressed() -> void:
 	var sfx_index= AudioServer.get_bus_index("Weather")
-	toggleMute(sfx_index,weather_bg)
+	var muted = toggleMute(sfx_index,weather_bg)
+	weather_progress_slider.set_mute(muted)
 
 
 func _on_ResetTutorialButton_pressed() -> void:
@@ -211,3 +222,6 @@ func _on_Shaders_Button_toggled(on) -> void:
 func _on_InGSettings_visibility_changed() -> void:
 	if visible:
 		toggle_gpgs(ServiceManager.is_signed_in())
+		
+func moveBG(val):
+	bg_paper.material.set_shader_param("offset", Vector2(0,-val))
