@@ -85,8 +85,11 @@ func refresh(data):
 			ch += 1
 	_on_MasterProgressSlider_value_changed(1.0) #master unused fix for forcing always full volume
 	setButton(sfx_bg,data["1"]["mute"])
+	sfx_progress_slider.set_mute(data["1"]["mute"])
 	setButton(music_bg,data["2"]["mute"])
+	music_progress_slider.set_mute(data["2"]["mute"])
 	setButton(weather_bg,data["3"]["mute"])
+	weather_progress_slider.set_mute(data["3"]["mute"])
 #	toggle_fullscreen(screen_button.pressed)
 	switch_resolution(resolution_option_button.selected)
 	gpgs_container.toggle(ServiceManager.is_signed_in())
@@ -152,7 +155,6 @@ func toggleMute(sfx_index,button):
 	return not muted
 
 func setButton(button,muted:bool):
-	print(button)
 	if muted:
 		button.modulate = Color(1,0,0)
 	else:
