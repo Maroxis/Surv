@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sprites/Icons/128x128px/Wenrexa Chest.png" type="Texture" id=1]
+[ext_resource path="res://sprites/Icons/128x128px/book.png" type="Texture" id=2]
 [ext_resource path="res://scripts/InventoryUI.gd" type="Script" id=3]
 [ext_resource path="res://resources/HbarNoScroll.tres" type="Theme" id=4]
 [ext_resource path="res://nodes/Bag.tscn" type="PackedScene" id=5]
@@ -21,14 +22,14 @@ alignment = 2
 
 [node name="Margin" type="Control" parent="HBoxContainer"]
 visible = false
-margin_right = 828.0
+margin_right = 504.0
 margin_bottom = 128.0
 size_flags_horizontal = 3
 
 [node name="Container" type="Control" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 608.0
-margin_right = 1128.0
+margin_left = 504.0
+margin_right = 1024.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 520, 128 )
 __meta__ = {
@@ -67,14 +68,29 @@ size_flags_vertical = 4
 [node name="ChestButton" type="TextureButton" parent="HBoxContainer"]
 unique_name_in_owner = true
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 1128.0
-margin_right = 1256.0
+margin_left = 1024.0
+margin_right = 1152.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 texture_normal = ExtResource( 1 )
 expand = true
 stretch_mode = 5
 script = ExtResource( 6 )
+
+[node name="Margin3" type="Control" parent="HBoxContainer"]
+margin_left = 1152.0
+margin_right = 1176.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 24, 0 )
+
+[node name="BookButton" type="TextureButton" parent="HBoxContainer"]
+margin_left = 1176.0
+margin_right = 1256.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 80, 0 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
 
 [node name="Margin2" type="Control" parent="HBoxContainer"]
 margin_left = 1256.0
@@ -88,6 +104,7 @@ one_shot = true
 autostart = true
 
 [connection signal="pressed" from="HBoxContainer/ChestButton" to="." method="_on_ChestButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/BookButton" to="." method="_on_BookButton_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="HBoxContainer/Container/Bag"]

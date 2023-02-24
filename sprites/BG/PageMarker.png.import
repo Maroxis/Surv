@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Wenrexa Healing magic.png-e9e4e25c52e3c203d97927c57e80bbea.stex"
+path="res://.import/PageMarker.png-d52efd42cc9660152acd29525b60af33.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Icons/128x128px/Wenrexa Healing magic.png"
-dest_files=[ "res://.import/Wenrexa Healing magic.png-e9e4e25c52e3c203d97927c57e80bbea.stex" ]
+source_file="res://sprites/BG/PageMarker.png"
+dest_files=[ "res://.import/PageMarker.png-d52efd42cc9660152acd29525b60af33.stex" ]
 
 [params]
 

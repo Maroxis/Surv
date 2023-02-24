@@ -7,6 +7,9 @@ onready var chest: TextureButton = $"%ChestButton"
 onready var bag: Control = $"%Bag"
 onready var container: Control = $"%Container"
 onready var margin: Control = $HBoxContainer/Margin
+onready var margin_2: Control = $HBoxContainer/Margin2
+onready var margin_3: Control = $HBoxContainer/Margin3
+onready var book_button: TextureButton = $HBoxContainer/BookButton
 
 onready var itemsOrgPos = []
 onready var inProgress = 0
@@ -120,7 +123,7 @@ func _on_ChestButton_pressed() -> void:
 
 func resizeQuickBar():
 	var isize = quick_bar.get_children()[0].rect_size.x + seperation
-	var content = chest.rect_size.x + bag.rect_size.x
+	var content = chest.rect_size.x + bag.rect_size.x + book_button.rect_size.x + margin_2.rect_size.x + margin_3.rect_size.x
 	var ratio = get_viewport().size.x/get_viewport().size.y
 	var diff = (get_viewport().size.y-720.0)*ratio
 	var new_size = stepify(get_viewport().size.x - diff - marg_left - content - isize/2, isize)
@@ -145,3 +148,7 @@ func _on_Timer_timeout() -> void:
 #		timer.start()
 #	else:
 	resizeQuickBar()
+
+
+func _on_BookButton_pressed() -> void:
+	Global.GuideBook.toggle()

@@ -27,6 +27,7 @@ var TopBar
 var Intel
 var Drying
 var Sound
+var GuideBook
 #var TitleMenu
 
 func refresh():

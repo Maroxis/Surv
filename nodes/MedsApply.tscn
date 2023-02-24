@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/MedsApply.gd" type="Script" id=1]
 [ext_resource path="res://nodes/components/ReturnButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/components/BGCanvasRed.tscn" type="PackedScene" id=3]
-[ext_resource path="res://sprites/Icons/128x128px/Wenrexa Healing magic.png" type="Texture" id=4]
+[ext_resource path="res://sprites/Icons/128x128px/health.png" type="Texture" id=4]
 
 [node name="MedsApply" type="Control"]
 anchor_right = 1.0

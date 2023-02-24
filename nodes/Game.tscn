@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=2]
+[gd_scene load_steps=129 format=2]
 
 [ext_resource path="res://nodes/Weather.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
@@ -17,7 +17,7 @@
 [ext_resource path="res://nodes/Settings.tscn" type="PackedScene" id=15]
 [ext_resource path="res://sprites/Icons/64x64px/water.png" type="Texture" id=16]
 [ext_resource path="res://nodes/missions/Plains.tscn" type="PackedScene" id=17]
-[ext_resource path="res://sprites/Icons/128x128px/Wenrexa Healing magic.png" type="Texture" id=18]
+[ext_resource path="res://sprites/Icons/128x128px/health.png" type="Texture" id=18]
 [ext_resource path="res://sprites/Icons/32x32px/shovel.png" type="Texture" id=19]
 [ext_resource path="res://nodes/Build.tscn" type="PackedScene" id=20]
 [ext_resource path="res://nodes/GameOver.tscn" type="PackedScene" id=21]
@@ -123,6 +123,7 @@
 [ext_resource path="res://sound/music/Caesiv Music One.ogg" type="AudioStream" id=121]
 [ext_resource path="res://sound/music/Caesiv Music Three.ogg" type="AudioStream" id=122]
 [ext_resource path="res://sound/music/Caesiv Music Two.ogg" type="AudioStream" id=123]
+[ext_resource path="res://nodes/GuideBook.tscn" type="PackedScene" id=124]
 
 [sub_resource type="Theme" id=2]
 default_font = ExtResource( 51 )
@@ -550,6 +551,10 @@ visible = false
 [node name="WinScreen" parent="Canvas/UI/TopLayer" instance=ExtResource( 56 )]
 visible = false
 
+[node name="GuideBook" parent="Canvas/UI/TopLayer" instance=ExtResource( 124 )]
+unique_name_in_owner = true
+visible = false
+
 [node name="Status" type="CanvasLayer" parent="Canvas/UI"]
 layer = 90
 
@@ -599,9 +604,6 @@ texture_progress = ExtResource( 28 )
 fill_mode = 3
 tint_under = Color( 0.25098, 0.25098, 0.25098, 1 )
 script = ExtResource( 69 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MedsProgress" type="TextureProgress" parent="Canvas/UI/Status/Corner/Health/TextureProgress"]
 anchor_left = 0.5
