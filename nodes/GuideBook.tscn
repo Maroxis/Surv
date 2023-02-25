@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://sprites/papertex.png" type="Texture" id=1]
 [ext_resource path="res://sprites/woodtex.png" type="Texture" id=2]
@@ -22,6 +22,11 @@
 [ext_resource path="res://sprites/Icons/64x64px/poultice.png" type="Texture" id=20]
 [ext_resource path="res://sprites/Icons/64x64px/sickdefence.png" type="Texture" id=21]
 [ext_resource path="res://sprites/Icons/64x64px/sickreduction.png" type="Texture" id=22]
+[ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=23]
+[ext_resource path="res://sprites/Icons/64x64px/wood.png" type="Texture" id=24]
+[ext_resource path="res://nodes/MissionSelect.tscn" type="PackedScene" id=25]
+[ext_resource path="res://nodes/Bag.tscn" type="PackedScene" id=26]
+[ext_resource path="res://sprites/Icons/128x128px/Wenrexa Chest.png" type="Texture" id=27]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -131,6 +136,7 @@ tab_align = 0
 tabs_visible = false
 
 [node name="PlayerStatus" type="Control" parent="TabContentContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -407,14 +413,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContentContainer/PlayerHealth/VBoxContainer"]
-margin_right = 888.0
+margin_right = 916.0
 margin_bottom = 41.0
 text = "Player Health"
 align = 1
 
 [node name="Health" type="HBoxContainer" parent="TabContentContainer/PlayerHealth/VBoxContainer"]
 margin_top = 49.0
-margin_right = 888.0
+margin_right = 916.0
 margin_bottom = 221.0
 
 [node name="StatusIndicator" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health" instance=ExtResource( 14 )]
@@ -447,7 +453,7 @@ text = "Health - "
 
 [node name="Description" type="Label" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health"]
 margin_left = 100.0
-margin_right = 888.0
+margin_right = 916.0
 margin_bottom = 172.0
 size_flags_horizontal = 3
 theme_type_variation = "24f"
@@ -460,13 +466,28 @@ autowrap = true
 
 [node name="Health2" type="HBoxContainer" parent="TabContentContainer/PlayerHealth/VBoxContainer"]
 margin_top = 229.0
-margin_right = 888.0
+margin_right = 916.0
 margin_bottom = 401.0
 
 [node name="StatusIndicator" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health2" instance=ExtResource( 14 )]
 margin_right = 96.0
 margin_bottom = 172.0
 rect_min_size = Vector2( 96, 96 )
+
+[node name="TextureProgress" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health2/StatusIndicator" index="0"]
+self_modulate = Color( 1, 0, 0, 1 )
+value = 80.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="TextureRect" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health2/StatusIndicator/TextureProgress" index="0"]
+margin_left = -32.0
+margin_right = 96.0
+texture = ExtResource( 4 )
+
+[node name="Value" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health2/StatusIndicator/TextureProgress" index="1"]
+text = "80"
 
 [node name="SickProgress" type="TextureProgress" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health2/StatusIndicator"]
 show_behind_parent = true
@@ -497,21 +518,6 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="TextureProgress" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health2/StatusIndicator" index="1"]
-self_modulate = Color( 1, 0, 0, 1 )
-value = 80.0
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="TextureRect" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health2/StatusIndicator/TextureProgress" index="0"]
-margin_left = -32.0
-margin_right = 96.0
-texture = ExtResource( 4 )
-
-[node name="Value" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health2/StatusIndicator/TextureProgress" index="1"]
-text = "80"
-
 [node name="Label" type="Label" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health2"]
 visible = false
 margin_left = 100.0
@@ -522,20 +528,20 @@ text = "Illnes - "
 
 [node name="Description" type="Label" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health2"]
 margin_left = 100.0
-margin_right = 888.0
+margin_right = 916.0
 margin_bottom = 172.0
 size_flags_horizontal = 3
 theme_type_variation = "24f"
 text = "To Keep your illness low:
 - avoid eating raw food
 - avoid spending long time outdoors when it is raining
--take crafted medicine (click on health indicator to open menu)
-"
+- sleep in your camp
+- take crafted medicine (click on health indicator to open menu)"
 autowrap = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContentContainer/PlayerHealth/VBoxContainer"]
 margin_top = 409.0
-margin_right = 888.0
+margin_right = 916.0
 margin_bottom = 473.0
 
 [node name="Icon" type="TextureRect" parent="TabContentContainer/PlayerHealth/VBoxContainer/HBoxContainer"]
@@ -577,40 +583,40 @@ text = "24h:30m"
 [node name="Label2" type="Label" parent="TabContentContainer/PlayerHealth/VBoxContainer/HBoxContainer"]
 margin_left = 550.0
 margin_top = 16.0
-margin_right = 888.0
+margin_right = 916.0
 margin_bottom = 48.0
 theme_type_variation = "24f"
-text = "    Only 1 can be active at a time"
+text = "    Only one can be active at a time"
 
 [node name="Hbox" type="HBoxContainer" parent="TabContentContainer/PlayerHealth/VBoxContainer"]
 margin_top = 481.0
-margin_right = 888.0
+margin_right = 916.0
 margin_bottom = 545.0
 
 [node name="Label" type="Label" parent="TabContentContainer/PlayerHealth/VBoxContainer/Hbox"]
 margin_top = 16.0
-margin_right = 207.0
+margin_right = 217.0
 margin_bottom = 48.0
 theme_type_variation = "24f"
-text = "lower sickness gain"
+text = "lowers sickness gain"
 
 [node name="TextureRect" type="TextureRect" parent="TabContentContainer/PlayerHealth/VBoxContainer/Hbox"]
-margin_left = 211.0
-margin_right = 275.0
+margin_left = 221.0
+margin_right = 285.0
 margin_bottom = 64.0
 texture = ExtResource( 21 )
 
 [node name="Label2" type="Label" parent="TabContentContainer/PlayerHealth/VBoxContainer/Hbox"]
-margin_left = 279.0
+margin_left = 289.0
 margin_top = 16.0
-margin_right = 610.0
+margin_right = 620.0
 margin_bottom = 48.0
 theme_type_variation = "24f"
 text = "sickness reduction multiplayer"
 
 [node name="TextureRect2" type="TextureRect" parent="TabContentContainer/PlayerHealth/VBoxContainer/Hbox"]
-margin_left = 614.0
-margin_right = 678.0
+margin_left = 624.0
+margin_right = 688.0
 margin_bottom = 64.0
 texture = ExtResource( 22 )
 
@@ -625,23 +631,137 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContentContainer/Travel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 128.0
+margin_left = 64.0
 margin_top = 16.0
 margin_right = -128.0
 margin_bottom = -7.0
-custom_constants/separation = 8
+custom_constants/separation = 24
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="Label" type="Label" parent="TabContentContainer/Travel/VBoxContainer"]
-margin_right = 880.0
+margin_right = 1033.0
 margin_bottom = 41.0
-text = "Player Status"
+text = "Travel & Resources"
 align = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContentContainer/Travel/VBoxContainer"]
+margin_top = 65.0
+margin_right = 1033.0
+margin_bottom = 328.0
+
+[node name="Control" type="Control" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer"]
+margin_right = 128.0
+margin_bottom = 263.0
+rect_min_size = Vector2( 128, 128 )
+
+[node name="SelectLocationBT" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer/Control" instance=ExtResource( 23 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Label" type="Label" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer"]
+margin_left = 132.0
+margin_top = 67.0
+margin_right = 451.0
+margin_bottom = 196.0
+text = "Click button to
+travel to location.
+Each action takes time"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer"]
+margin_left = 455.0
+margin_right = 1033.0
+margin_bottom = 263.0
+
+[node name="MissionSelect" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer/HBoxContainer" instance=ExtResource( 25 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 192.0
+margin_bottom = 263.0
+
+[node name="Icon" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer/HBoxContainer/MissionSelect/VBox/Button" index="1"]
+texture = ExtResource( 24 )
+
+[node name="Name" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer/HBoxContainer/MissionSelect/VBox" index="1"]
+text = "Wood"
+
+[node name="Ammount" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer/HBoxContainer/MissionSelect/VBox/HBoxContainer" index="0"]
+margin_left = 48.0
+margin_right = 81.0
+text = "3x"
+
+[node name="WeightContainer" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer/HBoxContainer/MissionSelect/VBox/HBoxContainer" index="1"]
+margin_left = 85.0
+margin_right = 144.0
+
+[node name="Weight" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer/HBoxContainer/MissionSelect/VBox/HBoxContainer/WeightContainer" index="0"]
+text = "2.4"
+
+[node name="Time" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer/HBoxContainer/MissionSelect/VBox" index="3"]
+text = "1:00"
+
+[node name="Label" type="Label" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer/HBoxContainer"]
+margin_left = 196.0
+margin_top = 1.0
+margin_right = 578.0
+margin_bottom = 262.0
+text = "Selecting resource
+will gather it to bag
+
+name
+ammount / weight per unit
+time to gather"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContentContainer/Travel/VBoxContainer"]
+margin_top = 352.0
+margin_right = 1033.0
+margin_bottom = 481.0
+
+[node name="Bag" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer2" instance=ExtResource( 26 )]
+margin_right = 128.0
+margin_bottom = 129.0
+rect_min_size = Vector2( 128, 128 )
+
+[node name="TextureProgress" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer2/Bag" index="0"]
+value = 96.0
+
+[node name="Value" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer2/Bag/TextureProgress" index="0"]
+text = "0.4"
+
+[node name="Label" type="Label" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer2"]
+margin_left = 132.0
+margin_right = 426.0
+margin_bottom = 129.0
+text = "Once your bag is full
+return to camp to
+deposit items"
+
+[node name="Control" type="Control" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer2"]
+margin_left = 430.0
+margin_right = 462.0
+margin_bottom = 129.0
+rect_min_size = Vector2( 32, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer2"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 466.0
+margin_right = 594.0
+margin_bottom = 129.0
+texture = ExtResource( 27 )
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer2"]
+margin_left = 598.0
+margin_top = 22.0
+margin_right = 958.0
+margin_bottom = 107.0
+text = " You can always check all
+ your resources in chest"
+
 [node name="Crafting" type="Control" parent="TabContentContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -663,7 +783,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="TabContentContainer/Crafting/VBoxContainer"]
 margin_right = 880.0
 margin_bottom = 41.0
-text = "Player Status"
+text = "Crafting"
 align = 1
 
 [node name="Cooking" type="Control" parent="TabContentContainer"]
@@ -731,3 +851,5 @@ align = 1
 [editable path="TabContentContainer/PlayerStatus/VBoxContainer/Water3/StatusIndicator"]
 [editable path="TabContentContainer/PlayerHealth/VBoxContainer/Health/StatusIndicator"]
 [editable path="TabContentContainer/PlayerHealth/VBoxContainer/Health2/StatusIndicator"]
+[editable path="TabContentContainer/Travel/VBoxContainer/HBoxContainer/HBoxContainer/MissionSelect"]
+[editable path="TabContentContainer/Travel/VBoxContainer/HBoxContainer2/Bag"]
