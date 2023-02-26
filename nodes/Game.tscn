@@ -532,6 +532,10 @@ margin_bottom = 176.0
 rect_min_size = Vector2( 64, 64 )
 text = "Date"
 
+[node name="GuideBook" parent="Canvas/UI/TopLayer" instance=ExtResource( 124 )]
+unique_name_in_owner = true
+visible = false
+
 [node name="Resources" parent="Canvas/UI/TopLayer" instance=ExtResource( 49 )]
 visible = false
 theme = ExtResource( 9 )
@@ -549,10 +553,6 @@ visible = false
 visible = false
 
 [node name="WinScreen" parent="Canvas/UI/TopLayer" instance=ExtResource( 56 )]
-visible = false
-
-[node name="GuideBook" parent="Canvas/UI/TopLayer" instance=ExtResource( 124 )]
-unique_name_in_owner = true
 visible = false
 
 [node name="Status" type="CanvasLayer" parent="Canvas/UI"]

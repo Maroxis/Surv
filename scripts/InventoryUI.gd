@@ -152,3 +152,4 @@ func _on_Timer_timeout() -> void:
 
 func _on_BookButton_pressed() -> void:
 	Global.GuideBook.toggle()
+	Global.Sound.play(Sound.UI_DEFAULT, "SFX")
