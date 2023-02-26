@@ -157,6 +157,7 @@ func disableCaveIn():
 	cave_in_tex_pr.max_value = 0
 
 func digCaveIn():
+	Global.Sound.play(Sound.UI_ROCK, "SFX")
 	caveInProgress += 1
 	cave_in_tex_pr.value = caveInProgress
 	if caveInProgress >= caveInTotal:
