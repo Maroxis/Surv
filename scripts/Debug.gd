@@ -1,6 +1,6 @@
 extends Control
 
-onready var soak_meter: ProgressBar = $SoakMeter
+onready var soak_meter: ProgressBar = $"%SoakMeter"
 onready var status: Control = $"%Status"
 
 func _ready() -> void:

@@ -96,6 +96,8 @@ func play(stream: int,bus = "Master",oneshoot = true):
 	else:
 		if busQueue[bus]["current"] != null:
 			if busQueue[bus]["next"] == null:
+				if( busQueue[bus]["current"].stream == player.stream):
+					return busQueue[bus]["current"]
 				busQueue[bus]["next"] = player
 				fadeOut(busQueue[bus]["current"])
 				fadeIn(busQueue[bus]["next"],bus)
@@ -170,7 +172,7 @@ func _create_music_player():
 func _music_create_delay():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	music["delay"] = rng.randi_range(720, 2880)
+	music["delay"] = rng.randi_range(1440, 4320)
 	
 func _music_pass_time(amm):
 	if music["player"].is_playing():

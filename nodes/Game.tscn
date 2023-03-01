@@ -492,45 +492,47 @@ script = ExtResource( 5 )
 [node name="TopLayer" type="CanvasLayer" parent="Canvas/UI"]
 layer = 126
 
-[node name="Debug" type="Control" parent="Canvas/UI/TopLayer"]
+[node name="Debug" type="VBoxContainer" parent="Canvas/UI/TopLayer"]
 unique_name_in_owner = true
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+margin_top = 128.0
+margin_right = 286.0
+margin_bottom = 237.0
 theme = ExtResource( 9 )
 script = ExtResource( 53 )
 
-[node name="TestButton" type="Button" parent="Canvas/UI/TopLayer/Debug"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Canvas/UI/TopLayer/Debug"]
+margin_right = 286.0
+margin_bottom = 64.0
+
+[node name="TestButton" type="Button" parent="Canvas/UI/TopLayer/Debug/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 2.0
-margin_top = 128.0
-margin_right = 66.0
-margin_bottom = 192.0
+margin_right = 108.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 text = "WTHR"
 
-[node name="SoakMeter" type="ProgressBar" parent="Canvas/UI/TopLayer/Debug"]
-margin_left = 8.0
-margin_top = 197.0
-margin_right = 136.0
-margin_bottom = 229.0
-rect_min_size = Vector2( 128, 32 )
-
-[node name="AddResButton" type="Button" parent="Canvas/UI/TopLayer/Debug"]
+[node name="AddResButton" type="Button" parent="Canvas/UI/TopLayer/Debug/HBoxContainer"]
 margin_left = 112.0
-margin_top = 129.0
 margin_right = 205.0
-margin_bottom = 193.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 text = "Items"
 
-[node name="SkipDaysButton" type="Button" parent="Canvas/UI/TopLayer/Debug"]
-margin_left = 208.0
-margin_top = 129.0
-margin_right = 285.0
-margin_bottom = 176.0
+[node name="SkipDaysButton" type="Button" parent="Canvas/UI/TopLayer/Debug/HBoxContainer"]
+margin_left = 209.0
+margin_right = 286.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 text = "Date"
+
+[node name="SoakMeter" type="ProgressBar" parent="Canvas/UI/TopLayer/Debug"]
+unique_name_in_owner = true
+margin_top = 68.0
+margin_right = 128.0
+margin_bottom = 109.0
+rect_min_size = Vector2( 128, 32 )
+size_flags_horizontal = 0
 
 [node name="GuideBook" parent="Canvas/UI/TopLayer" instance=ExtResource( 124 )]
 unique_name_in_owner = true
@@ -1081,9 +1083,9 @@ musicList = [ ExtResource( 121 ), ExtResource( 123 ), ExtResource( 122 ) ]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Defence" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Defence_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/Missions/Home/Return/Button" to="Canvas/CanvasLayer/GameWindow/Missions/Home" method="_on_Return_Button_pressed"]
 [connection signal="pressed" from="Canvas/CanvasLayer/GameWindow/BaseActivities/Status/Return/Button" to="Canvas/CanvasLayer/GameWindow/BaseActivities/Status" method="_on_Return_Button_pressed"]
-[connection signal="pressed" from="Canvas/UI/TopLayer/Debug/TestButton" to="Canvas/UI/TopLayer/Debug" method="_on_TestButton_pressed"]
-[connection signal="pressed" from="Canvas/UI/TopLayer/Debug/AddResButton" to="Canvas/UI/TopLayer/Debug" method="_on_AddResButton_pressed"]
-[connection signal="pressed" from="Canvas/UI/TopLayer/Debug/SkipDaysButton" to="Canvas/UI/TopLayer/Debug" method="_on_SkipDaysButton_pressed"]
+[connection signal="pressed" from="Canvas/UI/TopLayer/Debug/HBoxContainer/TestButton" to="Canvas/UI/TopLayer/Debug" method="_on_TestButton_pressed"]
+[connection signal="pressed" from="Canvas/UI/TopLayer/Debug/HBoxContainer/AddResButton" to="Canvas/UI/TopLayer/Debug" method="_on_AddResButton_pressed"]
+[connection signal="pressed" from="Canvas/UI/TopLayer/Debug/HBoxContainer/SkipDaysButton" to="Canvas/UI/TopLayer/Debug" method="_on_SkipDaysButton_pressed"]
 [connection signal="pressed" from="Canvas/UI/Status/Corner/Health/TextureProgress/Button" to="Canvas/UI/Status/Corner/Health" method="_on_Health_Button_pressed"]
 [connection signal="pressed" from="Canvas/UI/Status/Corner/Food/TextureProgress/Button" to="Canvas/UI/Status/Corner/Food" method="_on_Food_Button_pressed"]
 [connection signal="pressed" from="Canvas/UI/Status/TopBar/TopBar/Left/VBoxContainer/SettingsButton" to="." method="_on_Settings_Button_pressed"]
