@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://sprites/BG/IconRectBW.png" type="Texture" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://sprites/BG/9rectPanel.png" type="Texture" id=8]
 [ext_resource path="res://nodes/GPGSContainer.tscn" type="PackedScene" id=9]
 [ext_resource path="res://nodes/LeaderBoards.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/Icons/64x64px/poland.png" type="Texture" id=11]
+[ext_resource path="res://sprites/Icons/64x64px/united-kingdom.png" type="Texture" id=12]
+[ext_resource path="res://scripts/LanguageSelect.gd" type="Script" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -268,6 +271,32 @@ valign = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+[node name="Language" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -176.0
+margin_top = 16.0
+margin_right = -32.0
+margin_bottom = 80.0
+script = ExtResource( 13 )
+
+[node name="EN" type="TextureButton" parent="Language"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -144.0
+margin_right = -128.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 12 )
+
+[node name="PL" type="TextureButton" parent="Language"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 11 )
+
 [node name="LeaderBoards" parent="." instance=ExtResource( 10 )]
 visible = false
 
@@ -278,3 +307,5 @@ visible = false
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/Hard/StartHard" to="." method="_on_StartHard_pressed"]
 [connection signal="leaderBoardsPressed" from="CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GPGSContainer" to="." method="_on_GPGSContainer_leaderBoardsPressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Credits/CreditsButton" to="." method="_on_CreditsButton_pressed"]
+[connection signal="pressed" from="Language/EN" to="Language" method="_on_EN_pressed"]
+[connection signal="pressed" from="Language/PL" to="Language" method="_on_PL_pressed"]
