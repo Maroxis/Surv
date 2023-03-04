@@ -65,12 +65,12 @@ func timeGetFullFormat(time,lzero = false,labeled = false):
 	return ftime
 
 func splitString(string):
-	var result = ""
+	var result : String = ""
 	var r = RegEx.new()
 	r.compile("([A-Z])+([a-z])+")
 	for m in r.search_all(string):
 		result += m.get_string() + " "
-	return result
+	return result.trim_suffix(" ")
 
 func toRoman(number):
 	match number:

@@ -57,5 +57,5 @@ func changeTime(amm) -> void:
 	emit_signal("timePassed",amm)
 
 func updateLabels() -> void:
-	dayLabel.text = "Day " + str(day)
+	dayLabel.text = tr("DAY_SHORT") + " " + str(day)
 	timeLabel.text = Global.timeGetFullFormat(time,true)

@@ -44,7 +44,7 @@ func toggle_gpgs(on):
 func populate_save_info(label,bt,data):
 	if data != null:
 		var date = data["date"]
-		label.text = "Day " + str(date["day"]) +"\n" + Global.timeGetFullFormat(date["time"],false,true)
+		label.text = tr("Day") + " " + str(date["day"]) +"\n" + Global.timeGetFullFormat(date["time"],false,true)
 		bt.text = "Continue"
 	else:
 		label.text="New game"
