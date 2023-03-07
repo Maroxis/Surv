@@ -11,7 +11,7 @@ theme = ExtResource( 2 )
 scroll_vertical_enabled = false
 
 [node name="Items" type="HBoxContainer" parent="."]
-margin_right = 2408.0
+margin_right = 2568.0
 margin_bottom = 688.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -26,45 +26,47 @@ size_flags_vertical = 3
 
 [node name="Thread" parent="Items" instance=ExtResource( 1 )]
 margin_left = 360.0
-margin_right = 696.0
+margin_right = 728.0
 margin_bottom = 688.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Cloth" parent="Items" instance=ExtResource( 1 )]
+margin_left = 776.0
+margin_right = 1144.0
 margin_bottom = 688.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Rope" parent="Items" instance=ExtResource( 1 )]
-margin_left = 1128.0
-margin_right = 1464.0
+margin_left = 1192.0
+margin_right = 1560.0
 margin_bottom = 688.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Torch" parent="Items" instance=ExtResource( 1 )]
-margin_left = 1512.0
-margin_right = 1848.0
+margin_left = 1608.0
+margin_right = 1976.0
 margin_bottom = 688.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Plank" parent="Items" instance=ExtResource( 1 )]
-margin_left = 1896.0
-margin_right = 2232.0
+margin_left = 2024.0
+margin_right = 2392.0
 margin_bottom = 688.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Margin2" type="Control" parent="Items"]
-margin_left = 2280.0
-margin_right = 2408.0
+margin_left = 2440.0
+margin_right = 2568.0
 margin_bottom = 688.0
 rect_min_size = Vector2( 128, 0 )
 size_flags_horizontal = 3

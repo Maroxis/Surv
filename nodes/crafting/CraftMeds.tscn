@@ -10,7 +10,7 @@ anchor_bottom = 1.0
 theme = ExtResource( 2 )
 
 [node name="Items" type="HBoxContainer" parent="."]
-margin_right = 2380.0
+margin_right = 2412.0
 margin_bottom = 688.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -24,30 +24,30 @@ size_flags_vertical = 3
 
 [node name="HerbPowder" parent="Items" instance=ExtResource( 3 )]
 margin_left = 316.0
-margin_right = 652.0
+margin_right = 684.0
 margin_bottom = 688.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Poultice" parent="Items" instance=ExtResource( 1 )]
-margin_left = 656.0
-margin_right = 1184.0
+margin_left = 688.0
+margin_right = 1216.0
 margin_bottom = 688.0
 
 [node name="HerbalTea" parent="Items" instance=ExtResource( 1 )]
-margin_left = 1188.0
-margin_right = 1716.0
+margin_left = 1220.0
+margin_right = 1748.0
 margin_bottom = 688.0
 
 [node name="HerbalGranulate" parent="Items" instance=ExtResource( 1 )]
-margin_left = 1720.0
-margin_right = 2248.0
+margin_left = 1752.0
+margin_right = 2280.0
 margin_bottom = 688.0
 
 [node name="Margin2" type="Control" parent="Items"]
-margin_left = 2252.0
-margin_right = 2380.0
+margin_left = 2284.0
+margin_right = 2412.0
 margin_bottom = 688.0
 rect_min_size = Vector2( 128, 0 )
 size_flags_horizontal = 3

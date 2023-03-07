@@ -22,7 +22,7 @@ func finish():
 
 func selectItem(item):
 	selectedItem = item
-	food_label.text = Global.splitString(item)
+	food_label.text = Global.tr_split(item)
 
 func run(time):
 	if(timeLeft > 0):

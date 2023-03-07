@@ -18,12 +18,12 @@ func _updateReq():
 			if(Tools.getTier(req["tool"]["name"]) < req["tool"]["tier"]):
 				tool_meet = false
 				requirement.visible = true
-				requirement.text += "Requires " + str(req["tool"]["name"] + "\n")
+				requirement.text += tr("Requires") + " " + tr(str(req["tool"]["name"])) + "\n"
 		if req.has("module"):
 			if(Buildings.getTierInt(req["module"]["bname"],req["module"]["mname"]) < req["module"]["tier"]):
 				module_meet = false
 				requirement.visible = true
-				requirement.text += "Requires " +str(req["module"]["bname"]) + " " + str(req["module"]["mname"])
+				requirement.text += tr("Requires") + " " + tr(str(req["module"]["bname"]) + " " + str(req["module"]["mname"]))
 
 func _updateTime():
 	var time = Inventory.get_item_craft_time(self.name,Inventory.meds)

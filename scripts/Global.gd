@@ -72,6 +72,13 @@ func splitString(string):
 		result += m.get_string() + " "
 	return result.trim_suffix(" ")
 
+func tr_split(string):
+	var finalText = ""
+	for word in splitString(string).split(" "):
+		finalText += tr(word) + " "
+	finalText.trim_suffix(" ")
+	return finalText
+
 func toRoman(number):
 	match number:
 		1: return "I"

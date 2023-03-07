@@ -20,7 +20,8 @@ margin_right = 192.0
 rect_min_size = Vector2( 192, 0 )
 
 [node name="TextureRect" parent="HBoxContainer/VBoxContainer2" index="0"]
-margin_right = 192.0
+margin_left = 32.0
+margin_right = 160.0
 
 [node name="Name" parent="HBoxContainer/VBoxContainer2" index="1"]
 margin_right = 192.0
