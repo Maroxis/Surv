@@ -47,3 +47,6 @@ margin_right = 349.0
 [node name="Time" parent="HBoxContainer2" index="1"]
 margin_left = 353.0
 margin_right = 528.0
+
+[node name="Requirement" parent="." index="3"]
+margin_right = 528.0

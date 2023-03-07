@@ -83,7 +83,8 @@ func writeInfo():
 	resRequired = true
 	if(not building or not selectedModule):
 		return
-	module_name_label.text = Global.splitString(selectedModule)
+	module_name_label.text = Global.tr_split(selectedModule)
+	print(selectedModule, Global.tr_split(selectedModule))
 	var ctier = Buildings.getTier(building,selectedModule)
 	ntier = Buildings.getTier(building,selectedModule,true)
 	if(not ntier):

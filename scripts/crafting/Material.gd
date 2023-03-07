@@ -54,7 +54,7 @@ func _updateReq():
 			if(Buildings.getTierInt(req["module"]["bname"],req["module"]["mname"]) < req["module"]["tier"]):
 				module_meet = false
 				requirement.visible = true
-				requirement.text += tr("Requires") + " " + tr(str(req["module"]["bname"]) + " " + str(req["module"]["mname"]))
+				requirement.text += tr("Requires") + " " + Global.tr_split(str(req["module"]["bname"])) + " " + tr(str(req["module"]["mname"]))
 
 func _updateTime():
 	var time = Inventory.get_item_craft_time(self.name)

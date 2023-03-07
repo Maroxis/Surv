@@ -73,7 +73,11 @@ func splitString(string):
 	return result.trim_suffix(" ")
 
 func tr_split(string):
-	var finalText = ""
+	var finalText = tr(splitString(string))
+	if finalText != string:
+		return finalText
+	else:
+		finalText = ""
 	for word in splitString(string).split(" "):
 		finalText += tr(word) + " "
 	finalText.trim_suffix(" ")

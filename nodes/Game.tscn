@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=2]
+[gd_scene load_steps=128 format=2]
 
 [ext_resource path="res://nodes/Weather.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/SelectLocationBT.tscn" type="PackedScene" id=2]
@@ -19,7 +19,6 @@
 [ext_resource path="res://nodes/missions/Plains.tscn" type="PackedScene" id=17]
 [ext_resource path="res://sprites/Icons/128x128px/health.png" type="Texture" id=18]
 [ext_resource path="res://sprites/Icons/32x32px/shovel.png" type="Texture" id=19]
-[ext_resource path="res://nodes/Build.tscn" type="PackedScene" id=20]
 [ext_resource path="res://nodes/GameOver.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scripts/Status.gd" type="Script" id=22]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=23]
@@ -437,9 +436,6 @@ mouse_filter = 2
 script = ExtResource( 72 )
 
 [node name="Build" parent="Canvas/CanvasLayer/GameWindow/BaseActivities" instance=ExtResource( 79 )]
-visible = false
-
-[node name="Build_old" parent="Canvas/CanvasLayer/GameWindow/BaseActivities" instance=ExtResource( 20 )]
 visible = false
 
 [node name="Status" type="Control" parent="Canvas/CanvasLayer/GameWindow/BaseActivities"]

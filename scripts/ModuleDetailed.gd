@@ -50,7 +50,7 @@ func writeInfo():
 	resRequired = true
 	if(not building or not selectedModule):
 		return
-	module_name_label.text = Global.splitString(selectedModule)
+	module_name_label.text = Global.tr_split(selectedModule)
 	var ctier = Buildings.getTier(building,selectedModule)
 	ntier = Buildings.getTier(building,selectedModule,true)
 	if(not ntier):
@@ -63,10 +63,13 @@ func writeInfo():
 		var scene_instance = scene_bonus.instance()
 		bonus_list.add_child(scene_instance)
 		scene_instance.desc.text = Buildings.Structure[building][selectedModule]["benefitsText"][bene]
-		if(typeof(beneVal) == TYPE_BOOL or typeof(beneVal) == TYPE_STRING or typeof(beneVal) == TYPE_ARRAY):
-			scene_instance.value.text = str(curVal)+" -> "+str(beneVal)
-		else:
-			scene_instance.value.text = str(curVal)+" -> "+ str(beneVal)
+		match(typeof(beneVal)):
+			TYPE_BOOL:
+				scene_instance.value.text = ""
+			TYPE_STRING:
+				scene_instance.value.text = str(beneVal)
+			_:
+				scene_instance.value.text = str(curVal)+" -> "+str(beneVal)
 	var costCheck = true
 	var totalSec = Buildings.Structure[building][selectedModule][ntier]["time"]["sections"]
 	var compSec = Save.structures[building][selectedModule]["progress"]
