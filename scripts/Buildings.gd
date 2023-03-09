@@ -4,7 +4,7 @@ onready var Structure = {
 	"House": {
 		"Bed":{
 			"benefitsText":{
-				"sleepRegenMult": "Energy recovery and sickness reduction multiplayer during sleep"
+				"sleepRegenMult": "BED_sleepRegenMult_DESC"
 			},
 			"tier0" : {
 				"benefits":{
@@ -80,7 +80,7 @@ onready var Structure = {
 		},
 		"Frame":{
 			"benefitsText":{
-				"enable": "Enables building other modules"
+				"enable": "FRAME_enable_DESC"
 			},
 			"tier0" : {
 				"benefits":{
@@ -129,7 +129,7 @@ onready var Structure = {
 		},
 		"Wall":{
 			"benefitsText":{
-				"defence": "Increases defence"
+				"defence": "WALL_defence_DESC"
 			},
 			"tier0" : {
 				"benefits":{
@@ -198,8 +198,8 @@ onready var Structure = {
 		},
 		"Roof":{
 			"benefitsText":{
-				"roofed": "Keeps fire lit while raining",
-				"defence": "Improves defence"
+				"roofed": "ROOF_roofed_DESC",
+				"defence": "ROOF_defence_DESC"
 			},
 			"tier0" : {
 				"benefits":{
@@ -255,7 +255,7 @@ onready var Structure = {
 		},
 		"Cellar":{
 			"benefitsText":{
-				"spoilMult": "Spoil time multiplayer",
+				"spoilMult": "CELLAR_spoilMult_DESC",
 			},
 			"tier0" : {
 				"benefits":{
@@ -314,7 +314,7 @@ onready var Structure = {
 		"waterLevel": 0,
 		"Tank" : {
 			"benefitsText":{
-				"tankSize": "Increases water tank size"
+				"tankSize": "COLLECTOR_tankSize_DESC"
 			},
 			"tier0" : {
 				"benefits":{
@@ -368,7 +368,7 @@ onready var Structure = {
 		},
 		"Catcher" : {
 			"benefitsText":{
-				"collectRate": "Increases water collect rate"
+				"collectRate": "CATCHER_collectRate_DESC"
 			},
 			"tier0" : {
 				"benefits":{
@@ -428,7 +428,7 @@ onready var Structure = {
 		},
 		"Filter" : {
 			"benefitsText":{
-				"filter": "Reduces polution, making water safer to drink"
+				"filter": "FILTER_filter_DESC"
 			},
 			"tier0" : {
 				"benefits":{
@@ -502,9 +502,9 @@ onready var Structure = {
 	"Furnace": {
 		"Oven":{
 			"benefitsText":{
-				"smeltable": "Allows smelting new metals",
-				"multiSmelt": "Allows smelting multiple items at a time",
-				"fuelEff": "Better fuel efficency"
+				"smeltable": "OVEN_smeltable_DESC",
+				"multiSmelt": "OVEN_multiSmelt_DESC",
+				"fuelEff": "OVEN_fuelEff_DESC"
 			},
 			"tier0" : {
 				"benefits":{
@@ -567,7 +567,7 @@ onready var Structure = {
 		},
 		"Bellows":{
 			"benefitsText":{
-				"timeMult": "Smelting time multiplayer"
+				"timeMult": "BELLOWS_timeMult_DESC"
 			},
 			"tier0" : {
 				"benefits":{
@@ -599,7 +599,7 @@ onready var Structure = {
 	"Workbench":{
 		"Table":{
 			"benefitsText":{
-				"enable": "Enables placing other tools"
+				"enable": "TABLE_enable_DESC"
 			},
 			"tier0" : {
 				"benefits":{
@@ -627,12 +627,12 @@ onready var Structure = {
 		},
 		"Mortar":{
 			"benefitsText":{
-				"enableCraft": "Enables grinding powders",
-				"actionMult": "Grinding speed"
+				"enableCraft": "MORTAR_enableCraft_DESC",
+				"actionMult": "MORTAR_actionMult_DESC"
 			},
 			"tier0" : {
 				"benefits":{
-					"enableCraft": null,
+					"enableCraft": false,
 					"actionMult": 0
 				}
 			},
@@ -646,7 +646,7 @@ onready var Structure = {
 					"ammount": 80
 				},
 				"benefits":{
-					"enableCraft": "Grinded Herbs",
+					"enableCraft": true,
 					"actionMult": 1
 				},
 				"required":{
@@ -665,14 +665,14 @@ onready var Structure = {
 					"ammount": 120
 				},
 				"benefits":{
-					"enableCraft": "Grinded Herbs",
+					"enableCraft": true,
 					"actionMult": 1.2
 				}
 			}
 		},
 		"Chisel":{
 			"benefitsText":{
-				"resReduction": "Plank reduced resource cost"
+				"resReduction": "CHISEL_resReduction_DESC"
 			},
 			"tier0" : {
 				"benefits":{
@@ -701,8 +701,8 @@ onready var Structure = {
 		},
 		"SpinningWheel":{
 			"benefitsText":{
-				"actionMult": "Cloth and Rope weaving speed",
-				"resReduction": "Cloth and Rope reduced resource cost"
+				"actionMult": "SPINNINGWHEEL_actionMult_DESC",
+				"resReduction": "SPINNINGWHEEL_resReduction_DESC"
 			},
 			"tier0" : {
 				"benefits":{
@@ -774,7 +774,7 @@ onready var Structure = {
 		},
 		"DryingRack":{
 			"benefitsText":{
-				"enableCraft": "Enables drying meat"
+				"enableCraft": "DRYINGRACK_enableCraft_DESC"
 			},
 			"tier0" : {
 				"benefits":{
@@ -805,7 +805,7 @@ onready var Structure = {
 	"Perimeter": {
 		"Fence":{
 			"benefitsText":{
-				"defence": "Increses camp defence"
+				"defence": "defence_DESC"
 			},
 			"tier0" : {
 				"benefits":{
@@ -871,7 +871,7 @@ onready var Structure = {
 		},
 		"Gate":{
 			"benefitsText":{
-				"defence": "Increses camp defence"
+				"defence": "defence_DESC"
 			},
 			"tier0" : {
 				"benefits":{
@@ -959,7 +959,7 @@ onready var Structure = {
 		},
 		"Trench":{
 			"benefitsText":{
-				"defence": "Increses camp defence"
+				"defence": "defence_DESC"
 			},
 			"tier0" : {
 				"benefits":{
@@ -1022,7 +1022,7 @@ onready var Structure = {
 		},
 		"Pits":{
 			"benefitsText":{
-				"defence": "Increses camp defence"
+				"defence": "defence_DESC"
 			},
 			"tier0" : {
 				"benefits":{
@@ -1100,8 +1100,8 @@ onready var Structure = {
 		},
 		"WarningSystem":{
 			"benefitsText":{
-				"defence": "Increses camp defence",
-				"intel": "Increases information accuracy on intel screen"
+				"defence": "defence_DESC",
+				"intel": "intel_DESC"
 			},
 			"tier0" : {
 				"benefits":{
@@ -1172,8 +1172,8 @@ onready var Structure = {
 		},
 		"WatchTower":{
 			"benefitsText":{
-				"defence": "Increses camp defence",
-				"intel": "Increases information accuracy on intel screen"
+				"defence": "defence_DESC",
+				"intel": "intel_DESC"
 			},
 			"tier0" : {
 				"benefits":{
@@ -1226,7 +1226,7 @@ onready var Structure = {
 	"Obelisk": {
 		"Monument":{
 			"benefitsText":{
-				"stage":"Fully building monument wins game"
+				"stage":"MONUMENT_stage_DESC"
 			},
 			"tier0" : {
 				"benefits":{

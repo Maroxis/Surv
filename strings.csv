@@ -108,3 +108,33 @@ Warning System,System Ostrzegawczy,
 Watch Tower,Wieża Strażnicza,
 Obelisk,Obelisk,
 Monument,Monument,
+BED_sleepRegenMult_DESC,Zwiększa regeneracje energii oraz zdrowia podczas spania,Energy recovery and sickness reduction multiplayer during sleep
+FRAME_enable_DESC,Umożliwia budowę innych modułów,Enables building other modules
+WALL_defence_DESC,Zwiększa obronę obozu,Increases defence
+ROOF_roofed_DESC,Chroni ognisko przed deszczem,Keeps fire lit while raining
+ROOF_defence_DESC,Zwiększa obronę obozu,Improves defence
+CELLAR_spoilMult_DESC,Szybkość psucia się jedzenia,Spoil time multiplayer
+COLLECTOR_tankSize_DESC,Rozmiar zbiornika wody,Increases water tank size
+CATCHER_collectRate_DESC,Szybkość zbierania deszczu,Increases water collect rate
+FILTER_filter_DESC,Filtruje wodę od toksyn,"Reduces polution, making water safer to drink"
+OVEN_smeltable_DESC,Pozwala na przepalanie nowych metali,Allows smelting new metals
+OVEN_multiSmelt_DESC,Pozwala przepalać więcej przedmiotów jednocześnie,Allows smelting multiple items at a time
+OVEN_fuelEff_DESC,Lepsza wydajność paliwa,Better fuel efficency
+BELLOWS_timeMult_DESC,Szybkość przepalania,Smelting time multiplayer
+TABLE_enable_DESC,Umożliwia tworzenie innych narzędzi,Enables placing other tools
+MORTAR_enableCraft_DESC,Umożliwia mielenie proszków,Enables grinding powders
+MORTAR_actionMult_DESC,Szybkość mielenia,Grinding speed
+CHISEL_resReduction_DESC,Zmniejsza koszt desek,Plank reduced resource cost
+SPINNINGWHEEL_actionMult_DESC,Szybkość tkania,Cloth and Rope weaving speed
+SPINNINGWHEEL_resReduction_DESC,Zmniejszenie kosztu tkania,Cloth and Rope reduced resource cost
+DRYINGRACK_enableCraft_DESC,Umożliwia suszenie mięsa,Enables drying meat
+defence_DESC,Zwiększa obronę obozu,Increses camp defence
+intel_DESC,Zwiększa dokładność wywiadu,Increases information accuracy on intel screen
+MONUMENT_stage_DESC,W pełni zbudowany monument wygrywa grę,Fully building monument wins game
+Copper and Bronze,Miedź i brąz,
+Mortar and Chisel,Moździerz i dłuto,
+Return,Wróć,
+Cave in,Zawał,
+Dig,Rozkop,
+"Wall, Roof v2","Ściana, Dach II",
+Iron,Żelazo,

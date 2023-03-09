@@ -79,7 +79,7 @@ func writeInfo():
 		for item in Buildings.Structure[building][selectedModule][ntier]["cost"]:
 			var scene_instance = scene_cost.instance()
 			costs_list.add_child(scene_instance)
-			scene_instance.res_name.text = item
+			scene_instance.res_name.text = Global.tr_split(item)
 			scene_instance.tex.texture = load("res://sprites/Icons/32x32px/"+item.to_lower()+".png")
 			var amm = Buildings.Structure[building][selectedModule][ntier]["cost"][item]
 			scene_instance.value.text = str(amm)
