@@ -9,7 +9,7 @@ onready var amm_label: Label = $Ammount/AmmLabel
 
 func init(itemName):
 	item = itemName
-	changeLabel(Global.splitString(itemName))
+	changeLabel(Global.tr_split(itemName))
 	changeTex(itemName)
 	changeInfo(itemName)
 	

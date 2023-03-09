@@ -128,7 +128,7 @@ func calcFuel():
 
 func selectRecipe(item):
 	selectedRecipe = item
-	recipe_label.text = item
+	recipe_label.text = Global.tr_split(item)
 	clearList(ore_required)
 	for res in Inventory.resources[item]["cost"]:
 		var scene_instance = item_scene.instance()

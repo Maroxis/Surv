@@ -138,3 +138,53 @@ Cave in,Zawał,
 Dig,Rozkop,
 "Wall, Roof v2","Ściana, Dach II",
 Iron,Żelazo,
+event0_title,Uszkodzone narzędzie,Tool damage
+event0_desc,,
+event1_title,Natura twardnieje,Nature Hardens
+event1_desc,Twoje narzędzia będą się od teraz łatwiej niszczyły,Your tools will be easier to brake from now on
+event2_title,Zatruty strumień,Toxic stream
+event2_desc,Najbliższy strumień został zatruty. Szukanie wody zajmuje teraz więcej czasu,Nearby stream got poisoned. Now it takes more time to search for water
+event3_title,Las zarósł,Forest has overgrown
+event3_desc,Podróż do lasu zajmuje więcej czasu,It will take more time to travel to the forest
+event4_title,Choroba,Illness
+event4_desc,"Choroba redukuje regeneracje energii, powoduje szybszy głód i pragnienie a w ciężkich przypadkach redukuje zdrowie.","Illness will decrease your bonus energy from sleeping, make you loose food and water faster and in worst case will reduce your health"
+event5_title,Atak zwierząt,Animal Attack
+event5_desc,Wataha zwierząt zaatakowała twój obóz,Pack of animals attacked your camp
+event6_title,Niestabilna pogoda,Unstable Weather
+event6_desc,Pogoda częściej się zmienia,Weather changes more frequently
+event7_title,Błyskawiczna burza,Flash Storm
+event7_desc,Nagle rozpętała się burza,Sudden storm
+event8_title,Toksyczny deszcz,Toxic Rain
+event8_desc,Deszcz stał się bardziej toksyczny. Powoduje chorobę po wypiciu z kolektora bez filtrowania.,"Rain becomes more toxic, causes illnes when drinking without filtering"
+event9_title,Spłoszone zwierzęta,Spooked Animals
+event9_desc,Zwierzęta na polanach znikły bez śladu,Animals over plains are nowhere to be found
+event10_title,Zawał,Cave in
+event10_desc,Ściany jaskini zawaliły się blokując dostęp,Cave wall collapsed blocking entry
+event11_title,Szczury,Rats
+event11_desc,Szczury dostały się do twoich racji żywnościowych,Rats got into your food supply
+Your,Twój,
+holds strong,wytrzymał,
+got damaged and...,został uszkodzony oraz…,
+broke,zepsuł się,
+held,wytrzymał,
+Your,Twój,
+event_default_title,Spokojny dzień,Calm Day
+event_default_desc,Nic się nie dzieje,Nothing happened
+It now takes,Teraz zajmuje ci,
+to search for water,szukanie wody,
+to travel,na podróż,
+hour_short,g,h
+min_short,m,m
+You are,Jesteś,
+sick,chory,
+slightly,lekko,
+moderatly,średnio,
+very,bardzo,
+gravely,śmiertelnie,
+There were no buildings to destroy,Nie znalazły budynków do zniszczenia,
+Following buildings were damaged:,Następujące budynki zostały uszkodzone:,
+Your defence was enough to stop the attack,Twoja obrona była wystarczająca żeby powstrzymać atak,
+Defence level:,Siła obrony:,
+Animal strength:,Siła zwierząt:,
+There was nothing to eat,Nie znalazły nic do zjedzenia,
+They ate:,Zjadły:,

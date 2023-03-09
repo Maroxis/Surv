@@ -9,73 +9,21 @@ onready var waterAddTime : int = Difficulty.get_starting_water_add_time()
 onready var showEvent : bool = false
 onready var animalTimer : int = 0
 
-onready var plannedEvent = {
-}
-onready var randomEvent = {
-	"event0":{
-		"title":"Tool damage",
-		"function": "damageTool"
-	},
-	"event1":{
-		"title":"Nature Hardens",
-		"desc": "Your tools will be easier to brake from now on",
-		"function": "hardenNature"
-	},
-	"event2":{
-		"title":"Toxic stream",
-		"desc": "Nearby stream got poisoned. Now it takes more time to search for water",
-		"function": "poisonedStream"
-	},
-	"event3":{
-		"title":"Forest has overgrown",
-		"desc": "It will take more time to travel to the forest",
-		"function": "forestOvergrown"
-	},
-	"event4":{
-		"title":"Illness",
-		"desc": "Illness will decrease your bonus energy from sleeping, make you loose food and water faster and in worst case will reduce your health",
-		"function": "playerIll"
-	},
-	"event5":{
-		"title":"Animal Attack",
-		"desc": "Pack of animals attacked your camp",
-		"function": "animalAttack"
-	},
-	"event6":{
-		"title":"Unstable Weather",
-		"desc": "Weather changes more frequently",
-		"function": "unstableWeather"
-	},
-	"event7":{
-		"title":"Flash Storm",
-		"desc": "Sudden storm",
-		"function": "flashStorm"
-	},
-	"event8":{
-		"title":"Toxic Rain",
-		"desc": "Rain becomes more toxic, causes illnes when drinking without filtering",
-		"function": "toxicRain"
-	},
-	"event9":{
-		"title":"Spooked Animals",
-		"desc": "Animals over plains are nowhere to be found",
-		"function": "spookedAnimals"
-	},
-	"event10":{
-		"title":"Cave in",
-		"desc": "Cave wall collapsed blocking entry",
-		"function": "caveIn"
-	},
-	"event11":{
-		"title":"Rats",
-		"desc": "Rats got into your food supply",
-		"function": "rats"
-	}
-}
-onready var defaultEvent = {
-	"title":"Calm Day",
-	"desc": "Nothing happened"
-}
+onready var plannedEvent = []
+onready var randomEvent = [
+	"damageTool", 
+	"hardenNature",
+	"poisonedStream",
+	"forestOvergrown",
+	"playerIll",
+	"animalAttack",
+	"unstableWeather",
+	"flashStorm",
+	"toxicRain",
+	"spookedAnimals",
+	"caveIn",
+	"rats"
+]
 onready var eventDates = [3,6]
 onready var eventIndex = 0
 
@@ -119,24 +67,17 @@ func unpack(data):
 func startEvent():
 	if showEvent:
 		var ev = null
+		var ind
 		if(plannedEvent.size() > eventIndex):
-			var ind = "event"+str(eventIndex)
-			if plannedEvent.has(ind):
-				ev = plannedEvent[ind]
+			ind = eventIndex
 		else:
-			var r = forceEvent if forceEvent != null else rng.randi_range(0, randomEvent.size()-1)
-			var ind = "event"+str(r)
-			if randomEvent.has(ind):
-				ev = randomEvent[ind]
+			ind = forceEvent if forceEvent != null else rng.randi_range(0, randomEvent.size()-1)
+		ev = randomEvent[ind]
 		if ev == null:
 			return
-		var res
-		if(ev.has("params")):
-			res = call(ev["function"],ev["params"])
-		else:
-			res = call(ev["function"])
+		var res = call(ev)
 		
-		showPopup(ev,res)
+		showPopup(ind,res)
 		eventIndex += 1
 		showEvent = false
 
@@ -144,14 +85,15 @@ func check_event(day):
 	if((eventIndex >= eventDates.size() and day % 2 == 0) or (eventIndex < eventDates.size() and  eventDates[eventIndex] == day)):
 		showEvent = true
 
-func showPopup(ev,res):
-	var title = ev["title"] if ev.has("title") else ""
-	var desc =  ev["desc"] if ev.has("desc") else ""
+func showPopup(ind,res):
+	ind = str(ind)
+	var title = tr("event"+ind+"_title")
+	var desc =  tr("event"+ind+"_desc")
 	var txRes = ""
 	if res:
 		if res["error"]:
 			print(res["error"]) #dont remove
-			Global.EventPopup.populate(defaultEvent["title"],defaultEvent["desc"],"")
+			Global.EventPopup.populate(tr("event_default_title"),tr("event_default_desc"),"")
 			Global.EventPopup.show()
 			return
 		else:
@@ -186,13 +128,13 @@ func damageTool():
 	damage = damage + 1 if fmod(damageToolMlt,1.0) > rf else damage
 	if(damage == 0):
 		damageToolMlt += Difficulty.get_scaling_tool_dmg()
-		return {"error":null,"desc":"Your "+str(chTl)+" holds strong"}
+		return {"error":null,"desc":tr("Your") + " " +tr(str(chTl)) + " " + tr("holds strong")}
 	Save.tools[chTl]["durability"] -= damage
 	if(Save.tools[chTl]["durability"]) < 1:
 		Tools.setTier(chTl,Tools.getTier(chTl)-1)
 		Tools.updateTool(chTl,true)
-		return {"error":null,"desc":"Your "+str(chTl)+" got damaged and...","res":"broke"}
-	return {"error":null,"desc":"Your "+str(chTl)+" got damaged and...","res":"held"}
+		return {"error":null,"desc": tr("Your") + " " + tr(str(chTl)) + " " + tr("got damaged and..."),"res":tr("broke")}
+	return {"error":null,"desc": tr("Your") + " " + tr(str(chTl)) + " " + tr("got damaged and..."),"res":tr("held")}
 
 func hardenNature():
 	damageToolMlt += Difficulty.get_scaling_tool_dmg()*2
@@ -202,14 +144,14 @@ func poisonedStream():
 	Global.Missions.river.gatherTime["Water"] += waterAddTime
 	waterAddTime += Difficulty.get_scaling_water_add_time()
 	Global.Missions.river.updateGatherTime()
-	var time = Global.timeGetFullFormat(Global.Missions.river.gatherTimeWBonus["Water"])
-	return {"error":null,"res":"It now takes "+time+" to search for water"}
+	var time = Global.timeGetFullFormat(Global.Missions.river.gatherTimeWBonus["Water"],false,true)
+	return {"error":null,"res":tr("It now takes")+" "+time+" "+ tr("to search for water")}
 
 func forestOvergrown():
 	Global.Missions.woods.missionTravelTime += Difficulty.get_woods_travel_add_time()
 	Global.Missions.woods.updateTravelTime()
 	var time = Global.timeGetFullFormat(Global.Missions.woods.missionTravelTime,false,true)
-	return {"error":null,"res":"It now takes "+time+" to travel"}
+	return {"error":null,"res":tr("It now takes")+" "+time+ " "+tr("to travel")}
 
 func playerIll():
 	var sickMlt = Difficulty.get_sick_mlt()
@@ -219,12 +161,12 @@ func playerIll():
 	if(Player.sick < 20):
 		descLv = "slightly" #reduces energy gain from sleep (maxEnergy - sick)
 	elif(Player.sick < 50):
-		descLv = "moderatly" #increases water and food consumption, reduces healing rate
+		descLv = "moderately" #increases water and food consumption, reduces healing rate
 	elif(Player.sick < 80):
 		descLv = "very" #stops natural healing
 	else:
-		descLv = "dangerously" #drains health
-	return {"error":null,"res":"You are "+descLv+" sick"}
+		descLv = "gravely" #drains health
+	return {"error":null,"res":tr("You are")+" "+tr(descLv)+" "+tr("sick")}
 
 func calcAttack(absolute = false):
 	return Difficulty.get_attack_val(absolute)
@@ -233,7 +175,7 @@ func animalAttack():
 	var level = calcAttack()
 	var damage = level-Buildings.calcDefence()
 	if(damage <= 0):
-		return {"error":null,"res":"Your defence was enough to stop the attack \n Animal strength: "+str(level)+"\n"+" Defence level: "+str(Buildings.calcDefence())}
+		return {"error":null,"res":tr("Your defence was enough to stop the attack")+"\n"+tr("Animal strength:")+" "+str(level)+"\n"+tr("Defence level:")+" "+str(Buildings.calcDefence())}
 	else:
 		var buildings = []
 		for b in Buildings.Structure:
@@ -242,9 +184,9 @@ func animalAttack():
 					buildings.push_back([b,m])
 		var rs
 		if(buildings.size() == 0):
-			rs = "There were no buildings to destroy"
+			rs = tr("There were no buildings to destroy")
 		else:
-			rs = "Following buildings were damaged: \n"
+			rs = tr("Following buildings were damaged:")+"\n"
 		for n in damage:
 			if(buildings.size() < 1):
 				break
@@ -253,7 +195,7 @@ func animalAttack():
 				Save.structures[buildings[r][0]][buildings[r][1]]["progress"] = 0
 			else:
 				Buildings.demolish(buildings[r][0],buildings[r][1])
-			rs += buildings[r][0] + " " + buildings[r][1] + "\n"
+			rs += tr(buildings[r][0]) + " " + tr(buildings[r][1]) + "\n"
 			buildings.remove(r)
 		return {"error":null,"res": rs}
 
@@ -305,9 +247,10 @@ func rats():
 		if foodAvaliable[r]["amm"] == 0:
 			foodAvaliable.remove(r)
 	if ate.size() == 0:
-		return {"error":null,"res": "There was nothing to eat"}
-	var rs = "They ate: \n"
+		return {"error":null,"res": tr("There was nothing to eat")}
+	var rs = tr("They ate:")+"\n"
 	for food in ate:
 		if ate[food] > 0:
-			rs += " " + str(food) + ": " + str(ate[food]) + "\n"
+			print(food)
+			rs += Global.tr_split(str(food)) + ": " + str(ate[food]) + "\n"
 	return {"error":null,"res": rs}

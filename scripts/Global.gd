@@ -54,14 +54,14 @@ func timeGetFullFormat(time,lzero = false,labeled = false):
 		ftime += "0"
 	ftime += str(hour)
 	if(labeled):
-		ftime +="h"
+		ftime += tr("hour_short")
 	ftime += ":"
 	var minute = time % 60
 	if(minute < 10):
 		ftime += "0"
 	ftime += str(minute)
 	if(labeled):
-		ftime += "m"
+		ftime += tr("min_short")
 	return ftime
 
 func splitString(string):
@@ -74,7 +74,7 @@ func splitString(string):
 
 func tr_split(string):
 	var finalText = tr(splitString(string))
-	if finalText != string:
+	if finalText != splitString(string):
 		return finalText
 	else:
 		finalText = ""
