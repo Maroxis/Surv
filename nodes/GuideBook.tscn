@@ -414,14 +414,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContentContainer/PlayerHealth/VBoxContainer"]
-margin_right = 916.0
+margin_right = 904.0
 margin_bottom = 41.0
 text = "Player Health"
 align = 1
 
 [node name="Health" type="HBoxContainer" parent="TabContentContainer/PlayerHealth/VBoxContainer"]
 margin_top = 49.0
-margin_right = 916.0
+margin_right = 904.0
 margin_bottom = 221.0
 
 [node name="StatusIndicator" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health" instance=ExtResource( 14 )]
@@ -454,7 +454,7 @@ text = "Health - "
 
 [node name="Description" type="Label" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health"]
 margin_left = 100.0
-margin_right = 916.0
+margin_right = 904.0
 margin_bottom = 172.0
 size_flags_horizontal = 3
 theme_type_variation = "24f"
@@ -467,7 +467,7 @@ autowrap = true
 
 [node name="Health2" type="HBoxContainer" parent="TabContentContainer/PlayerHealth/VBoxContainer"]
 margin_top = 229.0
-margin_right = 916.0
+margin_right = 904.0
 margin_bottom = 401.0
 
 [node name="StatusIndicator" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health2" instance=ExtResource( 14 )]
@@ -529,7 +529,7 @@ text = "Illnes - "
 
 [node name="Description" type="Label" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health2"]
 margin_left = 100.0
-margin_right = 916.0
+margin_right = 904.0
 margin_bottom = 172.0
 size_flags_horizontal = 3
 theme_type_variation = "24f"
@@ -542,8 +542,9 @@ autowrap = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContentContainer/PlayerHealth/VBoxContainer"]
 margin_top = 409.0
-margin_right = 916.0
+margin_right = 904.0
 margin_bottom = 473.0
+custom_constants/separation = 16
 
 [node name="Icon" type="TextureRect" parent="TabContentContainer/PlayerHealth/VBoxContainer/HBoxContainer"]
 margin_right = 64.0
@@ -552,12 +553,12 @@ texture = ExtResource( 20 )
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="TabContentContainer/PlayerHealth/VBoxContainer/HBoxContainer"]
-margin_left = 68.0
+margin_left = 80.0
 margin_top = 16.0
-margin_right = 494.0
+margin_right = 482.0
 margin_bottom = 48.0
 theme_type_variation = "24f"
-text = "Each medicine grants buffs over time    "
+text = "Each medicine grants buffs over time"
 
 [node name="Time" type="TextureRect" parent="TabContentContainer/PlayerHealth/VBoxContainer/HBoxContainer"]
 margin_left = 498.0
@@ -582,16 +583,16 @@ theme_type_variation = "24f"
 text = "24h:30m"
 
 [node name="Label2" type="Label" parent="TabContentContainer/PlayerHealth/VBoxContainer/HBoxContainer"]
-margin_left = 550.0
+margin_left = 562.0
 margin_top = 16.0
-margin_right = 916.0
+margin_right = 904.0
 margin_bottom = 48.0
 theme_type_variation = "24f"
-text = "    Only one can be active at a time"
+text = "Only one can be active at a time"
 
 [node name="Hbox" type="HBoxContainer" parent="TabContentContainer/PlayerHealth/VBoxContainer"]
 margin_top = 481.0
-margin_right = 916.0
+margin_right = 904.0
 margin_bottom = 545.0
 
 [node name="Label" type="Label" parent="TabContentContainer/PlayerHealth/VBoxContainer/Hbox"]
