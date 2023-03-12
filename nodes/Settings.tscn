@@ -285,6 +285,7 @@ flat = true
 margin_left = 84.0
 margin_right = 768.0
 margin_bottom = 80.0
+value = 0.6
 
 [node name="Label3" type="Label" parent="TextureRect/ScrollContainer/VBoxContainer/Sound"]
 margin_top = 192.0
@@ -321,6 +322,7 @@ flat = true
 margin_left = 84.0
 margin_right = 768.0
 margin_bottom = 80.0
+value = 0.8
 
 [node name="Label5" type="Label" parent="TextureRect/ScrollContainer/VBoxContainer/Sound"]
 margin_top = 324.0
@@ -358,6 +360,7 @@ flat = true
 margin_left = 84.0
 margin_right = 768.0
 margin_bottom = 80.0
+value = 0.8
 
 [node name="Display" type="VBoxContainer" parent="TextureRect/ScrollContainer/VBoxContainer"]
 margin_top = 456.0
