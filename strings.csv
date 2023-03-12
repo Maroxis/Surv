@@ -229,35 +229,74 @@ przejść do lokacji
 Każda akcja zabiera czas",
 "Once your bag is full
 return to camp to
-deposit items",,
+deposit items","Kiedy twoja torba jest pełna
+wróć do obozu by
+zdeponować przedmioty",
 "Selecting resource
 will gather it to bag
 
 name
 ammount / weight per unit
-time to gather",,
+time to gather","Wybierz przedmiot
+By umieścić go w torbie
+
+Nazwa
+Ilość / waga na jednostkę
+Czas akcji",
 " You can always check all
- your resources in chest",,
-Cooking,,
+ your resources in chest","Zawsze możesz sprawdzić
+Swoje surowce w skrzyni",
+Cooking,Gotowanie,
 "Go to plains
 to gather
-animal carcass",,
+animal carcass","Idź na polanę
+by zebrać
+tusze zwierząt",
 "In camp
 select animal
-and butcher it",,
+and butcher it","W obozie
+wybierz tuszę
+oraz pokrój ją",
 "Select cooking
 choose meat
 select ammount
 and choose fuel
-to start cooking",,
+to start cooking","Wybierz gotowanie,
+mięso, ilość
+oraz paliwo
+by rozpocząć
+gotowanie",
 "Cooking will progress*
 while you do other
-Tasks",,
-*Cooking may pause if it is raining outside and you have not built roof,,
-Building,,
-Cick on avaliable building to see details,,
-Completed,,
-Avaliable,,
-Locked,,
-Click on blueprint to deposit all resources and start building first segment,,
-"Each segment takes time, building is functional on completing last segment",,
+tasks","Gotowanie będzie
+postępowało* kiedy
+robisz inne rzeczy",
+*Cooking may pause if it is raining outside and you have not built roof,*Gotowanie może zatrzymać się gdy nie masz dachu i pada deszcz,
+Building,Budowanie,
+Cick on avaliable building to see details,Kliknij na dostępny budynek żeby zobaczyć detale,
+Completed,Ukończone,
+Avaliable,Dostępne,
+Locked,Zablokowane,
+Click on blueprint to deposit all resources and start building first segment,Kliknij na schemat żeby zdeponować wszystkie materiały i zacząć budować pierwszy segment,
+"Each segment takes time, building is functional on completing last segment","Każdy segment zajmuje czas, budynek jest funkcjonalny po ukończeniu ostatniego segmentu",
+Your Goal is to survive 100 days,Twój cel to przetrwać 100 dni,
+"When time passes your status will deplete.
+Don't let your health drop to 0 or it's Game Over","Kiedy czas mija, twój stan się pogarsza.
+Nie pozwól by życie spadło do 0!",
+Travel to gather Resources,Podróżuj by zbierać surowce,
+"Each time you travel,
+time will pass","Za każdym razem jak 
+podróżujesz, czas przemija",
+"Spend resources on your base and tools
+for better change at survival!","Wydawaj surowca na swój obóz oraz
+narzędzia by zwiększyć swoje szanse
+na przetrwanie!",
+"Collect resource to
+add it to your bag","Zbierz surowce by
+dodać je do worka",
+"Once your bag is full
+return to add resources
+to your base","Kiedy zapełnisz worek
+wróć do obozu by dodać
+do niego surowce",
+Close,X,
