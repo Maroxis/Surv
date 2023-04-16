@@ -11,8 +11,8 @@ onready var animalTimer : int = 0
 
 onready var plannedEvent = []
 onready var randomEvent = [
-	"damageTool", 
-	"hardenNature",
+#	"damageTool", removed tools events
+#	"hardenNature",
 	"poisonedStream",
 	"forestOvergrown",
 	"playerIll",
