@@ -200,77 +200,77 @@ Energy - ,Energia - ,
 "When it drops to 0, slowly drains health with time","Kiedy spadnie do 0, powoli redukuje zdrowie z czasem.",
 Player Status,Status Gracza,
 Player Health,Zdrowie Gracza,
-"To keep your health up:
-- keep your food, water and energy high
-- keep illness low
-- sleep in your camp to regenerate
-- take crafted medicine (click on health indicator to open menu)","Żeby utrzymać zdrowie na wysokim poziomie:
+GUIDEBOOK_HELTHUP_DESC,"Żeby utrzymać zdrowie na wysokim poziomie:
 - trzymaj wysoki poziom jedzenia wody i energii
 - trzymaj niski poziom choroby
 - śpij w obozie żeby przyspieszyć regeneracje
-- przyjmuj leki (kliknij na znaczek zdrowia by otworzyć menu)",
-"To Keep your illness low:
+- przyjmuj leki (kliknij na znaczek zdrowia by otworzyć menu)","To keep your health up:
+- keep your food, water and energy high
+- keep illness low
+- sleep in your camp to regenerate
+- take crafted medicine (click on health indicator to open menu)"
+GUIDEBOOK_ILLDOWN_DESC,"Żeby zredukować poziom choroby:
+- unikaj jedzenia surowej żywności
+- unikaj spędzania czasu poza obozem podczas deszczu
+- przyjmuj leki (kliknij na znaczek zdrowia by otworzyć menu)","To Keep your illness low:
 - avoid eating raw food
 - avoid spending long time outdoors when it is raining
 - sleep in your camp
-- take crafted medicine (click on health indicator to open menu)","Żeby zredukować poziom choroby:
-- unikaj jedzenia surowej żywności
-- unikaj spędzania czasu poza obozem podczas deszczu
-- przyjmuj leki (kliknij na znaczek zdrowia by otworzyć menu)",
+- take crafted medicine (click on health indicator to open menu)"
 Each medicine grants buffs over time,Każdy lek daje premie rozłożoną w czasie,
 Only one can be active at a time,Jeden lek może być aktywny naraz,
 lowers sickness gain,zmniejsza otrzymywanie choroby,
 sickness reduction multiplayer,przyspiesza spadek choroby,
 Travel & Resources,Podróż i zasoby,
-"Click button to
-travel to location.
-Each action takes time","Wciśnij przycisk by
+GUIDEBOOK_TRAVEL_1,"Wciśnij przycisk by
 przejść do lokacji
-Każda akcja zabiera czas",
-"Once your bag is full
-return to camp to
-deposit items","Kiedy twoja torba jest pełna
+Każda akcja zabiera czas","Click button to
+travel to location.
+Each action takes time"
+GUIDEBOOK_TRAVEL_2,"Kiedy twoja torba jest pełna
 wróć do obozu by
-zdeponować przedmioty",
-"Selecting resource
-will gather it to bag
-
-name
-ammount / weight per unit
-time to gather","Wybierz przedmiot
+zdeponować przedmioty","Once your bag is full
+return to camp to
+deposit items"
+GUIDEBOOK_TRAVEL_3,"Wybierz przedmiot
 By umieścić go w torbie
 
 Nazwa
 Ilość / waga na jednostkę
-Czas akcji",
-" You can always check all
- your resources in chest","Zawsze możesz sprawdzić
-Swoje surowce w skrzyni",
+Czas akcji","Selecting resource
+will gather it to bag
+
+name
+ammount / weight per unit
+time to gather"
+GUIDEBOOK_TRAVEL_4,"Zawsze możesz sprawdzić
+Swoje surowce w skrzyni"," You can always check all
+ your resources in chest"
 Cooking,Gotowanie,
-"Go to plains
-to gather
-animal carcass","Idź na polanę
+GUIDEBOOK_COOKING_1,"Idź na polanę
 by zebrać
-tusze zwierząt",
-"In camp
-select animal
-and butcher it","W obozie
+tusze zwierząt","Go to plains
+to gather
+animal carcass"
+GUIDEBOOK_COOKING_2,"W obozie
 wybierz tuszę
-oraz pokrój ją",
-"Select cooking
-choose meat
-select ammount
-and choose fuel
-to start cooking","Wybierz gotowanie,
+oraz pokrój ją","In camp
+select animal
+and butcher it"
+GUIDEBOOK_COOKING_3,"Wybierz gotowanie,
 mięso, ilość
 oraz paliwo
 by rozpocząć
-gotowanie",
-"Cooking will progress*
-while you do other
-tasks","Gotowanie będzie
+gotowanie","Select cooking
+choose meat
+select ammount
+and choose fuel
+to start cooking"
+GUIDEBOOK_COOKING_4,"Gotowanie będzie
 postępowało* kiedy
-robisz inne rzeczy",
+robisz inne rzeczy","Cooking will progress*
+while you do other
+tasks"
 *Cooking may pause if it is raining outside and you have not built roof,*Gotowanie może zatrzymać się gdy nie masz dachu i pada deszcz,
 Building,Budowanie,
 Cick on avaliable building to see details,Kliknij na dostępny budynek żeby zobaczyć detale,

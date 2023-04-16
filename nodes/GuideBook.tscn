@@ -138,6 +138,7 @@ tab_align = 0
 tabs_visible = false
 
 [node name="PlayerStatus" type="Control" parent="TabContentContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -422,11 +423,11 @@ align = 1
 [node name="Health" type="HBoxContainer" parent="TabContentContainer/PlayerHealth/VBoxContainer"]
 margin_top = 49.0
 margin_right = 904.0
-margin_bottom = 221.0
+margin_bottom = 145.0
 
 [node name="StatusIndicator" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health" instance=ExtResource( 14 )]
 margin_right = 96.0
-margin_bottom = 172.0
+margin_bottom = 96.0
 rect_min_size = Vector2( 96, 96 )
 
 [node name="TextureProgress" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health/StatusIndicator" index="0"]
@@ -454,25 +455,22 @@ text = "Health - "
 
 [node name="Description" type="Label" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health"]
 margin_left = 100.0
+margin_top = 32.0
 margin_right = 904.0
-margin_bottom = 172.0
+margin_bottom = 64.0
 size_flags_horizontal = 3
 theme_type_variation = "24f"
-text = "To keep your health up:
-- keep your food, water and energy high
-- keep illness low
-- sleep in your camp to regenerate
-- take crafted medicine (click on health indicator to open menu)"
+text = "GUIDEBOOK_HELTHUP_DESC"
 autowrap = true
 
 [node name="Health2" type="HBoxContainer" parent="TabContentContainer/PlayerHealth/VBoxContainer"]
-margin_top = 229.0
+margin_top = 153.0
 margin_right = 904.0
-margin_bottom = 401.0
+margin_bottom = 249.0
 
 [node name="StatusIndicator" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health2" instance=ExtResource( 14 )]
 margin_right = 96.0
-margin_bottom = 172.0
+margin_bottom = 96.0
 rect_min_size = Vector2( 96, 96 )
 
 [node name="TextureProgress" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health2/StatusIndicator" index="0"]
@@ -529,21 +527,18 @@ text = "Illnes - "
 
 [node name="Description" type="Label" parent="TabContentContainer/PlayerHealth/VBoxContainer/Health2"]
 margin_left = 100.0
+margin_top = 32.0
 margin_right = 904.0
-margin_bottom = 172.0
+margin_bottom = 64.0
 size_flags_horizontal = 3
 theme_type_variation = "24f"
-text = "To Keep your illness low:
-- avoid eating raw food
-- avoid spending long time outdoors when it is raining
-- sleep in your camp
-- take crafted medicine (click on health indicator to open menu)"
+text = "GUIDEBOOK_ILLDOWN_DESC"
 autowrap = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContentContainer/PlayerHealth/VBoxContainer"]
-margin_top = 409.0
+margin_top = 257.0
 margin_right = 904.0
-margin_bottom = 473.0
+margin_bottom = 321.0
 custom_constants/separation = 16
 
 [node name="Icon" type="TextureRect" parent="TabContentContainer/PlayerHealth/VBoxContainer/HBoxContainer"]
@@ -591,9 +586,9 @@ theme_type_variation = "24f"
 text = "Only one can be active at a time"
 
 [node name="Hbox" type="HBoxContainer" parent="TabContentContainer/PlayerHealth/VBoxContainer"]
-margin_top = 481.0
+margin_top = 329.0
 margin_right = 904.0
-margin_bottom = 545.0
+margin_bottom = 393.0
 
 [node name="Label" type="Label" parent="TabContentContainer/PlayerHealth/VBoxContainer/Hbox"]
 margin_top = 16.0
@@ -643,14 +638,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContentContainer/Travel/VBoxContainer"]
-margin_right = 1033.0
+margin_right = 1042.0
 margin_bottom = 41.0
 text = "Travel & Resources"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContentContainer/Travel/VBoxContainer"]
 margin_top = 65.0
-margin_right = 1033.0
+margin_right = 1042.0
 margin_bottom = 328.0
 
 [node name="Control" type="Control" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer"]
@@ -666,16 +661,14 @@ anchor_bottom = 0.5
 
 [node name="Label" type="Label" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer"]
 margin_left = 132.0
-margin_top = 67.0
-margin_right = 451.0
-margin_bottom = 196.0
-text = "Click button to
-travel to location.
-Each action takes time"
+margin_top = 111.0
+margin_right = 487.0
+margin_bottom = 152.0
+text = "GUIDEBOOK_TRAVEL_1"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer"]
-margin_left = 455.0
-margin_right = 1033.0
+margin_left = 491.0
+margin_right = 1042.0
 margin_bottom = 263.0
 
 [node name="MissionSelect" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer/HBoxContainer" instance=ExtResource( 25 )]
@@ -707,24 +700,19 @@ text = "1:00"
 
 [node name="Label" type="Label" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer/HBoxContainer"]
 margin_left = 196.0
-margin_top = 1.0
-margin_right = 578.0
-margin_bottom = 262.0
-text = "Selecting resource
-will gather it to bag
-
-name
-ammount / weight per unit
-time to gather"
+margin_top = 111.0
+margin_right = 551.0
+margin_bottom = 152.0
+text = "GUIDEBOOK_TRAVEL_3"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="TabContentContainer/Travel/VBoxContainer"]
 margin_top = 352.0
-margin_right = 1033.0
-margin_bottom = 481.0
+margin_right = 1042.0
+margin_bottom = 480.0
 
 [node name="Bag" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer2" instance=ExtResource( 26 )]
 margin_right = 128.0
-margin_bottom = 129.0
+margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 
 [node name="TextureProgress" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer2/Bag" index="0"]
@@ -735,36 +723,33 @@ text = "0.4"
 
 [node name="Label" type="Label" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer2"]
 margin_left = 132.0
-margin_right = 426.0
-margin_bottom = 129.0
-text = "Once your bag is full
-return to camp to
-deposit items"
+margin_top = 43.0
+margin_right = 487.0
+margin_bottom = 84.0
+text = "GUIDEBOOK_TRAVEL_2"
 
 [node name="Control" type="Control" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer2"]
-margin_left = 430.0
-margin_right = 462.0
-margin_bottom = 129.0
+margin_left = 491.0
+margin_right = 523.0
+margin_bottom = 128.0
 rect_min_size = Vector2( 32, 0 )
 
 [node name="TextureRect" type="TextureRect" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer2"]
 self_modulate = Color( 0, 0, 0, 1 )
-margin_left = 466.0
-margin_right = 594.0
-margin_bottom = 129.0
+margin_left = 527.0
+margin_right = 655.0
+margin_bottom = 128.0
 texture = ExtResource( 27 )
 stretch_mode = 4
 
 [node name="Label2" type="Label" parent="TabContentContainer/Travel/VBoxContainer/HBoxContainer2"]
-margin_left = 598.0
-margin_top = 22.0
-margin_right = 958.0
-margin_bottom = 107.0
-text = " You can always check all
- your resources in chest"
+margin_left = 659.0
+margin_top = 43.0
+margin_right = 1014.0
+margin_bottom = 84.0
+text = "GUIDEBOOK_TRAVEL_4"
 
 [node name="Cooking" type="Control" parent="TabContentContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -784,24 +769,24 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContentContainer/Cooking/VBoxContainer"]
-margin_right = 989.0
+margin_right = 1392.0
 margin_bottom = 41.0
 text = "Cooking"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContentContainer/Cooking/VBoxContainer"]
 margin_top = 73.0
-margin_right = 989.0
-margin_bottom = 377.0
+margin_right = 1392.0
+margin_bottom = 237.0
 custom_constants/separation = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContentContainer/Cooking/VBoxContainer/HBoxContainer"]
-margin_right = 159.0
-margin_bottom = 304.0
+margin_right = 282.0
+margin_bottom = 164.0
 
 [node name="TextureRect" type="TextureRect" parent="TabContentContainer/Cooking/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_left = 15.0
-margin_right = 143.0
+margin_left = 77.0
+margin_right = 205.0
 margin_bottom = 128.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -809,18 +794,16 @@ texture = ExtResource( 28 )
 
 [node name="Label" type="Label" parent="TabContentContainer/Cooking/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 132.0
-margin_right = 159.0
-margin_bottom = 234.0
+margin_right = 282.0
+margin_bottom = 164.0
 theme_type_variation = "24f"
-text = "Go to plains
-to gather
-animal carcass"
+text = "GUIDEBOOK_COOKING_1"
 
 [node name="TextureRect2" type="TextureRect" parent="TabContentContainer/Cooking/VBoxContainer/HBoxContainer"]
-margin_left = 171.0
-margin_top = 104.0
-margin_right = 235.0
-margin_bottom = 200.0
+margin_left = 294.0
+margin_top = 34.0
+margin_right = 358.0
+margin_bottom = 130.0
 rect_min_size = Vector2( 64, 96 )
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -829,13 +812,13 @@ expand = true
 stretch_mode = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="TabContentContainer/Cooking/VBoxContainer/HBoxContainer"]
-margin_left = 247.0
-margin_right = 399.0
-margin_bottom = 304.0
+margin_left = 370.0
+margin_right = 652.0
+margin_bottom = 164.0
 
 [node name="TextureRect" type="TextureRect" parent="TabContentContainer/Cooking/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_left = 12.0
-margin_right = 140.0
+margin_left = 77.0
+margin_right = 205.0
 margin_bottom = 128.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -843,18 +826,16 @@ texture = ExtResource( 30 )
 
 [node name="Label" type="Label" parent="TabContentContainer/Cooking/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 132.0
-margin_right = 152.0
-margin_bottom = 234.0
+margin_right = 282.0
+margin_bottom = 164.0
 theme_type_variation = "24f"
-text = "In camp
-select animal
-and butcher it"
+text = "GUIDEBOOK_COOKING_2"
 
 [node name="TextureRect3" type="TextureRect" parent="TabContentContainer/Cooking/VBoxContainer/HBoxContainer"]
-margin_left = 411.0
-margin_top = 104.0
-margin_right = 475.0
-margin_bottom = 200.0
+margin_left = 664.0
+margin_top = 34.0
+margin_right = 728.0
+margin_bottom = 130.0
 rect_min_size = Vector2( 64, 96 )
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -863,13 +844,13 @@ expand = true
 stretch_mode = 1
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="TabContentContainer/Cooking/VBoxContainer/HBoxContainer"]
-margin_left = 487.0
-margin_right = 660.0
-margin_bottom = 304.0
+margin_left = 740.0
+margin_right = 1022.0
+margin_bottom = 164.0
 
 [node name="TextureRect" type="TextureRect" parent="TabContentContainer/Cooking/VBoxContainer/HBoxContainer/VBoxContainer3"]
-margin_left = 22.0
-margin_right = 150.0
+margin_left = 77.0
+margin_right = 205.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 size_flags_horizontal = 4
@@ -879,20 +860,16 @@ expand = true
 
 [node name="Label" type="Label" parent="TabContentContainer/Cooking/VBoxContainer/HBoxContainer/VBoxContainer3"]
 margin_top = 132.0
-margin_right = 173.0
-margin_bottom = 304.0
+margin_right = 282.0
+margin_bottom = 164.0
 theme_type_variation = "24f"
-text = "Select cooking
-choose meat
-select ammount
-and choose fuel
-to start cooking"
+text = "GUIDEBOOK_COOKING_3"
 
 [node name="TextureRect4" type="TextureRect" parent="TabContentContainer/Cooking/VBoxContainer/HBoxContainer"]
-margin_left = 672.0
-margin_top = 104.0
-margin_right = 736.0
-margin_bottom = 200.0
+margin_left = 1034.0
+margin_top = 34.0
+margin_right = 1098.0
+margin_bottom = 130.0
 rect_min_size = Vector2( 64, 96 )
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -901,13 +878,13 @@ expand = true
 stretch_mode = 1
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="TabContentContainer/Cooking/VBoxContainer/HBoxContainer"]
-margin_left = 748.0
-margin_right = 989.0
-margin_bottom = 304.0
+margin_left = 1110.0
+margin_right = 1392.0
+margin_bottom = 164.0
 
 [node name="TextureRect" type="TextureRect" parent="TabContentContainer/Cooking/VBoxContainer/HBoxContainer/VBoxContainer4"]
-margin_left = 56.0
-margin_right = 184.0
+margin_left = 77.0
+margin_right = 205.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 size_flags_horizontal = 4
@@ -918,17 +895,15 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="TabContentContainer/Cooking/VBoxContainer/HBoxContainer/VBoxContainer4"]
 margin_top = 132.0
-margin_right = 241.0
-margin_bottom = 234.0
+margin_right = 282.0
+margin_bottom = 164.0
 theme_type_variation = "24f"
-text = "Cooking will progress*
-while you do other
-tasks"
+text = "GUIDEBOOK_COOKING_3"
 
 [node name="Label2" type="Label" parent="TabContentContainer/Cooking/VBoxContainer"]
-margin_top = 409.0
-margin_right = 989.0
-margin_bottom = 441.0
+margin_top = 269.0
+margin_right = 1392.0
+margin_bottom = 301.0
 theme_type_variation = "24f"
 text = "*Cooking may pause if it is raining outside and you have not built roof"
 

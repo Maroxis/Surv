@@ -54,8 +54,8 @@ func _on_sign_in_success(_acc:String):
 	play_games_services.loadAchievementInfo(false)
 	emit_signal("signedIn")
 
-func _on_sign_in_failed(_err:int):
-#	print("Log in failed: ",err)
+func _on_sign_in_failed(err:int):
+	print("Log in failed: ",err)
 	emit_signal("signedOut")
 
 func _on_achievement_unlocked(id : String):
