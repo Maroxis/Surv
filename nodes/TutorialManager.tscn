@@ -67,7 +67,7 @@ flip_v = true
 [node name="Text" parent="StartTutorials/Goal/Sign" index="2"]
 margin_left = -224.0
 margin_right = 224.0
-text = "Your Goal is to survive 100 days"
+text = "TUTORIAL_GOAL"
 
 [node name="Status" type="Control" parent="StartTutorials"]
 visible = false
@@ -111,8 +111,7 @@ margin_left = -338.0
 margin_top = -74.5
 margin_right = 338.0
 margin_bottom = 10.5
-text = "When time passes your status will deplete.
-Don't let your health drop to 0 or it's Game Over"
+text = "TUTORIAL_TIME"
 
 [node name="Mission" type="Control" parent="StartTutorials"]
 visible = false
@@ -180,7 +179,7 @@ margin_left = -190.0
 margin_top = -52.5
 margin_right = 190.0
 margin_bottom = -11.5
-text = "Travel to gather Resources"
+text = "TUTORIAL_TRAVEL"
 
 [node name="Arrow2" type="TextureRect" parent="StartTutorials/Mission/Sign"]
 show_behind_parent = true
@@ -272,8 +271,7 @@ margin_left = -150.5
 margin_top = -58.5
 margin_right = 150.5
 margin_bottom = 26.5
-text = "Each time you travel,
-time will pass"
+text = "TUTORIAL_TRAVEL_2"
 
 [node name="Arrow2" type="TextureRect" parent="StartTutorials/MissionTime/Sign"]
 show_behind_parent = true
@@ -323,8 +321,7 @@ margin_left = -305.0
 margin_top = -104.0
 margin_right = 305.0
 margin_bottom = 36.0
-text = "Spend resources on your base and tools
-for better change at survival!"
+text = "TUTORIAL_RESOURCES"
 
 [node name="Label" parent="StartTutorials/Base/Sign/NextButton" index="0"]
 margin_left = -39.0
@@ -384,8 +381,7 @@ margin_left = -134.5
 margin_top = -58.5
 margin_right = 134.5
 margin_bottom = 26.5
-text = "Collect resource to
-add it to your bag"
+text = "TUTORIAL_RESOURCES_2"
 
 [node name="MissionReturn" type="Control" parent="MissionTutorials"]
 visible = false
@@ -440,9 +436,7 @@ margin_left = -167.0
 margin_top = -80.5
 margin_right = 167.0
 margin_bottom = 48.5
-text = "Once your bag is full
-return to add resources
-to your base"
+text = "TUTORIAL_RESOURCES_3"
 
 [connection signal="pressed" from="StartTutorials/Goal/Sign/NextButton" to="." method="_on_StartTut_NextButton_pressed"]
 [connection signal="pressed" from="StartTutorials/Status/Sign/NextButton" to="." method="_on_StartTut_NextButton_pressed"]

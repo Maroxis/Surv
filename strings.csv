@@ -279,24 +279,25 @@ Avaliable,Dostępne,
 Locked,Zablokowane,
 Click on blueprint to deposit all resources and start building first segment,Kliknij na schemat żeby zdeponować wszystkie materiały i zacząć budować pierwszy segment,
 "Each segment takes time, building is functional on completing last segment","Każdy segment zajmuje czas, budynek jest funkcjonalny po ukończeniu ostatniego segmentu",
-Your Goal is to survive 100 days,Twój cel to przetrwać 100 dni,
-"When time passes your status will deplete.
-Don't let your health drop to 0 or it's Game Over","Kiedy czas mija, twój stan się pogarsza.
-Nie pozwól by życie spadło do 0!",
-Travel to gather Resources,Podróżuj by zbierać surowce,
-"Each time you travel,
-time will pass","Za każdym razem jak 
-podróżujesz, czas przemija",
-"Spend resources on your base and tools
-for better change at survival!","Wydawaj surowca na swój obóz oraz
+TUTORIAL_GOAL,Twój cel to przetrwać 100 dni,Your Goal is to survive 100 days
+TUTORIAL_TIME,"Kiedy czas mija, twój stan się pogarsza.
+Nie pozwól by życie spadło do 0!","When time passes your status will deplete.
+Don't let your health drop to 0 or it's Game Over"
+TUTORIAL_TRAVEL,Podróżuj by zbierać surowce,Travel to gather Resources
+TUTORIAL_TRAVEL_2,"Za każdym razem jak 
+podróżujesz, czas przemija","Each time you travel,
+time will pass"
+TUTORIAL_RESOURCES,"Wydawaj surowca na swój obóz oraz
 narzędzia by zwiększyć swoje szanse
-na przetrwanie!",
-"Collect resource to
-add it to your bag","Zbierz surowce by
-dodać je do worka",
-"Once your bag is full
-return to add resources
-to your base","Kiedy zapełnisz worek
+na przetrwanie!","Spend resources on your base and tools
+for better change at survival!"
+TUTORIAL_RESOURCES_2,"Zbierz surowce by
+dodać je do worka","Collect resource to
+add it to your bag"
+TUTORIAL_RESOURCES_3,"Kiedy zapełnisz worek
 wróć do obozu by dodać
-do niego surowce",
+do niego surowce","Once your bag is full
+return to add resources
+to your base"
 Close,X,
+Next,Ok,
