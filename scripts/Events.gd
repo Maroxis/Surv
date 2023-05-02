@@ -11,8 +11,8 @@ onready var animalTimer : int = 0
 
 onready var plannedEvent = []
 onready var randomEvent = [
-#	"damageTool", removed tools events
-#	"hardenNature",
+	"damageTool",
+	"hardenNature",
 	"poisonedStream",
 	"forestOvergrown",
 	"playerIll",
@@ -71,7 +71,7 @@ func startEvent():
 		if(plannedEvent.size() > eventIndex):
 			ind = eventIndex
 		else:
-			ind = forceEvent if forceEvent != null else rng.randi_range(0, randomEvent.size()-1)
+			ind = forceEvent if forceEvent != null else rng.randi_range(2, randomEvent.size()-1)
 		ev = randomEvent[ind]
 		if ev == null:
 			return
