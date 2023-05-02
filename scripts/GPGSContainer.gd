@@ -11,10 +11,12 @@ signal signInPressed
 func _ready() -> void:
 #	if DevMode.on:
 #		sign_out.show()
+	toggle(ServiceManager.is_signed_in())
 	return
 
 func toggle(on):
 	achivements.visible = on
+	leaderboards.visible = on
 	sign_in.visible = !on
 
 func _on_SignInButton_pressed() -> void:
