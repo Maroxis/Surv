@@ -31,7 +31,7 @@ func _ready() -> void:
 	add_resolutions()
 	gpgs_container.leaderboards.hide()
 	var data = Save.loadConfig()
-	if data != null:
+	if data != null and data.has("settings"):
 		unpack(data["settings"])
 # warning-ignore:return_value_discarded
 	ServiceManager.connect("signedIn",self,'toggle_gpgs',[true])

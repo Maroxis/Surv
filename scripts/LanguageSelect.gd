@@ -12,7 +12,7 @@ func _on_PL_pressed() -> void:
 
 func getSettingsLocale():
 	var config = Save.loadConfig()
-	if config.has("global") and config["global"] != null:
+	if config and config.has("global") and config["global"].has("language") and config["global"]["language"] != null:
 		return config["global"]["language"]
 	else:
 		return TranslationServer.get_locale()
