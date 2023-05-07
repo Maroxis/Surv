@@ -22,11 +22,11 @@ func refresh():
 	for mod in modules:
 		if mod["def"] > 0:
 			var lb = addLabel(details_list)
-			lb.text = str(mod["bname"]) + " " + Global.splitString(mod["mname"]) + ": " + str(mod["def"])
+			lb.text = tr(str(mod["bname"])) + " " + Global.tr_split(mod["mname"]) + ": " + str(mod["def"])
 	clearList(destroyed_list)
 	var destroyed = Buildings.getRecDestroyed()
 	if destroyed != null:
 		for mod in destroyed:
 			var lb = addLabel(destroyed_list)
-			lb.text = str(mod["bname"]) + " " + Global.splitString(mod["mname"])
+			lb.text = tr(str(mod["bname"])) + " " + Global.tr_split(mod["mname"])
 	
