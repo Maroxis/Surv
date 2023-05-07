@@ -32,7 +32,11 @@ func exportDebug():
 
 func saveConfig():
 	var data = {}
-	data["settings"] = Global.InGSettings.pack()
+	if Global.InGSettings:
+		data["settings"] = Global.InGSettings.pack()
+	else:
+		data["settings"] = loadConfig()["settings"]
+	data["global"] = GlobalConfig.pack()
 	data = to_json(data)
 	return saveData(config_save_file,data)
 
