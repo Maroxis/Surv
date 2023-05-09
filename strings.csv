@@ -152,7 +152,7 @@ event5_title,Atak zwierząt,Animal Attack
 event5_desc,Wataha zwierząt zaatakowała twój obóz,Pack of animals attacked your camp
 event6_title,Niestabilna pogoda,Unstable Weather
 event6_desc,Pogoda częściej się zmienia,Weather changes more frequently
-event7_title,Błyskawiczna burza,Flash Storm
+event7_title,Nagła burza,Flash Storm
 event7_desc,Nagle rozpętała się burza,Sudden storm
 event8_title,Toksyczny deszcz,Toxic Rain
 event8_desc,Deszcz stał się bardziej toksyczny. Powoduje chorobę po wypiciu z kolektora bez filtrowania.,"Rain becomes more toxic, causes illnes when drinking without filtering"

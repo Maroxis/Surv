@@ -162,8 +162,8 @@ light_mask = 2
 use_parent_material = true
 margin_top = 87.0
 margin_right = 1195.0
-margin_bottom = 128.0
-theme = ExtResource( 2 )
+margin_bottom = 127.0
+theme = ExtResource( 11 )
 text = "Result"
 autowrap = true
 
