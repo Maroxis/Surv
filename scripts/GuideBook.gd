@@ -2,6 +2,9 @@ extends Control
 
 onready var tab_container: VBoxContainer = $Pages/TabContainer
 onready var tab_content_container: TabContainer = $TabContentContainer
+onready var scroll_container: ScrollContainer = $TabContentContainer/Travel/ScrollContainer
+onready var bg: TextureRect = $BG
+
 var tabs
 func _ready() -> void:
 	Global.GuideBook = self
@@ -10,6 +13,7 @@ func _ready() -> void:
 	for id in tabs.size():
 		tabs[id].tab = id
 		tabs[id].connect("tabClicked",self,"tabClicked")
+	scroll_container.get_v_scrollbar().connect("value_changed",self,"moveBG")
 
 func toggle():
 	self.visible = !self.visible
@@ -20,3 +24,6 @@ func tabClicked(tab):
 	for tb in tabs:
 		tb.deselect()
 	tabs[tab].select()
+
+func moveBG(val):
+	bg.material.set_shader_param("offset", Vector2(0,-val))
