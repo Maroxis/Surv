@@ -8,6 +8,7 @@
 size = 24
 use_filter = true
 font_data = ExtResource( 3 )
+fallback/0 = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 48

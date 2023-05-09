@@ -112,6 +112,8 @@ _global_script_class_icons={
 
 config/name="Caesiv"
 run/main_scene="res://nodes/TitleMenu.tscn"
+boot_splash/image="res://sprites/Splash-Screen.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 config/quit_on_go_back=false
 

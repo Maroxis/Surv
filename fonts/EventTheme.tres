@@ -1,0 +1,51 @@
+[gd_resource type="Theme" load_steps=12 format=2]
+
+[ext_resource path="res://fonts/MedievalSharp-Book.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=9]
+size = 72
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="DynamicFont" id=10]
+size = 32
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 128
+use_filter = true
+font_data = ExtResource( 1 )
+
+[resource]
+default_font = SubResource( 8 )
+72f/fonts/font = SubResource( 9 )
+ItemList/colors/font_color = Color( 0, 0, 0, 1 )
+ItemList/colors/font_color_selected = Color( 0, 0, 0, 1 )
+ItemList/colors/guide_color = Color( 0, 0, 0, 1 )
+ItemList/styles/bg = SubResource( 1 )
+ItemList/styles/bg_focus = SubResource( 7 )
+ItemList/styles/cursor = SubResource( 3 )
+ItemList/styles/cursor_unfocused = SubResource( 4 )
+ItemList/styles/selected = SubResource( 5 )
+ItemList/styles/selected_focus = SubResource( 6 )
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/fonts/font = SubResource( 10 )
+title/fonts/font = SubResource( 11 )
