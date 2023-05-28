@@ -11,12 +11,12 @@ var recordAdded = false
 
 func _ready() -> void:
 	Global.GameOver = self
-	death_reason_label.text = "You died of "
+	death_reason_label.text = tr("You died of ")
 
 func init(reason):
 	var day = str(Global.Date.getDay())
 	var time = Global.timeGetFullFormat(Global.Date.getTime(),true,true)
-	time_lived_label.text = "Survived\n" + day + "Days\n" + time
+	time_lived_label.text = tr("Survived") + "\n " + day + tr("Days") + "\n" + time
 	death_reason_label.text += get_reason(reason) + " "
 	if not recordAdded:
 		ServiceManager.add_highscore(Global.Date.getTotalTime(),Difficulty.current)
@@ -25,7 +25,7 @@ func init(reason):
 		if best != null:
 			day = str(floor(best/1440))
 			time = Global.timeGetFullFormat(fmod(best,1440),true,true)
-			record_lived_label.text = "Record\n" + day + "Days\n" + time
+			record_lived_label.text = tr("Record") + "\n " + day + tr("Days") + "\n" + time
 		else:
 			record_lived_label.text = "error loading records"
 		recordAdded = true
@@ -33,15 +33,17 @@ func init(reason):
 	Global.Sound.play(Sound.UI_DEATH, "SFX")
 
 func get_reason(reason : int):
+	var text
 	match reason:
 		reasons.Water:
-			return "dehydration"
+			text = "dehydration"
 		reasons.Food:
-			return "hunger"
+			text = "hunger"
 		reasons.Sick:
-			return "illnes"
+			text = "illnes"
 		reasons.Energy:
-			return "insomnia"
+			text = "insomnia"
+	return tr(text)
 
 func _on_NewGameButton_pressed() -> void:
 	Save.newGame()
