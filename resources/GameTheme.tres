@@ -28,6 +28,7 @@ font_data = ExtResource( 3 )
 
 [resource]
 default_font = ExtResource( 1 )
+16f/fonts/font = ExtResource( 1 )
 24f/base_type = "Label"
 24f/fonts/font = SubResource( 4 )
 48f/base_type = "Label"

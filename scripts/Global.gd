@@ -28,6 +28,7 @@ var Intel
 var Drying
 var Sound
 var GuideBook
+var FoodCounter
 #var TitleMenu
 
 func refresh():
