@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://shaders/texScroll.gdshader" type="Shader" id=1]
 [ext_resource path="res://resources/GameTheme.tres" type="Theme" id=2]
 [ext_resource path="res://scripts/Credits.gd" type="Script" id=3]
 [ext_resource path="res://nodes/components/BGCanvasRed.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/components/ReturnButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://fonts/ResourcesTheme.tres" type="Theme" id=5]
+[ext_resource path="res://resources/ReturnButtonStyle.tres" type="StyleBox" id=6]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -87,8 +88,38 @@ text = "Freepik, Pixel perfect, Smashicons, Good Ware, Made Premium, Vitaly Gorb
 align = 1
 autowrap = true
 
-[node name="Return" parent="." instance=ExtResource( 5 )]
+[node name="Return" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -1280.0
+margin_top = -96.0
+margin_right = 1280.0
+rect_min_size = Vector2( 2560, 96 )
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="Return"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/disabled = ExtResource( 6 )
+custom_styles/normal = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Return"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -49.5
+margin_top = -20.5
+margin_right = 49.5
+margin_bottom = 20.5
+theme = ExtResource( 5 )
+text = "Return"
 
 [connection signal="pressed" from="Return/Button" to="." method="_on_Return_Button_pressed"]
-
-[editable path="Return"]
