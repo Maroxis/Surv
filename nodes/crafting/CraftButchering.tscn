@@ -1,12 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Butchering.gd" type="Script" id=1]
 [ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://nodes/components/ScrollSelect.tscn" type="PackedScene" id=3]
-[ext_resource path="res://nodes/components/ItemButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://sprites/Icons/128x128px/butchering.png" type="Texture" id=5]
-[ext_resource path="res://sprites/Icons/128x128px/arrow.png" type="Texture" id=6]
 [ext_resource path="res://resources/defaultFont.tres" type="Theme" id=7]
+[ext_resource path="res://nodes/components/ArrowSelect.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
@@ -31,63 +29,63 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/separation = 32
-
-[node name="Control" type="Control" parent="HBoxContainer"]
-margin_right = 256.0
-margin_bottom = 465.0
-rect_min_size = Vector2( 256, 0 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="CarcassSelect" parent="HBoxContainer" instance=ExtResource( 3 )]
-margin_left = 288.0
-margin_top = 76.0
-margin_right = 472.0
-margin_bottom = 388.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 504.0
-margin_right = 694.0
-margin_bottom = 465.0
-rect_min_size = Vector2( 190, 0 )
-alignment = 1
-
-[node name="ButcherButton" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
-margin_left = 23.0
-margin_top = 127.0
-margin_right = 167.0
-margin_bottom = 271.0
-icon = ExtResource( 5 )
-
-[node name="TimeLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 275.0
-margin_right = 190.0
-margin_bottom = 337.0
+[node name="TimeLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -165.0
+margin_top = 79.0
+margin_right = -124.0
+margin_bottom = 84.0
 theme = ExtResource( 7 )
 text = "23h:30m"
 align = 1
 valign = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
-margin_left = 726.0
-margin_right = 854.0
-margin_bottom = 465.0
-texture = ExtResource( 6 )
-stretch_mode = 4
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 48
 
-[node name="OutputContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 886.0
-margin_right = 1014.0
+[node name="Control" type="Control" parent="HBoxContainer"]
+margin_right = 328.0
 margin_bottom = 465.0
-rect_min_size = Vector2( 128, 0 )
+rect_min_size = Vector2( 256, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 376.0
+margin_right = 728.0
+margin_bottom = 465.0
 alignment = 1
 
+[node name="CarcassSelect" parent="HBoxContainer/VBoxContainer2" instance=ExtResource( 8 )]
+margin_top = 160.0
+margin_bottom = 304.0
+size_flags_horizontal = 5
+size_flags_vertical = 5
+
+[node name="CarcassSelect" parent="HBoxContainer" instance=ExtResource( 3 )]
+visible = false
+margin_left = 320.0
+margin_top = 76.0
+margin_right = 504.0
+margin_bottom = 388.0
+
+[node name="OutputContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 776.0
+margin_top = 232.0
+margin_right = 904.0
+margin_bottom = 232.0
+rect_min_size = Vector2( 128, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
 [node name="Control2" type="Control" parent="HBoxContainer"]
-margin_left = 1046.0
+margin_left = 952.0
 margin_right = 1280.0
 margin_bottom = 465.0
 rect_min_size = Vector2( 128, 0 )
@@ -95,5 +93,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [connection signal="visibility_changed" from="." to="." method="_on_Butchering_visibility_changed"]
+[connection signal="itemClicked" from="HBoxContainer/VBoxContainer2/CarcassSelect" to="." method="_on_CarcassSelect_itemClicked"]
+[connection signal="itemSelected" from="HBoxContainer/VBoxContainer2/CarcassSelect" to="." method="_on_CarcassSelect_itemSelected"]
 [connection signal="itemSelected" from="HBoxContainer/CarcassSelect" to="." method="_on_CarcassSelect_itemSelected"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButcherButton" to="." method="_on_ButcherButton_pressed"]
