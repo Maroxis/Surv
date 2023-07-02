@@ -834,7 +834,6 @@ text = "GUIDEBOOK_TRAVEL_4"
 valign = 1
 
 [node name="Cooking" type="Control" parent="TabContentContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -980,7 +979,7 @@ margin_top = 132.0
 margin_right = 282.0
 margin_bottom = 164.0
 theme_type_variation = "24f"
-text = "GUIDEBOOK_COOKING_3"
+text = "GUIDEBOOK_COOKING_4"
 
 [node name="Label2" type="Label" parent="TabContentContainer/Cooking/VBoxContainer"]
 margin_top = 269.0
