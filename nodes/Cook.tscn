@@ -22,6 +22,7 @@ script = ExtResource( 2 )
 [node name="FoodLabel" type="Label" parent="."]
 unique_name_in_owner = true
 anchor_right = 1.0
+margin_left = 128.0
 margin_top = 32.0
 margin_bottom = 94.0
 theme = ExtResource( 6 )
@@ -42,9 +43,9 @@ size_flags_horizontal = 3
 [node name="FoodSelect" parent="HBoxContainer" instance=ExtResource( 13 )]
 unique_name_in_owner = true
 margin_left = 268.0
-margin_top = 204.0
+margin_top = 136.0
 margin_right = 452.0
-margin_bottom = 516.0
+margin_bottom = 584.0
 slider = true
 
 [node name="Plus" type="TextureRect" parent="HBoxContainer"]

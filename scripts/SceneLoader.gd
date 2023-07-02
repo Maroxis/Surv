@@ -4,6 +4,7 @@ class_name SceneLoader
 
 func clearList(list):
 	for n in list.get_children():
+		n.get_parent().remove_child(n)
 		n.queue_free()
 
 func addScene(scene,container):

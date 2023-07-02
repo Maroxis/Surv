@@ -5,12 +5,12 @@ class_name ScrollSelect
 onready var item_scene = load("res://nodes/components/ItemSquare.tscn")
 onready var scroll_container: ScrollContainer = $"%ScrollContainer"
 onready var item_container: VBoxContainer = $"%ItemContainer"
-onready var tween: Tween = $Tween
+onready var tween: Tween = $VBoxContainer/Selector/Tween
 onready var label_ammount: Label = $"%LabelAmmount"
 onready var ammount_texture_progress: TextureProgress = $"%AmmountTextureProgress"
 onready var v_slider: VSlider = $"%VSlider"
 onready var ammount_slider: Control = $"%AmmountSlider"
-onready var v_box_container: HBoxContainer = $VBoxContainer
+onready var v_box_container: HBoxContainer = $VBoxContainer/Selector/VBoxContainer
 
 #export var it = 5
 export var slider = false
@@ -39,8 +39,7 @@ func init():
 	scene_instance.rect_min_size.y = item_container.get_children()[0].rect_size.y
 	item_height += item_container.get_children()[0].rect_size.y
 	first_skew()
-	var item_name = item_container.get_children()[selected_item].item_name
-	selectItem(item_name)
+	selectItemID(selected_item)
 	ammount_slider.visible = slider
 #	if(!slider):
 #		self.rect_min_size.x -= ammount_slider.rect_size.x + v_box_container.get("custom_constants/separation")
@@ -53,6 +52,10 @@ func selectItem(item_name):
 	emit_signal("itemSelected", item_name)
 	if selfControlSlider:
 		refreshAmmBar(item_name)
+
+func selectItemID(item_id):
+	var item_name = item_container.get_children()[item_id].item_name
+	selectItem(item_name)
 
 func refreshAmmBar(item_name):
 	if Inventory.resources.has(item_name):
@@ -82,6 +85,11 @@ func add_item(nm):
 	item_container.add_child(scene_instance)
 	scene_instance.init(nm)
 
+func scrollTo(item_id):
+	_on_ScrollContainer_scroll_started()
+	var scrolltween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	scrolltween.tween_property(scroll_container, "scroll_vertical", int(item_height * (item_id-1)), 0.3)
+	scrolltween.tween_callback(self, "_on_ScrollContainer_scroll_ended")
 
 func _on_ScrollContainer_scroll_ended() -> void:
 	var height = stepify(scroll_container.scroll_vertical,item_height)
@@ -116,3 +124,10 @@ func changeMaxAmm(mAmm):
 
 func _on_MaxButton_pressed() -> void:
 	changeAmm(v_slider.max_value)
+
+
+func _on_ArrowButtonUP_pressed() -> void:
+	scrollTo(int(clamp(selected_item-1,0,item_container.get_children().size()-1)))
+
+func _on_ArrowButtonDown_pressed() -> void:
+	scrollTo(int(clamp(selected_item+1,0,item_container.get_children().size()-1)))

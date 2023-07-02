@@ -1,4 +1,4 @@
-extends Control
+extends SceneLoader
 
 onready var timeRemainingLabel: Label = $"%TimeLabel"
 onready var furnaceProgress: TextureProgress = $"%Progress"
@@ -109,10 +109,6 @@ func getFuelEfficency():
 func removeRes():
 	Inventory.craft_item(selectedRecipe,selectedAmm,false)
 	Inventory.add_resource(selectedFuel,-getFuelAmm())
-
-func clearList(list):
-	for n in list.get_children():
-		n.queue_free()
 
 func getFuelAmm(fuel = null):
 	if not fuel:

@@ -63,9 +63,9 @@ size_flags_stretch_ratio = 2.0
 [node name="RecipeSelect" parent="HBoxContainer" instance=ExtResource( 12 )]
 unique_name_in_owner = true
 margin_left = 240.0
-margin_top = 76.0
+margin_top = 8.0
 margin_right = 424.0
-margin_bottom = 388.0
+margin_bottom = 456.0
 selfControlSlider = false
 
 [node name="OreRequired" type="VBoxContainer" parent="HBoxContainer"]
