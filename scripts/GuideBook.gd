@@ -4,6 +4,7 @@ onready var tab_container: VBoxContainer = $Pages/TabContainer
 onready var tab_content_container: TabContainer = $TabContentContainer
 onready var scroll_container: ScrollContainer = $TabContentContainer/Travel/ScrollContainer
 onready var bg: TextureRect = $BG
+onready var category_grid_container: GridContainer = $TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer
 
 var tabs
 func _ready() -> void:
@@ -13,6 +14,10 @@ func _ready() -> void:
 	for id in tabs.size():
 		tabs[id].tab = id
 		tabs[id].connect("tabClicked",self,"tabClicked")
+	var cats = category_grid_container.get_children()
+	for id in cats.size():
+		cats[id].tab = id+1
+		cats[id].connect("tabClicked",self,"tabClicked")
 	scroll_container.get_v_scrollbar().connect("value_changed",self,"moveBG")
 
 func toggle():

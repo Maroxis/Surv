@@ -438,6 +438,49 @@ margin_right = 167.0
 margin_bottom = 48.5
 text = "TUTORIAL_RESOURCES_3"
 
+[node name="MissionEnd" type="Control" parent="MissionTutorials"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Blur" parent="MissionTutorials/MissionEnd" instance=ExtResource( 5 )]
+
+[node name="Mask" parent="MissionTutorials/MissionEnd/Blur" index="1"]
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -192.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 128.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Sign" parent="MissionTutorials/MissionEnd" instance=ExtResource( 4 )]
+margin_left = -80.0
+margin_top = -198.0
+margin_right = 395.0
+margin_bottom = 122.0
+
+[node name="Arrow" parent="MissionTutorials/MissionEnd/Sign" index="1"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -140.0
+margin_top = -173.0
+margin_right = 0.0
+margin_bottom = 256.0
+flip_h = true
+flip_v = true
+
+[node name="Text" parent="MissionTutorials/MissionEnd/Sign" index="2"]
+margin_left = -202.5
+margin_top = -129.0
+margin_right = 205.5
+margin_bottom = 42.0
+text = "TUTORIAL_END"
+autowrap = true
+
 [connection signal="pressed" from="StartTutorials/Goal/Sign/NextButton" to="." method="_on_StartTut_NextButton_pressed"]
 [connection signal="pressed" from="StartTutorials/Status/Sign/NextButton" to="." method="_on_StartTut_NextButton_pressed"]
 [connection signal="pressed" from="StartTutorials/Mission/Sign/NextButton" to="." method="_on_StartTut_NextButton_pressed"]
@@ -445,6 +488,7 @@ text = "TUTORIAL_RESOURCES_3"
 [connection signal="pressed" from="StartTutorials/Base/Sign/NextButton" to="." method="_on_StartTut_NextButton_pressed"]
 [connection signal="pressed" from="MissionTutorials/MissionResource/Sign/NextButton" to="." method="_on_MissionTut_NextButton_pressed"]
 [connection signal="pressed" from="MissionTutorials/MissionReturn/Sign/NextButton" to="." method="_on_MissionTut_NextButton_pressed"]
+[connection signal="pressed" from="MissionTutorials/MissionEnd/Sign/NextButton" to="." method="_on_MissionTut_NextButton_pressed"]
 
 [editable path="StartTutorials/Goal/Blur"]
 [editable path="StartTutorials/Goal/Sign"]
@@ -460,3 +504,5 @@ text = "TUTORIAL_RESOURCES_3"
 [editable path="MissionTutorials/MissionResource/Sign"]
 [editable path="MissionTutorials/MissionReturn/Blur"]
 [editable path="MissionTutorials/MissionReturn/Sign"]
+[editable path="MissionTutorials/MissionEnd/Blur"]
+[editable path="MissionTutorials/MissionEnd/Sign"]

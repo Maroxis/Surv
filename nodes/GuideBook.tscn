@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://sprites/papertex.png" type="Texture" id=1]
 [ext_resource path="res://sprites/woodtex.png" type="Texture" id=2]
@@ -39,12 +39,18 @@
 [ext_resource path="res://nodes/GPGSContainer.tscn" type="PackedScene" id=37]
 [ext_resource path="res://sprites/GooglePlay/ic_play_games_badge_green.png" type="Texture" id=38]
 [ext_resource path="res://shaders/texScroll.gdshader" type="Shader" id=39]
+[ext_resource path="res://nodes/components/CategoryButton.tscn" type="PackedScene" id=40]
+[ext_resource path="res://sprites/UI/Status/IconDiscBW_96px.png" type="Texture" id=42]
+[ext_resource path="res://fonts/StatusIndicatorFont.tres" type="DynamicFont" id=43]
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 39 )
 shader_param/offset = Vector2( 0, 0 )
 
 [sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="Theme" id=3]
+default_font = ExtResource( 43 )
 
 [node name="GuideBook" type="Control"]
 anchor_right = 1.0
@@ -182,6 +188,84 @@ margin_left = 470.0
 margin_right = 666.0
 margin_bottom = 96.0
 columns = 2
+
+[node name="Control2" type="Control" parent="TabContentContainer/GooglePlay/VBoxContainer"]
+margin_top = 161.0
+margin_right = 1136.0
+margin_bottom = 209.0
+rect_min_size = Vector2( 0, 48 )
+
+[node name="CenterContainer2" type="CenterContainer" parent="TabContentContainer/GooglePlay/VBoxContainer"]
+margin_top = 217.0
+margin_right = 1136.0
+margin_bottom = 577.0
+
+[node name="CategoryGridContainer" type="GridContainer" parent="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2"]
+margin_left = 84.0
+margin_right = 1052.0
+margin_bottom = 360.0
+custom_constants/vseparation = 64
+columns = 3
+
+[node name="CategoryButton" parent="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer" instance=ExtResource( 40 )]
+margin_top = 0.0
+margin_bottom = 148.0
+
+[node name="Label" parent="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer/CategoryButton/Plaque" index="0"]
+text = "Player Status"
+
+[node name="CategoryButton2" parent="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer" instance=ExtResource( 40 )]
+margin_left = 324.0
+margin_top = 0.0
+margin_right = 644.0
+margin_bottom = 148.0
+
+[node name="TextureRect" parent="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer/CategoryButton2" index="0"]
+texture = ExtResource( 4 )
+
+[node name="Label" parent="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer/CategoryButton2/Plaque" index="0"]
+text = "Player Health"
+
+[node name="CategoryButton3" parent="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer" instance=ExtResource( 40 )]
+margin_left = 648.0
+margin_top = 0.0
+margin_right = 968.0
+margin_bottom = 148.0
+
+[node name="TextureRect" parent="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer/CategoryButton3" index="0"]
+texture = ExtResource( 5 )
+
+[node name="Label" parent="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer/CategoryButton3/Plaque" index="0"]
+text = "Travel & Resources"
+
+[node name="CategoryButton4" parent="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer" instance=ExtResource( 40 )]
+margin_top = 212.0
+margin_bottom = 360.0
+
+[node name="TextureRect" parent="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer/CategoryButton4" index="0"]
+texture = ExtResource( 6 )
+
+[node name="Label" parent="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer/CategoryButton4/Plaque" index="0"]
+text = "Cooking"
+
+[node name="CategoryButton5" parent="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer" instance=ExtResource( 40 )]
+margin_left = 324.0
+margin_top = 212.0
+margin_right = 644.0
+margin_bottom = 360.0
+
+[node name="TextureRect" parent="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer/CategoryButton5" index="0"]
+texture = ExtResource( 7 )
+
+[node name="Label" parent="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer/CategoryButton5/Plaque" index="0"]
+text = "Building"
+
+[node name="CategoryButton6" parent="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer" instance=ExtResource( 40 )]
+visible = false
+margin_left = 520.0
+margin_top = 200.0
+margin_right = 776.0
+margin_bottom = 336.0
 
 [node name="PlayerStatus" type="Control" parent="TabContentContainer"]
 visible = false
@@ -541,25 +625,63 @@ margin_top = 100.0
 margin_right = 904.0
 margin_bottom = 196.0
 
-[node name="StatusIndicator" parent="TabContentContainer/PlayerHealth/VBoxContainer/VBoxContainer/Health2" instance=ExtResource( 14 )]
+[node name="StatusIndicator" type="Control" parent="TabContentContainer/PlayerHealth/VBoxContainer/VBoxContainer/Health2"]
 margin_right = 96.0
 margin_bottom = 96.0
 rect_min_size = Vector2( 96, 96 )
+script = ExtResource( 33 )
 
-[node name="TextureProgress" parent="TabContentContainer/PlayerHealth/VBoxContainer/VBoxContainer/Health2/StatusIndicator" index="0"]
+[node name="TextureProgress" type="TextureProgress" parent="TabContentContainer/PlayerHealth/VBoxContainer/VBoxContainer/Health2/StatusIndicator"]
 self_modulate = Color( 1, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -48.0
+margin_top = -48.0
+margin_right = 48.0
+margin_bottom = 48.0
 value = 80.0
+texture_under = ExtResource( 42 )
+texture_progress = ExtResource( 42 )
+fill_mode = 3
+tint_under = Color( 0.25098, 0.25098, 0.25098, 1 )
+script = ExtResource( 16 )
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="TextureRect" parent="TabContentContainer/PlayerHealth/VBoxContainer/VBoxContainer/Health2/StatusIndicator/TextureProgress" index="0"]
-margin_left = -32.0
-margin_right = 96.0
-texture = ExtResource( 4 )
+[node name="TextureRect" type="TextureProgress" parent="TabContentContainer/PlayerHealth/VBoxContainer/VBoxContainer/Health2/StatusIndicator/TextureProgress"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 128.0
+margin_bottom = 128.0
+rect_scale = Vector2( 0.5, 0.5 )
+value = 70.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 4 )
+fill_mode = 3
+tint_under = Color( 0, 0, 0, 0.501961 )
+tint_progress = Color( 0, 0.541176, 0.0196078, 1 )
+__meta__ = {
+"_editor_description_": ""
+}
 
-[node name="Value" parent="TabContentContainer/PlayerHealth/VBoxContainer/VBoxContainer/Health2/StatusIndicator/TextureProgress" index="1"]
+[node name="Value" type="Label" parent="TabContentContainer/PlayerHealth/VBoxContainer/VBoxContainer/Health2/StatusIndicator/TextureProgress"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -31.5
+margin_top = -27.0
+margin_right = 31.5
+margin_bottom = 27.0
+theme = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 0.501961 )
 text = "80"
+align = 1
+valign = 1
 
 [node name="SickProgress" type="TextureProgress" parent="TabContentContainer/PlayerHealth/VBoxContainer/VBoxContainer/Health2/StatusIndicator"]
 show_behind_parent = true
@@ -1219,13 +1341,17 @@ align = 1
 [editable path="Pages/TabContainer/Tab2"]
 [editable path="Pages/TabContainer/Tab4"]
 [editable path="Pages/TabContainer/Tab5"]
+[editable path="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer/CategoryButton"]
+[editable path="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer/CategoryButton2"]
+[editable path="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer/CategoryButton3"]
+[editable path="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer/CategoryButton4"]
+[editable path="TabContentContainer/GooglePlay/VBoxContainer/CenterContainer2/CategoryGridContainer/CategoryButton5"]
 [editable path="TabContentContainer/PlayerStatus/VBoxContainer/HBoxContainer/Circles/StatusIndicator"]
 [editable path="TabContentContainer/PlayerStatus/VBoxContainer/HBoxContainer/Circles/StatusIndicator2"]
 [editable path="TabContentContainer/PlayerStatus/VBoxContainer/HBoxContainer/Circles/StatusIndicator3"]
 [editable path="TabContentContainer/PlayerStatus/VBoxContainer/HBoxContainer/Circles/StatusIndicator4"]
 [editable path="TabContentContainer/PlayerStatus/VBoxContainer/HBoxContainer/Circles/StatusIndicator5"]
 [editable path="TabContentContainer/PlayerHealth/VBoxContainer/VBoxContainer/Health/StatusIndicator"]
-[editable path="TabContentContainer/PlayerHealth/VBoxContainer/VBoxContainer/Health2/StatusIndicator"]
 [editable path="TabContentContainer/Travel/ScrollContainer/VBoxContainer/Columns/VBoxContainer/MissionSelect"]
 [editable path="TabContentContainer/Travel/ScrollContainer/VBoxContainer/Columns/VBoxContainer/Bag"]
 [editable path="TabContentContainer/Building/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/Module"]

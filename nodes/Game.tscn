@@ -807,7 +807,6 @@ theme_type_variation = "16f"
 text = "0"
 align = 1
 valign = 1
-percent_visible = 3.0
 
 [node name="Button" type="Button" parent="Canvas/UI/Status/Corner/Food/TextureProgress" index="3"]
 anchor_left = 0.5
