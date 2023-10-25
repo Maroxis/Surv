@@ -8,6 +8,7 @@ var orgOffset = Vector2(0,0)
 var prevOffset = Vector2(0,0)
 var initialized = false
 var yOffset = 0
+var locked = false
 onready var texture_rect: TextureRect = $TextureRect
 onready var tool_button: Button = $CanvasLayer/ToolButton
 onready var canvas_layer: CanvasLayer = $CanvasLayer
@@ -34,20 +35,20 @@ func set_bought():
 	self.overlay = GraphNode.OVERLAY_POSITION
 	set_slot_color_left(0,Color8(0,138,5))
 	set_slot_color_right(0,Color8(0,138,5))
-	tool_button.visible = false
 	req_tool.visible = false
+	locked = false
 func set_avaliable():
 	self.overlay = GraphNode.OVERLAY_BREAKPOINT
 	set_slot_color_left(0,Color8(255,179,72))
 	set_slot_color_right(0,Color8(255,179,72))
-	tool_button.visible = true
 	req_tool.visible = false
+	locked = false
 func set_locked():
 	check_tool()
 	self.overlay = GraphNode.OVERLAY_DISABLED
 	set_slot_color_left(0,Color8(48,56,56))
 	set_slot_color_right(0,Color8(48,56,56))
-	tool_button.visible = false
+	locked = true
 #func set_hidden():
 #	set_locked()
 #	self.visible = false
@@ -102,4 +103,7 @@ func hide():
 	canvas_layer.visible =  false
 
 func _on_Button_pressed() -> void:
-	emit_signal("selectedNode",self)
+	if locked:
+		req_tool.shakeSide()
+	else:
+		emit_signal("selectedNode",self)

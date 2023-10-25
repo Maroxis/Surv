@@ -20,19 +20,19 @@ var selectedModule
 
 signal moduleConstructed
 
-func init(bd,mod):
+func init(bd,mod,lv):
 	building = bd
 	ntier = null
 	selectModule(mod)
-	refresh()
+	refresh(lv)
 	show()
 	
-func refresh():
+func refresh(lv = null):
 	disableButton()
 	resRequired = true
 	removeItems(bonus_list)
 	removeItems(costs_list)
-	writeInfo()
+	writeInfo(lv)
 
 func removeItems(container):
 	for n in container.get_children():
@@ -41,17 +41,21 @@ func removeItems(container):
 func selectModule(module):
 	selectedModule = module
 	preview_icon.texture = load("res://sprites/Icons/128x128px/"+module.to_lower()+".png")
-	writeInfo()
+#	writeInfo()
 	
-func writeInfo():
+func writeInfo(lv):
 	disableButton()
 	removeItems(bonus_list)
 	removeItems(costs_list)
 	resRequired = true
+	progress_time_texture.show()
 	if(not building or not selectedModule):
 		return
 	module_name_label.text = Global.tr_split(selectedModule)
 	var ctier = Buildings.getTier(building,selectedModule)
+	if int(ctier[ctier.length()-1]) >= lv:
+		writeSummary(lv)
+		return
 	ntier = Buildings.getTier(building,selectedModule,true)
 	if(not ntier):
 		return
@@ -97,7 +101,25 @@ func writeInfo():
 		resRequired = false
 	if (costCheck or not resRequired):
 		enableButton()
-	
+
+func writeSummary(lv):
+	lv = "tier" + str(lv)
+	label_cost.hide()
+	progress_time_texture.hide()
+	for bene in Buildings.Structure[building][selectedModule][lv]["benefits"]:
+		var curVal = Buildings.Structure[building][selectedModule][lv]["benefits"][bene]
+		var scene_instance = scene_bonus.instance()
+		bonus_list.add_child(scene_instance)
+		scene_instance.desc.text = Buildings.Structure[building][selectedModule]["benefitsText"][bene]
+		match(typeof(curVal)):
+			TYPE_BOOL:
+				scene_instance.value.text = ""
+			TYPE_STRING:
+				scene_instance.value.text = str(curVal)
+			_:
+				scene_instance.value.text = str(curVal)
+	return
+
 func disableButton():
 	build_button.disabled = true
 	preview_icon.modulate = Color(1,0,0,0.4)

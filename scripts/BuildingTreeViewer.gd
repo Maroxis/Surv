@@ -131,7 +131,7 @@ func close():
 	canvas_layer.hide()
 
 func _on_GraphEdit_node_selected(node: Node) -> void:
-	module_detailed.init(node.buildingName,node.moduleName)
+	module_detailed.init(node.buildingName,node.moduleName,node.level)
 	Global.Sound.play(Sound.UI_DEFAULT_SHORT, "SFX")
 
 func _on_Return_Button_pressed() -> void:

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sprites/Icons/64x64px/bed.png" type="Texture" id=1]
 [ext_resource path="res://scripts/BuildingTreeModuleNode.gd" type="Script" id=2]
 [ext_resource path="res://resources/BuildingTreeViewerNode.tres" type="Theme" id=3]
 [ext_resource path="res://sprites/Icons/32x32px/shovel.png" type="Texture" id=4]
 [ext_resource path="res://resources/ButtonNoBG.tres" type="Theme" id=5]
+[ext_resource path="res://scripts/animate/NodeAnimated.gd" type="Script" id=6]
 
 [node name="Module" type="GraphNode"]
 margin_right = 120.0
@@ -42,6 +43,7 @@ margin_right = 120.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 32, 32 )
 texture = ExtResource( 4 )
+script = ExtResource( 6 )
 
 [node name="ToolButton" type="ToolButton" parent="CanvasLayer"]
 margin_right = 128.0
