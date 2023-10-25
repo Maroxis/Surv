@@ -71,6 +71,7 @@ margin_right = 3.0
 margin_bottom = -24.0
 rect_min_size = Vector2( 32, 32 )
 texture = ExtResource( 2 )
+script = ExtResource( 7 )
 
 [node name="Tier" type="Label" parent="VBox/Button/ToolReq"]
 anchor_left = 0.5

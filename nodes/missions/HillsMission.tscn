@@ -136,6 +136,8 @@ margin_bottom = 592.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
+custom_constants/separation = 0
+alignment = 1
 __meta__ = {
 "_editor_description_": ""
 }
@@ -147,46 +149,51 @@ margin_left = 448.0
 margin_top = 64.0
 margin_right = 640.0
 margin_bottom = 327.0
+size_flags_horizontal = 4
 sound = 31
 
 [node name="CopperOre" parent="VBoxContainer/Resources" instance=ExtResource( 1 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 229.0
-margin_top = 92.0
-margin_right = 421.0
-margin_bottom = 355.0
+margin_left = 720.0
+margin_top = 64.0
+margin_right = 912.0
+margin_bottom = 327.0
+size_flags_horizontal = 4
 sound = 29
 
 [node name="Coal" parent="VBoxContainer/Resources" instance=ExtResource( 1 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 311.0
-margin_top = 92.0
-margin_right = 503.0
-margin_bottom = 355.0
+margin_left = 640.0
+margin_top = 64.0
+margin_right = 832.0
+margin_bottom = 327.0
+size_flags_horizontal = 4
 sound = 15
 
 [node name="TinOre" parent="VBoxContainer/Resources" instance=ExtResource( 1 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 448.0
-margin_top = 92.0
-margin_right = 640.0
-margin_bottom = 355.0
+margin_left = 736.0
+margin_top = 64.0
+margin_right = 928.0
+margin_bottom = 327.0
+size_flags_horizontal = 4
 sound = 29
 
 [node name="IronOre" parent="VBoxContainer/Resources" instance=ExtResource( 1 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 721.0
-margin_top = 92.0
-margin_right = 913.0
-margin_bottom = 355.0
+margin_left = 832.0
+margin_top = 64.0
+margin_right = 1024.0
+margin_bottom = 327.0
+size_flags_horizontal = 4
 sound = 29
 
 [node name="CaveIn" type="Control" parent="."]

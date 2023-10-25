@@ -1,6 +1,6 @@
 extends Mission
 
-onready var herb: Control = $Resources/Herb
+onready var herb: Control = $Resources/Herb/VBox
 
 func _ready() -> void:
 	missionTravelTime = 40

@@ -1,5 +1,7 @@
 extends Control
 
+class_name MissionSelect
+
 onready var resName: Label = $VBox/Name
 onready var ammount: Label = $"%Ammount"
 onready var time: Label = $VBox/Time
@@ -17,6 +19,9 @@ export var connectMission = true
 export var foodRes = false
 export(String, "resources", "food", "meds", "null") var type = "resources"
 export var sound = 7
+
+var disabled = false
+
 signal missionSelected
 
 func updateGatherTime(tm):
@@ -25,12 +30,12 @@ func updateGatherTime(tm):
 func enable():
 	tool_req.visible = false
 	buttonContainer.modulate.a = 1.0
-	button.disabled = false
+	disabled = false
 	
 func disable():
 	tool_req.visible = true
 	buttonContainer.modulate.a = 0.4
-	button.disabled = true
+	disabled = true
 
 func populate(rsNam,amm,tm,tlReq):
 	resName.text = tr(Global.splitString(rsNam))
@@ -55,5 +60,8 @@ func shake(suc):
 		buttonContainer.shakeSubtleSide()
 
 func _on_Button_pressed() -> void:
-	emit_signal("missionSelected",self.name,foodRes,self)
+	if disabled:
+		tool_req.shakeSide()
+	else:
+		emit_signal("missionSelected",self.name,foodRes,self)
 #	sound.play()

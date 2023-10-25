@@ -45,6 +45,18 @@ rect_min_size = Vector2( 32, 32 )
 texture = ExtResource( 4 )
 script = ExtResource( 6 )
 
+[node name="tier" type="Label" parent="CanvasLayer/reqTool"]
+modulate = Color( 0.6, 0.145098, 0.145098, 1 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -14.0
+margin_top = -12.0
+margin_right = -6.0
+size_flags_horizontal = 8
+text = "5"
+
 [node name="ToolButton" type="ToolButton" parent="CanvasLayer"]
 margin_right = 128.0
 margin_bottom = 96.0

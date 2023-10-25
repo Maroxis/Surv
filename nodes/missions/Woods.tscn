@@ -22,41 +22,39 @@ margin_bottom = -128.0
 [node name="Wood" parent="Resources" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 22.0
 margin_top = 164.0
-margin_right = 214.0
+margin_right = 192.0
 margin_bottom = 427.0
 sound = 37
 
 [node name="Stick" parent="Resources" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 263.0
+margin_left = 196.0
 margin_top = 164.0
-margin_right = 455.0
+margin_right = 388.0
 margin_bottom = 427.0
 sound = 34
 
 [node name="Leaf" parent="Resources" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 504.0
+margin_left = 392.0
 margin_top = 164.0
-margin_right = 696.0
+margin_right = 584.0
 margin_bottom = 427.0
 sound = 24
 
 [node name="Rock" parent="Resources" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 745.0
+margin_left = 588.0
 margin_top = 164.0
-margin_right = 937.0
+margin_right = 780.0
 margin_bottom = 427.0
 sound = 31
 
 [node name="Herb" parent="Resources" instance=ExtResource( 4 )]
-visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 784.0

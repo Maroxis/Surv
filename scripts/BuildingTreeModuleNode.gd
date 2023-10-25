@@ -13,6 +13,7 @@ onready var texture_rect: TextureRect = $TextureRect
 onready var tool_button: Button = $CanvasLayer/ToolButton
 onready var canvas_layer: CanvasLayer = $CanvasLayer
 onready var req_tool: TextureRect = $CanvasLayer/reqTool
+onready var req_tool_tier: Label = $CanvasLayer/reqTool/tier
 
 signal selectedNode
 
@@ -73,12 +74,14 @@ func check_tool():
 		var tls = Buildings.getRequiredTool(buildingName,moduleName,level)
 		if tls != null:
 			for tl in tls:
-				if tls[tl] > Tools.getTier(tl):
-					set_tool(tl)
+				var tier = tls[tl]
+				if tier > Tools.getTier(tl):
+					set_tool(tl,tier)
 					return
 
-func set_tool(nm):
+func set_tool(nm,tier):
 	req_tool.texture = load("res://sprites/Icons/32x32px/"+nm.to_lower()+".png")
+	req_tool_tier.text = str(tier)
 	req_tool.visible = true
 
 func _on_Module_offset_changed() -> void:
