@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://nodes/components/BGCanvasRed.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Intel.gd" type="Script" id=2]
 [ext_resource path="res://nodes/components/ReturnButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://sprites/Icons/256x256px/perimeter.png" type="Texture" id=4]
 [ext_resource path="res://resources/GameTheme.tres" type="Theme" id=5]
+[ext_resource path="res://sprites/Icons/128x128px/mediumcarcass.png" type="Texture" id=6]
+[ext_resource path="res://sprites/Icons/128x128px/perimeter.png" type="Texture" id=7]
+[ext_resource path="res://resources/ScrollBars.tres" type="Theme" id=8]
 
 [node name="Intel" type="Control"]
 anchor_right = 1.0
@@ -17,7 +20,8 @@ script = ExtResource( 2 )
 [node name="BGCanvasRed" parent="." instance=ExtResource( 1 )]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-self_modulate = Color( 1, 1, 1, 0.0627451 )
+visible = false
+self_modulate = Color( 1, 1, 1, 0.0313726 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -34,18 +38,21 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -384.0
-margin_top = -280.0
-margin_right = 384.0
+margin_top = -296.0
+margin_right = 628.0
 margin_bottom = 200.0
+theme = ExtResource( 8 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 768.0
-margin_bottom = 292.0
+margin_bottom = 470.0
 rect_min_size = Vector2( 768, 0 )
+custom_constants/separation = 32
 
 [node name="Summary" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
 margin_right = 768.0
-margin_bottom = 152.0
+margin_bottom = 274.0
+custom_constants/separation = 24
 
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Summary"]
 margin_right = 768.0
@@ -54,44 +61,96 @@ theme_type_variation = "48f"
 text = "Summary"
 align = 1
 
-[node name="Enemy" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Summary"]
-margin_top = 66.0
+[node name="Defence" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Summary"]
+margin_top = 86.0
 margin_right = 768.0
-margin_bottom = 107.0
+margin_bottom = 250.0
+custom_constants/separation = 24
+alignment = 1
 
-[node name="EnemyLabel" type="Label" parent="ScrollContainer/VBoxContainer/Summary/Enemy"]
-margin_right = 388.0
-margin_bottom = 41.0
-text = "Estimated enemy strength: "
+[node name="Base" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Summary/Defence"]
+margin_left = 176.0
+margin_right = 317.0
+margin_bottom = 164.0
 
-[node name="EnemyValueLabel" type="Label" parent="ScrollContainer/VBoxContainer/Summary/Enemy"]
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Summary/Defence/Base"]
+margin_right = 141.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 4
+
+[node name="BaseValueLabel" type="Label" parent="ScrollContainer/VBoxContainer/Summary/Defence/Base/TextureRect"]
 unique_name_in_owner = true
-margin_left = 392.0
-margin_right = 466.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -24.0
+margin_top = -31.0
+margin_right = 24.0
+margin_bottom = 31.0
+theme_type_variation = "48f"
+text = "82"
+align = 1
+
+[node name="BaseLabel" type="Label" parent="ScrollContainer/VBoxContainer/Summary/Defence/Base"]
+margin_top = 132.0
+margin_right = 141.0
+margin_bottom = 164.0
+theme_type_variation = "24f"
+text = "Base defence"
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Summary/Defence"]
+margin_left = 341.0
+margin_top = 51.0
+margin_right = 398.0
+margin_bottom = 113.0
+theme_type_variation = "48f"
+text = "VS"
+
+[node name="Enemy" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Summary/Defence"]
+margin_left = 422.0
+margin_right = 592.0
+margin_bottom = 164.0
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Summary/Defence/Enemy"]
+margin_right = 170.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 4
+
+[node name="EnemyValueLabel" type="Label" parent="ScrollContainer/VBoxContainer/Summary/Defence/Enemy/TextureRect"]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -194.0
+margin_top = -6.0
+margin_right = 194.0
 margin_bottom = 41.0
+theme_type_variation = "48f"
 text = "13-18"
+align = 1
 
-[node name="Base" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Summary"]
-margin_top = 111.0
+[node name="EnemyLabel" type="Label" parent="ScrollContainer/VBoxContainer/Summary/Defence/Enemy"]
+margin_top = 132.0
+margin_right = 170.0
+margin_bottom = 164.0
+theme_type_variation = "24f"
+text = "Enemy strength"
+
+[node name="Control" type="Control" parent="ScrollContainer/VBoxContainer/Summary"]
+margin_top = 274.0
 margin_right = 768.0
-margin_bottom = 152.0
-
-[node name="BaseLabel" type="Label" parent="ScrollContainer/VBoxContainer/Summary/Base"]
-margin_right = 202.0
-margin_bottom = 41.0
-text = "Base defence: "
-
-[node name="BaseValueLabel" type="Label" parent="ScrollContainer/VBoxContainer/Summary/Base"]
-unique_name_in_owner = true
-margin_left = 206.0
-margin_right = 222.0
-margin_bottom = 41.0
-text = "8"
+margin_bottom = 274.0
 
 [node name="Details" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
-margin_top = 156.0
+margin_top = 306.0
 margin_right = 768.0
-margin_bottom = 222.0
+margin_bottom = 372.0
 
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Details"]
 margin_right = 768.0
@@ -107,9 +166,9 @@ margin_right = 768.0
 margin_bottom = 66.0
 
 [node name="RecentlyDestroyed" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
-margin_top = 226.0
+margin_top = 404.0
 margin_right = 768.0
-margin_bottom = 292.0
+margin_bottom = 470.0
 
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/RecentlyDestroyed"]
 margin_right = 768.0

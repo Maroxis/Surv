@@ -1,14 +1,12 @@
 extends Control
 
 onready var soak_meter: ProgressBar = $"%SoakMeter"
-onready var status: Control = $"%Status"
 
 func _ready() -> void:
 	DevMode.DebugUI = self
 
 func switch(on):
 	visible = on
-	status.visible = on
 	DevMode.godMode = on
 
 func _on_TestButton_pressed() -> void:
