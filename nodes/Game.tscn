@@ -338,9 +338,9 @@ rect_min_size = Vector2( 160, 0 )
 [node name="Status" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox" instance=ExtResource( 30 )]
 unique_name_in_owner = true
 visible = false
-margin_left = 929.0
+margin_left = 1024.0
 margin_top = 196.0
-margin_right = 1212.0
+margin_right = 1152.0
 margin_bottom = 196.0
 rect_min_size = Vector2( 128, 0 )
 size_flags_horizontal = 1
@@ -435,10 +435,24 @@ margin_bottom = 196.0
 rect_min_size = Vector2( 128, 0 )
 size_flags_horizontal = 1
 
+[node name="VBox" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Drink" index="0"]
+margin_right = 70.0
+margin_bottom = 174.5
+
+[node name="Button" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Drink/VBox" index="0"]
+margin_right = 134.0
+
+[node name="BG" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Drink/VBox/Button" index="0"]
+margin_left = -65.0
+margin_right = 63.0
+expand = true
+
 [node name="ToxicLevel" type="TextureProgress" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Drink/VBox/Button" index="1"]
 self_modulate = Color( 0.54902, 1, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 2.0
+margin_right = -4.0
 max_value = 1.0
 step = 0.1
 value = 0.6
@@ -452,12 +466,15 @@ texture = ExtResource( 16 )
 disabled = true
 
 [node name="Name" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Drink/VBox" index="1"]
-text = "Drink"
+margin_right = 134.0
+margin_bottom = 217.0
+text = "Build Collector"
+autowrap = true
 
 [node name="Ammount" type="Label" parent="Canvas/CanvasLayer/GameWindow/Missions/Home/VBoxContainer/HBox2/Drink/VBox" index="2"]
-margin_top = 177.0
-margin_right = 128.0
-margin_bottom = 218.0
+margin_top = 221.0
+margin_right = 134.0
+margin_bottom = 262.0
 theme = ExtResource( 25 )
 align = 1
 

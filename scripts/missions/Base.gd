@@ -2,6 +2,7 @@ extends MissionBasic
 
 onready var drinkNode = get_node("VBoxContainer/HBox2/Drink")
 onready var drinkNodeAmm = drinkNode.get_node("VBox/Ammount")
+onready var drinkNodeLabel = drinkNode.get_node("VBox/Name")
 onready var toxic_level = drinkNode.get_node("VBox/Button/ToxicLevel")
 onready var defence_amm: Label = $"%DefenceAmm"
 
@@ -71,10 +72,14 @@ func changeCollectorToxic():
 
 func _activateDrink():
 	drinkNode.modulate = Color(1,1,1,1)
+	drinkNodeLabel.text = tr("Drink")
+	drinkNodeAmm.show()
 	drinkNode.get_node("VBox/Button/Button").disabled = false
 	
 func _deactivateDrink():
 	drinkNode.modulate = Color(1,1,1,0.4)
+	drinkNodeLabel.text = tr("Build Collector")
+	drinkNodeAmm.hide()
 	drinkNode.get_node("VBox/Button/Button").disabled = true
 
 
