@@ -323,3 +323,7 @@ TUTORIAL_END,Sprawdź przewodnik jeśli masz jakieś pytania,Check guide if you 
 Base defence,Obrona bazy,
 Enemy strength,Siła przeciwnika,
 Build Collector,Zbuduj Kolektor,
+event12_title,Nadchodzi susza,Incoming drought
+event12_desc,Przygotuj się na długie upały,Prepare for prolonged heat
+event13_title,Nadchodzi burza,Incoming storm
+event13_desc,Przygotuj się na długie opady deszczu,Prepare for prolonged rainfall

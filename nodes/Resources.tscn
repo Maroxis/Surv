@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://fonts/BuildTabTheme.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/Resources.gd" type="Script" id=2]
 [ext_resource path="res://sprites/textiletex.png" type="Texture" id=3]
+[ext_resource path="res://resources/GameTheme.tres" type="Theme" id=4]
+[ext_resource path="res://sprites/BG/IconRectBWTex.png" type="Texture" id=5]
 
 [node name="Resources" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 128.0
+theme = ExtResource( 4 )
 script = ExtResource( 2 )
 
 [node name="Border" type="ColorRect" parent="."]
@@ -32,13 +35,14 @@ unique_name_in_owner = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 64.0
-margin_top = 64.0
+margin_top = 40.0
 margin_right = -64.0
 
 [node name="Raw" type="VBoxContainer" parent="Border/Bg/Resources"]
 margin_right = 226.0
-margin_bottom = 496.0
+margin_bottom = 520.0
 size_flags_horizontal = 3
+custom_constants/separation = 16
 
 [node name="Label" type="Label" parent="Border/Bg/Resources/Raw"]
 margin_right = 226.0
@@ -47,11 +51,30 @@ theme = ExtResource( 1 )
 text = "Raw"
 align = 1
 
+[node name="Plate" type="NinePatchRect" parent="Border/Bg/Resources/Raw/Label"]
+self_modulate = Color( 1, 0.701961, 0.282353, 1 )
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -113.0
+margin_top = -20.5
+margin_right = 113.0
+margin_bottom = 20.5
+rect_min_size = Vector2( 144, 0 )
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 256, 128 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
 [node name="ScrollContainer" type="ScrollContainer" parent="Border/Bg/Resources/Raw"]
 margin_left = 113.0
-margin_top = 45.0
+margin_top = 57.0
 margin_right = 113.0
-margin_bottom = 496.0
+margin_bottom = 520.0
 size_flags_horizontal = 6
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
@@ -64,14 +87,18 @@ columns = 2
 [node name="Control" type="Control" parent="Border/Bg/Resources"]
 margin_left = 230.0
 margin_right = 294.0
-margin_bottom = 496.0
+margin_bottom = 520.0
 rect_min_size = Vector2( 64, 0 )
 
 [node name="Crafted" type="VBoxContainer" parent="Border/Bg/Resources"]
 margin_left = 298.0
 margin_right = 524.0
-margin_bottom = 496.0
+margin_bottom = 520.0
 size_flags_horizontal = 3
+custom_constants/separation = 16
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Label" type="Label" parent="Border/Bg/Resources/Crafted"]
 margin_right = 226.0
@@ -80,11 +107,30 @@ theme = ExtResource( 1 )
 text = "Crafted"
 align = 1
 
+[node name="Plate" type="NinePatchRect" parent="Border/Bg/Resources/Crafted/Label"]
+self_modulate = Color( 1, 0.701961, 0.282353, 1 )
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -113.0
+margin_top = -20.5
+margin_right = 113.0
+margin_bottom = 20.5
+rect_min_size = Vector2( 144, 0 )
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 256, 128 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
 [node name="ScrollContainer" type="ScrollContainer" parent="Border/Bg/Resources/Crafted"]
 margin_left = 113.0
-margin_top = 45.0
+margin_top = 57.0
 margin_right = 113.0
-margin_bottom = 496.0
+margin_bottom = 520.0
 size_flags_horizontal = 6
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
@@ -100,14 +146,18 @@ columns = 2
 [node name="Control2" type="Control" parent="Border/Bg/Resources"]
 margin_left = 528.0
 margin_right = 592.0
-margin_bottom = 496.0
+margin_bottom = 520.0
 rect_min_size = Vector2( 64, 0 )
 
 [node name="Food" type="VBoxContainer" parent="Border/Bg/Resources"]
 margin_left = 596.0
 margin_right = 822.0
-margin_bottom = 496.0
+margin_bottom = 520.0
 size_flags_horizontal = 3
+custom_constants/separation = 16
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Label" type="Label" parent="Border/Bg/Resources/Food"]
 margin_right = 226.0
@@ -116,11 +166,30 @@ theme = ExtResource( 1 )
 text = "Food"
 align = 1
 
+[node name="Plate" type="NinePatchRect" parent="Border/Bg/Resources/Food/Label"]
+self_modulate = Color( 1, 0.701961, 0.282353, 1 )
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -113.0
+margin_top = -20.5
+margin_right = 113.0
+margin_bottom = 20.5
+rect_min_size = Vector2( 144, 0 )
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 256, 128 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
 [node name="ScrollContainer" type="ScrollContainer" parent="Border/Bg/Resources/Food"]
 margin_left = 113.0
-margin_top = 45.0
+margin_top = 57.0
 margin_right = 113.0
-margin_bottom = 496.0
+margin_bottom = 520.0
 size_flags_horizontal = 6
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
@@ -136,14 +205,18 @@ columns = 2
 [node name="Control3" type="Control" parent="Border/Bg/Resources"]
 margin_left = 826.0
 margin_right = 890.0
-margin_bottom = 496.0
+margin_bottom = 520.0
 rect_min_size = Vector2( 64, 0 )
 
 [node name="Meds" type="VBoxContainer" parent="Border/Bg/Resources"]
 margin_left = 894.0
 margin_right = 1120.0
-margin_bottom = 496.0
+margin_bottom = 520.0
 size_flags_horizontal = 3
+custom_constants/separation = 16
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Label" type="Label" parent="Border/Bg/Resources/Meds"]
 margin_right = 226.0
@@ -152,11 +225,30 @@ theme = ExtResource( 1 )
 text = "Medical"
 align = 1
 
+[node name="Plate" type="NinePatchRect" parent="Border/Bg/Resources/Meds/Label"]
+self_modulate = Color( 1, 0.701961, 0.282353, 1 )
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -113.0
+margin_top = -20.5
+margin_right = 113.0
+margin_bottom = 20.5
+rect_min_size = Vector2( 144, 0 )
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 256, 128 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
 [node name="ScrollContainer" type="ScrollContainer" parent="Border/Bg/Resources/Meds"]
 margin_left = 113.0
-margin_top = 45.0
+margin_top = 57.0
 margin_right = 113.0
-margin_bottom = 496.0
+margin_bottom = 520.0
 size_flags_horizontal = 6
 size_flags_vertical = 3
 scroll_horizontal_enabled = false

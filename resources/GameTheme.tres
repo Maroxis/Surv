@@ -1,10 +1,11 @@
-[gd_resource type="Theme" load_steps=15 format=2]
+[gd_resource type="Theme" load_steps=18 format=2]
 
 [ext_resource path="res://resources/defaultDynFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://fonts/ResourcesFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://resources/grabber_style.tres" type="StyleBox" id=4]
 [ext_resource path="res://sprites/BG/9rectPanel.png" type="Texture" id=5]
+[ext_resource path="res://sprites/papertex.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=4]
 size = 24
@@ -28,7 +29,7 @@ font_data = ExtResource( 3 )
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
-[sub_resource type="Image" id=10]
+[sub_resource type="Image" id=13]
 data = {
 "data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
 "format": "LumAlpha8",
@@ -40,7 +41,7 @@ data = {
 [sub_resource type="ImageTexture" id=7]
 flags = 4
 flags = 4
-image = SubResource( 10 )
+image = SubResource( 13 )
 size = Vector2( 16, 16 )
 
 [sub_resource type="StyleBoxTexture" id=8]
@@ -67,6 +68,13 @@ margin_bottom = 8.0
 expand_margin_bottom = 8.0
 modulate_color = Color( 0.0627451, 0.0627451, 0.0627451, 0.407843 )
 
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 256, 256 )
+modulate_color = Color( 0.8, 0.8, 0.752941, 1 )
+
 [resource]
 default_font = ExtResource( 1 )
 16f/fonts/font = ExtResource( 1 )
@@ -92,6 +100,8 @@ HScrollBar/styles/scroll = SubResource( 8 )
 HScrollBar/styles/scroll_focus = SubResource( 9 )
 Label/colors/font_color = Color( 0, 0, 0, 1 )
 Label/fonts/font = ExtResource( 2 )
+ScrollContainer/styles/bg = SubResource( 11 )
+ScrollContainerList/styles/bg = SubResource( 12 )
 VScrollBar/icons/decrement = SubResource( 7 )
 VScrollBar/icons/decrement_highlight = SubResource( 7 )
 VScrollBar/icons/decrement_pressed = SubResource( 7 )

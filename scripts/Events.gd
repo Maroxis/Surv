@@ -2,12 +2,13 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
-onready var forceEvent = null
+onready var forceEvent = 12
 
 onready var damageToolMlt : float = Difficulty.get_starting_tool_dmg_mlt()
 onready var waterAddTime : int = Difficulty.get_starting_water_add_time()
 onready var showEvent : bool = false
 onready var animalTimer : int = 0
+onready var seasonTimer : int = 0
 
 onready var plannedEvent = []
 onready var randomEvent = [
@@ -22,7 +23,9 @@ onready var randomEvent = [
 	"toxicRain",
 	"spookedAnimals",
 	"caveIn",
-	"rats"
+	"rats",
+	"drought",
+	"storm"
 ]
 onready var eventDates = [3,6]
 onready var eventIndex = 0
@@ -43,6 +46,7 @@ func pack():
 	data["damageToolMlt"] = damageToolMlt
 	data["waterAddTime"] = waterAddTime
 	data["animalTimer"] = animalTimer
+	data["seasonTimer"] = seasonTimer
 	data["showEvent"] = showEvent
 	data["rngSeed"] = rng.seed
 	data["rngState"] = rng.state
@@ -57,12 +61,16 @@ func unpack(data):
 		waterAddTime = data["waterAddTime"]
 	if data.has("animalTimer"):
 		animalTimer = data["animalTimer"]
+	if data.has("seasonTimer"):
+		seasonTimer = data["seasonTimer"]
 	if data.has("showEvent"):
 		showEvent = data["showEvent"]
 	if data.has("rngSeed"):
 		rng.seed = data["rngSeed"]
 	if data.has("rngState"):
 		rng.state = data["rngState"]
+	Global.Date.connect("timePassed",self,"returnAnimals")
+	Global.Date.connect("timePassed",self,"seasonEnd")
 
 func startEvent():
 	if showEvent:
@@ -254,3 +262,26 @@ func rats():
 			print(food)
 			rs += Global.tr_split(str(food)) + ": " + str(ate[food]) + "\n"
 	return {"error":null,"res": rs}
+
+func drought():
+	return startSeason(3)
+
+func storm():
+	return startSeason(-3)
+
+func startSeason(bias):
+	if Global.Date.is_connected("timePassed", self, "seasonEnd"):
+		return {"error":"already in season"}
+	Global.Date.connect("timePassed",self,"seasonEnd")
+	seasonTimer += rng.randi_range(2160,3600) * Difficulty.get_spooked_animals_mlt() #36h-60h * mlt
+	Global.Weather.seasonBias = bias
+	return {"error":null}
+
+func seasonEnd(time):
+	seasonTimer -= time
+	print(seasonTimer)
+	if seasonTimer <= 0:
+		seasonTimer = 0
+		Global.Date.disconnect("timePassed",self,"seasonEnd")
+		Global.Weather.seasonBias = 0
+	return

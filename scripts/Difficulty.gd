@@ -45,6 +45,9 @@ func get_attack_val(absolute = false):
 
 func get_spooked_animals_mlt():
 	return ceil(Global.Date.getDay() / 22.0) if is_normal() else ceil(Global.Date.getDay() / 19.0)
+	
+func get_season_length_mlt():
+	return ceil(Global.Date.getDay() / 42.0) if is_normal() else ceil(Global.Date.getDay() / 34.0)
 
 func get_cave_in_amm():
 	return ceil(Global.Date.getDay() / 10.0) if is_normal() else ceil(Global.Date.getDay() / 8.0)

@@ -13,6 +13,7 @@ onready var weatherChangeRate = 0.002 #permin
 onready var progress = 0
 onready var changeHelper = 1
 onready var calmSustain = 1
+onready var seasonBias = 0
 
 onready var rainToxic = 0.0 # sick per unit
 #onready var currentSound = null
@@ -35,6 +36,7 @@ func pack():
 	weather["changeHelper"] = current
 	weather["calmSustain"] = calmSustain
 	weather["rainToxic"] = rainToxic
+	weather["seasonBias"] = seasonBias
 	return weather
 
 func unpack(weather):
@@ -50,6 +52,8 @@ func unpack(weather):
 		calmSustain = int(weather["calmSustain"])
 	if weather.has("rainToxic"):
 		rainToxic = float(weather["rainToxic"])
+	if weather.has("seasonBias"):
+		seasonBias = int(weather["seasonBias"])
 
 func switch_shaders(on):
 	if on:
@@ -67,7 +71,7 @@ func simWeather(time):
 	if(current == type.Calm and rng.randi_range(0, calmSustain) == 0):
 		return
 	var r = rng.randi_range(0, type.size()-1)
-	r -= current
+	r -= current + seasonBias
 	progress += float(r) * weatherChangeRate * time * changeHelper
 	if progress > 1:
 		setWeather(current+1)
