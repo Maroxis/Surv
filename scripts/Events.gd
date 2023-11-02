@@ -2,7 +2,7 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
-onready var forceEvent = 12
+onready var forceEvent = null
 
 onready var damageToolMlt : float = Difficulty.get_starting_tool_dmg_mlt()
 onready var waterAddTime : int = Difficulty.get_starting_water_add_time()
@@ -25,7 +25,8 @@ onready var randomEvent = [
 	"caveIn",
 	"rats",
 	"drought",
-	"storm"
+	"storm",
+	"animalBloodlustAttack"
 ]
 onready var eventDates = [3,6]
 onready var eventIndex = 0
@@ -207,6 +208,16 @@ func animalAttack():
 			buildings.remove(r)
 		return {"error":null,"res": rs}
 
+func animalBloodlustAttack():
+	var level = calcAttack()
+	var damage = level-Buildings.calcDefence()
+	if(damage <= 0):
+		return {"error":null,"res":tr("Your defence was enough to stop the attack")+"\n"+tr("Animal strength:")+" "+str(level)+"\n"+tr("Defence level:")+" "+str(Buildings.calcDefence())}
+	else:
+		Player.change_health(-damage * Difficulty.get_animal_attack_damage_mlt(), GameOver.reasons.Combat)
+		var rs = tr("You were injured by animal attack, due to lack of base defence")
+		return {"error":null,"res": rs}
+
 func unstableWeather():
 	Global.Weather.weatherChangeRate += 0.015
 	Global.Weather.calmSustain += 1
@@ -279,7 +290,6 @@ func startSeason(bias):
 
 func seasonEnd(time):
 	seasonTimer -= time
-	print(seasonTimer)
 	if seasonTimer <= 0:
 		seasonTimer = 0
 		Global.Date.disconnect("timePassed",self,"seasonEnd")

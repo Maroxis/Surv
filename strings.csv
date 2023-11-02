@@ -327,3 +327,6 @@ event12_title,Nadchodzi susza,Incoming drought
 event12_desc,Przygotuj się na długie upały,Prepare for prolonged heat
 event13_title,Nadchodzi burza,Incoming storm
 event13_desc,Przygotuj się na długie opady deszczu,Prepare for prolonged rainfall
+event14_title,Oszalały atak zwierząt,Frenzied animal attack
+event14_desc,Wataha zwierząt z nienaturalną żądzą krwi zaatakowała obóz,Pack of animals with unnatural bloodlust attacked your camp
+"You were injured by animal attack, due to lack of base defence","Zostałeś zraniony przez atak zwierząt, z powodu niewystarczającej obrony bazy",

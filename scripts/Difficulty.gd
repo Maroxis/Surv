@@ -43,6 +43,9 @@ func get_attack_val(absolute = false):
 	var rl = rand_range(0.9,1.1)
 	return ceil((Global.Date.day/7.1)*rl) if is_normal() else ceil((Global.Date.day/5.2)*rl)
 
+func get_animal_attack_damage_mlt():
+	return 7 if is_normal() else 12
+
 func get_spooked_animals_mlt():
 	return ceil(Global.Date.getDay() / 22.0) if is_normal() else ceil(Global.Date.getDay() / 19.0)
 	

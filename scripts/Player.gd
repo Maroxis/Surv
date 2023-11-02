@@ -163,10 +163,14 @@ func change_health(amm, reason = null, set = false):
 		Global.Sound.play_loop(Sound.UI_LOW_HEALTH_LOOP, "SFX_LOOP_GLOBAL")
 	elif(health > lowWarning and amm > 0):
 		Global.Sound.stop_loop(Sound.UI_LOW_HEALTH_LOOP)
-		
-	Global.UI.refreshHealth()
+
 	if(health <= 0):
-		Global.GameOver.init(reason)
+		if reason == GameOver.reasons.Combat:
+			health = randf()*5 + 1 # last chance mechanic
+		else:
+			Global.GameOver.init(reason)
+			
+	Global.UI.refreshHealth()
 
 func change_energy(amm, set = false):
 	if(energy == 0 && amm < 0):

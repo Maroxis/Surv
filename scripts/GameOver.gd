@@ -5,7 +5,7 @@ class_name GameOver
 onready var time_lived_label: Label = $VBoxContainer/HBoxContainer/NinePatchRect/TimeLivedLabel
 onready var record_lived_label: Label = $VBoxContainer/HBoxContainer/NinePatchRect2/RecordLivedLabel
 onready var death_reason_label: Label = $VBoxContainer/DeathReasonLabel
-enum reasons {Water, Food, Energy, Sick}
+enum reasons {Water, Food, Energy, Sick, Combat}
 
 var recordAdded = false
 
@@ -43,6 +43,8 @@ func get_reason(reason : int):
 			text = "illnes"
 		reasons.Energy:
 			text = "insomnia"
+		reasons.Combat:
+			text = "combat"
 	return tr(text)
 
 func _on_NewGameButton_pressed() -> void:
