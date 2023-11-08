@@ -266,3 +266,27 @@ func eat(fd, amm, over = false, remove = true):
 		Inventory.add_resource(fd,-ate,true)
 	Global.Sound.play(Sound.UI_EATING, "SFX")
 	return amm-ate
+
+func sick_verbose():
+	var descLv
+	if(sick < 20):
+		descLv = "slightly" #reduces energy gain from sleep (maxEnergy - sick)
+	elif(sick < 50):
+		descLv = "moderatly" #increases water and food consumption, reduces healing rate
+	elif(sick < 80):
+		descLv = "very" #stops natural healing
+	else:
+		descLv = "gravely" #drains health
+	return descLv
+
+func health_verbose():
+	var descLv
+	if(health < 20):
+		descLv = "gravely"
+	elif(health < 50):
+		descLv = "greatly"
+	elif(health < 80):
+		descLv = "moderatly"
+	else:
+		descLv = "slightly"
+	return descLv

@@ -2,7 +2,7 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
-onready var forceEvent = null
+onready var forceEvent = 15
 
 onready var damageToolMlt : float = Difficulty.get_starting_tool_dmg_mlt()
 onready var waterAddTime : int = Difficulty.get_starting_water_add_time()
@@ -12,21 +12,22 @@ onready var seasonTimer : int = 0
 
 onready var plannedEvent = []
 onready var randomEvent = [
-	"damageTool",
-	"hardenNature",
-	"poisonedStream",
-	"forestOvergrown",
-	"playerIll",
-	"animalAttack",
-	"unstableWeather",
-	"flashStorm",
-	"toxicRain",
-	"spookedAnimals",
-	"caveIn",
-	"rats",
-	"drought",
-	"storm",
-	"animalBloodlustAttack"
+	"damageTool", #0
+	"hardenNature", #1
+	"poisonedStream", #2
+	"forestOvergrown", #3
+	"playerIll", #4
+	"animalAttack", #5
+	"unstableWeather", #6
+	"flashStorm", #7
+	"toxicRain", #8
+	"spookedAnimals", #9
+	"caveIn", #10
+	"rats", #11
+	"drought", #12
+	"storm", #13
+	"animalBloodlustAttack", #14
+	"snake" #15
 ]
 onready var eventDates = [3,6]
 onready var eventIndex = 0
@@ -165,16 +166,8 @@ func forestOvergrown():
 func playerIll():
 	var sickMlt = Difficulty.get_sick_mlt()
 	var sick = rng.randi_range(6, 10)*sickMlt
-	var descLv
 	Player.change_sick(sick)
-	if(Player.sick < 20):
-		descLv = "slightly" #reduces energy gain from sleep (maxEnergy - sick)
-	elif(Player.sick < 50):
-		descLv = "moderately" #increases water and food consumption, reduces healing rate
-	elif(Player.sick < 80):
-		descLv = "very" #stops natural healing
-	else:
-		descLv = "gravely" #drains health
+	var descLv = Player.sick_verbose()
 	return {"error":null,"res":tr("You are")+" "+tr(descLv)+" "+tr("sick")}
 
 func calcAttack(absolute = false):
@@ -215,7 +208,7 @@ func animalBloodlustAttack():
 		return {"error":null,"res":tr("Your defence was enough to stop the attack")+"\n"+tr("Animal strength:")+" "+str(level)+"\n"+tr("Defence level:")+" "+str(Buildings.calcDefence())}
 	else:
 		Player.change_health(-damage * Difficulty.get_animal_attack_damage_mlt(), GameOver.reasons.Combat)
-		var rs = tr("You were injured by animal attack, due to lack of base defence")
+		var rs = tr("You were injured by animal attack, due to lack of base defence") + "\n" +tr("You are") + " " + tr(Player.health_verbose()) + " " + tr("injured")
 		return {"error":null,"res": rs}
 
 func unstableWeather():
@@ -295,3 +288,8 @@ func seasonEnd(time):
 		Global.Date.disconnect("timePassed",self,"seasonEnd")
 		Global.Weather.seasonBias = 0
 	return
+
+func snake():
+	Player.change_health(-Difficulty.get_snake_damage()/2, GameOver.reasons.Combat)
+	Player.change_sick(Difficulty.get_snake_damage())
+	return {"error":null,"res":tr("You are")+" "+tr(Player.sick_verbose())+" "+tr("sick") + "\n" + tr("and") + " " + tr(Player.health_verbose()) + " " + tr("injured")}

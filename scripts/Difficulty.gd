@@ -46,6 +46,9 @@ func get_attack_val(absolute = false):
 func get_animal_attack_damage_mlt():
 	return 7 if is_normal() else 12
 
+func get_snake_damage():
+	return ceil(max(Global.Date.getDay() / 8 + 5, 40)) if is_normal() else max(Global.Date.getDay() / 8 + 5, 60)
+
 func get_spooked_animals_mlt():
 	return ceil(Global.Date.getDay() / 22.0) if is_normal() else ceil(Global.Date.getDay() / 19.0)
 	

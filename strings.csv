@@ -330,3 +330,8 @@ event13_desc,Przygotuj się na długie opady deszczu,Prepare for prolonged rainf
 event14_title,Oszalały atak zwierząt,Frenzied animal attack
 event14_desc,Wataha zwierząt z nienaturalną żądzą krwi zaatakowała obóz,Pack of animals with unnatural bloodlust attacked your camp
 "You were injured by animal attack, due to lack of base defence","Zostałeś zraniony przez atak zwierząt, z powodu niewystarczającej obrony bazy",
+event15_title,Wąż,Snake
+event15_desc,Zostałeś ugryziony przez węża,You were bitten by a snake
+and,oraz,
+greatly,mocno,
+injured,ranny,
